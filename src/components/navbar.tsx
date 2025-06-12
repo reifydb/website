@@ -10,8 +10,8 @@ export function Navbar() {
                 <a href="/" className="flex items-center gap-2">
                     <ReifyLogo className="h-8 w-8"/>
                     <span className="text-white font-semibold text-sm sm:text-base">ReifyDB</span>
-                    <span className="bg-blue-700 text-xs font-medium text-white px-3 py-1 rounded-full">
-                       In development
+                    <span className="bg-blue-700 text-xs font-medium text-white px-4 py-1 rounded-full">
+                       v.0.0
                     </span>
                 </a>
 

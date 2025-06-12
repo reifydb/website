@@ -3,7 +3,7 @@ import {CallButton} from "@components/call.tsx";
 
 export function Description() {
     return (
-        <section className="relative text-white px-6 py-28">
+        <section className="relative text-white px-6 py-12">
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
                 <div className="w-full lg:w-1/3 rounded-xl overflow-hidden border border-gray-800 shadow-xl">
                     <img

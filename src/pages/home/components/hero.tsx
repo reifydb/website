@@ -14,14 +14,13 @@ export function Hero() {
             </div>
 
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight max-w-4xl mx-auto">
-                Unified Relational Database<br/>
+                Relational Database<br/>
                 To <span className="text-blue-400">Get Things Done</span>
             </h1>
 
             <p className="text-gray-400 mt-6 max-w-xl mx-auto text-base md:text-lg">
                 Designed for those who care more about building than configuring.
             </p>
-
 
         </section>
     );
