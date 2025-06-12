@@ -4,6 +4,8 @@ import './index.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {HomePage} from "@pages/home";
 import {Background} from "@components/background.tsx";
+import {CompanyPage} from "@pages/company";
+import DocumentationPage from "@pages/documentation";
 
 
 function App() {
@@ -21,6 +23,18 @@ function App() {
                         path={"/"}
                         element={
                             <HomePage/>
+                        }
+                    />
+                    <Route
+                        path={"/company"}
+                        element={
+                            <CompanyPage/>
+                        }
+                    />
+                    <Route
+                        path={"/documentation"}
+                        element={
+                            <DocumentationPage/>
                         }
                     />
                 </Routes>

@@ -10,15 +10,17 @@ import {Footer} from "@components/footer.tsx";
 
 export const HomePage: React.FC = React.memo(() => {
     return (
-        <main className="min-h-screen bg-[#0b0c10] text-white font-sans">
+        <div className="flex flex-col min-h-screen bg-[#0b0c10] text-white">
             <Navbar/>
-            <Hero/>
-            <Features/>
-            <HowItWorks/>
-            <CallToAction/>
-            <UseCases/>
-            <CloudService/>
+            <main className="min-h-screen bg-[#0b0c10] text-white font-sans">
+                <Hero/>
+                <Features/>
+                <HowItWorks/>
+                <CallToAction/>
+                <UseCases/>
+                <CloudService/>
+            </main>
             <Footer/>
-        </main>
+        </div>
     );
 });

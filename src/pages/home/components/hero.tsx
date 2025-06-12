@@ -3,22 +3,14 @@ import {CallButton} from "@components/call.tsx";
 
 export function Hero() {
     return (
-        <section
-            className="relative px-4 py-28 md:py-36 text-center text-white overflow-hidden"
-            style={{
-                backgroundImage: "url('/your-background-network.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
-        >
-            {/* Optional CTA badges */}
+        <section className="relative px-4 py-28 md:py-36 text-center text-white overflow-hidden">
             <div className="mb-4 flex justify-center gap-2 flex-wrap">
-        <span className="bg-orange-700 text-xs font-medium text-white px-3 py-1 rounded-full">
-           Open Source
-        </span>
+                <span className="bg-orange-700 text-xs font-medium text-white px-3 py-1 rounded-full">
+                   Open Source
+                </span>
                 <span className="bg-green-800 text-xs font-medium text-white px-3 py-1 rounded-full">
-          Rust
-        </span>
+                  Rust
+                </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight max-w-4xl mx-auto">
