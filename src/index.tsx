@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom/client'
 import './index.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {HomePage} from "@pages/home";
+import {Background} from "@components/background.tsx";
 
 
 function App() {
     return (
-
-        <div className="App">
+        <div>
+            <Background/>
             <BrowserRouter
                 future={{
                     v7_startTransition: true,

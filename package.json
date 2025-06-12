@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
+    "@tsparticles/engine": "^3.8.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/react-workspace": "github:tsparticles/react",
+    "@tsparticles/slim": "^3.8.1",
     "add": "^2.0.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

@@ -2,7 +2,7 @@ import { CallButton } from "@components/call";
 
 export function CallToAction() {
     return (
-        <section className="relative py-28 bg-[#0b0c10] text-white overflow-hidden">
+        <section className="relative py-28 text-white overflow-hidden">
             {/* Glow background */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute left-1/2 top-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 bg-gradient-radial from-[#1f1f1f] to-transparent rounded-full opacity-30 blur-3xl" />

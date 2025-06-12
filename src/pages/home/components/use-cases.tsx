@@ -17,7 +17,7 @@ export function UseCases() {
     const [selected, setSelected] = useState("Code Indexing & Retrieval");
 
     return (
-        <section id="use-cases" className="px-4 py-24 bg-[#0b0c10] text-white">
+        <section id="use-cases" className="relative px-4 py-24 bg-[#0b0c10] text-white">
             <div className="text-center mb-10">
                 <h2 className="text-4xl font-bold">Use Cases</h2>
                 <p className="text-gray-400 mt-2 max-w-2xl mx-auto">

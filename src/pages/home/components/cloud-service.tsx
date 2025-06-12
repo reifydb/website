@@ -1,6 +1,6 @@
 export function CloudService() {
     return (
-        <section className="relative py-24 bg-[#0b0c10] text-white">
+        <section className="relative py-24 text-white">
             <div
                 className="max-w-6xl mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-between gap-10">
                 {/* Visual Side */}

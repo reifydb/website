@@ -2,7 +2,7 @@ import { Card, CardContent } from "@components/ui/card";
 
 export function Features() {
     return (
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 py-16 bg-[#1f2833]">
+        <section className="relative grid grid-cols-1 md:grid-cols-3 gap-6 px-6 py-16">
             {[
                 { title: "Fast & Lightweight", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
                 { title: "Real-Time Views", text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris." },

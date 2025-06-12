@@ -13,24 +13,17 @@ export function ReifyLogo({className}: { className?: string }) {
 }
 
 
-
 interface GitHubProps {
     className?: string;
 }
 
-export function GitHub({ className }: GitHubProps) {
+export function GitHub({className}: GitHubProps) {
     return (
-        <a
-            href="https://github.com/reifydb/reifydb"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn("flex items-center gap-1 text-gray-300 hover:text-white transition", className)}
-        >
-            <img
-                src="/icons/github.svg"
-                alt="GitHub"
-                className="w-4 h-4 invert"
-            />
-        </a>
+        <img
+            src="/icons/github.svg"
+            alt="GitHub"
+            className="w-4 h-4 invert"
+        />
+
     );
 }

@@ -1,6 +1,6 @@
 export function HowItWorks() {
     return (
-        <section className="px-6 py-20 bg-[#0b0c10] text-center">
+        <section className="relative px-6 py-20 bg-[#0b0c10] text-center">
             <h2 className="text-4xl font-bold mb-4">How It Works</h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-10">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus

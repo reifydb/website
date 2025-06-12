@@ -4,7 +4,7 @@ import {CallButton} from "@components/call.tsx";
 export function Hero() {
     return (
         <section
-            className="relative px-4 py-28 md:py-36 bg-[#0b0c10] text-center text-white overflow-hidden"
+            className="relative px-4 py-28 md:py-36 text-center text-white overflow-hidden"
             style={{
                 backgroundImage: "url('/your-background-network.png')",
                 backgroundSize: "cover",
