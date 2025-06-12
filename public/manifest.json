@@ -1,0 +1,10 @@
+{
+  "short_name": "AI Nyanbot (\uD83D\uDE3C,\uD83E\uDD16)",
+  "name": "AI Nyanbot (\uD83D\uDE3C,\uD83E\uDD16)",
+  "icons": [
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
