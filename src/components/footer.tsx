@@ -26,9 +26,8 @@ export function Footer() {
                 <div>
                     <h3 className="text-white font-medium mb-2 text-sm">Community</h3>
                     <ul className="space-y-1 text-sm">
-                        <li><a href="https://discord.gg/yourdiscord" className="hover:text-white" target="_blank" rel="noopener noreferrer">Discord</a></li>
-                        <li><a href="https://github.com/your-org/reifydb/issues" className="hover:text-white" target="_blank" rel="noopener noreferrer">GitHub Issues</a></li>
-                        <li><a href="mailto:support@reifydb.com" className="hover:text-white">Contact</a></li>
+                        <li><a href="https://github.com/reifydb/reifydb/issues" className="hover:text-white" target="_blank" rel="noopener noreferrer">GitHub Issues</a></li>
+                        <li><a href="mailto:founder@reifydb.com" className="hover:text-white">Contact (Founder)</a></li>
                     </ul>
                 </div>
 

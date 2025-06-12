@@ -1,5 +1,5 @@
-import {GitHub} from "@components/image.tsx";
 import {GithubButton} from "@components/github.tsx";
+import {CallButton} from "@components/call.tsx";
 
 export function Hero() {
     return (
@@ -33,12 +33,7 @@ export function Hero() {
 
             <div className="mt-8 flex justify-center gap-4 flex-wrap">
                 <GithubButton/>
-                <a
-                    href="#"
-                    className="bg-white text-black font-medium px-5 py-2 rounded hover:opacity-90 transition"
-                >
-                    Book a Call
-                </a>
+                <CallButton/>
             </div>
         </section>
     );

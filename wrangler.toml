@@ -1,0 +1,10 @@
+name = "website"
+type = "typescript"
+account_id = "a05e29f65733b190dfd5a3f971360652"
+workers_dev = true
+compatibility_date = "2024-06-01"
+
+[assets]
+directory = "./dist"
+
+entry-point = "./"

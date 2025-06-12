@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client'
 import './index.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {HomePage} from "./pages/home";
+import {HomePage} from "@pages/home";
 
 
 function App() {
     return (
-        
+
         <div className="App">
             <BrowserRouter
                 future={{

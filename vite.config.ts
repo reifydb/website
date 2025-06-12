@@ -5,8 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
     plugins: [react()],
     build: {
-        outDir: './build',
+        outDir: './dist',
         sourcemap: true
+    },
+    define: {
+        'process.env': {}, // prevent ReferenceError in Cal.com or other Node-ish packages
     },
     resolve: {
         alias: {
