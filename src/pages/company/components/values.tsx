@@ -40,7 +40,7 @@ export function CoreValues() {
         <section id="core-values" className="relative px-4 py-12 text-white">
             <div className="text-center mb-10">
                 <h2 className="text-2xl font-bold">
-                    Core <span className="text-blue-400">Values</span>
+                    Values
                 </h2>
                 <p className="text-gray-400 mt-2 max-w-2xl mx-auto text-sm">
                     What ReifyDB stands for — practical principles built into the product, not just marketing copy.

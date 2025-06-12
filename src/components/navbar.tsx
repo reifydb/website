@@ -8,10 +8,10 @@ export function Navbar() {
         <header className="sticky top-0 z-50 bg-[#0b0c10]/90 backdrop-blur-sm border-b border-gray-800">
             <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
                 <a href="/" className="flex items-center gap-2">
-                    <ReifyLogo className="h-6 w-6"/>
+                    <ReifyLogo className="h-8 w-8"/>
                     <span className="text-white font-semibold text-sm sm:text-base">ReifyDB</span>
                     <span className="bg-blue-700 text-xs font-medium text-white px-3 py-1 rounded-full">
-                       v0.0
+                       In development
                     </span>
                 </a>
 

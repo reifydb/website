@@ -2,17 +2,11 @@ import { CallButton } from "@components/call";
 
 export function CallToAction() {
     return (
-        <section className="relative py-28 text-white overflow-hidden">
-            {/* Glow background */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute left-1/2 top-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 bg-gradient-radial from-[#1f1f1f] to-transparent rounded-full opacity-30 blur-3xl" />
-            </div>
-
-            {/* Intro */}
-            <div className="relative z-10 text-center max-w-2xl mx-auto px-4 mb-14">
+        <section className="relative py-24 text-white overflow-hidden">
+            <div className="text-center max-w-2xl mx-auto px-4 mb-4">
                 <h2 className="text-4xl font-extrabold tracking-tight">Support</h2>
                 <p className="text-gray-400 mt-4 text-base leading-relaxed">
-                    Using ReifyDB in production? Let’s talk enterprise features, disaster recovery, observability, and more.
+                    Using ReifyDB in production? Feature requests? Let’s talk!
                 </p>
             </div>
 
