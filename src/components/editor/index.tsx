@@ -16,16 +16,14 @@ export function CodeEditor() {
                 </div>
 
                 <pre className="p-4 text-sm text-gray-100 overflow-x-auto font-mono leading-relaxed whitespace-pre">
-{`from trades
-join prices on trades.base_token = prices.token
-filter trades.timestamp > now() - 1h
+{`
+from tasks
+join users on tasks.assigned_to = users.id
+filter tasks.status = "open" and tasks.due_date < today()
 select 
-    token: trades.base_token,
-    volume_usd: sum(trades.size * prices.usd),
-    volume_sol: sum(trades.size * prices.sol),
-    price_usd: prices.usd,
-    price_sol: prices.sol,
-    market_cap: prices.supply * prices.usd`}
+  user: users.name,
+  overdue_tasks: count(tasks.id)
+`}
         </pre>
             </div>
 
@@ -40,16 +38,12 @@ select
                             </button>
                         </div>
                         <pre className="p-6 text-sm text-gray-100 overflow-auto font-mono h-full leading-relaxed whitespace-pre-wrap">
-{`from trades
-join prices on trades.base_token = prices.token
-filter trades.timestamp > now() - 1h
+{`from tasks
+join users on tasks.assigned_to = users.id
+filter tasks.status = "open" and tasks.due_date < today()
 select 
-    token: trades.base_token,
-    volume_usd: sum(trades.size * prices.usd),
-    volume_sol: sum(trades.size * prices.sol),
-    price_usd: prices.usd,
-    price_sol: prices.sol,
-    market_cap: prices.supply * prices.usd`}
+  user: users.name,
+  overdue_tasks: count(tasks.id)`}
             </pre>
                     </div>
                 </div>

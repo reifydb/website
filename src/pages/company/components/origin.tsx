@@ -44,7 +44,7 @@ export function OriginStory() {
                     <li><strong>Zero-config testing</strong> — spin up real environment, no mocks or containers.</li>
                     <li><strong>Code runs in the DB</strong> — execute logic right where the data lives.</li>
                     <li><strong>App user = DB user</strong> — no injection risk, frontend talks to the database directly.</li>
-                    <li><strong>RQL is imperative</strong> — write queries like code, stay in control.</li>
+                    <li><strong>RQL</strong> — make writing complex query simple</li>
                 </ul>
 
                 <p className="text-gray-300 font-semibold text-base sm:text-lg">

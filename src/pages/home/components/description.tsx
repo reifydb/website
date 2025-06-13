@@ -38,7 +38,9 @@ export function Description() {
                             → Learn More
                         </Link>
                         <div className="hidden md:block">
-                            <GithubButton/>
+                            <div className={`inline-flex items-center gap-2  font-medium px-5 py-2 rounded hover:opacity-90 transition`}>
+                                <GithubButton/>
+                            </div>
                         </div>
                         <CallButton/>
                     </div>

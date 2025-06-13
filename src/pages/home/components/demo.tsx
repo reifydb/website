@@ -8,28 +8,29 @@ export function DemoSection() {
                     <CodeEditor/>
                 </div>
                 <div className="w-full lg:w-1/2 text-left">
-                    <h2 className="text-4xl font-extrabold mb-4">Try the demo</h2>
+                    <h2 className="text-4xl font-extrabold mb-4">Try the Demo</h2>
                     <p className="text-gray-400 mb-6 text-base leading-relaxed max-w-md">
-                        Edit an example ReifyDB module and see how logic lives inside the
-                        database — no middleware, no glue code. One request, one
-                        transaction.
+                        Write and run a live query directly against ReifyDB — no backend, no glue code.
+                        Just one request, one transaction, and instant results.
                     </p>
 
-                    <div className="flex  gap-4">
+                    <div className="flex gap-4">
                         <button
                             className="bg-white text-black font-medium px-5 py-2 rounded hover:opacity-90 transition text-sm"
-                        disabled={true}>
-                            ⚡ Run (not yet..)
+                            disabled
+                        >
+                            ⚡ Run (coming soon)
                         </button>
                         <a
                             href="mailto:founder@reifydb.com"
                             className="bg-blue-800 text-white font-medium px-5 py-2 rounded hover:bg-green-700 transition text-sm"
                         >
-                            ✉️ Dominique
+                            ✉️ Contact Dominique
                         </a>
                     </div>
                 </div>
             </div>
         </section>
+
     );
 }
