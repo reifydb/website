@@ -15,7 +15,7 @@ export function DemoSection() {
                         transaction.
                     </p>
 
-                    <div className="flex flex-wrap gap-4">
+                    <div className="flex  gap-4">
                         <button
                             className="bg-white text-black font-medium px-5 py-2 rounded hover:opacity-90 transition text-sm"
                         disabled={true}>
@@ -25,7 +25,7 @@ export function DemoSection() {
                             href="mailto:founder@reifydb.com"
                             className="bg-blue-800 text-white font-medium px-5 py-2 rounded hover:bg-green-700 transition text-sm"
                         >
-                            ✉️ Contact a Founder
+                            ✉️ Dominique
                         </a>
                     </div>
                 </div>

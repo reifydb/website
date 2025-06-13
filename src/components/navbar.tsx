@@ -26,7 +26,9 @@ export function Navbar() {
                         Docs
                     </Link>
 
-                    <CallButton/>
+                    <div className="hidden md:block">
+                        <CallButton/>
+                    </div>
                 </nav>
             </div>
         </header>

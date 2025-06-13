@@ -25,7 +25,8 @@ export function Description() {
                         clients connect directly to the database and execute your logic inside the database itself.
                     </p>
                     <p className="text-gray-400 text-base leading-relaxed mb-8">
-                        ReifyDB takes stored procedures to the next level, allowing you to deploy your whole application directly into the database.
+                        ReifyDB takes stored procedures to the next level, allowing you to deploy your whole application
+                        directly into the database.
                         It's like a smart contract... if smart contracts were fast, cheap, and easy to use.
                     </p>
 
@@ -36,7 +37,9 @@ export function Description() {
                         >
                             → Learn More
                         </Link>
-                        <GithubButton/>
+                        <div className="hidden md:block">
+                            <GithubButton/>
+                        </div>
                         <CallButton/>
                     </div>
                 </div>

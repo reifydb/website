@@ -20,9 +20,10 @@ const features: Feature[] = [
     { label: "Time travel queries", status: "planned" },
     { label: "Webassembly support", status: "planned" },
     { label: "Dockerized server", status: "planned" },
-    { label: "Rust sdk", status: "planned" },
-    { label: "Python sdk", status: "planned" },
-    { label: "Typescript sdk", status: "planned" },
+    { label: "Rust SDK", status: "planned" },
+    { label: "Python integration", status: "planned" },
+    { label: "Typescript integration", status: "planned" },
+    { label: "JVM integration", status: "planned" },
     { label: "Replication", status: "planned" },
 ];
 
