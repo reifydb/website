@@ -2,7 +2,7 @@ import { CallButton } from "@components/call";
 
 export function CallToAction() {
     return (
-        <section className="relative py-24 text-white overflow-hidden">
+        <section>
             <div className="text-center max-w-2xl mx-auto px-4 mb-4">
                 <h2 className="text-4xl font-extrabold tracking-tight">Support</h2>
                 <p className="text-gray-400 mt-4 text-base leading-relaxed">

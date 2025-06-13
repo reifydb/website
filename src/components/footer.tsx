@@ -1,5 +1,6 @@
 import { ReifyLogo } from "@components/image";
 import {Mail, BookOpen, Users, Briefcase, Github} from "lucide-react";
+import {Link} from "react-router-dom";
 
 export function Footer() {
     return (
@@ -11,16 +12,16 @@ export function Footer() {
                         <span className="text-white font-semibold text-lg">ReifyDB</span>
                     </div>
                     <p className="text-sm leading-relaxed">
-                        Backend. Data. Dones
+                        Data. Backend. Done.
                     </p>
                 </div>
 
                 <div>
                     <h4 className="text-white font-semibold mb-3 text-sm tracking-wide uppercase">Docs</h4>
                     <ul className="space-y-2 text-sm">
-                        <li><a href="/documentation" className="hover:text-white flex items-center gap-2"><BookOpen size={14}/> Getting Started</a></li>
-                        <li><a href="/documentation" className="hover:text-white flex items-center gap-2"><BookOpen size={14}/> API Reference</a></li>
-                        <li><a href="/documentation" className="hover:text-white flex items-center gap-2"><BookOpen size={14}/> Tutorials</a></li>
+                        <li><Link to={"/documentation"} className="hover:text-white flex items-center gap-2"><BookOpen size={14}/> Getting Started</Link></li>
+                        <li><Link to={"/documentation"} className="hover:text-white flex items-center gap-2"><BookOpen size={14}/> API Reference</Link></li>
+                        <li><Link to={"/documentation"} className="hover:text-white flex items-center gap-2"><BookOpen size={14}/>Tutorials</Link></li>
                     </ul>
                 </div>
 
@@ -35,7 +36,7 @@ export function Footer() {
                 <div>
                     <h4 className="text-white font-semibold mb-3 text-sm tracking-wide uppercase">More</h4>
                     <ul className="space-y-2 text-sm">
-                        <li><a href="/company" className="hover:text-white flex items-center gap-2"><Briefcase size={14}/> Company</a></li>
+                        <li><Link to="/company" className="hover:text-white flex items-center gap-2"><Briefcase size={14}/> Company</Link></li>
                         <li><a href="https://github.com/reifydb/reifydb" target="_blank" rel="noopener noreferrer" className="hover:text-white flex items-center gap-2"><Github size={14}/> GitHub</a></li>
                     </ul>
                 </div>

@@ -1,9 +1,10 @@
 import {GithubButton} from "@components/github.tsx";
 import {CallButton} from "@components/call.tsx";
+import {Link} from "react-router-dom";
 
 export function Description() {
     return (
-        <section className="relative text-white px-6 py-12">
+        <section>
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
                 <div className="w-full lg:w-1/3 rounded-xl overflow-hidden border border-gray-800 shadow-xl">
                     <img
@@ -29,12 +30,12 @@ export function Description() {
                     </p>
 
                     <div className="mt-8 flex justify-center gap-4 flex-wrap">
-                        <a
-                            href="/docs"
+                        <Link
+                            to="/documentation"
                             className="inline-block bg-white text-black font-medium px-5 py-2 rounded hover:opacity-90 transition text-sm"
                         >
                             → Learn More
-                        </a>
+                        </Link>
                         <GithubButton/>
                         <CallButton/>
                     </div>

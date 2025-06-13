@@ -28,7 +28,7 @@ const features: Feature[] = [
 
 export function Features() {
     return (
-        <section className="relative px-4 py-28 text-white ">
+        <section>
             <div className="max-w-6xl mx-auto bg-[#0e0f14] border border-gray-800 rounded-2xl p-10 md:p-14 shadow-xl">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-gray-300">
                     {features.map((feature, index) => (

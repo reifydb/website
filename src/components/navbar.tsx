@@ -3,28 +3,28 @@ import {GithubButton} from "@components/github.tsx";
 import {CallButton} from "@components/call.tsx";
 
 export function Navbar() {
-
     return (
         <header className="sticky top-0 z-50 bg-[#0b0c10]/90 backdrop-blur-sm border-b border-gray-800">
-            <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-y-2">
                 <a href="/" className="flex items-center gap-2">
-                    <ReifyLogo className="h-8 w-8"/>
+                    <ReifyLogo className="h-7 w-7" />
                     <span className="text-white font-semibold text-sm sm:text-base">ReifyDB</span>
-                    <span className="bg-blue-700 text-xs font-medium text-white px-4 py-1 rounded-full">
-                       v.0.0
+                    <span className="bg-blue-700 text-[10px] sm:text-xs font-medium text-white px-2 sm:px-4 py-1 rounded-full">
+                        v0.0
                     </span>
                 </a>
 
-                <nav className="flex items-center gap-4 text-sm font-medium">
-                    <GithubButton/>
+                <nav className="flex flex-wrap justify-end items-center gap-2 sm:gap-4 text-sm font-medium">
+                    <GithubButton />
+
                     <a
                         href="/documentation"
-                        className="px-3 py-1.5 rounded-md border border-gray-700 bg-[#121212] text-gray-200 hover:text-white hover:border-gray-500 transition"
+                        className="px-3 py-1.5 rounded-md border border-gray-700 bg-[#121212] text-gray-200 hover:text-white hover:border-gray-500 transition text-xs sm:text-sm"
                     >
                         Docs
                     </a>
 
-                    <CallButton/>
+                    <CallButton />
                 </nav>
             </div>
         </header>

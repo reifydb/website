@@ -37,7 +37,7 @@ export function CoreValues() {
     const [selected, setSelected] = useState(values[0]);
 
     return (
-        <section id="core-values" className="relative px-4 py-12 text-white">
+        <section>
             <div className="text-center mb-10">
                 <h2 className="text-2xl font-bold">
                     Values

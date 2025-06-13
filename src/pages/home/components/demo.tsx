@@ -2,12 +2,15 @@ import {CodeEditor} from "@components/editor";
 
 export function DemoSection() {
     return (
-        <section className="relative  text-white px-6 py-28">
+        <section>
             <div className="max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12">
+                <div className="w-full lg:w-1/2">
+                    <CodeEditor/>
+                </div>
                 <div className="w-full lg:w-1/2 text-left">
                     <h2 className="text-4xl font-extrabold mb-4">Try the demo</h2>
                     <p className="text-gray-400 mb-6 text-base leading-relaxed max-w-md">
-                        Edit an example ReifyDB module and see how logic lives inside your
+                        Edit an example ReifyDB module and see how logic lives inside the
                         database — no middleware, no glue code. One request, one
                         transaction.
                     </p>
@@ -25,10 +28,6 @@ export function DemoSection() {
                             ✉️ Contact a Founder
                         </a>
                     </div>
-                </div>
-
-                <div className="w-full lg:w-1/2">
-                    <CodeEditor/>
                 </div>
             </div>
         </section>

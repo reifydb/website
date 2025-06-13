@@ -1,6 +1,6 @@
 export function Hero() {
     return (
-        <section className="relative px-4 py-28  text-center text-white overflow-hidden">
+        <section>
             <div className="mb-4 flex justify-center gap-2 flex-wrap">
                 <span className="bg-blue-900 text-xs font-medium text-white px-3 py-1 rounded-full">
                    In development

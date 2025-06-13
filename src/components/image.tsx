@@ -13,11 +13,7 @@ export function ReifyLogo({className}: { className?: string }) {
 }
 
 
-interface GitHubProps {
-    className?: string;
-}
-
-export function GitHub({className}: GitHubProps) {
+export function GitHub() {
     return (
         <img
             src="/icons/github.svg"

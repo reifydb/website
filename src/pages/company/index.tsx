@@ -9,7 +9,7 @@ export const CompanyPage: React.FC = React.memo(() => {
     return (
         <div className="flex flex-col min-h-screen bg-[#0b0c10] text-white">
             <Navbar/>
-            <main className="min-h-screen bg-[#0b0c10] text-white font-sans">
+            <main className="relative pt-12 overflow-hidden pb-12 min-h-screen font-sans space-y-12 px-6">
                 <MissionStatement/>
                 <CoreValues/>
                 <OriginStory/>
