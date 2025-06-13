@@ -1,2 +1,0 @@
-/@(assets|favicon.ico|robots.txt|logo.*)/*  /$1/$2  200
-/*  /index.html  200
