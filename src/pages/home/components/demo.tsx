@@ -23,7 +23,7 @@ export function DemoSection() {
                         </button>
                         <a
                             href="mailto:founder@reifydb.com"
-                            className="bg-blue-800 text-white font-medium px-5 py-2 rounded hover:bg-green-700 transition text-sm"
+                            className="bg-blue-800 text-white font-medium px-5 py-2 rounded hover:bg-blue-700 transition text-sm"
                         >
                             ✉️ Contact Dominique
                         </a>
