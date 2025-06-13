@@ -1,3 +1,5 @@
+import {cn} from "@utils";
+
 export function OriginStory() {
     return (
         <section>
@@ -5,6 +7,17 @@ export function OriginStory() {
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-center">
                     Why I <span className="text-blue-400">Started</span> ReifyDB
                 </h2>
+
+                <div className="flex justify-center">
+                    <div className="h-72 w-72 rounded-2xl overflow-hidden border-3 border-blue-700 shadow-md">
+                        <img
+                            src="/me.jpeg"
+                            alt="ReifyDB Founder with my daughter"
+                            className="h-full w-full object-cover"
+                        />
+                    </div>
+                </div>
+
 
                 <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
                     ReifyDB started during long nights with my newborn. While taking care of her, I had time to think —

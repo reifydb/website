@@ -6,6 +6,7 @@ import {HomePage} from "@pages/home";
 import {Background} from "@components/background.tsx";
 import {CompanyPage} from "@pages/company";
 import DocumentationPage from "@pages/documentation";
+import {ScrollToTop} from "@components/scroll-top.tsx";
 
 
 function App() {
@@ -18,20 +19,24 @@ function App() {
                     v7_relativeSplatPath: true
                 }}
             >
+                <ScrollToTop/>
                 <Routes>
                     <Route
+                        exact
                         path={"/"}
                         element={
                             <HomePage/>
                         }
                     />
                     <Route
+                        exact
                         path={"/company"}
                         element={
                             <CompanyPage/>
                         }
                     />
                     <Route
+                        exact
                         path={"/documentation"}
                         element={
                             <DocumentationPage/>
