@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
 import './index.css';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {HashRouter, Route, Routes} from "react-router-dom";
 import {HomePage} from "@pages/home";
 import {Background} from "@components/background.tsx";
 import {CompanyPage} from "@pages/company";
@@ -13,12 +13,7 @@ function App() {
     return (
         <div>
             <Background/>
-            <BrowserRouter
-                future={{
-                    v7_startTransition: true,
-                    v7_relativeSplatPath: true
-                }}
-            >
+            <HashRouter>
                 <ScrollToTop/>
                 <Routes>
                     <Route
@@ -43,7 +38,7 @@ function App() {
                         }
                     />
                 </Routes>
-            </BrowserRouter>
+            </HashRouter>
         </div>
     );
 }
