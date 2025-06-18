@@ -23,3 +23,14 @@ export function GitHub() {
 
     );
 }
+
+export function Discord() {
+    return (
+        <img
+            src="/icons/discord.svg"
+            alt="GitHub"
+            className="w-4 h-4 invert"
+        />
+
+    );
+}

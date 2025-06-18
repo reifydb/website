@@ -1,4 +1,4 @@
-import {ReifyLogo} from "@components/image";
+import {Discord, ReifyLogo} from "@components/image";
 import {GithubButton} from "@components/github.tsx";
 import {CallButton} from "@components/call.tsx";
 import {Link} from "react-router-dom";
@@ -17,7 +17,9 @@ export function Navbar() {
                 </Link>
 
                 <nav className="flex flex-wrap justify-end items-center gap-2 sm:gap-4 text-sm font-medium">
+                    <Link to="https://discord.gg/vuBrm5kuuF" target="_blank" rel="noopener noreferrer" className="hover:text-white flex items-center"><Discord /></Link>
                     <GithubButton/>
+
 
                     <Link
                         to="/documentation"
