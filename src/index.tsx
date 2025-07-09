@@ -7,12 +7,13 @@ import {Background} from "@components/background.tsx";
 import {CompanyPage} from "@pages/company";
 import DocumentationPage from "@pages/documentation";
 import {ScrollToTop} from "@components/scroll-top.tsx";
+import {DemoPage} from "@pages/demo";
 
 
 function App() {
     return (
         <div>
-            <Background/>
+            {/*<Background/>*/}
             <HashRouter>
                 <ScrollToTop/>
                 <Routes>
@@ -21,6 +22,13 @@ function App() {
                         path={"/"}
                         element={
                             <HomePage/>
+                        }
+                    />
+                    <Route
+                        exact
+                        path={"/demo"}
+                        element={
+                            <DemoPage/>
                         }
                     />
                     <Route
