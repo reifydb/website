@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
-import {Sidebar} from './components/sidebar';
-import {QueryEditorContent} from './components/query.tsx';
-import {StatusCards} from './components/status.tsx';
-import {useWebSocketConnection} from './hooks/ws.ts';
-import {useQueryExecution} from './hooks/execute.ts';
+import {EditorContent} from './components/editor';
+import {useWebSocketConnection} from './hooks/ws';
+import {useQueryExecution} from './hooks/execute';
 import {SavedQuery} from './utils/types';
 import {sampleQueries, WEBSOCKET_URL} from './utils/constants';
 import {copyToClipboard as copyText, downloadFile, generateCSVContent} from './utils/utils';
 import {Navbar} from "@components/navbar.tsx";
+import {StatusCards} from "./components/status";
+import {Sidebar} from "./components/sidebar";
+import {FullscreenEditor} from "@pages/demo/components/fullscreen.tsx";
+import {Footer} from "@components/footer.tsx";
 
 export function DemoPage() {
     const [fullscreen, setFullscreen] = useState(false);
@@ -65,70 +67,66 @@ export function DemoPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-900 text-gray-100">
-            <Navbar/>
-
-            <div className="flex">
-                <Sidebar
-                    sampleQueries={sampleQueries}
-                    queryHistory={queryHistory}
-                    onLoadQuery={handleLoadQuery}
+        <>
+            {fullscreen ? (
+                <FullscreenEditor
+                    isConnected={isConnected}
+                    isExecuting={isExecuting}
+                    query={query}
+                    result={result}
+                    error={error}
+                    onQueryChange={setQuery}
+                    onExecute={handleExecuteQuery}
+                    onClose={handleCloseFullscreen}
+                    onCopyResults={handleCopyResults}
+                    onDownloadResults={handleDownloadResults}
                 />
+            ) : (
+                <div className="flex flex-col min-h-screen bg-[#0b0c10] text-white">
+                    <Navbar/>
 
-                <main className="flex-1 p-6">
-                    <div className="mb-6">
-                        <h2 className="text-2xl font-bold mb-2">Query Editor</h2>
-                        <p className="text-gray-400">
-                            Write and execute RQL queries against the demo database. Results support multiple tables.
-                        </p>
-                    </div>
-
-                    <StatusCards
-                        isConnected={isConnected}
-                        result={result}
-                        queryHistoryLength={queryHistory.length}
-                    />
-
-                    <div
-                        className="relative w-full rounded-xl overflow-hidden border border-gray-700 bg-[#0e0f14] shadow-xl">
-                        <QueryEditorContent
-                            isFullscreen={false}
-                            isConnected={isConnected}
-                            isExecuting={isExecuting}
-                            query={query}
-                            result={result}
-                            error={error}
-                            onQueryChange={setQuery}
-                            onExecute={handleExecuteQuery}
-                            onToggleFullscreen={handleToggleFullscreen}
-                            onCopyResults={handleCopyResults}
-                            onDownloadResults={handleDownloadResults}
+                    <div className="flex flex-1 min-h-0">
+                        <Sidebar
+                            sampleQueries={sampleQueries}
+                            queryHistory={queryHistory}
+                            onLoadQuery={handleLoadQuery}
                         />
-                    </div>
-                </main>
-            </div>
 
-            {fullscreen && (
-                <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-                    <div
-                        className="relative w-full max-w-7xl h-full border border-gray-700 rounded-lg bg-[#0e0f14] shadow-2xl overflow-hidden">
-                        <QueryEditorContent
-                            isFullscreen={true}
-                            isConnected={isConnected}
-                            isExecuting={isExecuting}
-                            query={query}
-                            result={result}
-                            error={error}
-                            onQueryChange={setQuery}
-                            onExecute={handleExecuteQuery}
-                            onToggleFullscreen={handleToggleFullscreen}
-                            onClose={handleCloseFullscreen}
-                            onCopyResults={handleCopyResults}
-                            onDownloadResults={handleDownloadResults}
-                        />
+                        <main className="flex-1 p-6 flex flex-col min-h-0">
+                            <div className="mb-6">
+                                <h2 className="text-2xl font-bold mb-2">Query Editor</h2>
+                                <p className="text-gray-400">
+                                    Write and execute RQL queries against the demo database. Results support multiple
+                                    tables.
+                                </p>
+                            </div>
+
+                            <StatusCards
+                                isConnected={isConnected}
+                                result={result}
+                                queryHistoryLength={queryHistory.length}
+                            />
+
+                            <div className="relative w-full rounded-xl overflow-hidden border border-gray-700 bg-[#0e0f14] shadow-xl flex-1 min-h-0">
+                                <EditorContent
+                                    isFullscreen={false}
+                                    isConnected={isConnected}
+                                    isExecuting={isExecuting}
+                                    query={query}
+                                    result={result}
+                                    error={error}
+                                    onQueryChange={setQuery}
+                                    onExecute={handleExecuteQuery}
+                                    onToggleFullscreen={handleToggleFullscreen}
+                                    onCopyResults={handleCopyResults}
+                                    onDownloadResults={handleDownloadResults}
+                                />
+                            </div>
+                        </main>
                     </div>
+                    <Footer/>
                 </div>
             )}
-        </div>
+        </>
     );
 }

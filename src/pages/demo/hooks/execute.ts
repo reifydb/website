@@ -1,5 +1,6 @@
 import {useCallback, useState} from 'react';
-import {MockWsClient, QueryError, QueryResult, ReifyError} from '../utils/types';
+import {QueryError, QueryResult, ReifyError} from '../utils/types';
+import {MockWsClient} from "@pages/demo/hooks/ws.ts";
 
 export const useQueryExecution = (client: MockWsClient | null) => {
     const [isExecuting, setIsExecuting] = useState(false);

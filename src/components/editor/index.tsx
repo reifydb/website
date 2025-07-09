@@ -448,7 +448,7 @@ export function CodeEditor() {
                         <div className="space-y-4">
                             <div className="flex items-center gap-2 text-green-400">
                                 <CheckCircle className="w-4 h-4"/>
-                                <span className="font-medium">Query executed successfully</span>
+                                <span className="font-medium">Statements executed successfully</span>
                                 <span className="text-xs text-gray-400">
                                 ({result.executionTime}ms)
                             </span>
