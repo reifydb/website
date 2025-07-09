@@ -94,7 +94,7 @@ export function DemoPage() {
 
                         <main className="flex-1 p-6 flex flex-col min-h-0">
                             <div className="mb-6">
-                                <h2 className="text-2xl font-bold mb-2">Query Editor</h2>
+                                <h2 className="text-2xl font-bold mb-2">Demo</h2>
                                 <p className="text-gray-400">
                                     Write and execute RQL queries against the demo database. Results support multiple
                                     tables.
