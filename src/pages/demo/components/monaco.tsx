@@ -98,7 +98,7 @@ export const RqlEditor = forwardRef<RqlEditorRef, RqlEditorProps>(
                 overviewRulerLanes: 0,
                 glyphMargin: false,
                 lineNumbersMinChars: 3,
-                lineDecorationsWidth: 0,
+                lineDecorationsWidth: 12,
                 rulers: [],
                 scrollbar: {
                     useShadows: false,
@@ -145,6 +145,8 @@ export const RqlEditor = forwardRef<RqlEditorRef, RqlEditorProps>(
                             showSnippets: true,
                             showFunctions: true,
                             showVariables: true,
+                            matchOnWordStartOnly: false,
+                            filterGraceful: true,
                         },
                         quickSuggestions: {
                             other: true,
