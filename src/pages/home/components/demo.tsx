@@ -1,4 +1,5 @@
 import {CodeEditor} from "@components/editor";
+import {Link} from "react-router-dom";
 
 export function DemoSection() {
     return (
@@ -15,12 +16,13 @@ export function DemoSection() {
                     </p>
 
                     <div className="flex gap-4">
-                        <button
+                        <Link
+                            to={"/demo"}
                             className="bg-white text-black font-medium px-5 py-2 rounded hover:opacity-90 transition text-sm"
                             disabled
                         >
-                            ⚡ Run (coming soon)
-                        </button>
+                            ⚡ Run
+                        </Link>
                         <a
                             href="mailto:founder@reifydb.com"
                             className="bg-blue-800 text-white font-medium px-5 py-2 rounded hover:bg-blue-700 transition text-sm"
