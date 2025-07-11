@@ -1,5 +1,5 @@
-import React, {useRef} from 'react';
-import {Maximize2, Play, Square, X} from 'lucide-react';
+import React, {useRef, useState} from 'react';
+import {Maximize2, Play, Square, X, Terminal} from 'lucide-react';
 import {ConnectionStatus} from './status';
 
 import {ResultsContent, ResultsHeader,} from './result';
@@ -95,6 +95,43 @@ export const EditorHeader: React.FC<EditorHeaderProps> = ({
                                                              onToggleFullscreen,
                                                              onClose
                                                          }) => {
+    const dockerCommand = "docker run -p 127.0.0.1:8090:8090 reifydb/testcontainer";
+    const [copied, setCopied] = useState(false);
+    
+    const handleCopyCommand = () => {
+        navigator.clipboard.writeText(dockerCommand);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
+    if (!isConnected) {
+        return (
+            <div className="bg-yellow-900/20 border-b border-yellow-600/30 p-4">
+                <div className="flex items-center gap-2 text-yellow-400 mb-2">
+                    <Terminal className="w-5 h-5"/>
+                    <span className="font-medium">No ReifyDB server running</span>
+                </div>
+                <p className="text-sm text-gray-300 mb-3">
+                    At the moment, no server exists to run the demo environment. You need to start the ReifyDB test container yourself:
+                </p>
+                <div className="flex items-center gap-2 mb-2">
+                    <code className="text-sm bg-black px-3 py-2 rounded flex-1 text-green-400 font-mono">
+                        {dockerCommand}
+                    </code>
+                    <button
+                        onClick={handleCopyCommand}
+                        className="text-blue-400 hover:text-blue-300 text-sm px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded transition-colors"
+                    >
+                        {copied ? 'Copied!' : 'Copy'}
+                    </button>
+                </div>
+                <p className="text-xs text-gray-400">
+                    After running this command, refresh the page to connect to the demo database.
+                </p>
+            </div>
+        );
+    }
+
     return (
         <div
             className="flex items-center justify-between px-4 py-2 border-b border-gray-800 text-sm text-gray-400 bg-[#0d0e12]">
