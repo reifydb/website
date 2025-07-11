@@ -22,8 +22,6 @@ export function DemoPage() {
         result,
         error,
         executeQuery,
-        copyToClipboard,
-        downloadResults
     } = useQueryExecution(client);
 
     const handleExecuteQuery = async () => {
@@ -37,7 +35,7 @@ export function DemoPage() {
                 query,
                 lastRun: new Date()
             };
-            setQueryHistory(prev => [newHistoryItem, ...prev.slice(0, 9)]);
+            setQueryHistory(prev => [newHistoryItem, ...prev]);
         }
     };
 
@@ -107,7 +105,8 @@ export function DemoPage() {
                                 queryHistoryLength={queryHistory.length}
                             />
 
-                            <div className="relative w-full rounded-xl overflow-hidden border border-gray-700 bg-[#0e0f14] shadow-xl flex-1 min-h-0">
+                            <div
+                                className="relative w-full rounded-xl overflow-hidden border border-gray-700 bg-[#0e0f14] shadow-xl flex-1 min-h-0">
                                 <EditorContent
                                     isFullscreen={false}
                                     isConnected={isConnected}

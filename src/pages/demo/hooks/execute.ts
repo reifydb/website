@@ -1,8 +1,8 @@
 import {useCallback, useState} from 'react';
 import {QueryError, QueryResult, ReifyError} from '../utils/types';
-import {MockWsClient} from "@pages/demo/hooks/ws.ts";
+import {WsClient} from "@reifydb/client";
 
-export const useQueryExecution = (client: MockWsClient | null) => {
+export const useQueryExecution = (client: WsClient | null) => {
     const [isExecuting, setIsExecuting] = useState(false);
     const [result, setResult] = useState<QueryResult | null>(null);
     const [error, setError] = useState<QueryError | null>(null);

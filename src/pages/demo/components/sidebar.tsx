@@ -1,6 +1,6 @@
 import React from 'react';
-import {BookOpen, Clock, History, Zap} from 'lucide-react';
 import {SavedQuery} from '../utils/types';
+import {Clock, Zap} from 'lucide-react';
 
 interface QuerySidebarProps {
     sampleQueries: SavedQuery[];
@@ -9,12 +9,13 @@ interface QuerySidebarProps {
 }
 
 export const Sidebar: React.FC<QuerySidebarProps> = ({
-                                                              sampleQueries,
-                                                              queryHistory,
-                                                              onLoadQuery
-                                                          }) => {
+                                                         sampleQueries,
+                                                         queryHistory,
+                                                         onLoadQuery
+                                                     }) => {
     return (
-        <aside className="w-72 bg-gradient-to-b from-gray-900 to-gray-800 border-r border-gray-600/50 min-h-screen shadow-xl">
+        <aside
+            className="w-72 bg-gradient-to-b from-gray-900 to-gray-800 border-r border-gray-600/50 min-h-screen shadow-xl">
             <div className="p-6">
                 <div className="space-y-6">
                     <div>
@@ -30,7 +31,8 @@ export const Sidebar: React.FC<QuerySidebarProps> = ({
                                     className="group w-full text-left px-4 py-3 rounded-lg hover:bg-gray-700/50 text-sm text-gray-300 transition-all duration-200 border border-transparent hover:border-gray-600/30"
                                 >
                                     <div className="flex items-center gap-3">
-                                        <div className="w-6 h-6 bg-yellow-400/10 rounded-md flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
+                                        <div
+                                            className="w-6 h-6 bg-yellow-400/10 rounded-md flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
                                             <Zap className="w-3 h-3 text-yellow-400"/>
                                         </div>
                                         <span className="truncate font-medium group-hover:text-white transition-colors">
@@ -57,14 +59,17 @@ export const Sidebar: React.FC<QuerySidebarProps> = ({
                                         className="group w-full text-left px-4 py-3 rounded-lg hover:bg-gray-700/50 text-sm text-gray-300 transition-all duration-200 border border-transparent hover:border-gray-600/30"
                                     >
                                         <div className="flex items-center gap-3">
-                                            <div className="w-6 h-6 bg-blue-400/10 rounded-md flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
+                                            <div
+                                                className="w-6 h-6 bg-blue-400/10 rounded-md flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
                                                 <Clock className="w-3 h-3 text-blue-400"/>
                                             </div>
                                             <div className="flex-1 min-w-0">
-                                            <span className="truncate font-medium group-hover:text-white transition-colors block">
+                                            <span
+                                                className="truncate font-medium group-hover:text-white transition-colors block">
                                                 {historyItem.name}
                                             </span>
-                                                <div className="text-xs text-gray-500 group-hover:text-gray-400 transition-colors mt-0.5">
+                                                <div
+                                                    className="text-xs text-gray-500 group-hover:text-gray-400 transition-colors mt-0.5">
                                                     {historyItem.lastRun.toLocaleTimeString()}
                                                 </div>
                                             </div>
