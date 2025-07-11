@@ -32,7 +32,7 @@ export const RqlEditor = forwardRef<RqlEditorRef, RqlEditorProps>(
                 monaco.languages.setMonarchTokensProvider('rql', {
                     tokenizer: {
                         root: [
-                            [/\b(SELECT|FROM|FILTER|INSERT|UPDATE|DELETE|CREATE|DROP|ALTER|TABLE|INDEX|VIEW|DATABASE|SCHEMA)\b/i, 'keyword'],
+                            [/\b(select|from|filter|insert|update|delete|create|drop|alter|table|index|view|database|schema)\b/i, 'keyword'],
                             [/\b\d+\b/, 'number'],
                             [/'[^']*'/, 'string'],
                             [/"[^"]*"/, 'string'],

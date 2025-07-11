@@ -46,5 +46,10 @@ export const useQueryExecution = (client: WsClient | null) => {
         }
     }, []); // Empty dependency array - callback never recreated
 
-    return { isExecuting, result, error, executeQuery };
+    const clearResults = useCallback(() => {
+        setResult(null);
+        setError(null);
+    }, []);
+
+    return { isExecuting, result, error, executeQuery, clearResults };
 };

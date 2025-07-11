@@ -22,6 +22,7 @@ export function DemoPage() {
         result,
         error,
         executeQuery,
+        clearResults,
     } = useQueryExecution(client);
 
 
@@ -55,6 +56,7 @@ export function DemoPage() {
 
     const handleLoadQuery = (savedQuery: SavedQuery) => {
         setQuery(savedQuery.query);
+        clearResults();
     };
 
     const handleToggleFullscreen = () => {
