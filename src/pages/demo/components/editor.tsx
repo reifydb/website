@@ -1,9 +1,10 @@
-import React, {forwardRef, useImperativeHandle, useRef} from 'react';
+import React, {useRef} from 'react';
 import {Maximize2, Play, Square, X} from 'lucide-react';
 import {ConnectionStatus} from './status';
 
 import {ResultsContent, ResultsHeader,} from './result';
 import {QueryError, QueryResult} from "@pages/demo/utils/types";
+import {RqlEditor, RqlEditorRef} from './monaco.tsx';
 
 interface EditorContentProps {
     isFullscreen: boolean;
@@ -34,7 +35,7 @@ export const EditorContent: React.FC<EditorContentProps> = ({
                                                                 onCopyResults,
                                                                 onDownloadResults
                                                             }) => {
-    const textareaRef = useRef<EditorTextareaRef>(null);
+    const editorRef = useRef<RqlEditorRef>(null);
 
     return (
         <div className="flex flex-col bg-[#0e0f14]">
@@ -48,11 +49,13 @@ export const EditorContent: React.FC<EditorContentProps> = ({
                     onClose={onClose}
                 />
 
-                <EditorTextarea
-                    ref={textareaRef}
+                <RqlEditor
+                    ref={editorRef}
                     value={query}
                     onChange={onQueryChange}
                     onExecute={onExecute}
+                    language="rql"
+                    height="200px"
                 />
             </div>
 
@@ -132,77 +135,3 @@ export const EditorHeader: React.FC<EditorHeaderProps> = ({
         </div>
     );
 };
-
-
-interface EditorTextareaProps {
-    value: string;
-    onChange: (value: string) => void;
-    onExecute: () => void;
-}
-
-export interface EditorTextareaRef {
-    focus: () => void;
-}
-
-export const EditorTextarea = forwardRef<EditorTextareaRef, EditorTextareaProps>(
-    ({value, onChange, onExecute}, ref) => {
-        const textareaRef = useRef<HTMLTextAreaElement>(null);
-
-        useImperativeHandle(ref, () => ({
-            focus: () => textareaRef.current?.focus()
-        }));
-
-        const adjustHeight = () => {
-            const textarea = textareaRef.current;
-            if (textarea) {
-                textarea.style.height = 'auto';
-                textarea.style.height = `${textarea.scrollHeight}px`;
-            }
-        };
-
-        const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-            onChange(e.target.value);
-            adjustHeight();
-        };
-
-        const handleKeyDown = (e: React.KeyboardEvent) => {
-            if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
-                e.preventDefault();
-                onExecute();
-            }
-
-            if (e.key === 'Tab') {
-                e.preventDefault();
-                const textarea = e.target as HTMLTextAreaElement;
-                const start = textarea.selectionStart;
-                const end = textarea.selectionEnd;
-                const currentValue = textarea.value;
-
-                onChange(currentValue.substring(0, start) + '  ' + currentValue.substring(end));
-
-                setTimeout(() => {
-                    textarea.selectionStart = textarea.selectionEnd = start + 2;
-                    adjustHeight();
-                }, 0);
-            }
-        };
-
-        React.useEffect(() => {
-            adjustHeight();
-        }, [value]);
-
-        return (
-            <div className="relative">
-                <textarea
-                    ref={textareaRef}
-                    value={value}
-                    onChange={handleChange}
-                    onKeyDown={handleKeyDown}
-                    className="w-full p-4 bg-transparent text-gray-100 font-mono text-sm leading-relaxed resize-none outline-none min-h-[100px] overflow-hidden"
-                    placeholder="Enter your RQL query here..."
-                    spellCheck={false}
-                />
-            </div>
-        );
-    }
-);
