@@ -7,21 +7,35 @@ export const useWebSocketConnection = (url: string) => {
     const [client, setClient] = useState<WsClient | null>(null);
 
     useEffect(() => {
+        let wsClient: WsClient | null = null;
+        let isCancelled = false;
+
         const connect = async () => {
             try {
-                const wsClient = await Client.connect_ws(url, {
+                wsClient = await Client.connect_ws(url, {
                     timeoutMs: 10000,
                 });
-                setClient(wsClient);
-                setIsConnected(true);
+
+                if (!isCancelled) {
+                    setClient(wsClient);
+                    setIsConnected(true);
+                }
             } catch (err) {
                 console.error("Failed to connect:", err);
-                setIsConnected(false);
+                if (!isCancelled) {
+                    setIsConnected(false);
+                }
             }
         };
 
-        connect();
+        connect().catch(err => {
+            console.error("Connection failed:", err);
+            if (!isCancelled) {
+                setIsConnected(false);
+            }
+        });
+
     }, [url]);
 
-    return {isConnected, client};
+    return [isConnected, client];
 };

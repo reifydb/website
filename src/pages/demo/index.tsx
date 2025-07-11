@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {EditorContent} from './components/editor';
 import {useWebSocketConnection} from './hooks/ws';
 import {useQueryExecution} from './hooks/execute';
@@ -15,8 +15,8 @@ export function DemoPage() {
     const [fullscreen, setFullscreen] = useState(false);
     const [query, setQuery] = useState(sampleQueries[0].query);
     const [queryHistory, setQueryHistory] = useState<SavedQuery[]>([]);
+    const [isConnected, client] = useWebSocketConnection(WEBSOCKET_URL);
 
-    const {isConnected, client} = useWebSocketConnection(WEBSOCKET_URL);
     const {
         isExecuting,
         result,
@@ -24,20 +24,34 @@ export function DemoPage() {
         executeQuery,
     } = useQueryExecution(client);
 
-    const handleExecuteQuery = async () => {
-        await executeQuery(query);
 
-        // Add to history after successful execution
-        if (result) {
+    const queryRef = useRef(query);
+
+    useEffect(() => {
+        queryRef.current = query;
+    }, [query]);
+
+    const handleExecuteQuery = useCallback(async () => {
+        const currentQuery = queryRef.current;
+        await executeQuery(currentQuery);
+        lastExecutedQuery.current = currentQuery;
+    }, [executeQuery]);
+
+    const lastExecutedQuery = useRef<string>('');
+
+    // Add to history after successful execution
+    useEffect(() => {
+        if (result && lastExecutedQuery.current) {
             const newHistoryItem: SavedQuery = {
                 id: Date.now().toString(),
                 name: `Query ${queryHistory.length + 1}`,
-                query,
+                query: lastExecutedQuery.current,
                 lastRun: new Date()
             };
             setQueryHistory(prev => [newHistoryItem, ...prev]);
+            lastExecutedQuery.current = '';
         }
-    };
+    }, [result, queryHistory.length]);
 
     const handleLoadQuery = (savedQuery: SavedQuery) => {
         setQuery(savedQuery.query);
@@ -64,6 +78,10 @@ export function DemoPage() {
         }
     };
 
+    const handleQueryChange = (query: string) => {
+        setQuery(query);
+    }
+
     return (
         <>
             {fullscreen ? (
@@ -73,7 +91,7 @@ export function DemoPage() {
                     query={query}
                     result={result}
                     error={error}
-                    onQueryChange={setQuery}
+                    onQueryChange={handleQueryChange}
                     onExecute={handleExecuteQuery}
                     onClose={handleCloseFullscreen}
                     onCopyResults={handleCopyResults}
@@ -114,7 +132,7 @@ export function DemoPage() {
                                     query={query}
                                     result={result}
                                     error={error}
-                                    onQueryChange={setQuery}
+                                    onQueryChange={handleQueryChange}
                                     onExecute={handleExecuteQuery}
                                     onToggleFullscreen={handleToggleFullscreen}
                                     onCopyResults={handleCopyResults}

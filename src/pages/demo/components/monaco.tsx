@@ -111,9 +111,9 @@ export const RqlEditor = forwardRef<RqlEditorRef, RqlEditorProps>(
                 }
             });
 
-            // Add keyboard shortcuts
             editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
                 onExecute();
+                return null;
             });
 
             // Focus the editor

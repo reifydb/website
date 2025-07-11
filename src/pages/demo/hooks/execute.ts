@@ -1,4 +1,4 @@
-import {useCallback, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import {QueryError, QueryResult, ReifyError} from '../utils/types';
 import {WsClient} from "@reifydb/client";
 
@@ -7,8 +7,17 @@ export const useQueryExecution = (client: WsClient | null) => {
     const [result, setResult] = useState<QueryResult | null>(null);
     const [error, setError] = useState<QueryError | null>(null);
 
+    const clientRef = useRef(client);
+
+    // Always keep the ref up to date
+    useEffect(() => {
+        clientRef.current = client;
+    }, [client]);
+
     const executeQuery = useCallback(async (query: string) => {
-        if (!client || !query.trim()) return;
+        const currentClient = clientRef.current;
+
+        if (!currentClient || !query.trim()) return;
 
         setIsExecuting(true);
         setError(null);
@@ -17,9 +26,9 @@ export const useQueryExecution = (client: WsClient | null) => {
         const startTime = Date.now();
 
         try {
-            const tables = await client.tx(query);
+            const tables = await currentClient.tx(query);
             const executionTime = Date.now() - startTime;
-            const rowCounts = Array.isArray(tables) ? tables.map(table => table.length) : [tables.length];
+            const rowCounts = Array.isArray(tables) ? tables.map(table => table.length) : [0];
 
             setResult({
                 tables: Array.isArray(tables) ? tables : [tables],
@@ -35,40 +44,7 @@ export const useQueryExecution = (client: WsClient | null) => {
         } finally {
             setIsExecuting(false);
         }
-    }, [client]);
+    }, []); // Empty dependency array - callback never recreated
 
-    const copyToClipboard = useCallback(() => {
-        if (result) {
-            navigator.clipboard.writeText(JSON.stringify(result.tables, null, 2));
-        }
-    }, [result]);
-
-    const downloadResults = useCallback(() => {
-        if (!result) return;
-
-        const csvContent = result.tables.map((table, index) => {
-            if (table.length === 0) return `Table ${index + 1}: No results`;
-
-            const headers = Object.keys(table[0]);
-            const rows = table.map(row => headers.map(h => row[h]).join(','));
-            return `Table ${index + 1}:\n${headers.join(',')}\n${rows.join('\n')}`;
-        }).join('\n\n');
-
-        const blob = new Blob([csvContent], {type: 'text/csv'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'rql_results.csv';
-        a.click();
-        URL.revokeObjectURL(url);
-    }, [result]);
-
-    return {
-        isExecuting,
-        result,
-        error,
-        executeQuery,
-        copyToClipboard,
-        downloadResults
-    };
+    return { isExecuting, result, error, executeQuery };
 };
