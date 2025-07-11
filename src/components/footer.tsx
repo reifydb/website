@@ -1,5 +1,5 @@
 import {Discord, GitHub, ReifyLogo} from "@components/image";
-import {Mail, BookOpen, Users, Briefcase} from "lucide-react";
+import {Mail, BookOpen, Users, Briefcase, Twitter} from "lucide-react";
 import {Link} from "react-router-dom";
 
 export function Footer() {
@@ -39,6 +39,7 @@ export function Footer() {
                         <li><Link to="/company" className="hover:text-white flex items-center gap-2"><Briefcase size={14}/> Company</Link></li>
                         <li><a href="https://github.com/reifydb/reifydb" target="_blank" rel="noopener noreferrer" className="hover:text-white flex items-center gap-2"><GitHub/> GitHub</a></li>
                         <li><a href="https://discord.gg/vuBrm5kuuF" target="_blank" rel="noopener noreferrer" className="hover:text-white flex items-center gap-2"><Discord /> Discord</a></li>
+                        <li><a href="https://x.com/reifydb" target="_blank" rel="noopener noreferrer" className="hover:text-white flex items-center gap-2"><Twitter size={14}/> Twitter</a></li>
                     </ul>
                 </div>
             </div>
