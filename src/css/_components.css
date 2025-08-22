@@ -1,0 +1,141 @@
+/**
+ * Component Styles
+ * Contains button, card, and other general component styling
+ */
+
+/* Playground specific styles */
+.playground-page {
+  padding: 0 !important;
+}
+
+/* Monaco Editor context menu z-index fixes */
+.monaco-editor .context-view,
+.monaco-menu-container,
+.monaco-editor-hover,
+.monaco-editor .suggest-widget {
+  z-index: 10000 !important;
+}
+
+.monaco-editor .monaco-menu {
+  z-index: 10001 !important;
+}
+
+/* Enhanced button styles for modern appeal */
+.button {
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius-small);
+}
+
+.button--primary {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--accent-vibrant) 50%, var(--ifm-color-primary-dark) 100%);
+  border: 3px solid var(--comic-border);
+  box-shadow: var(--shadow-comic);
+  position: relative;
+}
+
+.button--primary::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid var(--comic-border-thick);
+  border-radius: var(--radius-small);
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.button--primary:hover {
+  transform: translateY(-3px) rotate(-0.5deg);
+  box-shadow: var(--shadow-comic), 0 0 0 1px var(--comic-border-thick);
+  background: linear-gradient(135deg, var(--ifm-color-primary-dark) 0%, var(--accent-vibrant) 50%, var(--ifm-color-primary-darker) 100%);
+  border-color: var(--comic-border-thick);
+}
+
+.button--primary:hover::before {
+  opacity: 1;
+}
+
+.button--outline {
+  border: 3px solid var(--ifm-color-primary);
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(214, 51, 132, 0.03) 100%);
+  backdrop-filter: blur(10px);
+  position: relative;
+  box-shadow: var(--shadow-soft);
+}
+
+.button--outline::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid var(--comic-border);
+  border-radius: var(--radius-small);
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.button--outline:hover {
+  transform: translateY(-3px) rotate(0.5deg);
+  box-shadow: var(--shadow-comic);
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--accent-vibrant) 100%);
+  border-color: var(--comic-border);
+}
+
+.button--outline:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced card styles with comic borders */
+.card {
+  border-radius: var(--radius-medium);
+  border: 3px solid var(--comic-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-comic);
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 2px solid var(--comic-border-thick);
+  border-radius: var(--radius-medium);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card:hover {
+  transform: translateY(-6px) rotate(-0.5deg);
+  box-shadow: var(--shadow-comic), 0 0 0 1px var(--comic-border);
+  border-color: var(--comic-border-thick);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Dark mode component adjustments */
+[data-theme='dark'] .button--outline {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme='dark'] .card {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--border-subtle);
+}
