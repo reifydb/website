@@ -17,7 +17,7 @@ export default function Support(): JSX.Element {
           <div className={styles.supportGrid}>
             <div className={styles.supportCard + ' ' + styles.commercialCard}>
               <div className={styles.cardIcon + ' ' + styles.reifydbIcon}>
-                <img src="/img/logo-transparent.png" alt="ReifyDB" width="32" height="32" />
+                <img src="/img/logo.png" alt="ReifyDB" width="32" height="32" />
               </div>
               <h2 className={styles.cardTitle}>Commercial Support</h2>
               <p className={styles.cardDescription}>

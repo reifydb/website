@@ -105,7 +105,7 @@ const config: Config = {
       title: 'ReifyDB',
       logo: {
         alt: 'ReifyDB Logo',
-        src: 'img/logo-transparent.png',
+        src: 'img/logo.png',
       },
       items: [
         {

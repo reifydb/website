@@ -34,20 +34,21 @@
   line-height: 1.1;
   letter-spacing: -0.02em;
   position: relative;
+  filter: drop-shadow(0 4px 12px rgba(255, 107, 53, 0.15)) drop-shadow(0 8px 24px rgba(142, 68, 173, 0.1));
 }
 
-.heroTitle::after {
-  content: '';
+.heroTitle::before {
+  content: 'ReifyDB';
   position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 6px;
-  background: linear-gradient(90deg, var(--accent-warm) 0%, var(--accent-vibrant) 50%, var(--accent-cool) 100%);
-  border-radius: 3px;
-  box-shadow: 0 2px 4px rgba(77, 21, 75, 0.3);
-  border: 2px solid var(--comic-border);
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--accent-vibrant) 30%, var(--accent-cool) 70%, var(--ifm-color-primary-darkest) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(20px);
+  opacity: 0.3;
+  z-index: -1;
 }
 
 .heroSubtitle {
