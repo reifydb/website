@@ -51,10 +51,30 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
     }));
 
     const handleBeforeMount = (monaco: Monaco) => {
+      // Define custom light theme
+      monaco.editor.defineTheme('custom-light', {
+        base: 'vs',
+        inherit: true,
+        rules: [
+          { token: 'keyword', foreground: '0000FF' },
+          { token: 'string.sql', foreground: '008000' },
+          { token: 'comment', foreground: '808080' },
+          { token: 'number', foreground: 'B22222' },
+        ],
+        colors: {
+          'editor.background': '#FFFFFF',
+          'editor.foreground': '#000000',
+          'editor.lineHighlightBackground': '#F7F7F7',
+          'editorLineNumber.foreground': '#999999',
+          'editor.selectionBackground': '#B4D5FE',
+          'editor.inactiveSelectionBackground': '#E5EBF1',
+        }
+      });
+
       // Set initial theme
       if (monaco && monaco.editor) {
         try {
-          monaco.editor.setTheme(theme);
+          monaco.editor.setTheme(theme === 'vs' ? 'custom-light' : theme);
         } catch (e) {
           // Theme will be set on mount
         }
@@ -66,7 +86,7 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
       monacoRef.current = monaco;
 
       // Set theme again after mount
-      monaco.editor.setTheme(theme || 'vs');
+      monaco.editor.setTheme(theme === 'vs' ? 'custom-light' : theme || 'custom-light');
 
       // Focus the editor to ensure keyboard shortcuts work
       editor.focus();
@@ -147,7 +167,7 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
       });
 
       // Also add as action for context menu with unique ID per editor
-      const actionId = `execute-query-${Math.random().toString(36).substr(2, 9)}`;
+      const actionId = `execute-query-${Math.random().toString(36).substring(2, 11)}`;
       editor.addAction({
         id: actionId,
         label: 'Execute Query',
@@ -167,12 +187,19 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
       editor.updateOptions({
         minimap: { enabled: false },
         fontSize: 14,
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace",
         lineNumbers: 'on',
+        lineNumbersMinChars: 3,
+        lineHeight: 20,
         roundedSelection: false,
         scrollBeyondLastLine: false,
         automaticLayout: true,
         tabSize: 2,
-        wordWrap: 'on',
+        wordWrap: 'off',
+        padding: {
+          top: 12,
+          bottom: 12,
+        },
         suggest: {
           showKeywords: true,
           showSnippets: true,
