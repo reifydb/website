@@ -5,12 +5,28 @@ on:
     branches: [ main ]
     paths:
       - 'docs/**'
-      - 'ci.yml'
+      - 'src/**'
+      - 'blog/**'
+      - 'static/**'
+      - '.github/workflows/ci.yml'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'docusaurus.config.ts'
+      - 'sidebars.ts'
+      - 'tsconfig.json'
   pull_request:
     branches: [ main ]
     paths:
       - 'docs/**'
-      - 'ci.yml'
+      - 'src/**'
+      - 'blog/**'
+      - 'static/**'
+      - '.github/workflows/ci.yml'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'docusaurus.config.ts'
+      - 'sidebars.ts'
+      - 'tsconfig.json'
 
 permissions:
   contents: write
@@ -36,23 +52,9 @@ jobs:
           version: 9
 
       - name: Install dependencies
-        working-directory: ./docs
         run: pnpm install --frozen-lockfile
 
-      - name: Run linter
-        working-directory: ./docs
-        run: pnpm run lint
-
-      - name: Check formatting
-        working-directory: ./docs
-        run: pnpm run format:check
-
-      - name: Type check
-        working-directory: ./docs
-        run: pnpm run typecheck
-
-      - name: Build documentation
-        working-directory: ./docs
+      - name: Build website
         run: pnpm run build
 
   deploy:
@@ -74,16 +76,14 @@ jobs:
           version: 9
 
       - name: Install dependencies
-        working-directory: ./docs
         run: pnpm install --frozen-lockfile
 
-      - name: Build documentation
-        working-directory: ./docs
+      - name: Build website
         run: pnpm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/build
+          publish_dir: ./build
           cname: reifydb.com
