@@ -7,32 +7,70 @@
 /* Import blog styles */
 @import './blog.css';
 
-/* You can override the default Infima variables here. */
+/* Vibrant orange-purple gradient color palette */
 :root {
-  --ifm-color-primary: #2563eb;
-  --ifm-color-primary-dark: #1d4ed8;
-  --ifm-color-primary-darker: #1e40af;
-  --ifm-color-primary-darkest: #1e3a8a;
-  --ifm-color-primary-light: #3b82f6;
-  --ifm-color-primary-lighter: #60a5fa;
-  --ifm-color-primary-lightest: #93bbfc;
+  --ifm-color-primary: #FF6B35;
+  --ifm-color-primary-dark: #E74C3C;
+  --ifm-color-primary-darker: #D63384;
+  --ifm-color-primary-darkest: #8E44AD;
+  --ifm-color-primary-light: #FF8A50;
+  --ifm-color-primary-lighter: #FFB570;
+  --ifm-color-primary-lightest: #FFF5F0;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-background-surface-color: #ffffff;
-  --ifm-font-family-monospace: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.08);
+  --ifm-background-surface-color: #fafbfc;
+  --ifm-background-color: #ffffff;
+  --ifm-font-family-monospace: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Menlo', 'Ubuntu Mono', monospace;
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  
+  /* Vibrant gradient-inspired design tokens */
+  --warm-bg: #FFF8F5;
+  --warm-surface: #FFF0EB;
+  --accent-warm: #FF6B35;
+  --accent-cool: #8E44AD;
+  --accent-deep: #6F42C1;
+  --accent-vibrant: #D63384;
+  --text-muted: #6B5B73;
+  --border-subtle: #F4E6E1;
+  --comic-border: #4A154B;
+  --comic-border-thick: #2D1B69;
+  --shadow-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-comic: 0 8px 16px -4px rgba(45, 55, 72, 0.4), 0 4px 8px -2px rgba(45, 55, 72, 0.2);
+  --radius-soft: 16px;
+  --radius-medium: 12px;
+  --radius-small: 8px;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark mode with vibrant orange-purple theme */
 [data-theme='dark'] {
-  --ifm-color-primary: #60a5fa;
-  --ifm-color-primary-dark: #3b82f6;
-  --ifm-color-primary-darker: #2563eb;
-  --ifm-color-primary-darkest: #1d4ed8;
-  --ifm-color-primary-light: #93bbfc;
-  --ifm-color-primary-lighter: #a5c7fd;
-  --ifm-color-primary-lightest: #c3d9fe;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  --ifm-background-surface-color: #1a1a1a;
+  --ifm-color-primary: #FF8A50;
+  --ifm-color-primary-dark: #FF6B35;
+  --ifm-color-primary-darker: #E74C3C;
+  --ifm-color-primary-darkest: #D63384;
+  --ifm-color-primary-light: #FFB570;
+  --ifm-color-primary-lighter: #FFC490;
+  --ifm-color-primary-lightest: rgba(255, 107, 53, 0.15);
+  --docusaurus-highlighted-code-line-bg: rgba(96, 165, 250, 0.1);
+  --ifm-background-surface-color: #1e1e1e;
+  --ifm-background-color: #0f0f0f;
+  
+  /* Dark mode gradient-inspired tokens */
+  --warm-bg: #2D1B2E;
+  --warm-surface: #3D2B3E;
+  --accent-warm: #FF8A50;
+  --accent-cool: #B565D8;
+  --accent-deep: #9D5CC7;
+  --accent-vibrant: #E56DB1;
+  --text-muted: #C9A9C9;
+  --border-subtle: #4A3A4B;
+  --comic-border: #FFB570;
+  --comic-border-thick: #FFC490;
+  --shadow-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-comic: 0 8px 16px -4px rgba(0, 0, 0, 0.6), 0 4px 8px -2px rgba(0, 0, 0, 0.4);
 }
 
 /* Playground specific styles */
@@ -361,6 +399,115 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Enhanced button styles for modern appeal */
+.button {
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius-small);
+}
+
+.button--primary {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--accent-vibrant) 50%, var(--ifm-color-primary-dark) 100%);
+  border: 3px solid var(--comic-border);
+  box-shadow: var(--shadow-comic);
+  position: relative;
+}
+
+.button--primary::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid var(--comic-border-thick);
+  border-radius: var(--radius-small);
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.button--primary:hover {
+  transform: translateY(-3px) rotate(-0.5deg);
+  box-shadow: var(--shadow-comic), 0 0 0 1px var(--comic-border-thick);
+  background: linear-gradient(135deg, var(--ifm-color-primary-dark) 0%, var(--accent-vibrant) 50%, var(--ifm-color-primary-darker) 100%);
+  border-color: var(--comic-border-thick);
+}
+
+.button--primary:hover::before {
+  opacity: 1;
+}
+
+.button--outline {
+  border: 3px solid var(--ifm-color-primary);
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(214, 51, 132, 0.03) 100%);
+  backdrop-filter: blur(10px);
+  position: relative;
+  box-shadow: var(--shadow-soft);
+}
+
+.button--outline::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid var(--comic-border);
+  border-radius: var(--radius-small);
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.button--outline:hover {
+  transform: translateY(-3px) rotate(0.5deg);
+  box-shadow: var(--shadow-comic);
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--accent-vibrant) 100%);
+  border-color: var(--comic-border);
+}
+
+.button--outline:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced card styles with comic borders */
+.card {
+  border-radius: var(--radius-medium);
+  border: 3px solid var(--comic-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-comic);
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 2px solid var(--comic-border-thick);
+  border-radius: var(--radius-medium);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card:hover {
+  transform: translateY(-6px) rotate(-0.5deg);
+  box-shadow: var(--shadow-comic), 0 0 0 1px var(--comic-border);
+  border-color: var(--comic-border-thick);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
 /* Dark mode adjustments */
 [data-theme='dark'] .navbar-github-stars {
   background: var(--ifm-color-emphasis-300);
@@ -372,6 +519,16 @@
 
 [data-theme='dark'] .navbar-support-link:hover {
   background: var(--ifm-color-primary-dark);
+}
+
+[data-theme='dark'] .button--outline {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme='dark'] .card {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--border-subtle);
 }
 
 /* Mobile responsive adjustments */
