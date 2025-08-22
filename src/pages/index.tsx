@@ -10,6 +10,13 @@ function HomepageHeader() {
   return (
     <header className={styles.heroBanner}>
       <div className="container">
+        <div className={styles.heroLogo}>
+          <img 
+            src="/img/logo.png" 
+            alt="ReifyDB Logo" 
+            className={styles.heroLogoImage}
+          />
+        </div>
         <h1 className={styles.heroTitle}>
           ReifyDB
         </h1>
