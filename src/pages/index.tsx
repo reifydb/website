@@ -305,18 +305,20 @@ function Community() {
 export default function Home(): React.ReactNode {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title="ReifyDB - The Modern Database To Get Things Done"
-      description="Fast, embeddable, and cloud-native database with real-time capabilities. Built for modern applications that demand performance and simplicity."
-    >
-      <HomepageHeader />
-      <main>
-        <QuickExample />
-        <Features />
-        <UseCases />
-        <Installation />
-        <Community />
-      </main>
-    </Layout>
+    <div className={styles.pageWrapper}>
+      <Layout
+        title="ReifyDB - The Modern Database To Get Things Done"
+        description="Fast, embeddable, and cloud-native database with real-time capabilities. Built for modern applications that demand performance and simplicity."
+      >
+        <HomepageHeader />
+        <main>
+          <QuickExample />
+          <Features />
+          <UseCases />
+          <Installation />
+          <Community />
+        </main>
+      </Layout>
+    </div>
   );
 }

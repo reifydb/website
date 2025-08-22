@@ -1,6 +1,6 @@
-/* Blog List with Same Background as Blog Posts */
+/* Blog List with Global Background */
 .blogWrapper {
-  background: var(--ifm-background-color);
+  background: transparent;
   min-height: 100vh;
   position: relative;
 }
@@ -9,7 +9,7 @@
   text-align: center;
   padding: 5rem 0 3rem;
   position: relative;
-  background: var(--ifm-background-color);
+  background: transparent;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 

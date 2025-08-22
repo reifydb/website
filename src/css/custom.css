@@ -12,3 +12,21 @@
 @import './_footer.css';
 @import './_documentation.css';
 @import './_search.css';
+
+/* Global background application */
+body {
+  background: var(--ifm-background-color) !important;
+  background-attachment: fixed;
+}
+
+html {
+  background: var(--ifm-background-color);
+  min-height: 100%;
+}
+
+/* Ensure main content areas are transparent to show background */
+.main-wrapper,
+[class*="docMainContainer"],
+[class*="docPage"] {
+  background: transparent;
+}
