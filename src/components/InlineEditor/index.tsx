@@ -111,6 +111,22 @@ export default function InlineEditor({
     }
   }, [isConnected, showConnectionModal]);
 
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && showConnectionModal) {
+        setShowConnectionModal(false);
+      }
+    };
+
+    if (showConnectionModal) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [showConnectionModal]);
+
   // Cleanup timeout interval on unmount
   useEffect(() => {
     return () => {
