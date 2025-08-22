@@ -1,0 +1,107 @@
+---
+sidebar_position: 3
+---
+
+import InlineEditor from '@site/src/components/InlineEditor';
+
+# Interactive Queries
+
+Learn how to query data in ReifyDB with interactive examples. You can run these queries directly in your browser!
+
+## Basic Queries
+
+### SELECT Statement
+
+The most fundamental query in ReifyDB is the SELECT statement. Try running this query to see all users:
+
+<InlineEditor
+  query="Map {1}"
+/>
+
+### Filtering with WHERE
+
+You can filter results using the WHERE clause:
+
+<InlineEditor
+  query="SELECT name, email 
+FROM users 
+WHERE email LIKE '%@example.com'"
+/>
+
+## Joining Tables
+
+ReifyDB supports various types of joins to combine data from multiple tables:
+
+<InlineEditor
+  query="SELECT u.name, p.title
+FROM users u
+JOIN posts p ON u.id = p.user_id
+WHERE p.published = true"
+/>
+
+## Aggregation
+
+Use aggregation functions to summarize your data:
+
+<InlineEditor
+  query="SELECT u.name, COUNT(p.id) as post_count
+FROM users u
+LEFT JOIN posts p ON u.id = p.user_id
+GROUP BY u.id, u.name
+ORDER BY post_count DESC"
+/>
+
+## Conditional Logic
+
+ReifyDB supports CASE statements for conditional logic:
+
+<InlineEditor
+  query="SELECT 
+  title,
+  CASE 
+    WHEN published = true THEN 'Published'
+    ELSE 'Draft'
+  END as status
+FROM posts"
+/>
+
+## Multiple Statements
+
+You can run multiple SQL statements in a single execution. Each statement produces its own result table:
+
+<InlineEditor
+  query={`-- Get all users
+SELECT * FROM users;
+
+  -- Get all published posts
+  SELECT title, published
+  FROM posts
+  WHERE published = true;
+
+  -- Count posts per user
+  SELECT u.name, COUNT(p.id) as post_count
+  FROM users u
+  LEFT JOIN posts p ON u.id = p.user_id
+  GROUP BY u.id, u.name;`}
+/>
+
+## Try Your Own Queries
+
+The examples above are fully editable! You can:
+- Modify the queries directly in the editor
+- Add or remove statements
+- See results for each statement separately
+- Reset to the original query if needed
+
+Want more space to experiment? Head over to the [Playground](/playground) for a full-featured SQL editor with:
+
+- Syntax highlighting and auto-completion
+- Schema explorer
+- Query history
+- Export capabilities
+
+## Next Steps
+
+- [Learn about Data Types](/docs/core-concepts/data-types)
+- [Explore Advanced Queries](/docs/advanced/query-optimization)
+- [Try the Playground](/playground)

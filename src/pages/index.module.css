@@ -1,0 +1,401 @@
+/* Hero Section */
+.heroBanner {
+  padding: 6rem 0 4rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary-lightest) 0%, var(--ifm-background-color) 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroTitle {
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0 0 1rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: var(--ifm-font-color-base);
+}
+
+.heroDescription {
+  font-size: 1.125rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: var(--ifm-font-color-secondary);
+  line-height: 1.6;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Quick Example Section */
+.quickExample {
+  padding: 4rem 0;
+  background: var(--ifm-background-surface-color);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--ifm-heading-color);
+}
+
+.sectionHeader p {
+  font-size: 1.125rem;
+  color: var(--ifm-font-color-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.exampleContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.exampleCode {
+  background: var(--ifm-background-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.exampleFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.featureItem {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.featureIcon {
+  font-size: 1.5rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ifm-color-primary-lightest);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.featureItem h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.featureItem p {
+  margin: 0;
+  color: var(--ifm-font-color-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Features Section */
+.features {
+  padding: 4rem 0;
+  background: var(--ifm-background-color);
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.featureCard {
+  padding: 2rem;
+  background: var(--ifm-background-surface-color);
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary-lighter);
+}
+
+.featureCardIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.featureCard h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: var(--ifm-heading-color);
+}
+
+.featureCard p {
+  margin: 0;
+  color: var(--ifm-font-color-secondary);
+  line-height: 1.6;
+}
+
+/* Use Cases Section */
+.useCases {
+  padding: 4rem 0;
+  background: var(--ifm-background-surface-color);
+}
+
+.useCaseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.useCaseCard {
+  text-align: center;
+  padding: 2rem;
+  background: var(--ifm-background-color);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.useCaseCard:hover {
+  transform: translateY(-4px);
+}
+
+.useCaseIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.useCaseCard h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: var(--ifm-heading-color);
+}
+
+.useCaseCard p {
+  margin: 0;
+  color: var(--ifm-font-color-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Installation Section */
+.installation {
+  padding: 4rem 0;
+  background: var(--ifm-background-color);
+}
+
+.installOptions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.installOption {
+  background: var(--ifm-background-surface-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.installOption h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: var(--ifm-heading-color);
+}
+
+.installActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+/* Community Section */
+.community {
+  padding: 4rem 0;
+  background: var(--ifm-background-surface-color);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.communityLinks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.communityCard {
+  text-align: center;
+  padding: 2rem;
+  background: var(--ifm-background-color);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.communityCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  border-color: var(--ifm-color-primary-lighter);
+}
+
+.communityIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.communityCard h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.communityCard p {
+  margin: 0;
+  color: var(--ifm-font-color-secondary);
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 4rem 2rem 3rem;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.5rem;
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+  }
+
+  .exampleContainer {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .sectionHeader h2 {
+    font-size: 2rem;
+  }
+
+  .featureGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.25rem;
+  }
+
+  .heroButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .heroButtons .button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .installOptions {
+    grid-template-columns: 1fr;
+  }
+
+  .installActions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .installActions .button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Dark Mode Adjustments */
+[data-theme='dark'] .heroBanner {
+  background: linear-gradient(135deg, rgba(33, 133, 208, 0.1) 0%, transparent 100%);
+}
+
+[data-theme='dark'] .featureCard {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] .featureCard:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .useCaseCard {
+  background: var(--ifm-background-color);
+}
+
+[data-theme='dark'] .installOption {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] .communityCard {
+  background: var(--ifm-background-color);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] .communityCard:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .featureIcon {
+  background: rgba(33, 133, 208, 0.15);
+}

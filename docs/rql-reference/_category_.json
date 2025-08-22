@@ -1,0 +1,8 @@
+{
+  "label": "RQL",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Understand the fundamental concepts of RQL"
+  }
+}

@@ -1,0 +1,580 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* Import blog styles */
+@import './blog.css';
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2563eb;
+  --ifm-color-primary-dark: #1d4ed8;
+  --ifm-color-primary-darker: #1e40af;
+  --ifm-color-primary-darkest: #1e3a8a;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #60a5fa;
+  --ifm-color-primary-lightest: #93bbfc;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-background-surface-color: #ffffff;
+  --ifm-font-family-monospace: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #60a5fa;
+  --ifm-color-primary-dark: #3b82f6;
+  --ifm-color-primary-darker: #2563eb;
+  --ifm-color-primary-darkest: #1d4ed8;
+  --ifm-color-primary-light: #93bbfc;
+  --ifm-color-primary-lighter: #a5c7fd;
+  --ifm-color-primary-lightest: #c3d9fe;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-background-surface-color: #1a1a1a;
+}
+
+/* Playground specific styles */
+.playground-page {
+  padding: 0 !important;
+}
+
+/* Monaco Editor context menu z-index fixes */
+.monaco-editor .context-view,
+.monaco-menu-container,
+.monaco-editor-hover,
+.monaco-editor .suggest-widget {
+  z-index: 10000 !important;
+}
+
+.monaco-editor .monaco-menu {
+  z-index: 10001 !important;
+}
+
+/* Navbar layout adjustments */
+.navbar {
+  position: relative;
+}
+
+/* Contact button styling */
+.navbar-contact-link {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+  color: white !important;
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 8px;
+  margin: 0 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.875rem;
+}
+
+.navbar-contact-link:hover {
+  background: linear-gradient(135deg, var(--ifm-color-primary-dark) 0%, var(--ifm-color-primary-darker) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  text-decoration: none;
+}
+
+[data-theme='dark'] .navbar-contact-link {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+  color: var(--ifm-color-primary-darkest) !important;
+  font-weight: 600;
+}
+
+[data-theme='dark'] .navbar-contact-link:hover {
+  background: linear-gradient(135deg, var(--ifm-color-primary-light) 0%, var(--ifm-color-primary) 100%);
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  justify-content: space-between;
+}
+
+.navbar__brand {
+  flex: 0 0 auto;
+  z-index: 2;
+}
+
+.navbar__items {
+  position: static !important;
+}
+
+.navbar__items--left {
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  pointer-events: none;
+}
+
+.navbar__items--left > * {
+  pointer-events: auto;
+}
+
+.navbar__items--right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+/* Move search container to the right section but before support button */
+.navbar__items--right .search-bar,
+.navbar__items--right [class*="searchBox"] {
+  order: 1;
+}
+
+.navbar__items--right .navbar-support-link {
+  order: 2;
+}
+
+/* Ensure the local search plugin container is positioned correctly */
+.navbar__items--right > div:has(input[type="search"]) {
+  order: 1;
+}
+
+/* Move theme toggle to the outer right */
+.navbar__items--right [class*="toggle"],
+.navbar__items--right .clean-btn.toggleButton_node_modules-\@docusaurus-theme-classic-lib-theme-ColorModeToggle-styles-module,
+.navbar__items--right button[class*="ColorModeToggle"],
+.navbar__items--right .react-toggle {
+  order: 3;
+}
+
+.navbar-center-item {
+  white-space: nowrap;
+}
+
+/* Navbar dropdown styles */
+.navbar__item.dropdown {
+  position: relative;
+}
+
+.navbar__item.dropdown .navbar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.navbar__item.dropdown:hover .navbar__link,
+.navbar__item.dropdown.dropdown--hovering .navbar__link {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.navbar__item.dropdown .navbar__link:after {
+  content: '';
+  border: 4px solid transparent;
+  border-top-color: currentColor;
+  margin-top: 2px;
+  margin-left: 0.25rem;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.navbar__item.dropdown:hover .navbar__link:after,
+.navbar__item.dropdown.dropdown--hovering .navbar__link:after {
+  transform: rotate(180deg);
+}
+
+/* Create invisible bridge to keep dropdown open */
+.navbar__item.dropdown::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -10px;
+  right: -10px;
+  height: 10px;
+  display: none;
+  z-index: 1000;
+}
+
+.navbar__item.dropdown:hover::before,
+.navbar__item.dropdown.dropdown--hovering::before {
+  display: block;
+}
+
+.dropdown__menu {
+  min-width: 220px;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem;
+  top: calc(100% + 0.25rem);
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 1001;
+  overflow: hidden;
+}
+
+/* Extended hover area for dropdown menu */
+.dropdown__menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  z-index: -1;
+}
+
+.navbar__item.dropdown:hover .dropdown__menu,
+.navbar__item.dropdown.dropdown--hovering .dropdown__menu,
+.navbar__item.dropdown.dropdown--show .dropdown__menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar__item.dropdown.dropdown--show .navbar__link {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.navbar__item.dropdown.dropdown--show .navbar__link:after {
+  transform: rotate(180deg);
+}
+
+.dropdown__link {
+  padding: 0.625rem 1rem;
+  display: block;
+  color: var(--ifm-font-color-base);
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  position: relative;
+}
+
+.dropdown__link:hover {
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  transform: translateX(2px);
+}
+
+.dropdown__link:active {
+  transform: translateX(0);
+}
+
+/* Ensure full clickable area */
+.dropdown__link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+[data-theme='dark'] .dropdown__menu {
+  background: var(--ifm-background-color);
+  border-color: var(--ifm-color-emphasis-300);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .dropdown__link:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+/* Navbar GitHub link styles */
+.navbar-github-link {
+  display: flex !important;
+  align-items: center;
+  padding: 0 0.75rem !important;
+  margin: 0 0.25rem;
+  transition: opacity 0.2s;
+}
+
+.navbar-github-link:hover {
+  opacity: 0.8;
+  text-decoration: none !important;
+}
+
+.navbar-github-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-github-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.navbar-github-text {
+  font-weight: 500;
+}
+
+.navbar-github-stars {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  min-width: 40px;
+  justify-content: center;
+}
+
+.navbar-github-stars:empty {
+  display: none;
+}
+
+.navbar-github-stars::before {
+  content: "⭐ ";
+  margin-right: 0.25rem;
+}
+
+/* Support button styles */
+.navbar-support-link {
+  background: var(--ifm-color-primary);
+  color: white !important;
+  padding: 0.375rem 1rem !important;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s;
+  margin-right: 0.5rem;
+}
+
+.navbar-support-link:hover {
+  background: var(--ifm-color-primary-dark);
+  text-decoration: none !important;
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .navbar-github-stars {
+  background: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] .navbar-support-link {
+  background: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .navbar-support-link:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+/* Mobile responsive adjustments */
+/* Search bar custom styles */
+.navbar__search {
+  margin-right: 1rem;
+  order: -1; /* Move search bar before support button */
+}
+
+.navbar__search input {
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  padding-right: 3rem;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  width: 200px;
+}
+
+.navbar__search input:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  width: 280px;
+  background: var(--ifm-background-surface-color);
+}
+
+.navbar__search input::placeholder {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.875rem;
+}
+
+/* Search keyboard shortcut hint */
+.navbar__search {
+  position: relative;
+}
+
+.navbar__search::after {
+  content: '⌘K';
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: var(--ifm-color-emphasis-500);
+  background: var(--ifm-color-emphasis-200);
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  pointer-events: none;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+/* Windows/Linux keyboard shortcut */
+@media (max-width: 1200px) {
+  .navbar__search::after {
+    content: 'Ctrl+K';
+  }
+}
+
+/* Local search plugin styles */
+.aa-DetachedContainer {
+  z-index: 10000 !important;
+}
+
+.aa-DetachedOverlay {
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Fix search modal positioning - move to the left to prevent overflow */
+.search-local-modal {
+  right: auto !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  max-width: min(90vw, var(--search-local-modal-width, 560px)) !important;
+}
+
+/* Ensure modal is properly centered on smaller screens */
+@media (max-width: 768px) {
+  .search-local-modal {
+    max-width: min(95vw, var(--search-local-modal-width-sm, 340px)) !important;
+  }
+}
+
+.aa-Panel {
+  border-radius: 12px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid var(--ifm-color-emphasis-200) !important;
+}
+
+.aa-Form {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200) !important;
+}
+
+.aa-Input {
+  font-size: 1.125rem !important;
+  padding: 1rem !important;
+}
+
+.aa-Item {
+  padding: 0.75rem 1rem !important;
+  border-radius: 8px !important;
+  margin: 0.25rem 0.5rem !important;
+}
+
+.aa-Item[aria-selected="true"] {
+  background: var(--ifm-color-primary-lightest) !important;
+}
+
+.aa-ItemIcon {
+  color: var(--ifm-color-primary) !important;
+}
+
+.aa-ItemTitle {
+  font-weight: 600 !important;
+  color: var(--ifm-font-color-base) !important;
+}
+
+.aa-ItemDescription {
+  color: var(--ifm-color-emphasis-700) !important;
+  margin-top: 0.25rem !important;
+}
+
+/* Dark mode search styles */
+[data-theme='dark'] .navbar__search input {
+  background: var(--ifm-color-emphasis-200);
+  border-color: var(--ifm-color-emphasis-300);
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme='dark'] .navbar__search input:focus {
+  background: var(--ifm-background-color);
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+
+[data-theme='dark'] .navbar__search::after {
+  background: var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-600);
+}
+
+[data-theme='dark'] .aa-Panel {
+  background: var(--ifm-background-color) !important;
+  border-color: var(--ifm-color-emphasis-300) !important;
+}
+
+[data-theme='dark'] .aa-Form {
+  border-color: var(--ifm-color-emphasis-300) !important;
+}
+
+[data-theme='dark'] .aa-Item[aria-selected="true"] {
+  background: var(--ifm-color-emphasis-200) !important;
+}
+
+/* Search results highlighting */
+.search-result-match {
+  background: yellow;
+  color: black;
+  font-weight: bold;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+[data-theme='dark'] .search-result-match {
+  background: var(--ifm-color-primary);
+  color: white;
+}
+
+@media (max-width: 996px) {
+  .navbar__items--left {
+    position: relative;
+    left: auto;
+    transform: none;
+    margin-left: 1rem;
+  }
+  
+  .navbar-center-item {
+    margin: 0 0.25rem;
+  }
+  
+  .navbar-github-stars {
+    display: none;
+  }
+  
+  .navbar-github-text {
+    display: none;
+  }
+  
+  .navbar-support-link {
+    padding: 0.25rem 0.75rem !important;
+    font-size: 0.875rem;
+  }
+  
+  .navbar__search input {
+    width: 150px;
+  }
+  
+  .navbar__search input:focus {
+    width: 200px;
+  }
+  
+  .navbar__search::after {
+    display: none;
+  }
+}
