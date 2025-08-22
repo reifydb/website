@@ -119,8 +119,30 @@ export default function Root({ children }) {
     // Run dropdown improvements
     setTimeout(improveDropdowns, 100);
 
+    // Enhanced sticky navbar scroll effects
+    const handleScroll = () => {
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        const scrolled = window.scrollY > 20;
+        if (scrolled) {
+          navbar.setAttribute('data-scrolled', 'true');
+        } else {
+          navbar.removeAttribute('data-scrolled');
+        }
+      }
+    };
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initial check
+    handleScroll();
+
     // Cleanup
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return <>{children}</>;
