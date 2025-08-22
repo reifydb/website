@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreifydb_docs=self.webpackChunkreifydb_docs||[]).push([[1903],{1912:s=>{s.exports=JSON.parse('{"blogBasePath":"/blog","blogTitle":"ReifyDB Blog","authorsListPath":"/blog/authors"}')}}]);

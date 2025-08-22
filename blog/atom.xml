@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://docs.reifydb.com/blog</id>
+    <title>ReifyDB Blog</title>
+    <updated>2025-01-09T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://docs.reifydb.com/blog"/>
+    <subtitle>ReifyDB Blog</subtitle>
+    <icon>https://docs.reifydb.com/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Welcome to ReifyDB]]></title>
+        <id>https://docs.reifydb.com/blog/welcome</id>
+        <link href="https://docs.reifydb.com/blog/welcome"/>
+        <updated>2025-01-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Introducing ReifyDB - a modern database designed to help developers get things done faster and more efficiently.]]></summary>
+        <content type="html"><![CDATA[<p>TBD</p>]]></content>
+        <author>
+            <name>Dominique</name>
+            <email>dominique@reifydb.com</email>
+            <uri>https://github.com/reifydb</uri>
+        </author>
+    </entry>
+</feed>
