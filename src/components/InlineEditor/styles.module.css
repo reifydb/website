@@ -25,7 +25,9 @@
   border-bottom: 3px solid #383838;
   background: white;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform-origin: top;
 }
 
 .editorActions {

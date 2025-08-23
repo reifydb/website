@@ -237,6 +237,14 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
         roundedSelection: false,
         scrollBeyondLastLine: false,
         automaticLayout: true,
+        fixedOverflowWidgets: true,
+        scrollbar: {
+          vertical: 'auto',
+          horizontal: 'auto',
+          verticalScrollbarSize: 10,
+          horizontalScrollbarSize: 10,
+          alwaysConsumeMouseWheel: false,
+        },
         tabSize: 2,
         wordWrap: 'off',
         padding: {

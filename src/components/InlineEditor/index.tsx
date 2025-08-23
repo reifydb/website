@@ -59,9 +59,17 @@ export default function InlineEditor({
     const lineHeight = 24;
     const extraPadding = 20;
     const minLines = 3;
-    const maxHeight = 400;
     const minHeight = (minLines * lineHeight) + extraPadding;
-    const calculatedHeight = Math.min(Math.max((lines * lineHeight) + extraPadding, minHeight), maxHeight);
+    
+    // Get viewport height and calculate max allowed height (e.g., 80% of viewport)
+    const viewportHeight = window.innerHeight;
+    const maxHeight = Math.floor(viewportHeight * 0.8);
+    
+    // Calculate height but limit to max screen height
+    const calculatedHeight = Math.min(
+      Math.max((lines * lineHeight) + extraPadding, minHeight),
+      maxHeight
+    );
     return calculatedHeight;
   }, []);
 
@@ -91,6 +99,18 @@ export default function InlineEditor({
 
     return () => observer.disconnect();
   }, []);
+
+  // Handle window resize to recalculate max height
+  useEffect(() => {
+    const handleResize = () => {
+      const newHeight = calculateHeight(query);
+      updateHeightDirectly(newHeight);
+      setEditorHeight(newHeight);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [query, calculateHeight, updateHeightDirectly]);
 
   useEffect(() => {
     if (isConnected && showConnectionModal) {
@@ -347,6 +367,7 @@ export default function InlineEditor({
                     onChange={useCallback((value) => {
                       setQuery(value);
                       const newHeight = calculateHeight(value);
+                      setEditorHeight(newHeight);
                       updateHeightDirectly(newHeight);
                     }, [calculateHeight, updateHeightDirectly])}
                     onExecute={stableHandleExecute}
@@ -388,6 +409,7 @@ export default function InlineEditor({
                       onClick={() => {
                         setQuery(initialQuery);
                         const resetHeight = calculateHeight(initialQuery);
+                        setEditorHeight(resetHeight);
                         updateHeightDirectly(resetHeight);
                         if (editorRef.current) {
                           editorRef.current.setValue(initialQuery);
