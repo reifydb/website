@@ -16,7 +16,6 @@ export default function FooterLinkItem({item}: Props): ReactNode {
       className={clsx(
         'footer__link-item',
         // Tailwind classes for link styling
-        'text-[#E2D6E7] [data-theme=\'dark\']:text-[#F0E6F0]',
         'hover:text-[#FFB570] [data-theme=\'dark\']:hover:text-[#FFC490]',
         'transition-all duration-300',
         'font-medium no-underline',

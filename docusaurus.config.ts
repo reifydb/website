@@ -214,7 +214,7 @@ const config: Config = {
               href: 'https://x.com/reifydb',
             },
             {
-              label: 'Contact Us',
+              label: 'Contact',
               to: '/contact',
             },
           ],
