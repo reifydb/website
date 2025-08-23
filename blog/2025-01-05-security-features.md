@@ -2,7 +2,6 @@
 slug: security-features
 title: Security Features and Best Practices
 authors: [dominique]
-tags: [security, authentication, encryption]
 image: /img/logo.png
 description: The wise man therefore always holds in these matters to this principle of selection.
 ---

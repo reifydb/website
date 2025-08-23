@@ -2,7 +2,6 @@
 slug: performance-tips
 title: Performance Optimization Tips for ReifyDB
 authors: [dominique]
-tags: [performance, optimization, best-practices]
 image: /img/logo.png
 description: But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born.
 ---

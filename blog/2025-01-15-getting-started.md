@@ -2,7 +2,6 @@
 slug: getting-started
 title: Getting Started with ReifyDB
 authors: [dominique]
-tags: [tutorial, beginner, setup]
 image: /img/logo.png
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 ---

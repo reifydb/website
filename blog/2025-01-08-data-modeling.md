@@ -2,7 +2,6 @@
 slug: data-modeling
 title: Data Modeling Best Practices
 authors: [dominique]
-tags: [data-modeling, schema, design]
 image: /img/logo.png
 description: Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
 ---

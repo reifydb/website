@@ -2,7 +2,6 @@
 slug: migration-guide
 title: Migrating from Other Databases to ReifyDB
 authors: [dominique]
-tags: [migration, database, guide]
 image: /img/logo.png
 description: On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.
 ---

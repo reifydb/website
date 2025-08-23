@@ -2,7 +2,6 @@
 slug: advanced-queries
 title: Advanced Query Patterns in ReifyDB
 authors: [dominique]
-tags: [advanced, queries, performance]
 image: /img/logo.png
 description: Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
 ---
