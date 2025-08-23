@@ -1,54 +1,41 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import CodeBlock from '@theme/CodeBlock';
 
 function HomepageHeader() {
   return (
-    <header className="relative overflow-hidden py-32 pb-24 text-center">
-      {/* Animated background pattern */}
-      <div className="absolute inset-0 opacity-100 pointer-events-none animate-pulse-scale" />
-      
-      <div className="container relative mx-auto px-4">
+    <header className="hero-section py-24 md:py-32 text-center">
+      <div className="container mx-auto px-4">
         <div className="flex justify-center mb-8">
           <img 
             src="/img/logo.png" 
             alt="ReifyDB Logo" 
-            className="w-40 h-40 rounded-full transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
-            style={{
-              filter: 'drop-shadow(0 8px 16px rgba(255, 107, 53, 0.2)) drop-shadow(0 16px 32px rgba(142, 68, 173, 0.15))'
-            }}
+            className="w-32 h-32 md:w-40 md:h-40"
           />
         </div>
-        <h1 className="text-7xl font-black mb-6 leading-tight tracking-tight gradient-text">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-gray-900 dark:text-white uppercase tracking-tight">
           ReifyDB
         </h1>
-        <p className="text-3xl font-semibold mb-6 text-gray-800 [data-theme='dark']:text-gray-200">
+        <p className="text-2xl md:text-3xl font-medium mb-6 text-gray-700 dark:text-gray-300">
           The Modern Database To Get Things Done
         </p>
-        <p className="text-xl max-w-3xl mx-auto mb-12 text-gray-600 [data-theme='dark']:text-gray-400 leading-relaxed">
+        <p className="text-lg md:text-xl max-w-3xl mx-auto mb-12 text-gray-600 dark:text-gray-400 leading-relaxed">
           Fast, embeddable, and cloud-native database with real-time capabilities.
           Built for modern applications that demand performance and simplicity.
         </p>
-        <div className="flex gap-6 justify-center items-center flex-wrap">
+        <div className="flex gap-4 justify-center items-center flex-wrap">
           <Link
-            className="btn-comic text-lg min-w-[160px]"
+            className="btn-primary"
             to="/docs/getting-started/installation"
           >
             Get Started
           </Link>
           <Link
-            className="btn-comic-outline text-lg min-w-[160px]"
+            className="btn-secondary"
             to="/playground"
           >
             Try Online
-          </Link>
-          <Link
-            className="inline-flex items-center gap-2 px-8 py-3 text-lg font-semibold text-primary hover:text-primary-dark transition-colors"
-            to="https://github.com/reifydb/reifydb"
-          >
-            View on GitHub →
           </Link>
         </div>
       </div>
@@ -71,11 +58,11 @@ WHERE timestamp > NOW() - INTERVAL '1 hour'
 GROUP BY user_id;`;
 
   return (
-    <section className="py-20 bg-gradient-to-br from-warm-surface to-white dark:from-dark-warm-surface dark:to-gray-900">
+    <section className="quick-example-section py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-primary-dark">Simple, Powerful, Reactive</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400">Write SQL queries that automatically update when data changes</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white uppercase">Simple, Powerful, Reactive</h2>
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400">Write SQL queries that automatically update when data changes</p>
         </div>
         <div className="grid lg:grid-cols-2 gap-8 items-start">
           <div className="code-block-comic">
@@ -155,9 +142,9 @@ function Features() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, idx) => (
-            <div key={idx} className="card-comic group hover:rotate-1">
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
-              <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-200">{feature.title}</h3>
+            <div key={idx} className="feature-card">
+              <div className="text-4xl mb-4">{feature.icon}</div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white uppercase">{feature.title}</h3>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{feature.description}</p>
             </div>
           ))}
@@ -200,9 +187,9 @@ function UseCases() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {useCases.map((useCase, idx) => (
-            <div key={idx} className="bg-white dark:bg-gray-800 p-6 rounded-medium shadow-soft hover:shadow-comic transition-all duration-300 hover:-translate-y-2 text-center comic-border">
-              <div className="text-5xl mb-4">{useCase.icon}</div>
-              <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-200">{useCase.title}</h3>
+            <div key={idx} className="card-clean text-center">
+              <div className="text-4xl mb-4">{useCase.icon}</div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white uppercase">{useCase.title}</h3>
               <p className="text-gray-600 dark:text-gray-400">{useCase.description}</p>
             </div>
           ))}
@@ -227,31 +214,31 @@ function Installation() {
           <p className="text-xl text-gray-600 dark:text-gray-400">Choose your preferred installation method</p>
         </div>
         <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-medium shadow-soft">
-            <h4 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-200">Docker</h4>
+          <div className="card-clean">
+            <h4 className="text-lg font-bold mb-4 text-gray-900 dark:text-white uppercase">Docker</h4>
             <CodeBlock language="bash">{installCommands.docker}</CodeBlock>
           </div>
-          <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-medium shadow-soft">
-            <h4 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-200">Homebrew</h4>
+          <div className="card-clean">
+            <h4 className="text-lg font-bold mb-4 text-gray-900 dark:text-white uppercase">Homebrew</h4>
             <CodeBlock language="bash">{installCommands.brew}</CodeBlock>
           </div>
-          <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-medium shadow-soft">
-            <h4 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-200">Cargo</h4>
+          <div className="card-clean">
+            <h4 className="text-lg font-bold mb-4 text-gray-900 dark:text-white uppercase">Cargo</h4>
             <CodeBlock language="bash">{installCommands.cargo}</CodeBlock>
           </div>
         </div>
-        <div className="flex gap-6 justify-center flex-wrap">
+        <div className="flex gap-4 justify-center flex-wrap">
           <Link
-            className="btn-comic text-lg"
+            className="btn-primary"
             to="/docs/getting-started/installation"
           >
             Installation Guide
           </Link>
           <Link
-            className="btn-comic-outline text-lg"
+            className="btn-secondary"
             to="/docs/getting-started/quickstart"
           >
-            Quick Start Tutorial
+            Quick Start
           </Link>
         </div>
       </div>
@@ -270,34 +257,34 @@ function Community() {
         <div className="grid md:grid-cols-3 gap-6">
           <a
             href="https://github.com/reifydb/reifydb"
-            className="card-comic text-center group hover:rotate-1 no-underline"
+            className="card-clean text-center no-underline"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
+            <div className="mb-4">
               <img src="/img/github-mark.svg" alt="GitHub" width="48" height="48" className="mx-auto" />
             </div>
-            <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200">GitHub</h3>
+            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">GitHub</h3>
             <p className="text-gray-600 dark:text-gray-400">Star, fork, and contribute</p>
           </a>
           <a
             href="https://discord.com/invite/vuBrm5kuuF"
-            className="card-comic text-center group hover:rotate-1 no-underline"
+            className="card-clean text-center no-underline"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">💬</div>
-            <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200">Discord</h3>
+            <div className="text-4xl mb-4">💬</div>
+            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Discord</h3>
             <p className="text-gray-600 dark:text-gray-400">Chat with the community</p>
           </a>
           <a
             href="https://x.com/reifydb"
-            className="card-comic text-center group hover:rotate-1 no-underline"
+            className="card-clean text-center no-underline"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">𝕏</div>
-            <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200">Twitter</h3>
+            <div className="text-4xl mb-4">𝕏</div>
+            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Twitter</h3>
             <p className="text-gray-600 dark:text-gray-400">Follow for updates</p>
           </a>
         </div>
@@ -307,7 +294,6 @@ function Community() {
 }
 
 export default function Home(): React.ReactNode {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Layout

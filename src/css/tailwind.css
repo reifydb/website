@@ -12,14 +12,14 @@
 
 /* Light mode color palette and tokens */
 :root {
-  /* Docusaurus primary colors */
-  --ifm-color-primary: #FF6B35;
-  --ifm-color-primary-dark: #E74C3C;
-  --ifm-color-primary-darker: #D63384;
-  --ifm-color-primary-darkest: #8E44AD;
-  --ifm-color-primary-light: #FF8A50;
-  --ifm-color-primary-lighter: #FFB570;
-  --ifm-color-primary-lightest: #FFF5F0;
+  /* Docusaurus primary colors - MotherDuck inspired */
+  --ifm-color-primary: #383838;
+  --ifm-color-primary-dark: #2A2A2A;
+  --ifm-color-primary-darker: #1A1A1A;
+  --ifm-color-primary-darkest: #0A0A0A;
+  --ifm-color-primary-light: #4A4A4A;
+  --ifm-color-primary-lighter: #5A5A5A;
+  --ifm-color-primary-lightest: #F4EFEA;
   
   /* Docusaurus settings */
   --ifm-code-font-size: 95%;
@@ -38,36 +38,35 @@
   --ifm-color-emphasis-600: #666666;
   --ifm-color-emphasis-700: #444444;
 
-  /* Custom design tokens */
-  --warm-bg: #FFF8F5;
-  --warm-surface: #FFF0EB;
-  --accent-warm: #FF6B35;
-  --accent-cool: #8E44AD;
-  --accent-deep: #6F42C1;
-  --accent-vibrant: #D63384;
-  --text-muted: #6B5B73;
-  --border-subtle: #F4E6E1;
-  --comic-border: #4A154B;
-  --comic-border-thick: #2D1B69;
-  --shadow-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-comic: 0 8px 16px -4px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.05);
-  --radius-soft: 16px;
-  --radius-medium: 12px;
-  --radius-small: 8px;
+  /* Custom design tokens - MotherDuck style */
+  --warm-bg: #F4EFEA;
+  --warm-surface: #F8F8F7;
+  --accent-yellow: #FFDE00;
+  --accent-teal: #53DBC9;
+  --accent-blue: #6FC2FF;
+  --accent-dark: #383838;
+  --text-muted: #A1A1A1;
+  --border-dark: #383838;
+  --border-light: #E5E5E5;
+  --shadow-soft: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --shadow-brutalist: -5px 5px 0px 0px #383838;
+  --radius-soft: 4px;
+  --radius-medium: 2px;
+  --radius-small: 2px;
 }
 
 /* Dark mode tokens */
 [data-theme='dark'] {
   /* Docusaurus primary colors for dark mode */
-  --ifm-color-primary: #FF8A50;
-  --ifm-color-primary-dark: #FF6B35;
-  --ifm-color-primary-darker: #E74C3C;
-  --ifm-color-primary-darkest: #D63384;
-  --ifm-color-primary-light: #FFB570;
-  --ifm-color-primary-lighter: #FFC490;
-  --ifm-color-primary-lightest: rgba(255, 107, 53, 0.15);
+  --ifm-color-primary: #F8F8F7;
+  --ifm-color-primary-dark: #E8E8E7;
+  --ifm-color-primary-darker: #D8D8D7;
+  --ifm-color-primary-darkest: #C8C8C7;
+  --ifm-color-primary-light: #FFFFFF;
+  --ifm-color-primary-lighter: #FFFFFF;
+  --ifm-color-primary-lightest: rgba(248, 248, 247, 0.15);
   
   /* Docusaurus dark mode settings */
   --docusaurus-highlighted-code-line-bg: rgba(96, 165, 250, 0.1);
@@ -84,40 +83,40 @@
   --ifm-color-emphasis-700: #cccccc;
 
   /* Dark mode custom tokens */
-  --warm-bg: #2D1B2E;
-  --warm-surface: #3D2B3E;
-  --accent-warm: #FF8A50;
-  --accent-cool: #B565D8;
-  --accent-deep: #9D5CC7;
-  --accent-vibrant: #E56DB1;
-  --text-muted: #C9A9C9;
-  --border-subtle: #4A3A4B;
-  --comic-border: #FFB570;
-  --comic-border-thick: #FFC490;
+  --warm-bg: #1A1A1A;
+  --warm-surface: #2A2A2A;
+  --accent-yellow: #FFDE00;
+  --accent-teal: #53DBC9;
+  --accent-blue: #6FC2FF;
+  --accent-dark: #F8F8F7;
+  --text-muted: #808080;
+  --border-dark: #F8F8F7;
+  --border-light: #3A3A3A;
   --shadow-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
   --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-  --shadow-comic: 0 8px 16px -4px rgba(0, 0, 0, 0.3), 0 4px 8px -2px rgba(0, 0, 0, 0.2);
+  --shadow-brutalist: -5px 5px 0px 0px #F8F8F7;
 }
 
 /* Global background styles */
 html {
-  background: #ffffff;
+  background: #F4EFEA;
   min-height: 100%;
 }
 
 body {
-  background: #ffffff !important;
+  background: #F4EFEA !important;
   background-attachment: fixed;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
 /* Dark mode backgrounds */
 [data-theme='dark'] html {
-  background: #0f0f0f;
+  background: #1A1A1A;
 }
 
 [data-theme='dark'] body {
-  background: #0f0f0f !important;
+  background: #1A1A1A !important;
 }
 
 /* Ensure main content areas are transparent to show background */
@@ -127,13 +126,15 @@ body {
   background: transparent;
 }
 
-/* Navbar background fix */
+/* Navbar background - MotherDuck style */
 .navbar {
-  background: #ffffff !important;
+  background: #F4EFEA !important;
+  border-bottom: 2px solid #383838;
 }
 
 [data-theme='dark'] .navbar {
-  background: rgba(17, 24, 39, 0.95) !important;
+  background: #2A2A2A !important;
+  border-bottom: 2px solid #F8F8F7;
 }
 
 /* Ensure container is centered - override Docusaurus defaults */
@@ -357,7 +358,41 @@ body {
   }
 }
 
-/* Footer specific overrides */
+/* Footer specific overrides - MotherDuck style */
+.footer {
+  background: var(--accent-dark) !important;
+  border-top: 2px solid var(--accent-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .footer {
+  background: var(--warm-surface) !important;
+  border-top: 2px solid var(--border-dark);
+}
+
+.footer__link-item {
+  color: white !important;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.footer__link-item:hover {
+  color: var(--accent-yellow) !important;
+  transform: translateX(4px);
+  text-decoration: underline;
+}
+
+[data-theme='dark'] .footer__link-item {
+  color: var(--text-muted) !important;
+}
+
+[data-theme='dark'] .footer__link-item:hover {
+  color: white !important;
+}
+
 .footer__link-item svg {
   margin-left: 0.25rem;
   vertical-align: text-top;
@@ -646,7 +681,7 @@ body {
   --shadow-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-comic: 0 8px 16px -4px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.05);
+  --shadow-comic: 0 8px 16px -4px rgba(45, 55, 72, 0.4), 0 4px 8px -2px rgba(45, 55, 72, 0.2);
   --shadow-dark-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   --shadow-dark-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
   --shadow-dark-large: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
@@ -796,49 +831,148 @@ body {
   border-color: var(--border-subtle);
 }
 
-/* Custom component classes for the comic style */
-.btn-comic {
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-medium);
-  background: linear-gradient(to right, var(--color-primary), var(--color-accent-vibrant));
+/* Button styles - MotherDuck inspired */
+.btn-primary {
+  padding: 16.5px 22px;
+  border-radius: 2px;
+  background: #383838;
   color: white;
-  font-weight: 600;
-  box-shadow: var(--shadow-comic);
+  font-weight: 500;
+  font-size: 16px;
+  border: 2px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.btn-primary:hover {
+  transform: translate(7px, -7px);
+  box-shadow: -7px 7px 0px 0px #383838;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  padding: 16.5px 22px;
+  border-radius: 2px;
+  background: white;
+  color: #383838;
+  font-weight: 500;
+  font-size: 16px;
+  border: 2px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.btn-secondary:hover {
+  transform: translate(7px, -7px);
+  box-shadow: -7px 7px 0px 0px #383838;
+  background: #F4EFEA;
+  color: #383838;
+  text-decoration: none;
+}
+
+/* Keep old button classes for compatibility */
+.btn-comic {
+  padding: 16.5px 22px;
+  border-radius: 2px;
+  background: #383838;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  border: 2px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
 }
 
 .btn-comic:hover {
-  box-shadow: var(--shadow-large);
-  transform: translateY(-4px) rotate(1deg);
+  transform: translate(7px, -7px);
+  box-shadow: -7px 7px 0px 0px #383838;
+  color: white;
+  text-decoration: none;
 }
 
 .btn-comic-outline {
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-medium);
-  border: 2px solid var(--color-comic-border);
-  color: var(--color-comic-border);
-  font-weight: 600;
+  padding: 16.5px 22px;
+  border-radius: 2px;
+  background: white;
+  color: #383838;
+  font-weight: 500;
+  font-size: 16px;
+  border: 2px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
 }
 
 .btn-comic-outline:hover {
-  background: var(--color-primary-lightest);
-  transform: translateY(-4px) rotate(1deg);
+  transform: translate(7px, -7px);
+  box-shadow: -7px 7px 0px 0px #383838;
+  background: #F4EFEA;
+  color: #383838;
+  text-decoration: none;
 }
 
-/* Card components */
+/* Card components - MotherDuck style */
+.card-clean {
+  background: white;
+  border-radius: 2px;
+  border: 2px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.card-clean:hover {
+  transform: translate(5px, -5px);
+  box-shadow: -7px 7px 0px 0px #383838;
+}
+
+[data-theme='dark'] .card-clean {
+  background: #2A2A2A;
+  border-color: #F8F8F7;
+  box-shadow: -5px 5px 0px 0px #F8F8F7;
+}
+
+/* Keep old card class for compatibility */
 .card-comic {
   background: white;
-  border-radius: var(--radius-medium);
-  border: 1px solid #e5e7eb;
-  box-shadow: var(--shadow-soft);
-  padding: 1.5rem;
+  border-radius: 2px;
+  border: 2px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
+  padding: 2rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .card-comic:hover {
-  box-shadow: var(--shadow-comic);
-  transform: translateY(-4px);
+  transform: translate(5px, -5px);
+  box-shadow: -7px 7px 0px 0px #383838;
+}
+
+[data-theme='dark'] .card-comic {
+  background: #2A2A2A;
+  border-color: #F8F8F7;
+  box-shadow: -5px 5px 0px 0px #F8F8F7;
 }
 
 /* Documentation specific components */
@@ -971,6 +1105,7 @@ body {
   }
 }
 
+
 /* Animations */
 @keyframes gradientShift {
   0%, 100% { opacity: 0.9; }
@@ -988,6 +1123,46 @@ body {
 
 .animate-pulse-scale {
   animation: pulseScale 2s ease-in-out infinite;
+}
+
+/* Landing page specific styles - MotherDuck inspired */
+.hero-section {
+  background: var(--warm-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 2px;
+  border: 2px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translate(5px, -5px);
+  box-shadow: -7px 7px 0px 0px #383838;
+}
+
+[data-theme='dark'] .feature-card {
+  background: #2A2A2A;
+  border-color: #F8F8F7;
+  box-shadow: -5px 5px 0px 0px #F8F8F7;
+}
+
+.quick-example-section {
+  background: white;
+  position: relative;
+  border-top: 2px solid var(--border-dark);
+  border-bottom: 2px solid var(--border-dark);
+}
+
+[data-theme='dark'] .quick-example-section {
+  background: var(--warm-surface);
 }
 
 /* Documentation Styles */
