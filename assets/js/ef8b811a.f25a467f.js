@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreifydb_docs=self.webpackChunkreifydb_docs||[]).push([[8947],{6600:e=>{e.exports=JSON.parse('{"authors":[{"name":"Dominique","title":"Founder of ReifyDB","url":"https://github.com/reifydb","email":"dominique@reifydb.com","imageURL":"https://github.com/reifydb.png","key":"dominique","page":null,"count":7}]}')}}]);
