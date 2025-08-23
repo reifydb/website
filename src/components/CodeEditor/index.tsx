@@ -62,9 +62,9 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
           { token: 'number', foreground: 'B22222' },
         ],
         colors: {
-          'editor.background': '#FFFFFF',
+          'editor.background': '#FAFAFA',
           'editor.foreground': '#000000',
-          'editor.lineHighlightBackground': '#F7F7F7',
+          'editor.lineHighlightBackground': '#F5F5F5',
           'editorLineNumber.foreground': '#999999',
           'editor.selectionBackground': '#B4D5FE',
           'editor.inactiveSelectionBackground': '#E5EBF1',
