@@ -109,8 +109,8 @@ article {
    Documentation Sidebar
    ======================== */
 .theme-doc-sidebar-container {
-  background: var(--doc-surface) !important;
-  border-right: 3px solid var(--doc-border) !important;
+  background: var(--doc-bg) !important;
+  border-right: 2px solid var(--doc-border) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   /* transition removed */
@@ -118,7 +118,7 @@ article {
 
 /* Sidebar Menu Items */
 .theme-doc-sidebar-menu {
-  padding: 1rem !important;
+  padding: 1.5rem 1rem !important;
 }
 
 .theme-doc-sidebar-menu .menu__list {
@@ -127,66 +127,78 @@ article {
 }
 
 .theme-doc-sidebar-menu .menu__list-item {
-  margin: 0.5rem 0 !important;
+  margin: 0.25rem 0 !important;
 }
 
+/* Regular sidebar links - minimal style */
 .theme-doc-sidebar-menu .menu__link {
   display: block !important;
-  padding: 0.875rem 1.25rem !important;
-  background: white !important;
+  padding: 0.75rem 1rem !important;
+  background: transparent !important;
   color: var(--doc-text) !important;
-  font-weight: 500 !important;
-  font-size: 0.875rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.025em !important;
-  border: 3px solid var(--doc-border) !important;
+  font-weight: 400 !important;
+  font-size: 0.9375rem !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  border: none !important;
+  border-left: 3px solid transparent !important;
   border-radius: 0 !important;
-  box-shadow: var(--doc-shadow-small) !important;
-  /* transition removed */
+  box-shadow: none !important;
   text-decoration: none !important;
 }
 
 .theme-doc-sidebar-menu .menu__link:hover {
-  /* transform removed */
-  box-shadow: var(--doc-shadow) !important;
-  background: var(--doc-primary-lightest) !important;
+  background: var(--doc-surface) !important;
+  border-left-color: var(--doc-border) !important;
   color: var(--doc-primary) !important;
 }
 
 .theme-doc-sidebar-menu .menu__link--active {
-  background: var(--doc-primary) !important;
-  color: white !important;
-  box-shadow: var(--doc-shadow) !important;
-  /* transform removed */
-}
-
-/* Sidebar Categories */
-.theme-doc-sidebar-item-category {
-  margin: 1.5rem 0 !important;
-}
-
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
-  background: var(--doc-primary) !important;
-  color: white !important;
+  background: var(--doc-surface) !important;
+  color: var(--doc-primary) !important;
   font-weight: 600 !important;
+  border-left-color: var(--doc-primary) !important;
+}
+
+/* Sidebar Categories - cleaner style */
+.theme-doc-sidebar-item-category {
+  margin: 1rem 0 !important;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link,
+.menu__caret {
+  background: transparent !important;
+  color: var(--doc-text) !important;
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
   text-transform: uppercase !important;
   letter-spacing: 0.05em !important;
-  padding: 1rem 1.25rem !important;
-  border: 3px solid var(--doc-border) !important;
-  box-shadow: var(--doc-shadow) !important;
+  padding: 0.75rem 1rem !important;
+  border: none !important;
+  border-bottom: 2px solid var(--doc-border) !important;
+  box-shadow: none !important;
 }
 
 .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link:hover {
-  /* transform removed */
-  box-shadow: var(--doc-shadow-hover) !important;
+  background: var(--doc-surface) !important;
 }
 
-/* Sidebar Nested Items */
+/* Sidebar Nested Items - cleaner indentation */
 .theme-doc-sidebar-item-category .menu__list {
-  margin-top: 0.5rem !important;
+  margin-top: 0 !important;
   margin-left: 0 !important;
-  padding-left: 0.5rem !important;
-  border-left: 3px solid var(--doc-border) !important;
+  padding-left: 1rem !important;
+  border-left: 2px solid var(--doc-border-light) !important;
+}
+
+/* Remove caret rotation animation */
+.menu__caret {
+  transition: none !important;
+}
+
+/* Simplify expanded state */
+.menu__list-item--collapsed .menu__list {
+  display: none !important;
 }
 
 /* ========================
@@ -674,25 +686,34 @@ article {
    Dark Mode Adjustments
    ======================== */
 [data-theme='dark'] .theme-doc-sidebar-container {
-  background: var(--doc-surface) !important;
+  background: var(--doc-bg) !important;
   border-right-color: var(--doc-border) !important;
 }
 
 [data-theme='dark'] .theme-doc-sidebar-menu .menu__link {
-  background: var(--doc-surface-secondary) !important;
+  background: transparent !important;
   color: var(--doc-text) !important;
-  border-color: var(--doc-border) !important;
-  box-shadow: var(--doc-shadow-small) !important;
+  border-left-color: transparent !important;
 }
 
 [data-theme='dark'] .theme-doc-sidebar-menu .menu__link:hover {
-  background: var(--doc-primary-lightest) !important;
-  color: var(--doc-text) !important;
+  background: var(--doc-surface) !important;
+  border-left-color: var(--doc-border) !important;
+  color: var(--doc-primary) !important;
 }
 
 [data-theme='dark'] .theme-doc-sidebar-menu .menu__link--active {
-  background: var(--doc-primary) !important;
-  color: var(--doc-bg) !important;
+  background: var(--doc-surface) !important;
+  color: var(--doc-primary) !important;
+  border-left-color: var(--doc-primary) !important;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
+  border-bottom-color: var(--doc-border) !important;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-category .menu__list {
+  border-left-color: var(--doc-border-light) !important;
 }
 
 [data-theme='dark'] .theme-doc-markdown {
