@@ -63,8 +63,8 @@ function NavbarContentLayout({
       </div>
       
       {/* Center items - positioned absolutely */}
-      <div className="absolute left-0 right-0 flex justify-center items-center gap-6 pointer-events-none h-[60px]">
-        <div className="pointer-events-auto flex items-center gap-2">
+      <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-6 h-[60px] z-10">
+        <div className="flex items-center gap-2">
           {center}
         </div>
       </div>
