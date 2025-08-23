@@ -6,18 +6,18 @@ import AnimatedText from '@site/src/components/AnimatedText';
 
 function HomepageHeader() {
   return (
-    <header className="hero-section py-24 md:py-32 text-center">
+    <header className="hero-section py-12 md:py-24 text-center">
       <div className="container mx-auto px-4">
-        <h1 className="text-5xl md:text-7xl font-bold mb-2 leading-tight text-gray-900 dark:text-white tracking-tight">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-gray-900 dark:text-white tracking-tight">
           ReifyDB
         </h1>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-12 text-gray-600 dark:text-gray-400 leading-relaxed">
+              Fast, embeddable, and cloud-native database with real-time capabilities.
+              Built for modern applications that demand performance and simplicity.
+          </p>
         <div className="mb-8">
           <AnimatedText />
         </div>
-        <p className="text-lg md:text-xl max-w-3xl mx-auto mb-12 text-gray-600 dark:text-gray-400 leading-relaxed">
-          Fast, embeddable, and cloud-native database with real-time capabilities.
-          Built for modern applications that demand performance and simplicity.
-        </p>
         <div className="flex gap-4 justify-center items-center flex-wrap">
           <Link
             className="btn-primary"

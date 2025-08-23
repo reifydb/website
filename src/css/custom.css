@@ -4,6 +4,43 @@
  * work well for content-centric websites.
  */
 
+/* IBM Plex Mono Font Face Definitions - Self Hosted */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2') format('woff2'),
+       url('/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono/IBMPlexMono-Medium.woff2') format('woff2'),
+       url('/fonts/ibm-plex-mono/IBMPlexMono-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono/IBMPlexMono-SemiBold.woff2') format('woff2'),
+       url('/fonts/ibm-plex-mono/IBMPlexMono-SemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono/IBMPlexMono-Bold.woff2') format('woff2'),
+       url('/fonts/ibm-plex-mono/IBMPlexMono-Bold.woff') format('woff');
+}
+
 /* Import Tailwind CSS with all styles consolidated */
 @import './tailwind.css';
 
