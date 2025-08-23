@@ -1,28 +1,27 @@
 .contactContainer {
   min-height: calc(100vh - var(--ifm-navbar-height));
-  background: linear-gradient(180deg, var(--ifm-background-color) 0%, var(--ifm-background-surface-color) 100%);
+  background: #F4EFEA;
 }
 
 .heroSection {
   text-align: center;
   padding: 4rem 1rem 3rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-lightest) 0%, transparent 100%);
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  background: #F4EFEA;
+  border-bottom: 3px solid #383838;
 }
 
 .heroTitle {
   font-size: 3rem;
-  font-weight: 800;
+  font-weight: bold;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-dark) 0%, var(--ifm-color-primary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
 }
 
 .heroSubtitle {
   font-size: 1.25rem;
-  color: var(--ifm-color-emphasis-700);
+  color: #4a4a4a;
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.6;
@@ -67,17 +66,17 @@
 }
 
 .benefitCard {
-  padding: 1.5rem;
-  background: var(--ifm-background-surface-color);
-  border-radius: 12px;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  transition: all 0.3s ease;
+  padding: 2rem;
+  background: white;
+  border-radius: 0;
+  border: 3px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .benefitCard:hover {
-  transform: translateX(8px);
-  border-color: var(--ifm-color-primary-lighter);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translate(5px, -5px);
+  box-shadow: -7px 7px 0px 0px #383838;
 }
 
 .benefitIcon {
@@ -87,13 +86,14 @@
 
 .benefitCard h3 {
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: bold;
   margin-bottom: 0.5rem;
-  color: var(--ifm-heading-color);
+  color: #1a1a1a;
+  text-transform: uppercase;
 }
 
 .benefitCard p {
-  color: var(--ifm-color-emphasis-700);
+  color: #4a4a4a;
   line-height: 1.6;
   margin: 0;
 }
@@ -104,22 +104,23 @@
 }
 
 .formCard {
-  background: var(--ifm-background-surface-color);
-  border-radius: 16px;
+  background: white;
+  border-radius: 0;
   padding: 2.5rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  border: 1px solid var(--ifm-color-emphasis-200);
+  border: 3px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
 }
 
 .formTitle {
   font-size: 1.75rem;
-  font-weight: 700;
+  font-weight: bold;
   margin-bottom: 0.5rem;
-  color: var(--ifm-heading-color);
+  color: #1a1a1a;
+  text-transform: uppercase;
 }
 
 .formDescription {
-  color: var(--ifm-color-emphasis-600);
+  color: #4a4a4a;
   margin-bottom: 2rem;
   line-height: 1.5;
 }
@@ -151,10 +152,12 @@
 .label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ifm-color-emphasis-800);
+  color: #1a1a1a;
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
 }
 
 .required {
@@ -165,12 +168,12 @@
 .select,
 .textarea {
   padding: 0.75rem 1rem;
-  background: var(--ifm-background-color);
-  border: 1.5px solid var(--ifm-color-emphasis-300);
-  border-radius: 8px;
+  background: white;
+  border: 3px solid #383838;
+  border-radius: 0;
   font-size: 0.95rem;
-  color: var(--ifm-font-color-base);
-  transition: all 0.2s ease;
+  color: #1a1a1a;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   font-family: inherit;
 }
@@ -179,8 +182,9 @@
 .select:focus,
 .textarea:focus {
   outline: none;
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 3px var(--ifm-color-primary-lightest);
+  border-color: #383838;
+  box-shadow: -3px 3px 0px 0px #383838;
+  transform: translate(2px, -2px);
 }
 
 .input:disabled,
@@ -232,26 +236,27 @@
 }
 
 .submitButton {
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+  padding: 16.5px 22px;
+  background: #383838;
   color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  border: 3px solid #383838;
+  border-radius: 0;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.025em;
+  box-shadow: -5px 5px 0px 0px #383838;
 }
 
 .submitButton:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translate(7px, -7px);
+  box-shadow: -7px 7px 0px 0px #383838;
 }
 
 .submitButton:disabled {
@@ -295,13 +300,15 @@
 .successMessage,
 .errorMessage {
   padding: 1rem 1.25rem;
-  border-radius: 8px;
+  border-radius: 0;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   font-size: 0.95rem;
   animation: slideDown 0.3s ease;
+  border: 3px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
 }
 
 @keyframes slideDown {
@@ -316,15 +323,13 @@
 }
 
 .successMessage {
-  background: var(--ifm-color-success-contrast-background);
-  border: 1px solid var(--ifm-color-success);
-  color: var(--ifm-color-success-dark);
+  background: #F8F8F7;
+  color: #1a1a1a;
 }
 
 .errorMessage {
-  background: var(--ifm-color-danger-contrast-background);
-  border: 1px solid var(--ifm-color-danger);
-  color: var(--ifm-color-danger-dark);
+  background: #F8F8F7;
+  color: #1a1a1a;
 }
 
 .successIcon,
@@ -337,14 +342,16 @@
   margin: 0 auto;
   padding: 4rem 1rem;
   text-align: center;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
+  border-top: 3px solid #383838;
+  background: #FEFEFE;
 }
 
 .alternativeContact h2 {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: bold;
   margin-bottom: 2rem;
-  color: var(--ifm-heading-color);
+  color: #1a1a1a;
+  text-transform: uppercase;
 }
 
 .contactOptions {
@@ -356,69 +363,115 @@
 
 .contactOption {
   padding: 2rem;
-  background: var(--ifm-background-surface-color);
-  border-radius: 12px;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  transition: all 0.3s ease;
+  background: white;
+  border-radius: 0;
+  border: 3px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contactOption:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  border-color: var(--ifm-color-primary-lighter);
+  transform: translate(5px, -5px);
+  box-shadow: -7px 7px 0px 0px #383838;
 }
 
 .contactOption h3 {
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: bold;
   margin-bottom: 1rem;
-  color: var(--ifm-heading-color);
+  color: #1a1a1a;
+  text-transform: uppercase;
 }
 
 .contactOption p {
-  color: var(--ifm-color-emphasis-700);
+  color: #4a4a4a;
   margin: 0.5rem 0;
   line-height: 1.5;
 }
 
 .contactOption a {
-  color: var(--ifm-color-primary);
+  color: #383838;
   text-decoration: none;
   font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
 }
 
 .contactOption a:hover {
-  text-decoration: underline;
+  border-bottom-color: #383838;
 }
 
 /* Dark mode adjustments */
-[data-theme='dark'] .formCard {
-  background: var(--ifm-background-surface-color);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+[data-theme='dark'] .contactContainer {
+  background: #1a1a1a;
+}
+
+[data-theme='dark'] .heroSection {
+  background: #2A2A2A;
+  border-bottom-color: #F8F8F7;
+}
+
+[data-theme='dark'] .formCard,
+[data-theme='dark'] .benefitCard,
+[data-theme='dark'] .contactOption {
+  background: #2A2A2A;
+  border-color: #F8F8F7;
+  box-shadow: -5px 5px 0px 0px #F8F8F7;
+}
+
+[data-theme='dark'] .formCard:hover,
+[data-theme='dark'] .benefitCard:hover,
+[data-theme='dark'] .contactOption:hover {
+  box-shadow: -7px 7px 0px 0px #F8F8F7;
 }
 
 [data-theme='dark'] .input,
 [data-theme='dark'] .select,
 [data-theme='dark'] .textarea {
-  background: var(--ifm-background-color);
-  border-color: var(--ifm-color-emphasis-400);
+  background: #1a1a1a;
+  border-color: #F8F8F7;
+  color: #F8F8F7;
 }
 
 [data-theme='dark'] .input:focus,
 [data-theme='dark'] .select:focus,
 [data-theme='dark'] .textarea:focus {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 3px rgba(var(--ifm-color-primary-rgb), 0.2);
+  box-shadow: -3px 3px 0px 0px #F8F8F7;
 }
 
-[data-theme='dark'] .benefitCard,
-[data-theme='dark'] .contactOption {
-  background: var(--ifm-background-surface-color);
-  border-color: var(--ifm-color-emphasis-300);
+[data-theme='dark'] .alternativeContact {
+  background: #2A2A2A;
+  border-top-color: #F8F8F7;
 }
 
-[data-theme='dark'] .benefitCard:hover,
-[data-theme='dark'] .contactOption:hover {
-  border-color: var(--ifm-color-primary-dark);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+[data-theme='dark'] .heroTitle,
+[data-theme='dark'] .formTitle,
+[data-theme='dark'] .alternativeContact h2,
+[data-theme='dark'] .benefitCard h3,
+[data-theme='dark'] .contactOption h3,
+[data-theme='dark'] .label {
+  color: #F8F8F7;
+}
+
+[data-theme='dark'] .heroSubtitle,
+[data-theme='dark'] .formDescription,
+[data-theme='dark'] .benefitCard p,
+[data-theme='dark'] .contactOption p {
+  color: #808080;
+}
+
+[data-theme='dark'] .contactOption a {
+  color: #F8F8F7;
+}
+
+[data-theme='dark'] .contactOption a:hover {
+  border-bottom-color: #F8F8F7;
+}
+
+[data-theme='dark'] .successMessage,
+[data-theme='dark'] .errorMessage {
+  background: #2A2A2A;
+  border-color: #F8F8F7;
+  box-shadow: -5px 5px 0px 0px #F8F8F7;
+  color: #F8F8F7;
 }
