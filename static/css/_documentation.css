@@ -21,6 +21,18 @@ article * {
   transform: none !important;
 }
 
+/* Remove article background in documentation */
+article {
+  background: transparent !important;
+}
+
+/* Hide "Edit this page" link */
+.theme-edit-this-page,
+[class*="editThisPage"],
+.theme-doc-footer-edit-meta-row {
+  display: none !important;
+}
+
 /* ========================
    CSS Variables & Tokens
    ======================== */
@@ -185,11 +197,14 @@ article * {
 [class*="markdown"] {
   background: var(--doc-surface-secondary) !important;
   padding: 3rem !important;
-  margin: 0 2rem 0 0 !important;
+  margin: 0 !important;
+  margin-top: -3px !important;  /* Connect with breadcrumb border */
   border: 3px solid var(--doc-border) !important;
   border-radius: 0 !important;
   box-shadow: var(--doc-shadow) !important;
   animation: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
   /* transition removed */
 }
 
@@ -440,24 +455,32 @@ article * {
 /* ========================
    Table of Contents
    ======================== */
+/* Hide the outer container and only style the inner table-of-contents */
 .theme-doc-toc-desktop,
-.table-of-contents,
 .tableOfContents_RdHh {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-top: 2rem !important;
+}
+
+/* Style only the actual table-of-contents element */
+.table-of-contents {
   background: var(--doc-surface) !important;
   border: 3px solid var(--doc-border) !important;
   border-radius: 0 !important;
-  padding: 1.5rem !important;
+  padding: 3rem 1.5rem !important;
   box-shadow: var(--doc-shadow) !important;
   position: sticky !important;
   top: calc(var(--ifm-navbar-height) + 1rem) !important;
-  margin-left: 0 !important;
+  margin: 0 !important;
   width: 100% !important;
 }
 
-/* TOC column adjustments */
-.theme-doc-toc-desktop {
-  max-height: calc(100vh - var(--ifm-navbar-height) - 4rem) !important;
-  overflow-y: auto !important;
+/* Remove the double border effect */
+.table-of-contents.table-of-contents__left-border {
+  border-left: 3px solid var(--doc-border) !important;
 }
 
 .table-of-contents__title,
@@ -526,7 +549,7 @@ article * {
 .theme-doc-breadcrumbs {
   background: var(--doc-surface) !important;
   padding: 1rem 1.5rem !important;
-  margin: 0 0 2rem 0 !important;
+  margin: 0 !important;  /* Remove bottom margin to eliminate gap */
   border: 3px solid var(--doc-border) !important;
   border-radius: 0 !important;
   box-shadow: var(--doc-shadow-small) !important;
