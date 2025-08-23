@@ -5,6 +5,9 @@
 
 @import "tailwindcss";
 
+/* Import Documentation Styles - Clean Brutalist Design */
+@import './_documentation.css';
+
 /**
  * Design Tokens and CSS Custom Properties
  * Migrated from _tokens.css - Contains all color palettes, spacing, shadows, and design system tokens
@@ -1353,227 +1356,6 @@ p, span, div {
   background: #2A2A2A;
 }
 
-/* Documentation Styles */
-.docs-wrapper {
-  background: linear-gradient(135deg, var(--warm-bg) 0%, var(--ifm-background-color) 100%);
-  min-height: calc(100vh - 60px);
-  position: relative;
-}
-
-.docs-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 80% 20%, rgba(214, 51, 132, 0.03) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(142, 68, 173, 0.02) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Documentation Sidebar */
-.theme-doc-sidebar-container {
-  border-right: 3px solid var(--comic-border);
-  background: linear-gradient(180deg, var(--warm-surface) 0%, var(--ifm-background-surface-color) 100%);
-  box-shadow: 4px 0 12px rgba(74, 21, 75, 0.08);
-  position: relative;
-}
-
-.theme-doc-sidebar-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: -3px;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, var(--accent-warm) 0%, var(--accent-vibrant) 50%, var(--accent-cool) 100%);
-  opacity: 0.6;
-}
-
-/* Sidebar Menu Items */
-.theme-doc-sidebar-menu .menu__list-item {
-  margin: 0.25rem 0.5rem;
-}
-
-.theme-doc-sidebar-menu .menu__link {
-  padding: 0.75rem 1.25rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-weight: 500;
-  color: var(--ifm-color-emphasis-700);
-  border-radius: var(--radius-small);
-  border: 2px solid transparent;
-  position: relative;
-  background: transparent;
-}
-
-.theme-doc-sidebar-menu .menu__link:hover {
-  color: var(--ifm-color-primary);
-  border-color: var(--comic-border);
-  transform: translateX(6px);
-  box-shadow: var(--shadow-soft);
-  background: linear-gradient(135deg, var(--ifm-color-primary-lightest) 0%, rgba(255, 107, 53, 0.05) 100%);
-}
-
-.theme-doc-sidebar-menu .menu__link--active {
-  color: var(--ifm-color-primary);
-  font-weight: 600;
-  border-color: var(--comic-border);
-  background: linear-gradient(135deg, var(--ifm-color-primary-lightest) 0%, rgba(214, 51, 132, 0.08) 100%);
-  box-shadow: var(--shadow-soft);
-  transform: translateX(3px);
-}
-
-/* Documentation Main Content */
-.theme-doc-markdown {
-  background: var(--ifm-background-surface-color);
-  border-radius: var(--radius-medium);
-  padding: 3rem;
-  margin: 2rem;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
-
-.theme-doc-markdown::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 8px;
-  background: linear-gradient(90deg, 
-    var(--accent-warm) 0%, 
-    var(--accent-vibrant) 25%, 
-    var(--accent-deep) 50%, 
-    var(--accent-cool) 75%, 
-    var(--accent-vibrant) 100%);
-  animation: gradientShift 8s ease infinite;
-}
-
-/* Documentation Headers */
-.theme-doc-markdown h1 {
-  color: var(--ifm-color-primary);
-  border-bottom: 2px solid #e5e7eb;
-  padding-bottom: 1rem;
-  margin-bottom: 2rem;
-  position: relative;
-  font-weight: 700;
-  font-size: 2.25rem;
-}
-
-.theme-doc-markdown h1::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 120px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-warm) 0%, var(--accent-vibrant) 50%, var(--accent-cool) 100%);
-  border-radius: 2px;
-  animation: pulseScale 2s ease-in-out infinite;
-}
-
-.theme-doc-markdown h2 {
-  color: var(--ifm-color-primary-dark);
-  border-left: 3px solid var(--ifm-color-primary);
-  padding-left: 1rem;
-  margin: 2rem 0 1rem 0;
-  font-weight: 600;
-  font-size: 1.75rem;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.theme-doc-markdown h2:hover {
-  transform: translateX(4px);
-  border-left-color: var(--accent-warm);
-}
-
-.theme-doc-markdown h3 {
-  color: #2c3e50;
-  position: relative;
-  margin: 1.5rem 0 1rem 0;
-  font-weight: 600;
-  font-size: 1.375rem;
-}
-
-.theme-doc-markdown h3::before {
-  content: '→';
-  color: var(--accent-vibrant);
-  margin-right: 0.75rem;
-  font-weight: bold;
-  display: inline-block;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.theme-doc-markdown h3:hover::before {
-  transform: translateX(4px);
-}
-
-/* Code Blocks and Inline Code */
-.theme-doc-markdown pre {
-  border: 1px solid #e5e7eb;
-  border-radius: var(--radius-medium);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: var(--ifm-background-surface-color);
-}
-
-.theme-doc-markdown pre::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-warm) 0%, var(--accent-vibrant) 50%, var(--accent-cool) 100%);
-}
-
-.theme-doc-markdown pre:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-comic), 0 0 0 1px var(--comic-border-thick);
-}
-
-.theme-doc-markdown code {
-  background: #f6f8fa;
-  border: 1px solid #e5e7eb;
-  border-radius: 4px;
-  padding: 0.15rem 0.4rem;
-  font-size: 0.875em;
-  font-weight: 500;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Blockquotes */
-.theme-doc-markdown blockquote {
-  border-left: 4px solid var(--ifm-color-primary);
-  background: #fafbfc;
-  border-radius: 0 var(--radius-small) var(--radius-small) 0;
-  padding: 1rem 1.5rem;
-  margin: 1.5rem 0;
-  position: relative;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.theme-doc-markdown blockquote::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 5px;
-  background: linear-gradient(180deg, var(--accent-warm) 0%, var(--accent-vibrant) 50%, var(--accent-cool) 100%);
-}
-
 /* Pagination */
 .pagination-nav {
   border-top: 2px solid #e5e7eb;
@@ -1667,14 +1449,14 @@ article {
   border-radius: var(--radius-medium) !important;
   box-shadow: var(--shadow-comic) !important;
   position: relative !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  /* removed transition for static appearance */
   overflow: hidden !important;
   z-index: 1 !important;
 }
 
 [class*="blog"] article:hover,
 article:hover {
-  transform: translateY(-12px) scale(1.02);
+  /* removed transform for static appearance */
   box-shadow: 
     var(--shadow-comic), 
     0 0 0 2px var(--comic-border-thick),
@@ -1698,7 +1480,7 @@ article h2 {
   font-weight: 700 !important;
   margin-bottom: 0.75rem !important;
   line-height: 1.3 !important;
-  transition: color 0.3s;
+  /* removed transition for static appearance */
 }
 
 article h2 a {
@@ -1776,48 +1558,6 @@ article .margin-vert--md,
 }
 
 /* Dark mode adjustments */
-[data-theme='dark'] .docs-wrapper {
-  background: linear-gradient(135deg, #1a0f1f 0%, var(--ifm-background-color) 100%);
-}
-
-[data-theme='dark'] .theme-doc-sidebar-container {
-  border-right-color: var(--comic-border);
-  background: linear-gradient(180deg, #2a1a3a 0%, var(--ifm-background-surface-color) 100%);
-  box-shadow: 4px 0 12px rgba(255, 181, 112, 0.1);
-}
-
-[data-theme='dark'] .theme-doc-markdown {
-  background: var(--ifm-background-surface-color);
-  border-color: var(--comic-border);
-}
-
-[data-theme='dark'] .theme-doc-markdown h1 {
-  background: linear-gradient(135deg, var(--comic-border) 0%, var(--comic-border-thick) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  border-bottom-color: var(--comic-border);
-}
-
-[data-theme='dark'] .theme-doc-markdown h2 {
-  color: var(--comic-border-thick);
-  border-left-color: var(--comic-border);
-}
-
-[data-theme='dark'] .theme-doc-markdown h3 {
-  color: var(--comic-border);
-}
-
-[data-theme='dark'] .theme-doc-markdown pre {
-  border-color: var(--comic-border);
-  background: #1e1e1e;
-}
-
-[data-theme='dark'] .theme-doc-markdown code {
-  background: linear-gradient(135deg, rgba(255, 181, 112, 0.15) 0%, rgba(255, 196, 144, 0.08) 100%);
-  border-color: var(--comic-border);
-}
-
 [data-theme='dark'] article.margin-bottom--xl {
   background: var(--ifm-background-color);
   border-color: var(--ifm-color-emphasis-300);
