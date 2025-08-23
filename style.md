@@ -1,388 +1,317 @@
-# ReifyDB Website - Vibrant Comic Style Design System
+# ReifyDB Website - Clean Brutalist Design System
 
 ## Overview
-This document outlines the vibrant comic-style design system applied to the ReifyDB website, featuring a stunning orange-purple gradient color palette inspired by modern, visually appealing design trends. The system combines dark comic-style borders, playful animations, and a rich color scheme that creates an engaging and memorable visual experience.
+This document outlines the clean, professional design system applied to the ReifyDB website, inspired by MotherDuck's minimalist brutalist aesthetic. The system features sharp corners, distinctive shadow effects, bold borders, and a light color palette that ensures excellent readability while maintaining a modern, technical appearance.
 
 ## Design Principles
 
-### 1. Comic-Style Borders
-- **Primary borders**: 3-4px thick using `--comic-border` color
-- **Secondary borders**: Double-border effects using `--comic-border-thick` 
-- **Hover enhancements**: Secondary borders appear on hover for depth
-- **Border radius**: Consistent use of `--radius-medium` (12px) and `--radius-small` (8px)
+### 1. Brutalist Borders
+- **Primary borders**: 3px solid using `#383838` (dark gray)
+- **Sharp corners**: All elements use `border-radius: 0` for rectangular appearance
+- **Section separators**: 3px horizontal lines between major sections
+- **Consistent thickness**: Uniform 3px borders throughout
 
-### 2. Interactive Animations
-- **Transform effects**: `translateY(-6px to -8px)` with slight rotations (`-1deg to 1deg`)
-- **Timing function**: `cubic-bezier(0.4, 0, 0.2, 1)` for smooth, professional animations
+### 2. Minimalist Interactions
+- **Transform effects**: `translate(7px, -7px)` for buttons, `translate(5px, -5px)` for cards
+- **Timing function**: `cubic-bezier(0.4, 0, 0.2, 1)` for smooth transitions
 - **Duration**: 0.3s for hover transitions, 0.2s for button interactions
-- **Scale effects**: Icons scale to 1.05-1.1 with rotation for playful feel
+- **No rotations**: Clean, professional movement without playful rotations
 
-### 3. Shadow System
-- **Comic shadows**: `--shadow-comic` with stronger contrast than standard shadows
-- **Layered shadows**: Multiple shadow layers for enhanced depth
-- **Hover shadows**: Intensified shadows on interaction
+### 3. Brutalist Shadow System
+- **Primary shadow**: `-5px 5px 0px 0px #383838` for static elements
+- **Hover shadow**: `-7px 7px 0px 0px #383838` for interactive states
+- **No blur**: Sharp, distinctive shadows that reinforce the brutalist aesthetic
+- **Consistent direction**: All shadows offset down and to the right
 
 ## CSS Variables
 
-### Color Tokens - Vibrant Orange-Purple Palette
+### Color Tokens - Light Professional Palette
 ```css
-/* Light Mode - Vibrant Gradient Colors */
---ifm-color-primary: #FF6B35;           /* Vibrant Orange */
---ifm-color-primary-dark: #E74C3C;      /* Red-Orange */
---ifm-color-primary-darker: #D63384;    /* Magenta */
---ifm-color-primary-darkest: #8E44AD;   /* Deep Purple */
---ifm-color-primary-light: #FF8A50;     /* Light Orange */
---ifm-color-primary-lighter: #FFB570;   /* Soft Orange */
---ifm-color-primary-lightest: #FFF5F0;  /* Very Light Orange */
+/* Light Mode - Clean, Readable Colors */
+--ifm-color-primary: #383838;           /* Dark Gray */
+--ifm-color-primary-dark: #2A2A2A;      /* Darker Gray */
+--ifm-color-primary-darker: #1A1A1A;    /* Almost Black */
+--ifm-color-primary-darkest: #0A0A0A;   /* Black */
+--ifm-color-primary-light: #4A4A4A;     /* Medium Gray */
+--ifm-color-primary-lighter: #5A5A5A;   /* Light Gray */
+--ifm-color-primary-lightest: #F4EFEA;  /* Warm Beige */
 
---warm-bg: #FFF8F5;                     /* Warm peachy background */
---warm-surface: #FFF0EB;                /* Warm surface color */
---accent-warm: #FF6B35;                 /* Primary orange accent */
---accent-cool: #8E44AD;                 /* Purple accent */
---accent-deep: #6F42C1;                 /* Deep purple */
---accent-vibrant: #D63384;              /* Vibrant magenta */
---comic-border: #4A154B;                /* Dark purple border */
---comic-border-thick: #2D1B69;          /* Darker purple border */
+--warm-bg: #F4EFEA;                     /* Main background - warm beige */
+--warm-surface: #F8F8F7;                /* Light gray surface */
+--accent-yellow: #FFDE00;               /* Accent yellow (unused) */
+--accent-teal: #53DBC9;                 /* Accent teal (unused) */
+--accent-blue: #6FC2FF;                 /* Accent blue (unused) */
+--accent-dark: #383838;                 /* Primary dark gray */
+--border-dark: #383838;                 /* Border color */
+--border-light: #E5E5E5;                /* Light borders */
+--text-muted: #555555;                  /* Muted text - dark enough for readability */
+--ifm-font-color-base: #1a1a1a;        /* Base text - very dark for contrast */
 
-/* Dark Mode - Enhanced Vibrant Theme */
---comic-border: #FFB570;                /* Light orange border for dark mode */
---comic-border-thick: #FFC490;          /* Lighter orange secondary border */
+/* Dark Mode - High Contrast */
+--border-dark: #F8F8F7;                 /* Light borders in dark mode */
+--warm-surface: #2A2A2A;                /* Dark surface */
+--text-muted: #808080;                  /* Muted text in dark mode */
 ```
 
 ### Shadow Tokens
 ```css
---shadow-comic: 0 8px 16px -4px rgba(45, 55, 72, 0.4), 0 4px 8px -2px rgba(45, 55, 72, 0.2);
+--shadow-brutalist: -5px 5px 0px 0px #383838;  /* Standard brutalist shadow */
+/* Hover state uses -7px 7px offset */
 ```
 
 ### Border Radius
 ```css
---radius-soft: 16px;
---radius-medium: 12px;
---radius-small: 8px;
+--radius-soft: 0;    /* No rounding */
+--radius-medium: 0;  /* No rounding */
+--radius-small: 0;   /* No rounding */
 ```
 
 ## Component Patterns
 
-### 1. Card Components
+### 1. Button Components
 ```css
-.card-component {
-  border: 3px solid var(--comic-border);
-  border-radius: var(--radius-medium);
-  box-shadow: var(--shadow-comic);
+.btn-primary {
+  padding: 16.5px 22px;
+  border-radius: 0;
+  background: #383838;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  border: 3px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
 }
 
-/* Double border effect */
-.card-component::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  border: 2px solid var(--comic-border-thick);
-  border-radius: var(--radius-medium);
-  opacity: 0;
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-  z-index: -1;
+.btn-primary:hover {
+  transform: translate(7px, -7px);
+  box-shadow: -7px 7px 0px 0px #383838;
 }
 
-.card-component:hover {
-  transform: translateY(-8px) rotate(-1deg);
-  box-shadow: var(--shadow-comic), 0 0 0 1px var(--comic-border-thick);
-  border-color: var(--comic-border-thick);
+.btn-secondary {
+  /* Same structure but with white background */
+  background: white;
+  color: #383838;
+  border: 3px solid #383838;
 }
 
-.card-component:hover::before {
-  opacity: 1;
+.btn-secondary:hover {
+  background: #F4EFEA; /* Subtle background change */
 }
 ```
 
-### 2. Button Components
+### 2. Card Components
 ```css
-.button-comic {
-  border: 3px solid var(--comic-border);
-  border-radius: var(--radius-small);
-  box-shadow: var(--shadow-comic);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+.card-clean {
+  background: white;
+  border-radius: 0;
+  border: 3px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.button-comic::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  border: 1px solid var(--comic-border-thick);
-  border-radius: var(--radius-small);
-  opacity: 0;
-  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-  z-index: -1;
+.card-clean:hover {
+  transform: translate(5px, -5px);
+  box-shadow: -7px 7px 0px 0px #383838;
 }
 
-.button-comic:hover {
-  transform: translateY(-3px) rotate(-0.5deg);
-  box-shadow: var(--shadow-comic), 0 0 0 1px var(--comic-border-thick);
-  border-color: var(--comic-border-thick);
-}
-
-.button-comic:hover::before {
-  opacity: 1;
+[data-theme='dark'] .card-clean {
+  background: #2A2A2A;
+  border-color: #F8F8F7;
+  box-shadow: -5px 5px 0px 0px #F8F8F7;
 }
 ```
 
-### 3. Icon Components
+### 3. Feature Cards
 ```css
-.icon-comic {
-  border: 2px solid var(--comic-border);
-  border-radius: var(--radius-medium);
+.feature-card {
+  background: white;
+  border-radius: 0;
+  border: 3px solid #383838;
+  box-shadow: -5px 5px 0px 0px #383838;
+  padding: 2rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  overflow: hidden;
 }
 
-.icon-comic::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 1px solid var(--comic-border-thick);
-  border-radius: var(--radius-medium);
-  opacity: 0;
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-  z-index: -1;
-}
-
-.parent:hover .icon-comic {
-  transform: scale(1.1) rotate(-5deg);
-  box-shadow: var(--shadow-comic);
-  border-color: var(--comic-border-thick);
-}
-
-.parent:hover .icon-comic::before {
-  opacity: 1;
+.feature-card:hover {
+  transform: translate(5px, -5px);
+  box-shadow: -7px 7px 0px 0px #383838;
 }
 ```
 
 ### 4. Section Backgrounds
 ```css
-.section-background {
-  background: linear-gradient(135deg, var(--warm-surface) 0%, var(--ifm-background-surface-color) 100%);
-  position: relative;
+/* Light, pastel backgrounds for all sections */
+.hero-section {
+  background: #F4EFEA;  /* Warm beige */
+  border-bottom: 3px solid #383838;
 }
 
-/* Optional: Add subtle pattern overlay */
-.section-background::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 30% 70%, rgba(37, 99, 235, 0.05) 0%, transparent 60%);
-  pointer-events: none;
+.quick-example-section {
+  background: #FEFEFE;  /* Very light gray */
+  border-top: 3px solid #383838;
+  border-bottom: 3px solid #383838;
+}
+
+/* Section separator class */
+.section-separator {
+  border-bottom: 3px solid #383838;
 }
 ```
 
-### 5. Accent Bars (Top of Cards)
+### 5. Navigation Bar
 ```css
-.accent-bar::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--accent-warm) 0%, var(--ifm-color-primary) 100%);
-  border-radius: var(--radius-medium) var(--radius-medium) 0 0;
-  transform: scaleX(0);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.navbar {
+  background: #F4EFEA !important;
+  border-bottom: 3px solid #383838;
 }
 
-.accent-bar:hover::after {
-  transform: scaleX(1);
+.navbar__item {
+  border-radius: 0;
+  border: 2px solid transparent;
 }
+
+.navbar__item:hover {
+  border-color: #383838;
+  transform: translateY(-2px);
+}
+```
+
+### 6. Typography
+```css
+/* Ensure text readability */
+h1, h2, h3, h4, h5, h6 {
+  color: #1a1a1a !important;  /* Very dark for maximum contrast */
+  text-transform: uppercase;    /* Professional, technical appearance */
+  font-weight: bold;
+}
+
+p, span, div {
+  color: #1a1a1a;  /* Dark text by default */
+}
+
+/* Text utility classes with proper contrast */
+.text-gray-600 { color: #4a4a4a !important; }
+.text-gray-700 { color: #333333 !important; }
+.text-gray-800 { color: #1a1a1a !important; }
+.text-gray-900 { color: #000000 !important; }
 ```
 
 ## Implementation Guidelines
 
 ### 1. Applying to New Components
-1. Add `3px solid var(--comic-border)` border
-2. Use `var(--shadow-comic)` for shadows
-3. Add double-border pseudo-element pattern
-4. Include hover transforms with slight rotation
-5. Use consistent transition timing
+1. Use `border-radius: 0` for all elements
+2. Add `3px solid #383838` borders
+3. Use `-5px 5px 0px 0px #383838` shadow pattern
+4. Include hover transforms without rotation
+5. Maintain consistent transition timing
 
 ### 2. Hover State Requirements
-- **Lift**: `translateY(-6px to -8px)`
-- **Rotation**: `-1deg to 1deg` for playful effect
-- **Border enhancement**: Switch to `--comic-border-thick`
-- **Shadow intensification**: Use `--shadow-comic`
-- **Reveal secondary borders**: Fade in pseudo-element borders
+- **Lift**: `translate(7px, -7px)` for buttons, `translate(5px, -5px)` for cards
+- **No rotation**: Keep elements aligned and professional
+- **Shadow enhancement**: Increase offset to `-7px 7px`
+- **Border consistency**: Maintain same border color and thickness
+- **Background changes**: Subtle shifts for secondary elements
 
 ### 3. Animation Standards
 - **Duration**: 0.3s for cards, 0.2s for buttons
 - **Easing**: `cubic-bezier(0.4, 0, 0.2, 1)`
-- **Scale factors**: 1.05-1.1 for icons
-- **Rotation angles**: Keep between -5deg and 5deg
+- **Transform only**: Use translate, avoid scale or rotate
+- **Shadow transitions**: Smooth offset changes
 
-### 4. Dark Mode Considerations
-- Comic borders invert in dark mode (light borders on dark backgrounds)
-- Shadow opacity increases for better contrast
-- Background gradients adjust to maintain visual hierarchy
+### 4. Color Contrast Requirements
+- **Text on light backgrounds**: Minimum `#4a4a4a` for body text
+- **Headings**: Use `#1a1a1a` or darker
+- **Interactive elements**: Clear visual distinction on hover
+- **Accessibility**: WCAG AA compliance for all text
+
+## Section Layout
+
+### Homepage Sections
+1. **Hero Section**: `#F4EFEA` background with bottom border
+2. **Quick Example**: `#FEFEFE` background with separator
+3. **Features**: `#F8F8F7` background with separator
+4. **Use Cases**: `#FDF9F5` background with separator
+5. **Installation**: `#FEFEFE` background with separator
+6. **Community**: `#F9F6F2` background (no separator - last section)
+
+Each section uses:
+- Light, pastel background colors for readability
+- 3px solid black horizontal separators
+- Consistent padding (`py-20`)
+- Centered container with responsive width
 
 ## Usage Examples
 
-### Applying to a New Feature Card
+### Creating a New Button
 ```css
-.new-feature-card {
+.new-button {
   /* Base styling */
-  padding: 2.5rem;
-  background: var(--ifm-background-surface-color);
-  border-radius: var(--radius-medium);
+  padding: 16.5px 22px;
+  background: #383838;
+  color: white;
   
-  /* Comic styling */
-  border: 3px solid var(--comic-border);
-  box-shadow: var(--shadow-comic);
+  /* Brutalist styling */
+  border: 3px solid #383838;
+  border-radius: 0;
+  box-shadow: -5px 5px 0px 0px #383838;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+  
+  /* Typography */
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  font-weight: 500;
 }
 
-/* Double border effect */
-.new-feature-card::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  border: 2px solid var(--comic-border-thick);
-  border-radius: var(--radius-medium);
-  opacity: 0;
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Top accent bar */
-.new-feature-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: linear-gradient(90deg, var(--ifm-color-primary) 0%, var(--accent-cool) 100%);
-  border-radius: var(--radius-medium) var(--radius-medium) 0 0;
-  transform: scaleX(0);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Hover effects */
-.new-feature-card:hover {
-  transform: translateY(-8px) rotate(-1deg);
-  box-shadow: var(--shadow-comic), 0 0 0 1px var(--comic-border-thick);
-  border-color: var(--comic-border-thick);
-}
-
-.new-feature-card:hover::before {
-  opacity: 1;
-}
-
-.new-feature-card:hover::after {
-  transform: scaleX(1);
+.new-button:hover {
+  transform: translate(7px, -7px);
+  box-shadow: -7px 7px 0px 0px #383838;
 }
 ```
 
-### Applying to Navigation Items
+### Creating a New Card
 ```css
-.nav-item-comic {
-  padding: 0.5rem 1rem;
-  border: 2px solid transparent;
-  border-radius: var(--radius-small);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-
-.nav-item-comic:hover {
-  border-color: var(--comic-border);
-  background: var(--ifm-color-primary-lightest);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-soft);
-}
-```
-
-### 6. Footer Components
-```css
-.footer-enhanced {
-  background: linear-gradient(135deg, #2D1B69 0%, #4A154B 30%, #6F42C1 70%, #8E44AD 100%);
-  border-top: 4px solid var(--comic-border-thick);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Gradient overlay for depth */
-.footer-enhanced::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(214, 51, 132, 0.06) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-/* Top accent line */
-.footer-enhanced::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent-warm) 0%, var(--accent-vibrant) 50%, var(--accent-cool) 100%);
-}
-
-/* Footer link styling */
-.footer-link-comic {
-  color: #E2D6E7;
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--radius-small);
-  border: 2px solid transparent;
-  position: relative;
+.new-card {
+  /* Base styling */
+  padding: 2rem;
+  background: white;
+  
+  /* Brutalist styling */
+  border: 3px solid #383838;
+  border-radius: 0;
+  box-shadow: -5px 5px 0px 0px #383838;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.footer-link-comic:hover {
-  color: #FFB570;
-  transform: translateX(6px) rotate(-0.5deg);
-  border-color: rgba(255, 181, 112, 0.3);
-  box-shadow: 0 4px 12px rgba(77, 21, 75, 0.3);
+.new-card:hover {
+  transform: translate(5px, -5px);
+  box-shadow: -7px 7px 0px 0px #383838;
 }
 ```
+
+## Dark Mode Considerations
+- Borders invert to light colors (`#F8F8F7`)
+- Shadows use light colors instead of dark
+- Backgrounds shift to dark grays (`#2A2A2A`)
+- Text becomes light for contrast
+- Maintain same interaction patterns
 
 ## Files Modified
-- `/src/css/custom.css` - Global design tokens, button styles, and footer enhancements
-- `/src/pages/index.module.css` - Homepage component styles
-- Applied to: Hero section, feature cards, use case cards, installation options, community cards, footer
+- `/src/css/tailwind.css` - Complete design system overhaul
+- `/src/pages/index.tsx` - Homepage component updates
+- `/src/css/custom.css` - Global token definitions
 
-## Next Steps
-1. Apply pattern to other pages (About, Contact, Documentation)
-2. Update blog post cards and navigation components
-3. Enhance form elements with comic styling
-4. Add comic effects to documentation sidebar and content areas
-5. Consider adding subtle animation on page load for enhanced user experience
+## Key Changes from Previous Design
+1. **Removed rounded corners**: All `border-radius` set to 0
+2. **Simplified color palette**: Focus on grays and beige
+3. **Brutalist shadows**: Sharp offsets without blur
+4. **Professional typography**: Uppercase headings, clean fonts
+5. **Light backgrounds**: All sections use light/pastel colors
+6. **Section separators**: 3px horizontal lines between sections
+7. **Improved contrast**: Dark text on light backgrounds for readability
 
 ---
-*This style guide ensures consistency across the entire ReifyDB website while maintaining the playful, modern aesthetic that makes the site visually distinctive.*
+*This style guide ensures consistency across the entire ReifyDB website while maintaining a clean, professional aesthetic inspired by MotherDuck's minimalist brutalist design approach.*

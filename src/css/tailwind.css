@@ -24,19 +24,19 @@
   /* Docusaurus settings */
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.08);
-  --ifm-background-surface-color: #ffffff;
-  --ifm-background-color: #ffffff;
+  --ifm-background-color: #F4EFEA;
+  --ifm-background-surface-color: #FEFEFE;
   --ifm-font-family-monospace: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Menlo', 'Ubuntu Mono', monospace;
   --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  --ifm-font-color-base: #1c1e21;
+  --ifm-font-color-base: #1a1a1a;
   
   /* Emphasis colors for search and other components */
   --ifm-color-emphasis-100: #f5f5f5;
   --ifm-color-emphasis-200: #e0e0e0;
   --ifm-color-emphasis-300: #cccccc;
-  --ifm-color-emphasis-500: #888888;
-  --ifm-color-emphasis-600: #666666;
-  --ifm-color-emphasis-700: #444444;
+  --ifm-color-emphasis-500: #666666;
+  --ifm-color-emphasis-600: #444444;
+  --ifm-color-emphasis-700: #222222;
 
   /* Custom design tokens - MotherDuck style */
   --warm-bg: #F4EFEA;
@@ -45,16 +45,16 @@
   --accent-teal: #53DBC9;
   --accent-blue: #6FC2FF;
   --accent-dark: #383838;
-  --text-muted: #A1A1A1;
+  --text-muted: #555555;
   --border-dark: #383838;
   --border-light: #E5E5E5;
   --shadow-soft: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
   --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
   --shadow-brutalist: -5px 5px 0px 0px #383838;
-  --radius-soft: 4px;
-  --radius-medium: 2px;
-  --radius-small: 2px;
+  --radius-soft: 0;
+  --radius-medium: 0;
+  --radius-small: 0;
 }
 
 /* Dark mode tokens */
@@ -108,6 +108,22 @@ body {
   background: #F4EFEA !important;
   background-attachment: fixed;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #1a1a1a;
+}
+
+/* Ensure all main sections have light backgrounds */
+section {
+  background: #F4EFEA;
+}
+
+/* Override specific section backgrounds */
+.py-20 {
+  background: #F4EFEA !important;
+}
+
+/* Section separator lines */
+.section-separator {
+  border-bottom: 3px solid #383838;
 }
 
 /* Dark mode backgrounds */
@@ -117,6 +133,32 @@ body {
 
 [data-theme='dark'] body {
   background: #1A1A1A !important;
+}
+
+/* Ensure text contrast in light theme */
+h1, h2, h3, h4, h5, h6 {
+  color: #1a1a1a !important;
+}
+
+p, span, div {
+  color: #1a1a1a;
+}
+
+/* Better text colors for light theme */
+.text-gray-600 {
+  color: #4a4a4a !important;
+}
+
+.text-gray-700 {
+  color: #333333 !important;
+}
+
+.text-gray-800 {
+  color: #1a1a1a !important;
+}
+
+.text-gray-900 {
+  color: #000000 !important;
 }
 
 /* Ensure main content areas are transparent to show background */
@@ -129,7 +171,7 @@ body {
 /* Navbar background - MotherDuck style */
 .navbar {
   background: #F4EFEA !important;
-  border-bottom: 2px solid #383838;
+  border-bottom: 3px solid #383838;
 }
 
 [data-theme='dark'] .navbar {
@@ -172,7 +214,7 @@ body {
 .navbar__item.navbar__link,
 .navbar__link {
   padding: 0.625rem 1rem;
-  border-radius: var(--radius-small);
+  border-radius: 0;
   font-weight: 500;
   color: var(--ifm-navbar-link-color);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -190,7 +232,7 @@ body {
 .navbar__search input {
   background: var(--ifm-color-emphasis-100);
   border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 0.5rem 1rem;
   padding-right: 3rem;
   font-size: 0.9rem;
@@ -222,7 +264,7 @@ body {
   color: var(--ifm-color-emphasis-500);
   background: var(--ifm-color-emphasis-200);
   padding: 0.125rem 0.375rem;
-  border-radius: 4px;
+  border-radius: 0;
   pointer-events: none;
   font-family: var(--ifm-font-family-monospace);
 }
@@ -260,7 +302,7 @@ body {
 }
 
 .aa-Panel {
-  border-radius: 12px !important;
+  border-radius: 0 !important;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
   border: 1px solid var(--ifm-color-emphasis-200) !important;
 }
@@ -276,7 +318,7 @@ body {
 
 .aa-Item {
   padding: 0.75rem 1rem !important;
-  border-radius: 8px !important;
+  border-radius: 0 !important;
   margin: 0.25rem 0.5rem !important;
 }
 
@@ -304,7 +346,7 @@ body {
   color: black;
   font-weight: bold;
   padding: 0 2px;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 /* Dark mode search styles */
@@ -635,28 +677,28 @@ body {
   --color-primary-light: #FF8A50;
   --color-primary-lighter: #FFB570;
   --color-primary-lightest: #FFF5F0;
-  
+
   /* Accent colors for gradients */
   --color-accent-warm: #FF6B35;
   --color-accent-cool: #8E44AD;
   --color-accent-deep: #6F42C1;
   --color-accent-vibrant: #D63384;
-  
+
   /* Surface and background colors */
   --color-warm-bg: #FFF8F5;
   --color-warm-surface: #FFF0EB;
   --color-surface: #ffffff;
   --color-background: #ffffff;
-  
+
   /* Text colors */
-  --color-text-muted: #6B5B73;
-  --color-text-base: #1c1e21;
-  
+  --color-text-muted: #555555;
+  --color-text-base: #1a1a1a;
+
   /* Border colors */
   --color-border-subtle: #F4E6E1;
   --color-comic-border: #4A154B;
   --color-comic-border-thick: #2D1B69;
-  
+
   /* Dark mode colors */
   --color-dark-surface: #1e1e1e;
   --color-dark-background: #0f0f0f;
@@ -671,12 +713,12 @@ body {
   --color-dark-border-subtle: #4A3A4B;
   --color-dark-comic-border: #FFB570;
   --color-dark-comic-border-thick: #FFC490;
-  
+
   /* Border radius values */
   --radius-soft: 16px;
   --radius-medium: 12px;
   --radius-small: 8px;
-  
+
   /* Shadow definitions */
   --shadow-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -686,7 +728,7 @@ body {
   --shadow-dark-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
   --shadow-dark-large: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
   --shadow-dark-comic: 0 8px 16px -4px rgba(0, 0, 0, 0.3), 0 4px 8px -2px rgba(0, 0, 0, 0.2);
-  
+
   /* Font families */
   --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   --font-family-mono: 'SF Mono', Monaco, Inconsolata, 'Roboto Mono', Menlo, 'Ubuntu Mono', monospace;
@@ -834,12 +876,12 @@ body {
 /* Button styles - MotherDuck inspired */
 .btn-primary {
   padding: 16.5px 22px;
-  border-radius: 2px;
+  border-radius: 0;
   background: #383838;
   color: white;
   font-weight: 500;
   font-size: 16px;
-  border: 2px solid #383838;
+  border: 3px solid #383838;
   box-shadow: -5px 5px 0px 0px #383838;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -858,12 +900,12 @@ body {
 
 .btn-secondary {
   padding: 16.5px 22px;
-  border-radius: 2px;
+  border-radius: 0;
   background: white;
   color: #383838;
   font-weight: 500;
   font-size: 16px;
-  border: 2px solid #383838;
+  border: 3px solid #383838;
   box-shadow: -5px 5px 0px 0px #383838;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -884,12 +926,12 @@ body {
 /* Keep old button classes for compatibility */
 .btn-comic {
   padding: 16.5px 22px;
-  border-radius: 2px;
+  border-radius: 0;
   background: #383838;
   color: white;
   font-weight: 500;
   font-size: 16px;
-  border: 2px solid #383838;
+  border: 3px solid #383838;
   box-shadow: -5px 5px 0px 0px #383838;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -908,12 +950,12 @@ body {
 
 .btn-comic-outline {
   padding: 16.5px 22px;
-  border-radius: 2px;
+  border-radius: 0;
   background: white;
   color: #383838;
   font-weight: 500;
   font-size: 16px;
-  border: 2px solid #383838;
+  border: 3px solid #383838;
   box-shadow: -5px 5px 0px 0px #383838;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -934,8 +976,8 @@ body {
 /* Card components - MotherDuck style */
 .card-clean {
   background: white;
-  border-radius: 2px;
-  border: 2px solid #383838;
+  border-radius: 0;
+  border: 3px solid #383838;
   box-shadow: -5px 5px 0px 0px #383838;
   padding: 2rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -956,8 +998,8 @@ body {
 /* Keep old card class for compatibility */
 .card-comic {
   background: white;
-  border-radius: 2px;
-  border: 2px solid #383838;
+  border-radius: 0;
+  border: 3px solid #383838;
   box-shadow: -5px 5px 0px 0px #383838;
   padding: 2rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1094,11 +1136,11 @@ body {
   .comic-border {
     border-color: var(--color-dark-comic-border);
   }
-  
+
   .comic-border-thick {
     border-color: var(--color-dark-comic-border-thick);
   }
-  
+
   .card-comic {
     background: var(--color-dark-warm-surface);
     border-color: var(--color-dark-comic-border);
@@ -1127,15 +1169,15 @@ body {
 
 /* Landing page specific styles - MotherDuck inspired */
 .hero-section {
-  background: var(--warm-bg);
+  background: #F4EFEA;
   position: relative;
   overflow: hidden;
 }
 
 .feature-card {
   background: white;
-  border-radius: 2px;
-  border: 2px solid #383838;
+  border-radius: 0;
+  border: 3px solid #383838;
   box-shadow: -5px 5px 0px 0px #383838;
   padding: 2rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1155,14 +1197,14 @@ body {
 }
 
 .quick-example-section {
-  background: white;
+  background: #FEFEFE;
   position: relative;
-  border-top: 2px solid var(--border-dark);
-  border-bottom: 2px solid var(--border-dark);
+  border-top: 3px solid #383838;
+  border-bottom: 3px solid #383838;
 }
 
 [data-theme='dark'] .quick-example-section {
-  background: var(--warm-surface);
+  background: #2A2A2A;
 }
 
 /* Documentation Styles */
@@ -1538,7 +1580,7 @@ article h2 a {
   font-size: 0.9rem;
   padding: 0.25rem 0.75rem;
   background: var(--ifm-color-emphasis-100);
-  border-radius: 20px;
+  border-radius: 0;
 }
 
 /* Hide tags and edit this page */

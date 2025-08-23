@@ -58,7 +58,7 @@ WHERE timestamp > NOW() - INTERVAL '1 hour'
 GROUP BY user_id;`;
 
   return (
-    <section className="quick-example-section py-20">
+    <section className="quick-example-section py-20 section-separator">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white uppercase">Simple, Powerful, Reactive</h2>
@@ -134,11 +134,11 @@ function Features() {
   ];
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
+    <section className="py-20 section-separator" style={{ background: '#F8F8F7' }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-primary-dark">Why ReifyDB?</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400">Built from the ground up for modern data applications</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white uppercase">Why ReifyDB?</h2>
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400">Built from the ground up for modern data applications</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, idx) => (
@@ -179,11 +179,11 @@ function UseCases() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-lightest to-white dark:from-dark-warm-bg dark:to-gray-900">
+    <section className="py-20 section-separator" style={{ background: '#FDF9F5' }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-primary-dark">Use Cases</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400">ReifyDB powers a wide range of applications</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white uppercase">Use Cases</h2>
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400">ReifyDB powers a wide range of applications</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {useCases.map((useCase, idx) => (
@@ -207,11 +207,11 @@ function Installation() {
   };
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
+    <section className="py-20 section-separator" style={{ background: '#FEFEFE' }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-primary-dark">Get Started in Seconds</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400">Choose your preferred installation method</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white uppercase">Get Started in Seconds</h2>
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400">Choose your preferred installation method</p>
         </div>
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           <div className="card-clean">
@@ -248,11 +248,11 @@ function Installation() {
 
 function Community() {
   return (
-    <section className="py-20 bg-gradient-to-br from-warm-bg to-white dark:from-dark-warm-bg dark:to-gray-900">
+    <section className="py-20" style={{ background: '#F9F6F2' }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-primary-dark">Join the Community</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400">Get help, share ideas, and contribute to ReifyDB</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white uppercase">Join the Community</h2>
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400">Get help, share ideas, and contribute to ReifyDB</p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           <a
@@ -295,7 +295,7 @@ function Community() {
 
 export default function Home(): React.ReactNode {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen" style={{ background: '#F4EFEA' }}>
       <Layout
         title="ReifyDB - The Modern Database To Get Things Done"
         description="Fast, embeddable, and cloud-native database with real-time capabilities. Built for modern applications that demand performance and simplicity."
