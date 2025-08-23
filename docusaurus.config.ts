@@ -21,8 +21,8 @@ const config: Config = {
       attributes: {
         rel: 'icon',
         type: 'image/png',
-        sizes: '32x32',
-        href: '/favicon-32x32.png',
+        sizes: '16x16',
+        href: '/img/favicon-16x16.png',
       },
     },
     {
@@ -30,8 +30,80 @@ const config: Config = {
       attributes: {
         rel: 'icon',
         type: 'image/png',
-        sizes: '16x16',
-        href: '/favicon-16x16.png',
+        sizes: '32x32',
+        href: '/img/favicon-32x32.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '48x48',
+        href: '/img/favicon-48x48.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '64x64',
+        href: '/img/favicon-64x64.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/img/apple-touch-icon.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '192x192',
+        href: '/img/android-chrome-192x192.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '512x512',
+        href: '/img/android-chrome-512x512.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'manifest',
+        href: '/site.webmanifest',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'msapplication-TileColor',
+        content: '#383838',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'msapplication-TileImage',
+        content: '/img/mstile-150x150.png',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'theme-color',
+        content: '#383838',
       },
     },
   ],

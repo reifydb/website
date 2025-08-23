@@ -240,15 +240,8 @@ export default function InlineEditor({
     const { statement, result, error } = statementResult;
 
     return (
-      <div key={index} className={styles.statementResult}>
-        <div className={styles.statementHeader}>
-          <span className={styles.statementNumber}>STATEMENT {index + 1}</span>
-          <code className={styles.statementPreview}>
-            {statement.length > 50 ? statement.substring(0, 50) + '...' : statement}
-          </code>
-        </div>
-
-        <ResultViewer 
+      <div key={index} >
+        <ResultViewer
           result={result || undefined}
           error={error || undefined}
           isLoading={false}

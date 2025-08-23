@@ -18,24 +18,24 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
 
   const formatValue = useCallback((value: Value | undefined): string => {
     if (value === undefined) return 'NULL';
-    
+
     const actualValue = value.valueOf();
     if (actualValue === undefined || actualValue === null) return 'NULL';
     if (actualValue === true) return 'TRUE';
     if (actualValue === false) return 'FALSE';
     if (typeof actualValue === 'bigint') return actualValue.toString();
-    
+
     if (actualValue instanceof Date) {
       return actualValue.toISOString().replace('T', ' ').substring(0, 19);
     }
-    
+
     if (actualValue instanceof Uint8Array) {
       const hex = Array.from(actualValue)
         .map(byte => byte.toString(16).padStart(2, '0'))
         .join('');
       return '0x' + (hex.length > 16 ? hex.substring(0, 16) + '...' : hex);
     }
-    
+
     return String(actualValue);
   }, []);
 
@@ -47,7 +47,7 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
     if (typeof actualValue === 'bigint' || typeof actualValue === 'number') return 'number';
     if (actualValue instanceof Date) return 'date';
     if (actualValue instanceof Uint8Array) return 'blob';
-    
+
     if (typeof actualValue === 'string') {
       if ((actualValue.startsWith('{') && actualValue.endsWith('}')) ||
           (actualValue.startsWith('[') && actualValue.endsWith(']'))) {
@@ -60,7 +60,7 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
       }
       return 'string';
     }
-    
+
     return 'unknown';
   }, []);
 
@@ -77,35 +77,35 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
     if (!result || !sortColumn || result.rows.length === 0) {
       return result?.rows || [];
     }
-    
+
     return [...result.rows].sort((a, b) => {
       const aVal = a[sortColumn]?.valueOf();
       const bVal = b[sortColumn]?.valueOf();
-      
+
       if (aVal === null || aVal === undefined) return 1;
       if (bVal === null || bVal === undefined) return -1;
-      
+
       let comparison = 0;
       if (aVal < bVal) comparison = -1;
       if (aVal > bVal) comparison = 1;
-      
+
       return sortDirection === 'asc' ? comparison : -comparison;
     });
   }, [result, sortColumn, sortDirection]);
 
   const exportToCsv = useCallback(() => {
     if (!result) return;
-    
+
     const csv = [
       result.columns.map(c => c.name).join(','),
-      ...result.rows.map(row => 
+      ...result.rows.map(row =>
         result.columns.map(col => {
           const val = formatValue(row[col.name]);
           return val.includes(',') ? `"${val}"` : val;
         }).join(',')
       )
     ].join('\n');
-    
+
     const blob = new Blob([csv], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -152,27 +152,7 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
 
   return (
     <div className={styles.brutalistContainer}>
-      <div className={styles.resultHeader}>
-        <div className={styles.statsBox}>
-          <span className={styles.statItem}>
-            ROWS: <strong>{result.rows.length}</strong>
-          </span>
-          <span className={styles.statItem}>
-            TIME: <strong>{result.executionTimeMs}MS</strong>
-          </span>
-          {result.rowsAffected !== undefined && (
-            <span className={styles.statItem}>
-              AFFECTED: <strong>{result.rowsAffected}</strong>
-            </span>
-          )}
-        </div>
-        <button 
-          className={styles.brutalistButton}
-          onClick={exportToCsv}
-        >
-          EXPORT CSV
-        </button>
-      </div>
+
 
       <div className={styles.tableContainer}>
         <table className={styles.brutalistTable}>
@@ -180,13 +160,13 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
             <tr>
               <th className={styles.indexHeader}>#</th>
               {result.columns.map((column, index) => (
-                <th 
+                <th
                   key={index}
                   className={styles.columnHeader}
                   onClick={() => handleSort(column.name)}
                 >
                   <div className={styles.headerContent}>
-                    <span className={styles.columnName}>{column.name.toUpperCase()}</span>
+                    <span className={styles.columnName}>{column.name}</span>
                     <span className={styles.columnType}>{column.ty}</span>
                     {sortColumn === column.name && (
                       <span className={styles.sortArrow}>
@@ -207,9 +187,9 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
                     const value = row[column.name];
                     const formattedValue = formatValue(value);
                     const valueType = getValueType(value);
-                    
+
                     return (
-                      <td 
+                      <td
                         key={colIndex}
                         className={`${styles.dataCell} ${styles[`type-${valueType}`]}`}
                       >
@@ -245,6 +225,24 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
             )}
           </tbody>
         </table>
+          <div className={styles.resultHeader}>
+              <div className={styles.statsBox}>
+          <span className={styles.statItem}>
+            ROWS: <strong>{result.rows.length}</strong>
+          </span>
+                  {result.rowsAffected !== undefined && (
+                      <span className={styles.statItem}>
+              AFFECTED: <strong>{result.rowsAffected}</strong>
+            </span>
+                  )}
+              </div>
+              <button
+                  className={styles.brutalistButton}
+                  onClick={exportToCsv}
+              >
+                  EXPORT CSV
+              </button>
+          </div>
       </div>
     </div>
   );
