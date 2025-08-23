@@ -12,6 +12,7 @@
 @import './_footer.css';
 @import './_documentation.css';
 @import './_search.css';
+@import './tailwind.css';
 
 /* Global background application */
 body {
