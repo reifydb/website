@@ -64,7 +64,7 @@ const config: Config = {
           blogSidebarCount: 5,
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: './static/css/custom.css',
         },
       } satisfies Preset.Options,
     ],
@@ -220,7 +220,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} ReifyDB.`,
+      copyright: `Copyright © ${new Date().getFullYear()} ReifyDB`,
     },
     prism: {
       theme: prismThemes.github,
