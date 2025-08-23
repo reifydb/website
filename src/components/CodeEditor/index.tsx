@@ -19,20 +19,20 @@ export interface CodeEditorRef {
 }
 
 const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
-  ({ value, onChange, onExecute, language = 'sql', theme = 'vs', readOnly = false }, ref) => {
+  ({ value, onChange, onExecute, language = 'sql', theme = 'brutalist-light', readOnly = false }, ref) => {
     const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
     const monacoRef = useRef<Monaco | null>(null);
     const onExecuteRef = useRef<(() => void) | undefined>(onExecute);
     
-    // Keep onExecuteRef updated with the latest callback
     useEffect(() => {
       onExecuteRef.current = onExecute;
     }, [onExecute]);
 
-    // Force theme update when theme prop changes
     useEffect(() => {
       if (monacoRef.current && theme) {
-        monacoRef.current.editor.setTheme(theme);
+        const actualTheme = theme === 'brutalist-light' ? 'brutalist-light' : 
+                           theme === 'brutalist-dark' ? 'brutalist-dark' : theme;
+        monacoRef.current.editor.setTheme(actualTheme);
       }
     }, [theme]);
 
@@ -51,30 +51,68 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
     }));
 
     const handleBeforeMount = (monaco: Monaco) => {
-      // Define custom light theme
-      monaco.editor.defineTheme('custom-light', {
+      // Define brutalist light theme
+      monaco.editor.defineTheme('brutalist-light', {
         base: 'vs',
         inherit: true,
         rules: [
-          { token: 'keyword', foreground: '0000FF' },
-          { token: 'string.sql', foreground: '008000' },
-          { token: 'comment', foreground: '808080' },
-          { token: 'number', foreground: 'B22222' },
+          { token: 'keyword', foreground: '383838', fontStyle: 'bold' },
+          { token: 'string.sql', foreground: '16A34A' },
+          { token: 'comment', foreground: '5A5A5A' },
+          { token: 'number', foreground: 'B91C1C', fontStyle: 'bold' },
+          { token: 'operator', foreground: '383838', fontStyle: 'bold' },
+          { token: 'identifier', foreground: '1A1A1A' },
+          { token: 'type', foreground: '7C3AED', fontStyle: 'bold' },
         ],
         colors: {
-          'editor.background': '#FAFAFA',
-          'editor.foreground': '#000000',
-          'editor.lineHighlightBackground': '#F5F5F5',
+          'editor.background': '#F8F8F7',
+          'editor.foreground': '#1A1A1A',
+          'editor.lineHighlightBackground': '#F4EFEA',
+          'editorLineNumber.foreground': '#5A5A5A',
+          'editor.selectionBackground': '#383838',
+          'editor.selectionForeground': '#FFFFFF',
+          'editor.inactiveSelectionBackground': '#E5E5E5',
+          'editorCursor.foreground': '#383838',
+          'editor.lineHighlightBorder': '#383838',
+          'editorIndentGuide.background': '#E5E5E5',
+          'editorIndentGuide.activeBackground': '#383838',
+        }
+      });
+
+      // Define brutalist dark theme
+      monaco.editor.defineTheme('brutalist-dark', {
+        base: 'vs-dark',
+        inherit: true,
+        rules: [
+          { token: 'keyword', foreground: 'F8F8F7', fontStyle: 'bold' },
+          { token: 'string.sql', foreground: '53DBC9' },
+          { token: 'comment', foreground: '999999' },
+          { token: 'number', foreground: 'FF6B35', fontStyle: 'bold' },
+          { token: 'operator', foreground: 'F8F8F7', fontStyle: 'bold' },
+          { token: 'identifier', foreground: 'F8F8F7' },
+          { token: 'type', foreground: '6FC2FF', fontStyle: 'bold' },
+        ],
+        colors: {
+          'editor.background': '#2A2A2A',
+          'editor.foreground': '#F8F8F7',
+          'editor.lineHighlightBackground': '#1A1A1A',
           'editorLineNumber.foreground': '#999999',
-          'editor.selectionBackground': '#B4D5FE',
-          'editor.inactiveSelectionBackground': '#E5EBF1',
+          'editor.selectionBackground': '#F8F8F7',
+          'editor.selectionForeground': '#1A1A1A',
+          'editor.inactiveSelectionBackground': '#3A3A3A',
+          'editorCursor.foreground': '#F8F8F7',
+          'editor.lineHighlightBorder': '#F8F8F7',
+          'editorIndentGuide.background': '#3A3A3A',
+          'editorIndentGuide.activeBackground': '#F8F8F7',
         }
       });
 
       // Set initial theme
       if (monaco && monaco.editor) {
         try {
-          monaco.editor.setTheme(theme === 'vs' ? 'custom-light' : theme);
+          const actualTheme = theme === 'brutalist-light' ? 'brutalist-light' : 
+                             theme === 'brutalist-dark' ? 'brutalist-dark' : theme;
+          monaco.editor.setTheme(actualTheme);
         } catch (e) {
           // Theme will be set on mount
         }
@@ -86,9 +124,10 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
       monacoRef.current = monaco;
 
       // Set theme again after mount
-      monaco.editor.setTheme(theme === 'vs' ? 'custom-light' : theme || 'custom-light');
+      const actualTheme = theme === 'brutalist-light' ? 'brutalist-light' : 
+                         theme === 'brutalist-dark' ? 'brutalist-dark' : theme;
+      monaco.editor.setTheme(actualTheme);
 
-      // Focus the editor to ensure keyboard shortcuts work
       editor.focus();
 
       // Register ReifyDB SQL language configuration
@@ -112,7 +151,7 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
               range,
             })),
             ...[
-              'MAP',
+              'SELECT',
               'FROM',
               'WHERE',
               'INSERT',
@@ -135,6 +174,10 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
               'HAVING',
               'LIMIT',
               'OFFSET',
+              'AS',
+              'INTO',
+              'VALUES',
+              'SET',
             ].map((keyword) => ({
               label: keyword,
               kind: monaco.languages.CompletionItemKind.Keyword,
@@ -154,9 +197,8 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
         },
       });
 
-      // Add execute shortcut - use onKeyDown to ensure it's scoped to this editor
+      // Add execute shortcut
       editor.onKeyDown((e) => {
-        // Check for Ctrl+Enter or Cmd+Enter
         if ((e.ctrlKey || e.metaKey) && e.keyCode === monaco.KeyCode.Enter) {
           e.preventDefault();
           e.stopPropagation();
@@ -166,7 +208,7 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
         }
       });
 
-      // Also add as action for context menu with unique ID per editor
+      // Add action for context menu
       const actionId = `execute-query-${Math.random().toString(36).substring(2, 11)}`;
       editor.addAction({
         id: actionId,
@@ -183,36 +225,41 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
         }
       });
 
-      // Configure editor options
+      // Configure editor options with brutalist styling
       editor.updateOptions({
         minimap: { enabled: false },
         fontSize: 14,
-        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace",
+        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace",
+        fontWeight: '500',
         lineNumbers: 'on',
         lineNumbersMinChars: 3,
-        lineHeight: 20,
+        lineHeight: 24,
         roundedSelection: false,
         scrollBeyondLastLine: false,
         automaticLayout: true,
         tabSize: 2,
         wordWrap: 'off',
         padding: {
-          top: 12,
-          bottom: 12,
+          top: 16,
+          bottom: 16,
         },
         suggest: {
           showKeywords: true,
           showSnippets: true,
           showFunctions: true,
         },
+        renderLineHighlight: 'all',
+        renderIndentGuides: true,
+        cursorStyle: 'block',
+        cursorBlinking: 'solid',
+        smoothScrolling: false,
       });
     };
 
     return (
       <div 
-        className={styles.editorContainer}
+        className={styles.brutalistEditorContainer}
         onMouseEnter={() => {
-          // Focus the editor when mouse enters
           editorRef.current?.focus();
         }}
       >

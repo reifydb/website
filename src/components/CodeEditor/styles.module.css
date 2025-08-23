@@ -1,30 +1,142 @@
-.editorContainer {
+.brutalistEditorContainer {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  background: #fafafa;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
+  width: 100%;
+  position: relative;
+  border: 1px solid #E5E5E5;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  background: #FAFAFA;
 }
 
-.editorHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background: var(--ifm-background-surface-color);
-  border-bottom: 1px solid var(--ifm-toc-border-color);
+/* Override Monaco Editor styles for subtle brutalist look */
+.brutalistEditorContainer :global(.monaco-editor) {
+  border-radius: 0 !important;
+  font-weight: 400 !important;
 }
 
-.editorTitle {
-  color: var(--ifm-font-color-base);
-  font-size: 0.875rem;
-  font-weight: 500;
+.brutalistEditorContainer :global(.monaco-editor .margin) {
+  background: #F9FAFB !important;
+  border-right: 1px solid #E5E5E5 !important;
 }
 
-.shortcutHint {
-  color: var(--ifm-font-color-secondary);
-  font-size: 0.75rem;
+.brutalistEditorContainer :global(.monaco-editor .line-numbers) {
+  color: #6B7280 !important;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+}
+
+.brutalistEditorContainer :global(.monaco-editor .current-line ~ .line-numbers) {
+  color: #374151 !important;
+  font-weight: 600 !important;
+}
+
+.brutalistEditorContainer :global(.monaco-editor .cursors-layer .cursor) {
+  background: #374151 !important;
+  width: 2px !important;
+}
+
+.brutalistEditorContainer :global(.monaco-editor .selected-text) {
+  background: rgba(56, 56, 56, 0.15) !important;
+}
+
+.brutalistEditorContainer :global(.monaco-editor .view-overlays .current-line) {
+  border: 1px solid rgba(56, 56, 56, 0.1) !important;
+  border-left: none !important;
+  border-right: none !important;
+  background: transparent !important;
+}
+
+/* Scrollbar styling */
+.brutalistEditorContainer :global(.monaco-editor .scrollbar) {
+  background: transparent !important;
+}
+
+.brutalistEditorContainer :global(.monaco-editor .scrollbar .slider) {
+  background: rgba(56, 56, 56, 0.2) !important;
+  border-radius: 0 !important;
+}
+
+.brutalistEditorContainer :global(.monaco-editor .scrollbar .slider:hover) {
+  background: rgba(56, 56, 56, 0.3) !important;
+}
+
+/* Suggestions widget */
+.brutalistEditorContainer :global(.monaco-editor .suggest-widget) {
+  border: 1px solid #D1D5DB !important;
+  border-radius: 0 !important;
+  box-shadow: -2px 2px 0px 0px rgba(56, 56, 56, 0.1) !important;
+}
+
+.brutalistEditorContainer :global(.monaco-editor .suggest-widget .monaco-list) {
+  background: #FAFAFA !important;
+}
+
+.brutalistEditorContainer :global(.monaco-editor .suggest-widget .monaco-list .monaco-list-row.focused) {
+  background: #374151 !important;
+  color: white !important;
+}
+
+/* Context menu */
+.brutalistEditorContainer :global(.monaco-menu-container) {
+  border: 1px solid #D1D5DB !important;
+  border-radius: 0 !important;
+  box-shadow: -2px 2px 0px 0px rgba(56, 56, 56, 0.1) !important;
+}
+
+/* Dark mode overrides */
+[data-theme='dark'] .brutalistEditorContainer {
+  background: #1F2937;
+  border-color: #374151;
+}
+
+[data-theme='dark'] .brutalistEditorContainer :global(.monaco-editor .margin) {
+  background: #111827 !important;
+  border-right-color: #374151 !important;
+}
+
+[data-theme='dark'] .brutalistEditorContainer :global(.monaco-editor .line-numbers) {
+  color: #9CA3AF !important;
+}
+
+[data-theme='dark'] .brutalistEditorContainer :global(.monaco-editor .current-line ~ .line-numbers) {
+  color: #E5E7EB !important;
+}
+
+[data-theme='dark'] .brutalistEditorContainer :global(.monaco-editor .cursors-layer .cursor) {
+  background: #E5E7EB !important;
+}
+
+[data-theme='dark'] .brutalistEditorContainer :global(.monaco-editor .selected-text) {
+  background: rgba(229, 231, 235, 0.2) !important;
+}
+
+[data-theme='dark'] .brutalistEditorContainer :global(.monaco-editor .view-overlays .current-line) {
+  border-color: rgba(229, 231, 235, 0.1) !important;
+}
+
+[data-theme='dark'] .brutalistEditorContainer :global(.monaco-editor .scrollbar .slider) {
+  background: rgba(229, 231, 235, 0.2) !important;
+}
+
+[data-theme='dark'] .brutalistEditorContainer :global(.monaco-editor .scrollbar .slider:hover) {
+  background: rgba(229, 231, 235, 0.3) !important;
+}
+
+[data-theme='dark'] .brutalistEditorContainer :global(.monaco-editor .suggest-widget) {
+  border-color: #4B5563 !important;
+  box-shadow: -2px 2px 0px 0px rgba(248, 248, 247, 0.05) !important;
+}
+
+[data-theme='dark'] .brutalistEditorContainer :global(.monaco-editor .suggest-widget .monaco-list) {
+  background: #1F2937 !important;
+}
+
+[data-theme='dark'] .brutalistEditorContainer :global(.monaco-editor .suggest-widget .monaco-list .monaco-list-row.focused) {
+  background: #E5E7EB !important;
+  color: #111827 !important;
+}
+
+[data-theme='dark'] .brutalistEditorContainer :global(.monaco-menu-container) {
+  border-color: #4B5563 !important;
+  box-shadow: -2px 2px 0px 0px rgba(248, 248, 247, 0.05) !important;
 }

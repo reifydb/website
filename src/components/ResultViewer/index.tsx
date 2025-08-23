@@ -12,7 +12,6 @@ interface ResultViewerProps {
 type ValueType = 'null' | 'boolean' | 'number' | 'string' | 'date' | 'blob' | 'json' | 'unknown';
 type SortDirection = 'asc' | 'desc';
 
-
 export default function ResultViewer({ result, error, isLoading }: ResultViewerProps) {
   const [sortColumn, setSortColumn] = useState<string | null>(null);
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
@@ -22,27 +21,19 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
     
     const actualValue = value.valueOf();
     if (actualValue === undefined || actualValue === null) return 'NULL';
-    if (actualValue === true) return 'true';
-    if (actualValue === false) return 'false';
+    if (actualValue === true) return 'TRUE';
+    if (actualValue === false) return 'FALSE';
     if (typeof actualValue === 'bigint') return actualValue.toString();
     
     if (actualValue instanceof Date) {
-      return actualValue.toLocaleString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-      });
+      return actualValue.toISOString().replace('T', ' ').substring(0, 19);
     }
     
     if (actualValue instanceof Uint8Array) {
       const hex = Array.from(actualValue)
         .map(byte => byte.toString(16).padStart(2, '0'))
         .join('');
-      return '0x' + hex.match(/.{1,4}/g)?.join(' ') || hex;
+      return '0x' + (hex.length > 16 ? hex.substring(0, 16) + '...' : hex);
     }
     
     return String(actualValue);
@@ -72,7 +63,6 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
     
     return 'unknown';
   }, []);
-
 
   const handleSort = useCallback((columnName: string) => {
     if (sortColumn === columnName) {
@@ -109,7 +99,10 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
     const csv = [
       result.columns.map(c => c.name).join(','),
       ...result.rows.map(row => 
-        result.columns.map(col => formatValue(row[col.name])).join(',')
+        result.columns.map(col => {
+          const val = formatValue(row[col.name]);
+          return val.includes(',') ? `"${val}"` : val;
+        }).join(',')
       )
     ].join('\n');
     
@@ -122,179 +115,12 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
     URL.revokeObjectURL(url);
   }, [result, formatValue]);
 
-
-  const renderValue = useCallback((valueType: ValueType, formattedValue: string) => {
-    if (formattedValue === 'NULL') {
-      return <span className={styles.nullValue}>NULL</span>;
-    }
-
-    switch (valueType) {
-      case 'json':
-        try {
-          const parsed = JSON.parse(formattedValue);
-          return (
-            <pre className={styles.jsonValue}>
-              {JSON.stringify(parsed, null, 2)}
-            </pre>
-          );
-        } catch {
-          return <span className={styles.stringValue}>{formattedValue}</span>;
-        }
-
-      case 'blob':
-        return (
-          <span className={styles.blobValue}>
-            {formattedValue.length > 50 ? 
-              formattedValue.substring(0, 50) + '...' : 
-              formattedValue
-            }
-          </span>
-        );
-
-      case 'boolean':
-        return (
-          <span className={`${styles.booleanValue} ${formattedValue === 'true' ? styles.true : styles.false}`}>
-            {formattedValue === 'true' ? '✓' : '✗'} {formattedValue}
-          </span>
-        );
-
-      case 'date':
-        return (
-          <span className={styles.dateValue}>
-            📅 {formattedValue}
-          </span>
-        );
-
-      case 'number':
-        return <span className={styles.numberValue}>{formattedValue}</span>;
-
-      default:
-        return (
-          <span className={styles.stringValue}>
-            {formattedValue.length > 100 ? 
-              formattedValue.substring(0, 100) + '...' : 
-              formattedValue
-            }
-          </span>
-        );
-    }
-  }, []);
-
-  const renderCell = useCallback((row: Record<string, Value>, column: any, colIndex: number) => {
-    const value = row[column.name];
-    const formattedValue = formatValue(value);
-    const valueType = getValueType(value);
-    
-    return (
-      <td 
-        key={colIndex}
-        className={`${styles.dataCell} ${styles[`type-${valueType}`]}`}
-      >
-        <div className={styles.cellContent}>
-          {renderValue(valueType, formattedValue)}
-        </div>
-      </td>
-    );
-  }, [formatValue, getValueType, renderValue]);
-
-  const renderHeader = useCallback(() => {
-    if (!result) return null;
-
-    return (
-      <div className={styles.resultHeader}>
-        <div className={styles.resultStats}>
-          <span className={styles.rowCount}>
-            <span className={styles.statIcon}>📊</span>
-            {result.rows.length} row{result.rows.length !== 1 ? 's' : ''}
-          </span>
-          <span className={styles.executionTime}>
-            <span className={styles.statIcon}>⏱️</span>
-            {result.executionTimeMs}ms
-          </span>
-        </div>
-        <div className={styles.resultActions}>
-          <button 
-            className={styles.exportButton}
-            onClick={exportToCsv}
-            title="Export as CSV"
-          >
-            📥 Export CSV
-          </button>
-        </div>
-      </div>
-    );
-  }, [result, exportToCsv]);
-
-  const renderTable = useCallback(() => {
-    if (!result) return null;
-
-    const hasRows = result.rows.length > 0;
-
-    return (
-      <div 
-        className={styles.tableWrapper}
-      >
-        <table className={styles.resultTable}>
-          <thead>
-            <tr>
-              <th className={styles.rowNumberHeader}>#</th>
-              {result.columns.map((column, index) => (
-                <th 
-                  key={index}
-                  className={styles.sortableHeader}
-                  onClick={() => handleSort(column.name)}
-                >
-                  <div className={styles.columnHeader}>
-                    <div className={styles.columnInfo}>
-                      <span className={styles.columnName}>{column.name}</span>
-                      <span className={styles.columnType}>{column.ty}</span>
-                    </div>
-                    <span className={styles.sortIndicator}>
-                      {sortColumn === column.name && (
-                        sortDirection === 'asc' ? '▲' : '▼'
-                      )}
-                    </span>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {hasRows ? (
-              sortedRows.map((row, rowIndex) => (
-                <tr key={rowIndex} className={styles.dataRow}>
-                  <td className={styles.rowNumber}>{rowIndex + 1}</td>
-                  {result.columns.map((column, colIndex) => 
-                    renderCell(row, column, colIndex)
-                  )}
-                </tr>
-              ))
-            ) : (
-              <tr className={styles.emptyRow}>
-                <td className={styles.rowNumber}>-</td>
-                <td colSpan={result.columns.length} className={styles.emptyMessage}>
-                  <div className={styles.emptyTableState}>
-                    <p>Query executed successfully</p>
-                    <p className={styles.hint}>No rows returned</p>
-                    {result.rowsAffected !== undefined && (
-                      <p className={styles.stats}>{result.rowsAffected} rows affected</p>
-                    )}
-                  </div>
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-    );
-  }, [result, sortColumn, sortDirection, handleSort, sortedRows, renderCell]);
-
   if (isLoading) {
     return (
-      <div className={styles.centerContent}>
-        <div className={styles.loader}>
-          <div className={styles.spinner}></div>
-          <p>Executing query...</p>
+      <div className={styles.brutalistContainer}>
+        <div className={styles.loadingBox}>
+          <div className={styles.loadingSpinner}></div>
+          <span className={styles.loadingText}>EXECUTING QUERY</span>
         </div>
       </div>
     );
@@ -302,31 +128,124 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
 
   if (error) {
     return (
-      <div className={styles.errorContainer}>
-        <div className={styles.errorHeader}>
-          <span className={styles.errorIcon}>⚠️</span>
-          <span>Query Error</span>
+      <div className={styles.brutalistContainer}>
+        <div className={styles.errorBox}>
+          <div className={styles.errorHeader}>
+            <span className={styles.errorLabel}>ERROR</span>
+          </div>
+          <pre className={styles.errorMessage}>{error}</pre>
         </div>
-        <pre className={styles.errorMessage}>{error}</pre>
       </div>
     );
   }
 
   if (!result) {
     return (
-      <div className={styles.centerContent}>
-        <div className={styles.emptyState}>
-          <p>No results to display</p>
-          <p className={styles.hint}>Execute a query to see results here</p>
+      <div className={styles.brutalistContainer}>
+        <div className={styles.emptyBox}>
+          <span className={styles.emptyText}>NO RESULTS</span>
+          <span className={styles.emptyHint}>EXECUTE A QUERY TO SEE RESULTS</span>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={styles.resultContainer}>
-      {renderHeader()}
-      {renderTable()}
+    <div className={styles.brutalistContainer}>
+      <div className={styles.resultHeader}>
+        <div className={styles.statsBox}>
+          <span className={styles.statItem}>
+            ROWS: <strong>{result.rows.length}</strong>
+          </span>
+          <span className={styles.statItem}>
+            TIME: <strong>{result.executionTimeMs}MS</strong>
+          </span>
+          {result.rowsAffected !== undefined && (
+            <span className={styles.statItem}>
+              AFFECTED: <strong>{result.rowsAffected}</strong>
+            </span>
+          )}
+        </div>
+        <button 
+          className={styles.brutalistButton}
+          onClick={exportToCsv}
+        >
+          EXPORT CSV
+        </button>
+      </div>
+
+      <div className={styles.tableContainer}>
+        <table className={styles.brutalistTable}>
+          <thead>
+            <tr>
+              <th className={styles.indexHeader}>#</th>
+              {result.columns.map((column, index) => (
+                <th 
+                  key={index}
+                  className={styles.columnHeader}
+                  onClick={() => handleSort(column.name)}
+                >
+                  <div className={styles.headerContent}>
+                    <span className={styles.columnName}>{column.name.toUpperCase()}</span>
+                    <span className={styles.columnType}>{column.ty}</span>
+                    {sortColumn === column.name && (
+                      <span className={styles.sortArrow}>
+                        {sortDirection === 'asc' ? '▲' : '▼'}
+                      </span>
+                    )}
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {sortedRows.length > 0 ? (
+              sortedRows.map((row, rowIndex) => (
+                <tr key={rowIndex} className={styles.dataRow}>
+                  <td className={styles.indexCell}>{rowIndex + 1}</td>
+                  {result.columns.map((column, colIndex) => {
+                    const value = row[column.name];
+                    const formattedValue = formatValue(value);
+                    const valueType = getValueType(value);
+                    
+                    return (
+                      <td 
+                        key={colIndex}
+                        className={`${styles.dataCell} ${styles[`type-${valueType}`]}`}
+                      >
+                        {valueType === 'null' ? (
+                          <span className={styles.nullValue}>NULL</span>
+                        ) : valueType === 'boolean' ? (
+                          <span className={`${styles.boolValue} ${formattedValue === 'TRUE' ? styles.true : styles.false}`}>
+                            {formattedValue}
+                          </span>
+                        ) : valueType === 'json' ? (
+                          <code className={styles.jsonValue}>
+                            {formattedValue.length > 50 ? formattedValue.substring(0, 50) + '...' : formattedValue}
+                          </code>
+                        ) : (
+                          <span className={styles.cellValue}>
+                            {formattedValue}
+                          </span>
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={result.columns.length + 1} className={styles.noDataCell}>
+                  <div className={styles.noDataBox}>
+                    <span>QUERY EXECUTED SUCCESSFULLY</span>
+                    <span className={styles.noDataHint}>NO ROWS RETURNED</span>
+                  </div>
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

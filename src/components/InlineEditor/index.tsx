@@ -6,7 +6,6 @@ import { REIFYDB_CONFIG } from '../../config';
 import ResultViewer from '../ResultViewer';
 import styles from './styles.module.css';
 
-// Lazy load the Monaco editor to reduce initial bundle size
 const CodeEditor = lazy(() => import('../CodeEditor'));
 
 interface InlineEditorProps {
@@ -29,17 +28,15 @@ export default function InlineEditor({
   const [query, setQuery] = useState(initialQuery);
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const [statementResults, setStatementResults] = useState<StatementResult[]>([]);
-  const [editorTheme, setEditorTheme] = useState('vs-light');
+  const [editorTheme, setEditorTheme] = useState('brutalist-light');
   const [showConnectionModal, setShowConnectionModal] = useState(false);
   const [connectionTimeout, setConnectionTimeout] = useState(0);
   const editorRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const timeoutIntervalRef = useRef<NodeJS.Timeout | null>(null);
   
-  // Use a ref to store the latest handleExecute function to avoid stale closures
   const handleExecuteRef = useRef<() => void>(() => {});
   
-  // Use the global singleton WebSocket connection
   const { 
     client, 
     isConnected, 
@@ -49,20 +46,18 @@ export default function InlineEditor({
     reconnect,
   } = useConnection();
   
-  // Use the shared query execution hook
   const {
     isExecuting,
     executeQuery: executeReifyQuery,
     clearResults,
   } = useQuery(client, {
-    addToHistory: false, // Inline editor doesn't need history
+    addToHistory: false,
   });
 
-  // Calculate dynamic height based on content with minimum 3 lines
   const calculateHeight = useCallback((content: string) => {
     const lines = content.split('\n').length;
-    const lineHeight = 21;
-    const extraPadding = 10; // Account for Monaco's internal padding
+    const lineHeight = 24;
+    const extraPadding = 20;
     const minLines = 3;
     const maxHeight = 400;
     const minHeight = (minLines * lineHeight) + extraPadding;
@@ -72,7 +67,6 @@ export default function InlineEditor({
 
   const [editorHeight, setEditorHeight] = useState(() => calculateHeight(initialQuery));
   
-  // Update height directly on the DOM to avoid re-renders
   const updateHeightDirectly = useCallback((newHeight: number) => {
     if (containerRef.current) {
       containerRef.current.style.height = `${newHeight}px`;
@@ -81,11 +75,10 @@ export default function InlineEditor({
     }
   }, []);
 
-  // Detect theme changes
   useEffect(() => {
     const detectTheme = () => {
       const htmlTheme = document.documentElement.getAttribute('data-theme');
-      setEditorTheme(htmlTheme === 'dark' ? 'vs-dark' : 'vs-light');
+      setEditorTheme(htmlTheme === 'dark' ? 'brutalist-dark' : 'brutalist-light');
     };
 
     detectTheme();
@@ -99,7 +92,6 @@ export default function InlineEditor({
     return () => observer.disconnect();
   }, []);
 
-  // Auto-close modal when connection succeeds
   useEffect(() => {
     if (isConnected && showConnectionModal) {
       setShowConnectionModal(false);
@@ -111,7 +103,6 @@ export default function InlineEditor({
     }
   }, [isConnected, showConnectionModal]);
 
-  // Handle ESC key to close modal
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && showConnectionModal) {
@@ -127,7 +118,6 @@ export default function InlineEditor({
     }
   }, [showConnectionModal]);
 
-  // Cleanup timeout interval on unmount
   useEffect(() => {
     return () => {
       if (timeoutIntervalRef.current) {
@@ -138,15 +128,12 @@ export default function InlineEditor({
 
   const startConnectionAttempt = useCallback(() => {
     if (!isConnecting) {
-      // Start a 10-second timeout
       setConnectionTimeout(10);
       
-      // Clear any existing interval
       if (timeoutIntervalRef.current) {
         clearInterval(timeoutIntervalRef.current);
       }
       
-      // Start countdown
       timeoutIntervalRef.current = setInterval(() => {
         setConnectionTimeout((prev) => {
           if (prev <= 1) {
@@ -160,7 +147,6 @@ export default function InlineEditor({
         });
       }, 1000);
       
-      // Attempt connection
       if (isConnected) {
         reconnect();
       } else {
@@ -170,7 +156,6 @@ export default function InlineEditor({
   }, [isConnecting, isConnected, reconnect, connect]);
 
   const parseStatements = (sql: string): string[] => {
-    // Split by semicolon but respect quoted strings
     const statements: string[] = [];
     let current = '';
     let inString = false;
@@ -211,7 +196,6 @@ export default function InlineEditor({
       return;
     }
 
-    // Check connection first
     if (!isConnected) {
       setShowConnectionModal(true);
       return;
@@ -226,7 +210,6 @@ export default function InlineEditor({
     for (const statement of statements) {
       try {
         const result = await executeReifyQuery(statement);
-
         
         results.push({
           statement,
@@ -245,16 +228,13 @@ export default function InlineEditor({
     setStatementResults(results);
   }, [query, isExecuting, isConnected, executeReifyQuery, clearResults, client]);
 
-  // Update the ref whenever handleExecute changes
   useEffect(() => {
     handleExecuteRef.current = handleExecute;
   }, [handleExecute]);
 
-  // Create a stable callback that uses the ref
   const stableHandleExecute = useCallback(() => {
     handleExecuteRef.current();
   }, []);
-
 
   const renderResult = (statementResult: StatementResult, index: number) => {
     const { statement, result, error } = statementResult;
@@ -262,7 +242,7 @@ export default function InlineEditor({
     return (
       <div key={index} className={styles.statementResult}>
         <div className={styles.statementHeader}>
-          <span className={styles.statementText}>Statement {index + 1}</span>
+          <span className={styles.statementNumber}>STATEMENT {index + 1}</span>
           <code className={styles.statementPreview}>
             {statement.length > 50 ? statement.substring(0, 50) + '...' : statement}
           </code>
@@ -279,77 +259,67 @@ export default function InlineEditor({
 
   return (
     <>
-      {/* Connection Modal */}
       {showConnectionModal && !isConnected && (
-        <div className={styles.modalBackdrop} onClick={() => setShowConnectionModal(false)}>
-          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.modalOverlay} onClick={() => setShowConnectionModal(false)}>
+          <div className={styles.brutalistModal} onClick={(e) => e.stopPropagation()}>
             <div className={styles.modalHeader}>
-              <div className={styles.modalTitle}>
-                <span className={styles.modalIcon}>⚠️</span>
-                <h3>No ReifyDB Connection</h3>
-              </div>
+              <h3>NO CONNECTION</h3>
               <button 
-                className={styles.modalClose}
+                className={styles.modalCloseBtn}
                 onClick={() => setShowConnectionModal(false)}
-                aria-label="Close modal"
               >
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
+                ✕
               </button>
             </div>
-            <div className={styles.modalBody}>
+            <div className={styles.modalContent}>
               {connectionError && (
                 <div className={styles.modalError}>
-                  <strong>Error:</strong> {connectionError}
+                  ERROR: {connectionError}
                 </div>
               )}
-              <p className={styles.modalDescription}>
-                To run queries, you need to start the ReifyDB test container.
+              <p className={styles.modalText}>
+                START THE REIFYDB TEST CONTAINER TO RUN QUERIES
               </p>
-              <div className={styles.modalCommand}>
+              <div className={styles.commandBox}>
                 <code>{REIFYDB_CONFIG.DOCKER_COMMAND}</code>
                 <button
-                  className={styles.modalCopyButton}
+                  className={styles.copyBtn}
                   onClick={() => {
                     navigator.clipboard.writeText(REIFYDB_CONFIG.DOCKER_COMMAND);
-                    // Optional: Add visual feedback for copy action
                     const button = event?.target as HTMLButtonElement;
                     if (button) {
-                      const originalText = button.textContent;
-                      button.textContent = 'Copied!';
+                      button.textContent = 'COPIED';
                       setTimeout(() => {
-                        button.textContent = originalText;
+                        button.textContent = 'COPY';
                       }, 2000);
                     }
                   }}
                 >
-                  Copy
+                  COPY
                 </button>
               </div>
             </div>
-            <div className={styles.modalFooter}>
+            <div className={styles.modalActions}>
               <button 
-                className={styles.modalCancelButton}
+                className={styles.brutalistBtnSecondary}
                 onClick={() => setShowConnectionModal(false)}
               >
-                Cancel
+                CANCEL
               </button>
               <button 
-                className={styles.modalPrimaryButton}
+                className={styles.brutalistBtnPrimary}
                 onClick={startConnectionAttempt}
                 disabled={isConnecting || connectionTimeout > 0}
               >
                 {isConnecting ? (
                   <>
-                    <span className={styles.modalSpinner} />
-                    Connecting...
+                    <span className={styles.spinner} />
+                    CONNECTING...
                   </>
                 ) : connectionTimeout > 0 ? (
-                  `Retry in ${connectionTimeout}s`
+                  `RETRY IN ${connectionTimeout}S`
                 ) : (
-                  'Try to Connect'
+                  'TRY TO CONNECT'
                 )}
               </button>
             </div>
@@ -357,169 +327,135 @@ export default function InlineEditor({
         </div>
       )}
       
-      <div className={styles.inlineEditor}>
-        <div className={styles.editorWrapper}>
-        {editable ? (
-          <Suspense
-            fallback={
-              <div className={styles.editorLoading}>
-                <div className={styles.spinner} />
-                Loading editor...
+      <div className={styles.brutalistEditor}>
+        <div className={styles.editorContainer}>
+          {editable ? (
+            <Suspense
+              fallback={
+                <div className={styles.editorLoading}>
+                  <div className={styles.loadingSpinner} />
+                  <span>LOADING EDITOR...</span>
+                </div>
+              }
+            >
+              <div className={styles.editorWrapper}>
+                <div 
+                  ref={containerRef}
+                  className={styles.codeContainer} 
+                  style={{ 
+                    height: `${editorHeight}px`,
+                    minHeight: `${editorHeight}px`,
+                    maxHeight: `${editorHeight}px` 
+                  }}
+                >
+                  <CodeEditor
+                    ref={editorRef}
+                    value={query}
+                    onChange={useCallback((value) => {
+                      setQuery(value);
+                      const newHeight = calculateHeight(value);
+                      updateHeightDirectly(newHeight);
+                    }, [calculateHeight, updateHeightDirectly])}
+                    onExecute={stableHandleExecute}
+                    language="sql"
+                    theme={editorTheme}
+                    readOnly={isExecuting}
+                  />
+                </div>
+                <div className={styles.editorActions}>
+                  <button
+                    className={styles.executeBtn}
+                    onClick={handleExecute}
+                    disabled={isExecuting}
+                  >
+                    {isExecuting ? (
+                      <>
+                        <span className={styles.spinner} />
+                        EXECUTING...
+                      </>
+                    ) : (
+                      <>
+                        ▶ RUN QUERY
+                      </>
+                    )}
+                  </button>
+
+                  {statementResults.length > 0 && (
+                    <button 
+                      className={styles.toggleBtn} 
+                      onClick={() => setIsExpanded(!isExpanded)}
+                    >
+                      {isExpanded ? '▼' : '▶'} {isExpanded ? 'HIDE' : 'SHOW'} RESULTS ({statementResults.length})
+                    </button>
+                  )}
+
+                  {editable && query !== initialQuery && (
+                    <button
+                      className={styles.resetBtn}
+                      onClick={() => {
+                        setQuery(initialQuery);
+                        const resetHeight = calculateHeight(initialQuery);
+                        updateHeightDirectly(resetHeight);
+                        if (editorRef.current) {
+                          editorRef.current.setValue(initialQuery);
+                        }
+                      }}
+                    >
+                      ↺ RESET
+                    </button>
+                  )}
+
+                  <span className={styles.shortcutHint}>CTRL+ENTER TO RUN</span>
+                  
+                  <span className={`${styles.connectionDot} ${isConnected ? styles.connected : styles.disconnected}`}>
+                    {isConnecting ? 'CONNECTING' : isConnected ? 'CONNECTED' : 'DISCONNECTED'}
+                  </span>
+                </div>
               </div>
-            }
-          >
-            <div className={styles.editorContainer}>
-              <div 
-                ref={containerRef}
-                className={styles.editorInner} 
-                style={{ 
-                  height: `${editorHeight}px`,
-                  minHeight: `${editorHeight}px`,
-                  maxHeight: `${editorHeight}px` 
-                }}
-              >
-                <CodeEditor
-                  ref={editorRef}
-                  value={query}
-                  onChange={useCallback((value) => {
-                    setQuery(value);
-                    const newHeight = calculateHeight(value);
-                    updateHeightDirectly(newHeight);
-                  }, [calculateHeight, updateHeightDirectly])}
-                  onExecute={stableHandleExecute}
-                  language="sql"
-                  theme={editorTheme}
-                  readOnly={isExecuting}
-                />
-              </div>
-              <div className={styles.actions}>
+            </Suspense>
+          ) : (
+            <div className={styles.staticEditor}>
+              <pre className={styles.codeBlock}>
+                <code>{query}</code>
+              </pre>
+              <div className={styles.editorActions}>
                 <button
-                  className={styles.executeButton}
+                  className={styles.executeBtn}
                   onClick={handleExecute}
-                  disabled={isExecuting}
-                  title={!isConnected ? 'Connect to ReifyDB to run queries' : ''}
+                  disabled={isExecuting || !isConnected}
                 >
                   {isExecuting ? (
                     <>
                       <span className={styles.spinner} />
-                      Executing...
+                      EXECUTING...
                     </>
                   ) : (
-                    <>
-                      <svg className={styles.playIcon} width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-                        <path d="M3 2v10l8-5z" />
-                      </svg>
-                      Run Query
-                    </>
+                    <>▶ RUN QUERY</>
                   )}
                 </button>
 
                 {statementResults.length > 0 && (
-                  <button className={styles.toggleButton} onClick={() => setIsExpanded(!isExpanded)} aria-expanded={isExpanded}>
-                    <svg
-                      className={`${styles.chevron} ${isExpanded ? styles.expanded : ''}`}
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="currentColor"
-                    >
-                      <path d="M3 5l4 4 4-4" />
-                    </svg>
-                    {isExpanded ? 'Hide' : 'Show'} Results ({statementResults.length} statement
-                    {statementResults.length !== 1 ? 's' : ''})
-                  </button>
-                )}
-
-                {editable && query !== initialQuery && (
-                  <button
-                    className={styles.resetButton}
-                    onClick={() => {
-                      setQuery(initialQuery);
-                      const resetHeight = calculateHeight(initialQuery);
-                      updateHeightDirectly(resetHeight);
-                      if (editorRef.current) {
-                        editorRef.current.setValue(initialQuery);
-                      }
-                    }}
+                  <button 
+                    className={styles.toggleBtn} 
+                    onClick={() => setIsExpanded(!isExpanded)}
                   >
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-                      <path d="M7 2.5a4.5 4.5 0 1 0 4.09 2.62.45.45 0 0 1 .82-.37A5.4 5.4 0 1 1 7 1.8v.7z" />
-                      <path d="M7 0.9a.45.45 0 0 1 .45.45v2.7a.45.45 0 0 1-.45.45h-2.7a.45.45 0 0 1 0-.9h2.06L5.08 2.12a.45.45 0 1 1 .64-.64L7 2.76V1.35A.45.45 0 0 1 7 0.9z" />
-                    </svg>
-                    Reset
+                    {isExpanded ? '▼' : '▶'} {isExpanded ? 'HIDE' : 'SHOW'} RESULTS ({statementResults.length})
                   </button>
                 )}
-
-                <span className={styles.shortcutHint}>Ctrl+Enter to execute</span>
                 
-                {/* Connection Status Indicator - positioned after the shortcut hint */}
-                <span className={`${styles.connectionStatus} ${isConnected ? styles.connected : styles.disconnected}`}>
-                  <span className={styles.statusDot}></span>
-                  {isConnecting ? 'Connecting...' : isConnected ? 'Connected' : 'Disconnected'}
+                <span className={`${styles.connectionDot} ${isConnected ? styles.connected : styles.disconnected}`}>
+                  {isConnecting ? 'CONNECTING' : isConnected ? 'CONNECTED' : 'DISCONNECTED'}
                 </span>
               </div>
             </div>
-          </Suspense>
-        ) : (
-          <div className={styles.staticCodeContainer}>
-            <div className={styles.staticCode}>
-              <pre>
-                <code>{query}</code>
-              </pre>
-            </div>
-            <div className={styles.actions}>
-              <button
-                className={styles.executeButton}
-                onClick={handleExecute}
-                disabled={isExecuting || !isConnected}
-                title={!isConnected ? 'Connect to ReifyDB to run queries' : ''}
-              >
-                {isExecuting ? (
-                  <>
-                    <span className={styles.spinner} />
-                    Executing...
-                  </>
-                ) : (
-                  <>
-                    <svg className={styles.playIcon} width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-                      <path d="M3 2v10l8-5z" />
-                    </svg>
-                    Run Query
-                  </>
-                )}
-              </button>
+          )}
+        </div>
 
-              {statementResults.length > 0 && (
-                <button className={styles.toggleButton} onClick={() => setIsExpanded(!isExpanded)} aria-expanded={isExpanded}>
-                  <svg
-                    className={`${styles.chevron} ${isExpanded ? styles.expanded : ''}`}
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="currentColor"
-                  >
-                    <path d="M3 5l4 4 4-4" />
-                  </svg>
-                  {isExpanded ? 'Hide' : 'Show'} Results ({statementResults.length} statement
-                  {statementResults.length !== 1 ? 's' : ''})
-                </button>
-              )}
-              
-              {/* Connection Status Indicator - positioned at the end */}
-              <span className={`${styles.connectionStatus} ${isConnected ? styles.connected : styles.disconnected}`} style={{ marginLeft: 'auto' }}>
-                <span className={styles.statusDot}></span>
-                {isConnecting ? 'Connecting...' : isConnected ? 'Connected' : 'Disconnected'}
-              </span>
-            </div>
+        {isExpanded && statementResults.length > 0 && (
+          <div className={styles.resultsWrapper}>
+            {statementResults.map((result, index) => renderResult(result, index))}
           </div>
         )}
-      </div>
-
-      {isExpanded && statementResults.length > 0 && (
-        <div className={styles.resultsContainer}>
-          {statementResults.map((result, index) => renderResult(result, index))}
-        </div>
-      )}
       </div>
     </>
   );
