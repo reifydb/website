@@ -4,28 +4,32 @@
  * work well for content-centric websites.
  */
 
-/* Import organized CSS modules */
-@import './_blog.css';
-@import './_tokens.css';
-@import './_components.css';
-@import './_documentation.css';
-@import './_search.css';
+/* Import Tailwind CSS with all styles consolidated */
 @import './tailwind.css';
 
-/* Global background application */
-body {
-  background: var(--ifm-background-color) !important;
-  background-attachment: fixed;
-}
+/*!* Global background application *!*/
+/*html {*/
+/*  background: #ffffff;*/
+/*  min-height: 100%;*/
+/*}*/
 
-html {
-  background: var(--ifm-background-color);
-  min-height: 100%;
-}
+/*body {*/
+/*  background: #ffffff !important;*/
+/*  background-attachment: fixed;*/
+/*}*/
 
-/* Ensure main content areas are transparent to show background */
-.main-wrapper,
-[class*="docMainContainer"],
-[class*="docPage"] {
-  background: transparent;
-}
+/*!* Dark mode backgrounds *!*/
+/*[data-theme='dark'] html {*/
+/*  background: #0f0f0f;*/
+/*}*/
+
+/*[data-theme='dark'] body {*/
+/*  background: #0f0f0f !important;*/
+/*}*/
+
+/*!* Ensure main content areas are transparent to show background *!*/
+/*.main-wrapper,*/
+/*[class*="docMainContainer"],*/
+/*[class*="docPage"] {*/
+/*  background: transparent;*/
+/*}*/

@@ -32,14 +32,14 @@ function Column({column}: {column: ColumnType}) {
         'relative p-8 mb-6 rounded-lg',
         'transition-all duration-300',
         'hover:transform hover:-translate-y-1.5',
-        'hover:bg-white/5 dark:hover:bg-white/10',
+        'hover:bg-white/5 [data-theme=\'dark\']:hover:bg-white/10',
         'group',
         column.className,
       )}>
       {/* Hover border effect */}
       <div className="absolute inset-0 rounded-lg border-3 border-comic-border opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       
-      <div className="footer__title text-[#FFB570] dark:text-[#FFC490] font-bold text-lg mb-6 uppercase tracking-wider relative pb-2">
+      <div className="footer__title text-[#FFB570] [data-theme='dark']:text-[#FFC490] font-bold text-lg mb-6 uppercase tracking-wider relative pb-2">
         {column.title}
         {/* Title underline */}
         <div className="absolute bottom-0 left-0 w-8 h-0.75 bg-gradient-to-r from-accent-warm to-accent-vibrant rounded-sm" />

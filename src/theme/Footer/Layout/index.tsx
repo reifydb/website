@@ -16,9 +16,10 @@ export default function FooterLayout({
         'footer',
         // Tailwind classes for footer styling
         'relative overflow-hidden',
+        // Use the correct class format without 'dark:' prefix duplication
         'bg-gradient-to-br from-[#2D1B69] via-[#4A154B] via-[#6F42C1] to-[#8E44AD]',
-        'dark:bg-gradient-to-br dark:from-[#1A0F2E] dark:via-[#2D1B42] dark:via-[#4A2C5A] dark:to-[#6B3F73]',
-        'border-t-4 border-comic-border dark:border-[#FFB570]',
+        '[data-theme=\'dark\']:bg-gradient-to-br [data-theme=\'dark\']:from-[#1A0F2E] [data-theme=\'dark\']:via-[#2D1B42] [data-theme=\'dark\']:to-[#6B3F73]',
+        'border-t-4 border-comic-border [data-theme=\'dark\']:border-[#FFB570]',
         'shadow-comic',
         {
           'footer--dark': style === 'dark',
