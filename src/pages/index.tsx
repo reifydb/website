@@ -2,24 +2,18 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import CodeBlock from '@theme/CodeBlock';
+import AnimatedText from '@site/src/components/AnimatedText';
 
 function HomepageHeader() {
   return (
     <header className="hero-section py-24 md:py-32 text-center">
       <div className="container mx-auto px-4">
-        <div className="flex justify-center mb-8">
-          <img 
-            src="/img/logo.png" 
-            alt="ReifyDB Logo" 
-            className="w-32 h-32 md:w-40 md:h-40"
-          />
-        </div>
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-gray-900 dark:text-white uppercase tracking-tight">
+        <h1 className="text-5xl md:text-7xl font-bold mb-2 leading-tight text-gray-900 dark:text-white tracking-tight">
           ReifyDB
         </h1>
-        <p className="text-2xl md:text-3xl font-medium mb-6 text-gray-700 dark:text-gray-300">
-          The Modern Database To Get Things Done
-        </p>
+        <div className="mb-8">
+          <AnimatedText />
+        </div>
         <p className="text-lg md:text-xl max-w-3xl mx-auto mb-12 text-gray-600 dark:text-gray-400 leading-relaxed">
           Fast, embeddable, and cloud-native database with real-time capabilities.
           Built for modern applications that demand performance and simplicity.

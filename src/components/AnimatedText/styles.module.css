@@ -1,0 +1,143 @@
+/* Terminal Container */
+.terminalContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Terminal Window */
+.terminalWindow {
+  background: #1a1a1a;
+  border: 3px solid #383838;
+  border-radius: 0; /* Brutalist style - sharp corners */
+  box-shadow: -8px 8px 0px 0px #383838;
+  width: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.terminalWindow:hover {
+  transform: translate(2px, -2px);
+  box-shadow: -10px 10px 0px 0px #383838;
+}
+
+/* Terminal Header */
+.terminalHeader {
+  background: #2a2a2a;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid #383838;
+}
+
+.terminalDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.terminalTitle {
+  margin-left: auto;
+  color: #808080;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Terminal Body */
+.terminalBody {
+  padding: 1.5rem;
+  min-height: 80px;
+  background: #0a0a0a;
+}
+
+.terminalLine {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* Terminal Prompt */
+.terminalPrompt {
+  color: #27c93f; /* Green */
+  font-weight: bold;
+}
+
+.terminalPath {
+  color: #6FC2FF; /* Blue */
+  font-weight: bold;
+}
+
+.terminalCommand {
+  color: #F8F8F7; /* White */
+  margin-left: 0.5rem;
+}
+
+/* Terminal Cursor */
+.terminalCursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background: transparent;
+  color: #27c93f;
+  font-weight: normal;
+  opacity: 0;
+  margin-left: 2px;
+  animation: none;
+}
+
+.cursorVisible {
+  opacity: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .terminalWindow {
+    font-size: 0.9rem;
+  }
+  
+  .terminalBody {
+    padding: 1rem;
+  }
+  
+  .terminalHeader {
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .terminalDot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .terminalWindow {
+  border-color: #F8F8F7;
+  box-shadow: -8px 8px 0px 0px #F8F8F7;
+}
+
+[data-theme='dark'] .terminalWindow:hover {
+  box-shadow: -10px 10px 0px 0px #F8F8F7;
+}
+
+[data-theme='dark'] .terminalHeader {
+  border-bottom-color: #F8F8F7;
+}
+
+/* Old styles below - kept for reference but not used */
+.animatedTextContainer {
+  display: none;
+}
+
+.animatedText {
+  display: none;
+}
