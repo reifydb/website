@@ -228,12 +228,12 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
       // Configure editor options with brutalist styling
       editor.updateOptions({
         minimap: { enabled: false },
-        fontSize: 14,
+        fontSize: 16,
         fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace",
         fontWeight: '500',
         lineNumbers: 'on',
         lineNumbersMinChars: 3,
-        lineHeight: 24,
+        lineHeight: 26,
         roundedSelection: false,
         scrollBeyondLastLine: false,
         automaticLayout: true,
@@ -247,12 +247,28 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
           showKeywords: true,
           showSnippets: true,
           showFunctions: true,
+          preview: false,
         },
         renderLineHighlight: 'all',
         renderIndentGuides: true,
         cursorStyle: 'block',
         cursorBlinking: 'solid',
         smoothScrolling: false,
+        hover: {
+          enabled: true,
+          delay: 300,
+        },
+        quickSuggestions: {
+          other: true,
+          comments: false,
+          strings: false,
+        },
+        parameterHints: {
+          enabled: true,
+        },
+        suggestOnTriggerCharacters: true,
+        acceptSuggestionOnEnter: 'on',
+        wordBasedSuggestions: false,
       });
     };
 

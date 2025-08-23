@@ -22,7 +22,7 @@
 .brutalistEditorContainer :global(.monaco-editor .line-numbers) {
   color: #6B7280 !important;
   font-weight: 500 !important;
-  font-size: 11px !important;
+  font-size: 13px !important;
 }
 
 .brutalistEditorContainer :global(.monaco-editor .current-line ~ .line-numbers) {
