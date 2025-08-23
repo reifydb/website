@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '@theme/Layout';
+import PageHeader from '../components/PageHeader';
 import styles from './contact.module.css';
 
 export default function Contact() {
@@ -87,13 +88,10 @@ export default function Contact() {
   return (
     <Layout title="Contact" description="Get in touch with ReifyDB">
       <div className={styles.contactContainer}>
-        <div className={styles.heroSection}>
-          <h1 className={styles.heroTitle}>Get in Touch</h1>
-          <p className={styles.heroSubtitle}>
-            Whether you need technical guidance, architecture advice, or want to explore features,
-            ReifyDB is here to help you succeed.
-          </p>
-        </div>
+        <PageHeader 
+          title="GET IN TOUCH"
+          subtitle="Whether you need technical guidance, architecture advice, or want to explore features, ReifyDB is here to help you succeed."
+        />
 
         <div className={styles.contentWrapper}>
           <div className={styles.benefitsSection}>

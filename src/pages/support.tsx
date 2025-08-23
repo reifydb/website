@@ -1,18 +1,17 @@
 import React from 'react';
 import Layout from '@theme/Layout';
+import PageHeader from '../components/PageHeader';
 import styles from './support.module.css';
 
 export default function Support(): JSX.Element {
   return (
     <Layout title="Support" description="Get help with ReifyDB">
       <main className={styles.supportPage}>
+        <PageHeader 
+          title="SUPPORT"
+          subtitle="Get help from the ReifyDB community and team"
+        />
         <div className={styles.container}>
-          <div className={styles.header}>
-            <h1 className={styles.title}>Support</h1>
-            <p className={styles.subtitle}>
-              Get help from the ReifyDB community and team
-            </p>
-          </div>
 
           <div className={styles.supportGrid}>
             <div className={styles.supportCard + ' ' + styles.commercialCard}>

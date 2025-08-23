@@ -8,6 +8,36 @@
 /* Import Documentation Styles - Clean Brutalist Design */
 @import './_documentation.css';
 
+/* Import Blog Styles - Clean Brutalist Design */
+@import './_blog.css';
+
+/* ========================
+   Page Header - Brutalist Style (Shared Component)
+   ======================== */
+.page-header {
+  background: #383838 !important;
+  padding: 5rem 0 4rem 0 !important;
+  border-bottom: 3px solid #383838 !important;
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
+  position: relative !important;
+}
+
+.page-header::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 5px !important;
+}
+
+[data-theme='dark'] .page-header {
+  background: #1A1A1A !important;
+  border-bottom: 3px solid #F8F8F7 !important;
+}
+
+
 /**
  * Design Tokens and CSS Custom Properties
  * Migrated from _tokens.css - Contains all color palettes, spacing, shadows, and design system tokens
@@ -1427,105 +1457,6 @@ p, span, div {
   font-weight: 700;
   box-shadow: var(--shadow-soft);
   transform: translateX(3px);
-}
-
-/* Blog Styles */
-.blog-wrapper,
-[class*="blog"] main,
-.theme-blog-list-page,
-.blog-list-page,
-[class*="blog-list"] {
-  background: linear-gradient(135deg, var(--warm-bg) 0%, var(--ifm-background-color) 100%);
-  min-height: 100vh;
-  position: relative;
-}
-
-/* Blog post cards */
-[class*="blog"] article,
-article {
-  border: 4px solid var(--comic-border) !important;
-  margin: 2rem 0 !important;
-  background: var(--ifm-background-surface-color) !important;
-  border-radius: var(--radius-medium) !important;
-  box-shadow: var(--shadow-comic) !important;
-  position: relative !important;
-  /* removed transition for static appearance */
-  overflow: hidden !important;
-  z-index: 1 !important;
-}
-
-[class*="blog"] article:hover,
-article:hover {
-  /* removed transform for static appearance */
-  box-shadow: 
-    var(--shadow-comic), 
-    0 0 0 2px var(--comic-border-thick),
-    0 20px 40px rgba(255, 107, 53, 0.15),
-    0 8px 16px rgba(142, 68, 173, 0.1);
-  border-color: var(--comic-border-thick);
-  filter: brightness(1.05);
-}
-
-/* Blog post header */
-article header {
-  padding: 2rem 2rem 1rem;
-  background: linear-gradient(135deg, 
-    rgba(37, 99, 235, 0.03) 0%, 
-    transparent 100%);
-  position: relative;
-}
-
-article h2 {
-  font-size: 1.75rem !important;
-  font-weight: 700 !important;
-  margin-bottom: 0.75rem !important;
-  line-height: 1.3 !important;
-  /* removed transition for static appearance */
-}
-
-article h2 a {
-  color: var(--ifm-font-color-base) !important;
-  text-decoration: none !important;
-  position: relative;
-  display: inline-block;
-}
-
-/* Blog post meta */
-.blog-post-meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0 2rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.blog-post-meta time {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--ifm-color-emphasis-600);
-  font-size: 0.9rem;
-  padding: 0.25rem 0.75rem;
-  background: var(--ifm-color-emphasis-100);
-  border-radius: 0;
-}
-
-/* Hide tags and edit this page */
-.blog-wrapper .theme-edit-this-page,
-article footer .col.margin-top--sm:has(a[href*="edit"]),
-article .margin-vert--md:has(.badge),
-article footer .col--6 .margin-vert--md:has(.badge),
-.blog-post-page .theme-edit-this-page,
-.blog-post-page .margin-vert--md:has(.badge),
-.margin-vert--md .badge,
-.margin-vert--md .margin-left--sm,
-article .margin-vert--md,
-[class*="blog"] .badge,
-[class*="tag"],
-.blog-tags,
-.post-tags {
-  display: none !important;
 }
 
 /* Truncate marker / Read more button */

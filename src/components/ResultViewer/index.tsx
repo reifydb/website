@@ -226,7 +226,7 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
           </tbody>
         </table>
           <div className={styles.resultHeader}>
-              <div className={styles.statsBox}>Addi
+              <div className={styles.statsBox}>
           <span className={styles.statItem}>
             ROWS: <strong>{result.rows.length}</strong>
           </span>
