@@ -127,6 +127,15 @@ body {
   background: transparent;
 }
 
+/* Navbar background fix */
+.navbar {
+  background: #ffffff !important;
+}
+
+[data-theme='dark'] .navbar {
+  background: rgba(17, 24, 39, 0.95) !important;
+}
+
 /* Ensure container is centered - override Docusaurus defaults */
 .container {
   margin-left: auto !important;

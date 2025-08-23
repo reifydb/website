@@ -24,10 +24,10 @@ function HomepageHeader() {
         <h1 className="text-7xl font-black mb-6 leading-tight tracking-tight gradient-text">
           ReifyDB
         </h1>
-        <p className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
+        <p className="text-3xl font-semibold mb-6 text-gray-800 [data-theme='dark']:text-gray-200">
           The Modern Database To Get Things Done
         </p>
-        <p className="text-xl max-w-3xl mx-auto mb-12 text-gray-600 dark:text-gray-400 leading-relaxed">
+        <p className="text-xl max-w-3xl mx-auto mb-12 text-gray-600 [data-theme='dark']:text-gray-400 leading-relaxed">
           Fast, embeddable, and cloud-native database with real-time capabilities.
           Built for modern applications that demand performance and simplicity.
         </p>

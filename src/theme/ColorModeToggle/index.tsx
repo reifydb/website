@@ -110,7 +110,7 @@ function ColorModeToggle({
           buttonClassName,
           // Add Tailwind classes for better styling
           'flex items-center justify-center w-8 h-8 rounded-full',
-          'hover:bg-primary-lightest dark:hover:bg-gray-800',
+          'hover:bg-primary-lightest [data-theme="dark"]:hover:bg-gray-800',
           'transition-all duration-200',
         )}
         type="button"

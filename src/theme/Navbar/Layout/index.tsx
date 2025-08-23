@@ -43,10 +43,10 @@ export default function NavbarLayout({children}: Props): ReactNode {
         'navbar--fixed-top',
         // Tailwind classes for navbar styling
         'sticky top-0 z-50',
-        'bg-white/95 dark:bg-gray-900/95',
+        'bg-white/95',
         'backdrop-blur-xl',
-        'border-b-4 border-comic-border dark:border-dark-comic-border',
-        'shadow-comic dark:shadow-dark-comic',
+        'border-b-4 border-comic-border [data-theme="dark"]:border-dark-comic-border',
+        'shadow-comic [data-theme="dark"]:shadow-dark-comic',
         'transition-all duration-300',
         'min-h-[60px] flex items-center',
         // Hide on scroll behavior
