@@ -1,0 +1,284 @@
+/**
+ * ReifyDB Navbar - Clean Brutalist Design System
+ * Based on style.md guidelines
+ * Handles both desktop and mobile navbar styling
+ */
+
+/* ========================
+   Mobile Menu Fixes
+   ======================== */
+@media (max-width: 996px) {
+  /* Ensure mobile menu is visible and functional */
+  .navbar__toggle {
+    display: flex !important;
+    z-index: 9999 !important;
+  }
+  
+  /* Mobile sidebar drawer */
+  .navbar-sidebar,
+  [class*="navbarSidebar"]:not([class*="hidden"]) {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    height: 100vh !important;
+    width: min(75vw, 320px) !important;
+    background: white !important;
+    border-left: 3px solid #383838 !important;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1) !important;
+    z-index: 9998 !important;
+    transform: translateX(0) !important;
+    transition: transform 0.3s ease !important;
+    overflow-y: auto !important;
+  }
+  
+  /* Ensure visibility when opened */
+  .navbar-sidebar--show,
+  [class*="navbarSidebar"][class*="show"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Backdrop */
+  .navbar-sidebar__backdrop,
+  [class*="navbarSidebarBackdrop"] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    z-index: 9997 !important;
+  }
+  
+  [data-theme='dark'] .navbar-sidebar,
+  [data-theme='dark'] [class*="navbarSidebar"] {
+    background: #1A1A1A !important;
+    border-left: 3px solid #F8F8F7 !important;
+  }
+  
+  /* Ensure hamburger button is clickable */
+  .navbar__toggle {
+    position: relative !important;
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+  }
+  
+  /* Hide search and navbar right items on mobile devices */
+  .navbar__search,
+  .navbar__search-input,
+  [class*="navbarSearch"],
+  [class*="searchBox"],
+  .navbar__items--right,
+  [class*="navbar__right"],
+  [class*="navbarRight"],
+  [class*="theme-layout-navbar-right"] {
+    display: none !important;
+  }
+  
+  /* Mobile sidebar header */
+  .navbar-sidebar__brand,
+  [class*="navbarSidebarBrand"] {
+    display: flex !important;
+    align-items: center !important;
+    padding: 1rem !important;
+    border-bottom: 3px solid #383838 !important;
+    background: #F4EFEA !important;
+  }
+  
+  [data-theme='dark'] .navbar-sidebar__brand,
+  [data-theme='dark'] [class*="navbarSidebarBrand"] {
+    background: #2A2A2A !important;
+    border-bottom: 3px solid #F8F8F7 !important;
+  }
+  
+  /* Mobile sidebar menu items */
+  .navbar-sidebar__items,
+  [class*="navbarSidebarItems"] {
+    padding: 1rem !important;
+  }
+  
+  .navbar-sidebar__item,
+  [class*="navbarSidebarItem"] {
+    display: block !important;
+    padding: 0.75rem 1rem !important;
+    margin: 0.25rem 0 !important;
+    color: #383838 !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.025em !important;
+    border-left: 3px solid transparent !important;
+    transition: all 0.2s !important;
+  }
+  
+  .navbar-sidebar__item:hover,
+  [class*="navbarSidebarItem"]:hover {
+    background: #F4EFEA !important;
+    border-left-color: #383838 !important;
+  }
+  
+  [data-theme='dark'] .navbar-sidebar__item,
+  [data-theme='dark'] [class*="navbarSidebarItem"] {
+    color: #F8F8F7 !important;
+  }
+  
+  [data-theme='dark'] .navbar-sidebar__item:hover,
+  [data-theme='dark'] [class*="navbarSidebarItem"]:hover {
+    background: #2A2A2A !important;
+    border-left-color: #F8F8F7 !important;
+  }
+  
+  /* Close button */
+  .navbar-sidebar__close,
+  [class*="navbarSidebarClose"] {
+    position: absolute !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border: 2px solid #383838 !important;
+    cursor: pointer !important;
+  }
+  
+  [data-theme='dark'] .navbar-sidebar__close,
+  [data-theme='dark'] [class*="navbarSidebarClose"] {
+    border-color: #F8F8F7 !important;
+  }
+  
+  /* Hide theme switcher and search in mobile sidebar */
+  .navbar-sidebar [class*="colorModeToggle"],
+  .navbar-sidebar [class*="searchBox"],
+  .navbar-sidebar [class*="SearchBar"],
+  .navbar-sidebar [class*="navbarSearch"],
+  .navbar-sidebar [class*="theme-search"],
+  .navbar-sidebar .theme-search-algolia-button,
+  .navbar-sidebar button[class*="search"],
+  .navbar-sidebar [class*="ColorModeToggle"],
+  .navbar-sidebar [class*="toggle_"],
+  .navbar-sidebar [class*="darkToggle"] {
+    display: none !important;
+  }
+}
+
+/* ========================
+   Navbar Brutalist Styling
+   ======================== */
+.navbar {
+  background: #F4EFEA !important;
+  border-bottom: 3px solid #383838 !important;
+  box-shadow: none !important;
+}
+
+[data-theme='dark'] .navbar {
+  background: #1A1A1A !important;
+  border-bottom: 3px solid #F8F8F7 !important;
+}
+
+.navbar__inner {
+  padding: 0 2rem !important;
+}
+
+.navbar__item {
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.025em !important;
+  font-size: 0.875rem !important;
+  color: #383838 !important;
+  padding: 0.5rem 1rem !important;
+  margin: 0 0.25rem !important;
+  border: 2px solid transparent !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.navbar__item:hover {
+  border-color: #383838 !important;
+  background: white !important;
+  transform: translateY(-2px) !important;
+}
+
+[data-theme='dark'] .navbar__item {
+  color: #F8F8F7 !important;
+}
+
+[data-theme='dark'] .navbar__item:hover {
+  border-color: #F8F8F7 !important;
+  background: #2A2A2A !important;
+}
+
+.navbar__link--active {
+  background: #383838 !important;
+  color: white !important;
+  border-color: #383838 !important;
+}
+
+[data-theme='dark'] .navbar__link--active {
+  background: #F8F8F7 !important;
+  color: #1A1A1A !important;
+  border-color: #F8F8F7 !important;
+}
+
+/* Navbar Logo */
+.navbar__logo {
+  height: 2rem !important;
+  margin-right: 0.5rem !important;
+}
+
+.navbar__title {
+  font-weight: 700 !important;
+  font-size: 1.25rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: #383838 !important;
+}
+
+[data-theme='dark'] .navbar__title {
+  color: #F8F8F7 !important;
+}
+
+/* Dropdown menus */
+.dropdown__menu {
+  background: white !important;
+  border: 3px solid #383838 !important;
+  border-radius: 0 !important;
+  box-shadow: -5px 5px 0px 0px #383838 !important;
+  padding: 0.5rem !important;
+  margin-top: 0.5rem !important;
+}
+
+[data-theme='dark'] .dropdown__menu {
+  background: #2A2A2A !important;
+  border: 3px solid #F8F8F7 !important;
+  box-shadow: -5px 5px 0px 0px #F8F8F7 !important;
+}
+
+.dropdown__link {
+  padding: 0.5rem 1rem !important;
+  color: #383838 !important;
+  font-weight: 500 !important;
+  border-left: 3px solid transparent !important;
+  margin-left: -3px !important;
+  transition: all 0.2s !important;
+}
+
+.dropdown__link:hover {
+  background: #F4EFEA !important;
+  border-left-color: #383838 !important;
+  color: #383838 !important;
+}
+
+[data-theme='dark'] .dropdown__link {
+  color: #F8F8F7 !important;
+}
+
+[data-theme='dark'] .dropdown__link:hover {
+  background: #1A1A1A !important;
+  border-left-color: #F8F8F7 !important;
+  color: #F8F8F7 !important;
+}

@@ -516,9 +516,9 @@ article[itemProp="blogPost"] .markdown,
   margin: 0 !important;
 }
 
-/* Hide TOC on smaller screens */
+/* Hide TOC on smaller screens but preserve mobile menu */
 @media (max-width: 1400px) {
-  [class*="tableOfContents"] {
+  [class*="tableOfContents"]:not([class*="navbar"]):not([class*="menu"]) {
     display: none !important;
   }
 }
@@ -681,6 +681,24 @@ article[itemProp="blogPost"] .markdown,
 .hero__title,
 .hero__subtitle {
   all: unset !important;
+}
+
+/* Mobile Blog Layout Fixes */
+@media (max-width: 996px) {
+  /* Hide desktop-only TOC on mobile */
+  .col.col--3,
+  .theme-doc-toc-desktop {
+    display: none !important;
+  }
+  
+  /* Full width content on mobile */
+  .container.margin-vert--lg,
+  .__blog-post-container,
+  .col.col--9 {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 1rem !important;
+  }
 }
 
 /* Blog tags - hide all tags and labels */

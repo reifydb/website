@@ -11,6 +11,9 @@
 /* Import Blog Styles - Clean Brutalist Design */
 @import './_blog.css';
 
+/* Import Navbar Styles - Clean Brutalist Design */
+@import './_navbar.css';
+
 /* ========================
    Page Header - Brutalist Style (Shared Component)
    ======================== */
