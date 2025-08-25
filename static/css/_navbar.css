@@ -429,7 +429,7 @@
 }
 
 [data-theme='dark'] .navbar__link--active {
-  background: #F8F8F7 !important;
+  background: #383838 !important;
   color: #1A1A1A !important;
   border-color: #F8F8F7 !important;
 }

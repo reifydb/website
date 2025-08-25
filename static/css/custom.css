@@ -44,13 +44,23 @@
 /* Import Tailwind CSS with all styles consolidated */
 @import './tailwind.css';
 
-/* Navbar active item styling */
+/* Navbar active item styling - Light mode */
 .navbar__link--active {
     color: white !important;
 }
 
-/* Ensure active navbar items are visible */
+/* Ensure active navbar items are visible - Light mode */
 .navbar__item .navbar__link--active,
 .navbar__item.navbar__item--active .navbar__link {
     color: white !important;
+}
+
+/* Dark mode - active navbar items should have dark text on light background */
+[data-theme='dark'] .navbar__link--active {
+    color: #1A1A1A !important;
+}
+
+[data-theme='dark'] .navbar__item .navbar__link--active,
+[data-theme='dark'] .navbar__item.navbar__item--active .navbar__link {
+    color: #1A1A1A !important;
 }
