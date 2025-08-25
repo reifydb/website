@@ -3,6 +3,8 @@ import { WsClient } from '@reifydb/client';
 import { Column, Value } from '@reifydb/core';
 import { QueryResult, QueryHistoryItem } from '../types';
 
+export type { QueryResult, QueryHistoryItem };
+
 export interface ReifyQueryState {
   isExecuting: boolean;
   result: QueryResult | null;

@@ -1,5 +1,7 @@
 import { QueryResult, QueryHistoryItem } from '../types';
 
+export type { QueryResult, QueryHistoryItem };
+
 export interface ColumnInfo {
   name: string;
   dataType: string;

@@ -214,7 +214,7 @@ article {
 .theme-doc-markdown.markdown,
 [class*="markdown"] {
   background: var(--doc-surface-secondary) !important;
-  padding: 3rem !important;
+  padding: 1rem !important;
   margin: 0 !important;
   margin-top: -3px !important;  /* Connect with breadcrumb border */
   border: 3px solid var(--doc-border) !important;
@@ -367,6 +367,16 @@ article {
   margin: 1.5rem 0 !important;
   overflow-x: auto !important;
   /* transition removed */
+}
+
+/* Hide the wordwrap toggle button */
+[class*="buttonGroup"],
+[class*="codeBlockLines"] button[class*="wordWrap"],
+[class*="toggleWordWrap"],
+button[title*="wrap"],
+button[title*="Wrap"],
+[class*="codeBlockLines"] button {
+  display: none !important;
 }
 
 .theme-doc-markdown pre::before {
@@ -778,20 +788,63 @@ article {
    Responsive Design
    ======================== */
 @media (max-width: 996px) {
-  .theme-doc-markdown {
-    padding: 2rem 1.5rem !important;
+  /* Reduce container padding on mobile */
+  [class*="docItemContainer"],
+  [class*="docItemCol"] {
+    padding: 0 !important;
   }
-
+  
+  /* Reduce markdown content padding */
+  .theme-doc-markdown {
+    padding: 0.75rem !important;
+  }
+  
+  /* Reduce breadcrumb padding on mobile */
+  .theme-doc-breadcrumbs {
+    padding: 0.75rem 1rem !important;
+  }
+  
+  /* Adjust heading sizes for mobile */
   .theme-doc-markdown h1 {
-    font-size: 2rem !important;
+    font-size: 1.75rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
   }
 
   .theme-doc-markdown h2 {
-    font-size: 1.5rem !important;
+    font-size: 1.35rem !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
   }
 
   .theme-doc-markdown h3 {
-    font-size: 1.25rem !important;
+    font-size: 1.15rem !important;
+    margin-top: 1.25rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Reduce code block padding on mobile */
+  .theme-doc-markdown pre {
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+  }
+  
+  /* Reduce blockquote padding */
+  .theme-doc-markdown blockquote {
+    padding: 1rem !important;
+    margin: 1.5rem 0 !important;
+  }
+  
+  /* Reduce table padding */
+  .theme-doc-markdown th,
+  .theme-doc-markdown td {
+    padding: 0.75rem !important;
+  }
+  
+  /* Reduce list indentation */
+  .theme-doc-markdown ul,
+  .theme-doc-markdown ol {
+    padding-left: 1.5rem !important;
   }
 }
 

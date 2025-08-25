@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-import InlineEditor from '@site/src/components/InlineEditor';
+import InlineCodeBlock from '@site/src/components/InlineCodeBlock';
 
 # Interactive Queries
 
@@ -14,7 +14,7 @@ Learn how to query data in ReifyDB with interactive examples. You can run these 
 
 The most fundamental query in ReifyDB is the SELECT statement. Try running this query to see all users:
 
-<InlineEditor
+<InlineCodeBlock
   query="Map {1}"
 />
 
@@ -22,7 +22,7 @@ The most fundamental query in ReifyDB is the SELECT statement. Try running this 
 
 You can filter results using the WHERE clause:
 
-<InlineEditor
+<InlineCodeBlock
   query="SELECT name, email 
 FROM users 
 WHERE email LIKE '%@example.com'"
@@ -32,7 +32,7 @@ WHERE email LIKE '%@example.com'"
 
 ReifyDB supports various types of joins to combine data from multiple tables:
 
-<InlineEditor
+<InlineCodeBlock
   query="SELECT u.name, p.title
 FROM users u
 JOIN posts p ON u.id = p.user_id
@@ -43,7 +43,7 @@ WHERE p.published = true"
 
 Use aggregation functions to summarize your data:
 
-<InlineEditor
+<InlineCodeBlock
   query="SELECT u.name, COUNT(p.id) as post_count
 FROM users u
 LEFT JOIN posts p ON u.id = p.user_id
@@ -55,7 +55,7 @@ ORDER BY post_count DESC"
 
 ReifyDB supports CASE statements for conditional logic:
 
-<InlineEditor
+<InlineCodeBlock
   query="SELECT 
   title,
   CASE 
@@ -69,7 +69,7 @@ FROM posts"
 
 You can run multiple SQL statements in a single execution. Each statement produces its own result table:
 
-<InlineEditor
+<InlineCodeBlock
   query={`-- Get all users
 SELECT * FROM users;
 
