@@ -2,10 +2,11 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import CodeBlock from '@theme/CodeBlock';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import AnimatedText from '@site/src/components/AnimatedText';
 import Card from '@site/src/components/Card';
-import InlineCodeBlock from "@components/InlineCodeBlock";
-import InlineViewer from "@components/InlineViewer";
+import InlineCodeBlock from "@site/src/components/InlineCodeBlock";
+import InlineViewer from "@site/src/components/InlineViewer";
 
 function HomepageHeader() {
     return (
@@ -75,7 +76,9 @@ create deferred view demo.adults {
                         automatically update when data changes</p>
                 </div>
                 <div className="grid lg:grid-cols-2 gap-8">
-                    <InlineViewer query={exampleCode}/>
+                    <BrowserOnly fallback={<div>Loading...</div>}>
+                        {() => <InlineViewer query={exampleCode}/>}
+                    </BrowserOnly>
                     <div className="grid gap-4">
 
                         <div className="card-clean">

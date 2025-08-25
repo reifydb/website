@@ -3,6 +3,7 @@ sidebar_position: 3
 ---
 
 import InlineCodeBlock from '@site/src/components/InlineCodeBlock';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 # Interactive Queries
 
@@ -14,61 +15,72 @@ Learn how to query data in ReifyDB with interactive examples. You can run these 
 
 The most fundamental query in ReifyDB is the SELECT statement. Try running this query to see all users:
 
-<InlineCodeBlock query="map {1}"/>
+<BrowserOnly fallback={<div>Loading editor...</div>}>
+  {() => <InlineCodeBlock query="map {1}"/>}
+</BrowserOnly>
 
 ### Filtering with WHERE
 
 You can filter results using the WHERE clause:
 
-<InlineCodeBlock
-  query="SELECT name, email 
+<BrowserOnly fallback={<div>Loading editor...</div>}>
+  {() => <InlineCodeBlock
+    query="SELECT name, email 
 FROM users 
 WHERE email LIKE '%@example.com'"
-/>
+  />}
+</BrowserOnly>
 
 ## Joining Tables
 
 ReifyDB supports various types of joins to combine data from multiple tables:
 
-<InlineCodeBlock
-  query="SELECT u.name, p.title
+<BrowserOnly fallback={<div>Loading editor...</div>}>
+  {() => <InlineCodeBlock
+    query="SELECT u.name, p.title
 FROM users u
 JOIN posts p ON u.id = p.user_id
 WHERE p.published = true"
-/>
+  />}
+</BrowserOnly>
 
 ## Aggregation
 
 Use aggregation functions to summarize your data:
 
-<InlineCodeBlock
-  query="SELECT u.name, COUNT(p.id) as post_count
+<BrowserOnly fallback={<div>Loading editor...</div>}>
+  {() => <InlineCodeBlock
+    query="SELECT u.name, COUNT(p.id) as post_count
 FROM users u
 LEFT JOIN posts p ON u.id = p.user_id
 GROUP BY u.id, u.name
 ORDER BY post_count DESC"
-/>
+  />}
+</BrowserOnly>
 
 ## Conditional Logic
 
 ReifyDB supports CASE statements for conditional logic:
 
-<InlineCodeBlock
-  query="SELECT 
+<BrowserOnly fallback={<div>Loading editor...</div>}>
+  {() => <InlineCodeBlock
+    query="SELECT 
   title,
   CASE 
     WHEN published = true THEN 'Published'
     ELSE 'Draft'
   END as status
 FROM posts"
-/>
+  />}
+</BrowserOnly>
 
 ## Multiple Statements
 
 You can run multiple SQL statements in a single execution. Each statement produces its own result table:
 
-<InlineCodeBlock
-  query={`-- Get all users
+<BrowserOnly fallback={<div>Loading editor...</div>}>
+  {() => <InlineCodeBlock
+    query={`-- Get all users
 SELECT * FROM users;
 
   -- Get all published posts
@@ -81,7 +93,8 @@ SELECT * FROM users;
   FROM users u
   LEFT JOIN posts p ON u.id = p.user_id
   GROUP BY u.id, u.name;`}
-/>
+  />}
+</BrowserOnly>
 
 ## Try Your Own Queries
 

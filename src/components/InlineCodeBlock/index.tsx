@@ -17,16 +17,7 @@ export default function InlineCodeBlock({
   language = 'rql',
   forceViewer = false
 }: InlineCodeBlockProps) {
-  const [isMobile, setIsMobile] = useState(() => {
-    // Check if we're on the server (SSR)
-    if (typeof window === 'undefined') {
-      return false; // Default to desktop during SSR
-    }
-    // Initial client-side check
-    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    const isSmallScreen = window.innerWidth <= 768;
-    return hasTouch || isSmallScreen;
-  });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     // Check if device is mobile on mount and window resize
