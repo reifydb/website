@@ -63,8 +63,8 @@
 }
 
 .cardIcon {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   margin: 0 auto 1.5rem;
   display: flex;
   align-items: center;
@@ -131,8 +131,8 @@
 }
 
 .reifydbIcon img {
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
 }
 
@@ -258,8 +258,12 @@
 
 [data-theme='dark'] .cardIcon {
   background: #F8F8F7;
-  color: #2A2A2A;
+  color: #1A1A1A !important;
   border-color: #F8F8F7;
+}
+
+[data-theme='dark'] .cardIcon svg {
+  fill: #1A1A1A !important;
 }
 
 [data-theme='dark'] .resourceItem {
@@ -280,7 +284,11 @@
 [data-theme='dark'] .commercialCard .cardIcon,
 [data-theme='dark'] .reifydbIcon {
   background: #F8F8F7;
-  color: #2A2A2A;
+  color: #1A1A1A !important;
+}
+
+[data-theme='dark'] .reifydbIcon img {
+  filter: brightness(0) saturate(100%);
 }
 
 [data-theme='dark'] .additionalResources {
