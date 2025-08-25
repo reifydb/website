@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect, lazy, Suspense } from 'react';
 import { useConnection } from '../../hooks/useConnection';
 import { useQuery, type QueryResult } from '../../hooks/useQuery';
-import { Value } from '@reifydb/core';
 import { REIFYDB_CONFIG } from '../../config';
 import ResultViewer from '../ResultViewer';
 import styles from './styles.module.css';
@@ -194,15 +193,15 @@ export default function InlineEditor({
     }
   }, [isConnecting, isConnected, reconnect, connect]);
 
-  const parseStatements = (sql: string): string[] => {
+  const parseStatements = (rql: string): string[] => {
     const statements: string[] = [];
     let current = '';
     let inString = false;
     let stringChar = '';
 
-    for (let i = 0; i < sql.length; i++) {
-      const char = sql[i];
-      const prevChar = i > 0 ? sql[i - 1] : '';
+    for (let i = 0; i < rql.length; i++) {
+      const char = rql[i];
+      const prevChar = i > 0 ? rql[i - 1] : '';
 
       if (!inString && (char === "'" || char === '"')) {
         inString = true;
@@ -390,7 +389,7 @@ export default function InlineEditor({
                       updateHeightDirectly(newHeight);
                     }, [calculateHeight, updateHeightDirectly])}
                     onExecute={stableHandleExecute}
-                    language="sql"
+                    language="rql"
                     theme={editorTheme}
                     readOnly={isExecuting}
                   />

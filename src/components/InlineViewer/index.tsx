@@ -74,33 +74,6 @@ export default function InlineViewer({
               language={language}
               theme={editorTheme}
               readOnly={true}
-              options={{
-                readOnly: true,
-                domReadOnly: true,
-                cursorStyle: 'underline',
-                renderLineHighlight: 'none',
-                occurrencesHighlight: false,
-                selectionHighlight: false,
-                minimap: { enabled: false },
-                scrollbar: {
-                  vertical: 'hidden',
-                  horizontal: 'hidden',
-                  handleMouseWheel: false,
-                  alwaysConsumeMouseWheel: false,
-                },
-                scrollBeyondLastLine: false,
-                overviewRulerLanes: 0,
-                hideCursorInOverviewRuler: true,
-                overviewRulerBorder: false,
-                lineNumbers: 'on',
-                glyphMargin: false,
-                folding: false,
-                lineDecorationsWidth: 0,
-                lineNumbersMinChars: 3,
-                wordWrap: 'on',
-                wordWrapColumn: 80,
-                wrappingStrategy: 'advanced',
-              }}
             />
           </div>
         </Suspense>

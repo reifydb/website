@@ -53,7 +53,7 @@ function HomepageHeader() {
 
 function QuickExample() {
     const exampleCode = `
--- Create a near real-time automatic refreshing view
+# Create a near real-time automatic refreshing view
 create deferred view demo.adults { 
     name: utf8, 
     age: int1 

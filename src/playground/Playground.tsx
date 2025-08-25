@@ -100,7 +100,7 @@ export default function Playground() {
                   value={query}
                   onChange={setQuery}
                   onExecute={handleExecute}
-                  language="sql"
+                  language="rql"
                   theme={editorTheme}
                 />
               </Panel>

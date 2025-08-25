@@ -2,6 +2,7 @@ import React, { forwardRef, useImperativeHandle, useRef, useEffect } from 'react
 import Editor, { Monaco } from '@monaco-editor/react';
 import { editor } from 'monaco-editor';
 import styles from './styles.module.css';
+import { rqlLanguageDefinition, rqlLanguageConfiguration, rqlCompletionProvider } from './rqlLanguage';
 
 interface CodeEditorProps {
   value: string;
@@ -19,7 +20,7 @@ export interface CodeEditorRef {
 }
 
 const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
-  ({ value, onChange, onExecute, language = 'sql', theme = 'brutalist-light', readOnly = false }, ref) => {
+  ({ value, onChange, onExecute, language = 'rql', theme = 'brutalist-light', readOnly = false }, ref) => {
     const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
     const monacoRef = useRef<Monaco | null>(null);
     const onExecuteRef = useRef<(() => void) | undefined>(onExecute);
@@ -51,18 +52,33 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
     }));
 
     const handleBeforeMount = (monaco: Monaco) => {
+      // Register RQL language only if not already registered
+      const languages = monaco.languages.getLanguages();
+      const rqlRegistered = languages.some(lang => lang.id === 'rql');
+      
+      if (!rqlRegistered) {
+        monaco.languages.register({ id: 'rql' });
+        monaco.languages.setMonarchTokensProvider('rql', rqlLanguageDefinition);
+        monaco.languages.setLanguageConfiguration('rql', rqlLanguageConfiguration);
+        monaco.languages.registerCompletionItemProvider('rql', rqlCompletionProvider);
+      }
+
       // Define brutalist light theme
       monaco.editor.defineTheme('brutalist-light', {
         base: 'vs',
         inherit: true,
         rules: [
           { token: 'keyword', foreground: '383838', fontStyle: 'bold' },
+          { token: 'string', foreground: '16A34A' },
           { token: 'string.sql', foreground: '16A34A' },
+          { token: 'string.quote', foreground: '16A34A' },
+          { token: 'string.escape', foreground: '16A34A', fontStyle: 'italic' },
           { token: 'comment', foreground: '5A5A5A' },
           { token: 'number', foreground: 'B91C1C', fontStyle: 'bold' },
           { token: 'operator', foreground: '383838', fontStyle: 'bold' },
           { token: 'identifier', foreground: '1A1A1A' },
           { token: 'type', foreground: '7C3AED', fontStyle: 'bold' },
+          { token: 'key', foreground: '7C3AED', fontStyle: 'italic' },
         ],
         colors: {
           'editor.background': '#F8F8F7',
@@ -85,12 +101,16 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
         inherit: true,
         rules: [
           { token: 'keyword', foreground: 'F8F8F7', fontStyle: 'bold' },
+          { token: 'string', foreground: '53DBC9' },
           { token: 'string.sql', foreground: '53DBC9' },
+          { token: 'string.quote', foreground: '53DBC9' },
+          { token: 'string.escape', foreground: '53DBC9', fontStyle: 'italic' },
           { token: 'comment', foreground: '999999' },
           { token: 'number', foreground: 'FF6B35', fontStyle: 'bold' },
           { token: 'operator', foreground: 'F8F8F7', fontStyle: 'bold' },
           { token: 'identifier', foreground: 'F8F8F7' },
           { token: 'type', foreground: '6FC2FF', fontStyle: 'bold' },
+          { token: 'key', foreground: '6FC2FF', fontStyle: 'italic' },
         ],
         colors: {
           'editor.background': '#2A2A2A',
@@ -129,73 +149,6 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
       monaco.editor.setTheme(actualTheme);
 
       editor.focus();
-
-      // Register ReifyDB SQL language configuration
-      monaco.languages.registerCompletionItemProvider('sql', {
-        provideCompletionItems: (model, position) => {
-          const word = model.getWordUntilPosition(position);
-          const range = {
-            startLineNumber: position.lineNumber,
-            endLineNumber: position.lineNumber,
-            startColumn: word.startColumn,
-            endColumn: word.endColumn,
-          };
-
-          const suggestions = [
-            // ReifyDB specific keywords
-            ...['REIFY', 'FLOW', 'STREAM', 'MATERIALIZE'].map((keyword) => ({
-              label: keyword,
-              kind: monaco.languages.CompletionItemKind.Keyword,
-              insertText: keyword,
-              documentation: `ReifyDB keyword: ${keyword}`,
-              range,
-            })),
-            ...[
-              'SELECT',
-              'FROM',
-              'WHERE',
-              'INSERT',
-              'UPDATE',
-              'DELETE',
-              'CREATE',
-              'DROP',
-              'ALTER',
-              'TABLE',
-              'INDEX',
-              'VIEW',
-              'JOIN',
-              'LEFT',
-              'RIGHT',
-              'INNER',
-              'OUTER',
-              'ON',
-              'GROUP BY',
-              'ORDER BY',
-              'HAVING',
-              'LIMIT',
-              'OFFSET',
-              'AS',
-              'INTO',
-              'VALUES',
-              'SET',
-            ].map((keyword) => ({
-              label: keyword,
-              kind: monaco.languages.CompletionItemKind.Keyword,
-              insertText: keyword,
-              range,
-            })),
-            // Functions
-            ...['COUNT', 'SUM', 'AVG', 'MIN', 'MAX', 'NOW', 'CURRENT_TIMESTAMP'].map((func) => ({
-              label: func,
-              kind: monaco.languages.CompletionItemKind.Function,
-              insertText: `${func}()`,
-              range,
-            })),
-          ];
-
-          return { suggestions };
-        },
-      });
 
       // Add execute shortcut
       editor.onKeyDown((e) => {

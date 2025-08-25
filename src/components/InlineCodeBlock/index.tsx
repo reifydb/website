@@ -14,7 +14,7 @@ export default function InlineCodeBlock({
   query,
   defaultExpanded = false,
   editable = true,
-  language = 'sql',
+  language = 'rql',
   forceViewer = false
 }: InlineCodeBlockProps) {
   const [isMobile, setIsMobile] = useState(() => {
