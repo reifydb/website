@@ -6,67 +6,61 @@
 
 /* IBM Plex Mono Font Face Definitions - Self Hosted */
 @font-face {
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2') format('woff2'),
-       url('/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff') format('woff');
+    font-family: 'IBM Plex Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2') format('woff2'),
+    url('/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/ibm-plex-mono/IBMPlexMono-Medium.woff2') format('woff2'),
-       url('/fonts/ibm-plex-mono/IBMPlexMono-Medium.woff') format('woff');
+    font-family: 'IBM Plex Mono';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/fonts/ibm-plex-mono/IBMPlexMono-Medium.woff2') format('woff2'),
+    url('/fonts/ibm-plex-mono/IBMPlexMono-Medium.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/ibm-plex-mono/IBMPlexMono-SemiBold.woff2') format('woff2'),
-       url('/fonts/ibm-plex-mono/IBMPlexMono-SemiBold.woff') format('woff');
+    font-family: 'IBM Plex Mono';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/fonts/ibm-plex-mono/IBMPlexMono-SemiBold.woff2') format('woff2'),
+    url('/fonts/ibm-plex-mono/IBMPlexMono-SemiBold.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/ibm-plex-mono/IBMPlexMono-Bold.woff2') format('woff2'),
-       url('/fonts/ibm-plex-mono/IBMPlexMono-Bold.woff') format('woff');
+    font-family: 'IBM Plex Mono';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/ibm-plex-mono/IBMPlexMono-Bold.woff2') format('woff2'),
+    url('/fonts/ibm-plex-mono/IBMPlexMono-Bold.woff') format('woff');
 }
 
 /* Import Tailwind CSS with all styles consolidated */
 @import './tailwind.css';
 
-/*!* Global background application *!*/
-/*html {*/
-/*  background: #ffffff;*/
-/*  min-height: 100%;*/
-/*}*/
+/* Navbar active item styling - Light mode */
+.navbar__link--active {
+    color: white !important;
+}
 
-/*body {*/
-/*  background: #ffffff !important;*/
-/*  background-attachment: fixed;*/
-/*}*/
+/* Ensure active navbar items are visible - Light mode */
+.navbar__item .navbar__link--active,
+.navbar__item.navbar__item--active .navbar__link {
+    color: white !important;
+}
 
-/*!* Dark mode backgrounds *!*/
-/*[data-theme='dark'] html {*/
-/*  background: #0f0f0f;*/
-/*}*/
+/* Dark mode - active navbar items should have dark text on light background */
+[data-theme='dark'] .navbar__link--active {
+    color: #1A1A1A !important;
+}
 
-/*[data-theme='dark'] body {*/
-/*  background: #0f0f0f !important;*/
-/*}*/
-
-/*!* Ensure main content areas are transparent to show background *!*/
-/*.main-wrapper,*/
-/*[class*="docMainContainer"],*/
-/*[class*="docPage"] {*/
-/*  background: transparent;*/
-/*}*/
+[data-theme='dark'] .navbar__item .navbar__link--active,
+[data-theme='dark'] .navbar__item.navbar__item--active .navbar__link {
+    color: #1A1A1A !important;
+}

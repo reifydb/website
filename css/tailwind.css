@@ -56,7 +56,7 @@
   --ifm-color-primary-light: #4A4A4A;
   --ifm-color-primary-lighter: #5A5A5A;
   --ifm-color-primary-lightest: #F4EFEA;
-  
+
   /* Docusaurus settings */
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.08);
@@ -65,7 +65,7 @@
   --ifm-font-family-monospace: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Menlo', 'Ubuntu Mono', monospace;
   --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   --ifm-font-color-base: #1a1a1a;
-  
+
   /* Emphasis colors for search and other components */
   --ifm-color-emphasis-100: #f5f5f5;
   --ifm-color-emphasis-200: #e0e0e0;
@@ -103,13 +103,13 @@
   --ifm-color-primary-light: #FFFFFF;
   --ifm-color-primary-lighter: #FFFFFF;
   --ifm-color-primary-lightest: rgba(248, 248, 247, 0.15);
-  
+
   /* Docusaurus dark mode settings */
   --docusaurus-highlighted-code-line-bg: rgba(96, 165, 250, 0.1);
   --ifm-background-surface-color: #1e1e1e;
   --ifm-background-color: #0f0f0f;
   --ifm-font-color-base: #e3e3e3;
-  
+
   /* Dark mode emphasis colors */
   --ifm-color-emphasis-100: #242424;
   --ifm-color-emphasis-200: #3a3a3a;
@@ -157,9 +157,22 @@ section {
   background: #F4EFEA !important;
 }
 
+/* Dark mode section backgrounds */
+[data-theme='dark'] section {
+  background: #1A1A1A;
+}
+
+[data-theme='dark'] .py-20 {
+  background: #1A1A1A !important;
+}
+
 /* Section separator lines */
 .section-separator {
   border-bottom: 3px solid #383838;
+}
+
+[data-theme='dark'] .section-separator {
+  border-bottom-color: #F8F8F7;
 }
 
 /* Dark mode backgrounds */
@@ -171,6 +184,27 @@ section {
   background: #1A1A1A !important;
 }
 
+/* Override Tailwind utility classes for dark mode */
+[data-theme='dark'] .bg-stone-100 {
+  background: #1A1A1A !important;
+}
+
+[data-theme='dark'] .bg-gray-50 {
+  background: #2A2A2A !important;
+}
+
+[data-theme='dark'] .bg-orange-50 {
+  background: #2A2A2A !important;
+}
+
+[data-theme='dark'] .bg-white {
+  background: #383838 !important;
+}
+
+[data-theme='dark'] .bg-stone-50 {
+  background: #2A2A2A !important;
+}
+
 /* Ensure text contrast in light theme */
 h1, h2, h3, h4, h5, h6 {
   color: #1a1a1a !important;
@@ -178,6 +212,41 @@ h1, h2, h3, h4, h5, h6 {
 
 p, span, div {
   color: #1a1a1a;
+}
+
+/* Dark mode text colors - ensure all text is light */
+[data-theme='dark'] h1,
+[data-theme='dark'] h2,
+[data-theme='dark'] h3,
+[data-theme='dark'] h4,
+[data-theme='dark'] h5,
+[data-theme='dark'] h6 {
+  color: #F8F8F7 !important;
+}
+
+[data-theme='dark'] p,
+[data-theme='dark'] li,
+[data-theme='dark'] td,
+[data-theme='dark'] th,
+[data-theme='dark'] label,
+[data-theme='dark'] a:not(.btn-primary):not(.btn-secondary),
+[data-theme='dark'] code,
+[data-theme='dark'] pre,
+[data-theme='dark'] blockquote,
+[data-theme='dark'] strong,
+[data-theme='dark'] em,
+[data-theme='dark'] small {
+  color: #F8F8F7 !important;
+}
+
+/* Only apply light color to spans that are NOT inside terminal components */
+[data-theme='dark'] span:not([class*="terminal"]) {
+  color: #F8F8F7 !important;
+}
+
+/* Only apply light color to divs that are NOT terminal-related */
+[data-theme='dark'] div:not([class*="terminal"]) {
+  color: #F8F8F7 !important;
 }
 
 /* Better text colors for light theme */
@@ -195,6 +264,31 @@ p, span, div {
 
 .text-gray-900 {
   color: #000000 !important;
+}
+
+/* Dark mode text utility classes */
+[data-theme='dark'] .text-gray-600 {
+  color: #B0B0B0 !important;
+}
+
+[data-theme='dark'] .text-gray-700 {
+  color: #C0C0C0 !important;
+}
+
+[data-theme='dark'] .text-gray-800 {
+  color: #D0D0D0 !important;
+}
+
+[data-theme='dark'] .text-gray-900 {
+  color: #F8F8F7 !important;
+}
+
+[data-theme='dark'] .text-gray-400 {
+  color: #A0A0A0 !important;
+}
+
+[data-theme='dark'] .text-white {
+  color: #F8F8F7 !important;
 }
 
 /* Ensure main content areas are transparent to show background */
@@ -1080,6 +1174,20 @@ p, span, div {
   text-decoration: none;
 }
 
+[data-theme='dark'] .btn-primary {
+  background: #F8F8F7 !important;
+  color: #1A1A1A !important;
+  border-color: #F8F8F7;
+  box-shadow: -5px 5px 0px 0px #F8F8F7;
+}
+
+[data-theme='dark'] .btn-primary:hover {
+  transform: translate(7px, -7px);
+  box-shadow: -7px 7px 0px 0px #F8F8F7;
+  color: #1A1A1A !important;
+  text-decoration: none;
+}
+
 .btn-secondary {
   padding: 16.5px 22px;
   border-radius: 0;
@@ -1102,6 +1210,21 @@ p, span, div {
   box-shadow: -7px 7px 0px 0px #383838;
   background: #F4EFEA;
   color: #383838;
+  text-decoration: none;
+}
+
+[data-theme='dark'] .btn-secondary {
+  background: #2A2A2A;
+  color: #F8F8F7;
+  border-color: #F8F8F7;
+  box-shadow: -5px 5px 0px 0px #F8F8F7;
+}
+
+[data-theme='dark'] .btn-secondary:hover {
+  transform: translate(7px, -7px);
+  box-shadow: -7px 7px 0px 0px #F8F8F7;
+  background: #383838;
+  color: #F8F8F7;
   text-decoration: none;
 }
 
@@ -1236,6 +1359,16 @@ p, span, div {
   transform: translateY(-2px);
 }
 
+/* Dark mode code blocks */
+[data-theme='dark'] .code-block-comic {
+  background: #2A2A2A;
+  border-color: #4A4A4A;
+}
+
+[data-theme='dark'] .code-block-comic code {
+  color: #F8F8F7 !important;
+}
+
 /* Sidebar items */
 .sidebar-link {
   display: block;
@@ -1356,6 +1489,10 @@ p, span, div {
   overflow: hidden;
 }
 
+[data-theme='dark'] .hero-section {
+  background: #1A1A1A;
+}
+
 .feature-card {
   background: white;
   border-radius: 0;
@@ -1378,6 +1515,38 @@ p, span, div {
   box-shadow: -5px 5px 0px 0px #F8F8F7;
 }
 
+[data-theme='dark'] .feature-card:hover {
+  box-shadow: -7px 7px 0px 0px #F8F8F7;
+}
+
+/* Card links for the reusable Card component */
+.card-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 2px solid #E5E5E5;
+  margin-top: auto;
+}
+
+.card-link {
+  color: #383838;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  padding: 0.25rem 0;
+  display: inline-block;
+}
+
+[data-theme='dark'] .card-links {
+  border-top-color: #4A4A4A;
+}
+
+[data-theme='dark'] .card-link {
+  color: #F8F8F7;
+}
+
 .quick-example-section {
   background: #FEFEFE;
   position: relative;
@@ -1387,6 +1556,8 @@ p, span, div {
 
 [data-theme='dark'] .quick-example-section {
   background: #2A2A2A;
+  border-top-color: #F8F8F7;
+  border-bottom-color: #F8F8F7;
 }
 
 /* Pagination */
@@ -1467,7 +1638,7 @@ p, span, div {
   display: inline-block;
   padding: 0.5rem 1.5rem;
   margin: 1rem 2rem;
-  background: linear-gradient(135deg, 
+  background: linear-gradient(135deg,
     var(--ifm-color-primary),
     var(--ifm-color-primary-dark));
   color: white;
@@ -1484,7 +1655,7 @@ p, span, div {
   transform: translateY(-3px);
   box-shadow: var(--shadow-comic), 0 0 0 1px var(--comic-border-thick);
   border-color: var(--comic-border-thick);
-  background: linear-gradient(135deg, 
+  background: linear-gradient(135deg,
     var(--ifm-color-primary-dark),
     var(--ifm-color-primary-darker));
   color: white;
@@ -1499,7 +1670,7 @@ p, span, div {
 }
 
 [data-theme='dark'] article:hover {
-  box-shadow: 
+  box-shadow:
     0 12px 24px rgba(0, 0, 0, 0.3),
     0 0 0 1px var(--ifm-color-primary-light);
 }

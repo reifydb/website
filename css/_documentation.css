@@ -5,14 +5,14 @@
  */
 
 /* Disable all animations and transitions on documentation pages */
-/* But preserve mobile sidebar functionality */
-[class*="doc"] *:not(.mobile-sidebar):not(.mobile-sidebar-backdrop):not([class*="navbar"]),
-[class*="Doc"] *:not(.mobile-sidebar):not(.mobile-sidebar-backdrop):not([class*="navbar"]),
-.docs-wrapper *:not(.mobile-sidebar):not(.mobile-sidebar-backdrop):not([class*="navbar"]),
-.theme-doc-markdown *,
-.markdown *,
-article,
-article * {
+/* But preserve mobile sidebar functionality and card animations */
+[class*="doc"] *:not(.mobile-sidebar):not(.mobile-sidebar-backdrop):not([class*="navbar"]):not(.doc-category-card):not(.quick-link-card):not(.card-clean):not(.feature-card),
+[class*="Doc"] *:not(.mobile-sidebar):not(.mobile-sidebar-backdrop):not([class*="navbar"]):not(.doc-category-card):not(.quick-link-card):not(.card-clean):not(.feature-card),
+.docs-wrapper *:not(.mobile-sidebar):not(.mobile-sidebar-backdrop):not([class*="navbar"]):not(.doc-category-card):not(.quick-link-card):not(.card-clean):not(.feature-card),
+.theme-doc-markdown *:not(.doc-category-card):not(.quick-link-card):not(.card-clean):not(.feature-card),
+.markdown *:not(.doc-category-card):not(.quick-link-card):not(.card-clean):not(.feature-card),
+article:not(.doc-landing-container),
+article *:not(.doc-category-card):not(.quick-link-card):not(.card-clean):not(.feature-card) {
   animation: none !important;
   animation-duration: 0s !important;
   animation-delay: 0s !important;
@@ -21,9 +21,9 @@ article * {
   transition-delay: 0s !important;
 }
 
-/* Remove transform restriction to allow mobile sidebar to work */
-[class*="doc"] *:not(.mobile-sidebar):not(.mobile-sidebar-backdrop):not(.mobile-sidebar *):not([class*="navbar"]),
-[class*="Doc"] *:not(.mobile-sidebar):not(.mobile-sidebar-backdrop):not(.mobile-sidebar *):not([class*="navbar"]) {
+/* Remove transform restriction to allow mobile sidebar and cards to work */
+[class*="doc"] *:not(.mobile-sidebar):not(.mobile-sidebar-backdrop):not(.mobile-sidebar *):not([class*="navbar"]):not(.doc-category-card):not(.quick-link-card):not(.card-clean):not(.feature-card),
+[class*="Doc"] *:not(.mobile-sidebar):not(.mobile-sidebar-backdrop):not(.mobile-sidebar *):not([class*="navbar"]):not(.doc-category-card):not(.quick-link-card):not(.card-clean):not(.feature-card) {
   transform: none !important;
 }
 
@@ -43,6 +43,9 @@ article {
    CSS Variables & Tokens
    ======================== */
 :root {
+  /* Navbar height variable */
+  --ifm-navbar-height: 60px;
+  
   /* Light Mode - Clean Professional Palette */
   --doc-primary: #383838;
   --doc-primary-dark: #2A2A2A;
@@ -94,12 +97,19 @@ article {
    ======================== */
 .docs-wrapper,
 [class*="docMainContainer"],
-[class*="docPage"],
-[class*="docItemContainer"],
-[class*="docItemCol"] {
+[class*="docPage"] {
   background: var(--doc-bg) !important;
   min-height: calc(100vh - 60px);
   animation: none !important;
+  /* transition removed */
+}
+
+[class*="docItemContainer"],
+[class*="docItemCol"] {
+  background: var(--doc-bg) !important;
+  animation: none !important;
+  /* Ensure proper scrolling for main content */
+  overflow-y: visible !important;
   /* transition removed */
 }
 
@@ -119,7 +129,33 @@ article {
   border-right: 2px solid var(--doc-border) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
+  position: sticky !important;
+  top: var(--ifm-navbar-height) !important;
+  height: calc(100vh - var(--ifm-navbar-height)) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+  z-index: 10;
   /* transition removed */
+}
+
+/* Custom scrollbar for sidebar */
+.theme-doc-sidebar-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.theme-doc-sidebar-container::-webkit-scrollbar-track {
+  background: var(--doc-bg);
+  border-left: 1px solid var(--doc-border-light);
+}
+
+.theme-doc-sidebar-container::-webkit-scrollbar-thumb {
+  background: var(--doc-border);
+  border-radius: 0;
+}
+
+.theme-doc-sidebar-container::-webkit-scrollbar-thumb:hover {
+  background: var(--doc-primary);
 }
 
 /* Sidebar Menu Items */
@@ -246,7 +282,7 @@ article {
   }
 }
 
-/* Documentation Headers */
+ /*Documentation Headers */
 .theme-doc-markdown h1 {
   color: var(--doc-text) !important;
   font-size: 2.5rem !important;
@@ -327,12 +363,6 @@ article {
   text-decoration: none !important;
   border-bottom: 2px solid var(--doc-primary) !important;
   /* transition removed */
-}
-
-.theme-doc-markdown a:hover {
-  background: var(--doc-primary-lightest) !important;
-  padding: 0 4px !important;
-  margin: 0 -4px !important;
 }
 
 /* Lists */
@@ -785,6 +815,183 @@ button[title*="Wrap"],
 }
 
 /* ========================
+   Documentation Landing Page
+   ======================== */
+.doc-landing {
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.doc-landing-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: var(--doc-surface);
+  border: 3px solid var(--doc-border);
+  border-radius: 0;
+  box-shadow: var(--doc-shadow);
+}
+
+.doc-landing-header h1 {
+  color: var(--doc-text) !important;
+  font-size: 3rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin: 0 0 1rem 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.doc-landing-header .lead {
+  color: var(--doc-text-muted) !important;
+  font-size: 1.25rem !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+/* Quick Links Section */
+.doc-quick-links {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: var(--doc-surface);
+  border: 3px solid var(--doc-border);
+  border-radius: 0;
+  box-shadow: var(--doc-shadow);
+}
+
+.doc-quick-links h2 {
+  color: var(--doc-text) !important;
+  font-size: 1.75rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.025em !important;
+  margin: 0 0 2rem 0 !important;
+  padding: 0 0 1rem 0 !important;
+  border-bottom: 3px solid var(--doc-border) !important;
+}
+
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.quick-link-card {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  padding: 1rem 1.5rem !important;
+  background: white !important;
+  border: 2px solid var(--doc-border) !important;
+  border-radius: 0 !important;
+  text-decoration: none !important;
+  color: var(--doc-text) !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.025em !important;
+  font-size: 0.875rem !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer;
+}
+
+.quick-link-card:hover {
+  background: var(--doc-primary) !important;
+  color: white !important;
+  transform: translateY(-2px) !important;
+  box-shadow: -3px 3px 0 0 #383838 !important;
+  text-decoration: none !important;
+}
+
+.quick-link-icon {
+  font-size: 1.25rem !important;
+}
+
+
+.docs-doc-id-intro [class*="docItemCol"] {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  padding: 0 2rem !important;
+}
+
+.docs-doc-id-intro .theme-doc-markdown {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.docs-doc-id-intro .theme-doc-breadcrumbs {
+  display: none !important;
+}
+
+/* Ensure card animations work in documentation */
+.doc-landing .card-clean,
+.doc-landing .feature-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+}
+
+.doc-landing .card-clean:hover,
+.doc-landing .feature-card:hover {
+  transform: translate(5px, -5px) !important;
+  box-shadow: -7px 7px 0 0 #383838 !important;
+}
+
+[data-theme='dark'] .doc-landing .card-clean:hover,
+[data-theme='dark'] .doc-landing .feature-card:hover {
+  box-shadow: -7px 7px 0 0 #F8F8F7 !important;
+}
+
+/* Responsive adjustments for landing page */
+@media (max-width: 768px) {
+  .doc-category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-landing-header h1 {
+    font-size: 2rem !important;
+  }
+
+  .quick-links-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dark mode adjustments for landing page */
+[data-theme='dark'] .doc-landing-header {
+  background: var(--doc-surface) !important;
+  border-color: var(--doc-border) !important;
+}
+
+[data-theme='dark'] .doc-category-card {
+  background: var(--doc-surface) !important;
+  border-color: var(--doc-border) !important;
+  box-shadow: var(--doc-shadow) !important;
+}
+
+[data-theme='dark'] .doc-category-card:hover {
+  background: var(--doc-surface-secondary) !important;
+}
+
+[data-theme='dark'] .doc-quick-links {
+  background: var(--doc-surface) !important;
+  border-color: var(--doc-border) !important;
+}
+
+[data-theme='dark'] .quick-link-card {
+  background: var(--doc-surface-secondary) !important;
+  border-color: var(--doc-border) !important;
+  color: var(--doc-text) !important;
+}
+
+[data-theme='dark'] .quick-link-card:hover {
+  background: var(--doc-primary) !important;
+  color: var(--doc-bg) !important;
+}
+
+/* ========================
    Responsive Design
    ======================== */
 @media (max-width: 996px) {
@@ -793,17 +1000,17 @@ button[title*="Wrap"],
   [class*="docItemCol"] {
     padding: 0 !important;
   }
-  
+
   /* Reduce markdown content padding */
   .theme-doc-markdown {
     padding: 0.75rem !important;
   }
-  
+
   /* Reduce breadcrumb padding on mobile */
   .theme-doc-breadcrumbs {
     padding: 0.75rem 1rem !important;
   }
-  
+
   /* Adjust heading sizes for mobile */
   .theme-doc-markdown h1 {
     font-size: 1.75rem !important;
@@ -822,25 +1029,25 @@ button[title*="Wrap"],
     margin-top: 1.25rem !important;
     margin-bottom: 0.5rem !important;
   }
-  
+
   /* Reduce code block padding on mobile */
   .theme-doc-markdown pre {
     padding: 1rem !important;
     margin: 1rem 0 !important;
   }
-  
+
   /* Reduce blockquote padding */
   .theme-doc-markdown blockquote {
     padding: 1rem !important;
     margin: 1.5rem 0 !important;
   }
-  
+
   /* Reduce table padding */
   .theme-doc-markdown th,
   .theme-doc-markdown td {
     padding: 0.75rem !important;
   }
-  
+
   /* Reduce list indentation */
   .theme-doc-markdown ul,
   .theme-doc-markdown ol {
