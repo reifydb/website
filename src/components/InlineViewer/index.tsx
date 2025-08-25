@@ -10,7 +10,7 @@ interface InlineViewerProps {
 
 export default function InlineViewer({
   query,
-  language = 'sql'
+  language = 'rql'
 }: InlineViewerProps) {
   const [editorTheme, setEditorTheme] = useState('brutalist-light');
   const containerRef = useRef<HTMLDivElement>(null);

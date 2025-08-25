@@ -1300,6 +1300,10 @@ p, span, div {
   box-shadow: -5px 5px 0px 0px #F8F8F7;
 }
 
+[data-theme='dark'] .card-clean:hover {
+  box-shadow: -7px 7px 0px 0px #F8F8F7;
+}
+
 /* Keep old card class for compatibility */
 .card-comic {
   background: white;
@@ -1352,6 +1356,9 @@ p, span, div {
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .code-block-comic:hover {
