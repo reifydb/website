@@ -3,6 +3,7 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import CodeBlock from '@theme/CodeBlock';
 import AnimatedText from '@site/src/components/AnimatedText';
+import Card from '@site/src/components/Card';
 
 function HomepageHeader() {
   return (
@@ -136,11 +137,12 @@ function Features() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, idx) => (
-            <div key={idx} className="feature-card">
-              <div className="text-4xl mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white uppercase">{feature.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{feature.description}</p>
-            </div>
+            <Card
+              key={idx}
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+            />
           ))}
         </div>
       </div>
@@ -181,11 +183,13 @@ function UseCases() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {useCases.map((useCase, idx) => (
-            <div key={idx} className="card-clean text-center">
-              <div className="text-4xl mb-4">{useCase.icon}</div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white uppercase">{useCase.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400">{useCase.description}</p>
-            </div>
+            <Card
+              key={idx}
+              icon={useCase.icon}
+              title={useCase.title}
+              description={useCase.description}
+              className="card-clean text-center"
+            />
           ))}
         </div>
       </div>

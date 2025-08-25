@@ -181,29 +181,10 @@ const config: Config = {
       },
       items: [
         {
-          type: 'dropdown',
+          to: '/docs',
           label: 'Documentation',
-          to: '/docs/getting-started/installation',
           position: 'left',
           className: 'navbar-center-item',
-          items: [
-            {
-              label: 'Getting Started',
-              to: '/docs/getting-started/installation',
-            },
-            {
-              label: 'Core Concepts',
-              to: '/docs/core-concepts/architecture',
-            },
-            {
-              label: 'RQL Reference',
-              to: '/docs/rql-reference/data-types',
-            },
-            {
-              label: 'API Reference',
-              to: '/docs/api',
-            },
-          ],
         },
         { 
           to: '/playground', 
@@ -258,7 +239,7 @@ const config: Config = {
           items: [
             {
               label: 'Getting Started',
-              to: '/docs/getting-started/installation',
+              to: '/docs',
             },
             {
               label: 'API Reference',

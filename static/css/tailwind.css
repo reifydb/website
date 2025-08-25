@@ -1378,6 +1378,34 @@ p, span, div {
   box-shadow: -5px 5px 0px 0px #F8F8F7;
 }
 
+/* Card links for the reusable Card component */
+.card-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 2px solid #E5E5E5;
+  margin-top: auto;
+}
+
+.card-link {
+  color: #383838;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  padding: 0.25rem 0;
+  display: inline-block;
+}
+
+[data-theme='dark'] .card-links {
+  border-top-color: #4A4A4A;
+}
+
+[data-theme='dark'] .card-link {
+  color: #F8F8F7;
+}
+
 .quick-example-section {
   background: #FEFEFE;
   position: relative;
