@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkreifydb_docs=self.webpackChunkreifydb_docs||[]).push([[7607],{7607:e=>{e.exports=function(){throw new Error("ws does not work in the browser. Browser clients must use the native WebSocket object")}}}]);
