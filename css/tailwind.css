@@ -1300,6 +1300,10 @@ p, span, div {
   box-shadow: -5px 5px 0px 0px #F8F8F7;
 }
 
+[data-theme='dark'] .card-clean:hover {
+  box-shadow: -7px 7px 0px 0px #F8F8F7;
+}
+
 /* Keep old card class for compatibility */
 .card-comic {
   background: white;
@@ -1352,6 +1356,9 @@ p, span, div {
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .code-block-comic:hover {
@@ -1491,6 +1498,38 @@ p, span, div {
 
 [data-theme='dark'] .hero-section {
   background: #1A1A1A;
+}
+
+/* Hero logo styling */
+.hero-logo {
+  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  filter: drop-shadow(-4px 4px 0px #383838);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-logo:hover {
+  transform: scale(1.05) rotate(-5deg);
+  filter: drop-shadow(-6px 6px 0px #383838);
+}
+
+/* Dark mode hero logo */
+[data-theme='dark'] .hero-logo {
+  filter: drop-shadow(-4px 4px 0px #F8F8F7);
+}
+
+[data-theme='dark'] .hero-logo:hover {
+  filter: drop-shadow(-6px 6px 0px #F8F8F7);
+}
+
+/* Mobile responsive logo size */
+@media (max-width: 768px) {
+  .hero-logo {
+    width: 120px;
+    height: 120px;
+  }
 }
 
 .feature-card {
