@@ -43,6 +43,9 @@ article {
    CSS Variables & Tokens
    ======================== */
 :root {
+  /* Navbar height variable */
+  --ifm-navbar-height: 60px;
+  
   /* Light Mode - Clean Professional Palette */
   --doc-primary: #383838;
   --doc-primary-dark: #2A2A2A;
@@ -897,7 +900,7 @@ button[title*="Wrap"],
   background: var(--doc-primary) !important;
   color: white !important;
   transform: translateY(-2px) !important;
-  box-shadow: -3px 3px 0px 0px #383838 !important;
+  box-shadow: -3px 3px 0 0 #383838 !important;
   text-decoration: none !important;
 }
 
@@ -933,12 +936,12 @@ button[title*="Wrap"],
 .doc-landing .card-clean:hover,
 .doc-landing .feature-card:hover {
   transform: translate(5px, -5px) !important;
-  box-shadow: -7px 7px 0px 0px #383838 !important;
+  box-shadow: -7px 7px 0 0 #383838 !important;
 }
 
 [data-theme='dark'] .doc-landing .card-clean:hover,
 [data-theme='dark'] .doc-landing .feature-card:hover {
-  box-shadow: -7px 7px 0px 0px #F8F8F7 !important;
+  box-shadow: -7px 7px 0 0 #F8F8F7 !important;
 }
 
 /* Responsive adjustments for landing page */

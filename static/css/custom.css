@@ -44,6 +44,17 @@
 /* Import Tailwind CSS with all styles consolidated */
 @import './tailwind.css';
 
+/* Navbar active item styling */
+.navbar__link--active {
+  color: white !important;
+}
+
+/* Ensure active navbar items are visible */
+.navbar__item .navbar__link--active,
+.navbar__item.navbar__item--active .navbar__link {
+  color: white !important;
+}
+
 /*!* Global background application *!*/
 /*html {*/
 /*  background: #ffffff;*/
