@@ -9,6 +9,15 @@ function HomepageHeader() {
   return (
     <header className="hero-section py-12 md:py-24 text-center">
       <div className="container mx-auto px-4">
+        <div className="mb-6 flex justify-center">
+          <img 
+            src="/img/logo.png" 
+            alt="ReifyDB Logo" 
+            className="hero-logo"
+            width="180" 
+            height="180"
+          />
+        </div>
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-gray-900 dark:text-white tracking-tight">
           ReifyDB
         </h1>
