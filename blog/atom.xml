@@ -35,9 +35,6 @@
             <email>dominique@reifydb.com</email>
             <uri>https://github.com/reifydb</uri>
         </author>
-        <category label="tutorial" term="tutorial"/>
-        <category label="beginner" term="beginner"/>
-        <category label="setup" term="setup"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Advanced Query Patterns in ReifyDB]]></title>
@@ -67,9 +64,6 @@
             <email>dominique@reifydb.com</email>
             <uri>https://github.com/reifydb</uri>
         </author>
-        <category label="advanced" term="advanced"/>
-        <category label="queries" term="queries"/>
-        <category label="performance" term="performance"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Performance Optimization Tips for ReifyDB]]></title>
@@ -107,9 +101,6 @@
             <email>dominique@reifydb.com</email>
             <uri>https://github.com/reifydb</uri>
         </author>
-        <category label="performance" term="performance"/>
-        <category label="optimization" term="optimization"/>
-        <category label="best-practices" term="best-practices"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Welcome to ReifyDB]]></title>
@@ -154,9 +145,6 @@
             <email>dominique@reifydb.com</email>
             <uri>https://github.com/reifydb</uri>
         </author>
-        <category label="data-modeling" term="data-modeling"/>
-        <category label="schema" term="schema"/>
-        <category label="design" term="design"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Security Features and Best Practices]]></title>
@@ -193,9 +181,6 @@
             <email>dominique@reifydb.com</email>
             <uri>https://github.com/reifydb</uri>
         </author>
-        <category label="security" term="security"/>
-        <category label="authentication" term="authentication"/>
-        <category label="encryption" term="encryption"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Migrating from Other Databases to ReifyDB]]></title>
@@ -232,8 +217,5 @@
             <email>dominique@reifydb.com</email>
             <uri>https://github.com/reifydb</uri>
         </author>
-        <category label="migration" term="migration"/>
-        <category label="database" term="database"/>
-        <category label="guide" term="guide"/>
     </entry>
 </feed>

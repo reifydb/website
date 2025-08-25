@@ -32,9 +32,6 @@
 <h2 class="anchor anchorWithStickyNavbar_wUlv" id="next-steps">Next Steps<a href="https://docs.reifydb.com/blog/getting-started#next-steps" class="hash-link" aria-label="Direct link to Next Steps" title="Direct link to Next Steps">​</a></h2>
 <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>]]></content:encoded>
             <author>dominique@reifydb.com (Dominique)</author>
-            <category>tutorial</category>
-            <category>beginner</category>
-            <category>setup</category>
         </item>
         <item>
             <title><![CDATA[Advanced Query Patterns in ReifyDB]]></title>
@@ -60,9 +57,6 @@
 <h2 class="anchor anchorWithStickyNavbar_wUlv" id="performance-optimization">Performance Optimization<a href="https://docs.reifydb.com/blog/advanced-queries#performance-optimization" class="hash-link" aria-label="Direct link to Performance Optimization" title="Direct link to Performance Optimization">​</a></h2>
 <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>]]></content:encoded>
             <author>dominique@reifydb.com (Dominique)</author>
-            <category>advanced</category>
-            <category>queries</category>
-            <category>performance</category>
         </item>
         <item>
             <title><![CDATA[Performance Optimization Tips for ReifyDB]]></title>
@@ -96,9 +90,6 @@
 <h2 class="anchor anchorWithStickyNavbar_wUlv" id="monitoring-and-metrics">Monitoring and Metrics<a href="https://docs.reifydb.com/blog/performance-tips#monitoring-and-metrics" class="hash-link" aria-label="Direct link to Monitoring and Metrics" title="Direct link to Monitoring and Metrics">​</a></h2>
 <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>]]></content:encoded>
             <author>dominique@reifydb.com (Dominique)</author>
-            <category>performance</category>
-            <category>optimization</category>
-            <category>best-practices</category>
         </item>
         <item>
             <title><![CDATA[Welcome to ReifyDB]]></title>
@@ -135,9 +126,6 @@
 <h2 class="anchor anchorWithStickyNavbar_wUlv" id="data-types-and-constraints">Data Types and Constraints<a href="https://docs.reifydb.com/blog/data-modeling#data-types-and-constraints" class="hash-link" aria-label="Direct link to Data Types and Constraints" title="Direct link to Data Types and Constraints">​</a></h2>
 <p>Ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>]]></content:encoded>
             <author>dominique@reifydb.com (Dominique)</author>
-            <category>data-modeling</category>
-            <category>schema</category>
-            <category>design</category>
         </item>
         <item>
             <title><![CDATA[Security Features and Best Practices]]></title>
@@ -170,9 +158,6 @@
 <h3 class="anchor anchorWithStickyNavbar_wUlv" id="row-level-security">Row Level Security<a href="https://docs.reifydb.com/blog/security-features#row-level-security" class="hash-link" aria-label="Direct link to Row Level Security" title="Direct link to Row Level Security">​</a></h3>
 <p>He rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>]]></content:encoded>
             <author>dominique@reifydb.com (Dominique)</author>
-            <category>security</category>
-            <category>authentication</category>
-            <category>encryption</category>
         </item>
         <item>
             <title><![CDATA[Migrating from Other Databases to ReifyDB]]></title>
@@ -205,9 +190,6 @@
 <h2 class="anchor anchorWithStickyNavbar_wUlv" id="testing-and-validation">Testing and Validation<a href="https://docs.reifydb.com/blog/migration-guide#testing-and-validation" class="hash-link" aria-label="Direct link to Testing and Validation" title="Direct link to Testing and Validation">​</a></h2>
 <p>The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>]]></content:encoded>
             <author>dominique@reifydb.com (Dominique)</author>
-            <category>migration</category>
-            <category>database</category>
-            <category>guide</category>
         </item>
     </channel>
 </rss>
