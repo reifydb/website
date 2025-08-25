@@ -31,9 +31,11 @@ class WsConnection {
   async connect(url: string = REIFYDB_CONFIG.getWebSocketUrl(), options?: Omit<WsClientOptions, 'url'>): Promise<void> {
     // Don't connect if already connected or connecting
     if (this.state.isConnected || this.state.isConnecting) {
+      console.log('[WsConnection] Already connected or connecting, skipping connection attempt');
       return;
     }
 
+    console.log('[WsConnection] Attempting to connect to:', url);
     this.updateState({
       isConnecting: true,
       connectionError: null,
@@ -45,6 +47,7 @@ class WsConnection {
         ...options
       });
       
+      console.log('[WsConnection] Successfully connected to WebSocket');
       this.updateState({
         client,
         isConnected: true,
@@ -53,6 +56,7 @@ class WsConnection {
       });
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to connect to ReifyDB';
+      console.error('[WsConnection] Connection failed:', errorMessage, err);
       this.updateState({
         client: null,
         isConnected: false,

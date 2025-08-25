@@ -83,7 +83,10 @@ export function usePlaygroundConnection(wsUrl?: string) {
 
   // Wrapper for executeQuery to maintain compatibility
   const executeQuery = useCallback(async (query: string) => {
+    console.log('[usePlaygroundConnection] executeQuery called, connected:', connected);
+    
     if (!connected) {
+      console.log('[usePlaygroundConnection] Not connected, using mock data fallback');
       // If not connected, try to use mock data as fallback
       const queryLower = query.toLowerCase().trim();
       

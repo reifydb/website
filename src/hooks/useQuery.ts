@@ -31,8 +31,12 @@ export function useQuery(client: WsClient | null, options: ReifyQueryOptions = {
 
   const executeQuery = useCallback(
     async (query: string): Promise<QueryResult | null> => {
+      console.log('[useQuery] Executing query:', query);
+      console.log('[useQuery] Client available:', !!client);
+      
       if (!client) {
         const errorMessage = 'No connection to ReifyDB server';
+        console.error('[useQuery] No client available:', errorMessage);
         // Don't use setState here - it affects all instances
         options.onError?.(errorMessage);
         return null;

@@ -15,6 +15,11 @@ export function useConnection() {
   useEffect(() => {
     // Subscribe to connection state changes
     const unsubscribe = reifyDBConnection.subscribe((newState) => {
+      console.log('[useConnection] State update:', {
+        isConnected: newState.isConnected,
+        isConnecting: newState.isConnecting,
+        connectionError: newState.connectionError,
+      });
       setState({
         client: newState.client,
         isConnected: newState.isConnected,
@@ -25,8 +30,14 @@ export function useConnection() {
 
     // Auto-connect if not connected
     if (!reifyDBConnection.isConnected() && !reifyDBConnection.isConnecting()) {
+      console.log('[useConnection] Initiating auto-connect...');
       reifyDBConnection.connect().catch(err => {
-        console.error('Failed to connect:', err);
+        console.error('[useConnection] Failed to connect:', err);
+      });
+    } else {
+      console.log('[useConnection] Skipping auto-connect, current state:', {
+        isConnected: reifyDBConnection.isConnected(),
+        isConnecting: reifyDBConnection.isConnecting()
       });
     }
 
