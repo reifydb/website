@@ -62,7 +62,8 @@ export default function InlineEditor({
     const minHeight = (minLines * lineHeight) + extraPadding;
     
     // Get viewport height and calculate max allowed height (e.g., 80% of viewport)
-    const viewportHeight = window.innerHeight;
+    // Use a default during SSR
+    const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
     const maxHeight = Math.floor(viewportHeight * 0.8);
     
     // Calculate height but limit to max screen height
@@ -73,7 +74,20 @@ export default function InlineEditor({
     return calculatedHeight;
   }, []);
 
-  const [editorHeight, setEditorHeight] = useState(() => calculateHeight(initialQuery));
+  const [editorHeight, setEditorHeight] = useState(() => {
+    // During SSR, use a default height calculation
+    const lines = initialQuery.split('\n').length;
+    const lineHeight = 24;
+    const extraPadding = 20;
+    const minLines = 3;
+    const minHeight = (minLines * lineHeight) + extraPadding;
+    const defaultMaxHeight = 640; // 80% of 800px default
+    
+    return Math.min(
+      Math.max((lines * lineHeight) + extraPadding, minHeight),
+      defaultMaxHeight
+    );
+  });
   
   const updateHeightDirectly = useCallback((newHeight: number) => {
     if (containerRef.current) {
@@ -102,6 +116,11 @@ export default function InlineEditor({
 
   // Handle window resize to recalculate max height
   useEffect(() => {
+    // Only add resize listener on client side
+    if (typeof window === 'undefined') {
+      return;
+    }
+    
     const handleResize = () => {
       const newHeight = calculateHeight(query);
       updateHeightDirectly(newHeight);
