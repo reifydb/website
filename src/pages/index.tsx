@@ -129,7 +129,7 @@ function Features() {
   ];
 
   return (
-    <section className="py-20 section-separator" style={{ background: '#F8F8F7' }}>
+    <section className="py-20 section-separator bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white uppercase">Why ReifyDB?</h2>
@@ -175,7 +175,7 @@ function UseCases() {
   ];
 
   return (
-    <section className="py-20 section-separator" style={{ background: '#FDF9F5' }}>
+    <section className="py-20 section-separator bg-orange-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white uppercase">Use Cases</h2>
@@ -205,7 +205,7 @@ function Installation() {
   };
 
   return (
-    <section className="py-20 section-separator" style={{ background: '#FEFEFE' }}>
+    <section className="py-20 section-separator bg-white dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white uppercase">Get Started in Seconds</h2>
@@ -246,7 +246,7 @@ function Installation() {
 
 function Community() {
   return (
-    <section className="py-20" style={{ background: '#F9F6F2' }}>
+    <section className="py-20 bg-stone-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white uppercase">Join the Community</h2>
@@ -293,7 +293,7 @@ function Community() {
 
 export default function Home(): React.ReactNode {
   return (
-    <div className="min-h-screen" style={{ background: '#F4EFEA' }}>
+    <div className="min-h-screen bg-stone-100 dark:bg-gray-950">
       <Layout
         title="ReifyDB - The Modern Database To Get Things Done"
         description="Fast, embeddable, and cloud-native database with real-time capabilities. Built for modern applications that demand performance and simplicity."
