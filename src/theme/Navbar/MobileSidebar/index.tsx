@@ -1,4 +1,4 @@
-import React, {type ReactNode} from 'react';
+import React, {type ReactNode, useEffect} from 'react';
 import Link from '@docusaurus/Link';
 import {useLocation} from '@docusaurus/router';
 import {
@@ -12,17 +12,25 @@ export default function NavbarMobileSidebar(): ReactNode {
   const location = useLocation();
   useLockBodyScroll(mobileSidebar.shown);
 
+  // Ensure sidebar is closed when navigating to a new page
+  useEffect(() => {
+    // Close the sidebar if it's open when the location changes
+    if (mobileSidebar.shown) {
+      mobileSidebar.toggle();
+    }
+  }, [location.pathname]);
+
   if (!mobileSidebar.shouldRender) {
     return null;
   }
 
   const menuItems = [
-    { label: 'DOCUMENTATION', href: '/docs/getting-started/installation' },
-    { label: 'PLAYGROUND', href: '/playground' },
-    { label: 'BLOG', href: '/blog' },
-    { label: 'GITHUB', href: 'https://github.com/reifydb/reifydb', external: true },
-    { label: 'CONTACT', href: '/contact' },
-    { label: 'SUPPORT', href: '/support' },
+    { label: 'Documentation', href: '/docs/getting-started/installation' },
+    { label: 'Playground', href: '/playground' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Github', href: 'https://github.com/reifydb/reifydb', external: true },
+    { label: 'Contact', href: '/contact' },
+    { label: 'Support', href: '/support' },
   ];
 
   const isActive = (href: string) => {
@@ -42,7 +50,7 @@ export default function NavbarMobileSidebar(): ReactNode {
       <div className={`mobile-sidebar ${mobileSidebar.shown ? 'mobile-sidebar--visible' : ''}`}>
         {/* Header */}
         <div className="mobile-sidebar-header">
-          <Link to="/" className="mobile-sidebar-brand">
+          <Link to="/" className="mobile-sidebar-brand" onClick={mobileSidebar.toggle}>
             <img src="/img/logo.png" alt="ReifyDB" className="mobile-sidebar-logo" />
             <span className="mobile-sidebar-title">REIFYDB</span>
           </Link>
