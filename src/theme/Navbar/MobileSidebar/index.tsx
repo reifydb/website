@@ -42,7 +42,7 @@ export default function NavbarMobileSidebar(): ReactNode {
       <div className={`mobile-sidebar ${mobileSidebar.shown ? 'mobile-sidebar--visible' : ''}`}>
         {/* Header */}
         <div className="mobile-sidebar-header">
-          <Link to="/" className="mobile-sidebar-brand" onClick={mobileSidebar.toggle}>
+          <Link to="/" className="mobile-sidebar-brand">
             <img src="/img/logo.png" alt="ReifyDB" className="mobile-sidebar-logo" />
             <span className="mobile-sidebar-title">REIFYDB</span>
           </Link>

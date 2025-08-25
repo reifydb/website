@@ -124,12 +124,15 @@ export default function DropdownNavbarItemMobile({
           href={href}
           {...props}
           onClick={(e) => {
-            // Prevent navigation when link is "#"
+            // If there's no link target, just toggle the dropdown
             if (href === '#') {
               e.preventDefault();
+              toggleCollapsed();
+            } else {
+              // If there is a link target, close the mobile sidebar
+              // Navigation will happen automatically
+              onClick?.(e);
             }
-            // Otherwise we let navigation eventually happen, and/or collapse
-            toggleCollapsed();
           }}>
           {props.children ?? props.label}
         </NavbarNavLink>

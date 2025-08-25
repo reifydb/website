@@ -2,10 +2,31 @@ import React, { useEffect } from 'react';
 
 export default function Root({ children }) {
   useEffect(() => {
+    // Track if we've already attempted to fetch stars
+    let hasAttemptedFetch = false;
+    let hasFailed403 = false;
+
     // Fetch GitHub stars
     const fetchGitHubStars = async () => {
+      // Don't retry if we got a 403 error
+      if (hasFailed403) {
+        return;
+      }
+
+      // Only try once per page load
+      if (hasAttemptedFetch) {
+        return;
+      }
+      hasAttemptedFetch = true;
+
       try {
         const response = await fetch('https://api.github.com/repos/reifydb/reifydb');
+        if (response.status === 403) {
+          // Rate limited - don't try again
+          hasFailed403 = true;
+          console.log('GitHub API rate limited - not retrying');
+          return;
+        }
         if (response.ok) {
           const data = await response.json();
           const starsElement = document.getElementById('github-stars');
@@ -29,10 +50,10 @@ export default function Root({ children }) {
     // Fetch stars on mount
     fetchGitHubStars();
 
-    // Also fetch when navigation occurs (for SPA navigation)
+    // Check for stars element periodically but don't refetch if already attempted
     const interval = setInterval(() => {
       const starsElement = document.getElementById('github-stars');
-      if (starsElement && !starsElement.textContent) {
+      if (starsElement && !starsElement.textContent && !hasAttemptedFetch && !hasFailed403) {
         fetchGitHubStars();
       }
     }, 1000);

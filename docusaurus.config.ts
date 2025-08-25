@@ -183,6 +183,7 @@ const config: Config = {
         {
           type: 'dropdown',
           label: 'Documentation',
+          to: '/docs/getting-started/installation',
           position: 'left',
           className: 'navbar-center-item',
           items: [
