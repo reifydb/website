@@ -11,17 +11,42 @@ const commands = [
     'insert get_things.done returning instantly'
 ];
 
+// Shorter commands for mobile devices
+const mobileCommands = [
+    'embed database.anywhere',
+    'create developer_first',
+    'from events stream live',
+    'select speed::maximum',
+    'insert data instantly',
+    'query limit 1ms',
+    'join contributors'
+];
+
 export default function AnimatedText() {
     const [currentCommandIndex, setCurrentCommandIndex] = useState(0);
     const [displayCommand, setDisplayCommand] = useState('');
     const [charIndex, setCharIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [showCursor, setShowCursor] = useState(true);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Detect mobile device
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     useEffect(() => {
         // Terminal-style typewriter effect
         const typeInterval = setInterval(() => {
-            const currentCommand = commands[currentCommandIndex];
+            const commandList = isMobile ? mobileCommands : commands;
+            const currentCommand = commandList[currentCommandIndex];
             
             if (!isDeleting) {
                 // Typing
@@ -40,13 +65,14 @@ export default function AnimatedText() {
                 } else {
                     // Move to next command
                     setIsDeleting(false);
-                    setCurrentCommandIndex((prev) => (prev + 1) % commands.length);
+                    const commandList = isMobile ? mobileCommands : commands;
+                    setCurrentCommandIndex((prev) => (prev + 1) % commandList.length);
                 }
             }
         }, isDeleting ? 30 : 80); // Typing speed
         
         return () => clearInterval(typeInterval);
-    }, [currentCommandIndex, charIndex, isDeleting]);
+    }, [currentCommandIndex, charIndex, isDeleting, isMobile]);
 
     // Blinking cursor effect
     useEffect(() => {
@@ -68,8 +94,10 @@ export default function AnimatedText() {
                 </div>
                 <div className={styles.terminalBody}>
                     <div className={styles.terminalLine}>
-                        <span className={styles.terminalPrompt}>you@reifydb</span>
-                        <span className={styles.terminalPath}>: </span>
+                        <span className={styles.terminalPrompt}>
+                            {isMobile ? '$' : 'you@reifydb'}
+                        </span>
+                        {!isMobile && <span className={styles.terminalPath}>: </span>}
                         <span className={styles.terminalCommand}> {displayCommand}</span>
                         <span className={`${styles.terminalCursor} ${showCursor ? styles.cursorVisible : ''}`}>█</span>
                     </div>

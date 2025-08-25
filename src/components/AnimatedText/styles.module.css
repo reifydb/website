@@ -6,6 +6,7 @@
   margin: 2rem auto;
   max-width: 800px;
   width: 100%;
+  padding: 0 1rem;
 }
 
 /* Terminal Window */
@@ -57,6 +58,8 @@
   padding: 1.5rem;
   min-height: 80px;
   background: #0a0a0a;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .terminalLine {
@@ -64,6 +67,7 @@
   align-items: center;
   flex-wrap: nowrap;
   white-space: nowrap;
+  min-width: 0;
 }
 
 /* Terminal Prompt */
@@ -101,12 +105,24 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .terminalContainer {
+    margin: 1rem auto;
+    padding: 0 0.5rem;
+  }
+  
   .terminalWindow {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
+    box-shadow: -4px 4px 0px 0px #383838;
+  }
+  
+  .terminalWindow:hover {
+    transform: translate(1px, -1px);
+    box-shadow: -5px 5px 0px 0px #383838;
   }
   
   .terminalBody {
-    padding: 1rem;
+    padding: 0.75rem;
+    min-height: 60px;
   }
   
   .terminalHeader {
@@ -114,8 +130,56 @@
   }
   
   .terminalDot {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
+  }
+  
+  .terminalTitle {
+    font-size: 0.7rem;
+  }
+  
+  .terminalPrompt {
+    font-size: 0.75rem;
+  }
+  
+  .terminalPath {
+    display: none; /* Hide path on mobile to save space */
+  }
+  
+  .terminalCommand {
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+  }
+  
+  .terminalCursor {
+    width: 6px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Very small mobile screens */
+@media (max-width: 480px) {
+  .terminalWindow {
+    font-size: 0.7rem;
+  }
+  
+  .terminalBody {
+    padding: 0.5rem;
+  }
+  
+  .terminalPrompt {
+    /* Shorten prompt on very small screens */
+    font-size: 0.7rem;
+  }
+  
+  .terminalPrompt::after {
+    content: '$';
+    margin-left: 0.25rem;
+  }
+  
+  /* Hide full prompt text on very small screens */
+  .terminalPrompt span {
+    display: none;
   }
 }
 
