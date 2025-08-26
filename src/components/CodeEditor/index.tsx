@@ -182,7 +182,7 @@ const CodeEditor = forwardRef<CodeEditorRef, CodeEditorProps>(
       editor.updateOptions({
         minimap: { enabled: false },
         fontSize: 16,
-        fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace",
+        fontFamily: "'IBM Plex Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace",
         fontWeight: '500',
         lineNumbers: 'on',
         lineNumbersMinChars: 3,

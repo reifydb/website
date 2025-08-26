@@ -44,6 +44,11 @@
 /* Import Tailwind CSS with all styles consolidated */
 @import './tailwind.css';
 
+/* Ensure IBM Plex Mono is used for all code elements */
+code, pre, kbd, samp, tt, .monospace {
+    font-family: 'IBM Plex Mono', monospace !important;
+}
+
 /* Navbar active item styling - Light mode */
 .navbar__link--active {
     color: white !important;
