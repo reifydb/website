@@ -28,7 +28,7 @@ function HomepageHeader() {
                     A fast, reactive database you can embed or run as a server.
                 </p>
                 <p className="font-bold text-lg md:text-xl max-w-3xl mx-auto mb-12 text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Made for hacker, not suits.
+                    Made for hackers, not suits.
                 </p>
                 <div className="mb-8">
                     <AnimatedText/>
