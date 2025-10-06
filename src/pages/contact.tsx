@@ -234,7 +234,7 @@ export default function Contact() {
             </div>
             <div className={styles.contactOption}>
               <h3>💬 Community</h3>
-              <p>Join the <a href="https://discord.com/invite/vuBrm5kuuF" target="_blank" rel="noopener noreferrer">Discord server</a></p>
+              <p>Join the <a href="https://discord.gg/RYN5cHwVuc" target="_blank" rel="noopener noreferrer">Discord server</a></p>
               <p>Follow on <a href="https://twitter.com/reifydb" target="_blank" rel="noopener noreferrer">Twitter</a></p>
             </div>
             <div className={styles.contactOption}>

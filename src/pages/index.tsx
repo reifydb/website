@@ -323,7 +323,7 @@ function Community() {
                         <p className="text-gray-600 dark:text-gray-400">Star, fork, and contribute</p>
                     </a>
                     <a
-                        href="https://discord.com/invite/vuBrm5kuuF"
+                        href="https://discord.gg/RYN5cHwVuc"
                         className="card-clean text-center no-underline"
                         target="_blank"
                         rel="noopener noreferrer"

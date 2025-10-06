@@ -152,8 +152,6 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
 
   return (
     <div className={styles.brutalistContainer}>
-
-
       <div className={styles.tableContainer}>
         <table className={styles.brutalistTable}>
           <thead>
@@ -167,7 +165,7 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
                 >
                   <div className={styles.headerContent}>
                     <span className={styles.columnName}>{column.name}</span>
-                    <span className={styles.columnType}>{column.ty}</span>
+                    <span className={styles.columnType}>{column.type}</span>
                     {sortColumn === column.name && (
                       <span className={styles.sortArrow}>
                         {sortDirection === 'asc' ? '▲' : '▼'}
@@ -225,24 +223,24 @@ export default function ResultViewer({ result, error, isLoading }: ResultViewerP
             )}
           </tbody>
         </table>
-          <div className={styles.resultHeader}>
-              <div className={styles.statsBox}>
+      </div>
+      <div className={styles.resultHeader}>
+        <div className={styles.statsBox}>
           <span className={styles.statItem}>
             ROWS: <strong>{result.rows.length}</strong>
           </span>
-                  {result.rowsAffected !== undefined && (
-                      <span className={styles.statItem}>
+          {result.rowsAffected !== undefined && (
+            <span className={styles.statItem}>
               AFFECTED: <strong>{result.rowsAffected}</strong>
             </span>
-                  )}
-              </div>
-              <button
-                  className={styles.brutalistButton}
-                  onClick={exportToCsv}
-              >
-                  EXPORT CSV
-              </button>
-          </div>
+          )}
+        </div>
+        <button
+          className={styles.brutalistButton}
+          onClick={exportToCsv}
+        >
+          EXPORT CSV
+        </button>
       </div>
     </div>
   );

@@ -45,7 +45,7 @@ export default function Support(): JSX.Element {
               <p className={styles.cardDescription}>
                 Join our active Discord community for real-time help, discussions, and updates about ReifyDB.
               </p>
-              <a href="https://discord.com/invite/vuBrm5kuuF" className={styles.cardButton} target="_blank" rel="noopener noreferrer">
+              <a href="https://discord.gg/RYN5cHwVuc" className={styles.cardButton} target="_blank" rel="noopener noreferrer">
                 Join Discord
               </a>
             </div>

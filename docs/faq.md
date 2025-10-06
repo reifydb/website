@@ -49,7 +49,7 @@ Contact [support@reifydb.com](mailto:support@reifydb.com) for more information.
 
 ### Where can I get help?
 - **Documentation**: Comprehensive guides and API references
-- **Discord Community**: [Join our Discord](https://discord.com/invite/vuBrm5kuuF) for real-time help
+- **Discord Community**: [Join our Discord](https://discord.gg/RYN5cHwVuc) for real-time help
 - **GitHub Issues**: Report bugs and request features
 - **Commercial Support**: Enterprise support plans available
 
@@ -63,4 +63,4 @@ Please report bugs on our [GitHub Issues](https://github.com/reifydb/reifydb/iss
 
 ---
 
-Still have questions? Join our [Discord community](https://discord.com/invite/vuBrm5kuuF) or reach out to [support@reifydb.com](mailto:support@reifydb.com).
+Still have questions? Join our [Discord community](https://discord.gg/RYN5cHwVuc) or reach out to [support@reifydb.com](mailto:support@reifydb.com).

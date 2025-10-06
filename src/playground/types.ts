@@ -1,6 +1,11 @@
-import { QueryResult, QueryHistoryItem } from '../types';
-
-export type { QueryResult, QueryHistoryItem };
+export interface QueryHistoryItem {
+  id: string;
+  query: string;
+  timestamp: number;
+  executionTimeMs: number;
+  success: boolean;
+  error?: string;
+}
 
 export interface ColumnInfo {
   name: string;
@@ -25,7 +30,7 @@ export interface PlaygroundRequest {
 export interface PlaygroundResponse {
   type: 'queryResult' | 'error' | 'schema' | 'history' | 'exampleLoaded' | 'resetComplete';
   id: string;
-  result?: QueryResult;
+  result?: any; // QueryResult from @reifydb/react
   error?: string;
   schema?: TableInfo[];
   history?: QueryHistoryItem[];

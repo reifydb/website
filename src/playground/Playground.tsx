@@ -1,40 +1,56 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels';
+import { useConnection, useQueryExecutor, type QueryResult } from '@reifydb/react';
 import CodeEditor from '@components/CodeEditor';
 import ResultViewer from '@components/ResultViewer';
 import SchemaExplorer from './components/SchemaExplorer';
 import QueryHistory from './components/QueryHistory';
 import Toolbar from './components/Toolbar';
-import { usePlaygroundConnection } from './hooks/usePlaygroundConnection';
 import type { CodeEditorRef } from '@components/CodeEditor';
+import type { TableInfo, QueryHistoryItem } from './types';
 import styles from './Playground.module.css';
 
-const DEFAULT_QUERY = `-- Welcome to ReifyDB Playground!
--- Try running this query:
-SELECT * FROM users LIMIT 10;`;
+const DEFAULT_QUERY = `MAP {42}`;
 
 export default function Playground() {
   const [query, setQuery] = useState(DEFAULT_QUERY);
-  const [isExecuting, setIsExecuting] = useState(false);
   const [activeTab, setActiveTab] = useState<'result' | 'history'>('result');
   const [editorTheme, setEditorTheme] = useState('vs'); // Default to light theme
+  const [schema, setSchema] = useState<TableInfo[]>([]);
+  const [history, setHistory] = useState<QueryHistoryItem[]>([]);
+  const [currentResult, setCurrentResult] = useState<QueryResult | null>(null);
+  const [currentError, setCurrentError] = useState<string | null>(null);
   const editorRef = useRef<CodeEditorRef | null>(null);
 
-  const { connected, result, error, schema, history, executeQuery, resetDatabase, loadExample } =
-    usePlaygroundConnection();
+  const { isConnected: connected, isConnecting, connect, disconnect, reconnect } = useConnection();
+  const { isExecuting, query: executeReifyQuery, results, error: queryError } = useQueryExecutor();
 
-  const handleExecute = useCallback(async () => {
+  const handleExecute = useCallback(() => {
     if (!query.trim() || isExecuting) return;
 
-    setIsExecuting(true);
-    setActiveTab('result');
-
-    try {
-      await executeQuery(query);
-    } finally {
-      setIsExecuting(false);
+    if (!connected) {
+      setCurrentError('Not connected to ReifyDB server');
+      setActiveTab('result');
+      return;
     }
-  }, [query, isExecuting, executeQuery]);
+
+    setActiveTab('result');
+    setCurrentResult(null);
+    setCurrentError(null);
+    
+    // Execute the query
+    executeReifyQuery(query);
+    
+    // Add to history
+    const historyItem: QueryHistoryItem = {
+      id: Date.now().toString(),
+      query,
+      timestamp: Date.now(),
+      executionTimeMs: 0,
+      success: true,
+    };
+    setHistory(prev => [historyItem, ...prev].slice(0, 100));
+  }, [query, isExecuting, connected, executeReifyQuery]);
 
 
   // Detect theme changes
@@ -61,11 +77,33 @@ export default function Playground() {
     return () => observer.disconnect();
   }, []);
 
+  // Update result when query results change
+  useEffect(() => {
+    if (results && results.length > 0) {
+      setCurrentResult(results[0]);
+      setCurrentError(null);
+    } else if (queryError) {
+      setCurrentError(queryError);
+      setCurrentResult(null);
+    }
+  }, [results, queryError]);
+
   const handleExampleLoad = useCallback((exampleQuery: string) => {
     setQuery(exampleQuery);
     if (editorRef.current) {
       editorRef.current.setValue(exampleQuery);
     }
+  }, []);
+
+  const resetDatabase = useCallback(() => {
+    setCurrentResult(null);
+    setCurrentError(null);
+    setHistory([]);
+    setSchema([]);
+  }, []);
+
+  const loadExample = useCallback((exampleQuery: string) => {
+    return exampleQuery;
   }, []);
 
   return (
@@ -126,7 +164,7 @@ export default function Playground() {
 
                   <div className={styles.tabContent}>
                     {activeTab === 'result' ? (
-                      <ResultViewer result={result} error={error} isLoading={isExecuting} />
+                      <ResultViewer result={currentResult} error={currentError} isLoading={isExecuting} />
                     ) : (
                       <QueryHistory history={history} onQuerySelect={handleExampleLoad} />
                     )}

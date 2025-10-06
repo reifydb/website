@@ -3,8 +3,11 @@
   border: 3px solid #383838;
   border-radius: 0;
   box-shadow: -5px 5px 0px 0px #383838;
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden to visible */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .brutalistContainer:hover {
@@ -105,6 +108,7 @@
   padding: 1rem 1.25rem;
   background: #F4EFEA;
   border-top: 3px solid #383838;
+  flex-shrink: 0; /* Prevent header from shrinking */
 }
 
 .statsBox {
@@ -152,8 +156,11 @@
 }
 
 .tableContainer {
-  overflow-x: auto;
+  overflow: auto; /* Allow both horizontal and vertical scrolling */
   background: white;
+  flex: 1;
+  min-height: 0; /* Allow proper flex shrinking */
+  position: relative;
 }
 
 .brutalistTable {
@@ -161,6 +168,7 @@
   border-collapse: separate;
   border-spacing: 0;
   font-size: 15px;
+  min-width: min-content; /* Ensure table doesn't shrink below content width */
 }
 
 .brutalistTable thead {
