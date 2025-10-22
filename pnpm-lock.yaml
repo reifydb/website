@@ -27,14 +27,14 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0(monaco-editor@0.52.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@reifydb/client':
-        specifier: 0.0.1-alpha.7
-        version: 0.0.1-alpha.7
+        specifier: 0.0.1-alpha.8
+        version: 0.0.1-alpha.8
       '@reifydb/core':
-        specifier: 0.0.1-alpha.7
-        version: 0.0.1-alpha.7
+        specifier: 0.0.1-alpha.8
+        version: 0.0.1-alpha.8
       '@reifydb/react':
-        specifier: 0.0.1-alpha.7
-        version: 0.0.1-alpha.7(react@19.1.1)
+        specifier: 0.0.1-alpha.8
+        version: 0.0.1-alpha.8(react@19.1.1)
       '@tanstack/react-table':
         specifier: ^8.21.3
         version: 8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -1463,16 +1463,16 @@ packages:
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
-  '@reifydb/client@0.0.1-alpha.7':
-    resolution: {integrity: sha512-bDOrWkRK1D6DrFSEKQ0lPPuSR5XB3c8Zktoxoxyf9CpU30qZY290YEujFLBjIJJ7ZdcndGdG7Yzn5ATSiIa2+g==}
+  '@reifydb/client@0.0.1-alpha.8':
+    resolution: {integrity: sha512-CvNDThtSsnEGxTBKVVNpXN+vJSIBCUFhzqTudh59b7M7S6TNSpgK9LZQiVtXJNhnzJVGsT2eXWPbxKiKDoHCAw==}
     engines: {node: '>=16.0.0'}
 
-  '@reifydb/core@0.0.1-alpha.7':
-    resolution: {integrity: sha512-0BzWZmUPk2nvDCdBBr1ZudDp1FnHdG/zdHBVb/hwIoibsWIDf05W7dv0T3HTNkXX1zXEsZKaScXXI+1ALmMrqA==}
+  '@reifydb/core@0.0.1-alpha.8':
+    resolution: {integrity: sha512-6Ff5mqGChC8r9tSBV5nbm7NmOZy8/cAJaSaf+wostIaxRJLqHr+jljCEVsLu1ohtBpRWDROv2CXxbTUr6d8ndA==}
     engines: {node: '>=16.0.0'}
 
-  '@reifydb/react@0.0.1-alpha.7':
-    resolution: {integrity: sha512-sJIJpVqoxgwGvXcq9duJDulu7nqvoDqs395DxnpCLPA3Oy3A1/cc5u7VPoaZETZs/SYZxlBIc8Bx21yP9TIqgw==}
+  '@reifydb/react@0.0.1-alpha.8':
+    resolution: {integrity: sha512-FZqdO8CMEAQl96hP+pkE1loJSNb3PKs0VgAnZBRLEjAgqfVC/G/QkH/UHopYG5w3TPqvbvRc5LwYbZSPlnnFQw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       react: '>=16.8.0'
@@ -8082,23 +8082,23 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
-  '@reifydb/client@0.0.1-alpha.7':
+  '@reifydb/client@0.0.1-alpha.8':
     dependencies:
-      '@reifydb/core': 0.0.1-alpha.7
+      '@reifydb/core': 0.0.1-alpha.8
       uuid: 11.1.0
       ws: 8.18.3
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@reifydb/core@0.0.1-alpha.7':
+  '@reifydb/core@0.0.1-alpha.8':
     dependencies:
       uuid: 11.1.0
 
-  '@reifydb/react@0.0.1-alpha.7(react@19.1.1)':
+  '@reifydb/react@0.0.1-alpha.8(react@19.1.1)':
     dependencies:
-      '@reifydb/client': 0.0.1-alpha.7
-      '@reifydb/core': 0.0.1-alpha.7
+      '@reifydb/client': 0.0.1-alpha.8
+      '@reifydb/core': 0.0.1-alpha.8
       react: 19.1.1
     transitivePeerDependencies:
       - bufferutil
