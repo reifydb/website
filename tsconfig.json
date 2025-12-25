@@ -1,27 +1,7 @@
 {
-  // This file is not used in compilation. It is here just for a nice editor experience.
-  "extends": "@docusaurus/tsconfig",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "strict": false,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "jsx": "react-jsx",
-    "skipLibCheck": true,
-    "noEmit": true,
-    "paths": {
-      "@components/*": ["src/components/*"],
-      "@playground/*": ["src/playground/*"],
-      "@utils/*": ["src/utils/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@site/*": ["./*"],
-      "@theme/*": ["src/theme/*"],
-      "@theme-original/*": ["node_modules/@docusaurus/theme-classic/lib/theme/*"]
-    }
-  },
-  "include": ["src/**/*"],
-  "exclude": [".docusaurus", "build", "node_modules", "docs/**/*"]
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }
