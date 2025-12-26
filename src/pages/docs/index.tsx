@@ -5,3 +5,6 @@ export { QuickStartPage } from './guides/quick-start';
 export { RqlBasicsPage } from './rql/basics';
 export { RqlTransformsPage } from './rql/transforms';
 export { RqlExpressionsPage } from './rql/expressions';
+export { FilterPage, SortPage } from './rql/transforms/index';
+export { OperatorsPage } from './rql/expressions/index';
+export { FunctionsOverviewPage, TextFunctionsPage, MathFunctionsPage, DateFunctionsPage } from './functions/index';

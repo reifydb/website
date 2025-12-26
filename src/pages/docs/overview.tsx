@@ -127,7 +127,7 @@ export function DocsOverview() {
             </li>
             <li>
               <Link to="/contact" className="text-primary-color hover:underline font-medium">
-                Contact Us →
+                Contact Me →
               </Link>
             </li>
           </ul>

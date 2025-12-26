@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Button } from '@/components/ui';
+import { Button, GitHubStars } from '@/components/ui';
 import { cn } from '@/lib';
 
 export function Navbar() {
@@ -70,8 +70,9 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            {/* Desktop CTA */}
-            <div className="hidden lg:block">
+            {/* Desktop GitHub + CTA */}
+            <div className="hidden lg:flex items-center gap-3">
+              <GitHubStars />
               <Button href="/docs" size="sm">
                 Read Documentation
               </Button>
