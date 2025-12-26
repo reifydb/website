@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button } from './button';
 
 interface CtaSectionProps {
@@ -23,15 +24,27 @@ export function CtaSection({
         <p className="text-base sm:text-lg text-text-muted mb-3 sm:mb-4">
           {title} <span className="font-bold text-text-primary">{description}</span>
         </p>
-        <a href={buttonHref} {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
-          <Button
-            variant="secondary"
-            size="lg"
-            className="border-2 border-primary hover:bg-primary hover:text-white transition-all"
-          >
-            {buttonText}
-          </Button>
-        </a>
+        {isExternal ? (
+          <a href={buttonHref} target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="secondary"
+              size="lg"
+              className="border-2 border-primary hover:bg-primary hover:text-white transition-all"
+            >
+              {buttonText}
+            </Button>
+          </a>
+        ) : (
+          <Link to={buttonHref}>
+            <Button
+              variant="secondary"
+              size="lg"
+              className="border-2 border-primary hover:bg-primary hover:text-white transition-all"
+            >
+              {buttonText}
+            </Button>
+          </Link>
+        )}
       </div>
     );
   }
@@ -46,11 +59,15 @@ export function CtaSection({
               <p className="text-sm sm:text-base text-text-muted">{description}</p>
             </div>
             <div className="p-6 sm:p-8 flex items-center justify-center bg-bg-primary border-t-2 md:border-t-0 md:border-l-2 border-border-default">
-              <a href={buttonHref} {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
-                <Button size="lg">
-                  {buttonText}
-                </Button>
-              </a>
+              {isExternal ? (
+                <a href={buttonHref} target="_blank" rel="noopener noreferrer">
+                  <Button size="lg">{buttonText}</Button>
+                </a>
+              ) : (
+                <Link to={buttonHref}>
+                  <Button size="lg">{buttonText}</Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -64,11 +81,15 @@ export function CtaSection({
       <div className="bg-white border-2 border-border-default rounded-lg p-6 sm:p-8 text-center shadow-minimal">
         <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-3 sm:mb-4">{title}</h3>
         <p className="text-sm sm:text-base text-text-muted mb-4 sm:mb-6">{description}</p>
-        <a href={buttonHref} {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
-          <Button size="lg">
-            {buttonText}
-          </Button>
-        </a>
+        {isExternal ? (
+          <a href={buttonHref} target="_blank" rel="noopener noreferrer">
+            <Button size="lg">{buttonText}</Button>
+          </a>
+        ) : (
+          <Link to={buttonHref}>
+            <Button size="lg">{buttonText}</Button>
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ export function Navbar() {
   ];
 
   const pageLinks = [
+    { href: "/docs", label: "DOCS" },
     { href: "/contact", label: "CONTACT" },
     { href: "/support", label: "SUPPORT" },
   ];
@@ -71,8 +72,8 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             {/* Desktop CTA */}
             <div className="hidden lg:block">
-              <Button href="https://cal.com/reifydb/30min" size="sm">
-                Book a Call
+              <Button href="/docs" size="sm">
+                Read Documentation
               </Button>
             </div>
 
@@ -159,15 +160,13 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <a
-              href="https://cal.com/reifydb/30min"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/docs"
               onClick={() => setMobileMenuOpen(false)}
               className="font-bold uppercase tracking-wide bg-primary-color text-white px-4 py-4 border-2 border-border-default rounded transition-all duration-150 hover:shadow-[2px_2px_0px_0px_rgba(56,56,56,0.2)] text-center mt-4"
             >
-              Book a Call
-            </a>
+              Read Documentation
+            </Link>
           </nav>
         </div>
       </div>
