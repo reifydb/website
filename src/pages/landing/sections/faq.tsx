@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     question: 'How is ReifyDB different from PostgreSQL or Redis?',
-    answer: 'PostgreSQL is disk-first: durable and query-rich, but slow for real-time state. Redis is memory-first: fast, but no transactions across keys and no derived state. ReifyDB gives you in-memory speed with full ACID transactions, plus incremental materialized views and programmable logic that runs inside the database.',
+    answer: 'PostgreSQL is disk-first: durable and query-rich, but slow for real-time state. Redis is memory-first: fast, but transactions lack rollbacks and there is no derived state. ReifyDB gives you in-memory speed with full ACID transactions, plus incremental materialized views and programmable logic that runs inside the database.',
   },
   {
     question: 'Is ReifyDB production ready?',
