@@ -13,7 +13,7 @@ interface DocsGateProps {
  *
  * To disable this gate and show docs in production, set SHOW_DOCS_IN_PRODUCTION to true.
  */
-const SHOW_DOCS_IN_PRODUCTION = false;
+const SHOW_DOCS_IN_PRODUCTION = true;
 
 export function DocsGate({ children }: DocsGateProps) {
   const isLocalhost = useIsLocalhost();

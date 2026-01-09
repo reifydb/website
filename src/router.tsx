@@ -15,9 +15,38 @@ import {
   SortPage,
   OperatorsPage,
   FunctionsOverviewPage,
-  TextFunctionsPage,
-  MathFunctionsPage,
-  DateFunctionsPage,
+  // Date module
+  DateModuleOverviewPage,
+  DateYearPage,
+  DateMonthPage,
+  DateDayPage,
+  DateHourPage,
+  DateMinutePage,
+  DateSecondPage,
+  DateNowPage,
+  DateAddPage,
+  DateDiffPage,
+  DateFormatPage,
+  // Math module
+  MathModuleOverviewPage,
+  MathSumPage,
+  MathAvgPage,
+  MathMinPage,
+  MathMaxPage,
+  MathCountPage,
+  MathAbsPage,
+  MathRoundPage,
+  MathFloorPage,
+  MathCeilPage,
+  MathPowerPage,
+  // Text module
+  TextModuleOverviewPage,
+  TextLowerPage,
+  TextUpperPage,
+  TextTrimPage,
+  TextLengthPage,
+  TextConcatPage,
+  TextSubstringPage,
 } from '@/pages/docs';
 
 export const router = createBrowserRouter([
@@ -76,17 +105,124 @@ export const router = createBrowserRouter([
         path: '/docs/functions',
         element: <DocsGate><FunctionsOverviewPage /></DocsGate>,
       },
-      {
-        path: '/docs/functions/text',
-        element: <DocsGate><TextFunctionsPage /></DocsGate>,
-      },
-      {
-        path: '/docs/functions/math',
-        element: <DocsGate><MathFunctionsPage /></DocsGate>,
-      },
+      // Date module
       {
         path: '/docs/functions/date',
-        element: <DocsGate><DateFunctionsPage /></DocsGate>,
+        element: <DocsGate><DateModuleOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/date/year',
+        element: <DocsGate><DateYearPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/date/month',
+        element: <DocsGate><DateMonthPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/date/day',
+        element: <DocsGate><DateDayPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/date/hour',
+        element: <DocsGate><DateHourPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/date/minute',
+        element: <DocsGate><DateMinutePage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/date/second',
+        element: <DocsGate><DateSecondPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/date/now',
+        element: <DocsGate><DateNowPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/date/add',
+        element: <DocsGate><DateAddPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/date/diff',
+        element: <DocsGate><DateDiffPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/date/format',
+        element: <DocsGate><DateFormatPage /></DocsGate>,
+      },
+      // Math module
+      {
+        path: '/docs/functions/math',
+        element: <DocsGate><MathModuleOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/math/sum',
+        element: <DocsGate><MathSumPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/math/avg',
+        element: <DocsGate><MathAvgPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/math/min',
+        element: <DocsGate><MathMinPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/math/max',
+        element: <DocsGate><MathMaxPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/math/count',
+        element: <DocsGate><MathCountPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/math/abs',
+        element: <DocsGate><MathAbsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/math/round',
+        element: <DocsGate><MathRoundPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/math/floor',
+        element: <DocsGate><MathFloorPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/math/ceil',
+        element: <DocsGate><MathCeilPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/math/power',
+        element: <DocsGate><MathPowerPage /></DocsGate>,
+      },
+      // Text module
+      {
+        path: '/docs/functions/text',
+        element: <DocsGate><TextModuleOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/text/lower',
+        element: <DocsGate><TextLowerPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/text/upper',
+        element: <DocsGate><TextUpperPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/text/trim',
+        element: <DocsGate><TextTrimPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/text/length',
+        element: <DocsGate><TextLengthPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/text/concat',
+        element: <DocsGate><TextConcatPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/text/substring',
+        element: <DocsGate><TextSubstringPage /></DocsGate>,
       },
       {
         path: '*',
