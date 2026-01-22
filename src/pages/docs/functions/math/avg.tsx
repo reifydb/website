@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock, Callout } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function MathAvgPage() {
   return (
@@ -64,14 +65,14 @@ export function MathAvgPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Calculate average price</h3>
-          <RqlCodeBlock
-            code={`from app.products
+          <ExecutableSnippet
+            initialCode={`from app.products
 aggregate math::avg(price) by category`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Average with total</h3>
-          <RqlCodeBlock
-            code={`from app.sales
+          <ExecutableSnippet
+            initialCode={`from app.sales
 aggregate {
   avg_sale: math::avg(amount),
   total_sales: math::sum(amount)

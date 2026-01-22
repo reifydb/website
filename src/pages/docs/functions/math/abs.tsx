@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function MathAbsPage() {
   return (
@@ -64,14 +65,14 @@ export function MathAbsPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Convert to absolute value</h3>
-          <RqlCodeBlock
-            code={`from app.transactions
+          <ExecutableSnippet
+            initialCode={`from app.transactions
 extend { abs_amount: math::abs(amount) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by absolute magnitude</h3>
-          <RqlCodeBlock
-            code={`from app.balances
+          <ExecutableSnippet
+            initialCode={`from app.balances
 filter math::abs(balance) > 1000`}
           />
         </section>

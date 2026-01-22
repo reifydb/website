@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function DateNowPage() {
   return (
@@ -49,20 +50,20 @@ export function DateNowPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Find overdue tasks</h3>
-          <RqlCodeBlock
-            code={`from app.tasks
+          <ExecutableSnippet
+            initialCode={`from app.tasks
 filter due_date < date::now()`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Add created timestamp</h3>
-          <RqlCodeBlock
-            code={`from app.records
+          <ExecutableSnippet
+            initialCode={`from app.records
 extend { processed_at: date::now() }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Calculate time elapsed</h3>
-          <RqlCodeBlock
-            code={`from app.orders
+          <ExecutableSnippet
+            initialCode={`from app.orders
 extend { days_since: date::diff(date::now(), created_at, unit: "days") }`}
           />
         </section>

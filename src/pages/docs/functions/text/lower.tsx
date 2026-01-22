@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function TextLowerPage() {
   return (
@@ -64,14 +65,14 @@ export function TextLowerPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Normalize email addresses</h3>
-          <RqlCodeBlock
-            code={`from app.users
+          <ExecutableSnippet
+            initialCode={`from app.users
 extend { lower_email: text::lower(email) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Case-insensitive filtering</h3>
-          <RqlCodeBlock
-            code={`from app.products
+          <ExecutableSnippet
+            initialCode={`from app.products
 filter text::lower(category) == "electronics"`}
           />
         </section>

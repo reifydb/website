@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock, Callout } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function MathCountPage() {
   return (
@@ -49,14 +50,14 @@ export function MathCountPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Count by status</h3>
-          <RqlCodeBlock
-            code={`from app.users
+          <ExecutableSnippet
+            initialCode={`from app.users
 aggregate math::count() by status`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Count with other aggregations</h3>
-          <RqlCodeBlock
-            code={`from app.orders
+          <ExecutableSnippet
+            initialCode={`from app.orders
 aggregate {
   order_count: math::count(),
   total_revenue: math::sum(total)
@@ -64,8 +65,8 @@ aggregate {
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Total count</h3>
-          <RqlCodeBlock
-            code={`from app.events
+          <ExecutableSnippet
+            initialCode={`from app.events
 aggregate { total: math::count() }`}
           />
         </section>

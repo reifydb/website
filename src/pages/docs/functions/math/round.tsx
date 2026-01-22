@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function MathRoundPage() {
   return (
@@ -69,14 +70,14 @@ export function MathRoundPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Round to 2 decimal places</h3>
-          <RqlCodeBlock
-            code={`from app.prices
+          <ExecutableSnippet
+            initialCode={`from app.prices
 extend { rounded: math::round(price, 2) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Round to nearest integer</h3>
-          <RqlCodeBlock
-            code={`from app.metrics
+          <ExecutableSnippet
+            initialCode={`from app.metrics
 extend { rounded_value: math::round(value) }`}
           />
         </section>

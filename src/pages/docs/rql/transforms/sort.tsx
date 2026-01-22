@@ -1,5 +1,5 @@
 import { DocsLayout } from '../../docs-layout';
-import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function SortPage() {
   return (
@@ -17,8 +17,8 @@ export function SortPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Basic Syntax</h2>
-          <RqlCodeBlock
-            code={`from app.users
+          <ExecutableSnippet
+            initialCode={`from app.users
 sort created_at`}
           />
           <p className="text-text-secondary mt-4">
@@ -31,8 +31,8 @@ sort created_at`}
           <p className="text-text-secondary mb-4">
             Use a minus sign for descending order:
           </p>
-          <RqlCodeBlock
-            code={`from app.users
+          <ExecutableSnippet
+            initialCode={`from app.users
 sort -created_at`}
           />
         </section>
@@ -42,8 +42,8 @@ sort -created_at`}
           <p className="text-text-secondary mb-4">
             Sort by multiple columns with a list:
           </p>
-          <RqlCodeBlock
-            code={`from app.orders
+          <ExecutableSnippet
+            initialCode={`from app.orders
 sort { -total, created_at }`}
           />
           <p className="text-text-secondary mt-4">
@@ -57,8 +57,8 @@ sort { -total, created_at }`}
             Sort is often combined with <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">take</code>
             to get top N results:
           </p>
-          <RqlCodeBlock
-            code={`from app.users
+          <ExecutableSnippet
+            initialCode={`from app.users
 sort -score
 take 10`}
           />

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
-import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function DateModuleOverviewPage() {
   return (
@@ -20,8 +20,8 @@ export function DateModuleOverviewPage() {
         {/* Quick Example */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
-          <RqlCodeBlock
-            code={`from app.events
+          <ExecutableSnippet
+            initialCode={`from app.events
 filter date::year(created_at) == 2024
 extend {
   month: date::month(created_at),

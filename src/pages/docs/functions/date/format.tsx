@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function DateFormatPage() {
   return (
@@ -69,20 +70,20 @@ export function DateFormatPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Format as ISO date</h3>
-          <RqlCodeBlock
-            code={`from app.events
+          <ExecutableSnippet
+            initialCode={`from app.events
 extend { formatted: date::format(created_at, "%Y-%m-%d") }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Include time</h3>
-          <RqlCodeBlock
-            code={`from app.logs
+          <ExecutableSnippet
+            initialCode={`from app.logs
 extend { timestamp_str: date::format(timestamp, "%Y-%m-%d %H:%M:%S") }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Custom format</h3>
-          <RqlCodeBlock
-            code={`from app.orders
+          <ExecutableSnippet
+            initialCode={`from app.orders
 extend { order_date: date::format(created_at, "%B %d, %Y") }`}
           />
         </section>

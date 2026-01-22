@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function TextSubstringPage() {
   return (
@@ -74,20 +75,20 @@ export function TextSubstringPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Extract prefix</h3>
-          <RqlCodeBlock
-            code={`from app.codes
+          <ExecutableSnippet
+            initialCode={`from app.codes
 extend { prefix: text::substring(code, 0, 3) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Get first characters</h3>
-          <RqlCodeBlock
-            code={`from app.products
+          <ExecutableSnippet
+            initialCode={`from app.products
 extend { initial: text::substring(name, 0, 1) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Extract middle portion</h3>
-          <RqlCodeBlock
-            code={`from app.identifiers
+          <ExecutableSnippet
+            initialCode={`from app.identifiers
 extend { middle: text::substring(id, 3, 7) }`}
           />
         </section>

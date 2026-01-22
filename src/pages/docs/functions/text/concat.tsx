@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function TextConcatPage() {
   return (
@@ -64,20 +65,20 @@ export function TextConcatPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Build full name</h3>
-          <RqlCodeBlock
-            code={`from app.users
+          <ExecutableSnippet
+            initialCode={`from app.users
 extend { full_name: text::concat(first_name, " ", last_name) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Create display labels</h3>
-          <RqlCodeBlock
-            code={`from app.products
+          <ExecutableSnippet
+            initialCode={`from app.products
 extend { label: text::concat(name, " (", sku, ")") }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Build URLs</h3>
-          <RqlCodeBlock
-            code={`from app.pages
+          <ExecutableSnippet
+            initialCode={`from app.pages
 extend { url: text::concat("/", category, "/", slug) }`}
           />
         </section>

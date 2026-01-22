@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function DateDayPage() {
   return (
@@ -64,14 +65,14 @@ export function DateDayPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Filter by first day of month</h3>
-          <RqlCodeBlock
-            code={`from app.logs
+          <ExecutableSnippet
+            initialCode={`from app.logs
 filter date::day(timestamp) == 1`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Extract day component</h3>
-          <RqlCodeBlock
-            code={`from app.events
+          <ExecutableSnippet
+            initialCode={`from app.events
 extend { day_of_month: date::day(created_at) }`}
           />
         </section>

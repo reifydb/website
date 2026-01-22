@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../docs-layout';
-import { RqlCodeBlock, Callout } from '../components';
+import { Callout } from '../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 const transforms = [
   {
@@ -87,8 +88,8 @@ export function RqlTransformsPage() {
             RQL queries are pipelines. Data flows from one transform to the next, with each
             transform modifying the data before passing it on.
           </p>
-          <RqlCodeBlock
-            code={`from app.orders              # Start with orders table
+          <ExecutableSnippet
+            initialCode={`from app.orders              # Start with orders table
 filter status == "completed" # Keep only completed orders
 aggregate math::sum(total) by region  # Sum totals per region
 sort total                   # Order by total
@@ -110,7 +111,7 @@ take 5                       # Top 5 regions`}
                   {transform.name}
                 </h3>
                 <p className="text-text-secondary mb-4">{transform.description}</p>
-                <RqlCodeBlock code={transform.example} />
+                <ExecutableSnippet initialCode={transform.example} />
               </div>
             ))}
           </div>

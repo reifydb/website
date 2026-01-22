@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../docs-layout';
-import { RqlCodeBlock, Callout } from '../components';
+import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function RqlBasicsPage() {
@@ -36,8 +36,8 @@ export function RqlBasicsPage() {
           <p className="text-text-secondary mb-4">
             Every RQL query starts with a data source, followed by transforms:
           </p>
-          <RqlCodeBlock
-            code={`from app.users          # Start with a table
+          <ExecutableSnippet
+            initialCode={`from app.users          # Start with a table
 filter age >= 18         # Filter rows
 select name, email       # Choose columns`}
           />
@@ -57,7 +57,7 @@ select name, email       # Choose columns`}
           <p className="text-text-secondary mb-3">
             Query data from a table:
           </p>
-          <RqlCodeBlock code={`from app.users`} />
+          <ExecutableSnippet initialCode={`from app.users`} />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Inline Data</h3>
           <p className="text-text-secondary mb-3">
@@ -78,16 +78,16 @@ select name, email       # Choose columns`}
           <p className="text-text-secondary mb-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">#</code> for single-line comments:
           </p>
-          <RqlCodeBlock
-            code={`# This is a comment
+          <ExecutableSnippet
+            initialCode={`# This is a comment
 from app.users
 filter active == true  # Inline comment`}
           />
           <p className="text-text-secondary mt-4 mb-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">/* */</code> for block comments:
           </p>
-          <RqlCodeBlock
-            code={`/*
+          <ExecutableSnippet
+            initialCode={`/*
   Multi-line comment
   describing the query
 */

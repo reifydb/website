@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../docs-layout';
-import { CodeBlock, RqlCodeBlock, Callout } from '../components';
+import { CodeBlock, Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function QuickStartPage() {
@@ -92,8 +92,8 @@ select name`}
           <p className="text-text-secondary mb-4">
             Create a persistent table to store data:
           </p>
-          <RqlCodeBlock
-            code={`create table app.users {
+          <ExecutableSnippet
+            initialCode={`create table app.users {
   id: int4,
   name: utf8,
   email: utf8,
@@ -108,8 +108,8 @@ select name`}
           <p className="text-text-secondary mb-4">
             Insert records into your table:
           </p>
-          <RqlCodeBlock
-            code={`insert into app.users [
+          <ExecutableSnippet
+            initialCode={`insert into app.users [
   {id: 1, name: "Alice", email: "alice@example.com", role: "admin"},
   {id: 2, name: "Bob", email: "bob@example.com", role: "user"}
 ]`}
@@ -122,8 +122,8 @@ select name`}
           <p className="text-text-secondary mb-4">
             Query your table just like inline data:
           </p>
-          <RqlCodeBlock
-            code={`from app.users
+          <ExecutableSnippet
+            initialCode={`from app.users
 filter role == "admin"
 select name, email`}
           />

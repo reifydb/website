@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function TextTrimPage() {
   return (
@@ -64,14 +65,14 @@ export function TextTrimPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Clean user input</h3>
-          <RqlCodeBlock
-            code={`from app.inputs
+          <ExecutableSnippet
+            initialCode={`from app.inputs
 extend { clean_value: text::trim(raw_value) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter non-empty strings</h3>
-          <RqlCodeBlock
-            code={`from app.comments
+          <ExecutableSnippet
+            initialCode={`from app.comments
 filter text::length(text::trim(content)) > 0`}
           />
         </section>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock, Callout } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function MathSumPage() {
   return (
@@ -64,14 +65,14 @@ export function MathSumPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Calculate total revenue</h3>
-          <RqlCodeBlock
-            code={`from app.orders
+          <ExecutableSnippet
+            initialCode={`from app.orders
 aggregate math::sum(total) by region`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Multiple aggregations</h3>
-          <RqlCodeBlock
-            code={`from app.sales
+          <ExecutableSnippet
+            initialCode={`from app.sales
 aggregate {
   total_revenue: math::sum(amount),
   transaction_count: math::count()

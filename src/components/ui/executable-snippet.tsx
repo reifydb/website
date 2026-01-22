@@ -6,6 +6,7 @@ import { rqlLanguageDefinition, rqlLanguageConfiguration } from '@/lib/rql-langu
 import { brutalistLightTheme } from '@/lib/monaco-themes';
 import { cn } from '@/lib';
 import type { WasmDB } from '@/lib/wasm/reifydb_webassembly';
+import { seedCommand } from '@/lib/seed-data';
 
 let languageRegistered = false;
 
@@ -62,6 +63,12 @@ export function ExecutableSnippet({
         const { WasmDB } = await import('@/lib/wasm/reifydb_webassembly');
         if (mounted) {
           const instance = new WasmDB();
+          // Run seed command to populate tables for documentation examples
+          try {
+            instance.command(seedCommand);
+          } catch {
+            // Ignore seed errors silently
+          }
           setDb(instance);
           setDbLoading(false);
         }

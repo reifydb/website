@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
-import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function TextModuleOverviewPage() {
   return (
@@ -20,8 +20,8 @@ export function TextModuleOverviewPage() {
         {/* Quick Example */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
-          <RqlCodeBlock
-            code={`from app.users
+          <ExecutableSnippet
+            initialCode={`from app.users
 extend {
   full_name: text::concat(first_name, " ", last_name),
   email_lower: text::lower(email)

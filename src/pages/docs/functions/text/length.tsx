@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function TextLengthPage() {
   return (
@@ -64,20 +65,20 @@ export function TextLengthPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Filter by minimum length</h3>
-          <RqlCodeBlock
-            code={`from app.posts
+          <ExecutableSnippet
+            initialCode={`from app.posts
 filter text::length(content) > 100`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Add character count field</h3>
-          <RqlCodeBlock
-            code={`from app.articles
+          <ExecutableSnippet
+            initialCode={`from app.articles
 extend { char_count: text::length(body) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Validate input length</h3>
-          <RqlCodeBlock
-            code={`from app.usernames
+          <ExecutableSnippet
+            initialCode={`from app.usernames
 filter text::length(username) >= 3 and text::length(username) <= 20`}
           />
         </section>

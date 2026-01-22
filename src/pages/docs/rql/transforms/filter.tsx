@@ -1,5 +1,5 @@
 import { DocsLayout } from '../../docs-layout';
-import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function FilterPage() {
   return (
@@ -17,8 +17,8 @@ export function FilterPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Basic Syntax</h2>
-          <RqlCodeBlock
-            code={`from app.users
+          <ExecutableSnippet
+            initialCode={`from app.users
 filter age >= 18`}
           />
           <p className="text-text-secondary mt-4">
@@ -31,8 +31,8 @@ filter age >= 18`}
           <p className="text-text-secondary mb-4">
             Combine conditions using logical operators:
           </p>
-          <RqlCodeBlock
-            code={`from app.users
+          <ExecutableSnippet
+            initialCode={`from app.users
 filter age >= 18 && status == "active"`}
           />
         </section>
@@ -43,8 +43,8 @@ filter age >= 18 && status == "active"`}
             Use the <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">~=</code> operator
             for pattern matching:
           </p>
-          <RqlCodeBlock
-            code={`from app.users
+          <ExecutableSnippet
+            initialCode={`from app.users
 filter email ~= "%@gmail.com"`}
           />
         </section>
@@ -54,8 +54,8 @@ filter email ~= "%@gmail.com"`}
           <p className="text-text-secondary mb-4">
             Filter out null values explicitly:
           </p>
-          <RqlCodeBlock
-            code={`from app.users
+          <ExecutableSnippet
+            initialCode={`from app.users
 filter deleted_at == null`}
           />
         </section>

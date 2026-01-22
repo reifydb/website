@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function MathFloorPage() {
   return (
@@ -64,8 +65,8 @@ export function MathFloorPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Floor values</h3>
-          <RqlCodeBlock
-            code={`from app.measurements
+          <ExecutableSnippet
+            initialCode={`from app.measurements
 extend {
   floor_val: math::floor(value),
   ceil_val: math::ceil(value)
@@ -73,8 +74,8 @@ extend {
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Convert to integer</h3>
-          <RqlCodeBlock
-            code={`from app.scores
+          <ExecutableSnippet
+            initialCode={`from app.scores
 extend { int_score: math::floor(score) }`}
           />
         </section>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function MathPowerPage() {
   return (
@@ -69,20 +70,20 @@ export function MathPowerPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Calculate squares</h3>
-          <RqlCodeBlock
-            code={`from app.numbers
+          <ExecutableSnippet
+            initialCode={`from app.numbers
 extend { squared: math::power(value, 2) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Compound growth</h3>
-          <RqlCodeBlock
-            code={`from app.investments
+          <ExecutableSnippet
+            initialCode={`from app.investments
 extend { future_value: principal * math::power(1 + rate, years) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Square root (exponent 0.5)</h3>
-          <RqlCodeBlock
-            code={`from app.data
+          <ExecutableSnippet
+            initialCode={`from app.data
 extend { sqrt_value: math::power(value, 0.5) }`}
           />
         </section>

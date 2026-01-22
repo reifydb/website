@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function DateAddPage() {
   return (
@@ -69,20 +70,20 @@ export function DateAddPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Calculate expiration date</h3>
-          <RqlCodeBlock
-            code={`from app.subscriptions
+          <ExecutableSnippet
+            initialCode={`from app.subscriptions
 extend { expires: date::add(start_date, days: 30) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Add days to current date</h3>
-          <RqlCodeBlock
-            code={`from app.events
+          <ExecutableSnippet
+            initialCode={`from app.events
 extend { deadline: date::add(date::now(), days: 7) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Subtract days</h3>
-          <RqlCodeBlock
-            code={`from app.records
+          <ExecutableSnippet
+            initialCode={`from app.records
 extend { one_week_ago: date::add(date::now(), days: -7) }`}
           />
         </section>

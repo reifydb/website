@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function DateSecondPage() {
   return (
@@ -64,8 +65,8 @@ export function DateSecondPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Extract precise time</h3>
-          <RqlCodeBlock
-            code={`from app.events
+          <ExecutableSnippet
+            initialCode={`from app.events
 extend {
   hour: date::hour(timestamp),
   minute: date::minute(timestamp),
@@ -74,8 +75,8 @@ extend {
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by exact second</h3>
-          <RqlCodeBlock
-            code={`from app.logs
+          <ExecutableSnippet
+            initialCode={`from app.logs
 filter date::second(timestamp) == 0`}
           />
         </section>

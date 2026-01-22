@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function MathCeilPage() {
   return (
@@ -64,8 +65,8 @@ export function MathCeilPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Ceiling values</h3>
-          <RqlCodeBlock
-            code={`from app.measurements
+          <ExecutableSnippet
+            initialCode={`from app.measurements
 extend {
   floor_val: math::floor(value),
   ceil_val: math::ceil(value)
@@ -73,8 +74,8 @@ extend {
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Round up for capacity</h3>
-          <RqlCodeBlock
-            code={`from app.resources
+          <ExecutableSnippet
+            initialCode={`from app.resources
 extend { capacity_needed: math::ceil(usage_ratio) }`}
           />
         </section>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function DateDiffPage() {
   return (
@@ -74,20 +75,20 @@ export function DateDiffPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Calculate days since creation</h3>
-          <RqlCodeBlock
-            code={`from app.orders
+          <ExecutableSnippet
+            initialCode={`from app.orders
 extend { days_since: date::diff(date::now(), created_at, unit: "days") }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by age</h3>
-          <RqlCodeBlock
-            code={`from app.records
+          <ExecutableSnippet
+            initialCode={`from app.records
 filter date::diff(date::now(), created_at, unit: "days") > 30`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Calculate hours between events</h3>
-          <RqlCodeBlock
-            code={`from app.sessions
+          <ExecutableSnippet
+            initialCode={`from app.sessions
 extend { duration_hours: date::diff(end_time, start_time, unit: "hours") }`}
           />
         </section>

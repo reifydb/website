@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../../docs-layout';
 import { RqlCodeBlock } from '../../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function DateMonthPage() {
   return (
@@ -64,14 +65,14 @@ export function DateMonthPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Aggregate by month</h3>
-          <RqlCodeBlock
-            code={`from app.orders
+          <ExecutableSnippet
+            initialCode={`from app.orders
 aggregate math::sum(total) by date::month(order_date)`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by specific month</h3>
-          <RqlCodeBlock
-            code={`from app.events
+          <ExecutableSnippet
+            initialCode={`from app.events
 filter date::month(created_at) == 12`}
           />
         </section>
