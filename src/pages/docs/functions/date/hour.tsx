@@ -66,6 +66,7 @@ export function DateHourPage() {
 
           <h3 className="text-lg font-bold mb-3">Extract time components</h3>
           <ExecutableSnippet
+            title="Extract time components"
             initialCode={`from app.events
 extend {
   hour: date::hour(timestamp),
@@ -75,6 +76,7 @@ extend {
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by business hours</h3>
           <ExecutableSnippet
+            title="Filter by business hours"
             initialCode={`from app.requests
 filter date::hour(timestamp) >= 9 and date::hour(timestamp) < 17`}
           />

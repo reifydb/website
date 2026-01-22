@@ -76,18 +76,21 @@ export function DateDiffPage() {
 
           <h3 className="text-lg font-bold mb-3">Calculate days since creation</h3>
           <ExecutableSnippet
+            title="Calculate days since creation"
             initialCode={`from app.orders
 extend { days_since: date::diff(date::now(), created_at, unit: "days") }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by age</h3>
           <ExecutableSnippet
+            title="Filter by age"
             initialCode={`from app.records
 filter date::diff(date::now(), created_at, unit: "days") > 30`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Calculate hours between events</h3>
           <ExecutableSnippet
+            title="Calculate hours between events"
             initialCode={`from app.sessions
 extend { duration_hours: date::diff(end_time, start_time, unit: "hours") }`}
           />

@@ -66,6 +66,7 @@ export function MathFloorPage() {
 
           <h3 className="text-lg font-bold mb-3">Floor values</h3>
           <ExecutableSnippet
+            title="Floor values"
             initialCode={`from app.measurements
 extend {
   floor_val: math::floor(value),
@@ -75,6 +76,7 @@ extend {
 
           <h3 className="text-lg font-bold mt-6 mb-3">Convert to integer</h3>
           <ExecutableSnippet
+            title="Convert to integer"
             initialCode={`from app.scores
 extend { int_score: math::floor(score) }`}
           />

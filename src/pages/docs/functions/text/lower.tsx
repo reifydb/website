@@ -66,12 +66,14 @@ export function TextLowerPage() {
 
           <h3 className="text-lg font-bold mb-3">Normalize email addresses</h3>
           <ExecutableSnippet
+            title="Normalize email addresses"
             initialCode={`from app.users
 extend { lower_email: text::lower(email) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Case-insensitive filtering</h3>
           <ExecutableSnippet
+            title="Case-insensitive filtering"
             initialCode={`from app.products
 filter text::lower(category) == "electronics"`}
           />

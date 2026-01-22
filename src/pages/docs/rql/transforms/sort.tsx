@@ -18,6 +18,7 @@ export function SortPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Basic Syntax</h2>
           <ExecutableSnippet
+            title="Basic Syntax"
             initialCode={`from app.users
 sort created_at`}
           />
@@ -32,6 +33,7 @@ sort created_at`}
             Use a minus sign for descending order:
           </p>
           <ExecutableSnippet
+            title="Descending Order"
             initialCode={`from app.users
 sort -created_at`}
           />
@@ -43,6 +45,7 @@ sort -created_at`}
             Sort by multiple columns with a list:
           </p>
           <ExecutableSnippet
+            title="Multiple Columns"
             initialCode={`from app.orders
 sort { -total, created_at }`}
           />
@@ -58,6 +61,7 @@ sort { -total, created_at }`}
             to get top N results:
           </p>
           <ExecutableSnippet
+            title="Combined with Take"
             initialCode={`from app.users
 sort -score
 take 10`}

@@ -66,12 +66,14 @@ export function DateYearPage() {
 
           <h3 className="text-lg font-bold mb-3">Filter by year</h3>
           <ExecutableSnippet
+            title="Filter by year"
             initialCode={`from app.events
 filter date::year(created_at) == 2024`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Group by year</h3>
           <ExecutableSnippet
+            title="Group by year"
             initialCode={`from app.orders
 aggregate math::sum(total) by date::year(order_date)`}
           />

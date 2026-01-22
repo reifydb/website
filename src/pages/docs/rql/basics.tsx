@@ -37,6 +37,7 @@ export function RqlBasicsPage() {
             Every RQL query starts with a data source, followed by transforms:
           </p>
           <ExecutableSnippet
+            title="Query Structure"
             initialCode={`from app.users          # Start with a table
 filter age >= 18         # Filter rows
 select name, email       # Choose columns`}
@@ -57,14 +58,14 @@ select name, email       # Choose columns`}
           <p className="text-text-secondary mb-3">
             Query data from a table:
           </p>
-          <ExecutableSnippet initialCode={`from app.users`} />
+          <ExecutableSnippet title="Tables" initialCode={`from app.users`} />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Inline Data</h3>
           <p className="text-text-secondary mb-3">
             Query inline arrays for prototyping:
           </p>
           <ExecutableSnippet
-            title="Try it"
+            title="Inline Data"
             initialCode={`from [
   {id: 1, name: "Alice"},
   {id: 2, name: "Bob"}
@@ -79,6 +80,7 @@ select name, email       # Choose columns`}
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">#</code> for single-line comments:
           </p>
           <ExecutableSnippet
+            title="Single-line Comments"
             initialCode={`# This is a comment
 from app.users
 filter active == true  # Inline comment`}
@@ -87,6 +89,7 @@ filter active == true  # Inline comment`}
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">/* */</code> for block comments:
           </p>
           <ExecutableSnippet
+            title="Block Comments"
             initialCode={`/*
   Multi-line comment
   describing the query

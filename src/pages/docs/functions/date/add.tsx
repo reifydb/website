@@ -71,18 +71,21 @@ export function DateAddPage() {
 
           <h3 className="text-lg font-bold mb-3">Calculate expiration date</h3>
           <ExecutableSnippet
+            title="Calculate expiration date"
             initialCode={`from app.subscriptions
 extend { expires: date::add(start_date, days: 30) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Add days to current date</h3>
           <ExecutableSnippet
+            title="Add days to current date"
             initialCode={`from app.events
 extend { deadline: date::add(date::now(), days: 7) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Subtract days</h3>
           <ExecutableSnippet
+            title="Subtract days"
             initialCode={`from app.records
 extend { one_week_ago: date::add(date::now(), days: -7) }`}
           />

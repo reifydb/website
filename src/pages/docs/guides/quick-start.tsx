@@ -39,7 +39,7 @@ export function QuickStartPage() {
             RQL lets you query inline data directly. Click <strong>Run</strong> to try it:
           </p>
           <ExecutableSnippet
-            title="Try it"
+            title="Your First Query"
             initialCode={`from [
   {id: 1, name: "Alice", role: "admin"},
   {id: 2, name: "Bob", role: "user"},
@@ -58,7 +58,7 @@ export function QuickStartPage() {
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">filter</code> to select specific rows:
           </p>
           <ExecutableSnippet
-            title="Try it"
+            title="Filtering Data"
             initialCode={`from [
   {id: 1, name: "Alice", role: "admin"},
   {id: 2, name: "Bob", role: "user"},
@@ -75,7 +75,7 @@ filter role == "user"`}
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">select</code> to choose which columns to return:
           </p>
           <ExecutableSnippet
-            title="Try it"
+            title="Selecting Columns"
             initialCode={`from [
   {id: 1, name: "Alice", role: "admin"},
   {id: 2, name: "Bob", role: "user"},
@@ -93,6 +93,7 @@ select name`}
             Create a persistent table to store data:
           </p>
           <ExecutableSnippet
+            title="Creating a Table"
             initialCode={`create table app.users {
   id: int4,
   name: utf8,
@@ -109,6 +110,7 @@ select name`}
             Insert records into your table:
           </p>
           <ExecutableSnippet
+            title="Inserting Data"
             initialCode={`insert into app.users [
   {id: 1, name: "Alice", email: "alice@example.com", role: "admin"},
   {id: 2, name: "Bob", email: "bob@example.com", role: "user"}
@@ -123,6 +125,7 @@ select name`}
             Query your table just like inline data:
           </p>
           <ExecutableSnippet
+            title="Querying Tables"
             initialCode={`from app.users
 filter role == "admin"
 select name, email`}

@@ -66,12 +66,14 @@ export function MathMinPage() {
 
           <h3 className="text-lg font-bold mb-3">Find lowest price</h3>
           <ExecutableSnippet
+            title="Find lowest price"
             initialCode={`from app.products
 aggregate math::min(price) by category`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Min and max together</h3>
           <ExecutableSnippet
+            title="Min and max together"
             initialCode={`from app.sales
 aggregate {
   lowest: math::min(amount),

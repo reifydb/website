@@ -21,6 +21,7 @@ export function TextModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
           <ExecutableSnippet
+            title="Quick Example"
             initialCode={`from app.users
 extend {
   full_name: text::concat(first_name, " ", last_name),

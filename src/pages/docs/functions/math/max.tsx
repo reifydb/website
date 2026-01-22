@@ -66,12 +66,14 @@ export function MathMaxPage() {
 
           <h3 className="text-lg font-bold mb-3">Find highest price</h3>
           <ExecutableSnippet
+            title="Find highest price"
             initialCode={`from app.products
 aggregate math::max(price) by category`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Min and max together</h3>
           <ExecutableSnippet
+            title="Min and max together"
             initialCode={`from app.sales
 aggregate {
   lowest: math::min(amount),

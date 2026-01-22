@@ -66,12 +66,14 @@ export function TextTrimPage() {
 
           <h3 className="text-lg font-bold mb-3">Clean user input</h3>
           <ExecutableSnippet
+            title="Clean user input"
             initialCode={`from app.inputs
 extend { clean_value: text::trim(raw_value) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter non-empty strings</h3>
           <ExecutableSnippet
+            title="Filter non-empty strings"
             initialCode={`from app.comments
 filter text::length(text::trim(content)) > 0`}
           />

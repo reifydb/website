@@ -5,8 +5,9 @@ import type { editor } from 'monaco-editor';
 import { rqlLanguageDefinition, rqlLanguageConfiguration } from '@/lib/rql-language';
 import { brutalistLightTheme } from '@/lib/monaco-themes';
 import { cn } from '@/lib';
-import type { WasmDB } from '@/lib/wasm/reifydb_webassembly';
+import { createWasmDB, type WasmDB } from '@/lib/wasm-db';
 import { seedCommand } from '@/lib/seed-data';
+import { UNDEFINED_VALUE, Value } from '@reifydb/core';
 
 let languageRegistered = false;
 
@@ -60,9 +61,8 @@ export function ExecutableSnippet({
 
     async function initDb() {
       try {
-        const { WasmDB } = await import('@/lib/wasm/reifydb_webassembly');
+        const instance = await createWasmDB();
         if (mounted) {
-          const instance = new WasmDB();
           // Run seed command to populate tables for documentation examples
           try {
             instance.command(seedCommand);
@@ -349,7 +349,10 @@ export function ExecutableSnippet({
 
 function formatValue(value: unknown): string {
   if (value === null || value === undefined) {
-    return 'null';
+    return UNDEFINED_VALUE;
+  }
+  if (value instanceof Value) {
+    return value.toString();
   }
   if (typeof value === 'object') {
     return JSON.stringify(value);

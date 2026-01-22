@@ -66,6 +66,7 @@ export function DateSecondPage() {
 
           <h3 className="text-lg font-bold mb-3">Extract precise time</h3>
           <ExecutableSnippet
+            title="Extract precise time"
             initialCode={`from app.events
 extend {
   hour: date::hour(timestamp),
@@ -76,6 +77,7 @@ extend {
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by exact second</h3>
           <ExecutableSnippet
+            title="Filter by exact second"
             initialCode={`from app.logs
 filter date::second(timestamp) == 0`}
           />

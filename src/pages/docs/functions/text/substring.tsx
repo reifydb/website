@@ -76,18 +76,21 @@ export function TextSubstringPage() {
 
           <h3 className="text-lg font-bold mb-3">Extract prefix</h3>
           <ExecutableSnippet
+            title="Extract prefix"
             initialCode={`from app.codes
 extend { prefix: text::substring(code, 0, 3) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Get first characters</h3>
           <ExecutableSnippet
+            title="Get first characters"
             initialCode={`from app.products
 extend { initial: text::substring(name, 0, 1) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Extract middle portion</h3>
           <ExecutableSnippet
+            title="Extract middle portion"
             initialCode={`from app.identifiers
 extend { middle: text::substring(id, 3, 7) }`}
           />

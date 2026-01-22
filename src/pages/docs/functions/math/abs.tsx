@@ -66,12 +66,14 @@ export function MathAbsPage() {
 
           <h3 className="text-lg font-bold mb-3">Convert to absolute value</h3>
           <ExecutableSnippet
+            title="Convert to absolute value"
             initialCode={`from app.transactions
 extend { abs_amount: math::abs(amount) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by absolute magnitude</h3>
           <ExecutableSnippet
+            title="Filter by absolute magnitude"
             initialCode={`from app.balances
 filter math::abs(balance) > 1000`}
           />

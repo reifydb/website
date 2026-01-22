@@ -51,12 +51,14 @@ export function MathCountPage() {
 
           <h3 className="text-lg font-bold mb-3">Count by status</h3>
           <ExecutableSnippet
+            title="Count by status"
             initialCode={`from app.users
 aggregate math::count() by status`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Count with other aggregations</h3>
           <ExecutableSnippet
+            title="Count with other aggregations"
             initialCode={`from app.orders
 aggregate {
   order_count: math::count(),
@@ -66,6 +68,7 @@ aggregate {
 
           <h3 className="text-lg font-bold mt-6 mb-3">Total count</h3>
           <ExecutableSnippet
+            title="Total count"
             initialCode={`from app.events
 aggregate { total: math::count() }`}
           />

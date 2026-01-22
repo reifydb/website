@@ -66,6 +66,7 @@ export function DateMinutePage() {
 
           <h3 className="text-lg font-bold mb-3">Extract time components</h3>
           <ExecutableSnippet
+            title="Extract time components"
             initialCode={`from app.events
 extend {
   hour: date::hour(timestamp),
@@ -75,6 +76,7 @@ extend {
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by specific time</h3>
           <ExecutableSnippet
+            title="Filter by specific time"
             initialCode={`from app.logs
 filter date::hour(timestamp) == 14 and date::minute(timestamp) == 30`}
           />

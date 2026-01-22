@@ -66,12 +66,14 @@ export function DateDayPage() {
 
           <h3 className="text-lg font-bold mb-3">Filter by first day of month</h3>
           <ExecutableSnippet
+            title="Filter by first day of month"
             initialCode={`from app.logs
 filter date::day(timestamp) == 1`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Extract day component</h3>
           <ExecutableSnippet
+            title="Extract day component"
             initialCode={`from app.events
 extend { day_of_month: date::day(created_at) }`}
           />

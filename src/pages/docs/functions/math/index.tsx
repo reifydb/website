@@ -21,6 +21,7 @@ export function MathModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
           <ExecutableSnippet
+            title="Quick Example"
             initialCode={`from app.sales
 aggregate {
   total_revenue: math::sum(amount),

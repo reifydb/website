@@ -183,6 +183,7 @@ export function RqlExpressionsPage() {
           <h3 className="text-lg font-bold mt-6 mb-3">math</h3>
           <p className="text-text-secondary mb-3">Mathematical functions and aggregations.</p>
           <ExecutableSnippet
+            title="math module"
             initialCode={`from app.orders
 aggregate math::sum(total) by region`}
           />
@@ -190,6 +191,7 @@ aggregate math::sum(total) by region`}
           <h3 className="text-lg font-bold mt-6 mb-3">text</h3>
           <p className="text-text-secondary mb-3">String manipulation functions.</p>
           <ExecutableSnippet
+            title="text module"
             initialCode={`from app.users
 extend { lower_email: text::lower(email) }`}
           />
@@ -197,6 +199,7 @@ extend { lower_email: text::lower(email) }`}
           <h3 className="text-lg font-bold mt-6 mb-3">date</h3>
           <p className="text-text-secondary mb-3">Date and time functions.</p>
           <ExecutableSnippet
+            title="date module"
             initialCode={`from app.events
 filter date::year(created_at) == 2024`}
           />
@@ -209,6 +212,7 @@ filter date::year(created_at) == 2024`}
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">case</code> for conditional logic:
           </p>
           <ExecutableSnippet
+            title="Case Expression"
             initialCode={`from app.orders
 extend {
   priority: case
@@ -226,6 +230,7 @@ extend {
             Use named arguments for clarity:
           </p>
           <ExecutableSnippet
+            title="Named Arguments"
             initialCode={`from app.users
 take count: 10`}
           />

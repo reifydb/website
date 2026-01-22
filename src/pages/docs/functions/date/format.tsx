@@ -71,18 +71,21 @@ export function DateFormatPage() {
 
           <h3 className="text-lg font-bold mb-3">Format as ISO date</h3>
           <ExecutableSnippet
+            title="Format as ISO date"
             initialCode={`from app.events
 extend { formatted: date::format(created_at, "%Y-%m-%d") }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Include time</h3>
           <ExecutableSnippet
+            title="Include time"
             initialCode={`from app.logs
 extend { timestamp_str: date::format(timestamp, "%Y-%m-%d %H:%M:%S") }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Custom format</h3>
           <ExecutableSnippet
+            title="Custom format"
             initialCode={`from app.orders
 extend { order_date: date::format(created_at, "%B %d, %Y") }`}
           />

@@ -66,12 +66,14 @@ export function TextUpperPage() {
 
           <h3 className="text-lg font-bold mb-3">Format display names</h3>
           <ExecutableSnippet
+            title="Format display names"
             initialCode={`from app.users
 extend { upper_name: text::upper(name) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Uppercase code identifiers</h3>
           <ExecutableSnippet
+            title="Uppercase code identifiers"
             initialCode={`from app.products
 extend { sku_upper: text::upper(sku) }`}
           />

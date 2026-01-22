@@ -18,6 +18,7 @@ export function FilterPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Basic Syntax</h2>
           <ExecutableSnippet
+            title="Basic Syntax"
             initialCode={`from app.users
 filter age >= 18`}
           />
@@ -32,6 +33,7 @@ filter age >= 18`}
             Combine conditions using logical operators:
           </p>
           <ExecutableSnippet
+            title="Multiple Conditions"
             initialCode={`from app.users
 filter age >= 18 && status == "active"`}
           />
@@ -44,6 +46,7 @@ filter age >= 18 && status == "active"`}
             for pattern matching:
           </p>
           <ExecutableSnippet
+            title="Pattern Matching"
             initialCode={`from app.users
 filter email ~= "%@gmail.com"`}
           />
@@ -55,6 +58,7 @@ filter email ~= "%@gmail.com"`}
             Filter out null values explicitly:
           </p>
           <ExecutableSnippet
+            title="Null Handling"
             initialCode={`from app.users
 filter deleted_at == null`}
           />

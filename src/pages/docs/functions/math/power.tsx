@@ -71,18 +71,21 @@ export function MathPowerPage() {
 
           <h3 className="text-lg font-bold mb-3">Calculate squares</h3>
           <ExecutableSnippet
+            title="Calculate squares"
             initialCode={`from app.numbers
 extend { squared: math::power(value, 2) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Compound growth</h3>
           <ExecutableSnippet
+            title="Compound growth"
             initialCode={`from app.investments
 extend { future_value: principal * math::power(1 + rate, years) }`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Square root (exponent 0.5)</h3>
           <ExecutableSnippet
+            title="Square root (exponent 0.5)"
             initialCode={`from app.data
 extend { sqrt_value: math::power(value, 0.5) }`}
           />

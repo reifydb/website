@@ -66,12 +66,14 @@ export function MathAvgPage() {
 
           <h3 className="text-lg font-bold mb-3">Calculate average price</h3>
           <ExecutableSnippet
+            title="Calculate average price"
             initialCode={`from app.products
 aggregate math::avg(price) by category`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Average with total</h3>
           <ExecutableSnippet
+            title="Average with total"
             initialCode={`from app.sales
 aggregate {
   avg_sale: math::avg(amount),

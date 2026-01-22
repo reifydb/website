@@ -66,6 +66,7 @@ export function MathCeilPage() {
 
           <h3 className="text-lg font-bold mb-3">Ceiling values</h3>
           <ExecutableSnippet
+            title="Ceiling values"
             initialCode={`from app.measurements
 extend {
   floor_val: math::floor(value),
@@ -75,6 +76,7 @@ extend {
 
           <h3 className="text-lg font-bold mt-6 mb-3">Round up for capacity</h3>
           <ExecutableSnippet
+            title="Round up for capacity"
             initialCode={`from app.resources
 extend { capacity_needed: math::ceil(usage_ratio) }`}
           />

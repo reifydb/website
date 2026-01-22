@@ -21,6 +21,7 @@ export function DateModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
           <ExecutableSnippet
+            title="Quick Example"
             initialCode={`from app.events
 filter date::year(created_at) == 2024
 extend {

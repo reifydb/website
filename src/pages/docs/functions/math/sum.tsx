@@ -66,12 +66,14 @@ export function MathSumPage() {
 
           <h3 className="text-lg font-bold mb-3">Calculate total revenue</h3>
           <ExecutableSnippet
+            title="Calculate total revenue"
             initialCode={`from app.orders
 aggregate math::sum(total) by region`}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Multiple aggregations</h3>
           <ExecutableSnippet
+            title="Multiple aggregations"
             initialCode={`from app.sales
 aggregate {
   total_revenue: math::sum(amount),

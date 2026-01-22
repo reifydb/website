@@ -89,6 +89,7 @@ export function RqlTransformsPage() {
             transform modifying the data before passing it on.
           </p>
           <ExecutableSnippet
+            title="Pipeline Processing"
             initialCode={`from app.orders              # Start with orders table
 filter status == "completed" # Keep only completed orders
 aggregate math::sum(total) by region  # Sum totals per region
@@ -111,7 +112,7 @@ take 5                       # Top 5 regions`}
                   {transform.name}
                 </h3>
                 <p className="text-text-secondary mb-4">{transform.description}</p>
-                <ExecutableSnippet initialCode={transform.example} />
+                <ExecutableSnippet title={transform.name} initialCode={transform.example} />
               </div>
             ))}
           </div>
