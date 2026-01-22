@@ -1,30 +1,9 @@
-import { CodeViewer } from '@/components/ui';
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExecutableSnippet } from '@/components/ui';
+import { cn } from '@/lib';
 
 const examples = [
-  {
-    title: 'Join + Derived Calculations',
-    code: `from test.employees
-join { from test.departments } dept on dept_id == dept.id
-extend { bonus: salary * 0.1 }`,
-    description: 'Joins employees to departments and computes a bonus field in one query.',
-  },
-  {
-    title: 'Incremental Materialized View',
-    code: `create deferred view test.unique_products {
-  id: int4, name: utf8
-} as {
-  from test.products
-  distinct { name }
-}`,
-    description: 'View updates automatically when source data changes. No refresh jobs.',
-  },
-  {
-    title: 'Filter + Aggregate',
-    code: `from test.orders
-filter status == "completed"
-aggregate math::sum(total) by region`,
-    description: 'Filter, group, and aggregate in a single readable pipeline.',
-  },
   {
     title: 'Inline Data',
     code: `from [
@@ -33,12 +12,46 @@ aggregate math::sum(total) by region`,
 ]`,
     description: 'Query inline data directly. Great for prototyping and testing.',
   },
+  {
+    title: 'Filter + Aggregate',
+    code: `from [
+  {id: 1, region: "West", status: "completed", total: 250},
+  {id: 2, region: "East", status: "pending", total: 180},
+  {id: 3, region: "West", status: "completed", total: 320},
+  {id: 4, region: "East", status: "completed", total: 410}
+]
+filter status == "completed"
+aggregate math::sum(total) by region`,
+    description: 'Filter, group, and aggregate in a single readable pipeline.',
+  },
+  {
+    title: 'Sorting + Limiting',
+    code: `from [
+  {id: 1, name: "Alice", score: 95},
+  {id: 2, name: "Bob", score: 87},
+  {id: 3, name: "Carol", score: 92},
+  {id: 4, name: "Dave", score: 78}
+]
+sort score desc
+take 3`,
+    description: 'Sort by any column and limit results with simple pipeline syntax.',
+  },
 ];
 
 export function CodeExampleSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const goToPrevious = () => {
+    setActiveIndex((prev) => (prev === 0 ? examples.length - 1 : prev - 1));
+  };
+
+  const goToNext = () => {
+    setActiveIndex((prev) => (prev === examples.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <section id="code-example" className="py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-6 md:px-8">
+      <div className="mx-auto max-w-4xl px-6 md:px-8">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
@@ -49,21 +62,46 @@ export function CodeExampleSection() {
           </p>
         </div>
 
-        {/* Code Examples Grid */}
-        <div className="grid gap-6 lg:grid-cols-2">
-          {examples.map((example) => (
-            <div
+        {/* Carousel */}
+        <div className="relative">
+          {/* Navigation Buttons */}
+          <button
+            onClick={goToPrevious}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-12 z-10 p-2 bg-white border-2 border-border-default shadow-[2px_2px_0px_0px_var(--color-border-default)] hover:shadow-[1px_1px_0px_0px_var(--color-border-default)] hover:translate-x-[-15px] sm:hover:translate-x-[-47px] hover:translate-y-[-49%] transition-all"
+            aria-label="Previous example"
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          <button
+            onClick={goToNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-12 z-10 p-2 bg-white border-2 border-border-default shadow-[2px_2px_0px_0px_var(--color-border-default)] hover:shadow-[1px_1px_0px_0px_var(--color-border-default)] hover:translate-x-[15px] sm:hover:translate-x-[47px] hover:translate-y-[-49%] transition-all"
+            aria-label="Next example"
+          >
+            <ChevronRight size={20} />
+          </button>
+
+          {/* Snippet */}
+          <ExecutableSnippet
+            key={examples[activeIndex].title}
+            initialCode={examples[activeIndex].code}
+            title={examples[activeIndex].title}
+            description={examples[activeIndex].description}
+          />
+        </div>
+
+        {/* Dots Indicator */}
+        <div className="flex justify-center gap-2 mt-6">
+          {examples.map((example, index) => (
+            <button
               key={example.title}
-              className="bg-white border-2 border-border-default rounded-lg shadow-minimal overflow-hidden"
-            >
-              <div className="px-4 py-3 bg-bg-secondary border-b-2 border-border-default">
-                <span className="text-sm font-bold text-text-primary">{example.title}</span>
-              </div>
-              <CodeViewer code={example.code} />
-              <div className="px-4 py-3 bg-bg-secondary border-t-2 border-border-default">
-                <span className="text-xs text-text-muted">{example.description}</span>
-              </div>
-            </div>
+              onClick={() => setActiveIndex(index)}
+              className={cn(
+                'w-3 h-3 border-2 border-border-default transition-colors',
+                index === activeIndex ? 'bg-primary-color' : 'bg-white hover:bg-bg-tertiary'
+              )}
+              aria-label={`Go to example ${index + 1}`}
+            />
           ))}
         </div>
       </div>

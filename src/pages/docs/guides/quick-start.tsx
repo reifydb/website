@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../docs-layout';
 import { CodeBlock, RqlCodeBlock, Callout } from '../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function QuickStartPage() {
   return (
@@ -35,10 +36,11 @@ export function QuickStartPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Your First Query</h2>
           <p className="text-text-secondary mb-4">
-            RQL lets you query inline data directly. Try this simple query:
+            RQL lets you query inline data directly. Click <strong>Run</strong> to try it:
           </p>
-          <RqlCodeBlock
-            code={`from [
+          <ExecutableSnippet
+            title="Try it"
+            initialCode={`from [
   {id: 1, name: "Alice", role: "admin"},
   {id: 2, name: "Bob", role: "user"},
   {id: 3, name: "Carol", role: "user"}
@@ -55,8 +57,9 @@ export function QuickStartPage() {
           <p className="text-text-secondary mb-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">filter</code> to select specific rows:
           </p>
-          <RqlCodeBlock
-            code={`from [
+          <ExecutableSnippet
+            title="Try it"
+            initialCode={`from [
   {id: 1, name: "Alice", role: "admin"},
   {id: 2, name: "Bob", role: "user"},
   {id: 3, name: "Carol", role: "user"}
@@ -71,8 +74,9 @@ filter role == "user"`}
           <p className="text-text-secondary mb-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">select</code> to choose which columns to return:
           </p>
-          <RqlCodeBlock
-            code={`from [
+          <ExecutableSnippet
+            title="Try it"
+            initialCode={`from [
   {id: 1, name: "Alice", role: "admin"},
   {id: 2, name: "Bob", role: "user"},
   {id: 3, name: "Carol", role: "user"}

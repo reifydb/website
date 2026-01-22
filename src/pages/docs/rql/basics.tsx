@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DocsLayout } from '../docs-layout';
 import { RqlCodeBlock, Callout } from '../components';
+import { ExecutableSnippet } from '@/components/ui';
 
 export function RqlBasicsPage() {
   return (
@@ -62,8 +63,9 @@ select name, email       # Choose columns`}
           <p className="text-text-secondary mb-3">
             Query inline arrays for prototyping:
           </p>
-          <RqlCodeBlock
-            code={`from [
+          <ExecutableSnippet
+            title="Try it"
+            initialCode={`from [
   {id: 1, name: "Alice"},
   {id: 2, name: "Bob"}
 ]`}
