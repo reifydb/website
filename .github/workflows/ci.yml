@@ -11,9 +11,9 @@ on:
       - '.github/workflows/ci.yml'
       - 'package.json'
       - 'pnpm-lock.yaml'
-      - 'docusaurus.config.ts'
-      - 'sidebars.ts'
+      - 'vite.config.ts'
       - 'tsconfig.json'
+      - 'index.html'
   pull_request:
     branches: [ main ]
     paths:
@@ -24,9 +24,9 @@ on:
       - '.github/workflows/ci.yml'
       - 'package.json'
       - 'pnpm-lock.yaml'
-      - 'docusaurus.config.ts'
-      - 'sidebars.ts'
+      - 'vite.config.ts'
       - 'tsconfig.json'
+      - 'index.html'
 
 permissions:
   contents: write

@@ -21,13 +21,4 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['@/lib/wasm'],
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-        },
-      },
-    },
-  },
 })
