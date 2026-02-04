@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../../docs-layout';
+import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function TextConcatPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header with breadcrumb */}
         <div>
@@ -99,6 +99,6 @@ extend { url: text::concat("/", category, "/", slug) }`}
           </div>
         </section>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

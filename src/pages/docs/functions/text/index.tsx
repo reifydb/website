@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../../docs-layout';
+import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function TextModuleOverviewPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header */}
         <div>
@@ -138,6 +138,6 @@ filter text::length(full_name) > 0`}
           </div>
         </section>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

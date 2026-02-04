@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { ExecutableSnippet } from '@/components/ui';
+import { ExecutableSnippet, ScrollReveal } from '@/components/ui';
 import { cn } from '@/lib';
 
 const examples = [
@@ -53,57 +53,63 @@ export function CodeExampleSection() {
     <section id="code-example" className="py-16 sm:py-24">
       <div className="mx-auto max-w-4xl px-6 md:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
-            See RQL in Action
-          </h2>
-          <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-            A query language designed for application state.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+              See RQL in Action
+            </h2>
+            <p className="max-w-2xl mx-auto text-text-secondary text-lg">
+              A query language designed for application state.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Carousel */}
-        <div className="relative">
-          {/* Navigation Buttons */}
-          <button
-            onClick={goToPrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-12 z-10 p-2 bg-white border-2 border-border-default shadow-[2px_2px_0px_0px_var(--color-border-default)] hover:shadow-[1px_1px_0px_0px_var(--color-border-default)] hover:translate-x-[-15px] sm:hover:translate-x-[-47px] hover:translate-y-[-49%] transition-all"
-            aria-label="Previous example"
-          >
-            <ChevronLeft size={20} />
-          </button>
-
-          <button
-            onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-12 z-10 p-2 bg-white border-2 border-border-default shadow-[2px_2px_0px_0px_var(--color-border-default)] hover:shadow-[1px_1px_0px_0px_var(--color-border-default)] hover:translate-x-[15px] sm:hover:translate-x-[47px] hover:translate-y-[-49%] transition-all"
-            aria-label="Next example"
-          >
-            <ChevronRight size={20} />
-          </button>
-
-          {/* Snippet */}
-          <ExecutableSnippet
-            key={examples[activeIndex].title}
-            initialCode={examples[activeIndex].code}
-            title={examples[activeIndex].title}
-            description={examples[activeIndex].description}
-          />
-        </div>
-
-        {/* Dots Indicator */}
-        <div className="flex justify-center gap-2 mt-6">
-          {examples.map((example, index) => (
+        <ScrollReveal delay={100}>
+          <div className="relative">
+            {/* Navigation Buttons */}
             <button
-              key={example.title}
-              onClick={() => setActiveIndex(index)}
-              className={cn(
-                'w-3 h-3 border-2 border-border-default transition-colors',
-                index === activeIndex ? 'bg-primary-color' : 'bg-white hover:bg-bg-tertiary'
-              )}
-              aria-label={`Go to example ${index + 1}`}
+              onClick={goToPrevious}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-12 z-10 p-2 bg-bg-tertiary border border-white/10 rounded-lg hover:border-primary/50 hover:bg-bg-elevated transition-all"
+              aria-label="Previous example"
+            >
+              <ChevronLeft size={20} />
+            </button>
+
+            <button
+              onClick={goToNext}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-12 z-10 p-2 bg-bg-tertiary border border-white/10 rounded-lg hover:border-primary/50 hover:bg-bg-elevated transition-all"
+              aria-label="Next example"
+            >
+              <ChevronRight size={20} />
+            </button>
+
+            {/* Snippet */}
+            <ExecutableSnippet
+              key={examples[activeIndex].title}
+              initialCode={examples[activeIndex].code}
+              title={examples[activeIndex].title}
+              description={examples[activeIndex].description}
             />
-          ))}
-        </div>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mt-6">
+            {examples.map((example, index) => (
+              <button
+                key={example.title}
+                onClick={() => setActiveIndex(index)}
+                className={cn(
+                  'w-3 h-3 rounded-full border border-white/20 transition-all',
+                  index === activeIndex
+                    ? 'bg-gradient-to-r from-primary to-accent-warm border-transparent'
+                    : 'bg-bg-tertiary hover:bg-bg-elevated'
+                )}
+                aria-label={`Go to example ${index + 1}`}
+              />
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

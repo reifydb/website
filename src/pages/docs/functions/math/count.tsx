@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../../docs-layout';
+import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock, Callout } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function MathCountPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header with breadcrumb */}
         <div>
@@ -91,6 +91,6 @@ aggregate { total: math::count() }`}
           </div>
         </section>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

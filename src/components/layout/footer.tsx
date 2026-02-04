@@ -2,30 +2,30 @@ import { Github } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="border-t-2 border-border-default py-12 sm:py-16 text-text-primary">
+    <footer className="bg-bg-secondary border-t border-white/10 py-12 sm:py-16 text-text-primary">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 md:grid-cols-4 md:gap-12 text-sm">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
               <img src="/img/logo.png" alt="ReifyDB Logo" className="h-8 w-8 sm:h-10 sm:w-10"/>
-              <span className="font-black text-xl sm:text-2xl tracking-tight">ReifyDB</span>
+              <span className="font-display font-black text-xl sm:text-2xl tracking-tight">ReifyDB</span>
             </div>
-            <p className="font-bold leading-relaxed text-muted">
+            <p className="font-medium leading-relaxed text-text-muted">
               Application State Database with transactional guarantees and incremental derived state.
             </p>
           </div>
 
           {/* Product */}
           <div>
-            <div className="font-black text-base mb-4 text-text-primary uppercase tracking-wider">
+            <div className="font-display font-bold text-base mb-4 text-text-primary">
               Product
             </div>
-            <ul className="space-y-3 font-bold">
+            <ul className="space-y-3">
               <li>
                 <a
                   href="/#use-cases"
-                  className="hover:text-primary decoration-4 transition-colors text-muted"
+                  className="text-text-muted hover:text-primary transition-colors link-underline"
                 >
                   Use Cases
                 </a>
@@ -33,7 +33,7 @@ export function Footer() {
               <li>
                 <a
                   href="/#capabilities"
-                  className="hover:text-primary decoration-4 transition-colors text-muted"
+                  className="text-text-muted hover:text-primary transition-colors link-underline"
                 >
                   Capabilities
                 </a>
@@ -41,7 +41,7 @@ export function Footer() {
               <li>
                 <a
                   href="/#faq"
-                  className="hover:text-primary decoration-4 transition-colors text-muted"
+                  className="text-text-muted hover:text-primary transition-colors link-underline"
                 >
                   FAQ
                 </a>
@@ -51,14 +51,14 @@ export function Footer() {
 
           {/* Resources */}
           <div>
-            <div className="font-black text-base mb-4 text-text-primary uppercase tracking-wider">
+            <div className="font-display font-bold text-base mb-4 text-text-primary">
               Resources
             </div>
-            <ul className="space-y-3 font-bold">
+            <ul className="space-y-3">
               <li>
                 <a
                   href="/contact"
-                  className="hover:text-primary decoration-4 transition-colors text-muted"
+                  className="text-text-muted hover:text-primary transition-colors link-underline"
                 >
                   Contact
                 </a>
@@ -66,7 +66,7 @@ export function Footer() {
               <li>
                 <a
                   href="/support"
-                  className="hover:text-primary decoration-4 transition-colors text-muted"
+                  className="text-text-muted hover:text-primary transition-colors link-underline"
                 >
                   Support
                 </a>
@@ -74,7 +74,7 @@ export function Footer() {
               <li>
                 <a
                   href="https://cal.com/reifydb/30min"
-                  className="hover:text-primary decoration-4 transition-colors text-muted"
+                  className="text-text-muted hover:text-primary transition-colors link-underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -86,14 +86,14 @@ export function Footer() {
 
           {/* Community */}
           <div>
-            <div className="font-black text-base mb-4 text-text-primary uppercase tracking-wider">
+            <div className="font-display font-bold text-base mb-4 text-text-primary">
               Community
             </div>
-            <ul className="space-y-3 font-bold">
+            <ul className="space-y-3">
               <li>
                 <a
                   href="https://github.com/reifydb/reifydb"
-                  className="hover:text-primary decoration-4 transition-colors text-muted flex items-center gap-2"
+                  className="text-text-muted hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.5)] flex items-center gap-2 w-fit"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -104,7 +104,7 @@ export function Footer() {
               <li>
                 <a
                   href="https://x.com/reifydb"
-                  className="hover:text-primary decoration-4 transition-colors text-muted flex items-center gap-2"
+                  className="text-text-muted hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.5)] flex items-center gap-2 w-fit"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -119,14 +119,14 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 sm:mt-16 flex flex-col items-center justify-between gap-6 sm:gap-8 border-t-2 border-border-default pt-8 sm:pt-12 text-xs sm:text-sm font-bold md:flex-row">
-          <div className="text-muted tracking-wide">
+        <div className="mt-12 sm:mt-16 flex flex-col items-center justify-between gap-6 sm:gap-8 border-t border-white/10 pt-8 sm:pt-12 text-xs sm:text-sm md:flex-row">
+          <div className="text-text-muted">
             © {new Date().getFullYear()} ReifyDB. All rights reserved.
           </div>
-          <div className="flex gap-6 text-muted">
+          <div className="flex gap-6 text-text-muted">
             <a
               href="https://github.com/reifydb/reifydb/blob/main/license.md"
-              className="hover:text-primary transition-colors"
+              className="hover:text-primary transition-colors link-underline"
               target="_blank"
               rel="noopener noreferrer"
             >

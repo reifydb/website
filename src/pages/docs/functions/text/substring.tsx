@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../../docs-layout';
+import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function TextSubstringPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header with breadcrumb */}
         <div>
@@ -112,6 +112,6 @@ extend { middle: text::substring(id, 3, 7) }`}
           </div>
         </section>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../../docs-layout';
+import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function TextUpperPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header with breadcrumb */}
         <div>
@@ -92,6 +92,6 @@ extend { sku_upper: text::upper(sku) }`}
           </div>
         </section>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

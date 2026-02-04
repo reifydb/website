@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../../docs-layout';
+import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function MathCeilPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header with breadcrumb */}
         <div>
@@ -95,6 +95,6 @@ extend { capacity_needed: math::ceil(usage_ratio) }`}
           </div>
         </section>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

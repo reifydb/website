@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../../docs-layout';
+import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function DateYearPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header with breadcrumb */}
         <div>
@@ -95,6 +95,6 @@ aggregate math::sum(total) by date::year(order_date)`}
           </div>
         </section>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

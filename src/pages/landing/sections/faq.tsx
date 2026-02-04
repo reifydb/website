@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib';
+import { ScrollReveal } from '@/components/ui';
 
 const faqs = [
   {
@@ -41,7 +42,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-2 border-border-default rounded-lg bg-white shadow-minimal">
+    <div className="bg-bg-tertiary border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(99,102,241,0.1)]">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-6 text-left"
@@ -60,7 +61,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
           isOpen ? 'max-h-96' : 'max-h-0'
         )}
       >
-        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-border-light pt-4">
+        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-white/10 pt-4">
           {answer}
         </div>
       </div>
@@ -73,19 +74,23 @@ export function FaqSection() {
     <section id="faq" className="py-16 sm:py-24">
       <div className="mx-auto max-w-3xl px-6 md:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-            Common questions about ReifyDB
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="max-w-2xl mx-auto text-text-secondary text-lg">
+              Common questions about ReifyDB
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* FAQ List */}
         <div className="space-y-4">
-          {faqs.map((faq) => (
-            <FaqItem key={faq.question} {...faq} />
+          {faqs.map((faq, index) => (
+            <ScrollReveal key={faq.question} delay={index * 75}>
+              <FaqItem {...faq} />
+            </ScrollReveal>
           ))}
         </div>
       </div>

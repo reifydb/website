@@ -1,10 +1,10 @@
-import { DocsLayout } from '../docs-layout';
+import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function RqlExpressionsPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header */}
         <div>
@@ -241,6 +241,6 @@ take count: 10`}
           Expressions can be combined freely. Use parentheses to control precedence when needed.
         </Callout>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

@@ -3,7 +3,7 @@ import { Play, RotateCcw, Copy, Check, Maximize2, Minimize2 } from 'lucide-react
 import Editor, { type OnMount } from '@monaco-editor/react';
 import type { editor } from 'monaco-editor';
 import { rqlLanguageDefinition, rqlLanguageConfiguration } from '@/lib/rql-language';
-import { brutalistLightTheme } from '@/lib/monaco-themes';
+import { premiumDarkTheme } from '@/lib/monaco-themes';
 import { cn } from '@/lib';
 import { createWasmDB, type WasmDB } from '@/lib/wasm-db';
 import { seedCommand } from '@/lib/seed-data';
@@ -17,7 +17,7 @@ function registerRqlLanguage(monaco: typeof import('monaco-editor')) {
   monaco.languages.register({ id: 'rql' });
   monaco.languages.setMonarchTokensProvider('rql', rqlLanguageDefinition);
   monaco.languages.setLanguageConfiguration('rql', rqlLanguageConfiguration);
-  monaco.editor.defineTheme('brutalist-light', brutalistLightTheme);
+  monaco.editor.defineTheme('premium-dark', premiumDarkTheme);
 
   languageRegistered = true;
 }
@@ -164,40 +164,40 @@ export function ExecutableSnippet({
 
   const content = (
     <div className={cn(
-      'border-2 border-border-default bg-white overflow-hidden',
+      'border border-white/10 bg-bg-tertiary rounded-xl overflow-hidden',
       isFullscreen ? 'flex flex-col h-full' : '',
       !isFullscreen && className
     )}>
       {/* Terminal Header */}
-      <div className="flex justify-between items-center px-4 py-2 border-b-2 border-border-default bg-bg-tertiary shrink-0">
+      <div className="flex justify-between items-center px-4 py-2 border-b border-white/10 bg-bg-elevated shrink-0">
         <div className="flex items-center gap-3">
           <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-[var(--color-status-error)]" />
-            <div className="w-3 h-3 rounded-full bg-[var(--color-accent-yellow)]" />
-            <div className="w-3 h-3 rounded-full bg-[var(--color-feature-green)]" />
+            <div className="w-3 h-3 rounded-full bg-status-error" />
+            <div className="w-3 h-3 rounded-full bg-status-warning" />
+            <div className="w-3 h-3 rounded-full bg-status-success" />
           </div>
-          <span className="text-xs font-bold text-primary-color uppercase tracking-wider">
+          <span className="text-xs font-medium text-primary uppercase tracking-wider">
             {title}
           </span>
         </div>
         <div className="flex items-center gap-1">
           <button
             onClick={() => setIsFullscreen(!isFullscreen)}
-            className="p-1.5 hover:bg-border-default hover:text-white transition-colors border border-transparent hover:border-border-default"
+            className="p-1.5 text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
             title={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
           >
             {isFullscreen ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
           </button>
           <button
             onClick={handleCopy}
-            className="p-1.5 hover:bg-border-default hover:text-white transition-colors border border-transparent hover:border-border-default"
+            className="p-1.5 text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
             title="Copy code"
           >
             {copied ? <Check size={14} /> : <Copy size={14} />}
           </button>
           <button
             onClick={handleReset}
-            className="p-1.5 hover:bg-border-default hover:text-white transition-colors border border-transparent hover:border-border-default"
+            className="p-1.5 text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
             title="Reset code"
           >
             <RotateCcw size={14} />
@@ -207,7 +207,7 @@ export function ExecutableSnippet({
 
       {/* Description */}
       {description && (
-        <div className="px-4 py-2 bg-bg-tertiary border-b border-border-default shrink-0">
+        <div className="px-4 py-2 bg-bg-secondary border-b border-white/10 shrink-0">
           <p className="text-xs text-text-muted">{description}</p>
         </div>
       )}
@@ -217,7 +217,7 @@ export function ExecutableSnippet({
         <Editor
           height="100%"
           language="rql"
-          theme="brutalist-light"
+          theme="premium-dark"
           value={code}
           onChange={(value) => setCode(value || '')}
           beforeMount={handleBeforeMount}
@@ -248,14 +248,14 @@ export function ExecutableSnippet({
       </div>
 
       {/* Run Button Bar */}
-      <div className="flex items-center justify-between px-4 py-2 border-t-2 border-border-default bg-bg-tertiary shrink-0">
+      <div className="flex items-center justify-between px-4 py-2 border-t border-white/10 bg-bg-elevated shrink-0">
         <span className="text-xs text-text-muted">
           {dbLoading ? 'Loading WASM...' : 'Ctrl+Enter to run'}
         </span>
         <button
           onClick={handleRun}
           disabled={dbLoading || isExecuting}
-          className="flex items-center gap-2 px-4 py-1.5 bg-[var(--color-primary)] text-white font-bold text-xs uppercase tracking-wider border-2 border-border-default shadow-[2px_2px_0px_0px_var(--color-border-default)] hover:shadow-[1px_1px_0px_0px_var(--color-border-default)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-primary to-accent-warm text-white font-semibold text-xs uppercase tracking-wider rounded-lg hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Play size={12} />
           {isExecuting ? 'Running...' : 'Run'}
@@ -265,12 +265,12 @@ export function ExecutableSnippet({
       {/* Results Section */}
       {(result || dbError) && (
         <div className={cn(
-          'border-t-2 border-border-default shrink-0',
+          'border-t border-white/10 shrink-0',
           isFullscreen && 'max-h-[40vh] overflow-y-auto'
         )}>
           {/* Result Header */}
-          <div className="px-4 py-2 bg-bg-tertiary border-b border-border-default flex items-center justify-between sticky top-0">
-            <span className="text-xs font-bold uppercase tracking-wider text-text-secondary">
+          <div className="px-4 py-2 bg-bg-elevated border-b border-white/10 flex items-center justify-between sticky top-0">
+            <span className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
               {result?.error || dbError ? 'Error' : 'Result'}
             </span>
             {result?.data && !result.error && (
@@ -282,8 +282,8 @@ export function ExecutableSnippet({
 
           {/* Error Display */}
           {(result?.error || dbError) && (
-            <div className="p-4 bg-[var(--color-status-error)]/10">
-              <pre className="text-xs text-[var(--color-status-error)] font-mono whitespace-pre-wrap">
+            <div className="p-4 bg-status-error/10">
+              <pre className="text-xs text-status-error font-mono whitespace-pre-wrap">
                 {result?.error || dbError}
               </pre>
             </div>
@@ -294,11 +294,11 @@ export function ExecutableSnippet({
             <div className="p-4 overflow-x-auto">
               <table className="w-full text-sm font-mono">
                 <thead>
-                  <tr className="border-b-2 border-border-default">
+                  <tr className="border-b border-white/10">
                     {columns.map((col) => (
                       <th
                         key={col}
-                        className="text-left py-2 px-3 text-xs font-bold uppercase tracking-wider text-text-secondary bg-bg-tertiary"
+                        className="text-left py-2 px-3 text-xs font-semibold uppercase tracking-wider text-text-secondary bg-bg-elevated"
                       >
                         {col}
                       </th>
@@ -309,7 +309,7 @@ export function ExecutableSnippet({
                   {result.data.map((row, i) => (
                     <tr
                       key={i}
-                      className="border-b border-border-default last:border-b-0 hover:bg-bg-tertiary"
+                      className="border-b border-white/5 last:border-b-0 hover:bg-white/5"
                     >
                       {columns.map((col) => (
                         <td key={col} className="py-2 px-3 text-text-primary">
@@ -336,8 +336,8 @@ export function ExecutableSnippet({
 
   if (isFullscreen) {
     return (
-      <div className="fixed inset-0 z-50 bg-black/50">
-        <div className="fixed inset-4 bg-white border-2 border-border-default flex flex-col">
+      <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm">
+        <div className="fixed inset-4 bg-bg-secondary border border-white/10 rounded-xl flex flex-col overflow-hidden">
           {content}
         </div>
       </div>

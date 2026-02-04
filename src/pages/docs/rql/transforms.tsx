@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../docs-layout';
+import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
 
@@ -68,7 +68,7 @@ aggregate math::sum(total) by region`,
 
 export function RqlTransformsPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header */}
         <div>
@@ -133,6 +133,6 @@ take 5                       # Top 5 regions`}
           </Link>.
         </Callout>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

@@ -7,7 +7,7 @@ interface DocsLayoutProps {
   children: React.ReactNode;
 }
 
-export function DocsLayout({ children }: DocsLayoutProps) {
+export function Layout({ children }: DocsLayoutProps) {
   const location = useLocation();
 
   return (

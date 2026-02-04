@@ -1,9 +1,9 @@
-import { DocsLayout } from '../../docs-layout';
+import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function SortPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
@@ -69,6 +69,6 @@ take 10`}
         </section>
 
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../../docs-layout';
+import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function DateNowPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header with breadcrumb */}
         <div>
@@ -87,6 +87,6 @@ extend { days_since: date::diff(date::now(), created_at, unit: "days") }`}
           </div>
         </section>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

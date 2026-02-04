@@ -1,4 +1,4 @@
-export { DocsLayout } from './docs-layout';
+export { Layout } from './layout.tsx';
 export { DocsOverview } from './overview';
 export { InstallationPage } from './guides/installation';
 export { QuickStartPage } from './guides/quick-start';

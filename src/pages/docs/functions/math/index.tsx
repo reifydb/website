@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../../docs-layout';
+import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function MathModuleOverviewPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header */}
         <div>
@@ -217,6 +217,6 @@ aggregate {
           </div>
         </section>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

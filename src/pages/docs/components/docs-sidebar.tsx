@@ -66,8 +66,8 @@ function AccordionItem({ item, currentPath, depth, openItems, onToggle, onNaviga
     'w-full flex items-center py-1.5 text-sm text-left',
     'transition-all duration-150',
     isActive
-      ? 'text-primary-color font-medium'
-      : 'text-text-secondary hover:text-primary-color'
+      ? 'text-primary font-medium'
+      : 'text-text-secondary hover:text-primary'
   );
 
   return (
@@ -95,7 +95,7 @@ function AccordionItem({ item, currentPath, depth, openItems, onToggle, onNaviga
             isOpen ? 'max-h-[1000px]' : 'max-h-0'
           )}
         >
-          <ul className="space-y-0.5 border-l-2 border-gray-200 ml-3">
+          <ul className="space-y-0.5 border-l border-white/10 ml-3">
             {item.children!.map((child) => (
               <AccordionItem
                 key={child.id}
@@ -162,7 +162,7 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
             <div key={section.title} className="mb-4">
               <button
                 onClick={() => toggleItem(sectionId)}
-                className="w-full flex items-center text-xs font-bold text-text-muted uppercase tracking-wider mb-2 px-3 py-1 hover:text-primary-color transition-colors"
+                className="w-full flex items-center text-xs font-semibold text-text-muted uppercase tracking-wider mb-2 px-3 py-1 hover:text-primary transition-colors"
               >
                 {section.title}
               </button>
@@ -172,7 +172,7 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
                   isSectionOpen ? 'max-h-[2000px]' : 'max-h-0'
                 )}
               >
-                <ul className="space-y-0.5 border-l-2 border-gray-200 ml-3">
+                <ul className="space-y-0.5 border-l border-white/10 ml-3">
                   {section.items.map((item) => (
                     <AccordionItem
                       key={item.id}
@@ -192,10 +192,10 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
       </nav>
 
       {/* Footer */}
-      <div className="p-4 border-t-2 border-border-default">
+      <div className="p-4 border-t border-white/10">
         <button
           onClick={handleBack}
-          className="text-xs text-text-muted hover:text-primary-color transition-colors font-bold uppercase tracking-wider"
+          className="text-xs text-text-muted hover:text-primary transition-colors font-semibold uppercase tracking-wider"
         >
           &larr; Back
         </button>
@@ -208,7 +208,7 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
       {/* Mobile Toggle Button */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
-        className="lg:hidden fixed top-20 left-4 z-50 p-2 bg-white border-2 border-border-default shadow-minimal"
+        className="lg:hidden fixed top-20 left-4 z-50 p-2 bg-bg-tertiary border border-white/10 rounded-lg"
         aria-label="Toggle docs menu"
       >
         {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -217,20 +217,20 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
       {/* Mobile Overlay */}
       {mobileOpen && (
         <div
-          className="lg:hidden fixed inset-0 bg-border-default/50 z-40"
+          className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
           onClick={() => setMobileOpen(false)}
         />
       )}
 
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex w-72 border-r-2 border-border-default bg-white flex-col">
+      <aside className="hidden lg:flex w-72 border-r border-white/10 bg-bg-secondary flex-col">
         {sidebarContent}
       </aside>
 
       {/* Mobile Sidebar */}
       <aside
         className={cn(
-          'lg:hidden fixed top-0 left-0 w-72 h-full bg-white border-r-2 border-border-default z-50 flex flex-col transform transition-transform duration-300',
+          'lg:hidden fixed top-0 left-0 w-72 h-full bg-bg-secondary border-r border-white/10 z-50 flex flex-col transform transition-transform duration-300',
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >

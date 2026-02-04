@@ -12,22 +12,22 @@ interface CalloutProps {
 
 const variantStyles: Record<CalloutVariant, { border: string; bg: string; icon: string }> = {
   info: {
-    border: 'border-[#61AFEF]',
-    bg: 'bg-[#61AFEF]/10',
-    icon: 'text-[#61AFEF]',
+    border: 'border-feature-blue/50',
+    bg: 'bg-feature-blue/10',
+    icon: 'text-feature-blue',
   },
   warning: {
-    border: 'border-[#E5C07B]',
-    bg: 'bg-[#E5C07B]/10',
-    icon: 'text-[#E5C07B]',
+    border: 'border-status-warning/50',
+    bg: 'bg-status-warning/10',
+    icon: 'text-status-warning',
   },
   tip: {
-    border: 'border-[#34D399]',
-    bg: 'bg-[#34D399]/10',
-    icon: 'text-[#34D399]',
+    border: 'border-status-success/50',
+    bg: 'bg-status-success/10',
+    icon: 'text-status-success',
   },
   note: {
-    border: 'border-border-default',
+    border: 'border-white/10',
     bg: 'bg-bg-tertiary',
     icon: 'text-text-muted',
   },
@@ -55,7 +55,7 @@ export function Callout({ variant = 'note', title, children, className }: Callou
   return (
     <div
       className={cn(
-        'border-2 border-l-4 p-4',
+        'border border-l-4 rounded-lg p-4',
         styles.border,
         styles.bg,
         className
@@ -64,7 +64,7 @@ export function Callout({ variant = 'note', title, children, className }: Callou
       <div className="flex gap-3">
         <Icon className={cn('w-5 h-5 flex-shrink-0 mt-0.5', styles.icon)} />
         <div>
-          <strong className="text-text-primary font-bold uppercase text-sm tracking-wider">
+          <strong className="text-text-primary font-semibold uppercase text-sm tracking-wider">
             {title || defaultTitle}
           </strong>
           <div className="text-text-secondary text-sm mt-1">{children}</div>

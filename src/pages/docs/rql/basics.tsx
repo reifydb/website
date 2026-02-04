@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../docs-layout';
+import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function RqlBasicsPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header */}
         <div>
@@ -51,7 +51,7 @@ select name, email       # Choose columns`}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Data Sources</h2>
           <p className="text-text-secondary mb-4">
-            The <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">from</code> transform specifies where data comes from.
+            The <code className="bg-bg-tertiary border border-white/10 px-1.5 py-0.5 rounded text-xs font-mono">from</code> transform specifies where data comes from.
           </p>
 
           <h3 className="text-lg font-bold mt-6 mb-3">Tables</h3>
@@ -77,7 +77,7 @@ select name, email       # Choose columns`}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Comments</h2>
           <p className="text-text-secondary mb-4">
-            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">#</code> for single-line comments:
+            Use <code className="bg-bg-tertiary border border-white/10 px-1.5 py-0.5 rounded text-xs font-mono">#</code> for single-line comments:
           </p>
           <ExecutableSnippet
             title="Single-line Comments"
@@ -86,7 +86,7 @@ from app.users
 filter active == true  # Inline comment`}
           />
           <p className="text-text-secondary mt-4 mb-4">
-            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">/* */</code> for block comments:
+            Use <code className="bg-bg-tertiary border border-white/10 px-1.5 py-0.5 rounded text-xs font-mono">/* */</code> for block comments:
           </p>
           <ExecutableSnippet
             title="Block Comments"
@@ -105,29 +105,29 @@ from app.users`}
             RQL supports these literal types:
           </p>
           <div className="overflow-x-auto">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-white/10 rounded-xl text-sm overflow-hidden">
               <thead>
-                <tr className="bg-bg-tertiary">
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Type</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Example</th>
+                <tr className="bg-bg-elevated">
+                  <th className="text-left px-4 py-3 border-b border-white/10 font-semibold">Type</th>
+                  <th className="text-left px-4 py-3 border-b border-white/10 font-semibold">Example</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="bg-bg-tertiary">
                 <tr>
-                  <td className="px-4 py-2 border-b border-border-default">Strings</td>
-                  <td className="px-4 py-2 border-b border-border-default font-mono text-xs">"hello" or 'hello'</td>
+                  <td className="px-4 py-3 border-b border-white/10">Strings</td>
+                  <td className="px-4 py-3 border-b border-white/10 font-mono text-xs text-text-secondary">"hello" or 'hello'</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 border-b border-border-default">Numbers</td>
-                  <td className="px-4 py-2 border-b border-border-default font-mono text-xs">42, 3.14, 1_000_000</td>
+                  <td className="px-4 py-3 border-b border-white/10">Numbers</td>
+                  <td className="px-4 py-3 border-b border-white/10 font-mono text-xs text-text-secondary">42, 3.14, 1_000_000</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 border-b border-border-default">Booleans</td>
-                  <td className="px-4 py-2 border-b border-border-default font-mono text-xs">true, false</td>
+                  <td className="px-4 py-3 border-b border-white/10">Booleans</td>
+                  <td className="px-4 py-3 border-b border-white/10 font-mono text-xs text-text-secondary">true, false</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2">Undefined</td>
-                  <td className="px-4 py-2 font-mono text-xs">undefined</td>
+                  <td className="px-4 py-3">Undefined</td>
+                  <td className="px-4 py-3 font-mono text-xs text-text-secondary">undefined</td>
                 </tr>
               </tbody>
             </table>
@@ -137,11 +137,11 @@ from app.users`}
         {/* Next Steps */}
         <Callout variant="tip" title="Next Steps">
           Learn about the available transforms in{' '}
-          <Link to="/docs/rql/transforms" className="text-primary-color hover:underline font-medium">
+          <Link to="/docs/rql/transforms" className="text-primary hover:text-primary-light font-medium transition-colors">
             Transforms
           </Link>.
         </Callout>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

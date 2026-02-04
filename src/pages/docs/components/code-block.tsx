@@ -18,20 +18,20 @@ export function CodeBlock({ code, language = 'bash', className }: CodeBlockProps
   };
 
   return (
-    <div className={cn('border-2 border-border-default bg-white', className)}>
-      <div className="flex justify-between items-center px-4 py-2 border-b-2 border-border-default bg-bg-tertiary">
-        <span className="text-xs font-bold text-text-muted uppercase tracking-wider">
+    <div className={cn('border border-white/10 bg-bg-tertiary rounded-xl overflow-hidden', className)}>
+      <div className="flex justify-between items-center px-4 py-2 border-b border-white/10 bg-bg-elevated">
+        <span className="text-xs font-medium text-text-muted uppercase tracking-wider">
           {language}
         </span>
         <button
           onClick={handleCopy}
-          className="p-1.5 hover:bg-border-default hover:text-white transition-colors border border-transparent hover:border-border-default"
+          className="p-1.5 text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
           aria-label={copied ? 'Copied' : 'Copy code'}
         >
           {copied ? <Check size={14} /> : <Copy size={14} />}
         </button>
       </div>
-      <pre className="p-4 overflow-x-auto text-sm">
+      <pre className="p-4 overflow-x-auto text-sm font-mono text-text-primary">
         <code>{code}</code>
       </pre>
     </div>
@@ -58,18 +58,18 @@ export function TabbedCodeBlock({ examples, className }: TabbedCodeBlockProps) {
   };
 
   return (
-    <div className={cn('border-2 border-border-default bg-white', className)}>
-      <div className="flex items-center justify-between border-b-2 border-border-default bg-bg-tertiary">
+    <div className={cn('border border-white/10 bg-bg-tertiary rounded-xl overflow-hidden', className)}>
+      <div className="flex items-center justify-between border-b border-white/10 bg-bg-elevated">
         <div className="flex">
           {examples.map((example, index) => (
             <button
               key={example.language}
               onClick={() => setActiveTab(index)}
               className={cn(
-                'px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors border-r-2 border-border-default',
+                'px-4 py-2 text-xs font-medium uppercase tracking-wider transition-colors border-r border-white/10',
                 activeTab === index
-                  ? 'bg-primary-color text-white'
-                  : 'text-text-muted hover:text-primary-color hover:bg-bg-secondary'
+                  ? 'bg-gradient-to-r from-primary to-accent-warm text-white'
+                  : 'text-text-muted hover:text-text-primary hover:bg-white/5'
               )}
             >
               {example.label}
@@ -78,13 +78,13 @@ export function TabbedCodeBlock({ examples, className }: TabbedCodeBlockProps) {
         </div>
         <button
           onClick={handleCopy}
-          className="p-2 mr-2 hover:bg-border-default hover:text-white transition-colors border border-transparent hover:border-border-default"
+          className="p-2 mr-2 text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
           aria-label={copied ? 'Copied' : 'Copy code'}
         >
           {copied ? <Check size={14} /> : <Copy size={14} />}
         </button>
       </div>
-      <pre className="p-4 overflow-x-auto text-sm">
+      <pre className="p-4 overflow-x-auto text-sm font-mono text-text-primary">
         <code>{examples[activeTab].code}</code>
       </pre>
     </div>

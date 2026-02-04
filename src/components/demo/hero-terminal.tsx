@@ -83,35 +83,31 @@ export function HeroTerminal() {
   }, []);
 
   return (
-    <div className="bg-white border-2 border-border-default rounded-lg overflow-hidden shadow-minimal">
+    <div className="group relative bg-bg-tertiary border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-primary/30 hover:shadow-[0_0_50px_rgba(99,102,241,0.15)]">
+      {/* Optional scanline overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.02] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-transparent h-[200%] animate-scanline" />
+      </div>
+
       {/* macOS Chrome Header */}
-      <div className="h-8 sm:h-10 bg-bg-primary border-b-2 border-border-default flex items-center px-2 sm:px-3 gap-1.5 sm:gap-2">
+      <div className="h-8 sm:h-10 bg-bg-elevated border-b border-white/10 flex items-center px-3 sm:px-4 gap-2">
         <div className="flex gap-1.5">
-          <div
-            className="w-3 h-3 rounded-full"
-            style={{ backgroundColor: 'var(--color-status-error)' }}
-          />
-          <div
-            className="w-3 h-3 rounded-full"
-            style={{ backgroundColor: 'var(--color-accent-yellow)' }}
-          />
-          <div
-            className="w-3 h-3 rounded-full"
-            style={{ backgroundColor: 'var(--color-feature-green)' }}
-          />
+          <div className="w-3 h-3 rounded-full bg-status-error" />
+          <div className="w-3 h-3 rounded-full bg-status-warning" />
+          <div className="w-3 h-3 rounded-full bg-status-success" />
         </div>
-        <span className="text-xs font-bold tracking-wide ml-2">reifydb@terminal</span>
+        <span className="text-xs font-medium text-text-muted ml-2">reifydb@terminal</span>
       </div>
 
       {/* Terminal Body */}
-      <div className="p-4 sm:p-6 font-mono text-[clamp(0.75rem,2vw,0.875rem)] leading-relaxed bg-white text-text-primary text-left">
+      <div className="p-4 sm:p-6 font-mono text-[clamp(0.75rem,2vw,0.875rem)] leading-relaxed text-left">
         <div className="flex items-center justify-start">
-          <span className="text-[--color-feature-teal] hidden sm:inline">you@reifydb</span>
-          <span className="text-[--color-feature-teal] sm:hidden">$</span>
-          <span className="text-text-secondary hidden sm:inline">: </span>
+          <span className="text-feature-teal hidden sm:inline">you@reifydb</span>
+          <span className="text-feature-teal sm:hidden">$</span>
+          <span className="text-text-muted hidden sm:inline">: </span>
           <span className="text-text-primary ml-1">{displayCommand}</span>
           <span
-            className={`ml-0.5 transition-opacity ${showCursor ? 'opacity-100' : 'opacity-0'}`}
+            className={`ml-0.5 text-primary transition-opacity ${showCursor ? 'opacity-100 drop-shadow-[0_0_8px_rgba(99,102,241,0.8)]' : 'opacity-0'}`}
           >
             █
           </span>

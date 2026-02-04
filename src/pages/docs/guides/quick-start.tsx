@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../docs-layout';
+import { Layout } from '../layout.tsx';
 import { CodeBlock, Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function QuickStartPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header */}
         <div>
@@ -140,6 +140,6 @@ select name, email`}
           </Link>.
         </Callout>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

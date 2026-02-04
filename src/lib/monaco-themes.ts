@@ -47,3 +47,27 @@ export const brutalistDarkTheme: editor.IStandaloneThemeData = {
     'editorLineNumber.activeForeground': '#E5E7EB',
   },
 };
+
+export const premiumDarkTheme: editor.IStandaloneThemeData = {
+  base: 'vs-dark',
+  inherit: true,
+  rules: [
+    { token: 'keyword', foreground: '818CF8', fontStyle: 'bold' },
+    { token: 'string', foreground: '34D399' },
+    { token: 'string.quote', foreground: '34D399' },
+    { token: 'number', foreground: 'F472B6', fontStyle: 'bold' },
+    { token: 'comment', foreground: '64748B', fontStyle: 'italic' },
+    { token: 'operator', foreground: 'CBD5E1' },
+    { token: 'identifier', foreground: 'F8FAFC' },
+    { token: 'key', foreground: '60A5FA', fontStyle: 'bold' },
+  ],
+  colors: {
+    'editor.background': '#0D0B14',
+    'editor.foreground': '#F8FAFC',
+    'editor.lineHighlightBackground': '#13111A',
+    'editor.selectionBackground': '#6366F140',
+    'editorCursor.foreground': '#6366F1',
+    'editorLineNumber.foreground': '#64748B',
+    'editorLineNumber.activeForeground': '#CBD5E1',
+  },
+};

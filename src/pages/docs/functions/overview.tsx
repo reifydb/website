@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../docs-layout';
+import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 
 export function FunctionsOverviewPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
@@ -58,6 +58,6 @@ export function FunctionsOverviewPage() {
           for example <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">text::lower(name)</code>.
         </Callout>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }

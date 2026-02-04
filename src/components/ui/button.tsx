@@ -11,20 +11,22 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles = {
   primary: cn(
-    'bg-accent-dark text-white font-semibold',
-    'border-2 border-border-default shadow-minimal-md',
-    'hover:bg-[#4a4a4a] hover:shadow-minimal-lg hover:translate-x-[-1px] hover:translate-y-[-1px]',
-    'active:shadow-minimal-sm active:translate-x-[1px] active:translate-y-[1px]'
+    'relative overflow-hidden',
+    'bg-gradient-to-r from-primary via-accent-warm to-primary bg-[length:200%_auto]',
+    'text-white font-semibold',
+    'shadow-md hover:shadow-[0_0_25px_rgba(99,102,241,0.5)]',
+    'hover:animate-shimmer',
+    'transition-shadow duration-300'
   ),
   secondary: cn(
-    'bg-white text-accent-dark font-semibold',
-    'border-2 border-border-default shadow-minimal-md',
-    'hover:shadow-minimal-lg hover:translate-x-[-1px] hover:translate-y-[-1px]',
-    'active:shadow-minimal-sm active:translate-x-[1px] active:translate-y-[1px]'
+    'bg-bg-tertiary text-text-primary font-semibold',
+    'border border-border-default',
+    'hover:border-primary/50 hover:bg-bg-elevated',
+    'active:bg-bg-secondary'
   ),
   ghost: cn(
     'text-text-secondary',
-    'hover:text-accent-dark',
+    'hover:text-text-primary hover:bg-bg-tertiary',
     'active:opacity-80'
   ),
 }
@@ -45,8 +47,8 @@ export function Button({
 }: ButtonProps) {
   const baseStyles = cn(
     'inline-flex items-center justify-center gap-2',
-    'rounded-md font-medium transition-all duration-200',
-    'focus:outline-none focus:ring-2 focus:ring-accent-dark focus:ring-offset-2 focus:ring-offset-bg-primary',
+    'rounded-lg font-medium transition-all duration-200',
+    'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-bg-primary',
     variantStyles[variant],
     sizeStyles[size],
     className

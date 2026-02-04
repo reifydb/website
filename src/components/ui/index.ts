@@ -1,5 +1,7 @@
+export { BackgroundPattern } from './background-pattern'
 export { Button } from './button'
 export { CodeViewer } from './code-viewer'
 export { CtaSection } from './cta-section'
 export { ExecutableSnippet } from './executable-snippet'
 export { GitHubStars } from './github-stars'
+export { ScrollReveal } from './scroll-reveal'

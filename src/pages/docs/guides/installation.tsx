@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { DocsLayout } from '../docs-layout';
+import { Layout } from '../layout.tsx';
 import { CodeBlock, Callout } from '../components';
 
 export function InstallationPage() {
   return (
-    <DocsLayout>
+    <Layout>
       <div className="space-y-8">
         {/* Header */}
         <div>
@@ -96,6 +96,6 @@ cargo build --release`}
           guide to write your first query.
         </Callout>
       </div>
-    </DocsLayout>
+    </Layout>
   );
 }
