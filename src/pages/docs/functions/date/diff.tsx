@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function DateDiffPage() {
   return (
@@ -70,31 +71,28 @@ export function DateDiffPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - date::diff not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Calculate days since creation</h3>
           <ExecutableSnippet
-            title="Calculate days since creation"
-            initialCode={`from app.orders
-extend { days_since: date::diff(date::now(), created_at, unit: "days") }`}
+            title={getExampleById('date-diff-days')!.title}
+            initialCode={getExampleById('date-diff-days')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by age</h3>
           <ExecutableSnippet
-            title="Filter by age"
-            initialCode={`from app.records
-filter date::diff(date::now(), created_at, unit: "days") > 30`}
+            title={getExampleById('date-diff-filter')!.title}
+            initialCode={getExampleById('date-diff-filter')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Calculate hours between events</h3>
           <ExecutableSnippet
-            title="Calculate hours between events"
-            initialCode={`from app.sessions
-extend { duration_hours: date::diff(end_time, start_time, unit: "hours") }`}
+            title={getExampleById('date-diff-hours')!.title}
+            initialCode={getExampleById('date-diff-hours')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock, Callout } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function MathAvgPage() {
   return (
@@ -66,19 +67,14 @@ export function MathAvgPage() {
 
           <h3 className="text-lg font-bold mb-3">Calculate average price</h3>
           <ExecutableSnippet
-            title="Calculate average price"
-            initialCode={`from app.products
-aggregate math::avg(price) by category`}
+            title={getExampleById('math-avg-by-category')!.title}
+            initialCode={getExampleById('math-avg-by-category')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Average with total</h3>
           <ExecutableSnippet
-            title="Average with total"
-            initialCode={`from app.sales
-aggregate {
-  avg_sale: math::avg(amount),
-  total_sales: math::sum(amount)
-}`}
+            title={getExampleById('math-avg-with-total')!.title}
+            initialCode={getExampleById('math-avg-with-total')!.code}
           />
         </section>
 

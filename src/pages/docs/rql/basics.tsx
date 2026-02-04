@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function RqlBasicsPage() {
   return (
@@ -30,22 +31,21 @@ export function RqlBasicsPage() {
           </p>
         </section>
 
+        {/* TODO: Commented out - '#' comments not supported yet */}
         {/* Query Structure */}
-        <section>
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Query Structure</h2>
           <p className="text-text-secondary mb-4">
             Every RQL query starts with a data source, followed by transforms:
           </p>
           <ExecutableSnippet
-            title="Query Structure"
-            initialCode={`from app.users          # Start with a table
-filter age >= 18         # Filter rows
-select name, email       # Choose columns`}
+            title={getExampleById('rql-query-structure')!.title}
+            initialCode={getExampleById('rql-query-structure')!.code}
           />
           <p className="text-text-muted text-sm mt-3">
             Transforms are separated by newlines. Each transform operates on the result of the previous one.
           </p>
-        </section>
+        </section> */}
 
         {/* Data Sources */}
         <section>
@@ -58,45 +58,37 @@ select name, email       # Choose columns`}
           <p className="text-text-secondary mb-3">
             Query data from a table:
           </p>
-          <ExecutableSnippet title="Tables" initialCode={`from app.users`} />
+          <ExecutableSnippet title={getExampleById('rql-tables')!.title} initialCode={getExampleById('rql-tables')!.code} />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Inline Data</h3>
           <p className="text-text-secondary mb-3">
             Query inline arrays for prototyping:
           </p>
           <ExecutableSnippet
-            title="Inline Data"
-            initialCode={`from [
-  {id: 1, name: "Alice"},
-  {id: 2, name: "Bob"}
-]`}
+            title={getExampleById('rql-inline-data')!.title}
+            initialCode={getExampleById('rql-inline-data')!.code}
           />
         </section>
 
+        {/* TODO: Commented out - comments syntax not supported yet */}
         {/* Comments */}
-        <section>
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Comments</h2>
           <p className="text-text-secondary mb-4">
             Use <code className="bg-bg-tertiary border border-white/10 px-1.5 py-0.5 rounded text-xs font-mono">#</code> for single-line comments:
           </p>
           <ExecutableSnippet
-            title="Single-line Comments"
-            initialCode={`# This is a comment
-from app.users
-filter active == true  # Inline comment`}
+            title={getExampleById('rql-single-line-comments')!.title}
+            initialCode={getExampleById('rql-single-line-comments')!.code}
           />
           <p className="text-text-secondary mt-4 mb-4">
-            Use <code className="bg-bg-tertiary border border-white/10 px-1.5 py-0.5 rounded text-xs font-mono">/* */</code> for block comments:
+            Use <code className="bg-bg-tertiary border border-white/10 px-1.5 py-0.5 rounded text-xs font-mono">/* </code> for block comments:
           </p>
           <ExecutableSnippet
-            title="Block Comments"
-            initialCode={`/*
-  Multi-line comment
-  describing the query
-*/
-from app.users`}
+            title={getExampleById('rql-block-comments')!.title}
+            initialCode={getExampleById('rql-block-comments')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Literals */}
         <section>

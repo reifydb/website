@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function DateHourPage() {
   return (
@@ -60,27 +61,22 @@ export function DateHourPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - date::hour not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Extract time components</h3>
           <ExecutableSnippet
-            title="Extract time components"
-            initialCode={`from app.events
-extend {
-  hour: date::hour(timestamp),
-  minute: date::minute(timestamp)
-}`}
+            title={getExampleById('date-hour-extract')!.title}
+            initialCode={getExampleById('date-hour-extract')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by business hours</h3>
           <ExecutableSnippet
-            title="Filter by business hours"
-            initialCode={`from app.requests
-filter date::hour(timestamp) >= 9 and date::hour(timestamp) < 17`}
+            title={getExampleById('date-hour-business')!.title}
+            initialCode={getExampleById('date-hour-business')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function TextConcatPage() {
   return (
@@ -60,31 +61,28 @@ export function TextConcatPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - text::concat not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Build full name</h3>
           <ExecutableSnippet
-            title="Build full name"
-            initialCode={`from app.users
-extend { full_name: text::concat(first_name, " ", last_name) }`}
+            title={getExampleById('text-concat-fullname')!.title}
+            initialCode={getExampleById('text-concat-fullname')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Create display labels</h3>
           <ExecutableSnippet
-            title="Create display labels"
-            initialCode={`from app.products
-extend { label: text::concat(name, " (", sku, ")") }`}
+            title={getExampleById('text-concat-labels')!.title}
+            initialCode={getExampleById('text-concat-labels')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Build URLs</h3>
           <ExecutableSnippet
-            title="Build URLs"
-            initialCode={`from app.pages
-extend { url: text::concat("/", category, "/", slug) }`}
+            title={getExampleById('text-concat-urls')!.title}
+            initialCode={getExampleById('text-concat-urls')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>

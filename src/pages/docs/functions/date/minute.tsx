@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function DateMinutePage() {
   return (
@@ -60,27 +61,22 @@ export function DateMinutePage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - date::minute not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Extract time components</h3>
           <ExecutableSnippet
-            title="Extract time components"
-            initialCode={`from app.events
-extend {
-  hour: date::hour(timestamp),
-  minute: date::minute(timestamp)
-}`}
+            title={getExampleById('date-minute-extract')!.title}
+            initialCode={getExampleById('date-minute-extract')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by specific time</h3>
           <ExecutableSnippet
-            title="Filter by specific time"
-            initialCode={`from app.logs
-filter date::hour(timestamp) == 14 and date::minute(timestamp) == 30`}
+            title={getExampleById('date-minute-filter')!.title}
+            initialCode={getExampleById('date-minute-filter')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function TextLowerPage() {
   return (
@@ -60,24 +61,22 @@ export function TextLowerPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - text::lower not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Normalize email addresses</h3>
           <ExecutableSnippet
-            title="Normalize email addresses"
-            initialCode={`from app.users
-extend { lower_email: text::lower(email) }`}
+            title={getExampleById('text-lower-email')!.title}
+            initialCode={getExampleById('text-lower-email')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Case-insensitive filtering</h3>
           <ExecutableSnippet
-            title="Case-insensitive filtering"
-            initialCode={`from app.products
-filter text::lower(category) == "electronics"`}
+            title={getExampleById('text-lower-filter')!.title}
+            initialCode={getExampleById('text-lower-filter')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>

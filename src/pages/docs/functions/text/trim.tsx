@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function TextTrimPage() {
   return (
@@ -66,16 +67,14 @@ export function TextTrimPage() {
 
           <h3 className="text-lg font-bold mb-3">Clean user input</h3>
           <ExecutableSnippet
-            title="Clean user input"
-            initialCode={`from app.inputs
-extend { clean_value: text::trim(raw_value) }`}
+            title={getExampleById('text-trim-input')!.title}
+            initialCode={getExampleById('text-trim-input')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter non-empty strings</h3>
           <ExecutableSnippet
-            title="Filter non-empty strings"
-            initialCode={`from app.comments
-filter text::length(text::trim(content)) > 0`}
+            title={getExampleById('text-trim-filter')!.title}
+            initialCode={getExampleById('text-trim-filter')!.code}
           />
         </section>
 

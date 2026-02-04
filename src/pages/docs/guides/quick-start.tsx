@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { CodeBlock, Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function QuickStartPage() {
   return (
@@ -39,12 +40,8 @@ export function QuickStartPage() {
             RQL lets you query inline data directly. Click <strong>Run</strong> to try it:
           </p>
           <ExecutableSnippet
-            title="Your First Query"
-            initialCode={`from [
-  {id: 1, name: "Alice", role: "admin"},
-  {id: 2, name: "Bob", role: "user"},
-  {id: 3, name: "Carol", role: "user"}
-]`}
+            title={getExampleById('guide-first-query')!.title}
+            initialCode={getExampleById('guide-first-query')!.code}
           />
           <p className="text-text-muted text-sm mt-3">
             This queries an inline array of records. Great for prototyping!
@@ -58,13 +55,8 @@ export function QuickStartPage() {
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">filter</code> to select specific rows:
           </p>
           <ExecutableSnippet
-            title="Filtering Data"
-            initialCode={`from [
-  {id: 1, name: "Alice", role: "admin"},
-  {id: 2, name: "Bob", role: "user"},
-  {id: 3, name: "Carol", role: "user"}
-]
-filter role == "user"`}
+            title={getExampleById('guide-filtering-data')!.title}
+            initialCode={getExampleById('guide-filtering-data')!.code}
           />
         </section>
 
@@ -75,62 +67,47 @@ filter role == "user"`}
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">select</code> to choose which columns to return:
           </p>
           <ExecutableSnippet
-            title="Selecting Columns"
-            initialCode={`from [
-  {id: 1, name: "Alice", role: "admin"},
-  {id: 2, name: "Bob", role: "user"},
-  {id: 3, name: "Carol", role: "user"}
-]
-filter role == "user"
-select name`}
+            title={getExampleById('guide-selecting-columns')!.title}
+            initialCode={getExampleById('guide-selecting-columns')!.code}
           />
         </section>
 
+        {/* TODO: Commented out - these examples use unsupported syntax */}
         {/* Creating a Table */}
-        <section>
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Creating a Table</h2>
           <p className="text-text-secondary mb-4">
             Create a persistent table to store data:
           </p>
           <ExecutableSnippet
-            title="Creating a Table"
-            initialCode={`create table app.users {
-  id: int4,
-  name: utf8,
-  email: utf8,
-  role: utf8
-}`}
+            title={getExampleById('guide-creating-table')!.title}
+            initialCode={getExampleById('guide-creating-table')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Inserting Data */}
-        <section>
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Inserting Data</h2>
           <p className="text-text-secondary mb-4">
             Insert records into your table:
           </p>
           <ExecutableSnippet
-            title="Inserting Data"
-            initialCode={`insert into app.users [
-  {id: 1, name: "Alice", email: "alice@example.com", role: "admin"},
-  {id: 2, name: "Bob", email: "bob@example.com", role: "user"}
-]`}
+            title={getExampleById('guide-inserting-data')!.title}
+            initialCode={getExampleById('guide-inserting-data')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Querying Tables */}
-        <section>
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Querying Tables</h2>
           <p className="text-text-secondary mb-4">
             Query your table just like inline data:
           </p>
           <ExecutableSnippet
-            title="Querying Tables"
-            initialCode={`from app.users
-filter role == "admin"
-select name, email`}
+            title={getExampleById('guide-querying-tables')!.title}
+            initialCode={getExampleById('guide-querying-tables')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Next Steps */}
         <Callout variant="tip" title="Next Steps">

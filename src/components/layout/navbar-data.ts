@@ -60,5 +60,4 @@ export const navDropdowns: NavDropdown[] = [
 
 export const navDirectLinks: NavDirectLink[] = [
     {href: '/docs', label: 'Docs'},
-    {href: '/#pricing', label: 'Pricing'},
 ];

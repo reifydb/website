@@ -2,41 +2,9 @@ import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ExecutableSnippet, ScrollReveal } from '@/components/ui';
 import { cn } from '@/lib';
+import { landingExamples } from '@/lib/examples';
 
-const examples = [
-  {
-    title: 'Inline Data',
-    code: `from [
-  {id: 1, name: "Alice", role: "admin"},
-  {id: 2, name: "Bob", role: "user"}
-]`,
-    description: 'Query inline data directly. Great for prototyping and testing.',
-  },
-  {
-    title: 'Filter + Aggregate',
-    code: `from [
-  {id: 1, region: "West", status: "completed", total: 250},
-  {id: 2, region: "East", status: "pending", total: 180},
-  {id: 3, region: "West", status: "completed", total: 320},
-  {id: 4, region: "East", status: "completed", total: 410}
-]
-filter status == "completed"
-aggregate math::sum(total) by region`,
-    description: 'Filter, group, and aggregate in a single readable pipeline.',
-  },
-  {
-    title: 'Sorting + Limiting',
-    code: `from [
-  {id: 1, name: "Alice", score: 95},
-  {id: 2, name: "Bob", score: 87},
-  {id: 3, name: "Carol", score: 92},
-  {id: 4, name: "Dave", score: 78}
-]
-sort score desc
-take 3`,
-    description: 'Sort by any column and limit results with simple pipeline syntax.',
-  },
-];
+const examples = landingExamples;
 
 export function CodeExampleSection() {
   const [activeIndex, setActiveIndex] = useState(0);

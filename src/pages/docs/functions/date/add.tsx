@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function DateAddPage() {
   return (
@@ -65,31 +66,28 @@ export function DateAddPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - date::add not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Calculate expiration date</h3>
           <ExecutableSnippet
-            title="Calculate expiration date"
-            initialCode={`from app.subscriptions
-extend { expires: date::add(start_date, days: 30) }`}
+            title={getExampleById('date-add-expiration')!.title}
+            initialCode={getExampleById('date-add-expiration')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Add days to current date</h3>
           <ExecutableSnippet
-            title="Add days to current date"
-            initialCode={`from app.events
-extend { deadline: date::add(date::now(), days: 7) }`}
+            title={getExampleById('date-add-current')!.title}
+            initialCode={getExampleById('date-add-current')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Subtract days</h3>
           <ExecutableSnippet
-            title="Subtract days"
-            initialCode={`from app.records
-extend { one_week_ago: date::add(date::now(), days: -7) }`}
+            title={getExampleById('date-add-subtract')!.title}
+            initialCode={getExampleById('date-add-subtract')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>

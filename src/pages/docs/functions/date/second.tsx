@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function DateSecondPage() {
   return (
@@ -60,28 +61,22 @@ export function DateSecondPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - date::second not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Extract precise time</h3>
           <ExecutableSnippet
-            title="Extract precise time"
-            initialCode={`from app.events
-extend {
-  hour: date::hour(timestamp),
-  minute: date::minute(timestamp),
-  second: date::second(timestamp)
-}`}
+            title={getExampleById('date-second-extract')!.title}
+            initialCode={getExampleById('date-second-extract')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by exact second</h3>
           <ExecutableSnippet
-            title="Filter by exact second"
-            initialCode={`from app.logs
-filter date::second(timestamp) == 0`}
+            title={getExampleById('date-second-filter')!.title}
+            initialCode={getExampleById('date-second-filter')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>

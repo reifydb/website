@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function TextSubstringPage() {
   return (
@@ -76,23 +77,20 @@ export function TextSubstringPage() {
 
           <h3 className="text-lg font-bold mb-3">Extract prefix</h3>
           <ExecutableSnippet
-            title="Extract prefix"
-            initialCode={`from app.codes
-extend { prefix: text::substring(code, 0, 3) }`}
+            title={getExampleById('text-substring-prefix')!.title}
+            initialCode={getExampleById('text-substring-prefix')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Get first characters</h3>
           <ExecutableSnippet
-            title="Get first characters"
-            initialCode={`from app.products
-extend { initial: text::substring(name, 0, 1) }`}
+            title={getExampleById('text-substring-first')!.title}
+            initialCode={getExampleById('text-substring-first')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Extract middle portion</h3>
           <ExecutableSnippet
-            title="Extract middle portion"
-            initialCode={`from app.identifiers
-extend { middle: text::substring(id, 3, 7) }`}
+            title={getExampleById('text-substring-middle')!.title}
+            initialCode={getExampleById('text-substring-middle')!.code}
           />
         </section>
 

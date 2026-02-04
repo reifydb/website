@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock, Callout } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function MathMinPage() {
   return (
@@ -66,19 +67,14 @@ export function MathMinPage() {
 
           <h3 className="text-lg font-bold mb-3">Find lowest price</h3>
           <ExecutableSnippet
-            title="Find lowest price"
-            initialCode={`from app.products
-aggregate math::min(price) by category`}
+            title={getExampleById('math-min-by-category')!.title}
+            initialCode={getExampleById('math-min-by-category')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Min and max together</h3>
           <ExecutableSnippet
-            title="Min and max together"
-            initialCode={`from app.sales
-aggregate {
-  lowest: math::min(amount),
-  highest: math::max(amount)
-} by month`}
+            title={getExampleById('math-min-max-together')!.title}
+            initialCode={getExampleById('math-min-max-together')!.code}
           />
         </section>
 

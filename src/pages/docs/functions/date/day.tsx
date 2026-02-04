@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function DateDayPage() {
   return (
@@ -60,24 +61,22 @@ export function DateDayPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - date::day not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Filter by first day of month</h3>
           <ExecutableSnippet
-            title="Filter by first day of month"
-            initialCode={`from app.logs
-filter date::day(timestamp) == 1`}
+            title={getExampleById('date-day-filter')!.title}
+            initialCode={getExampleById('date-day-filter')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Extract day component</h3>
           <ExecutableSnippet
-            title="Extract day component"
-            initialCode={`from app.events
-extend { day_of_month: date::day(created_at) }`}
+            title={getExampleById('date-day-extract')!.title}
+            initialCode={getExampleById('date-day-extract')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>

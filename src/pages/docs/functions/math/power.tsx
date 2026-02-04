@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function MathPowerPage() {
   return (
@@ -65,31 +66,28 @@ export function MathPowerPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - math::power not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Calculate squares</h3>
           <ExecutableSnippet
-            title="Calculate squares"
-            initialCode={`from app.numbers
-extend { squared: math::power(value, 2) }`}
+            title={getExampleById('math-power-squares')!.title}
+            initialCode={getExampleById('math-power-squares')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Compound growth</h3>
           <ExecutableSnippet
-            title="Compound growth"
-            initialCode={`from app.investments
-extend { future_value: principal * math::power(1 + rate, years) }`}
+            title={getExampleById('math-power-compound')!.title}
+            initialCode={getExampleById('math-power-compound')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Square root (exponent 0.5)</h3>
           <ExecutableSnippet
-            title="Square root (exponent 0.5)"
-            initialCode={`from app.data
-extend { sqrt_value: math::power(value, 0.5) }`}
+            title={getExampleById('math-power-sqrt')!.title}
+            initialCode={getExampleById('math-power-sqrt')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>

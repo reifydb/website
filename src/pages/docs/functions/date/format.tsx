@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function DateFormatPage() {
   return (
@@ -65,31 +66,28 @@ export function DateFormatPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - date::format not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Format as ISO date</h3>
           <ExecutableSnippet
-            title="Format as ISO date"
-            initialCode={`from app.events
-extend { formatted: date::format(created_at, "%Y-%m-%d") }`}
+            title={getExampleById('date-format-iso')!.title}
+            initialCode={getExampleById('date-format-iso')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Include time</h3>
           <ExecutableSnippet
-            title="Include time"
-            initialCode={`from app.logs
-extend { timestamp_str: date::format(timestamp, "%Y-%m-%d %H:%M:%S") }`}
+            title={getExampleById('date-format-time')!.title}
+            initialCode={getExampleById('date-format-time')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Custom format</h3>
           <ExecutableSnippet
-            title="Custom format"
-            initialCode={`from app.orders
-extend { order_date: date::format(created_at, "%B %d, %Y") }`}
+            title={getExampleById('date-format-custom')!.title}
+            initialCode={getExampleById('date-format-custom')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>

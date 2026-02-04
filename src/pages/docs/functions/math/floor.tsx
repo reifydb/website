@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function MathFloorPage() {
   return (
@@ -60,27 +61,22 @@ export function MathFloorPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - math::floor not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Floor values</h3>
           <ExecutableSnippet
-            title="Floor values"
-            initialCode={`from app.measurements
-extend {
-  floor_val: math::floor(value),
-  ceil_val: math::ceil(value)
-}`}
+            title={getExampleById('math-floor-values')!.title}
+            initialCode={getExampleById('math-floor-values')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Convert to integer</h3>
           <ExecutableSnippet
-            title="Convert to integer"
-            initialCode={`from app.scores
-extend { int_score: math::floor(score) }`}
+            title={getExampleById('math-floor-integer')!.title}
+            initialCode={getExampleById('math-floor-integer')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>

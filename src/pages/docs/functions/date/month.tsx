@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function DateMonthPage() {
   return (
@@ -60,24 +61,22 @@ export function DateMonthPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - date::month not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Aggregate by month</h3>
           <ExecutableSnippet
-            title="Aggregate by month"
-            initialCode={`from app.orders
-aggregate math::sum(total) by date::month(order_date)`}
+            title={getExampleById('date-month-aggregate')!.title}
+            initialCode={getExampleById('date-month-aggregate')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by specific month</h3>
           <ExecutableSnippet
-            title="Filter by specific month"
-            initialCode={`from app.events
-filter date::month(created_at) == 12`}
+            title={getExampleById('date-month-filter')!.title}
+            initialCode={getExampleById('date-month-filter')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>

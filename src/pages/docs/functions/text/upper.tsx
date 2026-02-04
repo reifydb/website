@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function TextUpperPage() {
   return (
@@ -66,16 +67,14 @@ export function TextUpperPage() {
 
           <h3 className="text-lg font-bold mb-3">Format display names</h3>
           <ExecutableSnippet
-            title="Format display names"
-            initialCode={`from app.users
-extend { upper_name: text::upper(name) }`}
+            title={getExampleById('text-upper-names')!.title}
+            initialCode={getExampleById('text-upper-names')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Uppercase code identifiers</h3>
           <ExecutableSnippet
-            title="Uppercase code identifiers"
-            initialCode={`from app.products
-extend { sku_upper: text::upper(sku) }`}
+            title={getExampleById('text-upper-sku')!.title}
+            initialCode={getExampleById('text-upper-sku')!.code}
           />
         </section>
 

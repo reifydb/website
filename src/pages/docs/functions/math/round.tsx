@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function MathRoundPage() {
   return (
@@ -71,16 +72,14 @@ export function MathRoundPage() {
 
           <h3 className="text-lg font-bold mb-3">Round to 2 decimal places</h3>
           <ExecutableSnippet
-            title="Round to 2 decimal places"
-            initialCode={`from app.prices
-extend { rounded: math::round(price, 2) }`}
+            title={getExampleById('math-round-decimal')!.title}
+            initialCode={getExampleById('math-round-decimal')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Round to nearest integer</h3>
           <ExecutableSnippet
-            title="Round to nearest integer"
-            initialCode={`from app.metrics
-extend { rounded_value: math::round(value) }`}
+            title={getExampleById('math-round-integer')!.title}
+            initialCode={getExampleById('math-round-integer')!.code}
           />
         </section>
 

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock, Callout } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function MathCountPage() {
   return (
@@ -45,34 +46,28 @@ export function MathCountPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - math::count() not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Count by status</h3>
           <ExecutableSnippet
-            title="Count by status"
-            initialCode={`from app.users
-aggregate math::count() by status`}
+            title={getExampleById('math-count-by-status')!.title}
+            initialCode={getExampleById('math-count-by-status')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Count with other aggregations</h3>
           <ExecutableSnippet
-            title="Count with other aggregations"
-            initialCode={`from app.orders
-aggregate {
-  order_count: math::count(),
-  total_revenue: math::sum(total)
-} by region`}
+            title={getExampleById('math-count-with-other')!.title}
+            initialCode={getExampleById('math-count-with-other')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Total count</h3>
           <ExecutableSnippet
-            title="Total count"
-            initialCode={`from app.events
-aggregate { total: math::count() }`}
+            title={getExampleById('math-count-total')!.title}
+            initialCode={getExampleById('math-count-total')!.code}
           />
-        </section>
+        </section> */}
 
         <Callout variant="info">
           This is an aggregation function. Use it with the <code>aggregate</code> transform to compute values across multiple rows.

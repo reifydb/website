@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function DateNowPage() {
   return (
@@ -45,31 +46,28 @@ export function DateNowPage() {
           </p>
         </section>
 
-        {/* Examples */}
-        <section>
+        {/* TODO: Examples commented out - date::now not implemented yet */}
+        {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Find overdue tasks</h3>
           <ExecutableSnippet
-            title="Find overdue tasks"
-            initialCode={`from app.tasks
-filter due_date < date::now()`}
+            title={getExampleById('date-now-overdue')!.title}
+            initialCode={getExampleById('date-now-overdue')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Add created timestamp</h3>
           <ExecutableSnippet
-            title="Add created timestamp"
-            initialCode={`from app.records
-extend { processed_at: date::now() }`}
+            title={getExampleById('date-now-timestamp')!.title}
+            initialCode={getExampleById('date-now-timestamp')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Calculate time elapsed</h3>
           <ExecutableSnippet
-            title="Calculate time elapsed"
-            initialCode={`from app.orders
-extend { days_since: date::diff(date::now(), created_at, unit: "days") }`}
+            title={getExampleById('date-now-elapsed')!.title}
+            initialCode={getExampleById('date-now-elapsed')!.code}
           />
-        </section>
+        </section> */}
 
         {/* Related Functions */}
         <section>
