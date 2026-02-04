@@ -16,7 +16,12 @@ export function DocsNavbar() {
     <>
       <header className="sticky top-0 z-40 w-full bg-bg-primary/80 backdrop-blur-xl border-b border-white/10">
         <div className="flex h-16 sm:h-20 w-full items-center justify-between px-4 sm:px-6 md:px-12">
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-2">
+            <img
+              src="/img/logo.png"
+              alt="ReifyDB"
+              className="h-7 sm:h-8 w-auto"
+            />
             <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-text-primary">
               ReifyDB
             </span>

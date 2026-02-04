@@ -29,8 +29,8 @@ export const navDropdowns: NavDropdown[] = [
         title: 'Learn',
         items: [
           { label: 'Documentation', href: '/docs', description: 'Guides and references' },
-          { label: 'FAQ', href: '/#faq', description: 'Common questions' },
-          { label: 'GitHub', href: 'https://github.com/nicksrandall/reifydb', description: 'Source code' },
+          { label: 'FAQ', href: '/faq', description: 'Common questions' },
+          { label: 'GitHub', href: 'https://github.com/reifydb/reifydb', description: 'Source code' },
         ],
       },
       {

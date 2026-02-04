@@ -3,6 +3,7 @@ import { RootLayout } from '@/components/layout/root-layout';
 import { LandingPage } from '@/pages/landing';
 import { ContactPage } from '@/pages/contact';
 import { SupportPage } from '@/pages/support';
+import { FaqPage } from '@/pages/faq';
 import { DocsGate } from '@/components/docs-gate';
 import {
   DocsOverview,
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
       {
         path: '/support',
         element: <SupportPage />,
+      },
+      {
+        path: '/faq',
+        element: <FaqPage />,
       },
       {
         path: '/docs',
