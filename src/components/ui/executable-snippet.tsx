@@ -5,8 +5,8 @@ import type { editor } from 'monaco-editor';
 import { rqlLanguageDefinition, rqlLanguageConfiguration } from '@/lib/rql-language';
 import { premiumDarkTheme } from '@/lib/monaco-themes';
 import { cn } from '@/lib';
-import { createWasmDB, type WasmDB } from '@/lib/wasm-db';
-import { seedCommand } from '@/lib/seed-data';
+import { type WasmDB } from '@/lib/wasm-db';
+import { getWasmDB, getWasmDBSync } from '@/lib/wasm-db-singleton';
 import { UNDEFINED_VALUE, Value } from '@reifydb/core';
 
 let languageRegistered = false;
@@ -40,8 +40,9 @@ export function ExecutableSnippet({
   description,
   className,
 }: ExecutableSnippetProps) {
-  const [db, setDb] = useState<WasmDB | null>(null);
-  const [dbLoading, setDbLoading] = useState(true);
+  // Initialize with cached instance if already loaded (e.g., from another snippet)
+  const [db, setDb] = useState<WasmDB | null>(() => getWasmDBSync());
+  const [dbLoading, setDbLoading] = useState(false);
   const [dbError, setDbError] = useState<string | null>(null);
   const [code, setCode] = useState(initialCode);
   const [result, setResult] = useState<QueryResult | null>(null);
@@ -54,38 +55,6 @@ export function ExecutableSnippet({
   // Calculate editor height based on line count
   const lineCount = code.split('\n').length;
   const editorHeight = Math.max(lineCount * 20 + 16, 80);
-
-  // Initialize WASM database lazily
-  useEffect(() => {
-    let mounted = true;
-
-    async function initDb() {
-      try {
-        const instance = await createWasmDB();
-        if (mounted) {
-          // Run seed command to populate tables for documentation examples
-          try {
-            instance.command(seedCommand);
-          } catch {
-            // Ignore seed errors silently
-          }
-          setDb(instance);
-          setDbLoading(false);
-        }
-      } catch (err) {
-        if (mounted) {
-          setDbError(err instanceof Error ? err.message : 'Failed to load WASM');
-          setDbLoading(false);
-        }
-      }
-    }
-
-    initDb();
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
 
   // Fullscreen ESC key handler and body scroll lock
   useEffect(() => {
@@ -105,22 +74,31 @@ export function ExecutableSnippet({
   }, [isFullscreen]);
 
   const handleRun = useCallback(async () => {
-    if (!db || dbLoading || isExecuting) return;
-
-    setIsExecuting(true);
+    if (isExecuting || dbLoading) return;
     setResult(null);
 
+    // Initialize WASM on first run
+    let dbInstance = db;
+    if (!dbInstance) {
+      setDbLoading(true);
+      try {
+        dbInstance = await getWasmDB();
+        setDb(dbInstance);
+      } catch (err) {
+        setDbError(err instanceof Error ? err.message : 'Failed to load WASM');
+        setDbLoading(false);
+        return;
+      }
+      setDbLoading(false);
+    }
+
+    // Execute the query
+    setIsExecuting(true);
     try {
-      // Use command() which handles both queries and DDL/DML
-      const res = db.command(code);
-      // Result is a flat array of row objects
-      const data = Array.isArray(res) ? res : [];
-      setResult({ data });
+      const res = dbInstance.command(code);
+      setResult({ data: Array.isArray(res) ? res : [] });
     } catch (err) {
-      setResult({
-        data: [],
-        error: err instanceof Error ? err.message : String(err),
-      });
+      setResult({ data: [], error: err instanceof Error ? err.message : String(err) });
     } finally {
       setIsExecuting(false);
     }
@@ -250,7 +228,11 @@ export function ExecutableSnippet({
       {/* Run Button Bar */}
       <div className="flex items-center justify-between px-4 py-2 border-t border-white/10 bg-bg-elevated shrink-0">
         <span className="text-xs text-text-muted">
-          {dbLoading ? 'Loading WASM...' : 'Ctrl+Enter to run'}
+          {dbLoading
+            ? 'Initializing database...'
+            : db
+              ? 'Ctrl+Enter to run'
+              : 'First run will download the database (~11MB)'}
         </span>
         <button
           onClick={handleRun}
