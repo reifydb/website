@@ -64,7 +64,7 @@ const notExamples = [
 
 export function WhatIsStateSection() {
   return (
-    <section id="what-is-state" className="relative z-10 py-16 sm:py-24 bg-bg-tertiary">
+    <section id="what-is-state" className="py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>

@@ -50,7 +50,7 @@ export function CodeExampleSection() {
   };
 
   return (
-    <section id="code-example" className="py-16 sm:py-24">
+    <section id="code-example" className="relative z-10 py-16 sm:py-24 bg-bg-secondary">
       <div className="mx-auto max-w-4xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>

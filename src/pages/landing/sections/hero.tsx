@@ -27,7 +27,7 @@ export function HeroSection() {
 
           {/* Tagline - staggered */}
           <p className="max-w-3xl mx-auto text-lg sm:text-xl text-text-secondary mb-8 leading-relaxed opacity-0 animate-slide-up delay-200">
-            Transactional guarantees, incremental derived state, and programmable state transitions, all in one engine.
+            A database designed for reasoning about state - not just persisting it. Transactional, incremental, and programmable.
           </p>
 
           {/* Terminal - staggered */}
@@ -37,7 +37,7 @@ export function HeroSection() {
 
           {/* Problem Statement */}
           <p className="text-base sm:text-lg text-text-muted mb-10 font-medium opacity-0 animate-slide-up" style={{ animationDelay: '400ms' }}>
-            Modern apps scatter state across databases, caches, and queues. ReifyDB unifies it.
+            Traditional databases treat state as a storage problem. ReifyDB treats it as a reasoning problem.
           </p>
 
           {/* Feature Pills - each pill with stagger */}

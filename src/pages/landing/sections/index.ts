@@ -1,4 +1,5 @@
 export { HeroSection } from './hero'
+export { FoundationSection } from './foundation'
 export { WhatIsStateSection } from './what-is-state'
 export { PhilosophySection } from './philosophy'
 export { UseCasesSection } from './use-cases'

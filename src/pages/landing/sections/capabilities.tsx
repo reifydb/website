@@ -63,7 +63,7 @@ const capabilities = [
 
 export function CapabilitiesSection() {
   return (
-    <section id="capabilities" className="py-16 sm:py-24">
+    <section id="capabilities" className="relative z-10 py-16 sm:py-24 bg-bg-tertiary">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>

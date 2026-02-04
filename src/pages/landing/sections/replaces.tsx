@@ -34,7 +34,7 @@ const replacements = [
 
 export function ReplacesSection() {
   return (
-    <section id="replaces" className="relative z-10 py-16 sm:py-24 bg-bg-secondary">
+    <section id="replaces" className="py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>

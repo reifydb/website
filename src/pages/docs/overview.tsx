@@ -41,9 +41,13 @@ export function DocsOverview() {
             <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
               ReifyDB Documentation
             </h1>
+            <p className="text-base text-text-muted mb-3 italic">
+              Built on the premise that databases should optimize for reasoning about state,
+              not just storing it.
+            </p>
             <p className="text-lg text-text-secondary leading-relaxed">
               ReifyDB is a database for live application state. It provides transactional guarantees,
-              incremental derived state, and programmable state transitions, all in one engine.
+              incremental derived state, and programmable state transitions - all in one coherent model.
             </p>
           </div>
         </ScrollReveal>

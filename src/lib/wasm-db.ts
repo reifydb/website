@@ -1,4 +1,4 @@
-import { decode } from '@reifydb/core';
+import { decode, type TypeValuePair } from '@reifydb/core';
 import type { WasmDB as RawWasmDB } from './wasm/reifydb_webassembly';
 
 function transformToValueInstances(result: unknown): unknown {
@@ -10,7 +10,7 @@ function transformToValueInstances(result: unknown): unknown {
   // Check if it's a TypeValuePair
   const obj = result as Record<string, unknown>;
   if ('type' in obj && 'value' in obj && Object.keys(obj).length === 2) {
-    return decode(obj as { type: string; value: string });
+    return decode(obj as unknown as TypeValuePair);
   }
   // Transform object properties
   const transformed: Record<string, unknown> = {};
@@ -26,7 +26,11 @@ export async function createWasmDB(): Promise<WasmDB> {
 }
 
 export class WasmDB {
-  constructor(private db: RawWasmDB) {}
+  private db: RawWasmDB;
+
+  constructor(db: RawWasmDB) {
+    this.db = db;
+  }
 
   command(rql: string): unknown {
     return transformToValueInstances(this.db.command(rql));
