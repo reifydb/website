@@ -11,7 +11,7 @@ export function Layout({ children }: DocsLayoutProps) {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative z-10">
       <DocsNavbar />
       <div className="flex flex-1">
         <DocsSidebar sections={navSections} currentPath={location.pathname} />

@@ -38,7 +38,20 @@ export const navDropdowns: NavDropdown[] = [
         items: [
           { label: 'Contact', href: '/contact', description: 'Get in touch' },
           { label: 'Support', href: '/support', description: 'Technical help' },
-          { label: 'Book a Call', href: '/contact', description: 'Schedule a demo' },
+          { label: 'Book a Call', href: 'https://cal.com/reifydb/30min', description: 'Schedule a demo' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'company',
+    label: 'Company',
+    columns: [
+      {
+        title: 'About',
+        items: [
+          { label: 'Values', href: '/company/values', description: 'What we stand for' },
+          { label: 'Mission', href: '/company/mission', description: 'Why we exist' },
         ],
       },
     ],

@@ -48,14 +48,20 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
             : "opacity-0 -translate-y-2 pointer-events-none"
         )}
       >
-        <div className="bg-bg-secondary border border-white/10 rounded-xl shadow-2xl shadow-black/20 overflow-hidden min-w-[400px]">
-          <div className="grid grid-cols-2 gap-0">
+        <div className={cn(
+          "bg-bg-secondary border border-white/10 rounded-xl shadow-2xl shadow-black/20 overflow-hidden",
+          dropdown.columns.length === 1 ? "min-w-[200px]" : "min-w-[400px]"
+        )}>
+          <div className={cn(
+            "grid gap-0",
+            dropdown.columns.length === 1 ? "grid-cols-1" : "grid-cols-2"
+          )}>
             {dropdown.columns.map((column, colIndex) => (
               <div
                 key={column.title}
                 className={cn(
                   "p-4",
-                  colIndex === 0 && "border-r border-white/10"
+                  dropdown.columns.length > 1 && colIndex < dropdown.columns.length - 1 && "border-r border-white/10"
                 )}
               >
                 <h3 className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-3 px-3">

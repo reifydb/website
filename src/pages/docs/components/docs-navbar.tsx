@@ -14,7 +14,7 @@ export function DocsNavbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-bg-primary/80 backdrop-blur-xl border-b border-white/10">
+      <header className="sticky top-0 z-40 w-full bg-bg-primary border-b border-white/10">
         <div className="flex h-16 sm:h-20 w-full items-center justify-between px-4 sm:px-6 md:px-12">
           <Link to="/" className="flex items-center gap-2">
             <img

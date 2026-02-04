@@ -2,13 +2,13 @@ import { Github } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-bg-secondary border-t border-white/10 py-12 sm:py-16 text-text-primary">
+    <footer className="relative z-10 bg-bg-secondary border-t border-white/10 py-12 sm:py-16 text-text-primary">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 md:grid-cols-3 md:gap-12 text-sm">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <img src="/img/logo.png" alt="ReifyDB Logo" className="h-8 w-8 sm:h-10 sm:w-10"/>
+              <img src="/img/logo.png" alt="ReifyDB Logo" className="h-8 sm:h-10 w-auto"/>
               <span className="font-display font-black text-xl sm:text-2xl tracking-tight">ReifyDB</span>
             </div>
             <p className="font-medium leading-relaxed text-text-muted">

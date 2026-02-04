@@ -4,6 +4,8 @@ import { LandingPage } from '@/pages/landing';
 import { ContactPage } from '@/pages/contact';
 import { SupportPage } from '@/pages/support';
 import { FaqPage } from '@/pages/faq';
+import { ValuesPage } from '@/pages/company/values';
+import { MissionPage } from '@/pages/company/mission';
 import { DocsGate } from '@/components/docs-gate';
 import {
   DocsOverview,
@@ -69,6 +71,14 @@ export const router = createBrowserRouter([
       {
         path: '/faq',
         element: <FaqPage />,
+      },
+      {
+        path: '/company/values',
+        element: <ValuesPage />,
+      },
+      {
+        path: '/company/mission',
+        element: <MissionPage />,
       },
       {
         path: '/docs',
