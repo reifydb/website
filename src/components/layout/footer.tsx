@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="bg-bg-secondary border-t border-white/10 py-12 sm:py-16 text-text-primary">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 md:grid-cols-4 md:gap-12 text-sm">
+        <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 md:grid-cols-3 md:gap-12 text-sm">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -14,39 +14,6 @@ export function Footer() {
             <p className="font-medium leading-relaxed text-text-muted">
               Application State Database with transactional guarantees and incremental derived state.
             </p>
-          </div>
-
-          {/* Product */}
-          <div>
-            <div className="font-display font-bold text-base mb-4 text-text-primary">
-              Product
-            </div>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="/#use-cases"
-                  className="text-text-muted hover:text-primary transition-colors link-underline"
-                >
-                  Use Cases
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#capabilities"
-                  className="text-text-muted hover:text-primary transition-colors link-underline"
-                >
-                  Capabilities
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#faq"
-                  className="text-text-muted hover:text-primary transition-colors link-underline"
-                >
-                  FAQ
-                </a>
-              </li>
-            </ul>
           </div>
 
           {/* Resources */}

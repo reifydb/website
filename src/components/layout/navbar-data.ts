@@ -22,50 +22,6 @@ export interface NavDirectLink {
 
 export const navDropdowns: NavDropdown[] = [
   {
-    id: 'product',
-    label: 'Product',
-    columns: [
-      {
-        title: 'Overview',
-        items: [
-          { label: 'What is ReifyDB', href: '/#what-is-reifydb', description: 'Introduction to our platform' },
-          { label: 'How It Works', href: '/#how-it-works', description: 'Architecture and flow' },
-          { label: 'Philosophy', href: '/#philosophy', description: 'Our design principles' },
-        ],
-      },
-      {
-        title: 'Technology',
-        items: [
-          { label: 'RQL Engine', href: '/#rql', description: 'Relational Query Language' },
-          { label: 'Real-time Sync', href: '/#capabilities', description: 'Live data updates' },
-          { label: 'Unified Data Layer', href: '/#unified', description: 'One source of truth' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'solutions',
-    label: 'Solutions',
-    columns: [
-      {
-        title: 'Use Cases',
-        items: [
-          { label: 'Analytics', href: '/#use-cases', description: 'Real-time analytics pipelines' },
-          { label: 'Real-time Apps', href: '/#use-cases', description: 'Live collaborative apps' },
-          { label: 'OLTP/OLAP', href: '/#use-cases', description: 'Hybrid workloads' },
-        ],
-      },
-      {
-        title: 'Replaces',
-        items: [
-          { label: 'SQL Databases', href: '/#replaces', description: 'PostgreSQL, MySQL, etc.' },
-          { label: 'NoSQL', href: '/#replaces', description: 'MongoDB, DynamoDB, etc.' },
-          { label: 'Data Warehouses', href: '/#replaces', description: 'Snowflake, BigQuery, etc.' },
-        ],
-      },
-    ],
-  },
-  {
     id: 'resources',
     label: 'Resources',
     columns: [
