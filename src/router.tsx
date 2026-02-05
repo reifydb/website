@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import { RootLayout } from '@/components/layout/root-layout';
 import { LandingPage } from '@/pages/landing';
 import { ContactPage } from '@/pages/contact';
@@ -7,6 +7,7 @@ import { FaqPage } from '@/pages/faq';
 import { ValuesPage } from '@/pages/company/values';
 import { MissionPage } from '@/pages/company/mission';
 import { DocsGate } from '@/components/docs-gate';
+import { NotFoundPage } from '@/pages/not-found';
 import {
   DocsOverview,
   InstallationPage,
@@ -241,7 +242,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '*',
-        element: <Navigate to="/" replace />,
+        element: <NotFoundPage />,
       },
     ],
   },
