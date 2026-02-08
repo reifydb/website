@@ -12,7 +12,7 @@ export function MissionPage() {
           <ScrollReveal>
             <div className="text-center mb-12 sm:mb-16">
               <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">
-                Our Mission
+                The Mission
               </h1>
               <p className="max-w-2xl mx-auto text-text-secondary text-lg">
                 Why?
