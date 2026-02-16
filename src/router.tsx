@@ -7,6 +7,7 @@ import { FaqPage } from '@/pages/faq';
 import { ValuesPage } from '@/pages/company/values';
 import { MissionPage } from '@/pages/company/mission';
 import { DocsGate } from '@/components/docs-gate';
+import { BlogListingPage, BlogPostPage } from '@/pages/blog';
 import { NotFoundPage } from '@/pages/not-found';
 import {
   DocsOverview,
@@ -239,6 +240,14 @@ export const router = createBrowserRouter([
       {
         path: '/docs/functions/text/substring',
         element: <DocsGate><TextSubstringPage /></DocsGate>,
+      },
+      {
+        path: '/blog',
+        element: <BlogListingPage />,
+      },
+      {
+        path: '/blog/:slug',
+        element: <BlogPostPage />,
       },
       {
         path: '*',
