@@ -24,7 +24,7 @@ export interface VerificationResult {
  */
 export async function createTestDB(): Promise<WasmDB> {
   const db = await createWasmDB();
-  db.command(seedCommand);
+  db.admin(seedCommand);
   return db;
 }
 

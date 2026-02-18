@@ -31,30 +31,30 @@ export function DateDiffPage() {
         {/* Parameters */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border-2 border-border-default">
+          <div className="border-2 border-border-default overflow-x-auto">
             <table className="w-full">
               <thead className="bg-bg-tertiary">
                 <tr>
-                  <th className="text-left p-3 font-bold">Name</th>
-                  <th className="text-left p-3 font-bold">Type</th>
-                  <th className="text-left p-3 font-bold">Description</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Name</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Type</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date1</code></td>
-                  <td className="p-3">Date/Timestamp</td>
-                  <td className="p-3">The first (later) date</td>
+                  <td className="p-2 sm:p-3"><code>date1</code></td>
+                  <td className="p-2 sm:p-3">Date/Timestamp</td>
+                  <td className="p-2 sm:p-3">The first (later) date</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date2</code></td>
-                  <td className="p-3">Date/Timestamp</td>
-                  <td className="p-3">The second (earlier) date</td>
+                  <td className="p-2 sm:p-3"><code>date2</code></td>
+                  <td className="p-2 sm:p-3">Date/Timestamp</td>
+                  <td className="p-2 sm:p-3">The second (earlier) date</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>unit</code></td>
-                  <td className="p-3">String</td>
-                  <td className="p-3">The unit of time to return (e.g., "days", "hours")</td>
+                  <td className="p-2 sm:p-3"><code>unit</code></td>
+                  <td className="p-2 sm:p-3">String</td>
+                  <td className="p-2 sm:p-3">The unit of time to return (e.g., "days", "hours")</td>
                 </tr>
               </tbody>
             </table>

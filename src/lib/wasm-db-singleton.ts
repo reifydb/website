@@ -10,17 +10,13 @@ export async function getWasmDB(): Promise<WasmDB> {
 
   dbPromise = (async () => {
     const instance = await createWasmDB();
-    try { instance.command(seedCommand); } catch {}
+    instance.admin(seedCommand);
     dbInstance = instance;
     dbPromise = null;
     return instance;
   })();
 
   return dbPromise;
-}
-
-export function isWasmDBReady(): boolean {
-  return dbInstance !== null;
 }
 
 // Sync getter for when we know it's ready

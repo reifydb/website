@@ -2,6 +2,8 @@
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
 export const __wbg_wasmdb_free: (a: number, b: number) => void;
+export const wasmdb_admin: (a: number, b: number, c: number) => [number, number, number];
+export const wasmdb_adminWithParams: (a: number, b: number, c: number, d: any) => [number, number, number];
 export const wasmdb_command: (a: number, b: number, c: number) => [number, number, number];
 export const wasmdb_commandWithParams: (a: number, b: number, c: number, d: any) => [number, number, number];
 export const wasmdb_new: () => [number, number, number];
@@ -9,18 +11,6 @@ export const wasmdb_query: (a: number, b: number, c: number) => [number, number,
 export const wasmdb_queryWithParams: (a: number, b: number, c: number, d: any) => [number, number, number];
 export const __wbg_jserror_free: (a: number, b: number) => void;
 export const jserror_message: (a: number) => [number, number];
-export const test_alloc: (a: number) => number;
-export const test_free: (a: number, b: number) => void;
-export const test_log_message: (a: bigint, b: number, c: number, d: number) => void;
-export const test_realloc: (a: number, b: number, c: number) => number;
-export const test_state_clear: (a: bigint, b: number) => number;
-export const test_state_get: (a: bigint, b: number, c: number, d: number, e: number) => number;
-export const test_state_iterator_free: (a: number) => void;
-export const test_state_iterator_next: (a: number, b: number, c: number) => number;
-export const test_state_prefix: (a: bigint, b: number, c: number, d: number, e: number) => number;
-export const test_state_range: (a: bigint, b: number, c: number, d: number, e: number, f: number, g: number, h: number, i: number) => number;
-export const test_state_remove: (a: bigint, b: number, c: number, d: number) => number;
-export const test_state_set: (a: bigint, b: number, c: number, d: number, e: number, f: number) => number;
 export const wasm_bindgen__closure__destroy__hc292d355262a9450: (a: number, b: number) => void;
 export const wasm_bindgen__convert__closures_____invoke__h7187ad73b4efaec3: (a: number, b: number) => void;
 export const __wbindgen_malloc: (a: number, b: number) => number;

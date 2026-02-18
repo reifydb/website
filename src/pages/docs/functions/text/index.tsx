@@ -104,34 +104,34 @@ filter text::length(full_name) > 0`}
             <table className="w-full">
               <thead className="bg-bg-tertiary">
                 <tr>
-                  <th className="text-left p-3 font-bold">Function</th>
-                  <th className="text-left p-3 font-bold">Description</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Function</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>text::lower</code></td>
-                  <td className="p-3">Convert a string to lowercase</td>
+                  <td className="p-2 sm:p-3"><code>text::lower</code></td>
+                  <td className="p-2 sm:p-3">Convert a string to lowercase</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>text::upper</code></td>
-                  <td className="p-3">Convert a string to uppercase</td>
+                  <td className="p-2 sm:p-3"><code>text::upper</code></td>
+                  <td className="p-2 sm:p-3">Convert a string to uppercase</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>text::trim</code></td>
-                  <td className="p-3">Remove leading and trailing whitespace</td>
+                  <td className="p-2 sm:p-3"><code>text::trim</code></td>
+                  <td className="p-2 sm:p-3">Remove leading and trailing whitespace</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>text::length</code></td>
-                  <td className="p-3">Get the length of a string</td>
+                  <td className="p-2 sm:p-3"><code>text::length</code></td>
+                  <td className="p-2 sm:p-3">Get the length of a string</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>text::concat</code></td>
-                  <td className="p-3">Concatenate multiple strings together</td>
+                  <td className="p-2 sm:p-3"><code>text::concat</code></td>
+                  <td className="p-2 sm:p-3">Concatenate multiple strings together</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>text::substring</code></td>
-                  <td className="p-3">Extract a portion of a string</td>
+                  <td className="p-2 sm:p-3"><code>text::substring</code></td>
+                  <td className="p-2 sm:p-3">Extract a portion of a string</td>
                 </tr>
               </tbody>
             </table>

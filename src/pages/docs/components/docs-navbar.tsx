@@ -1,10 +1,31 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useCallback } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { cn } from '@/lib';
 import { Button } from '@/components/ui';
+import { navSections } from '../data/navigation';
+import { AccordionItem, findAllAncestors } from './docs-sidebar';
 
 export function DocsNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const [openItems, setOpenItems] = useState<Set<string>>(() => {
+    return findAllAncestors(navSections, currentPath);
+  });
+
+  const toggleItem = useCallback((id: string) => {
+    setOpenItems(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  }, []);
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -74,9 +95,9 @@ export function DocsNavbar() {
           />
 
           {/* Menu Panel */}
-          <div className="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-bg-secondary border-l border-white/10">
+          <div className="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-bg-secondary border-l border-white/10 flex flex-col">
             {/* Close Button */}
-            <div className="flex justify-end p-6 border-b border-white/10">
+            <div className="flex justify-end p-6 border-b border-white/10 shrink-0">
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-lg bg-bg-tertiary hover:bg-bg-elevated group transition-colors"
@@ -86,8 +107,47 @@ export function DocsNavbar() {
               </button>
             </div>
 
-            {/* Navigation Links */}
-            <nav className="flex flex-col p-6 gap-2">
+            {/* Docs Navigation */}
+            <nav className="flex-1 overflow-y-auto p-4 sidebar-no-scrollbar">
+              {navSections.map((section) => {
+                const sectionId = `section-${section.title}`;
+                const isSectionOpen = openItems.has(sectionId);
+
+                return (
+                  <div key={section.title} className="mb-4">
+                    <button
+                      onClick={() => toggleItem(sectionId)}
+                      className="w-full flex items-center text-xs font-semibold text-text-muted uppercase tracking-wider mb-2 px-3 py-1 hover:text-primary transition-colors"
+                    >
+                      {section.title}
+                    </button>
+                    <div
+                      className={cn(
+                        'overflow-hidden transition-all duration-200',
+                        isSectionOpen ? 'max-h-[2000px]' : 'max-h-0'
+                      )}
+                    >
+                      <ul className="space-y-0.5 border-l border-white/10 ml-3">
+                        {section.items.map((item) => (
+                          <AccordionItem
+                            key={item.id}
+                            item={item}
+                            currentPath={currentPath}
+                            depth={0}
+                            openItems={openItems}
+                            onToggle={toggleItem}
+                            onNavigate={() => setMobileMenuOpen(false)}
+                          />
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })}
+            </nav>
+
+            {/* Site-wide Links */}
+            <nav className="p-6 border-t border-white/10 flex flex-col gap-2 shrink-0">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}

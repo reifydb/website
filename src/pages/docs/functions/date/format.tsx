@@ -31,25 +31,25 @@ export function DateFormatPage() {
         {/* Parameters */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border-2 border-border-default">
+          <div className="border-2 border-border-default overflow-x-auto">
             <table className="w-full">
               <thead className="bg-bg-tertiary">
                 <tr>
-                  <th className="text-left p-3 font-bold">Name</th>
-                  <th className="text-left p-3 font-bold">Type</th>
-                  <th className="text-left p-3 font-bold">Description</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Name</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Type</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date_value</code></td>
-                  <td className="p-3">Date/Timestamp</td>
-                  <td className="p-3">The date to format</td>
+                  <td className="p-2 sm:p-3"><code>date_value</code></td>
+                  <td className="p-2 sm:p-3">Date/Timestamp</td>
+                  <td className="p-2 sm:p-3">The date to format</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>format_string</code></td>
-                  <td className="p-3">String</td>
-                  <td className="p-3">Format string using strftime syntax (e.g., "%Y-%m-%d")</td>
+                  <td className="p-2 sm:p-3"><code>format_string</code></td>
+                  <td className="p-2 sm:p-3">String</td>
+                  <td className="p-2 sm:p-3">Format string using strftime syntax (e.g., "%Y-%m-%d")</td>
                 </tr>
               </tbody>
             </table>

@@ -85,7 +85,7 @@ export function ExecutableSnippet({
         dbInstance = await getWasmDB();
         setDb(dbInstance);
       } catch (err) {
-        setDbError(err instanceof Error ? err.message : 'Failed to load WASM');
+        setDbError(err instanceof Error ? err.message : String(err));
         setDbLoading(false);
         return;
       }
@@ -95,7 +95,7 @@ export function ExecutableSnippet({
     // Execute the query
     setIsExecuting(true);
     try {
-      const res = dbInstance.command(code);
+      const res = dbInstance.admin(code);
       setResult({ data: Array.isArray(res) ? res : [] });
     } catch (err) {
       setResult({ data: [], error: err instanceof Error ? err.message : String(err) });
@@ -161,21 +161,21 @@ export function ExecutableSnippet({
         <div className="flex items-center gap-1">
           <button
             onClick={() => setIsFullscreen(!isFullscreen)}
-            className="p-1.5 text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
             title={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
           >
             {isFullscreen ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
           </button>
           <button
             onClick={handleCopy}
-            className="p-1.5 text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
             title="Copy code"
           >
             {copied ? <Check size={14} /> : <Copy size={14} />}
           </button>
           <button
             onClick={handleReset}
-            className="p-1.5 text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
             title="Reset code"
           >
             <RotateCcw size={14} />
@@ -226,12 +226,15 @@ export function ExecutableSnippet({
       </div>
 
       {/* Run Button Bar */}
-      <div className="flex items-center justify-between px-4 py-2 border-t border-white/10 bg-bg-elevated shrink-0">
+      <div className="flex items-center justify-between px-3 sm:px-4 py-2 border-t border-white/10 bg-bg-elevated shrink-0">
         <span className="text-xs text-text-muted">
           {dbLoading
             ? 'Initializing database...'
             : db
-              ? 'Ctrl+Enter to run'
+              ? <>
+                  <span className="hidden sm:inline">Ctrl+Enter to run</span>
+                  <span className="sm:hidden">Tap Run to execute</span>
+                </>
               : 'First run will download the database (~11MB)'}
         </span>
         <button
@@ -273,14 +276,14 @@ export function ExecutableSnippet({
 
           {/* Results Table */}
           {result?.data && result.data.length > 0 && !result.error && (
-            <div className="p-4 overflow-x-auto">
+            <div className="p-2 sm:p-4 overflow-x-auto">
               <table className="w-full text-sm font-mono">
                 <thead>
                   <tr className="border-b border-white/10">
                     {columns.map((col) => (
                       <th
                         key={col}
-                        className="text-left py-2 px-3 text-xs font-semibold uppercase tracking-wider text-text-secondary bg-bg-elevated"
+                        className="text-left py-2 px-2 sm:px-3 text-xs font-semibold uppercase tracking-wider text-text-secondary bg-bg-elevated"
                       >
                         {col}
                       </th>
@@ -294,7 +297,7 @@ export function ExecutableSnippet({
                       className="border-b border-white/5 last:border-b-0 hover:bg-white/5"
                     >
                       {columns.map((col) => (
-                        <td key={col} className="py-2 px-3 text-text-primary">
+                        <td key={col} className="py-2 px-2 sm:px-3 text-text-primary">
                           {formatValue(row[col])}
                         </td>
                       ))}
@@ -319,7 +322,7 @@ export function ExecutableSnippet({
   if (isFullscreen) {
     return (
       <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm">
-        <div className="fixed inset-4 bg-bg-secondary border border-white/10 rounded-xl flex flex-col overflow-hidden">
+        <div className="fixed inset-0 sm:inset-4 bg-bg-secondary sm:border sm:border-white/10 sm:rounded-xl flex flex-col overflow-hidden">
           {content}
         </div>
       </div>

@@ -16,7 +16,7 @@ export function Layout({ children }: DocsLayoutProps) {
       <div className="flex flex-1">
         <DocsSidebar sections={navSections} currentPath={location.pathname} />
         <main className="flex-1 bg-bg-primary">
-          <div className="max-w-4xl mx-auto px-6 py-8 md:px-8 lg:pl-12">
+          <div className="max-w-4xl mx-auto pl-4 pr-4 sm:px-6 py-6 sm:py-8 md:px-8 lg:pl-12">
             {children}
           </div>
         </main>

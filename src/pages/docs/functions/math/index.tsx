@@ -156,61 +156,61 @@ aggregate {
             <table className="w-full">
               <thead className="bg-bg-tertiary">
                 <tr>
-                  <th className="text-left p-3 font-bold">Function</th>
-                  <th className="text-left p-3 font-bold">Type</th>
-                  <th className="text-left p-3 font-bold">Description</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Function</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Type</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>math::sum</code></td>
-                  <td className="p-3">Aggregation</td>
-                  <td className="p-3">Calculate the sum of numeric values</td>
+                  <td className="p-2 sm:p-3"><code>math::sum</code></td>
+                  <td className="p-2 sm:p-3">Aggregation</td>
+                  <td className="p-2 sm:p-3">Calculate the sum of numeric values</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>math::avg</code></td>
-                  <td className="p-3">Aggregation</td>
-                  <td className="p-3">Calculate the average of numeric values</td>
+                  <td className="p-2 sm:p-3"><code>math::avg</code></td>
+                  <td className="p-2 sm:p-3">Aggregation</td>
+                  <td className="p-2 sm:p-3">Calculate the average of numeric values</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>math::min</code></td>
-                  <td className="p-3">Aggregation</td>
-                  <td className="p-3">Find the minimum value</td>
+                  <td className="p-2 sm:p-3"><code>math::min</code></td>
+                  <td className="p-2 sm:p-3">Aggregation</td>
+                  <td className="p-2 sm:p-3">Find the minimum value</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>math::max</code></td>
-                  <td className="p-3">Aggregation</td>
-                  <td className="p-3">Find the maximum value</td>
+                  <td className="p-2 sm:p-3"><code>math::max</code></td>
+                  <td className="p-2 sm:p-3">Aggregation</td>
+                  <td className="p-2 sm:p-3">Find the maximum value</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>math::count</code></td>
-                  <td className="p-3">Aggregation</td>
-                  <td className="p-3">Count the number of rows</td>
+                  <td className="p-2 sm:p-3"><code>math::count</code></td>
+                  <td className="p-2 sm:p-3">Aggregation</td>
+                  <td className="p-2 sm:p-3">Count the number of rows</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>math::abs</code></td>
-                  <td className="p-3">Scalar</td>
-                  <td className="p-3">Get the absolute value of a number</td>
+                  <td className="p-2 sm:p-3"><code>math::abs</code></td>
+                  <td className="p-2 sm:p-3">Scalar</td>
+                  <td className="p-2 sm:p-3">Get the absolute value of a number</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>math::round</code></td>
-                  <td className="p-3">Scalar</td>
-                  <td className="p-3">Round to the nearest integer or decimal place</td>
+                  <td className="p-2 sm:p-3"><code>math::round</code></td>
+                  <td className="p-2 sm:p-3">Scalar</td>
+                  <td className="p-2 sm:p-3">Round to the nearest integer or decimal place</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>math::floor</code></td>
-                  <td className="p-3">Scalar</td>
-                  <td className="p-3">Round down to the nearest integer</td>
+                  <td className="p-2 sm:p-3"><code>math::floor</code></td>
+                  <td className="p-2 sm:p-3">Scalar</td>
+                  <td className="p-2 sm:p-3">Round down to the nearest integer</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>math::ceil</code></td>
-                  <td className="p-3">Scalar</td>
-                  <td className="p-3">Round up to the nearest integer</td>
+                  <td className="p-2 sm:p-3"><code>math::ceil</code></td>
+                  <td className="p-2 sm:p-3">Scalar</td>
+                  <td className="p-2 sm:p-3">Round up to the nearest integer</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>math::power</code></td>
-                  <td className="p-3">Scalar</td>
-                  <td className="p-3">Raise a number to a power</td>
+                  <td className="p-2 sm:p-3"><code>math::power</code></td>
+                  <td className="p-2 sm:p-3">Scalar</td>
+                  <td className="p-2 sm:p-3">Raise a number to a power</td>
                 </tr>
               </tbody>
             </table>

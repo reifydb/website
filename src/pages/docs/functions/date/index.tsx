@@ -165,61 +165,61 @@ extend {
             <table className="w-full">
               <thead className="bg-bg-tertiary">
                 <tr>
-                  <th className="text-left p-3 font-bold">Function</th>
-                  <th className="text-left p-3 font-bold">Category</th>
-                  <th className="text-left p-3 font-bold">Description</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Function</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Category</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date::year</code></td>
-                  <td className="p-3">Extraction</td>
-                  <td className="p-3">Extract the year from a date</td>
+                  <td className="p-2 sm:p-3"><code>date::year</code></td>
+                  <td className="p-2 sm:p-3">Extraction</td>
+                  <td className="p-2 sm:p-3">Extract the year from a date</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date::month</code></td>
-                  <td className="p-3">Extraction</td>
-                  <td className="p-3">Extract the month (1-12) from a date</td>
+                  <td className="p-2 sm:p-3"><code>date::month</code></td>
+                  <td className="p-2 sm:p-3">Extraction</td>
+                  <td className="p-2 sm:p-3">Extract the month (1-12) from a date</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date::day</code></td>
-                  <td className="p-3">Extraction</td>
-                  <td className="p-3">Extract the day of the month from a date</td>
+                  <td className="p-2 sm:p-3"><code>date::day</code></td>
+                  <td className="p-2 sm:p-3">Extraction</td>
+                  <td className="p-2 sm:p-3">Extract the day of the month from a date</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date::hour</code></td>
-                  <td className="p-3">Extraction</td>
-                  <td className="p-3">Extract the hour from a timestamp</td>
+                  <td className="p-2 sm:p-3"><code>date::hour</code></td>
+                  <td className="p-2 sm:p-3">Extraction</td>
+                  <td className="p-2 sm:p-3">Extract the hour from a timestamp</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date::minute</code></td>
-                  <td className="p-3">Extraction</td>
-                  <td className="p-3">Extract the minute from a timestamp</td>
+                  <td className="p-2 sm:p-3"><code>date::minute</code></td>
+                  <td className="p-2 sm:p-3">Extraction</td>
+                  <td className="p-2 sm:p-3">Extract the minute from a timestamp</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date::second</code></td>
-                  <td className="p-3">Extraction</td>
-                  <td className="p-3">Extract the second from a timestamp</td>
+                  <td className="p-2 sm:p-3"><code>date::second</code></td>
+                  <td className="p-2 sm:p-3">Extraction</td>
+                  <td className="p-2 sm:p-3">Extract the second from a timestamp</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date::now</code></td>
-                  <td className="p-3">Manipulation</td>
-                  <td className="p-3">Get the current timestamp</td>
+                  <td className="p-2 sm:p-3"><code>date::now</code></td>
+                  <td className="p-2 sm:p-3">Manipulation</td>
+                  <td className="p-2 sm:p-3">Get the current timestamp</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date::add</code></td>
-                  <td className="p-3">Manipulation</td>
-                  <td className="p-3">Add time to a date</td>
+                  <td className="p-2 sm:p-3"><code>date::add</code></td>
+                  <td className="p-2 sm:p-3">Manipulation</td>
+                  <td className="p-2 sm:p-3">Add time to a date</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date::diff</code></td>
-                  <td className="p-3">Manipulation</td>
-                  <td className="p-3">Calculate the difference between two dates</td>
+                  <td className="p-2 sm:p-3"><code>date::diff</code></td>
+                  <td className="p-2 sm:p-3">Manipulation</td>
+                  <td className="p-2 sm:p-3">Calculate the difference between two dates</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-3"><code>date::format</code></td>
-                  <td className="p-3">Formatting</td>
-                  <td className="p-3">Format a date as a string</td>
+                  <td className="p-2 sm:p-3"><code>date::format</code></td>
+                  <td className="p-2 sm:p-3">Formatting</td>
+                  <td className="p-2 sm:p-3">Format a date as a string</td>
                 </tr>
               </tbody>
             </table>

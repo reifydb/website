@@ -21,8 +21,9 @@ function transformToValueInstances(result: unknown): unknown {
 }
 
 export async function createWasmDB(): Promise<WasmDB> {
-  const { WasmDB: RawDB } = await import('./wasm/reifydb_webassembly');
-  return new WasmDB(new RawDB());
+  const mod = await import('./wasm/reifydb_webassembly');
+  await mod.default();
+  return new WasmDB(new mod.WasmDB());
 }
 
 export class WasmDB {
@@ -34,6 +35,10 @@ export class WasmDB {
 
   command(rql: string): unknown {
     return transformToValueInstances(this.db.command(rql));
+  }
+
+  admin(rql: string): unknown {
+    return transformToValueInstances(this.db.admin(rql));
   }
 
   query(rql: string): unknown {

@@ -1,6 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib';
 import type { NavSection, NavItem } from '../data/navigation';
 
@@ -10,7 +9,7 @@ interface DocsSidebarProps {
 }
 
 // Find all ancestor item IDs for a given path
-function findAncestorIds(items: NavItem[], targetPath: string, ancestors: string[] = []): string[] | null {
+export function findAncestorIds(items: NavItem[], targetPath: string, ancestors: string[] = []): string[] | null {
   for (const item of items) {
     if (item.href === targetPath) {
       return ancestors;
@@ -24,7 +23,7 @@ function findAncestorIds(items: NavItem[], targetPath: string, ancestors: string
 }
 
 // Find all ancestor IDs across all sections
-function findAllAncestors(sections: NavSection[], targetPath: string): Set<string> {
+export function findAllAncestors(sections: NavSection[], targetPath: string): Set<string> {
   const result = new Set<string>();
   for (const section of sections) {
     // Add section title as an ID so sections auto-expand too
@@ -40,7 +39,7 @@ function findAllAncestors(sections: NavSection[], targetPath: string): Set<strin
 // Persist open items across component remounts
 let persistedOpenItems: Set<string> | null = null;
 
-interface AccordionItemProps {
+export interface AccordionItemProps {
   item: NavItem;
   currentPath: string;
   depth: number;
@@ -49,7 +48,7 @@ interface AccordionItemProps {
   onNavigate: () => void;
 }
 
-function AccordionItem({ item, currentPath, depth, openItems, onToggle, onNavigate }: AccordionItemProps) {
+export function AccordionItem({ item, currentPath, depth, openItems, onToggle, onNavigate }: AccordionItemProps) {
   const hasChildren = item.children && item.children.length > 0;
   const isOpen = openItems.has(item.id);
   const isActive = item.href === currentPath;
@@ -116,7 +115,6 @@ function AccordionItem({ item, currentPath, depth, openItems, onToggle, onNaviga
 
 export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
   const navigate = useNavigate();
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [openItems, setOpenItems] = useState<Set<string>>(() => {
     // Use persisted state if available, otherwise expand ancestors of current page
     if (persistedOpenItems) {
@@ -150,8 +148,8 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
     }
   };
 
-  const sidebarContent = (
-    <>
+  return (
+    <aside className="hidden lg:flex w-72 border-r border-white/10 bg-bg-secondary flex-col">
       {/* Navigation */}
       <nav className="flex-1 p-4 pt-6 overflow-y-auto sidebar-no-scrollbar">
         {sections.map((section) => {
@@ -181,7 +179,7 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
                       depth={0}
                       openItems={openItems}
                       onToggle={toggleItem}
-                      onNavigate={() => setMobileOpen(false)}
+                      onNavigate={() => {}}
                     />
                   ))}
                 </ul>
@@ -200,42 +198,6 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
           &larr; Back
         </button>
       </div>
-    </>
-  );
-
-  return (
-    <>
-      {/* Mobile Toggle Button */}
-      <button
-        onClick={() => setMobileOpen(!mobileOpen)}
-        className="lg:hidden fixed top-20 left-4 z-50 p-2 bg-bg-tertiary border border-white/10 rounded-lg"
-        aria-label="Toggle docs menu"
-      >
-        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-      </button>
-
-      {/* Mobile Overlay */}
-      {mobileOpen && (
-        <div
-          className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
-          onClick={() => setMobileOpen(false)}
-        />
-      )}
-
-      {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex w-72 border-r border-white/10 bg-bg-secondary flex-col">
-        {sidebarContent}
-      </aside>
-
-      {/* Mobile Sidebar */}
-      <aside
-        className={cn(
-          'lg:hidden fixed top-0 left-0 w-72 h-full bg-bg-secondary border-r border-white/10 z-50 flex flex-col transform transition-transform duration-300',
-          mobileOpen ? 'translate-x-0' : '-translate-x-full'
-        )}
-      >
-        {sidebarContent}
-      </aside>
-    </>
+    </aside>
   );
 }

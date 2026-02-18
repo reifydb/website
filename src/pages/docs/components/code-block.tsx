@@ -25,7 +25,7 @@ export function CodeBlock({ code, language = 'bash', className }: CodeBlockProps
         </span>
         <button
           onClick={handleCopy}
-          className="p-1.5 text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
+          className="min-w-[44px] min-h-[44px] flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
           aria-label={copied ? 'Copied' : 'Copy code'}
         >
           {copied ? <Check size={14} /> : <Copy size={14} />}
@@ -78,7 +78,7 @@ export function TabbedCodeBlock({ examples, className }: TabbedCodeBlockProps) {
         </div>
         <button
           onClick={handleCopy}
-          className="p-2 mr-2 text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
+          className="min-w-[44px] min-h-[44px] flex items-center justify-center mr-2 text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
           aria-label={copied ? 'Copied' : 'Copy code'}
         >
           {copied ? <Check size={14} /> : <Copy size={14} />}
