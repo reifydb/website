@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef, Fragment } from 'react';
 import { Play, RotateCcw, Copy, Check, Maximize2, Minimize2 } from 'lucide-react';
 import Editor, { type OnMount } from '@monaco-editor/react';
 import type { editor } from 'monaco-editor';
@@ -139,6 +139,7 @@ export function ExecutableSnippet({
 
   // Extract columns from result data
   const columns = result?.data && result.data.length > 0 ? Object.keys(result.data[0]) : [];
+  const maxKeyLength = columns.length > 0 ? Math.max(...columns.map(c => c.length)) : 0;
 
   const content = (
     <div className={cn(
@@ -274,37 +275,31 @@ export function ExecutableSnippet({
             </div>
           )}
 
-          {/* Results Table */}
+          {/* Results — stacked key-value layout */}
           {result?.data && result.data.length > 0 && !result.error && (
-            <div className="p-2 sm:p-4 overflow-x-auto">
-              <table className="w-full text-sm font-mono">
-                <thead>
-                  <tr className="border-b border-white/10">
+            <div className="p-2 sm:p-4 font-mono text-sm">
+              {result.data.map((row, i) => (
+                <div key={i} className={i > 0 ? 'mt-4' : ''}>
+                  {/* Row separator */}
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-text-muted shrink-0">──</span>
+                    <span className="text-xs text-text-muted shrink-0">Row {i + 1}</span>
+                    <div className="border-t border-white/10 w-full" />
+                  </div>
+                  {/* Key-value grid */}
+                  <div
+                    className="grid gap-y-0.5"
+                    style={{ gridTemplateColumns: `${maxKeyLength + 1}ch auto` }}
+                  >
                     {columns.map((col) => (
-                      <th
-                        key={col}
-                        className="text-left py-2 px-2 sm:px-3 text-xs font-semibold uppercase tracking-wider text-text-secondary bg-bg-elevated"
-                      >
-                        {col}
-                      </th>
+                      <Fragment key={col}>
+                        <span className="text-text-secondary pr-2">{col}</span>
+                        <span className="text-text-primary break-all">{formatValue(row[col])}</span>
+                      </Fragment>
                     ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {result.data.map((row, i) => (
-                    <tr
-                      key={i}
-                      className="border-b border-white/5 last:border-b-0 hover:bg-white/5"
-                    >
-                      {columns.map((col) => (
-                        <td key={col} className="py-2 px-2 sm:px-3 text-text-primary">
-                          {formatValue(row[col])}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
 
