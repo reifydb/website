@@ -1,13 +1,27 @@
 import type { CodeExample } from '../index';
 
 export const mathExamples: CodeExample[] = [
+  // Overview quick example (math/index.tsx)
+  {
+    id: 'math-overview-quick',
+    title: 'Math Module Quick Example',
+    category: 'function',
+    expectsError: true, // math::count() panics
+    code: `from app.sales
+aggregate {
+  total_revenue: math::sum(amount),
+  avg_sale: math::avg(amount),
+  transaction_count: math::count()
+} by region`,
+  },
+
   // math::sum
   {
     id: 'math-sum-by-region',
     title: 'Calculate total revenue',
     category: 'function',
     code: `from app.orders
-aggregate math::sum(total) by region`,
+aggregate {math::sum(total)} by {region}`,
   },
   {
     id: 'math-sum-multiple',
@@ -27,7 +41,7 @@ aggregate {
     title: 'Calculate average price',
     category: 'function',
     code: `from app.products
-aggregate math::avg(price) by category`,
+aggregate {math::avg(price)} by {category}`,
   },
   {
     id: 'math-avg-with-total',
@@ -46,7 +60,7 @@ aggregate {
     title: 'Find lowest price',
     category: 'function',
     code: `from app.products
-aggregate math::min(price) by category`,
+aggregate {math::min(price)} by {category}`,
   },
   {
     id: 'math-min-max-together',
@@ -56,7 +70,7 @@ aggregate math::min(price) by category`,
 aggregate {
   lowest: math::min(amount),
   highest: math::max(amount)
-} by month`,
+} by {month}`,
   },
 
   // math::max
@@ -65,7 +79,7 @@ aggregate {
     title: 'Find highest price',
     category: 'function',
     code: `from app.products
-aggregate math::max(price) by category`,
+aggregate {math::max(price)} by {category}`,
   },
   {
     id: 'math-max-min-together',
@@ -75,7 +89,7 @@ aggregate math::max(price) by category`,
 aggregate {
   lowest: math::min(amount),
   highest: math::max(amount)
-} by month`,
+} by {month}`,
   },
 
   // math::count
@@ -144,7 +158,6 @@ extend { rounded_value: math::round(value) }`,
     id: 'math-floor-values',
     title: 'Floor values',
     category: 'function',
-    expectsError: true, // math::floor not implemented
     code: `from app.measurements
 extend {
   floor_val: math::floor(value),
@@ -155,7 +168,6 @@ extend {
     id: 'math-floor-integer',
     title: 'Convert to integer',
     category: 'function',
-    expectsError: true, // math::floor not implemented
     code: `from app.scores
 extend { int_score: math::floor(score) }`,
   },
@@ -165,7 +177,6 @@ extend { int_score: math::floor(score) }`,
     id: 'math-ceil-values',
     title: 'Ceiling values',
     category: 'function',
-    expectsError: true, // math::ceil not implemented (uses floor)
     code: `from app.measurements
 extend {
   floor_val: math::floor(value),
@@ -176,7 +187,6 @@ extend {
     id: 'math-ceil-capacity',
     title: 'Round up for capacity',
     category: 'function',
-    expectsError: true, // math::ceil not implemented
     code: `from app.resources
 extend { capacity_needed: math::ceil(usage_ratio) }`,
   },
@@ -186,7 +196,6 @@ extend { capacity_needed: math::ceil(usage_ratio) }`,
     id: 'math-power-squares',
     title: 'Calculate squares',
     category: 'function',
-    expectsError: true, // math::power not implemented
     code: `from app.numbers
 extend { squared: math::power(value, 2) }`,
   },
@@ -202,7 +211,6 @@ extend { future_value: principal * math::power(1 + rate, years) }`,
     id: 'math-power-sqrt',
     title: 'Square root (exponent 0.5)',
     category: 'function',
-    expectsError: true, // math::power not implemented
     code: `from app.data
 extend { sqrt_value: math::power(value, 0.5) }`,
   },

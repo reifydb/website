@@ -28,6 +28,8 @@ export interface CodeExample {
 export * from './landing';
 export * from './guides';
 export * from './rql';
+export * from './transforms';
+export * from './expressions';
 export * from './functions/math';
 export * from './functions/text';
 export * from './functions/date';
@@ -36,6 +38,8 @@ export * from './functions/date';
 import { landingExamples } from './landing';
 import { guideExamples } from './guides';
 import { rqlExamples } from './rql';
+import { transformExamples } from './transforms';
+import { expressionExamples } from './expressions';
 import { mathExamples } from './functions/math';
 import { textExamples } from './functions/text';
 import { dateExamples } from './functions/date';
@@ -45,6 +49,8 @@ export const allExamples: CodeExample[] = [
   ...landingExamples,
   ...guideExamples,
   ...rqlExamples,
+  ...transformExamples,
+  ...expressionExamples,
   ...mathExamples,
   ...textExamples,
   ...dateExamples,

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function TextModuleOverviewPage() {
   return (
@@ -22,12 +23,7 @@ export function TextModuleOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
           <ExecutableSnippet
             title="Quick Example"
-            initialCode={`from app.users
-extend {
-  full_name: text::concat(first_name, " ", last_name),
-  email_lower: text::lower(email)
-}
-filter text::length(full_name) > 0`}
+            initialCode={getExampleById('text-overview-quick')!.code}
           />
         </section>
 

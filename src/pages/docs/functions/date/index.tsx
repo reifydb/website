@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function DateModuleOverviewPage() {
   return (
@@ -22,12 +23,7 @@ export function DateModuleOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
           <ExecutableSnippet
             title="Quick Example"
-            initialCode={`from app.events
-filter date::year(created_at) == 2024
-extend {
-  month: date::month(created_at),
-  formatted: date::format(created_at, "%Y-%m-%d")
-}`}
+            initialCode={getExampleById('date-overview-quick')!.code}
           />
         </section>
 

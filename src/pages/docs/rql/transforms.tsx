@@ -2,67 +2,58 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 const transforms = [
   {
     name: 'from',
     description: 'Start a query with a data source (table or inline data).',
-    example: `from app.users`,
+    exampleId: 'transform-from',
   },
   {
     name: 'filter',
     description: 'Keep only rows that match a condition.',
-    example: `from app.users
-filter age >= 18`,
+    exampleId: 'transform-filter',
   },
   {
     name: 'select',
     description: 'Choose which columns to include in the output.',
-    example: `from app.users
-select name, email`,
+    exampleId: 'transform-select',
   },
   {
     name: 'extend',
     description: 'Add new computed columns.',
-    example: `from app.employees
-extend { bonus: salary * 0.1 }`,
+    exampleId: 'transform-extend',
   },
   {
     name: 'sort',
     description: 'Order rows by one or more columns.',
-    example: `from app.users
-sort created_at`,
+    exampleId: 'transform-sort',
   },
   {
     name: 'take',
     description: 'Limit the number of rows returned.',
-    example: `from app.users
-sort created_at
-take 10`,
+    exampleId: 'transform-take',
   },
   {
     name: 'distinct',
     description: 'Remove duplicate values.',
-    example: `from app.products
-distinct { category }`,
+    exampleId: 'transform-distinct',
   },
   {
     name: 'join',
     description: 'Combine rows from two tables based on a condition.',
-    example: `from app.employees
-join { from app.departments } dept on dept_id == dept.id`,
+    exampleId: 'transform-join',
   },
   {
     name: 'group',
     description: 'Group rows by one or more columns.',
-    example: `from app.orders
-group by region`,
+    exampleId: 'transform-group',
   },
   {
     name: 'aggregate',
     description: 'Compute aggregate values over groups.',
-    example: `from app.orders
-aggregate math::sum(total) by region`,
+    exampleId: 'transform-aggregate',
   },
 ];
 
@@ -90,11 +81,7 @@ export function RqlTransformsPage() {
           </p>
           <ExecutableSnippet
             title="Pipeline Processing"
-            initialCode={`from app.orders              # Start with orders table
-filter status == "completed" # Keep only completed orders
-aggregate math::sum(total) by region  # Sum totals per region
-sort total                   # Order by total
-take 5                       # Top 5 regions`}
+            initialCode={getExampleById('transform-pipeline')!.code}
           />
         </section>
 
@@ -112,7 +99,7 @@ take 5                       # Top 5 regions`}
                   {transform.name}
                 </h3>
                 <p className="text-text-secondary mb-4">{transform.description}</p>
-                <ExecutableSnippet title={transform.name} initialCode={transform.example} />
+                <ExecutableSnippet title={transform.name} initialCode={getExampleById(transform.exampleId)!.code} />
               </div>
             ))}
           </div>

@@ -1,5 +1,6 @@
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function FilterPage() {
   return (
@@ -19,8 +20,7 @@ export function FilterPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Basic Syntax</h2>
           <ExecutableSnippet
             title="Basic Syntax"
-            initialCode={`from app.users
-filter age >= 18`}
+            initialCode={getExampleById('filter-basic')!.code}
           />
           <p className="text-text-secondary mt-4">
             This keeps only users who are 18 or older.
@@ -34,8 +34,7 @@ filter age >= 18`}
           </p>
           <ExecutableSnippet
             title="Multiple Conditions"
-            initialCode={`from app.users
-filter age >= 18 && status == "active"`}
+            initialCode={getExampleById('filter-multiple-conditions')!.code}
           />
         </section>
 
@@ -47,8 +46,7 @@ filter age >= 18 && status == "active"`}
           </p>
           <ExecutableSnippet
             title="Pattern Matching"
-            initialCode={`from app.users
-filter email ~= "%@gmail.com"`}
+            initialCode={getExampleById('filter-pattern-match')!.code}
           />
         </section>
 
@@ -59,8 +57,7 @@ filter email ~= "%@gmail.com"`}
           </p>
           <ExecutableSnippet
             title="Null Handling"
-            initialCode={`from app.users
-filter deleted_at == null`}
+            initialCode={getExampleById('filter-null')!.code}
           />
         </section>
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function MathModuleOverviewPage() {
   return (
@@ -22,12 +23,7 @@ export function MathModuleOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
           <ExecutableSnippet
             title="Quick Example"
-            initialCode={`from app.sales
-aggregate {
-  total_revenue: math::sum(amount),
-  avg_sale: math::avg(amount),
-  transaction_count: math::count()
-} by region`}
+            initialCode={getExampleById('math-overview-quick')!.code}
           />
         </section>
 

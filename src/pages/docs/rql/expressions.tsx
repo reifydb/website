@@ -1,6 +1,7 @@
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function RqlExpressionsPage() {
   return (
@@ -184,24 +185,21 @@ export function RqlExpressionsPage() {
           <p className="text-text-secondary mb-3">Mathematical functions and aggregations.</p>
           <ExecutableSnippet
             title="math module"
-            initialCode={`from app.orders
-aggregate math::sum(total) by region`}
+            initialCode={getExampleById('expr-math-module')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">text</h3>
           <p className="text-text-secondary mb-3">String manipulation functions.</p>
           <ExecutableSnippet
             title="text module"
-            initialCode={`from app.users
-extend { lower_email: text::lower(email) }`}
+            initialCode={getExampleById('expr-text-module')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">date</h3>
           <p className="text-text-secondary mb-3">Date and time functions.</p>
           <ExecutableSnippet
             title="date module"
-            initialCode={`from app.events
-filter date::year(created_at) == 2024`}
+            initialCode={getExampleById('expr-date-module')!.code}
           />
         </section>
 
@@ -213,13 +211,7 @@ filter date::year(created_at) == 2024`}
           </p>
           <ExecutableSnippet
             title="Case Expression"
-            initialCode={`from app.orders
-extend {
-  priority: case
-    total > 1000 => "high"
-    total > 100 => "medium"
-    true => "low"
-}`}
+            initialCode={getExampleById('expr-case')!.code}
           />
         </section>
 
@@ -231,8 +223,7 @@ extend {
           </p>
           <ExecutableSnippet
             title="Named Arguments"
-            initialCode={`from app.users
-take count: 10`}
+            initialCode={getExampleById('expr-named-args')!.code}
           />
         </section>
 

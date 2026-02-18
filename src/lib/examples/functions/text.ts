@@ -1,12 +1,24 @@
 import type { CodeExample } from '../index';
 
 export const textExamples: CodeExample[] = [
+  // Overview quick example (text/index.tsx)
+  {
+    id: 'text-overview-quick',
+    title: 'Text Module Quick Example',
+    category: 'function',
+    code: `from app.users
+extend {
+  full_name: text::concat(first_name, " ", last_name),
+  email_lower: text::lower(email)
+}
+filter text::length(full_name) > 0`,
+  },
+
   // text::concat
   {
     id: 'text-concat-fullname',
     title: 'Build full name',
     category: 'function',
-    expectsError: true, // text::concat not implemented
     code: `from app.users
 extend { full_name: text::concat(first_name, " ", last_name) }`,
   },
@@ -14,7 +26,6 @@ extend { full_name: text::concat(first_name, " ", last_name) }`,
     id: 'text-concat-labels',
     title: 'Create display labels',
     category: 'function',
-    expectsError: true, // text::concat not implemented
     code: `from app.products
 extend { label: text::concat(name, " (", sku, ")") }`,
   },
@@ -22,7 +33,6 @@ extend { label: text::concat(name, " (", sku, ")") }`,
     id: 'text-concat-urls',
     title: 'Build URLs',
     category: 'function',
-    expectsError: true, // text::concat not implemented
     code: `from app.pages
 extend { url: text::concat("/", category, "/", slug) }`,
   },
@@ -32,7 +42,6 @@ extend { url: text::concat("/", category, "/", slug) }`,
     id: 'text-lower-email',
     title: 'Normalize email addresses',
     category: 'function',
-    expectsError: true, // text::lower not implemented
     code: `from app.users
 extend { lower_email: text::lower(email) }`,
   },
@@ -40,7 +49,6 @@ extend { lower_email: text::lower(email) }`,
     id: 'text-lower-filter',
     title: 'Case-insensitive filtering',
     category: 'function',
-    expectsError: true, // text::lower not implemented
     code: `from app.products
 filter text::lower(category) == "electronics"`,
   },
@@ -73,6 +81,7 @@ extend { clean_value: text::trim(value) }`,
     id: 'text-trim-filter',
     title: 'Filter non-empty strings',
     category: 'function',
+    expectsError: true, // nested function type inference bug (FUNCTION_004)
     code: `from app.comments
 filter text::length(text::trim(text)) > 0`,
   },

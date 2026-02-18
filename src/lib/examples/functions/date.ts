@@ -1,6 +1,20 @@
 import type { CodeExample } from '../index';
 
 export const dateExamples: CodeExample[] = [
+  // Overview quick example (date/index.tsx)
+  {
+    id: 'date-overview-quick',
+    title: 'Date Module Quick Example',
+    category: 'function',
+    expectsError: true, // date::year, date::month, date::format not implemented
+    code: `from app.events
+filter date::year(created_at) == 2024
+extend {
+  month: date::month(created_at),
+  formatted: date::format(created_at, "%Y-%m-%d")
+}`,
+  },
+
   // date::now
   {
     id: 'date-now-overdue',
@@ -14,7 +28,6 @@ filter due_date < date::now()`,
     id: 'date-now-timestamp',
     title: 'Add created timestamp',
     category: 'function',
-    expectsError: true, // date::now not implemented
     code: `from app.records
 extend { processed_at: date::now() }`,
   },

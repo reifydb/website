@@ -32,7 +32,7 @@ filter role == "user"`,
   {id: 3, name: "Carol", role: "user"}
 ]
 filter role == "user"
-select name`,
+select {name}`,
   },
   {
     id: 'guide-creating-table',

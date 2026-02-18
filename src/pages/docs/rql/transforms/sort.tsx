@@ -1,5 +1,6 @@
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
+import { getExampleById } from '@/lib/examples';
 
 export function SortPage() {
   return (
@@ -19,8 +20,7 @@ export function SortPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Basic Syntax</h2>
           <ExecutableSnippet
             title="Basic Syntax"
-            initialCode={`from app.users
-sort created_at`}
+            initialCode={getExampleById('sort-basic')!.code}
           />
           <p className="text-text-secondary mt-4">
             By default, sorting is in ascending order.
@@ -34,8 +34,7 @@ sort created_at`}
           </p>
           <ExecutableSnippet
             title="Descending Order"
-            initialCode={`from app.users
-sort -created_at`}
+            initialCode={getExampleById('sort-descending')!.code}
           />
         </section>
 
@@ -46,8 +45,7 @@ sort -created_at`}
           </p>
           <ExecutableSnippet
             title="Multiple Columns"
-            initialCode={`from app.orders
-sort { -total, created_at }`}
+            initialCode={getExampleById('sort-multiple')!.code}
           />
           <p className="text-text-secondary mt-4">
             This sorts by total (descending) first, then by created_at (ascending) for ties.
@@ -62,9 +60,7 @@ sort { -total, created_at }`}
           </p>
           <ExecutableSnippet
             title="Combined with Take"
-            initialCode={`from app.users
-sort -score
-take 10`}
+            initialCode={getExampleById('sort-with-take')!.code}
           />
         </section>
 

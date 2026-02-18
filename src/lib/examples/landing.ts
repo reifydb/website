@@ -27,7 +27,7 @@ export const landingExamples: CodeExample[] = [
   {id: 4, region: "East", status: "completed", total: 410}
 ]
 filter status == "completed"
-aggregate math::sum(total) by region`,
+aggregate {math::sum(total)} by {region}`,
     expected: `region | math::sum(total)
 -------+-----------------
 West   | 570
@@ -44,7 +44,7 @@ East   | 410`,
   {id: 3, name: "Carol", score: 92},
   {id: 4, name: "Dave", score: 78}
 ]
-sort score desc
+sort {score desc}
 take 3`,
     expected: `id | name  | score
 ---+-------+------
