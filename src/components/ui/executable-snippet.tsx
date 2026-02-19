@@ -7,7 +7,7 @@ import { premiumDarkTheme } from '@/lib/monaco-themes';
 import { cn } from '@/lib';
 import { type WasmDB } from '@/lib/wasm-db';
 import { getWasmDB, getWasmDBSync } from '@/lib/wasm-db-singleton';
-import { UNDEFINED_VALUE, Value } from '@reifydb/core';
+import { Value } from '@reifydb/core';
 
 let languageRegistered = false;
 
@@ -279,24 +279,36 @@ export function ExecutableSnippet({
           {result?.data && result.data.length > 0 && !result.error && (
             <div className="p-2 sm:p-4 font-mono text-sm">
               {result.data.map((row, i) => (
-                <div key={i} className={i > 0 ? 'mt-4' : ''}>
-                  {/* Row separator */}
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-text-muted shrink-0">──</span>
-                    <span className="text-xs text-text-muted shrink-0">Row {i + 1}</span>
-                    <div className="border-t border-white/10 w-full" />
+                <div key={i} className={i > 0 ? 'mt-3' : ''}>
+                  {/* Row header */}
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <span className="text-xs text-text-muted">Row {i + 1}</span>
+                    <div className="border-t border-white/[0.06] flex-1" />
                   </div>
-                  {/* Key-value grid */}
+                  {/* Key-value grid with left accent border and alternating stripes */}
                   <div
-                    className="grid gap-y-0.5"
-                    style={{ gridTemplateColumns: `${maxKeyLength + 1}ch auto` }}
+                    className="grid border-l-2 border-primary/30"
+                    style={{ gridTemplateColumns: `${maxKeyLength + 4}ch 1fr` }}
                   >
-                    {columns.map((col) => (
-                      <Fragment key={col}>
-                        <span className="text-text-secondary pr-2">{col}</span>
-                        <span className="text-text-primary break-all">{formatValue(row[col])}</span>
-                      </Fragment>
-                    ))}
+                    {columns.map((col, j) => {
+                      const vs = getValueStyle(row[col]);
+                      return (
+                        <Fragment key={col}>
+                          <span className={cn(
+                            'text-text-secondary pr-2 py-0.5 pl-3',
+                            j % 2 === 0 ? 'bg-white/[0.02]' : 'bg-white/[0.05]'
+                          )}>{col}</span>
+                          <span
+                            className={cn(
+                              'break-all py-0.5 pr-2',
+                              j % 2 === 0 ? 'bg-white/[0.02]' : 'bg-white/[0.05]',
+                              vs.italic && 'italic'
+                            )}
+                            style={vs.color ? { color: vs.color } : undefined}
+                          >{formatValue(row[col])}</span>
+                        </Fragment>
+                      );
+                    })}
                   </div>
                 </div>
               ))}
@@ -327,15 +339,61 @@ export function ExecutableSnippet({
   return content;
 }
 
+function getValueStyle(value: unknown): { color?: string; italic?: boolean } {
+  if (value === null || value === undefined) {
+    return { color: 'var(--color-text-muted)', italic: true };
+  }
+
+  // Duck-type on `type` property — Value classes use `implements` (not extends),
+  // so instanceof fails. Every concrete Value sets this.type in its constructor.
+  const t = (value as { type?: unknown }).type;
+  if (typeof t === 'string') {
+    switch (t) {
+      case 'None':
+        return { color: 'var(--color-text-muted)', italic: true };
+      case 'Boolean':
+        return { color: '#818CF8' };
+      case 'Int1': case 'Int2': case 'Int4': case 'Int8': case 'Int16':
+      case 'Uint1': case 'Uint2': case 'Uint4': case 'Uint8': case 'Uint16':
+      case 'Float4': case 'Float8': case 'Decimal':
+        return { color: '#F472B6' };
+      case 'Date': case 'DateTime': case 'Time': case 'Duration':
+        return { color: '#06B6D4' };
+      case 'Uuid4': case 'Uuid7': case 'IdentityId':
+        return { color: '#14B8A6' };
+      case 'Utf8':
+        return { color: '#34D399' };
+      case 'Blob':
+        return { color: 'var(--color-text-secondary)' };
+    }
+  }
+
+  // Fallback: color by JS typeof (for inline data / untyped primitives)
+  switch (typeof value) {
+    case 'number':
+    case 'bigint':
+      return { color: '#F472B6' };     // pink — number
+    case 'boolean':
+      return { color: '#818CF8' };     // indigo — boolean
+    case 'string':
+      return { color: '#34D399' };     // emerald — string
+    default:
+      return {};
+  }
+}
+
 function formatValue(value: unknown): string {
   if (value === null || value === undefined) {
-    return UNDEFINED_VALUE;
+    return 'none';
   }
-  if (value instanceof Value) {
-    return value.toString();
+  const str = value instanceof Value ? value.toString()
+    : typeof value === 'object' ? JSON.stringify(value)
+    : String(value);
+  // Safety net: convert raw WASM DateTime repr to readable format
+  const dtMatch = str.match(/DateTime\(.*?seconds:\s*(\d+)/);
+  if (dtMatch) {
+    const d = new Date(Number(dtMatch[1]) * 1000);
+    return d.toISOString().slice(0, 19).replace('T', ' ') + ' UTC';
   }
-  if (typeof value === 'object') {
-    return JSON.stringify(value);
-  }
-  return String(value);
+  return str;
 }

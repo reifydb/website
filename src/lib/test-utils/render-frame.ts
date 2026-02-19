@@ -2,14 +2,14 @@
  * Renders query results as a text table for snapshot testing.
  */
 
-import { Value, UNDEFINED_VALUE } from '@reifydb/core';
+import { Value, NONE_VALUE } from '@reifydb/core';
 
 /**
  * Format a single value using @reifydb/core Value.toString()
  */
 function formatValue(value: unknown): string {
   if (value === null || value === undefined) {
-    return UNDEFINED_VALUE;
+    return NONE_VALUE;
   }
   if (value instanceof Value) {
     return value.toString();

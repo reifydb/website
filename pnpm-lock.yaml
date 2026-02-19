@@ -12,8 +12,8 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/core':
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: ^0.3.0
+        version: 0.3.0
       '@tsparticles/engine':
         specifier: ^3.9.1
         version: 3.9.1
@@ -500,8 +500,8 @@ packages:
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
-  '@reifydb/core@0.2.0':
-    resolution: {integrity: sha512-dRplokyzGK3ZWtQNEtxYe+ia0RMNp50j+9SA7rIDGfVvkB6S9KbYnsfdUnbIDFLAQo9JFUXf6FtRrrgIWcPWBQ==}
+  '@reifydb/core@0.3.0':
+    resolution: {integrity: sha512-Xb5quHINY647BC6guhEYGquMVh75E3fmwYw3QvZG0ECsUVRl4IctncngTKVPuZ+t9SgXbxQOuFfrsVVO4D9Upw==}
     engines: {node: '>=16.0.0'}
 
   '@rolldown/pluginutils@1.0.0-beta.53':
@@ -2660,7 +2660,7 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
-  '@reifydb/core@0.2.0':
+  '@reifydb/core@0.3.0':
     dependencies:
       uuid: 11.1.0
 
