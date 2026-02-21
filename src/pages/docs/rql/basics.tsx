@@ -23,7 +23,7 @@ export function RqlBasicsPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">What is RQL?</h2>
           <p className="text-text-secondary mb-4">
             RQL is a pipeline-based query language. You start with a data source and apply
-            transforms to filter, select, aggregate, and shape the data.
+            transforms to filter, aggregate, and shape the data.
           </p>
           <p className="text-text-secondary">
             Unlike SQL, RQL reads top-to-bottom like a data processing pipeline. Each line
@@ -31,9 +31,8 @@ export function RqlBasicsPage() {
           </p>
         </section>
 
-        {/* TODO: Commented out - '#' comments not supported yet */}
         {/* Query Structure */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Query Structure</h2>
           <p className="text-text-secondary mb-4">
             Every RQL query starts with a data source, followed by transforms:
@@ -45,7 +44,7 @@ export function RqlBasicsPage() {
           <p className="text-text-muted text-sm mt-3">
             Transforms are separated by newlines. Each transform operates on the result of the previous one.
           </p>
-        </section> */}
+        </section>
 
         {/* Data Sources */}
         <section>

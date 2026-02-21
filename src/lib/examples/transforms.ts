@@ -6,12 +6,16 @@ export const transformExamples: CodeExample[] = [
     id: 'transform-pipeline',
     title: 'Pipeline Processing',
     category: 'rql',
-    expectsError: true, // '#' comments not supported
-    code: `from app.orders              # Start with orders table
-filter status == "completed" # Keep only completed orders
-aggregate math::sum(total) by region  # Sum totals per region
-sort total                   # Order by total
-take 5                       # Top 5 regions`,
+    code: `from app.orders
+filter status == "completed"
+aggregate {revenue: math::sum(total)} by {region}
+sort {revenue}
+take 5`,
+    expected: `region | revenue
+-------+--------
+East   | 245
+North  | 150.5
+West   | 55.25`,
   },
 
   // transforms.tsx — Transform reference entries
@@ -29,18 +33,18 @@ take 5                       # Top 5 regions`,
 filter age >= 18`,
   },
   {
-    id: 'transform-select',
-    title: 'select',
-    category: 'rql',
-    code: `from app.users
-select {name, email}`,
-  },
-  {
     id: 'transform-extend',
     title: 'extend',
     category: 'rql',
     code: `from app.employees
 extend { bonus: salary * 0.1 }`,
+    expected: `id | dept_id | salary | bonus
+---+---------+--------+------
+5  | 3       | 90000  | 9000
+4  | 2       | 71000  | 7100
+3  | 2       | 65000  | 6500
+2  | 1       | 82000  | 8200
+1  | 1       | 75000  | 7500`,
   },
   {
     id: 'transform-sort',
@@ -63,22 +67,11 @@ take 10`,
     category: 'rql',
     code: `from app.products
 distinct { category }`,
-  },
-  {
-    id: 'transform-join',
-    title: 'join',
-    category: 'rql',
-    expectsError: true, // join not fully implemented
-    code: `from app.employees
-join { from app.departments } dept on dept_id == dept.id`,
-  },
-  {
-    id: 'transform-group',
-    title: 'group',
-    category: 'rql',
-    expectsError: true, // group by not implemented
-    code: `from app.orders
-group by {region}`,
+    expected: `id | name        | sku     | price             | category
+---+-------------+---------+-------------------+------------
+5  | Thingamajig | TMJ-005 | 15.5              | Accessories
+4  | Doohickey   | DHK-004 | 99.98999786376953 | Hardware
+2  | Gadget      | GDT-002 | 49.9900016784668  | Electronics`,
   },
   {
     id: 'transform-aggregate',
@@ -86,6 +79,12 @@ group by {region}`,
     category: 'rql',
     code: `from app.orders
 aggregate {math::sum(total)} by {region}`,
+    expected: `region | math::sum(total)
+-------+------------------
+North  | 471.25
+West   | 55.25
+East   | 245
+South  | 89.98999786376953`,
   },
 
   // filter.tsx — Filter examples
@@ -104,19 +103,11 @@ filter age >= 18`,
 filter age >= 18 and status == "active"`,
   },
   {
-    id: 'filter-pattern-match',
-    title: 'Filter Pattern Matching',
-    category: 'rql',
-    expectsError: true, // ~= pattern match operator not implemented
-    code: `from app.users
-filter email ~= "%@gmail.com"`,
-  },
-  {
-    id: 'filter-null',
-    title: 'Filter Null Handling',
+    id: 'filter-none',
+    title: 'Filter None Handling',
     category: 'rql',
     code: `from app.users
-filter deleted_at == null`,
+filter deleted_at == none`,
   },
 
   // sort.tsx — Sort examples
@@ -132,22 +123,21 @@ sort {created_at}`,
     title: 'Sort Descending',
     category: 'rql',
     code: `from app.users
-sort {created_at desc}`,
+sort {created_at: desc}`,
   },
   {
     id: 'sort-multiple',
     title: 'Sort Multiple Columns',
     category: 'rql',
-    expectsError: true, // comma-separated sort columns not implemented
     code: `from app.orders
-sort { -total, created_at }`,
+sort {region, total: desc}`,
   },
   {
     id: 'sort-with-take',
     title: 'Sort Combined with Take',
     category: 'rql',
     code: `from app.users
-sort {created_at desc}
+sort {created_at: desc}
 take 10`,
   },
 ];

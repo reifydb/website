@@ -6,7 +6,7 @@ const commands = [
   'from open_source.community join contributors',
   'from events stream real_time.updates',
   'embed database.anywhere { size: "small" }',
-  'from rust.performance select speed::maximum',
+  'from rust.performance sort {speed: desc}',
   'insert get_things.done returning instantly',
 ];
 
@@ -14,7 +14,7 @@ const mobileCommands = [
   'embed database.anywhere',
   'create developer_first',
   'from events stream live',
-  'select speed::maximum',
+  'sort {speed: desc}',
   'insert data instantly',
   'query limit 1ms',
   'join contributors',

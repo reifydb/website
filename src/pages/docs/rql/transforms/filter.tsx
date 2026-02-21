@@ -39,25 +39,13 @@ export function FilterPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Pattern Matching</h2>
+          <h2 className="text-2xl font-black tracking-tight mb-4">None Handling</h2>
           <p className="text-text-secondary mb-4">
-            Use the <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">~=</code> operator
-            for pattern matching:
+            Option types use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">none</code> for absent values:
           </p>
           <ExecutableSnippet
-            title="Pattern Matching"
-            initialCode={getExampleById('filter-pattern-match')!.code}
-          />
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Null Handling</h2>
-          <p className="text-text-secondary mb-4">
-            Filter out null values explicitly:
-          </p>
-          <ExecutableSnippet
-            title="Null Handling"
-            initialCode={getExampleById('filter-null')!.code}
+            title="None Handling"
+            initialCode={getExampleById('filter-none')!.code}
           />
         </section>
 

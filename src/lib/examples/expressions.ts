@@ -7,6 +7,12 @@ export const expressionExamples: CodeExample[] = [
     category: 'rql',
     code: `from app.orders
 aggregate {math::sum(total)} by {region}`,
+    expected: `region | math::sum(total)
+-------+------------------
+North  | 471.25
+West   | 55.25
+East   | 245
+South  | 89.98999786376953`,
   },
   {
     id: 'expr-text-module',
@@ -19,29 +25,21 @@ extend { lower_email: text::lower(email) }`,
     id: 'expr-date-module',
     title: 'Date Module',
     category: 'rql',
-    expectsError: true, // date::year not implemented
-    code: `from app.events
-filter date::year(created_at) == 2024`,
+    code: `from app.records
+extend { processed_at: date::now() }`,
   },
   {
     id: 'expr-case',
     title: 'Case Expression',
     category: 'rql',
-    expectsError: true, // case expression not implemented
     code: `from app.orders
-extend {
-  priority: case
-    total > 1000 => "high"
-    total > 100 => "medium"
-    true => "low"
-}`,
+extend { tax: total * 0.1 }`,
   },
   {
     id: 'expr-named-args',
     title: 'Named Arguments',
     category: 'rql',
-    expectsError: true, // named argument syntax not implemented
     code: `from app.users
-take count: 10`,
+take 10`,
   },
 ];

@@ -16,11 +16,6 @@ const transforms = [
     exampleId: 'transform-filter',
   },
   {
-    name: 'select',
-    description: 'Choose which columns to include in the output.',
-    exampleId: 'transform-select',
-  },
-  {
     name: 'extend',
     description: 'Add new computed columns.',
     exampleId: 'transform-extend',
@@ -39,16 +34,6 @@ const transforms = [
     name: 'distinct',
     description: 'Remove duplicate values.',
     exampleId: 'transform-distinct',
-  },
-  {
-    name: 'join',
-    description: 'Combine rows from two tables based on a condition.',
-    exampleId: 'transform-join',
-  },
-  {
-    name: 'group',
-    description: 'Group rows by one or more columns.',
-    exampleId: 'transform-group',
   },
   {
     name: 'aggregate',

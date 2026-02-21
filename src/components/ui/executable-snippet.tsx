@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef, Fragment } from 'react';
-import { Play, RotateCcw, Copy, Check, Maximize2, Minimize2 } from 'lucide-react';
+import { Play, RotateCcw, Copy, Check, Maximize2, Minimize2, Loader2 } from 'lucide-react';
 import Editor, { type OnMount } from '@monaco-editor/react';
 import type { editor } from 'monaco-editor';
 import { rqlLanguageDefinition, rqlLanguageConfiguration } from '@/lib/rql-language';
@@ -94,6 +94,7 @@ export function ExecutableSnippet({
 
     // Execute the query
     setIsExecuting(true);
+    await new Promise(r => setTimeout(r, 0)); // yield so React paints
     try {
       const res = dbInstance.admin(code);
       setResult({ data: Array.isArray(res) ? res : [] });
@@ -241,10 +242,17 @@ export function ExecutableSnippet({
         <button
           onClick={handleRun}
           disabled={dbLoading || isExecuting}
-          className="flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-primary to-accent-warm text-white font-semibold text-xs uppercase tracking-wider rounded-lg hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className={cn(
+            "flex items-center gap-2 px-4 py-1.5 text-white font-semibold text-xs uppercase tracking-wider rounded-lg transition-all active:scale-95",
+            dbLoading || isExecuting
+              ? "bg-gradient-to-r from-primary/70 to-accent-warm/70 animate-pulse cursor-wait"
+              : "bg-gradient-to-r from-primary to-accent-warm hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
+          )}
         >
-          <Play size={12} />
-          {isExecuting ? 'Running...' : 'Run'}
+          {dbLoading || isExecuting
+            ? <Loader2 size={12} className="animate-spin" />
+            : <Play size={12} />}
+          {dbLoading ? 'Loading...' : isExecuting ? 'Running...' : 'Run'}
         </button>
       </div>
 
@@ -394,6 +402,38 @@ function formatValue(value: unknown): string {
   if (dtMatch) {
     const d = new Date(Number(dtMatch[1]) * 1000);
     return d.toISOString().slice(0, 19).replace('T', ' ') + ' UTC';
+  }
+  // Safety net: convert raw WASM Date repr to readable format
+  const dateMatch = str.match(/Date\(.*?days_since_epoch:\s*(\d+)/);
+  if (dateMatch) {
+    return new Date(Number(dateMatch[1]) * 86400000).toISOString().slice(0, 10);
+  }
+  // Safety net: convert raw WASM Time repr to readable format
+  const timeMatch = str.match(/Time\(.*?nanos_since_midnight:\s*(\d+)/);
+  if (timeMatch) {
+    const totalNanos = Number(timeMatch[1]);
+    const totalSeconds = Math.floor(totalNanos / 1e9);
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = totalSeconds % 60;
+    return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  }
+  // Safety net: convert raw WASM Duration repr to readable format
+  const durMatch = str.match(/Duration\(.*?months:\s*(\d+).*?days:\s*(\d+).*?nanos:\s*(\d+)/);
+  if (durMatch) {
+    const months = Number(durMatch[1]);
+    const days = Number(durMatch[2]);
+    const nanos = Number(durMatch[3]);
+    const totalSeconds = Math.floor(nanos / 1e9);
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = totalSeconds % 60;
+    const parts: string[] = [];
+    if (months > 0) parts.push(`${months} month${months !== 1 ? 's' : ''}`);
+    if (days > 0) parts.push(`${days} day${days !== 1 ? 's' : ''}`);
+    const time = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    if (h > 0 || m > 0 || s > 0) parts.push(time);
+    return parts.length > 0 ? parts.join(' ') : '0 days';
   }
   return str;
 }

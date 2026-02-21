@@ -52,7 +52,7 @@ export function QuickStartPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Filtering Data</h2>
           <p className="text-text-secondary mb-4">
-            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">filter</code> to select specific rows:
+            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">filter</code> to keep specific rows:
           </p>
           <ExecutableSnippet
             title={getExampleById('guide-filtering-data')!.title}
@@ -60,21 +60,8 @@ export function QuickStartPage() {
           />
         </section>
 
-        {/* Selecting Columns */}
-        <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Selecting Columns</h2>
-          <p className="text-text-secondary mb-4">
-            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">select</code> to choose which columns to return:
-          </p>
-          <ExecutableSnippet
-            title={getExampleById('guide-selecting-columns')!.title}
-            initialCode={getExampleById('guide-selecting-columns')!.code}
-          />
-        </section>
-
-        {/* TODO: Commented out - these examples use unsupported syntax */}
         {/* Creating a Table */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Creating a Table</h2>
           <p className="text-text-secondary mb-4">
             Create a persistent table to store data:
@@ -83,10 +70,10 @@ export function QuickStartPage() {
             title={getExampleById('guide-creating-table')!.title}
             initialCode={getExampleById('guide-creating-table')!.code}
           />
-        </section> */}
+        </section>
 
         {/* Inserting Data */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Inserting Data</h2>
           <p className="text-text-secondary mb-4">
             Insert records into your table:
@@ -95,10 +82,10 @@ export function QuickStartPage() {
             title={getExampleById('guide-inserting-data')!.title}
             initialCode={getExampleById('guide-inserting-data')!.code}
           />
-        </section> */}
+        </section>
 
         {/* Querying Tables */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Querying Tables</h2>
           <p className="text-text-secondary mb-4">
             Query your table just like inline data:
@@ -107,7 +94,7 @@ export function QuickStartPage() {
             title={getExampleById('guide-querying-tables')!.title}
             initialCode={getExampleById('guide-querying-tables')!.code}
           />
-        </section> */}
+        </section>
 
         {/* Next Steps */}
         <Callout variant="tip" title="Next Steps">

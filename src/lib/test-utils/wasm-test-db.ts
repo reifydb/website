@@ -30,10 +30,12 @@ export async function createTestDB(): Promise<WasmDB> {
 
 /**
  * Executes RQL code against the database and returns the result.
+ * Uses db.admin() to match the website's ExecutableSnippet behavior,
+ * which supports both queries and DDL/DML operations.
  */
 export function executeExample(db: WasmDB, code: string): ExecutionResult {
   try {
-    const result = db.command(code);
+    const result = db.admin(code);
     const data = Array.isArray(result) ? result : [];
     return { success: true, data };
   } catch (err) {

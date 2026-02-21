@@ -10,6 +10,11 @@ export const guideExamples: CodeExample[] = [
   {id: 2, name: "Bob", role: "user"},
   {id: 3, name: "Carol", role: "user"}
 ]`,
+    expected: `id | name  | role
+---+-------+------
+1  | Alice | admin
+2  | Bob   | user
+3  | Carol | user`,
   },
   {
     id: 'guide-filtering-data',
@@ -21,48 +26,41 @@ export const guideExamples: CodeExample[] = [
   {id: 3, name: "Carol", role: "user"}
 ]
 filter role == "user"`,
-  },
-  {
-    id: 'guide-selecting-columns',
-    title: 'Selecting Columns',
-    category: 'guide',
-    code: `from [
-  {id: 1, name: "Alice", role: "admin"},
-  {id: 2, name: "Bob", role: "user"},
-  {id: 3, name: "Carol", role: "user"}
-]
-filter role == "user"
-select {name}`,
+    expected: `id | name  | role
+---+-------+-----
+2  | Bob   | user
+3  | Carol | user`,
   },
   {
     id: 'guide-creating-table',
     title: 'Creating a Table',
     category: 'guide',
-    expectsError: true, // table already exists in seed data
-    code: `create table app.users {
+    code: `create table app.todos {
   id: int4,
-  name: utf8,
-  email: utf8,
-  role: utf8
+  title: utf8,
+  done: bool
 }`,
+    expected: `namespace | table | created
+----------+-------+--------
+app       | todos | true`,
   },
   {
     id: 'guide-inserting-data',
     title: 'Inserting Data',
     category: 'guide',
-    expectsError: true, // "insert into" syntax not supported
-    code: `insert into app.users [
-  {id: 1, name: "Alice", email: "alice@example.com", role: "admin"},
-  {id: 2, name: "Bob", email: "bob@example.com", role: "user"}
+    code: `INSERT app.todos [
+  {id: 1, title: "Learn RQL", done: false},
+  {id: 2, title: "Build an app", done: false}
 ]`,
+    expected: `namespace | table | inserted
+----------+-------+---------
+app       | todos | 2`,
   },
   {
     id: 'guide-querying-tables',
     title: 'Querying Tables',
     category: 'guide',
-    expectsError: true, // multiple select columns require curly braces
     code: `from app.users
-filter role == "admin"
-select name, email`,
+filter role == "admin"`,
   },
 ];

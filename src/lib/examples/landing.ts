@@ -44,7 +44,7 @@ East   | 410`,
   {id: 3, name: "Carol", score: 92},
   {id: 4, name: "Dave", score: 78}
 ]
-sort {score desc}
+sort {score: desc}
 take 3`,
     expected: `id | name  | score
 ---+-------+------

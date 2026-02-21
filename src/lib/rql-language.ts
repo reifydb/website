@@ -14,7 +14,6 @@ const TRANSFORMS = [
   'insert',
   'join',
   'map',
-  'select',
   'sort',
   'take',
   'union',
@@ -25,7 +24,7 @@ const TRANSFORMS = [
 const MODULES = ['date', 'math', 'text'];
 const BUILTIN_FUNCTIONS = ['case'];
 const KEYWORDS = ['set', 'as', 'on', 'by'];
-const LITERALS = ['undefined', 'true', 'false'];
+const LITERALS = ['none', 'true', 'false'];
 
 export const rqlLanguageDefinition: languages.IMonarchLanguage = {
   defaultToken: 'invalid',

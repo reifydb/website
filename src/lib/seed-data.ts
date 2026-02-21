@@ -9,11 +9,11 @@ create namespace app;
 
 create table app.users { id: int4, name: utf8, email: utf8, role: utf8, age: int4, status: utf8, active: bool, created_at: datetime, first_name: utf8, last_name: utf8, deleted_at: Option(datetime) };
 INSERT app.users [
-  { id: 1, name: "Alice", email: "alice@example.com", role: "admin", age: 30, status: "active", active: true, created_at: cast("2024-01-15T10:30:00", datetime), first_name: "Alice", last_name: "Smith", deleted_at: undefined },
-  { id: 2, name: "Bob", email: "bob@example.com", role: "user", age: 25, status: "active", active: true, created_at: cast("2024-02-20T14:00:00", datetime), first_name: "Bob", last_name: "Jones", deleted_at: undefined },
+  { id: 1, name: "Alice", email: "alice@example.com", role: "admin", age: 30, status: "active", active: true, created_at: cast("2024-01-15T10:30:00", datetime), first_name: "Alice", last_name: "Smith", deleted_at: none },
+  { id: 2, name: "Bob", email: "bob@example.com", role: "user", age: 25, status: "active", active: true, created_at: cast("2024-02-20T14:00:00", datetime), first_name: "Bob", last_name: "Jones", deleted_at: none },
   { id: 3, name: "Carol", email: "carol@example.com", role: "user", age: 35, status: "inactive", active: false, created_at: cast("2023-12-01T09:00:00", datetime), first_name: "Carol", last_name: "Wilson", deleted_at: cast("2024-06-01T00:00:00", datetime) },
-  { id: 4, name: "David", email: "david@example.com", role: "admin", age: 28, status: "active", active: true, created_at: cast("2024-03-10T08:15:00", datetime), first_name: "David", last_name: "Brown", deleted_at: undefined },
-  { id: 5, name: "Eve", email: "eve@example.com", role: "user", age: 32, status: "active", active: true, created_at: cast("2024-04-05T16:45:00", datetime), first_name: "Eve", last_name: "Davis", deleted_at: undefined }
+  { id: 4, name: "David", email: "david@example.com", role: "admin", age: 28, status: "active", active: true, created_at: cast("2024-03-10T08:15:00", datetime), first_name: "David", last_name: "Brown", deleted_at: none },
+  { id: 5, name: "Eve", email: "eve@example.com", role: "user", age: 32, status: "active", active: true, created_at: cast("2024-04-05T16:45:00", datetime), first_name: "Eve", last_name: "Davis", deleted_at: none }
 ];
 
 create table app.orders { id: int4, total: float4, status: utf8, region: utf8, created_at: datetime, order_date: date };
