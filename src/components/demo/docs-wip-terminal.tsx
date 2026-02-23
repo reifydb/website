@@ -117,7 +117,7 @@ export function DocsWipTerminal() {
                 href="https://github.com/reifydb/reifydb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent-warm text-white font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent-warm text-white font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all"
               >
                 View on GitHub
               </a>

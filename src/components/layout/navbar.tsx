@@ -52,7 +52,7 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-bg-primary/80 backdrop-blur-xl border-b border-white/10">
+      <header className="sticky top-0 z-40 w-full bg-bg-primary border-b border-white/10">
         <div className="flex h-16 sm:h-20 w-full items-center justify-between px-4 sm:px-6 md:px-12">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
@@ -120,7 +120,7 @@ export function Navbar() {
             {/* Desktop GitHub + CTA */}
             <div className="hidden lg:flex items-center gap-3">
               <GitHubStars />
-              <Button href="/docs" size="sm">
+              <Button href="/docs" size="sm" className="bg-primary text-bg-primary font-semibold hover:bg-primary-dark">
                 Get Started
               </Button>
             </div>
@@ -312,7 +312,7 @@ export function Navbar() {
             <Link
               to="/docs"
               onClick={() => setMobileMenuOpen(false)}
-              className="font-semibold bg-gradient-to-r from-primary to-accent-warm text-white px-4 py-3 rounded-lg transition-all duration-150 text-center mt-4"
+              className="font-semibold bg-primary text-bg-primary px-4 py-3 rounded-lg transition-all duration-150 text-center mt-4 hover:bg-primary-dark"
             >
               Get Started
             </Link>

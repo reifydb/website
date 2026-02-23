@@ -52,7 +52,7 @@ export function ReplacesSection() {
         <div className="grid gap-6 md:grid-cols-2">
           {replacements.map((item, index) => (
             <ScrollReveal key={item.before} delay={index * 75}>
-              <div className="bg-bg-tertiary border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02] hover:border-primary/40 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] h-full">
+              <div className="bg-bg-tertiary border border-white/10 rounded-2xl p-6 transition-all duration-300 card-hover h-full">
                 {/* Before -> After */}
                 <div className="flex items-center gap-3 mb-4 flex-wrap">
                   <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${item.beforeColor}`}>

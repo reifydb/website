@@ -2,13 +2,10 @@ import { Navbar, Footer } from '@/components/layout';
 import { CtaSection } from '@/components/ui';
 import {
   HeroSection,
-  FoundationSection,
-  WhatIsStateSection,
-  PhilosophySection,
-  UseCasesSection,
   CapabilitiesSection,
-  HowItWorksSection,
   CodeExampleSection,
+  UseCasesSection,
+  HowItWorksSection,
   ReplacesSection,
   FaqSection,
 } from './sections';
@@ -21,35 +18,13 @@ export function LandingPage() {
       <main>
         <HeroSection />
 
-        <FoundationSection />
-
-        <WhatIsStateSection />
-
-        <PhilosophySection />
-
-        <UseCasesSection />
-
-        <CtaSection
-          variant="split"
-          title="Ready to explore ReifyDB?"
-          description="Read the docs to understand how ReifyDB can simplify your application state."
-          buttonText="Read the Docs →"
-          buttonHref="/docs"
-        />
-
         <CapabilitiesSection />
-
-        <HowItWorksSection />
 
         <CodeExampleSection />
 
-        <CtaSection
-          variant="minimal"
-          title="Want to see more examples?"
-          description="Check out the documentation for more RQL queries and patterns."
-          buttonText="View on GitHub →"
-          buttonHref="https://github.com/reifydb/reifydb"
-        />
+        <UseCasesSection />
+
+        <HowItWorksSection />
 
         <ReplacesSection />
 
@@ -57,8 +32,8 @@ export function LandingPage() {
 
         <CtaSection
           variant="banner"
-          title="Still have questions?"
-          description="Book a call and let's discuss how ReifyDB can help you."
+          title="Ready to explore ReifyDB?"
+          description="Read the docs or book a call to learn how ReifyDB can simplify your application state."
         />
       </main>
 

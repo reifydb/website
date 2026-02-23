@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ExecutableSnippet, ScrollReveal } from '@/components/ui';
 import { cn } from '@/lib';
 import { landingExamples } from '@/lib/examples';
@@ -8,14 +7,6 @@ const examples = landingExamples;
 
 export function CodeExampleSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const goToPrevious = () => {
-    setActiveIndex((prev) => (prev === 0 ? examples.length - 1 : prev - 1));
-  };
-
-  const goToNext = () => {
-    setActiveIndex((prev) => (prev === examples.length - 1 ? 0 : prev + 1));
-  };
 
   return (
     <section id="code-example" className="relative z-10 py-16 sm:py-24 bg-bg-secondary">
@@ -32,51 +23,32 @@ export function CodeExampleSection() {
           </div>
         </ScrollReveal>
 
-        {/* Carousel */}
+        {/* Tab Bar */}
         <ScrollReveal delay={100}>
-          <div className="relative">
-            {/* Navigation Buttons */}
-            <button
-              onClick={goToPrevious}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-12 z-10 p-2 bg-bg-tertiary border border-white/10 rounded-lg hover:border-primary/50 hover:bg-bg-elevated transition-all"
-              aria-label="Previous example"
-            >
-              <ChevronLeft size={20} />
-            </button>
-
-            <button
-              onClick={goToNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-12 z-10 p-2 bg-bg-tertiary border border-white/10 rounded-lg hover:border-primary/50 hover:bg-bg-elevated transition-all"
-              aria-label="Next example"
-            >
-              <ChevronRight size={20} />
-            </button>
-
-            {/* Snippet */}
-            <ExecutableSnippet
-              key={examples[activeIndex].title}
-              initialCode={examples[activeIndex].code}
-              title={examples[activeIndex].title}
-              description={examples[activeIndex].description}
-            />
-          </div>
-
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-6">
+          <div className="flex flex-wrap gap-2 mb-6">
             {examples.map((example, index) => (
               <button
                 key={example.title}
                 onClick={() => setActiveIndex(index)}
                 className={cn(
-                  'w-3 h-3 rounded-full border border-white/20 transition-all',
+                  'px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200',
                   index === activeIndex
-                    ? 'bg-gradient-to-r from-primary to-accent-warm border-transparent'
-                    : 'bg-bg-tertiary hover:bg-bg-elevated'
+                    ? 'bg-primary text-bg-primary'
+                    : 'bg-bg-tertiary text-text-secondary hover:text-text-primary hover:bg-bg-elevated'
                 )}
-                aria-label={`Go to example ${index + 1}`}
-              />
+              >
+                {example.title}
+              </button>
             ))}
           </div>
+
+          {/* Snippet */}
+          <ExecutableSnippet
+            key={examples[activeIndex].title}
+            initialCode={examples[activeIndex].code}
+            title={examples[activeIndex].title}
+            description={examples[activeIndex].description}
+          />
         </ScrollReveal>
       </div>
     </section>

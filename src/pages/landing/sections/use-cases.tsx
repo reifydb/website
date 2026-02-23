@@ -73,7 +73,7 @@ export function UseCasesSection() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {useCases.map((useCase, index) => (
             <ScrollReveal key={useCase.title} delay={index * 75}>
-              <div className="group bg-bg-tertiary border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02] hover:border-primary/40 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] h-full">
+              <div className="group bg-bg-tertiary border border-white/10 rounded-2xl p-6 transition-all duration-300 card-hover h-full">
                 <div className={`mb-4 w-12 h-12 rounded-xl bg-gradient-to-br ${useCase.bgColor} flex items-center justify-center`}>
                   <useCase.icon className={`h-6 w-6 ${useCase.color}`} strokeWidth={2} />
                 </div>

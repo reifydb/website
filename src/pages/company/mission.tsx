@@ -22,7 +22,7 @@ export function MissionPage() {
 
           {/* Mission Statement */}
           <ScrollReveal delay={100}>
-            <div className="bg-bg-tertiary border border-white/10 rounded-2xl p-8 sm:p-12 mb-12 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)]">
+            <div className="bg-bg-tertiary border border-white/10 rounded-2xl p-8 sm:p-12 mb-12 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)]">
               <h2 className="text-2xl font-bold mb-6">Mission Statement</h2>
               <p className="text-text-secondary text-lg leading-relaxed">
                 Modern software is constrained by infrastructure that treats application state as a storage problem.
@@ -34,7 +34,7 @@ export function MissionPage() {
 
           {/* Origin Story */}
           <ScrollReveal delay={200}>
-            <div className="bg-bg-tertiary border border-white/10 rounded-2xl p-8 sm:p-12 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)]">
+            <div className="bg-bg-tertiary border border-white/10 rounded-2xl p-8 sm:p-12 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)]">
               <h2 className="text-2xl font-bold mb-6">The Origin Story</h2>
 
               <div className="flex flex-col md:flex-row gap-8">

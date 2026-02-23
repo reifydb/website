@@ -113,28 +113,28 @@
 
 /* ========================================
    REIFYDB DESIGN SYSTEM
-   Premium Dark Theme
+   Charcoal + Amber Theme
    ======================================== */
 
 @theme {
-  /* Background Colors - Deep Navy/Black */
-  --color-bg-primary: #06040D;
-  --color-bg-secondary: #0D0B14;
-  --color-bg-tertiary: #13111A;
-  --color-bg-elevated: #1A1820;
+  /* Background Colors - Charcoal */
+  --color-bg-primary: #1C1E28;
+  --color-bg-secondary: #222430;
+  --color-bg-tertiary: #2A2C3A;
+  --color-bg-elevated: #32344A;
 
   /* Text Colors */
   --color-text-primary: #F8FAFC;
   --color-text-secondary: #CBD5E1;
   --color-text-muted: #64748B;
 
-  /* Primary Colors - Indigo/Violet */
-  --color-primary: #6366F1;
-  --color-primary-light: #818CF8;
-  --color-primary-dark: #4F46E5;
+  /* Primary Colors - Amber */
+  --color-primary: #F59E0B;
+  --color-primary-light: #FBBF24;
+  --color-primary-dark: #D97706;
 
   /* Accent Colors */
-  --color-accent-warm: #8B5CF6;
+  --color-accent-warm: #F97316;
   --color-accent-cool: #06B6D4;
   --color-accent-pink: #EC4899;
 
@@ -151,10 +151,10 @@
   --color-border-light: rgba(255, 255, 255, 0.05);
   --color-border-subtle: rgba(255, 255, 255, 0.03);
 
-  /* Glow Shadows */
-  --shadow-glow-primary: 0 0 20px rgba(99, 102, 241, 0.4);
-  --shadow-glow-accent: 0 0 20px rgba(139, 92, 246, 0.4);
-  --shadow-glow-sm: 0 0 10px rgba(99, 102, 241, 0.3);
+  /* Glow Shadows - Amber */
+  --shadow-glow-primary: 0 0 20px rgba(245, 158, 11, 0.4);
+  --shadow-glow-accent: 0 0 20px rgba(249, 115, 22, 0.4);
+  --shadow-glow-sm: 0 0 10px rgba(245, 158, 11, 0.3);
 
   /* Soft Shadows */
   --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
@@ -194,7 +194,6 @@
    ======================================== */
 
 html {
-  scroll-behavior: smooth;
 }
 
 body {
@@ -205,6 +204,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Subtle CSS grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 0%, transparent 70%);
+}
+
 /* Headings use display font */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
@@ -213,7 +227,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Selection */
 ::selection {
   background-color: var(--color-primary);
-  color: var(--color-text-primary);
+  color: var(--color-bg-primary);
 }
 
 /* ========================================
@@ -233,10 +247,10 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
   }
   50% {
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.6);
   }
 }
 
@@ -277,24 +291,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-glow-pulse {
-  animation: glow-pulse 2s ease-in-out infinite;
+  animation: none;
 }
 
 .animate-float {
-  animation: float 20s ease-in-out infinite;
+  animation: none;
 }
 
 .animate-float-delayed {
-  animation: float 25s ease-in-out infinite 5s;
+  animation: none;
 }
 
 .animate-shimmer {
   background-size: 200% auto;
-  animation: shimmer 3s linear infinite;
+  animation: none;
 }
 
 .animate-glow-breathe {
-  animation: glow-breathe 4s ease-in-out infinite;
+  animation: none;
 }
 
 .animate-slide-up {
@@ -302,7 +316,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-scanline {
-  animation: scanline 8s linear infinite;
+  animation: none;
 }
 
 /* Stagger delays */
@@ -340,8 +354,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .premium-card:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.1);
 }
 
 .premium-card-elevated {
@@ -349,6 +363,16 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
+}
+
+/* Card hover utility */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.15);
 }
 
 /* ========================================
@@ -443,7 +467,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Glass effect */
 .glass {
-  background: rgba(13, 11, 20, 0.8);
+  background: rgba(28, 30, 40, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }

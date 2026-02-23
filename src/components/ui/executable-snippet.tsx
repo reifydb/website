@@ -246,7 +246,7 @@ export function ExecutableSnippet({
             "flex items-center gap-2 px-4 py-1.5 text-white font-semibold text-xs uppercase tracking-wider rounded-lg transition-all active:scale-95",
             dbLoading || isExecuting
               ? "bg-gradient-to-r from-primary/70 to-accent-warm/70 animate-pulse cursor-wait"
-              : "bg-gradient-to-r from-primary to-accent-warm hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
+              : "bg-gradient-to-r from-primary to-accent-warm hover:shadow-[0_0_20px_rgba(245,158,11,0.4)]"
           )}
         >
           {dbLoading || isExecuting

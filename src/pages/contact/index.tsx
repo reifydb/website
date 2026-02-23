@@ -24,7 +24,7 @@ export function ContactPage() {
 
           {/* Primary CTA - Book a Call */}
           <ScrollReveal delay={100}>
-            <div className="bg-bg-tertiary border border-white/10 rounded-2xl p-8 sm:p-12 text-center mb-12 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)]">
+            <div className="bg-bg-tertiary border border-white/10 rounded-2xl p-8 sm:p-12 text-center mb-12 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)]">
               <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-primary/20 to-accent-warm/20 flex items-center justify-center">
                 <Calendar className="h-8 w-8 text-primary" />
               </div>
@@ -44,7 +44,7 @@ export function ContactPage() {
             <ScrollReveal delay={200}>
               <a
                 href="mailto:founder@reifydb.com"
-                className="bg-bg-tertiary border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02] hover:border-primary/40 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] text-center group block h-full"
+                className="bg-bg-tertiary border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)] text-center group block h-full"
               >
                 <div className="w-14 h-14 mx-auto mb-3 rounded-xl bg-gradient-to-br from-primary/20 to-accent-warm/20 flex items-center justify-center">
                   <Mail className="h-7 w-7 text-primary group-hover:text-primary-light transition-colors" />
@@ -60,7 +60,7 @@ export function ContactPage() {
                 href="https://github.com/reifydb/reifydb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-bg-tertiary border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02] hover:border-primary/40 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] text-center group block h-full"
+                className="bg-bg-tertiary border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)] text-center group block h-full"
               >
                 <div className="w-14 h-14 mx-auto mb-3 rounded-xl bg-gradient-to-br from-primary/20 to-accent-warm/20 flex items-center justify-center">
                   <Github className="h-7 w-7 text-primary group-hover:text-primary-light transition-colors" />

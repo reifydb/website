@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="relative z-10 bg-bg-secondary border-t border-white/10 py-12 sm:py-16 text-text-primary">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 md:grid-cols-3 md:gap-12 text-sm">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 text-sm">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -16,6 +16,39 @@ export function Footer() {
             </p>
           </div>
 
+          {/* Product */}
+          <div>
+            <div className="font-display font-bold text-base mb-4 text-text-primary">
+              Product
+            </div>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="/docs"
+                  className="text-text-muted hover:text-primary transition-colors"
+                >
+                  Documentation
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/blog"
+                  className="text-text-muted hover:text-primary transition-colors"
+                >
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/faq"
+                  className="text-text-muted hover:text-primary transition-colors"
+                >
+                  FAQ
+                </a>
+              </li>
+            </ul>
+          </div>
+
           {/* Resources */}
           <div>
             <div className="font-display font-bold text-base mb-4 text-text-primary">
@@ -25,7 +58,7 @@ export function Footer() {
               <li>
                 <a
                   href="/contact"
-                  className="text-text-muted hover:text-primary transition-colors link-underline"
+                  className="text-text-muted hover:text-primary transition-colors"
                 >
                   Contact
                 </a>
@@ -33,7 +66,7 @@ export function Footer() {
               <li>
                 <a
                   href="/support"
-                  className="text-text-muted hover:text-primary transition-colors link-underline"
+                  className="text-text-muted hover:text-primary transition-colors"
                 >
                   Support
                 </a>
@@ -41,7 +74,7 @@ export function Footer() {
               <li>
                 <a
                   href="https://cal.com/reifydb/30min"
-                  className="text-text-muted hover:text-primary transition-colors link-underline"
+                  className="text-text-muted hover:text-primary transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -60,7 +93,7 @@ export function Footer() {
               <li>
                 <a
                   href="https://github.com/reifydb/reifydb"
-                  className="text-text-muted hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.5)] flex items-center gap-2 w-fit"
+                  className="text-text-muted hover:text-primary transition-colors flex items-center gap-2 w-fit"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -71,7 +104,7 @@ export function Footer() {
               <li>
                 <a
                   href="https://x.com/reifydb"
-                  className="text-text-muted hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.5)] flex items-center gap-2 w-fit"
+                  className="text-text-muted hover:text-primary transition-colors flex items-center gap-2 w-fit"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -88,12 +121,12 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 sm:mt-16 flex flex-col items-center justify-between gap-6 sm:gap-8 border-t border-white/10 pt-8 sm:pt-12 text-xs sm:text-sm md:flex-row">
           <div className="text-text-muted">
-            © {new Date().getFullYear()} ReifyDB. All rights reserved.
+            &copy; {new Date().getFullYear()} ReifyDB. All rights reserved.
           </div>
           <div className="flex gap-6 text-text-muted">
             <a
               href="https://github.com/reifydb/reifydb/blob/main/license.md"
-              className="hover:text-primary transition-colors link-underline"
+              className="hover:text-primary transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >

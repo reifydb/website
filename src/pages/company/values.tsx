@@ -80,7 +80,7 @@ export function ValuesPage() {
                     </div>
 
                     {/* Content Card */}
-                    <div className="flex-1 bg-bg-tertiary border border-white/10 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(99,102,241,0.1)]">
+                    <div className="flex-1 bg-bg-tertiary border border-white/10 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.1)]">
                       <h2 className="text-xl sm:text-2xl font-bold mb-3">
                         {value.title}
                       </h2>

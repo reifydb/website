@@ -48,9 +48,9 @@ export function HowItWorksSection() {
                   <div className="hidden md:block absolute top-12 left-[calc(50%+3rem)] w-[calc(100%-6rem)] h-0.5 bg-white/10" />
                 )}
 
-                <div className="group bg-bg-secondary border border-white/10 rounded-2xl p-6 text-center relative z-10 transition-all duration-300 hover:scale-[1.02] hover:border-primary/40 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] h-full">
+                <div className="group bg-bg-secondary border border-white/10 rounded-2xl p-6 text-center relative z-10 transition-all duration-300 card-hover h-full">
                   {/* Step number */}
-                  <div className="inline-flex items-center justify-center w-10 h-10 mb-4 bg-gradient-to-r from-primary to-accent-warm text-white rounded-full font-black text-lg">
+                  <div className="inline-flex items-center justify-center w-10 h-10 mb-4 bg-gradient-to-r from-primary to-accent-warm text-bg-primary rounded-full font-black text-lg">
                     {step.number}
                   </div>
 

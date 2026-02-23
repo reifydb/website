@@ -11,12 +11,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles = {
   primary: cn(
-    'relative overflow-hidden',
-    'bg-gradient-to-r from-primary via-accent-warm to-primary bg-[length:200%_auto]',
-    'text-white font-semibold',
-    'shadow-md hover:shadow-[0_0_25px_rgba(99,102,241,0.5)]',
-    'hover:animate-shimmer',
-    'transition-shadow duration-300'
+    'bg-primary text-bg-primary font-semibold',
+    'hover:bg-primary-dark hover:shadow-[0_0_25px_rgba(245,158,11,0.4)]',
+    'transition-all duration-300'
   ),
   secondary: cn(
     'bg-bg-tertiary text-text-primary font-semibold',
