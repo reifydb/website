@@ -1,7 +1,7 @@
 import type { CodeExample } from './index';
 
 export const transformExamples: CodeExample[] = [
-  // transforms.tsx — Pipeline example
+  // transforms.tsx - Pipeline example
   {
     id: 'transform-pipeline',
     title: 'Pipeline Processing',
@@ -18,7 +18,7 @@ North  | 150.5
 West   | 55.25`,
   },
 
-  // transforms.tsx — Transform reference entries
+  // transforms.tsx - Transform reference entries
   {
     id: 'transform-from',
     title: 'from',
@@ -87,7 +87,7 @@ East   | 245
 South  | 89.98999786376953`,
   },
 
-  // filter.tsx — Filter examples
+  // filter.tsx - Filter examples
   {
     id: 'filter-basic',
     title: 'Filter Basic Syntax',
@@ -110,7 +110,7 @@ filter age >= 18 and status == "active"`,
 filter deleted_at == none`,
   },
 
-  // sort.tsx — Sort examples
+  // sort.tsx - Sort examples
   {
     id: 'sort-basic',
     title: 'Sort Basic Syntax',

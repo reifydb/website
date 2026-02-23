@@ -9,7 +9,7 @@ import { ScrollReveal } from '@/components/ui';
 const capabilities = [
   {
     title: 'Transactional Application State',
-    description: 'ACID transactions over live, mutable state with predictable low latency. State is first-class — not an afterthought bolted onto a query engine.',
+    description: 'ACID transactions over live, mutable state with predictable low latency. State is first-class - not an afterthought bolted onto a query engine.',
     icon: Shield,
     color: 'text-primary',
     bgColor: 'from-primary/20 to-primary/5',
@@ -30,7 +30,7 @@ const capabilities = [
   },
   {
     title: 'Multiple Native State Primitives',
-    description: 'Tables, views, counters, ring buffers, histograms — all in one engine with unified transactional guarantees. Embeddable or server mode.',
+    description: 'Tables, views, counters, ring buffers, histograms - all in one engine with unified transactional guarantees. Embeddable or server mode.',
     icon: Boxes,
     color: 'text-feature-purple',
     bgColor: 'from-feature-purple/20 to-feature-purple/5',
@@ -48,35 +48,22 @@ export function CapabilitiesSection() {
               Why ReifyDB
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-              A single engine for live application state — transactional, incremental, and programmable.
+              A single engine for live application state - transactional, incremental, and programmable.
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Alternating left-right layout */}
-        <div className="space-y-12 sm:space-y-16">
+        <div className="grid gap-6 sm:grid-cols-2">
           {capabilities.map((capability, index) => (
             <ScrollReveal key={capability.title} delay={index * 75}>
-              <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-center`}>
-                {/* Text side */}
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${capability.bgColor} flex items-center justify-center shrink-0`}>
-                      <capability.icon className={`h-5 w-5 ${capability.color}`} strokeWidth={2} />
-                    </div>
-                    <h3 className="text-xl font-bold">{capability.title}</h3>
-                  </div>
-                  <p className="text-text-muted text-base leading-relaxed">
-                    {capability.description}
-                  </p>
+              <div className="group bg-bg-secondary border border-white/10 rounded-2xl p-6 transition-all duration-300 card-hover h-full">
+                <div className={`mb-4 w-12 h-12 rounded-xl bg-gradient-to-br ${capability.bgColor} flex items-center justify-center`}>
+                  <capability.icon className={`h-6 w-6 ${capability.color}`} strokeWidth={2} />
                 </div>
-
-                {/* Visual side */}
-                <div className="flex-1 w-full">
-                  <div className="bg-bg-secondary border border-white/10 rounded-2xl p-6 h-32 flex items-center justify-center">
-                    <capability.icon className={`h-16 w-16 ${capability.color} opacity-20`} strokeWidth={1} />
-                  </div>
-                </div>
+                <h3 className="text-lg font-bold mb-2">{capability.title}</h3>
+                <p className="text-text-muted text-sm leading-relaxed">
+                  {capability.description}
+                </p>
               </div>
             </ScrollReveal>
           ))}

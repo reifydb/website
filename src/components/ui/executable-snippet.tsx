@@ -283,7 +283,7 @@ export function ExecutableSnippet({
             </div>
           )}
 
-          {/* Results — stacked key-value layout */}
+          {/* Results - stacked key-value layout */}
           {result?.data && result.data.length > 0 && !result.error && (
             <div className="p-2 sm:p-4 font-mono text-sm">
               {result.data.map((row, i) => (
@@ -352,7 +352,7 @@ function getValueStyle(value: unknown): { color?: string; italic?: boolean } {
     return { color: 'var(--color-text-muted)', italic: true };
   }
 
-  // Duck-type on `type` property — Value classes use `implements` (not extends),
+  // Duck-type on `type` property - Value classes use `implements` (not extends),
   // so instanceof fails. Every concrete Value sets this.type in its constructor.
   const t = (value as { type?: unknown }).type;
   if (typeof t === 'string') {
@@ -380,11 +380,11 @@ function getValueStyle(value: unknown): { color?: string; italic?: boolean } {
   switch (typeof value) {
     case 'number':
     case 'bigint':
-      return { color: '#F472B6' };     // pink — number
+      return { color: '#F472B6' };     // pink - number
     case 'boolean':
-      return { color: '#818CF8' };     // indigo — boolean
+      return { color: '#818CF8' };     // indigo - boolean
     case 'string':
-      return { color: '#34D399' };     // emerald — string
+      return { color: '#34D399' };     // emerald - string
     default:
       return {};
   }

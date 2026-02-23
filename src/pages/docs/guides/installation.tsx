@@ -22,11 +22,11 @@ export function InstallationPage() {
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary-color font-bold">•</span>
-              <span><strong>Rust 1.90+</strong> — ReifyDB is written in Rust.</span>
+              <span><strong>Rust 1.90+</strong> - ReifyDB is written in Rust.</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-primary-color font-bold">•</span>
-              <span><strong>Cargo</strong> — Rust's package manager (included with Rust).</span>
+              <span><strong>Cargo</strong> - Rust's package manager (included with Rust).</span>
             </li>
           </ul>
         </section>

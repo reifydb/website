@@ -25,7 +25,7 @@ export function HeroSection() {
 
           {/* Subtitle */}
           <p className="max-w-2xl mx-auto text-lg sm:text-xl text-text-secondary mb-10 leading-relaxed">
-            Transactional, incremental, and programmable. ReifyDB treats state as a reasoning problem — not just a storage problem.
+            Transactional, incremental, and programmable. ReifyDB treats state as a reasoning problem - not just a storage problem.
           </p>
 
           {/* CTAs */}

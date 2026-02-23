@@ -69,7 +69,7 @@ export function DocsOverview() {
             </p>
             <p className="text-text-secondary mb-4">
               <strong className="text-text-primary">Live application state</strong> is the data your application reads, updates, and reasons
-              about on every request—user sessions, shopping carts, account balances, game state, and more.
+              about on every request-user sessions, shopping carts, account balances, game state, and more.
             </p>
             <p className="text-text-secondary">
               With ReifyDB, you get ACID transactions, incrementally-maintained materialized views,
@@ -115,19 +115,19 @@ export function DocsOverview() {
             <ul className="space-y-3 text-text-secondary">
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold">•</span>
-                <span><strong className="text-text-primary">Transactional</strong> — Full ACID guarantees for your application state.</span>
+                <span><strong className="text-text-primary">Transactional</strong> - Full ACID guarantees for your application state.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold">•</span>
-                <span><strong className="text-text-primary">Incremental</strong> — Materialized views update automatically as data changes.</span>
+                <span><strong className="text-text-primary">Incremental</strong> - Materialized views update automatically as data changes.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold">•</span>
-                <span><strong className="text-text-primary">Embeddable</strong> — Run in-process or as a standalone server.</span>
+                <span><strong className="text-text-primary">Embeddable</strong> - Run in-process or as a standalone server.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold">•</span>
-                <span><strong className="text-text-primary">RQL</strong> — A query language designed for application state, not just tables.</span>
+                <span><strong className="text-text-primary">RQL</strong> - A query language designed for application state, not just tables.</span>
               </li>
             </ul>
           </section>
