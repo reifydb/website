@@ -52,22 +52,22 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-bg-primary border-b border-white/10">
-        <div className="flex h-16 sm:h-20 w-full items-center justify-between px-4 sm:px-6 md:px-12">
+      <header className="sticky top-0 z-50 w-full bg-[rgba(28,30,40,0.8)] backdrop-blur-sm shadow-[0_1px_0_0_rgba(255,255,255,0.1)]">
+        <div className="flex h-[60px] w-full items-center justify-between px-4 sm:px-6 md:pl-8 md:pr-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <img
               src="/img/logo.png"
               alt="ReifyDB"
-              className="h-7 sm:h-8 w-auto"
+              className="h-7 w-auto"
             />
-            <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-text-primary">
+            <span className="font-display font-bold text-lg tracking-tight text-text-primary">
               ReifyDB
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex gap-1 text-sm items-center flex-1 justify-center">
+          <nav className="hidden lg:flex gap-0 text-sm items-center flex-1 justify-center">
             {/* Dropdown Menus */}
             {navDropdowns.map((dropdown) => (
               <NavbarDropdown
@@ -89,8 +89,8 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      "font-medium px-4 py-2 rounded-lg transition-all duration-150",
-                      "text-text-secondary hover:text-text-primary hover:bg-white/5"
+                      "font-medium px-4 py-2 transition-colors duration-150",
+                      "text-text-secondary hover:text-text-primary"
                     )}
                   >
                     {link.label}
@@ -103,10 +103,10 @@ export function Navbar() {
                   key={link.href}
                   to={link.href}
                   className={cn(
-                    "font-medium px-4 py-2 rounded-lg transition-all duration-150",
+                    "font-medium px-4 py-2 transition-colors duration-150",
                     isActive(link.href)
                       ? "text-primary"
-                      : "text-text-secondary hover:text-text-primary hover:bg-white/5"
+                      : "text-text-secondary hover:text-text-primary"
                   )}
                 >
                   {link.label}
@@ -120,7 +120,7 @@ export function Navbar() {
             {/* Desktop GitHub + CTA */}
             <div className="hidden lg:flex items-center gap-3">
               <GitHubStars />
-              <Button href="/docs" size="sm" className="bg-primary text-bg-primary font-semibold hover:bg-primary-dark">
+              <Button href="/docs" size="sm" className="rounded-sm uppercase tracking-wider text-xs">
                 Get Started
               </Button>
             </div>
@@ -128,7 +128,7 @@ export function Navbar() {
             {/* Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden flex flex-col gap-1.5 w-10 h-10 items-center justify-center border border-white/10 rounded-lg bg-bg-tertiary hover:bg-bg-elevated group transition-colors"
+              className="lg:hidden flex flex-col gap-1.5 w-10 h-10 items-center justify-center group transition-colors"
               aria-label="Toggle menu"
             >
               <span
@@ -165,7 +165,7 @@ export function Navbar() {
 
         {/* Menu Panel */}
         <div
-          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-bg-secondary border-l border-white/10 transform transition-transform duration-300 overflow-y-auto ${
+          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-bg-elevated border-l border-white/10 transform transition-transform duration-300 overflow-y-auto ${
             mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
@@ -173,7 +173,7 @@ export function Navbar() {
           <div className="flex justify-end p-6 border-b border-white/10">
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className="flex flex-col gap-1.5 w-10 h-10 items-center justify-center border border-white/10 rounded-lg bg-bg-tertiary hover:bg-bg-elevated group transition-colors"
+              className="flex flex-col gap-1.5 w-10 h-10 items-center justify-center group transition-colors"
               aria-label="Close menu"
             >
               <span className="w-5 h-0.5 bg-text-secondary group-hover:bg-text-primary rotate-45 translate-y-1"/>
@@ -185,12 +185,12 @@ export function Navbar() {
           <nav className="flex flex-col p-6 gap-2">
             {/* Accordion Sections for Dropdowns */}
             {navDropdowns.map((dropdown) => (
-              <div key={dropdown.id} className="border border-white/10 rounded-lg overflow-hidden">
+              <div key={dropdown.id} className="border-b border-white/10 overflow-hidden">
                 <button
                   onClick={() => toggleMobileSection(dropdown.id)}
                   className={cn(
-                    "w-full font-medium text-text-secondary hover:text-text-primary px-4 py-3 transition-all duration-150 hover:bg-white/5 flex items-center justify-between",
-                    expandedMobileSection === dropdown.id && "bg-white/5 text-text-primary"
+                    "w-full font-medium text-text-secondary hover:text-text-primary px-4 py-3 transition-colors duration-150 flex items-center justify-between",
+                    expandedMobileSection === dropdown.id && "text-text-primary"
                   )}
                 >
                   {dropdown.label}
@@ -216,7 +216,7 @@ export function Navbar() {
                       : "max-h-0 opacity-0"
                   )}
                 >
-                  <div className="px-4 py-3 bg-bg-tertiary/50 border-t border-white/5">
+                  <div className="px-4 py-3 border-t border-white/5">
                     {dropdown.columns.map((column) => (
                       <div key={column.title} className="mb-4 last:mb-0">
                         <h4 className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-2">
@@ -284,7 +284,7 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="font-medium text-text-secondary hover:text-text-primary px-4 py-3 border border-white/10 rounded-lg transition-all duration-150 hover:bg-white/5 text-center"
+                    className="font-medium text-text-secondary hover:text-text-primary px-4 py-3 border-b border-white/10 transition-colors duration-150 text-left"
                   >
                     {link.label}
                   </a>
@@ -297,10 +297,10 @@ export function Navbar() {
                   to={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
-                    "font-medium px-4 py-3 border border-white/10 rounded-lg transition-all duration-150 text-center",
+                    "font-medium px-4 py-3 border-b border-white/10 transition-colors duration-150 text-left",
                     isActive(link.href)
-                      ? "text-primary border-primary/30"
-                      : "text-text-secondary hover:text-text-primary hover:bg-white/5"
+                      ? "text-primary"
+                      : "text-text-secondary hover:text-text-primary"
                   )}
                 >
                   {link.label}
@@ -312,7 +312,7 @@ export function Navbar() {
             <Link
               to="/docs"
               onClick={() => setMobileMenuOpen(false)}
-              className="font-semibold bg-primary text-bg-primary px-4 py-3 rounded-lg transition-all duration-150 text-center mt-4 hover:bg-primary-dark"
+              className="font-semibold bg-primary text-bg-primary px-4 py-3 rounded-sm uppercase tracking-wider text-sm transition-all duration-150 text-center mt-4 hover:bg-primary-dark"
             >
               Get Started
             </Link>

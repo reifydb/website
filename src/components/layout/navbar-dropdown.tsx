@@ -19,10 +19,10 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
       {/* Trigger Button */}
       <button
         className={cn(
-          "font-medium px-4 py-2 rounded-lg transition-all duration-150 flex items-center gap-1.5",
+          "font-medium px-4 py-2 transition-colors duration-150 flex items-center gap-1.5",
           isOpen
-            ? "text-text-primary bg-white/5"
-            : "text-text-secondary hover:text-text-primary hover:bg-white/5"
+            ? "text-text-primary"
+            : "text-text-secondary hover:text-text-primary"
         )}
       >
         {dropdown.label}
@@ -49,7 +49,7 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
         )}
       >
         <div className={cn(
-          "bg-bg-secondary border border-white/10 rounded-xl shadow-2xl shadow-black/20 overflow-hidden",
+          "bg-bg-elevated border border-white/10 rounded-md shadow-[0_10px_30px_rgba(0,0,0,0.4)] overflow-hidden",
           dropdown.columns.length === 1 ? "min-w-[200px]" : "min-w-[400px]"
         )}>
           <div className={cn(
@@ -79,9 +79,9 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
                           href={item.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+                          className="group px-3 py-2 transition-colors"
                         >
-                          <div className="font-medium text-text-secondary group-hover:text-text-primary transition-colors">
+                          <div className="font-medium text-sm text-text-secondary group-hover:text-primary transition-colors">
                             {item.label}
                           </div>
                           {item.description && (
@@ -98,9 +98,9 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
                         <a
                           key={item.label}
                           href={item.href}
-                          className="group px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+                          className="group px-3 py-2 transition-colors"
                         >
-                          <div className="font-medium text-text-secondary group-hover:text-text-primary transition-colors">
+                          <div className="font-medium text-sm text-text-secondary group-hover:text-primary transition-colors">
                             {item.label}
                           </div>
                           {item.description && (
@@ -116,9 +116,9 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
                       <Link
                         key={item.label}
                         to={item.href}
-                        className="group px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+                        className="group px-3 py-2 transition-colors"
                       >
-                        <div className="font-medium text-text-secondary group-hover:text-text-primary transition-colors">
+                        <div className="font-medium text-sm text-text-secondary group-hover:text-primary transition-colors">
                           {item.label}
                         </div>
                         {item.description && (

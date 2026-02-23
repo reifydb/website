@@ -9,7 +9,7 @@ export function GitHubStars() {
       href="https://github.com/reifydb/reifydb"
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-2 px-3 py-2 bg-bg-tertiary border border-white/10 rounded-lg hover:border-primary/30 transition-all"
+      className="flex items-center gap-2 px-3 py-2 border-2 border-transparent rounded-sm hover:border-primary/60 hover:bg-bg-primary transition-all"
     >
       <Github size={18} className="text-text-secondary" />
       {!loading && formatted && (
