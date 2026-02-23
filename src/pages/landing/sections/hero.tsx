@@ -37,14 +37,14 @@ export function HeroSection() {
 
           {/* Main Title */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight mb-6 leading-[1.05] mx-auto max-w-5xl">
-            A database that reasons about
+            The database for
             <br />
             <span className="gradient-text">live application state</span>
           </h1>
 
           {/* Subtitle */}
           <p className="max-w-3xl mx-auto text-lg sm:text-xl text-text-secondary mb-10 leading-relaxed">
-            Transactional, incremental, and programmable in one flow. ReifyDB keeps the state your app mutates on every request consistent, fresh, and close to the logic that shapes it.
+            Write, enforce logic, and keep derived views fresh in one transactional flow - no caches, cron, or drift.
           </p>
 
           {/* CTAs */}
