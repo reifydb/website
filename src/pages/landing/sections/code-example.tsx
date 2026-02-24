@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { ExecutableSnippet, ScrollReveal } from '@/components/ui';
 import { cn } from '@/lib';
 import { landingExamples } from '@/lib/examples';
@@ -49,6 +51,17 @@ export function CodeExampleSection() {
             title={examples[activeIndex].title}
             description={examples[activeIndex].description}
           />
+
+          {/* Explore all link */}
+          <div className="mt-6 text-center">
+            <Link
+              to="/examples"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-light transition-colors"
+            >
+              Explore all examples
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         </ScrollReveal>
       </div>
     </section>

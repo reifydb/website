@@ -237,7 +237,7 @@ export function ExecutableSnippet({
                   <span className="hidden sm:inline">Ctrl+Enter to run</span>
                   <span className="sm:hidden">Tap Run to execute</span>
                 </>
-              : 'First run will download the database (~11MB)'}
+              : 'First run will download the database (~15MB)'}
         </span>
         <button
           onClick={handleRun}
@@ -285,7 +285,7 @@ export function ExecutableSnippet({
 
           {/* Results - stacked key-value layout */}
           {result?.data && result.data.length > 0 && !result.error && (
-            <div className="p-2 sm:p-4 font-mono text-sm">
+            <div className="p-2 sm:p-4 font-mono text-sm overflow-x-auto">
               {result.data.map((row, i) => (
                 <div key={i} className={i > 0 ? 'mt-3' : ''}>
                   {/* Row header */}
@@ -296,7 +296,7 @@ export function ExecutableSnippet({
                   {/* Key-value grid with left accent border and alternating stripes */}
                   <div
                     className="grid border-l-2 border-primary/30"
-                    style={{ gridTemplateColumns: `${maxKeyLength + 4}ch 1fr` }}
+                    style={{ gridTemplateColumns: `min(${maxKeyLength + 4}ch, 40%) 1fr` }}
                   >
                     {columns.map((col, j) => {
                       const vs = getValueStyle(row[col]);
@@ -336,7 +336,7 @@ export function ExecutableSnippet({
 
   if (isFullscreen) {
     return (
-      <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm">
+      <div className="fixed inset-0 z-60 bg-black/80 backdrop-blur-sm">
         <div className="fixed inset-0 sm:inset-4 bg-bg-secondary sm:border sm:border-white/10 sm:rounded-xl flex flex-col overflow-hidden">
           {content}
         </div>

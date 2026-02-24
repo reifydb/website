@@ -7,6 +7,8 @@
 
 export type ExampleCategory = 'landing' | 'guide' | 'rql' | 'function';
 
+export type ExampleComponent = 'snippet' | string;
+
 export interface CodeExample {
   /** Unique identifier for test naming */
   id: string;
@@ -22,6 +24,8 @@ export interface CodeExample {
   expectsError?: boolean;
   /** Expected result as rendered table text (omit for dynamic results like date::now()) */
   expected?: string;
+  /** Which UI component to render this example with. Defaults to 'snippet'. */
+  component?: ExampleComponent;
 }
 
 // Re-export all examples

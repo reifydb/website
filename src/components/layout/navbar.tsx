@@ -52,7 +52,7 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-[rgba(28,30,40,0.8)] backdrop-blur-sm shadow-[0_1px_0_0_rgba(255,255,255,0.1)]">
+      <header className="sticky top-0 z-40 w-full bg-[rgba(28,30,40,0.95)] shadow-[0_1px_0_0_rgba(255,255,255,0.1)]">
         <div className="flex h-[60px] w-full items-center justify-between px-4 sm:px-6 md:pl-8 md:pr-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">

@@ -21,10 +21,10 @@ const heroHighlights = [
 
 export function HeroSection() {
   return (
-    <section className="relative py-16 sm:py-24 lg:py-28 overflow-visible">
+    <section className="relative py-16 sm:py-24 lg:py-28 overflow-hidden">
       {/* Subtle radial amber glow */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/10 rounded-full blur-[80px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(600px,100vw)] h-[400px] bg-primary/10 rounded-full blur-[80px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
@@ -36,9 +36,8 @@ export function HeroSection() {
           </div>
 
           {/* Main Title */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight mb-6 leading-[1.05] mx-auto max-w-5xl">
-            The database for
-            <br />
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black tracking-tight mb-6 leading-[1.05] mx-auto max-w-5xl">
+            The database for{' '}
             <span className="gradient-text">live application state</span>
           </h1>
 
@@ -67,7 +66,7 @@ export function HeroSection() {
           </p>
 
           {/* Hero highlights */}
-          <div className="mt-10 bg-bg-tertiary/80 border border-white/10 rounded-2xl p-5 sm:p-6 backdrop-blur-sm shadow-[0_20px_60px_rgba(0,0,0,0.35)] text-left">
+          <div className="mt-10 bg-bg-tertiary border border-white/10 rounded-2xl p-5 sm:p-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)] text-left">
             <div className="flex items-center gap-2 mb-4">
               <span className="w-2 h-2 bg-primary rounded-full" />
               <p className="text-xs font-semibold text-text-secondary uppercase tracking-[0.08em]">Why teams care</p>
