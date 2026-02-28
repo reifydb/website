@@ -50,7 +50,7 @@ export function RqlBasicsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Data Sources</h2>
           <p className="text-text-secondary mb-4">
-            The <code className="bg-bg-tertiary border border-white/10 px-1.5 py-0.5 rounded text-xs font-mono">from</code> transform specifies where data comes from.
+            The <code className="bg-bg-tertiary border border-dashed border-white/15 px-1.5 py-0.5 text-xs font-mono">from</code> transform specifies where data comes from.
           </p>
 
           <h3 className="text-lg font-bold mt-6 mb-3">Tables</h3>
@@ -74,14 +74,14 @@ export function RqlBasicsPage() {
         {/* <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Comments</h2>
           <p className="text-text-secondary mb-4">
-            Use <code className="bg-bg-tertiary border border-white/10 px-1.5 py-0.5 rounded text-xs font-mono">#</code> for single-line comments:
+            Use <code className="bg-bg-tertiary border border-dashed border-white/15 px-1.5 py-0.5 text-xs font-mono">#</code> for single-line comments:
           </p>
           <ExecutableSnippet
             title={getExampleById('rql-single-line-comments')!.title}
             initialCode={getExampleById('rql-single-line-comments')!.code}
           />
           <p className="text-text-secondary mt-4 mb-4">
-            Use <code className="bg-bg-tertiary border border-white/10 px-1.5 py-0.5 rounded text-xs font-mono">/* </code> for block comments:
+            Use <code className="bg-bg-tertiary border border-dashed border-white/15 px-1.5 py-0.5 text-xs font-mono">/*</code> for block comments:
           </p>
           <ExecutableSnippet
             title={getExampleById('rql-block-comments')!.title}
@@ -96,25 +96,25 @@ export function RqlBasicsPage() {
             RQL supports these literal types:
           </p>
           <div className="overflow-x-auto">
-            <table className="w-full border border-white/10 rounded-xl text-sm overflow-hidden">
+            <table className="w-full border-2 border-dashed border-white/15 text-sm overflow-hidden">
               <thead>
                 <tr className="bg-bg-elevated">
-                  <th className="text-left px-4 py-3 border-b border-white/10 font-semibold">Type</th>
-                  <th className="text-left px-4 py-3 border-b border-white/10 font-semibold">Example</th>
+                  <th className="text-left px-4 py-3 border-b border-dashed border-white/15 font-semibold">Type</th>
+                  <th className="text-left px-4 py-3 border-b border-dashed border-white/15 font-semibold">Example</th>
                 </tr>
               </thead>
               <tbody className="bg-bg-tertiary">
                 <tr>
-                  <td className="px-4 py-3 border-b border-white/10">Strings</td>
-                  <td className="px-4 py-3 border-b border-white/10 font-mono text-xs text-text-secondary">"hello" or 'hello'</td>
+                  <td className="px-4 py-3 border-b border-dashed border-white/15">Strings</td>
+                  <td className="px-4 py-3 border-b border-dashed border-white/15 font-mono text-xs text-text-secondary">"hello" or 'hello'</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-3 border-b border-white/10">Numbers</td>
-                  <td className="px-4 py-3 border-b border-white/10 font-mono text-xs text-text-secondary">42, 3.14, 1_000_000</td>
+                  <td className="px-4 py-3 border-b border-dashed border-white/15">Numbers</td>
+                  <td className="px-4 py-3 border-b border-dashed border-white/15 font-mono text-xs text-text-secondary">42, 3.14, 1_000_000</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-3 border-b border-white/10">Booleans</td>
-                  <td className="px-4 py-3 border-b border-white/10 font-mono text-xs text-text-secondary">true, false</td>
+                  <td className="px-4 py-3 border-b border-dashed border-white/15">Booleans</td>
+                  <td className="px-4 py-3 border-b border-dashed border-white/15 font-mono text-xs text-text-secondary">true, false</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3">Undefined</td>

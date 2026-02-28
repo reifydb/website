@@ -18,15 +18,15 @@ export function NotFoundPage() {
           <div className="flex gap-4 justify-center">
             <Link
               to="/"
-              className="px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-colors"
+              className="px-6 py-3 font-mono border border-primary text-primary hover:bg-primary hover:text-bg-primary transition-colors"
             >
-              Go Home
+              [&gt; go home]
             </Link>
             <Link
               to="/docs"
-              className="px-6 py-3 border border-white/20 text-white font-medium rounded-lg hover:bg-white/10 transition-colors"
+              className="px-6 py-3 font-mono border-2 border-dashed border-white/15 text-text-secondary hover:text-text-primary hover:border-white/30 transition-colors"
             >
-              View Docs
+              [docs]
             </Link>
           </div>
         </div>

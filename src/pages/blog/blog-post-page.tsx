@@ -22,7 +22,7 @@ export function BlogPostPage() {
               to="/blog"
               className="inline-flex items-center text-sm text-text-muted hover:text-primary transition-colors duration-200 mb-8"
             >
-              &larr; Back to Blog
+              &lt;-- back to blog
             </Link>
 
             <div className="mb-10 text-center">
@@ -40,11 +40,11 @@ export function BlogPostPage() {
               <span className="text-sm text-text-muted">{post.author}</span>
             </div>
 
-            <hr className="my-10 border-white/10" />
+            <hr className="my-10 border-dashed border-white/15" />
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <div className="rounded-2xl border border-white/10 bg-bg-secondary p-6 sm:p-10">
+            <div className="border-2 border-dashed border-white/15 bg-bg-secondary p-6 sm:p-10">
               <BlogMarkdownRenderer content={post.content} />
             </div>
           </ScrollReveal>

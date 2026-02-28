@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib';
 import { Navbar, Footer } from '@/components/layout';
 import { ScrollReveal } from '@/components/ui';
@@ -9,18 +8,16 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-bg-tertiary border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.1)]">
+    <div className="border-2 border-dashed border-white/15 overflow-hidden transition-all duration-300 hover:border-primary/50">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-6 text-left"
       >
-        <span className="font-bold text-text-primary pr-4">{question}</span>
-        <ChevronDown
-          className={cn(
-            'h-5 w-5 text-text-muted flex-shrink-0 transition-transform duration-200',
-            isOpen && 'rotate-180'
-          )}
-        />
+        <span className="font-bold text-text-primary pr-4">
+          <span className="text-primary mr-2">&gt;</span>
+          {question}
+        </span>
+        <span className="text-text-muted text-sm">[{isOpen ? '-' : '+'}]</span>
       </button>
       <div
         className={cn(
@@ -28,7 +25,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
           isOpen ? 'max-h-96' : 'max-h-0'
         )}
       >
-        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-white/10 pt-4">
+        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-dashed border-white/10 pt-4">
           {answer}
         </div>
       </div>

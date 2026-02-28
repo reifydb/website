@@ -27,7 +27,7 @@ const variantStyles: Record<CalloutVariant, { border: string; bg: string; icon: 
     icon: 'text-status-success',
   },
   note: {
-    border: 'border-white/10',
+    border: 'border-white/15',
     bg: 'bg-bg-tertiary',
     icon: 'text-text-muted',
   },
@@ -55,7 +55,7 @@ export function Callout({ variant = 'note', title, children, className }: Callou
   return (
     <div
       className={cn(
-        'border border-l-4 rounded-lg p-4',
+        'border-dashed border-l-4 p-4',
         styles.border,
         styles.bg,
         className

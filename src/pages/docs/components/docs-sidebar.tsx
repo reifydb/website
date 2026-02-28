@@ -94,7 +94,7 @@ export function AccordionItem({ item, currentPath, depth, openItems, onToggle, o
             isOpen ? 'max-h-[1000px]' : 'max-h-0'
           )}
         >
-          <ul className="space-y-0.5 border-l border-white/10 ml-3">
+          <ul className="space-y-0.5 border-l border-dashed border-white/15 ml-3">
             {item.children!.map((child) => (
               <AccordionItem
                 key={child.id}
@@ -149,7 +149,7 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
   };
 
   return (
-    <aside className="hidden lg:flex w-72 border-r border-white/10 bg-bg-secondary flex-col">
+    <aside className="hidden lg:flex w-72 border-r border-dashed border-white/15 bg-bg-secondary flex-col">
       {/* Navigation */}
       <nav className="flex-1 p-4 pt-6 overflow-y-auto sidebar-no-scrollbar">
         {sections.map((section) => {
@@ -170,7 +170,7 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
                   isSectionOpen ? 'max-h-[2000px]' : 'max-h-0'
                 )}
               >
-                <ul className="space-y-0.5 border-l border-white/10 ml-3">
+                <ul className="space-y-0.5 border-l border-dashed border-white/15 ml-3">
                   {section.items.map((item) => (
                     <AccordionItem
                       key={item.id}
@@ -190,12 +190,12 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
       </nav>
 
       {/* Footer */}
-      <div className="p-4 border-t border-white/10">
+      <div className="p-4 border-t border-dashed border-white/15">
         <button
           onClick={handleBack}
           className="text-xs text-text-muted hover:text-primary transition-colors font-semibold uppercase tracking-wider"
         >
-          &larr; Back
+          &lt;-- Back
         </button>
       </div>
     </aside>

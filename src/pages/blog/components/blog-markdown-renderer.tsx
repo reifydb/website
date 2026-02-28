@@ -58,7 +58,7 @@ const components: Components = {
   ),
   li: ({ children }) => <li className="leading-relaxed">{children}</li>,
   blockquote: ({ children }) => (
-    <blockquote className="border-l-4 border-primary/50 pl-4 my-4 italic text-text-muted">
+    <blockquote className="border-l-4 border-dashed border-primary/50 pl-4 my-4 italic text-text-muted">
       {children}
     </blockquote>
   ),
@@ -71,9 +71,9 @@ const components: Components = {
     if (isBlock) {
       const lang = className?.replace('language-', '') ?? '';
       return (
-        <div className="my-4 rounded-xl border border-white/10 overflow-hidden bg-bg-tertiary">
+        <div className="my-4 border-2 border-dashed border-white/15 overflow-hidden bg-bg-tertiary">
           {lang && (
-            <div className="px-4 py-2 text-xs font-mono text-text-muted border-b border-white/10 bg-bg-elevated">
+            <div className="px-4 py-2 text-xs font-mono text-text-muted border-b border-dashed border-white/15 bg-bg-elevated">
               {lang}
             </div>
           )}
@@ -86,14 +86,14 @@ const components: Components = {
       );
     }
     return (
-      <code className="bg-bg-tertiary border border-white/10 rounded px-1.5 py-0.5 font-mono text-sm text-primary-light">
+      <code className="bg-bg-tertiary border border-dashed border-white/15 px-1.5 py-0.5 font-mono text-sm text-primary-light">
         {children}
       </code>
     );
   },
   pre: ({ children }) => <>{children}</>,
   table: ({ children }) => (
-    <div className="my-4 overflow-x-auto rounded-xl border border-white/10">
+    <div className="my-4 overflow-x-auto border-2 border-dashed border-white/15">
       <table className="w-full text-sm text-text-secondary">{children}</table>
     </div>
   ),
@@ -101,14 +101,14 @@ const components: Components = {
     <thead className="bg-bg-elevated text-text-primary">{children}</thead>
   ),
   th: ({ children }) => (
-    <th className="px-4 py-3 text-left font-semibold border-b border-white/10">
+    <th className="px-4 py-3 text-left font-semibold border-b border-dashed border-white/15">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="px-4 py-3 border-b border-white/10">{children}</td>
+    <td className="px-4 py-3 border-b border-dashed border-white/15">{children}</td>
   ),
-  hr: () => <hr className="my-8 border-white/10" />,
+  hr: () => <hr className="my-8 border-dashed border-white/15" />,
   strong: ({ children }) => (
     <strong className="font-bold text-text-primary">{children}</strong>
   ),

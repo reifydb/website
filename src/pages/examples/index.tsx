@@ -1,6 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Menu } from 'lucide-react';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { exampleSections, getSectionById } from './sections';
@@ -44,7 +43,7 @@ export function ExamplesPage() {
               onClick={() => setDrawerOpen(true)}
               className="lg:hidden flex items-center gap-2 text-sm text-text-secondary hover:text-primary mb-4 transition-colors"
             >
-              <Menu size={16} />
+              <span className="font-mono">[=]</span>
               Browse examples
             </button>
 

@@ -22,7 +22,7 @@ export function MissionPage() {
 
           {/* Mission Statement */}
           <ScrollReveal delay={100}>
-            <div className="bg-bg-tertiary border border-white/10 rounded-2xl p-8 sm:p-12 mb-12 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)]">
+            <div className="border-2 border-dashed border-white/15 p-8 sm:p-12 mb-12 transition-all duration-300 hover:border-primary/50">
               <h2 className="text-2xl font-bold mb-6">Mission Statement</h2>
               <p className="text-text-secondary text-lg leading-relaxed">
                 Modern software is constrained by infrastructure that treats application state as a storage problem.
@@ -34,7 +34,7 @@ export function MissionPage() {
 
           {/* Origin Story */}
           <ScrollReveal delay={200}>
-            <div className="bg-bg-tertiary border border-white/10 rounded-2xl p-8 sm:p-12 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)]">
+            <div className="border-2 border-dashed border-white/15 p-8 sm:p-12 transition-all duration-300 hover:border-primary/50">
               <h2 className="text-2xl font-bold mb-6">The Origin Story</h2>
 
               <div className="flex flex-col md:flex-row gap-8">
@@ -43,7 +43,7 @@ export function MissionPage() {
                   <img
                     src="/img/me.jpeg"
                     alt="Founder"
-                    className="w-32 h-32 rounded-2xl object-cover border border-white/10"
+                    className="w-32 h-32 object-cover border-2 border-dashed border-white/15"
                   />
                 </div>
 
@@ -64,23 +64,23 @@ export function MissionPage() {
                   <h3 className="font-bold mb-4">What ReifyDB Reconsiders</h3>
                   <ul className="space-y-3 text-text-secondary">
                     <li className="flex items-start gap-3">
-                      <span className="text-primary mt-1">•</span>
+                      <span className="text-primary">--</span>
                       <span>The artificial divide between application logic and the data that defines it</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-primary mt-1">•</span>
+                      <span className="text-primary">--</span>
                       <span>Translation layers that distort domain models and introduce accidental complexity</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-primary mt-1">•</span>
+                      <span className="text-primary">--</span>
                       <span>State that is difficult to reason about, evolve, or trust under load</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-primary mt-1">•</span>
+                      <span className="text-primary">--</span>
                       <span>Infrastructure that demands constant orchestration instead of providing clarity</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-primary mt-1">•</span>
+                      <span className="text-primary">--</span>
                       <span>Systems that optimize storage but neglect how engineers actually build software</span>
                     </li>
                   </ul>

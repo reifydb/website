@@ -11,15 +11,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles = {
   primary: cn(
-    'bg-primary text-bg-primary font-semibold',
-    'hover:opacity-90',
+    'border border-primary text-primary',
+    'hover:bg-primary hover:text-bg-primary',
     'transition-all duration-200'
   ),
   secondary: cn(
-    'bg-bg-tertiary text-text-primary font-semibold',
-    'border-2 border-border-default',
-    'hover:opacity-90',
-    'active:bg-bg-secondary'
+    'border-2 border-dashed border-white/15 text-text-secondary',
+    'hover:text-text-primary hover:border-white/30',
+    'transition-all duration-200'
   ),
   ghost: cn(
     'text-text-secondary',
@@ -35,6 +34,12 @@ const sizeStyles = {
   lg: 'px-6 py-3 text-base',
 }
 
+function wrapChildren(variant: string, children: ReactNode) {
+  if (variant === 'primary') return <>[&gt; {children}]</>
+  if (variant === 'secondary') return <>[{children}]</>
+  return children
+}
+
 export function Button({
   variant = 'primary',
   size = 'md',
@@ -45,32 +50,34 @@ export function Button({
 }: ButtonProps) {
   const baseStyles = cn(
     'inline-flex items-center justify-center gap-2',
-    'rounded-sm font-mono font-medium uppercase tracking-wider transition-all duration-200',
+    'font-mono font-medium uppercase tracking-wider transition-all duration-200',
     'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-bg-primary',
     variantStyles[variant],
     sizeStyles[size],
     className
   )
 
+  const wrapped = wrapChildren(variant, children)
+
   if (href) {
     // Use Link for internal routes, <a> for external
     if (href.startsWith('/')) {
       return (
         <Link to={href} className={baseStyles}>
-          {children}
+          {wrapped}
         </Link>
       )
     }
     return (
       <a href={href} className={baseStyles} target="_blank" rel="noopener noreferrer">
-        {children}
+        {wrapped}
       </a>
     )
   }
 
   return (
     <button className={baseStyles} {...props}>
-      {children}
+      {wrapped}
     </button>
   )
 }

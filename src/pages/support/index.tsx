@@ -16,7 +16,6 @@ const supportOptions = [
     linkText: 'Contact Me',
     external: false,
     color: 'text-primary',
-    bgColor: 'from-primary/20 to-accent-warm/20',
   },
   {
     title: 'GitHub Issues',
@@ -26,7 +25,6 @@ const supportOptions = [
     linkText: 'Open Issue',
     external: true,
     color: 'text-feature-purple',
-    bgColor: 'from-feature-purple/20 to-accent-warm/20',
   },
   {
     title: 'Book a Call',
@@ -36,7 +34,6 @@ const supportOptions = [
     linkText: 'Schedule Call',
     external: true,
     color: 'text-feature-blue',
-    bgColor: 'from-feature-blue/20 to-feature-teal/20',
   },
   {
     title: 'GitHub Discussions',
@@ -46,7 +43,6 @@ const supportOptions = [
     linkText: 'Discussions',
     external: true,
     color: 'text-feature-green',
-    bgColor: 'from-feature-green/20 to-feature-teal/20',
   },
 ];
 
@@ -77,19 +73,17 @@ export function SupportPage() {
                   href={option.href}
                   target={option.external ? '_blank' : undefined}
                   rel={option.external ? 'noopener noreferrer' : undefined}
-                  className="bg-bg-tertiary border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)] group block h-full"
+                  className="border-2 border-dashed border-white/15 p-6 transition-all duration-300 hover:border-primary/50 group block h-full"
                 >
                   <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${option.bgColor} flex items-center justify-center shrink-0`}>
-                      <option.icon className={`h-6 w-6 ${option.color}`} strokeWidth={2} />
-                    </div>
+                    <option.icon className={`h-6 w-6 ${option.color} shrink-0`} strokeWidth={2} />
                     <div className="flex-1">
                       <h3 className="font-bold mb-1">{option.title}</h3>
                       <p className="text-text-muted text-sm mb-3 leading-relaxed">
                         {option.description}
                       </p>
                       <span className="text-primary font-semibold text-sm">
-                        {option.linkText} →
+                        {option.linkText} --&gt;
                       </span>
                     </div>
                   </div>
@@ -107,7 +101,7 @@ export function SupportPage() {
                   href="https://github.com/reifydb/reifydb"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-bg-tertiary border border-white/10 rounded-lg transition-all duration-300 hover:border-primary/30 hover:bg-bg-elevated"
+                  className="p-3 border border-dashed border-white/15 transition-all duration-300 hover:border-primary/50"
                 >
                   <Github className="h-5 w-5" />
                 </a>
@@ -115,7 +109,7 @@ export function SupportPage() {
                   href="https://x.com/reifydb"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-bg-tertiary border border-white/10 rounded-lg transition-all duration-300 hover:border-primary/30 hover:bg-bg-elevated"
+                  className="p-3 border border-dashed border-white/15 transition-all duration-300 hover:border-primary/50"
                 >
                   <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />

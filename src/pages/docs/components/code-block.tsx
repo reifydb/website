@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Check, Copy } from 'lucide-react';
 import { cn } from '@/lib';
 
 interface CodeBlockProps {
@@ -18,17 +17,17 @@ export function CodeBlock({ code, language = 'bash', className }: CodeBlockProps
   };
 
   return (
-    <div className={cn('border border-white/10 bg-bg-tertiary rounded-xl overflow-hidden', className)}>
-      <div className="flex justify-between items-center px-4 py-2 border-b border-white/10 bg-bg-elevated">
+    <div className={cn('border-2 border-dashed border-white/15 bg-bg-tertiary overflow-hidden', className)}>
+      <div className="flex justify-between items-center px-4 py-2 border-b border-dashed border-white/15 bg-bg-elevated">
         <span className="text-xs font-medium text-text-muted uppercase tracking-wider">
           {language}
         </span>
         <button
           onClick={handleCopy}
-          className="min-w-[44px] min-h-[44px] flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
+          className="min-w-[44px] min-h-[44px] flex items-center justify-center text-text-muted hover:text-primary transition-colors"
           aria-label={copied ? 'Copied' : 'Copy code'}
         >
-          {copied ? <Check size={14} /> : <Copy size={14} />}
+          <span className="font-mono text-xs">{copied ? '[ok]' : '[cp]'}</span>
         </button>
       </div>
       <pre className="p-4 overflow-x-auto text-sm font-mono text-text-primary">
@@ -58,18 +57,18 @@ export function TabbedCodeBlock({ examples, className }: TabbedCodeBlockProps) {
   };
 
   return (
-    <div className={cn('border border-white/10 bg-bg-tertiary rounded-xl overflow-hidden', className)}>
-      <div className="flex items-center justify-between border-b border-white/10 bg-bg-elevated">
+    <div className={cn('border-2 border-dashed border-white/15 bg-bg-tertiary overflow-hidden', className)}>
+      <div className="flex items-center justify-between border-b border-dashed border-white/15 bg-bg-elevated">
         <div className="flex">
           {examples.map((example, index) => (
             <button
               key={example.language}
               onClick={() => setActiveTab(index)}
               className={cn(
-                'px-4 py-2 text-xs font-medium uppercase tracking-wider transition-colors border-r border-white/10',
+                'px-4 py-2 text-xs font-medium uppercase tracking-wider transition-colors border-r border-dashed border-white/15',
                 activeTab === index
-                  ? 'bg-gradient-to-r from-primary to-accent-warm text-white'
-                  : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                  ? 'bg-primary text-bg-primary'
+                  : 'text-text-muted hover:text-text-primary'
               )}
             >
               {example.label}
@@ -78,10 +77,10 @@ export function TabbedCodeBlock({ examples, className }: TabbedCodeBlockProps) {
         </div>
         <button
           onClick={handleCopy}
-          className="min-w-[44px] min-h-[44px] flex items-center justify-center mr-2 text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
+          className="min-w-[44px] min-h-[44px] flex items-center justify-center mr-2 text-text-muted hover:text-primary transition-colors"
           aria-label={copied ? 'Copied' : 'Copy code'}
         >
-          {copied ? <Check size={14} /> : <Copy size={14} />}
+          <span className="font-mono text-xs">{copied ? '[ok]' : '[cp]'}</span>
         </button>
       </div>
       <pre className="p-4 overflow-x-auto text-sm font-mono text-text-primary">
