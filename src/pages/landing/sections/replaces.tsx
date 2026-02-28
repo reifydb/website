@@ -1,4 +1,3 @@
-import { ArrowRight } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui';
 
 const replacements = [
@@ -6,29 +5,21 @@ const replacements = [
     before: 'PostgreSQL + Redis',
     after: 'Single Transactional Store',
     description: 'No more cache invalidation headaches or consistency gaps between your database and cache layer.',
-    beforeColor: 'bg-status-error/10 border-status-error/30 text-status-error',
-    afterColor: 'bg-status-success/10 border-status-success/30 text-status-success',
   },
   {
     before: 'Batch Materialized Views',
     after: 'Incremental Derived State',
     description: 'Views update as data changes, not on a schedule. No polling, no refresh jobs, no stale data.',
-    beforeColor: 'bg-status-error/10 border-status-error/30 text-status-error',
-    afterColor: 'bg-status-success/10 border-status-success/30 text-status-success',
   },
   {
     before: 'Scattered Service Logic',
     after: 'Programmable Transitions',
     description: 'State logic lives in the database, not scattered across microservices, workers, and cron jobs.',
-    beforeColor: 'bg-status-error/10 border-status-error/30 text-status-error',
-    afterColor: 'bg-status-success/10 border-status-success/30 text-status-success',
   },
   {
     before: 'Redis + Kafka + Custom Code',
     after: 'Native State Primitives',
     description: 'Counters, queues, ring buffers, histograms, all in one engine with unified transactional guarantees.',
-    beforeColor: 'bg-status-error/10 border-status-error/30 text-status-error',
-    afterColor: 'bg-status-success/10 border-status-success/30 text-status-success',
   },
 ];
 
@@ -39,6 +30,9 @@ export function ReplacesSection() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
+            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-2">
+              # replaces
+            </p>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
               What ReifyDB Replaces
             </h2>
@@ -52,14 +46,14 @@ export function ReplacesSection() {
         <div className="grid gap-6 md:grid-cols-2">
           {replacements.map((item, index) => (
             <ScrollReveal key={item.before} delay={index * 75}>
-              <div className="bg-bg-tertiary border border-white/10 rounded-2xl p-6 transition-all duration-300 card-hover h-full">
-                {/* Before -> After */}
-                <div className="flex items-center gap-3 mb-4 flex-wrap">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${item.beforeColor}`}>
+              <div className="border-2 border-dashed border-white/15 p-6 h-full dotted-card">
+                {/* Before --> After */}
+                <div className="flex items-center gap-3 mb-4 flex-wrap text-sm">
+                  <span className="text-status-error line-through">
                     {item.before}
                   </span>
-                  <ArrowRight className="h-4 w-4 text-text-muted" />
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${item.afterColor}`}>
+                  <span className="text-text-muted">--&gt;</span>
+                  <span className="text-primary font-bold">
                     {item.after}
                   </span>
                 </div>

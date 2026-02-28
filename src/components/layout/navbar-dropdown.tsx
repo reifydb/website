@@ -19,24 +19,13 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
       {/* Trigger Button */}
       <button
         className={cn(
-          "font-medium px-4 py-2 transition-colors duration-150 flex items-center gap-1.5",
+          "px-3 py-2 transition-colors duration-150",
           isOpen
-            ? "text-text-primary"
-            : "text-text-secondary hover:text-text-primary"
+            ? "text-primary"
+            : "text-text-secondary hover:text-primary"
         )}
       >
-        {dropdown.label}
-        <svg
-          className={cn(
-            "w-4 h-4 transition-transform duration-200",
-            isOpen && "rotate-180"
-          )}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
+        [{dropdown.label.toLowerCase()}/]
       </button>
 
       {/* Dropdown Panel */}
@@ -49,7 +38,7 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
         )}
       >
         <div className={cn(
-          "bg-bg-elevated border border-white/10 rounded-md shadow-[0_10px_30px_rgba(0,0,0,0.4)] overflow-hidden",
+          "bg-bg-elevated border-2 border-dashed border-white/15 overflow-hidden",
           dropdown.columns.length === 1 ? "min-w-[200px]" : "min-w-[400px]"
         )}>
           <div className={cn(
@@ -65,12 +54,25 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
                 )}
               >
                 <h3 className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-3 px-3">
-                  {column.title}
+                  <span className="text-primary"># </span>{column.title.toLowerCase()}
                 </h3>
                 <div className="flex flex-col gap-1">
                   {column.items.map((item) => {
                     const isExternal = item.href.startsWith('http');
                     const isAnchor = item.href.startsWith('/#');
+
+                    const content = (
+                      <>
+                        <div className="text-sm text-text-secondary group-hover:text-primary transition-colors">
+                          <span className="text-text-muted">-- </span>{item.label.toLowerCase()}
+                        </div>
+                        {item.description && (
+                          <div className="text-xs text-text-tertiary mt-0.5 pl-[1.5ch]">
+                            {item.description}
+                          </div>
+                        )}
+                      </>
+                    );
 
                     if (isExternal) {
                       return (
@@ -81,14 +83,7 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
                           rel="noopener noreferrer"
                           className="group px-3 py-2 transition-colors"
                         >
-                          <div className="font-medium text-sm text-text-secondary group-hover:text-primary transition-colors">
-                            {item.label}
-                          </div>
-                          {item.description && (
-                            <div className="text-xs text-text-tertiary mt-0.5">
-                              {item.description}
-                            </div>
-                          )}
+                          {content}
                         </a>
                       );
                     }
@@ -100,14 +95,7 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
                           href={item.href}
                           className="group px-3 py-2 transition-colors"
                         >
-                          <div className="font-medium text-sm text-text-secondary group-hover:text-primary transition-colors">
-                            {item.label}
-                          </div>
-                          {item.description && (
-                            <div className="text-xs text-text-tertiary mt-0.5">
-                              {item.description}
-                            </div>
-                          )}
+                          {content}
                         </a>
                       );
                     }
@@ -118,14 +106,7 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
                         to={item.href}
                         className="group px-3 py-2 transition-colors"
                       >
-                        <div className="font-medium text-sm text-text-secondary group-hover:text-primary transition-colors">
-                          {item.label}
-                        </div>
-                        {item.description && (
-                          <div className="text-xs text-text-tertiary mt-0.5">
-                            {item.description}
-                          </div>
-                        )}
+                        {content}
                       </Link>
                     );
                   })}

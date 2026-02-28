@@ -1,24 +1,20 @@
-import { PenLine, Cog, Eye } from 'lucide-react';
 import { ScrollReveal, Button } from '@/components/ui';
 
 const steps = [
   {
-    number: '1',
+    number: '01',
     title: 'Write state transactionally',
     description: 'ACID writes keep live state coherent and rollbackable, even under contention.',
-    icon: PenLine,
   },
   {
-    number: '2',
+    number: '02',
     title: 'Validate and apply logic',
     description: 'Programmable transitions run inside the same transaction to enforce invariants and emit changes.',
-    icon: Cog,
   },
   {
-    number: '3',
+    number: '03',
     title: 'Stay fresh automatically',
     description: 'Incremental materialized views update immediately, no cron jobs, no polling, no stale dashboards.',
-    icon: Eye,
   },
 ];
 
@@ -29,8 +25,8 @@ export function HowItWorksSection() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-text-secondary mb-2">
-              End-to-end flow
+            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-2">
+              # pipeline
             </p>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
               How It Works
@@ -46,22 +42,15 @@ export function HowItWorksSection() {
           {steps.map((step, index) => (
             <ScrollReveal key={step.title} delay={index * 100}>
               <div className="relative h-full">
-                {/* Connector line (hidden on mobile, shown between items on desktop) */}
+                {/* Connector line */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-12 left-[calc(50%+3rem)] w-[calc(100%-6rem)] h-0.5 bg-white/8" />
+                  <div className="hidden md:block absolute top-8 left-[calc(50%+3rem)] w-[calc(100%-6rem)] border-t-2 border-dashed border-white/15" />
                 )}
 
-                <div className="group bg-bg-secondary/90 border border-white/10 rounded-2xl p-6 text-center relative z-10 transition-all duration-300 card-hover h-full shadow-[0_18px_50px_rgba(0,0,0,0.35)]">
+                <div className="group border-2 border-dashed border-white/15 p-6 text-center relative z-10 h-full dotted-card">
                   {/* Step number */}
-                  <div className="inline-flex items-center justify-center w-10 h-10 mb-4 bg-gradient-to-r from-primary to-accent-warm text-bg-primary rounded-full font-black text-lg">
+                  <div className="inline-block mb-4 text-primary font-black text-2xl">
                     {step.number}
-                  </div>
-
-                  {/* Icon */}
-                  <div className="flex justify-center mb-4">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-accent-warm/20 flex items-center justify-center">
-                      <step.icon className="h-7 w-7 text-primary" strokeWidth={2} aria-hidden />
-                    </div>
                   </div>
 
                   <h3 className="text-lg font-bold mb-2">{step.title}</h3>
@@ -80,9 +69,12 @@ export function HowItWorksSection() {
               One ACID envelope means writes, logic, and derived state cannot drift apart.
             </p>
             <div className="inline-flex gap-3 items-center justify-center">
-              <Button variant="ghost" size="md" href="#code-example">
-                See the RQL example
-              </Button>
+              <a
+                href="#code-example"
+                className="text-sm text-text-secondary underline underline-offset-4 decoration-text-muted hover:text-text-primary hover:decoration-primary transition-colors"
+              >
+                see the rql example --&gt;
+              </a>
               <Button size="md" href="https://cal.com/reifydb/30min">
                 Book a call
               </Button>

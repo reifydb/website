@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { ChevronDown, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib';
 import { ScrollReveal } from '@/components/ui';
@@ -9,18 +8,18 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-bg-tertiary border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 card-hover">
+    <div className="border-2 border-dashed border-white/15 overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-6 text-left"
       >
-        <span className="font-bold text-text-primary pr-4">{question}</span>
-        <ChevronDown
-          className={cn(
-            'h-5 w-5 text-text-muted flex-shrink-0 transition-transform duration-200',
-            isOpen && 'rotate-180'
-          )}
-        />
+        <span className="font-bold text-text-primary pr-4">
+          <span className="text-primary mr-2">&gt;</span>
+          {question}
+        </span>
+        <span className="text-text-muted flex-shrink-0 text-sm">
+          [{isOpen ? '-' : '+'}]
+        </span>
       </button>
       <div
         className={cn(
@@ -28,7 +27,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
           isOpen ? 'max-h-96' : 'max-h-0'
         )}
       >
-        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-white/10 pt-4">
+        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-dashed border-white/10 pt-4 pl-10">
           {answer}
         </div>
       </div>
@@ -43,6 +42,9 @@ export function FaqSection() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
+            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-2">
+              # faq
+            </p>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
               Frequently Asked Questions
             </h2>
@@ -66,10 +68,9 @@ export function FaqSection() {
           <div className="mt-8 text-center">
             <Link
               to="/faq"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary-light font-medium transition-colors group"
+              className="text-sm text-primary underline underline-offset-4 hover:text-primary-light transition-colors"
             >
-              View all FAQs
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              view all faqs --&gt;
             </Link>
           </div>
         </ScrollReveal>

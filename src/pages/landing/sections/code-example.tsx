@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 import { ExecutableSnippet, ScrollReveal } from '@/components/ui';
 import { cn } from '@/lib';
 import { landingExamples } from '@/lib/examples';
@@ -16,6 +15,9 @@ export function CodeExampleSection() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
+            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-2">
+              # playground
+            </p>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
               See RQL in Action
             </h2>
@@ -33,10 +35,10 @@ export function CodeExampleSection() {
                 key={example.title}
                 onClick={() => setActiveIndex(index)}
                 className={cn(
-                  'px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200',
+                  'px-4 py-2 text-sm font-medium transition-all duration-200',
                   index === activeIndex
                     ? 'bg-primary text-bg-primary'
-                    : 'bg-bg-tertiary text-text-secondary hover:text-text-primary hover:bg-bg-elevated'
+                    : 'border border-dashed border-white/15 text-text-secondary hover:text-text-primary hover:border-white/30'
                 )}
               >
                 {example.title}
@@ -56,10 +58,9 @@ export function CodeExampleSection() {
           <div className="mt-6 text-center">
             <Link
               to="/examples"
-              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-light transition-colors"
+              className="text-sm text-primary underline underline-offset-4 hover:text-primary-light transition-colors"
             >
-              Explore all examples
-              <ArrowRight size={16} />
+              explore all examples --&gt;
             </Link>
           </div>
         </ScrollReveal>

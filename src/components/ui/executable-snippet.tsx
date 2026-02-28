@@ -1,5 +1,4 @@
-import { useState, useCallback, useEffect, useRef, Fragment } from 'react';
-import { Play, RotateCcw, Copy, Check, Maximize2, Minimize2, Loader2 } from 'lucide-react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import Editor, { type OnMount } from '@monaco-editor/react';
 import type { editor } from 'monaco-editor';
 import { rqlLanguageDefinition, rqlLanguageConfiguration } from '@/lib/rql-language';
@@ -144,51 +143,45 @@ export function ExecutableSnippet({
 
   const content = (
     <div className={cn(
-      'border border-white/10 bg-bg-tertiary rounded-xl overflow-hidden',
+      'border-2 border-dashed border-white/15 bg-bg-tertiary overflow-hidden',
       isFullscreen ? 'flex flex-col h-full' : '',
       !isFullscreen && className
     )}>
       {/* Terminal Header */}
-      <div className="flex justify-between items-center px-4 py-2 border-b border-white/10 bg-bg-elevated shrink-0">
-        <div className="flex items-center gap-3">
-          <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-status-error" />
-            <div className="w-3 h-3 rounded-full bg-status-warning" />
-            <div className="w-3 h-3 rounded-full bg-status-success" />
-          </div>
-          <span className="text-xs font-medium text-primary uppercase tracking-wider">
-            {title}
-          </span>
+      <div className="flex justify-between items-center px-4 py-2 border-b border-dashed border-white/15 bg-bg-elevated shrink-0">
+        <div className="flex items-center gap-1 font-mono text-xs">
+          <span className="text-primary">$</span>{' '}
+          <span className="text-text-muted">{title}</span>
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2 font-mono">
           <button
             onClick={() => setIsFullscreen(!isFullscreen)}
-            className="min-w-[44px] min-h-[44px] flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
+            className="text-xs text-text-muted hover:text-primary transition-colors"
             title={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
           >
-            {isFullscreen ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
+            {isFullscreen ? '[×]' : '[[]]'}
           </button>
           <button
             onClick={handleCopy}
-            className="min-w-[44px] min-h-[44px] flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
+            className="text-xs text-text-muted hover:text-primary transition-colors"
             title="Copy code"
           >
-            {copied ? <Check size={14} /> : <Copy size={14} />}
+            {copied ? '[ok]' : '[cp]'}
           </button>
           <button
             onClick={handleReset}
-            className="min-w-[44px] min-h-[44px] flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-white/5 rounded transition-colors"
+            className="text-xs text-text-muted hover:text-primary transition-colors"
             title="Reset code"
           >
-            <RotateCcw size={14} />
+            [&#8634;]
           </button>
         </div>
       </div>
 
       {/* Description */}
       {description && (
-        <div className="px-4 py-2 bg-bg-secondary border-b border-white/10 shrink-0">
-          <p className="text-xs text-text-muted">{description}</p>
+        <div className="px-4 py-2 bg-bg-secondary border-b border-dashed border-white/15 shrink-0">
+          <p className="text-xs text-text-muted font-mono"><span className="text-primary">// </span>{description}</p>
         </div>
       )}
 
@@ -228,96 +221,75 @@ export function ExecutableSnippet({
       </div>
 
       {/* Run Button Bar */}
-      <div className="flex items-center justify-between px-3 sm:px-4 py-2 border-t border-white/10 bg-bg-elevated shrink-0">
-        <span className="text-xs text-text-muted">
+      <div className="flex items-center justify-between px-3 sm:px-4 py-2 border-t border-dashed border-white/15 bg-bg-elevated shrink-0">
+        <span className="text-xs text-text-muted font-mono">
           {dbLoading
-            ? 'Initializing database...'
+            ? '$ initializing database...'
             : db
               ? <>
-                  <span className="hidden sm:inline">Ctrl+Enter to run</span>
-                  <span className="sm:hidden">Tap Run to execute</span>
+                  <span className="hidden sm:inline">$ ctrl+enter to run</span>
+                  <span className="sm:hidden">$ tap run to execute</span>
                 </>
-              : 'First run will download the database (~15MB)'}
+              : '$ first run downloads db (~15MB)'}
         </span>
         <button
           onClick={handleRun}
           disabled={dbLoading || isExecuting}
           className={cn(
-            "flex items-center gap-2 px-4 py-1.5 text-white font-semibold text-xs uppercase tracking-wider rounded-lg transition-all active:scale-95",
+            "font-mono text-xs px-3 py-1 border transition-colors",
             dbLoading || isExecuting
-              ? "bg-gradient-to-r from-primary/70 to-accent-warm/70 animate-pulse cursor-wait"
-              : "bg-gradient-to-r from-primary to-accent-warm hover:shadow-[0_0_20px_rgba(245,158,11,0.4)]"
+              ? "border-primary/50 text-primary/70 cursor-wait animate-pulse"
+              : "border-primary text-primary hover:bg-primary hover:text-bg-primary"
           )}
         >
-          {dbLoading || isExecuting
-            ? <Loader2 size={12} className="animate-spin" />
-            : <Play size={12} />}
-          {dbLoading ? 'Loading...' : isExecuting ? 'Running...' : 'Run'}
+          {dbLoading ? '[loading...]' : isExecuting ? '[running...]' : '[run]'}
         </button>
       </div>
 
       {/* Results Section */}
       {(result || dbError) && (
         <div className={cn(
-          'border-t border-white/10 shrink-0',
+          'border-t border-dashed border-white/15 shrink-0',
           isFullscreen && 'max-h-[40vh] overflow-y-auto'
         )}>
           {/* Result Header */}
-          <div className="px-4 py-2 bg-bg-elevated border-b border-white/10 flex items-center justify-between sticky top-0">
-            <span className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
-              {result?.error || dbError ? 'Error' : 'Result'}
+          <div className="px-4 py-2 bg-bg-elevated border-b border-dashed border-white/15 flex items-center justify-between sticky top-0 font-mono">
+            <span className="text-xs text-text-muted">
+              {result?.error || dbError ? '--- error ---' : '--- output ---'}
             </span>
             {result?.data && !result.error && (
               <span className="text-xs text-text-muted">
-                {result.data.length} row{result.data.length !== 1 ? 's' : ''}
+                ({result.data.length} row{result.data.length !== 1 ? 's' : ''})
               </span>
             )}
           </div>
 
           {/* Error Display */}
           {(result?.error || dbError) && (
-            <div className="p-4 bg-status-error/10">
-              <pre className="text-xs text-status-error font-mono whitespace-pre-wrap">
-                {result?.error || dbError}
-              </pre>
+            <div className="p-4">
+              <pre className="text-xs text-status-error font-mono whitespace-pre-wrap">ERR: {result?.error || dbError}</pre>
             </div>
           )}
 
-          {/* Results - stacked key-value layout */}
+          {/* Results - plain key=value lines */}
           {result?.data && result.data.length > 0 && !result.error && (
             <div className="p-2 sm:p-4 font-mono text-sm overflow-x-auto">
               {result.data.map((row, i) => (
-                <div key={i} className={i > 0 ? 'mt-3' : ''}>
-                  {/* Row header */}
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <span className="text-xs text-text-muted">Row {i + 1}</span>
-                    <div className="border-t border-white/[0.06] flex-1" />
-                  </div>
-                  {/* Key-value grid with left accent border and alternating stripes */}
-                  <div
-                    className="grid border-l-2 border-primary/30"
-                    style={{ gridTemplateColumns: `min(${maxKeyLength + 4}ch, 40%) 1fr` }}
-                  >
-                    {columns.map((col, j) => {
-                      const vs = getValueStyle(row[col]);
-                      return (
-                        <Fragment key={col}>
-                          <span className={cn(
-                            'text-text-secondary pr-2 py-0.5 pl-3',
-                            j % 2 === 0 ? 'bg-white/[0.02]' : 'bg-white/[0.05]'
-                          )}>{col}</span>
-                          <span
-                            className={cn(
-                              'break-all py-0.5 pr-2',
-                              j % 2 === 0 ? 'bg-white/[0.02]' : 'bg-white/[0.05]',
-                              vs.italic && 'italic'
-                            )}
-                            style={vs.color ? { color: vs.color } : undefined}
-                          >{formatValue(row[col])}</span>
-                        </Fragment>
-                      );
-                    })}
-                  </div>
+                <div key={i} className={i > 0 ? 'mt-2' : ''}>
+                  <div className="text-xs text-text-muted">-- row {i + 1} --</div>
+                  {columns.map((col) => {
+                    const vs = getValueStyle(row[col]);
+                    return (
+                      <div key={col} className="flex gap-1">
+                        <span className="text-text-secondary" style={{ minWidth: `${maxKeyLength}ch` }}>{`  ${col.padEnd(maxKeyLength)}`}</span>
+                        <span className="text-text-muted">= </span>
+                        <span
+                          className={cn('break-all', vs.italic && 'italic')}
+                          style={vs.color ? { color: vs.color } : undefined}
+                        >{formatValue(row[col])}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               ))}
             </div>
@@ -325,8 +297,8 @@ export function ExecutableSnippet({
 
           {/* Empty Result */}
           {result?.data && result.data.length === 0 && !result.error && (
-            <div className="p-4 text-center text-sm text-text-muted">
-              Query executed successfully. No rows returned.
+            <div className="p-4 text-sm text-text-muted font-mono">
+              $ 0 rows returned.
             </div>
           )}
         </div>
@@ -336,8 +308,8 @@ export function ExecutableSnippet({
 
   if (isFullscreen) {
     return (
-      <div className="fixed inset-0 z-60 bg-black/80 backdrop-blur-sm">
-        <div className="fixed inset-0 sm:inset-4 bg-bg-secondary sm:border sm:border-white/10 sm:rounded-xl flex flex-col overflow-hidden">
+      <div className="fixed inset-0 z-60 bg-black/80">
+        <div className="fixed inset-0 sm:inset-4 bg-bg-secondary sm:border-2 sm:border-dashed sm:border-white/15 flex flex-col overflow-hidden">
           {content}
         </div>
       </div>

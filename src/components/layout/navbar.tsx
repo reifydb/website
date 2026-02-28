@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Button, GitHubStars } from '@/components/ui';
+import { GitHubStars } from '@/components/ui';
 import { cn } from '@/lib';
 import { NavbarDropdown } from './navbar-dropdown';
 import { navDropdowns, navDirectLinks } from './navbar-data';
@@ -52,7 +52,7 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-[rgba(28,30,40,0.95)] shadow-[0_1px_0_0_rgba(255,255,255,0.1)]">
+      <header className="sticky top-0 z-40 w-full bg-[rgba(12,12,12,0.95)] border-b border-dashed border-white/15">
         <div className="flex h-[60px] w-full items-center justify-between px-4 sm:px-6 md:pl-8 md:pr-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
@@ -61,13 +61,14 @@ export function Navbar() {
               alt="ReifyDB"
               className="h-7 w-auto"
             />
-            <span className="font-display font-bold text-lg tracking-tight text-text-primary">
-              ReifyDB
+            <span className="text-primary font-mono">$</span>
+            <span className="font-bold text-lg tracking-tight text-text-primary">
+              reifydb
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex gap-0 text-sm items-center flex-1 justify-center">
+          <nav className="hidden lg:flex gap-0 text-sm font-mono items-center flex-1 justify-center">
             {/* Dropdown Menus */}
             {navDropdowns.map((dropdown) => (
               <NavbarDropdown
@@ -82,18 +83,16 @@ export function Navbar() {
             {/* Direct Links */}
             {navDirectLinks.map((link) => {
               const isAnchor = link.href.startsWith('/#');
+              const active = !isAnchor && isActive(link.href);
 
               if (isAnchor) {
                 return (
                   <a
                     key={link.href}
                     href={link.href}
-                    className={cn(
-                      "font-medium px-4 py-2 transition-colors duration-150",
-                      "text-text-secondary hover:text-text-primary"
-                    )}
+                    className="px-3 py-2 transition-colors duration-150 text-text-secondary hover:text-primary"
                   >
-                    {link.label}
+                    [{link.label.toLowerCase()}]
                   </a>
                 );
               }
@@ -103,13 +102,13 @@ export function Navbar() {
                   key={link.href}
                   to={link.href}
                   className={cn(
-                    "font-medium px-4 py-2 transition-colors duration-150",
-                    isActive(link.href)
+                    "px-3 py-2 transition-colors duration-150",
+                    active
                       ? "text-primary"
-                      : "text-text-secondary hover:text-text-primary"
+                      : "text-text-secondary hover:text-primary"
                   )}
                 >
-                  {link.label}
+                  [{active && '*'}{link.label.toLowerCase()}]
                 </Link>
               );
             })}
@@ -120,32 +119,21 @@ export function Navbar() {
             {/* Desktop GitHub + CTA */}
             <div className="hidden lg:flex items-center gap-3">
               <GitHubStars />
-              <Button href="/docs" size="sm" className="rounded-sm uppercase tracking-wider text-xs">
-                Get Started
-              </Button>
+              <Link
+                to="/docs"
+                className="font-mono text-sm border border-primary text-primary hover:bg-primary hover:text-bg-primary px-3 py-1 transition-colors duration-150"
+              >
+                [&gt; start]
+              </Link>
             </div>
 
             {/* Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden flex flex-col gap-1.5 w-10 h-10 items-center justify-center group transition-colors"
+              className="lg:hidden font-mono text-sm text-text-muted hover:text-primary transition-colors"
               aria-label="Toggle menu"
             >
-              <span
-                className={`w-5 h-0.5 bg-text-secondary group-hover:bg-text-primary transition-all duration-300 ${
-                  mobileMenuOpen ? 'rotate-45 translate-y-2' : ''
-                }`}
-              />
-              <span
-                className={`w-5 h-0.5 bg-text-secondary group-hover:bg-text-primary transition-all duration-300 ${
-                  mobileMenuOpen ? 'opacity-0' : ''
-                }`}
-              />
-              <span
-                className={`w-5 h-0.5 bg-text-secondary group-hover:bg-text-primary transition-all duration-300 ${
-                  mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-                }`}
-              />
+              {mobileMenuOpen ? '[x]' : '[=]'}
             </button>
           </div>
         </div>
@@ -160,123 +148,120 @@ export function Navbar() {
         {/* Backdrop */}
         <div
           onClick={() => setMobileMenuOpen(false)}
-          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          className="absolute inset-0 bg-black/60"
         />
 
         {/* Menu Panel */}
         <div
-          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-bg-elevated border-l border-white/10 transform transition-transform duration-300 overflow-y-auto ${
+          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-bg-elevated border-l border-dashed border-white/15 transform transition-transform duration-300 overflow-y-auto ${
             mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
           {/* Close Button */}
-          <div className="flex justify-end p-6 border-b border-white/10">
+          <div className="flex justify-end p-6 border-b border-dashed border-white/15">
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className="flex flex-col gap-1.5 w-10 h-10 items-center justify-center group transition-colors"
+              className="font-mono text-sm text-text-muted hover:text-primary transition-colors"
               aria-label="Close menu"
             >
-              <span className="w-5 h-0.5 bg-text-secondary group-hover:bg-text-primary rotate-45 translate-y-1"/>
-              <span className="w-5 h-0.5 bg-text-secondary group-hover:bg-text-primary -rotate-45 -translate-y-1"/>
+              [x]
             </button>
           </div>
 
           {/* Navigation Links */}
           <nav className="flex flex-col p-6 gap-2">
             {/* Accordion Sections for Dropdowns */}
-            {navDropdowns.map((dropdown) => (
-              <div key={dropdown.id} className="border-b border-white/10 overflow-hidden">
-                <button
-                  onClick={() => toggleMobileSection(dropdown.id)}
-                  className={cn(
-                    "w-full font-medium text-text-secondary hover:text-text-primary px-4 py-3 transition-colors duration-150 flex items-center justify-between",
-                    expandedMobileSection === dropdown.id && "text-text-primary"
-                  )}
-                >
-                  {dropdown.label}
-                  <svg
+            {navDropdowns.map((dropdown) => {
+              const expanded = expandedMobileSection === dropdown.id;
+              return (
+                <div key={dropdown.id} className="border-b border-dashed border-white/15 overflow-hidden">
+                  <button
+                    onClick={() => toggleMobileSection(dropdown.id)}
                     className={cn(
-                      "w-4 h-4 transition-transform duration-200",
-                      expandedMobileSection === dropdown.id && "rotate-180"
+                      "w-full font-mono text-sm px-4 py-3 transition-colors duration-150 flex items-center justify-between",
+                      expanded ? "text-text-primary" : "text-text-secondary hover:text-primary"
                     )}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
+                    {dropdown.label.toLowerCase()}
+                    <span className="text-text-muted">{expanded ? '[-]' : '[+]'}</span>
+                  </button>
 
-                {/* Expanded Content */}
-                <div
-                  className={cn(
-                    "transition-all duration-200 overflow-hidden",
-                    expandedMobileSection === dropdown.id
-                      ? "max-h-[500px] opacity-100"
-                      : "max-h-0 opacity-0"
-                  )}
-                >
-                  <div className="px-4 py-3 border-t border-white/5">
-                    {dropdown.columns.map((column) => (
-                      <div key={column.title} className="mb-4 last:mb-0">
-                        <h4 className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-2">
-                          {column.title}
-                        </h4>
-                        <div className="flex flex-col gap-1">
-                          {column.items.map((item) => {
-                            const isExternal = item.href.startsWith('http');
-                            const isAnchor = item.href.startsWith('/#');
+                  {/* Expanded Content */}
+                  <div
+                    className={cn(
+                      "transition-all duration-200 overflow-hidden",
+                      expanded
+                        ? "max-h-[500px] opacity-100"
+                        : "max-h-0 opacity-0"
+                    )}
+                  >
+                    <div className="px-4 py-3 border-t border-dashed border-white/10">
+                      {dropdown.columns.map((column) => (
+                        <div key={column.title} className="mb-4 last:mb-0">
+                          <div className="flex flex-col gap-1">
+                            {column.items.map((item) => {
+                              const isExternal = item.href.startsWith('http');
+                              const isAnchor = item.href.startsWith('/#');
 
-                            if (isExternal) {
-                              return (
-                                <a
-                                  key={item.label}
-                                  href={item.href}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  onClick={() => setMobileMenuOpen(false)}
-                                  className="text-sm text-text-secondary hover:text-text-primary py-1.5 transition-colors"
-                                >
-                                  {item.label}
-                                </a>
+                              const content = (
+                                <>
+                                  <span className="text-text-muted">-- </span>
+                                  <span className="text-text-secondary group-hover:text-primary transition-colors">{item.label.toLowerCase()}</span>
+                                </>
                               );
-                            }
 
-                            if (isAnchor) {
+                              if (isExternal) {
+                                return (
+                                  <a
+                                    key={item.label}
+                                    href={item.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="group text-sm py-1.5 font-mono"
+                                  >
+                                    {content}
+                                  </a>
+                                );
+                              }
+
+                              if (isAnchor) {
+                                return (
+                                  <a
+                                    key={item.label}
+                                    href={item.href}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="group text-sm py-1.5 font-mono"
+                                  >
+                                    {content}
+                                  </a>
+                                );
+                              }
+
                               return (
-                                <a
+                                <Link
                                   key={item.label}
-                                  href={item.href}
+                                  to={item.href}
                                   onClick={() => setMobileMenuOpen(false)}
-                                  className="text-sm text-text-secondary hover:text-text-primary py-1.5 transition-colors"
+                                  className="group text-sm py-1.5 font-mono"
                                 >
-                                  {item.label}
-                                </a>
+                                  {content}
+                                </Link>
                               );
-                            }
-
-                            return (
-                              <Link
-                                key={item.label}
-                                to={item.href}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="text-sm text-text-secondary hover:text-text-primary py-1.5 transition-colors"
-                              >
-                                {item.label}
-                              </Link>
-                            );
-                          })}
+                            })}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
             {/* Direct Links */}
             {navDirectLinks.map((link) => {
               const isAnchor = link.href.startsWith('/#');
+              const active = !isAnchor && isActive(link.href);
 
               if (isAnchor) {
                 return (
@@ -284,9 +269,9 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="font-medium text-text-secondary hover:text-text-primary px-4 py-3 border-b border-white/10 transition-colors duration-150 text-left"
+                    className="font-mono text-sm px-4 py-3 border-b border-dashed border-white/15 transition-colors duration-150 text-left text-text-secondary hover:text-primary"
                   >
-                    {link.label}
+                    <span className="text-text-muted">&gt; </span>{link.label.toLowerCase()}
                   </a>
                 );
               }
@@ -297,13 +282,13 @@ export function Navbar() {
                   to={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
-                    "font-medium px-4 py-3 border-b border-white/10 transition-colors duration-150 text-left",
-                    isActive(link.href)
+                    "font-mono text-sm px-4 py-3 border-b border-dashed border-white/15 transition-colors duration-150 text-left",
+                    active
                       ? "text-primary"
-                      : "text-text-secondary hover:text-text-primary"
+                      : "text-text-secondary hover:text-primary"
                   )}
                 >
-                  {link.label}
+                  <span className="text-text-muted">&gt; </span>{link.label.toLowerCase()}
                 </Link>
               );
             })}
@@ -312,9 +297,9 @@ export function Navbar() {
             <Link
               to="/docs"
               onClick={() => setMobileMenuOpen(false)}
-              className="font-semibold bg-primary text-bg-primary px-4 py-3 rounded-sm uppercase tracking-wider text-sm transition-all duration-150 text-center mt-4 hover:bg-primary-dark"
+              className="font-mono text-sm border border-primary text-primary hover:bg-primary hover:text-bg-primary px-4 py-3 transition-colors duration-150 text-center mt-4"
             >
-              Get Started
+              [&gt; get started]
             </Link>
           </nav>
         </div>

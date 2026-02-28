@@ -48,13 +48,13 @@ export function CtaSection({
     return (
       <ScrollReveal>
         <div className="max-w-6xl mx-auto px-6 py-8 sm:py-12">
-          <div className="bg-bg-tertiary border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 card-hover">
+          <div className="border-2 border-dashed border-white/15 overflow-hidden dotted-card">
             <div className="grid md:grid-cols-2">
               <div className="p-6 sm:p-8 flex flex-col justify-center">
                 <h3 className="text-lg sm:text-xl font-bold text-text-primary mb-2 sm:mb-3">{title}</h3>
                 <p className="text-sm sm:text-base text-text-muted">{description}</p>
               </div>
-              <div className="p-6 sm:p-8 flex items-center justify-center bg-bg-secondary border-t md:border-t-0 md:border-l border-white/10">
+              <div className="p-6 sm:p-8 flex items-center justify-center bg-bg-secondary border-t md:border-t-0 md:border-l border-dashed border-white/15">
                 {isExternal ? (
                   <a href={buttonHref} target="_blank" rel="noopener noreferrer">
                     <Button size="lg">{buttonText}</Button>
@@ -76,7 +76,7 @@ export function CtaSection({
   return (
     <ScrollReveal>
       <div className="max-w-4xl mx-auto px-6 py-8 sm:py-12">
-        <div className="bg-bg-tertiary border border-white/10 rounded-2xl p-6 sm:p-8 text-center transition-all duration-300 card-hover">
+        <div className="border-2 border-dashed border-white/15 p-6 sm:p-8 text-center dotted-card">
           <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-3 sm:mb-4">{title}</h3>
           <p className="text-sm sm:text-base text-text-muted mb-4 sm:mb-6">{description}</p>
           {isExternal ? (
