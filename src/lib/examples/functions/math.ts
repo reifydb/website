@@ -137,7 +137,7 @@ January  | 1500    | 2300.5`,
     id: 'math-abs-convert',
     title: 'Convert to absolute value',
     category: 'function',
-    code: `from app.transactions
+    code: `from app::transactions
 extend { abs_amount: math::abs(amount) }`,
     expected: `id | amount | abs_amount
 ---+--------+-----------
@@ -151,7 +151,7 @@ extend { abs_amount: math::abs(amount) }`,
     id: 'math-abs-filter',
     title: 'Filter by absolute magnitude',
     category: 'function',
-    code: `from app.balances
+    code: `from app::balances
 filter math::abs(balance) > 1000`,
     expected: `id | balance
 ---+--------
@@ -164,7 +164,7 @@ filter math::abs(balance) > 1000`,
     id: 'math-round-decimal',
     title: 'Round to 2 decimal places',
     category: 'function',
-    code: `from app.prices
+    code: `from app::prices
 extend { rounded: math::round(price, 2) }`,
     expected: `id | price              | rounded
 ---+--------------------+-------------------
@@ -177,7 +177,7 @@ extend { rounded: math::round(price, 2) }`,
     id: 'math-round-integer',
     title: 'Round to nearest integer',
     category: 'function',
-    code: `from app.metrics
+    code: `from app::metrics
 extend { rounded_value: math::round(value) }`,
     expected: `id | value  | rounded_value
 ---+--------+--------------
@@ -192,7 +192,7 @@ extend { rounded_value: math::round(value) }`,
     id: 'math-floor-values',
     title: 'Floor values',
     category: 'function',
-    code: `from app.measurements
+    code: `from app::measurements
 extend {
   floor_val: math::floor(value),
   ceil_val: math::ceil(value)
@@ -208,7 +208,7 @@ extend {
     id: 'math-floor-integer',
     title: 'Convert to integer',
     category: 'function',
-    code: `from app.scores
+    code: `from app::scores
 extend { int_score: math::floor(score) }`,
     expected: `id | score | int_score
 ---+-------+----------
@@ -224,7 +224,7 @@ extend { int_score: math::floor(score) }`,
     id: 'math-ceil-values',
     title: 'Ceiling values',
     category: 'function',
-    code: `from app.measurements
+    code: `from app::measurements
 extend {
   floor_val: math::floor(value),
   ceil_val: math::ceil(value)
@@ -240,7 +240,7 @@ extend {
     id: 'math-ceil-capacity',
     title: 'Round up for capacity',
     category: 'function',
-    code: `from app.resources
+    code: `from app::resources
 extend { capacity_needed: math::ceil(usage_ratio) }`,
     expected: `id | usage_ratio         | capacity_needed
 ---+---------------------+----------------
@@ -255,21 +255,21 @@ extend { capacity_needed: math::ceil(usage_ratio) }`,
     id: 'math-power-squares',
     title: 'Calculate squares',
     category: 'function',
-    code: `from app.numbers
+    code: `from app::numbers
 extend { squared: math::power(value, 2) }`,
   },
   {
     id: 'math-power-compound',
     title: 'Compound growth',
     category: 'function',
-    code: `from app.numbers
+    code: `from app::numbers
 extend { cubed: math::power(value, 3) }`,
   },
   {
     id: 'math-power-sqrt',
     title: 'Square root (exponent 0.5)',
     category: 'function',
-    code: `from app.data
+    code: `from app::data
 extend { sqrt_value: math::power(value, 0.5) }`,
   },
 ];

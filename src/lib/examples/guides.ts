@@ -35,7 +35,7 @@ filter role == "user"`,
     id: 'guide-creating-table',
     title: 'Creating a Table',
     category: 'guide',
-    code: `create table app.todos {
+    code: `create table app::todos {
   id: int4,
   title: utf8,
   done: bool
@@ -48,7 +48,7 @@ app       | todos | true`,
     id: 'guide-inserting-data',
     title: 'Inserting Data',
     category: 'guide',
-    code: `INSERT app.todos [
+    code: `INSERT app::todos [
   {id: 1, title: "Learn RQL", done: false},
   {id: 2, title: "Build an app", done: false}
 ]`,

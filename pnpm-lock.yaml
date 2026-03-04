@@ -14,6 +14,9 @@ importers:
       '@reifydb/core':
         specifier: ^0.3.0
         version: 0.3.0
+      '@reifydb/wasm':
+        specifier: ^0.3.0
+        version: 0.3.0
       '@tsparticles/engine':
         specifier: ^3.9.1
         version: 3.9.1
@@ -502,6 +505,10 @@ packages:
 
   '@reifydb/core@0.3.0':
     resolution: {integrity: sha512-Xb5quHINY647BC6guhEYGquMVh75E3fmwYw3QvZG0ECsUVRl4IctncngTKVPuZ+t9SgXbxQOuFfrsVVO4D9Upw==}
+    engines: {node: '>=16.0.0'}
+
+  '@reifydb/wasm@0.3.0':
+    resolution: {integrity: sha512-x0dMpVn+sMro56UsUggc8feEke6AdQoQCP1RUMj9BdbqZa2sW4He8YzPfCkM6gDd4SMPIxdi/UBMWDm6/j0BJQ==}
     engines: {node: '>=16.0.0'}
 
   '@rolldown/pluginutils@1.0.0-beta.53':
@@ -2663,6 +2670,10 @@ snapshots:
   '@reifydb/core@0.3.0':
     dependencies:
       uuid: 11.1.0
+
+  '@reifydb/wasm@0.3.0':
+    dependencies:
+      '@reifydb/core': 0.3.0
 
   '@rolldown/pluginutils@1.0.0-beta.53': {}
 

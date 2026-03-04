@@ -40,7 +40,7 @@ extend { label: text::concat(name, " (", sku, ")") }`,
     id: 'text-concat-urls',
     title: 'Build URLs',
     category: 'function',
-    code: `from app.pages
+    code: `from app::pages
 extend { url: text::concat("/", category, "/", slug) }`,
     expected: `id | category | slug               | url
 ---+----------+--------------------+-------------------------
@@ -98,7 +98,7 @@ extend { sku_upper: text::upper(sku) }`,
     id: 'text-trim-input',
     title: 'Clean user input',
     category: 'function',
-    code: `from app.inputs
+    code: `from app::inputs
 extend { clean_value: text::trim(value) }`,
     expected: `id | value           | clean_value
 ---+-----------------+------------
@@ -111,7 +111,7 @@ extend { clean_value: text::trim(value) }`,
     id: 'text-trim-filter',
     title: 'Filter non-empty strings',
     category: 'function',
-    code: `from app.inputs
+    code: `from app::inputs
 filter text::length(value) > 0`,
     expected: `id | value
 ---+----------------
@@ -126,7 +126,7 @@ filter text::length(value) > 0`,
     id: 'text-length-filter',
     title: 'Filter by minimum length',
     category: 'function',
-    code: `from app.posts
+    code: `from app::posts
 filter text::length(content) > 100`,
     expected: `(empty)`,
   },
@@ -134,7 +134,7 @@ filter text::length(content) > 100`,
     id: 'text-length-charcount',
     title: 'Add character count field',
     category: 'function',
-    code: `from app.articles
+    code: `from app::articles
 extend { char_count: text::length(body) }`,
     expected: `id | body                                                                       | char_count
 ---+----------------------------------------------------------------------------+-----------
@@ -147,7 +147,7 @@ extend { char_count: text::length(body) }`,
     id: 'text-length-validate',
     title: 'Validate input length',
     category: 'function',
-    code: `from app.usernames
+    code: `from app::usernames
 filter text::length(username) >= 3 and text::length(username) <= 20`,
     expected: `id | username
 ---+-------------
@@ -162,7 +162,7 @@ filter text::length(username) >= 3 and text::length(username) <= 20`,
     id: 'text-substring-prefix',
     title: 'Extract prefix',
     category: 'function',
-    code: `from app.codes
+    code: `from app::codes
 extend { prefix: text::substring(code, 0, 3) }`,
     expected: `id | code   | prefix
 ---+--------+-------
@@ -189,7 +189,7 @@ extend { initial: text::substring(name, 0, 1) }`,
     id: 'text-substring-middle',
     title: 'Extract middle portion',
     category: 'function',
-    code: `from app.identifiers
+    code: `from app::identifiers
 extend { middle: text::substring(code, 3, 7) }`,
     expected: `id | code     | middle
 ---+----------+-------

@@ -1,4 +1,4 @@
-import { createWasmDB, type WasmDB } from './wasm-db';
+import { createWasmDB, type WasmDB } from '@reifydb/wasm';
 import { seedCommand } from './seed-data';
 
 let dbInstance: WasmDB | null = null;

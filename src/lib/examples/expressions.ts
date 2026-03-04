@@ -25,7 +25,7 @@ extend { lower_email: text::lower(email) }`,
     id: 'expr-date-module',
     title: 'Date Module',
     category: 'rql',
-    code: `from app.records
+    code: `from app::records
 extend { processed_at: date::now() }`,
   },
   {

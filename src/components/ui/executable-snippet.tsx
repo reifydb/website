@@ -4,7 +4,7 @@ import type { editor } from 'monaco-editor';
 import { rqlLanguageDefinition, rqlLanguageConfiguration } from '@/lib/rql-language';
 import { premiumDarkTheme } from '@/lib/monaco-themes';
 import { cn } from '@/lib';
-import { type WasmDB } from '@/lib/wasm-db';
+import { type WasmDB } from '@reifydb/wasm';
 import { getWasmDB, getWasmDBSync } from '@/lib/wasm-db-singleton';
 import { Value } from '@reifydb/core';
 

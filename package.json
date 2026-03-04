@@ -15,6 +15,7 @@
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
     "@reifydb/core": "^0.3.0",
+    "@reifydb/wasm": "^0.3.0",
     "@tsparticles/engine": "^3.9.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",

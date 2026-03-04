@@ -2,7 +2,7 @@
  * Test utilities for WASM database
  */
 
-import { createWasmDB, type WasmDB } from '../wasm-db';
+import { createWasmDB, type WasmDB } from '@reifydb/wasm';
 import { seedCommand } from '../seed-data';
 import { renderFrame } from './render-frame';
 import type { CodeExample } from '../examples';
