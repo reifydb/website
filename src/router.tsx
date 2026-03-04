@@ -9,6 +9,7 @@ import { MissionPage } from '@/pages/company/mission';
 import { DocsGate } from '@/components/docs-gate';
 import { BlogListingPage, BlogPostPage } from '@/pages/blog';
 import { ExamplesPage } from '@/pages/examples';
+import { TourPage } from '@/pages/tour';
 import { NotFoundPage } from '@/pages/not-found';
 import {
   DocsOverview,
@@ -245,6 +246,10 @@ export const router = createBrowserRouter([
       {
         path: '/examples',
         element: <ExamplesPage />,
+      },
+      {
+        path: '/tour',
+        element: <TourPage />,
       },
       {
         path: '/blog',

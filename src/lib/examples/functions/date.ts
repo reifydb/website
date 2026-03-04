@@ -29,7 +29,7 @@ extend { processed_at: date::now() }`,
     id: 'date-now-elapsed',
     title: 'Calculate time elapsed',
     category: 'function',
-    code: `from app.events
+    code: `from app::events
 extend { reviewed_at: date::now() }`,
   },
 

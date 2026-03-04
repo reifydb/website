@@ -7,8 +7,8 @@
 export const seedCommand = `
 create namespace app;
 
-create table app.users { id: int4, name: utf8, email: utf8, role: utf8, age: int4, status: utf8, active: bool, created_at: datetime, first_name: utf8, last_name: utf8, deleted_at: Option(datetime) };
-INSERT app.users [
+create table app::users { id: int4, name: utf8, email: utf8, role: utf8, age: int4, status: utf8, active: bool, created_at: datetime, first_name: utf8, last_name: utf8, deleted_at: Option(datetime) };
+INSERT app::users [
   { id: 1, name: "Alice", email: "alice@example.com", role: "admin", age: 30, status: "active", active: true, created_at: cast("2024-01-15T10:30:00", datetime), first_name: "Alice", last_name: "Smith", deleted_at: none },
   { id: 2, name: "Bob", email: "bob@example.com", role: "user", age: 25, status: "active", active: true, created_at: cast("2024-02-20T14:00:00", datetime), first_name: "Bob", last_name: "Jones", deleted_at: none },
   { id: 3, name: "Carol", email: "carol@example.com", role: "user", age: 35, status: "inactive", active: false, created_at: cast("2023-12-01T09:00:00", datetime), first_name: "Carol", last_name: "Wilson", deleted_at: cast("2024-06-01T00:00:00", datetime) },
@@ -16,8 +16,8 @@ INSERT app.users [
   { id: 5, name: "Eve", email: "eve@example.com", role: "user", age: 32, status: "active", active: true, created_at: cast("2024-04-05T16:45:00", datetime), first_name: "Eve", last_name: "Davis", deleted_at: none }
 ];
 
-create table app.orders { id: int4, total: float4, status: utf8, region: utf8, created_at: datetime, order_date: date };
-INSERT app.orders [
+create table app::orders { id: int4, total: float4, status: utf8, region: utf8, created_at: datetime, order_date: date };
+INSERT app::orders [
   { id: 1, total: 150.50, status: "completed", region: "North", created_at: cast("2024-01-15T10:30:00", datetime), order_date: cast("2024-01-15", date) },
   { id: 2, total: 89.99, status: "pending", region: "South", created_at: cast("2024-02-20T14:00:00", datetime), order_date: cast("2024-02-20", date) },
   { id: 3, total: 245.00, status: "completed", region: "East", created_at: cast("2024-03-10T09:15:00", datetime), order_date: cast("2024-03-10", date) },
@@ -25,8 +25,8 @@ INSERT app.orders [
   { id: 5, total: 320.75, status: "pending", region: "North", created_at: cast("2024-05-12T16:00:00", datetime), order_date: cast("2024-05-12", date) }
 ];
 
-create table app.products { id: int4, name: utf8, sku: utf8, price: float4, category: utf8 };
-INSERT app.products [
+create table app::products { id: int4, name: utf8, sku: utf8, price: float4, category: utf8 };
+INSERT app::products [
   { id: 1, name: "Widget", sku: "WGT-001", price: 29.99, category: "Electronics" },
   { id: 2, name: "Gadget", sku: "GDT-002", price: 49.99, category: "Electronics" },
   { id: 3, name: "Gizmo", sku: "GZM-003", price: 19.99, category: "Accessories" },
@@ -34,8 +34,8 @@ INSERT app.products [
   { id: 5, name: "Thingamajig", sku: "TMJ-005", price: 15.50, category: "Accessories" }
 ];
 
-create table app.sales { id: int4, amount: float4, region: utf8, month: utf8 };
-INSERT app.sales [
+create table app::sales { id: int4, amount: float4, region: utf8, month: utf8 };
+INSERT app::sales [
   { id: 1, amount: 1500.00, region: "North", month: "January" },
   { id: 2, amount: 2300.50, region: "South", month: "January" },
   { id: 3, amount: 1800.25, region: "East", month: "February" },
@@ -43,8 +43,8 @@ INSERT app.sales [
   { id: 5, amount: 1950.75, region: "North", month: "March" }
 ];
 
-create table app.events { id: int4, created_at: datetime, timestamp: datetime };
-INSERT app.events [
+create table app::events { id: int4, created_at: datetime, timestamp: datetime };
+INSERT app::events [
   { id: 1, created_at: cast("2024-01-15T10:30:00", datetime), timestamp: cast("2024-01-15T10:30:00", datetime) },
   { id: 2, created_at: cast("2024-02-20T14:00:00", datetime), timestamp: cast("2024-02-20T14:00:00", datetime) },
   { id: 3, created_at: cast("2024-03-10T09:15:00", datetime), timestamp: cast("2024-03-10T09:15:00", datetime) },
@@ -52,8 +52,8 @@ INSERT app.events [
   { id: 5, created_at: cast("2024-05-12T08:00:00", datetime), timestamp: cast("2024-05-12T08:00:00", datetime) }
 ];
 
-create table app.employees { id: int4, dept_id: int4, salary: float4 };
-INSERT app.employees [
+create table app::employees { id: int4, dept_id: int4, salary: float4 };
+INSERT app::employees [
   { id: 1, dept_id: 1, salary: 75000.00 },
   { id: 2, dept_id: 1, salary: 82000.00 },
   { id: 3, dept_id: 2, salary: 65000.00 },

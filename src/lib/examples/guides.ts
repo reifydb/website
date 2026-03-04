@@ -60,7 +60,7 @@ app       | todos | 2`,
     id: 'guide-querying-tables',
     title: 'Querying Tables',
     category: 'guide',
-    code: `from app.users
+    code: `from app::users
 filter role == "admin"`,
   },
 ];

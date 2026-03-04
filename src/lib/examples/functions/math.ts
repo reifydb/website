@@ -6,7 +6,7 @@ export const mathExamples: CodeExample[] = [
     id: 'math-overview-quick',
     title: 'Math Module Quick Example',
     category: 'function',
-    code: `from app.sales
+    code: `from app::sales
 aggregate {
   total_revenue: math::sum(amount),
   avg_sale: math::avg(amount)
@@ -24,7 +24,7 @@ South  | 2300.5        | 2300.5`,
     id: 'math-sum-by-region',
     title: 'Calculate total revenue',
     category: 'function',
-    code: `from app.orders
+    code: `from app::orders
 aggregate {math::sum(total)} by {region}`,
     expected: `region | math::sum(total)
 -------+------------------
@@ -37,7 +37,7 @@ South  | 89.98999786376953`,
     id: 'math-sum-multiple',
     title: 'Multiple aggregations',
     category: 'function',
-    code: `from app.sales
+    code: `from app::sales
 aggregate {
   total_revenue: math::sum(amount),
   avg_sale: math::avg(amount)
@@ -52,7 +52,7 @@ aggregate {
     id: 'math-avg-by-category',
     title: 'Calculate average price',
     category: 'function',
-    code: `from app.products
+    code: `from app::products
 aggregate {math::avg(price)} by {category}`,
     expected: `category    | math::avg(price)
 ------------+-------------------
@@ -64,7 +64,7 @@ Electronics | 39.99000072479248`,
     id: 'math-avg-with-total',
     title: 'Average with total',
     category: 'function',
-    code: `from app.sales
+    code: `from app::sales
 aggregate {
   avg_sale: math::avg(amount),
   total_sales: math::sum(amount)
@@ -79,7 +79,7 @@ aggregate {
     id: 'math-min-by-category',
     title: 'Find lowest price',
     category: 'function',
-    code: `from app.products
+    code: `from app::products
 aggregate {math::min(price)} by {category}`,
     expected: `category    | math::min(price)
 ------------+-------------------
@@ -91,7 +91,7 @@ Electronics | 29.989999771118164`,
     id: 'math-min-max-together',
     title: 'Min and max together',
     category: 'function',
-    code: `from app.sales
+    code: `from app::sales
 aggregate {
   lowest: math::min(amount),
   highest: math::max(amount)
@@ -108,7 +108,7 @@ January  | 1500    | 2300.5`,
     id: 'math-max-by-category',
     title: 'Find highest price',
     category: 'function',
-    code: `from app.products
+    code: `from app::products
 aggregate {math::max(price)} by {category}`,
     expected: `category    | math::max(price)
 ------------+-------------------
@@ -120,7 +120,7 @@ Electronics | 49.9900016784668`,
     id: 'math-max-min-together',
     title: 'Min and max together',
     category: 'function',
-    code: `from app.sales
+    code: `from app::sales
 aggregate {
   lowest: math::min(amount),
   highest: math::max(amount)

@@ -5,7 +5,7 @@ export const expressionExamples: CodeExample[] = [
     id: 'expr-math-module',
     title: 'Math Module',
     category: 'rql',
-    code: `from app.orders
+    code: `from app::orders
 aggregate {math::sum(total)} by {region}`,
     expected: `region | math::sum(total)
 -------+------------------
@@ -18,7 +18,7 @@ South  | 89.98999786376953`,
     id: 'expr-text-module',
     title: 'Text Module',
     category: 'rql',
-    code: `from app.users
+    code: `from app::users
 extend { lower_email: text::lower(email) }`,
   },
   {
@@ -32,14 +32,14 @@ extend { processed_at: date::now() }`,
     id: 'expr-case',
     title: 'Case Expression',
     category: 'rql',
-    code: `from app.orders
+    code: `from app::orders
 extend { tax: total * 0.1 }`,
   },
   {
     id: 'expr-named-args',
     title: 'Named Arguments',
     category: 'rql',
-    code: `from app.users
+    code: `from app::users
 take 10`,
   },
 ];

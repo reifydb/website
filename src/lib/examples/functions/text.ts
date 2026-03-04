@@ -6,7 +6,7 @@ export const textExamples: CodeExample[] = [
     id: 'text-overview-quick',
     title: 'Text Module Quick Example',
     category: 'function',
-    code: `from app.users
+    code: `from app::users
 extend {
   full_name: text::concat(first_name, " ", last_name),
   email_lower: text::lower(email)
@@ -19,14 +19,14 @@ filter text::length(full_name) > 0`,
     id: 'text-concat-fullname',
     title: 'Build full name',
     category: 'function',
-    code: `from app.users
+    code: `from app::users
 extend { full_name: text::concat(first_name, " ", last_name) }`,
   },
   {
     id: 'text-concat-labels',
     title: 'Create display labels',
     category: 'function',
-    code: `from app.products
+    code: `from app::products
 extend { label: text::concat(name, " (", sku, ")") }`,
     expected: `id | name        | sku     | price              | category    | label
 ---+-------------+---------+--------------------+-------------+----------------------
@@ -55,14 +55,14 @@ extend { url: text::concat("/", category, "/", slug) }`,
     id: 'text-lower-email',
     title: 'Normalize email addresses',
     category: 'function',
-    code: `from app.users
+    code: `from app::users
 extend { lower_email: text::lower(email) }`,
   },
   {
     id: 'text-lower-filter',
     title: 'Case-insensitive filtering',
     category: 'function',
-    code: `from app.products
+    code: `from app::products
 filter text::lower(category) == "electronics"`,
     expected: `id | name   | sku     | price              | category
 ---+--------+---------+--------------------+------------
@@ -75,14 +75,14 @@ filter text::lower(category) == "electronics"`,
     id: 'text-upper-names',
     title: 'Format display names',
     category: 'function',
-    code: `from app.users
+    code: `from app::users
 extend { upper_name: text::upper(name) }`,
   },
   {
     id: 'text-upper-sku',
     title: 'Uppercase code identifiers',
     category: 'function',
-    code: `from app.products
+    code: `from app::products
 extend { sku_upper: text::upper(sku) }`,
     expected: `id | name        | sku     | price              | category    | sku_upper
 ---+-------------+---------+--------------------+-------------+----------
@@ -175,7 +175,7 @@ extend { prefix: text::substring(code, 0, 3) }`,
     id: 'text-substring-first',
     title: 'Get first characters',
     category: 'function',
-    code: `from app.products
+    code: `from app::products
 extend { initial: text::substring(name, 0, 1) }`,
     expected: `id | name        | sku     | price              | category    | initial
 ---+-------------+---------+--------------------+-------------+--------

@@ -39,6 +39,7 @@ export const navDropdowns: NavDropdown[] = [
 
 export const navDirectLinks: NavDirectLink[] = [
     {href: '/docs', label: 'Docs'},
+    {href: '/tour', label: 'Tour'},
     {href: '/blog', label: 'Blog'},
     {href: '/faq', label: 'FAQ'},
     {href: '/support', label: 'Support'},

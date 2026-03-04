@@ -5,14 +5,14 @@ export const rqlExamples: CodeExample[] = [
     id: 'rql-query-structure',
     title: 'Query Structure',
     category: 'rql',
-    code: `from app.users
+    code: `from app::users
 filter age >= 18`,
   },
   {
     id: 'rql-tables',
     title: 'Tables',
     category: 'rql',
-    code: `from app.users`,
+    code: `from app::users`,
   },
   {
     id: 'rql-inline-data',
