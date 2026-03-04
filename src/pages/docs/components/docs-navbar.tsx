@@ -33,7 +33,7 @@ export function DocsNavbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-[rgba(12,12,12,0.95)] border-b border-dashed border-white/15">
+      <header className="sticky top-0 z-40 w-full bg-[rgba(255,255,255,0.95)] border-b border-dashed border-black/25">
         <div className="flex h-[60px] w-full items-center justify-between px-4 sm:px-6 md:px-12">
           <Link to="/" className="flex items-center gap-2">
             <img
@@ -103,9 +103,9 @@ export function DocsNavbar() {
           />
 
           {/* Menu Panel */}
-          <div className="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-bg-secondary border-l border-dashed border-white/15 flex flex-col">
+          <div className="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-bg-secondary border-l border-dashed border-black/25 flex flex-col">
             {/* Close Button */}
-            <div className="flex justify-end p-6 border-b border-dashed border-white/15 shrink-0">
+            <div className="flex justify-end p-6 border-b border-dashed border-black/25 shrink-0">
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="font-mono text-sm text-text-muted hover:text-primary transition-colors"
@@ -135,7 +135,7 @@ export function DocsNavbar() {
                         isSectionOpen ? 'max-h-[2000px]' : 'max-h-0'
                       )}
                     >
-                      <ul className="space-y-0.5 border-l border-dashed border-white/15 ml-3">
+                      <ul className="space-y-0.5 border-l border-dashed border-black/25 ml-3">
                         {section.items.map((item) => (
                           <AccordionItem
                             key={item.id}
@@ -155,13 +155,13 @@ export function DocsNavbar() {
             </nav>
 
             {/* Site-wide Links */}
-            <nav className="p-6 border-t border-dashed border-white/15 flex flex-col gap-2 shrink-0">
+            <nav className="p-6 border-t border-dashed border-black/25 flex flex-col gap-2 shrink-0">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="font-mono text-sm text-text-secondary hover:text-primary px-4 py-3 border-b border-dashed border-white/15 transition-colors duration-150 text-left"
+                  className="font-mono text-sm text-text-secondary hover:text-primary px-4 py-3 border-b border-dashed border-black/25 transition-colors duration-150 text-left"
                 >
                   <span className="text-text-muted">&gt; </span>{link.label.toLowerCase()}
                 </Link>

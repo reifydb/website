@@ -38,7 +38,7 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
         )}
       >
         <div className={cn(
-          "bg-bg-elevated border-2 border-dashed border-white/15 overflow-hidden",
+          "bg-bg-elevated border-2 border-dashed border-black/25 overflow-hidden",
           dropdown.columns.length === 1 ? "min-w-[200px]" : "min-w-[400px]"
         )}>
           <div className={cn(
@@ -50,7 +50,7 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
                 key={column.title}
                 className={cn(
                   "p-4",
-                  dropdown.columns.length > 1 && colIndex < dropdown.columns.length - 1 && "border-r border-white/10"
+                  dropdown.columns.length > 1 && colIndex < dropdown.columns.length - 1 && "border-r border-black/20"
                 )}
               >
                 <h3 className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-3 px-3">

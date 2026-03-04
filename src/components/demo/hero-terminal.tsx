@@ -83,15 +83,15 @@ export function HeroTerminal() {
   }, []);
 
   return (
-    <div className="group relative bg-bg-tertiary border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-primary/30 hover:shadow-[0_0_50px_rgba(245,158,11,0.15)]">
+    <div className="group relative bg-code-bg border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-primary/30 hover:shadow-[0_0_50px_rgba(20,184,166,0.15)]">
       {/* macOS Chrome Header */}
-      <div className="h-8 sm:h-10 bg-bg-elevated border-b border-white/10 flex items-center px-3 sm:px-4 gap-2">
+      <div className="h-8 sm:h-10 bg-code-bg-elevated border-b border-white/10 flex items-center px-3 sm:px-4 gap-2">
         <div className="flex gap-1.5">
           <div className="w-3 h-3 rounded-full bg-status-error" />
           <div className="w-3 h-3 rounded-full bg-status-warning" />
           <div className="w-3 h-3 rounded-full bg-status-success" />
         </div>
-        <span className="text-xs font-medium text-text-muted ml-2">reifydb@terminal</span>
+        <span className="text-xs font-medium text-code-text-muted ml-2">reifydb@terminal</span>
       </div>
 
       {/* Terminal Body */}
@@ -99,10 +99,10 @@ export function HeroTerminal() {
         <div className="flex items-center justify-start">
           <span className="text-feature-teal hidden sm:inline">you@reifydb</span>
           <span className="text-feature-teal sm:hidden">$</span>
-          <span className="text-text-muted hidden sm:inline">: </span>
-          <span className="text-text-primary ml-1">{displayCommand}</span>
+          <span className="text-code-text-muted hidden sm:inline">: </span>
+          <span className="text-code-text ml-1">{displayCommand}</span>
           <span
-            className={`ml-0.5 text-primary transition-opacity ${showCursor ? 'opacity-100 drop-shadow-[0_0_8px_rgba(245,158,11,0.8)]' : 'opacity-0'}`}
+            className={`ml-0.5 text-primary transition-opacity ${showCursor ? 'opacity-100 drop-shadow-[0_0_8px_rgba(20,184,166,0.8)]' : 'opacity-0'}`}
           >
             █
           </span>

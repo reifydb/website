@@ -8,7 +8,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-2 border-dashed border-white/15 overflow-hidden">
+    <div className="border-2 border-dashed border-black/25 overflow-hidden bg-white">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-6 text-left"
@@ -27,7 +27,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
           isOpen ? 'max-h-96' : 'max-h-0'
         )}
       >
-        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-dashed border-white/10 pt-4 pl-10">
+        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-dashed border-black/20 pt-4 pl-10">
           {answer}
         </div>
       </div>
@@ -37,7 +37,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 
 export function FaqSection() {
   return (
-    <section id="faq" className="relative z-10 py-16 sm:py-24 bg-bg-tertiary">
+    <section id="faq" className="relative z-10 py-16 sm:py-24 section-pattern">
       <div className="mx-auto max-w-3xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>

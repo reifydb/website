@@ -73,7 +73,7 @@ export function SupportPage() {
                   href={option.href}
                   target={option.external ? '_blank' : undefined}
                   rel={option.external ? 'noopener noreferrer' : undefined}
-                  className="border-2 border-dashed border-white/15 p-6 transition-all duration-300 hover:border-primary/50 group block h-full"
+                  className="border-2 border-dashed border-black/25 bg-white p-6 transition-all duration-300 hover:border-primary/50 group block h-full"
                 >
                   <div className="flex items-start gap-4">
                     <option.icon className={`h-6 w-6 ${option.color} shrink-0`} strokeWidth={2} />
@@ -101,7 +101,7 @@ export function SupportPage() {
                   href="https://github.com/reifydb/reifydb"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 border border-dashed border-white/15 transition-all duration-300 hover:border-primary/50"
+                  className="p-3 border border-dashed border-black/25 transition-all duration-300 hover:border-primary/50"
                 >
                   <Github className="h-5 w-5" />
                 </a>
@@ -109,7 +109,7 @@ export function SupportPage() {
                   href="https://x.com/reifydb"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 border border-dashed border-white/15 transition-all duration-300 hover:border-primary/50"
+                  className="p-3 border border-dashed border-black/25 transition-all duration-300 hover:border-primary/50"
                 >
                   <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />

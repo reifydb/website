@@ -27,7 +27,7 @@ const variantStyles: Record<CalloutVariant, { border: string; bg: string; icon: 
     icon: 'text-status-success',
   },
   note: {
-    border: 'border-white/15',
+    border: 'border-black/25',
     bg: 'bg-bg-tertiary',
     icon: 'text-text-muted',
   },

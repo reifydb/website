@@ -25,7 +25,7 @@ const capabilities = [
 
 export function CapabilitiesSection() {
   return (
-    <section id="capabilities" className="relative z-10 py-16 sm:py-24 bg-bg-tertiary">
+    <section id="capabilities" className="relative z-10 py-16 sm:py-24 bg-bg-secondary section-pattern">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>
@@ -45,7 +45,7 @@ export function CapabilitiesSection() {
         <div className="grid gap-6 sm:grid-cols-2">
           {capabilities.map((capability, index) => (
             <ScrollReveal key={capability.title} delay={index * 75}>
-              <div className="group border-2 border-dashed border-white/15 p-6 sm:p-7 h-full dotted-card">
+              <div className="group border-2 border-dashed border-black/25 p-6 sm:p-7 h-full dotted-card">
                 <div className="mb-3 text-primary text-sm font-bold">{capability.marker}</div>
                 <h3 className="text-lg font-bold mb-2 text-text-primary">{capability.title}</h3>
                 <p className="text-text-muted text-sm leading-relaxed">

@@ -54,23 +54,23 @@ export function LiveDataWidget() {
   }, []);
 
   return (
-    <div className="border-2 border-dashed border-white/15 bg-bg-tertiary">
-      <div className="px-4 py-2 border-b border-dashed border-white/15 bg-bg-elevated font-mono text-xs">
-        <span className="text-primary">$</span> <span className="text-text-muted">live data widget :: tour::events</span>
+    <div className="border-2 border-dashed border-white/15 bg-code-bg">
+      <div className="px-4 py-2 border-b border-dashed border-white/15 bg-code-bg-elevated font-mono text-xs">
+        <span className="text-primary">$</span> <span className="text-code-text-muted">live data widget :: tour::events</span>
       </div>
       <div className="p-4 space-y-4">
         {!dbReady ? (
-          <p className="font-mono text-xs text-text-muted animate-pulse">$ initializing database...</p>
+          <p className="font-mono text-xs text-code-text-muted animate-pulse">$ initializing database...</p>
         ) : (
           <>
             {/* Row count display */}
-            <div className="font-mono text-sm border border-dashed border-white/15 px-3 py-2 bg-bg-secondary">
-              <span className="text-text-muted">rows in </span>
+            <div className="font-mono text-sm border border-dashed border-white/15 px-3 py-2 bg-code-bg">
+              <span className="text-code-text-muted">rows in </span>
               <span className="text-primary">tour::events</span>
-              <span className="text-text-muted">: </span>
+              <span className="text-code-text-muted">: </span>
               <span className="text-primary font-bold">{rowCount}</span>
               {lastInserted && (
-                <span className="text-text-muted ml-3 text-xs">← last insert: {lastInserted}</span>
+                <span className="text-code-text-muted ml-3 text-xs">← last insert: {lastInserted}</span>
               )}
             </div>
             {/* Insert buttons */}
@@ -85,7 +85,7 @@ export function LiveDataWidget() {
                 </button>
               ))}
             </div>
-            <p className="text-xs text-text-muted font-mono">
+            <p className="text-xs text-code-text-muted font-mono">
               $ insert rows above, then run the query below to see counts by type
             </p>
           </>

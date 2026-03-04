@@ -25,7 +25,7 @@ const replacements = [
 
 export function ReplacesSection() {
   return (
-    <section id="replaces" className="py-16 sm:py-24">
+    <section id="replaces" className="py-16 sm:py-24 bg-bg-secondary section-pattern">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>
@@ -46,7 +46,7 @@ export function ReplacesSection() {
         <div className="grid gap-6 md:grid-cols-2">
           {replacements.map((item, index) => (
             <ScrollReveal key={item.before} delay={index * 75}>
-              <div className="border-2 border-dashed border-white/15 p-6 h-full dotted-card">
+              <div className="border-2 border-dashed border-black/25 p-6 h-full dotted-card">
                 {/* Before --> After */}
                 <div className="flex items-center gap-3 mb-4 flex-wrap text-sm">
                   <span className="text-status-error line-through">

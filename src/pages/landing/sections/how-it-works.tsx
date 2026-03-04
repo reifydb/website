@@ -20,7 +20,7 @@ const steps = [
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="py-16 sm:py-24">
+    <section id="how-it-works" className="py-16 sm:py-24 section-pattern">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>
@@ -44,10 +44,10 @@ export function HowItWorksSection() {
               <div className="relative h-full">
                 {/* Connector line */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-[calc(50%+3rem)] w-[calc(100%-6rem)] border-t-2 border-dashed border-white/15" />
+                  <div className="hidden md:block absolute top-8 left-[calc(50%+3rem)] w-[calc(100%-6rem)] border-t-2 border-dashed border-black/25" />
                 )}
 
-                <div className="group border-2 border-dashed border-white/15 p-6 text-center relative z-10 h-full dotted-card">
+                <div className="group border-2 border-dashed border-black/25 p-6 text-center relative z-10 h-full dotted-card">
                   {/* Step number */}
                   <div className="inline-block mb-4 text-primary font-black text-2xl">
                     {step.number}

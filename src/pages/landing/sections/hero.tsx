@@ -20,11 +20,11 @@ const heroHighlights = [
 
 export function HeroSection() {
   return (
-    <section className="relative py-16 sm:py-24 lg:py-28 overflow-hidden">
+    <section className="relative py-16 sm:py-24 lg:py-28 overflow-hidden section-pattern">
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
         <div className="text-center">
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 border border-dashed border-white/20 text-sm text-text-secondary">
+          <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 border border-dashed border-black/30 text-sm text-text-secondary">
             <span className="text-primary blink-cursor">█</span>
             Developer Preview — APIs subject to change
           </div>
@@ -60,7 +60,7 @@ export function HeroSection() {
           </p>
 
           {/* Hero highlights */}
-          <div className="mt-10 border-2 border-dashed border-white/15 p-5 sm:p-6 text-left dotted-card">
+          <div className="mt-10 border-2 border-dashed border-black/25 p-5 sm:p-6 text-left dotted-card">
             <div className="flex items-center gap-2 mb-4">
               <p className="text-xs font-semibold text-primary uppercase tracking-[0.08em]">// why_teams_care</p>
             </div>
@@ -69,7 +69,7 @@ export function HeroSection() {
               {heroHighlights.map((item) => (
                 <div
                   key={item.title}
-                  className="flex items-start gap-3 border border-dashed border-white/10 p-4 h-full"
+                  className="flex items-start gap-3 border border-dashed border-black/20 p-4 h-full"
                 >
                   <span className="text-primary text-sm font-bold flex-shrink-0 mt-0.5">{item.marker}</span>
                   <div>

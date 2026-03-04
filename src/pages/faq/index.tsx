@@ -8,7 +8,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-2 border-dashed border-white/15 overflow-hidden transition-all duration-300 hover:border-primary/50">
+    <div className="border-2 border-dashed border-black/25 overflow-hidden transition-all duration-300 hover:border-primary/50 bg-white">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-6 text-left"
@@ -25,7 +25,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
           isOpen ? 'max-h-96' : 'max-h-0'
         )}
       >
-        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-dashed border-white/10 pt-4">
+        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-dashed border-black/20 pt-4">
           {answer}
         </div>
       </div>

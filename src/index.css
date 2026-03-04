@@ -113,43 +113,50 @@
 
 /* ========================================
    REIFYDB DESIGN SYSTEM
-   Charcoal + Amber Theme
+   Light Institutional + Teal Accent
    ======================================== */
 
 @theme {
-  /* Background Colors - Pure neutral blacks (no blue cast) */
-  --color-bg-primary: #0C0C0C;
-  --color-bg-secondary: #141414;
-  --color-bg-tertiary: #1C1C1C;
-  --color-bg-elevated: #262626;
+  /* Background Colors - Cool gray palette */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F5F7FA;
+  --color-bg-tertiary: #EFF1F5;
+  --color-bg-elevated: #E8EAF0;
 
-  /* Text Colors - Neutral grays */
-  --color-text-primary: #E5E5E5;
-  --color-text-secondary: #A3A3A3;
-  --color-text-muted: #525252;
+  /* Text Colors - Dark on light */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #525252;
+  --color-text-muted: #9CA3AF;
 
-  /* Primary Colors - Orange (turbopuffer-inspired) */
-  --color-primary: #FB923C;
-  --color-primary-light: #FDBA74;
-  --color-primary-dark: #EA580C;
+  /* Primary Colors - Teal */
+  --color-primary: #14B8A6;
+  --color-primary-light: #2DD4BF;
+  --color-primary-dark: #0D9488;
 
-  /* Accent Colors - Collapsed to primary family */
-  --color-accent-warm: #F97316;
-  --color-accent-cool: #FB923C;
-  --color-accent-pink: #FB923C;
+  /* Accent Colors - All teal */
+  --color-accent-warm: #14B8A6;
+  --color-accent-cool: #14B8A6;
+  --color-accent-pink: #14B8A6;
 
-  /* Feature card colors - All mapped to primary (monochrome brutalist) */
-  --color-feature-orange: #FB923C;
-  --color-feature-blue: #FB923C;
-  --color-feature-purple: #FB923C;
-  --color-feature-purple-light: #FDBA74;
-  --color-feature-green: #FB923C;
-  --color-feature-teal: #FB923C;
+  /* Feature card colors - All teal */
+  --color-feature-orange: #14B8A6;
+  --color-feature-blue: #14B8A6;
+  --color-feature-purple: #14B8A6;
+  --color-feature-purple-light: #2DD4BF;
+  --color-feature-green: #14B8A6;
+  --color-feature-teal: #14B8A6;
 
-  /* Border Colors - Brighter for terminal look */
-  --color-border-default: rgba(255, 255, 255, 0.18);
-  --color-border-light: rgba(255, 255, 255, 0.08);
-  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  /* Border Colors - Black-based for light theme */
+  --color-border-default: rgba(0, 0, 0, 0.30);
+  --color-border-light: rgba(0, 0, 0, 0.18);
+  --color-border-subtle: rgba(0, 0, 0, 0.10);
+
+  /* Dark code block colors */
+  --color-code-bg: #1A1A1A;
+  --color-code-bg-elevated: #262626;
+  --color-code-border: rgba(255, 255, 255, 0.12);
+  --color-code-text: #E5E5E5;
+  --color-code-text-muted: #737373;
 
   /* Glow Shadows - Disabled */
   --shadow-glow-primary: none;
@@ -174,13 +181,13 @@
 
   /* Status colors */
   --color-status-success: #22C55E;
-  --color-status-warning: #FB923C;
+  --color-status-warning: #F59E0B;
   --color-status-error: #EF4444;
-  --color-status-info: #FB923C;
+  --color-status-info: #14B8A6;
 
   /* Navbar */
-  --color-navbar-bg: rgba(12, 12, 12, 0.9);
-  --shadow-navbar: 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  --color-navbar-bg: rgba(255, 255, 255, 0.92);
+  --shadow-navbar: 0 1px 0 0 rgba(0, 0, 0, 0.08);
 
   /* Semantic grayscale - Pure neutrals */
   --color-gray-50: #FAFAFA;
@@ -225,7 +232,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Selection */
 ::selection {
   background-color: var(--color-primary);
-  color: var(--color-bg-primary);
+  color: #FFFFFF;
 }
 
 /* ========================================
@@ -245,10 +252,10 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
   }
   50% {
-    box-shadow: 0 0 30px rgba(245, 158, 11, 0.6);
+    box-shadow: 0 0 30px rgba(20, 184, 166, 0.6);
   }
 }
 
@@ -351,18 +358,18 @@ h1, h2, h3, h4, h5, h6 {
    ======================================== */
 
 .premium-card {
-  background-color: var(--color-bg-tertiary);
+  background-color: #FFFFFF;
   border: 2px solid var(--color-border-default);
   border-radius: var(--radius-lg);
   transition: all 0.3s ease;
 }
 
 .premium-card:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(0, 0, 0, 0.30);
 }
 
 .premium-card-elevated {
-  background-color: var(--color-bg-elevated);
+  background-color: #FFFFFF;
   border: 2px solid var(--color-border-default);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
@@ -377,9 +384,10 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.9;
 }
 
-/* Dotted card — disabled for readability */
+/* Card with white background (QuickNode-style lifted card) */
 .dotted-card {
   position: relative;
+  background-color: #FFFFFF;
 }
 
 /* ========================================
@@ -410,6 +418,15 @@ h1, h2, h3, h4, h5, h6 {
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   padding: 1px;
+}
+
+/* ========================================
+   SECTION BACKGROUND PATTERNS
+   ======================================== */
+
+.section-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M24 0H0V24' stroke='%23000' stroke-opacity='.06' fill='none'/%3E%3Ccircle cx='0' cy='0' r='1' fill='%23000' fill-opacity='.4'/%3E%3C/svg%3E");
+  background-size: 24px 24px;
 }
 
 /* ========================================
@@ -490,7 +507,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Glass effect */
 .glass {
-  background: rgba(12, 12, 12, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -537,7 +554,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 /* ========================================

@@ -73,14 +73,14 @@ export function ValuesPage() {
                     }`}
                   >
                     {/* Number Badge */}
-                    <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 border-2 border-dashed border-white/15 flex items-center justify-center">
+                    <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 border-2 border-dashed border-black/25 flex items-center justify-center">
                       <span className="text-primary font-mono text-3xl sm:text-4xl font-bold">
                         {number}
                       </span>
                     </div>
 
                     {/* Content Card */}
-                    <div className="flex-1 border-2 border-dashed border-white/15 p-6 sm:p-8 transition-all duration-300 hover:border-primary/50">
+                    <div className="flex-1 border-2 border-dashed border-black/25 bg-white p-6 sm:p-8 transition-all duration-300 hover:border-primary/50">
                       <h2 className="text-xl sm:text-2xl font-bold mb-3">
                         {value.title}
                       </h2>

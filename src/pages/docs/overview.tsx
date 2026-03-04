@@ -84,7 +84,7 @@ export function DocsOverview() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="group border-2 border-dashed border-white/15 p-5 transition-all duration-300 hover:border-primary/50"
+                  className="group border-2 border-dashed border-black/25 bg-white p-5 transition-all duration-300 hover:border-primary/50"
                   style={{ animationDelay: `${index * 75}ms` }}
                 >
                   <div className="flex items-start gap-4">
@@ -130,7 +130,7 @@ export function DocsOverview() {
 
         {/* Links */}
         <ScrollReveal delay={250}>
-          <section className="pt-4 border-t border-dashed border-white/15">
+          <section className="pt-4 border-t border-dashed border-black/25">
             <h2 className="text-lg font-black tracking-tight mb-4">Resources</h2>
             <ul className="space-y-2 text-text-secondary">
               <li>

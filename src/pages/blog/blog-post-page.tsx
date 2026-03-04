@@ -40,11 +40,11 @@ export function BlogPostPage() {
               <span className="text-sm text-text-muted">{post.author}</span>
             </div>
 
-            <hr className="my-10 border-dashed border-white/15" />
+            <hr className="my-10 border-dashed border-black/25" />
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <div className="border-2 border-dashed border-white/15 bg-bg-secondary p-6 sm:p-10">
+            <div className="border-2 border-dashed border-black/25 bg-white p-6 sm:p-10">
               <BlogMarkdownRenderer content={post.content} />
             </div>
           </ScrollReveal>

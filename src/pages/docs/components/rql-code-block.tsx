@@ -18,8 +18,8 @@ export function RqlCodeBlock({ code, className }: RqlCodeBlockProps) {
   };
 
   return (
-    <div className={cn('border-2 border-dashed border-white/15 bg-bg-tertiary overflow-hidden', className)}>
-      <div className="flex justify-between items-center px-4 py-2 border-b border-dashed border-white/15 bg-bg-elevated">
+    <div className={cn('border-2 border-dashed border-white/15 bg-code-bg overflow-hidden', className)}>
+      <div className="flex justify-between items-center px-4 py-2 border-b border-dashed border-white/15 bg-code-bg-elevated">
         <span className="text-xs font-bold text-primary-color uppercase tracking-wider">
           RQL
         </span>

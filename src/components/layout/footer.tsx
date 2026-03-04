@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="relative z-10 bg-bg-secondary border-t border-dashed border-white/15 py-12 sm:py-16 text-text-primary">
+    <footer className="relative z-10 bg-bg-secondary border-t border-dashed border-black/25 py-12 sm:py-16 text-text-primary">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
 
         {/* ASCII header */}
@@ -96,7 +96,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 sm:mt-16 border-t border-dashed border-white/15 pt-8 sm:pt-10 text-xs text-text-muted flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div className="mt-12 sm:mt-16 border-t border-dashed border-black/25 pt-8 sm:pt-10 text-xs text-text-muted flex flex-col items-center justify-between gap-4 md:flex-row">
           <div>
             &copy; {new Date().getFullYear()} reifydb. all rights reserved.
           </div>

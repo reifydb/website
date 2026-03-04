@@ -29,7 +29,7 @@ const useCases = [
 
 export function UseCasesSection() {
   return (
-    <section id="use-cases" className="py-16 sm:py-24">
+    <section id="use-cases" className="py-16 sm:py-24 bg-bg-secondary section-pattern">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>
@@ -50,7 +50,7 @@ export function UseCasesSection() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {useCases.map((useCase, index) => (
             <ScrollReveal key={useCase.title} delay={index * 75}>
-              <div className="group border-2 border-dashed border-white/15 p-6 h-full dotted-card">
+              <div className="group border-2 border-dashed border-black/25 p-6 h-full dotted-card">
                 <h3 className="text-lg font-bold mb-2">
                   <span className="text-primary mr-2">&gt;</span>
                   {useCase.title}

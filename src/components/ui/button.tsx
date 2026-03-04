@@ -16,8 +16,8 @@ const variantStyles = {
     'transition-all duration-200'
   ),
   secondary: cn(
-    'border-2 border-dashed border-white/15 text-text-secondary',
-    'hover:text-text-primary hover:border-white/30',
+    'border-2 border-dashed border-black/25 text-text-secondary',
+    'hover:text-text-primary hover:border-black/40',
     'transition-all duration-200'
   ),
   ghost: cn(

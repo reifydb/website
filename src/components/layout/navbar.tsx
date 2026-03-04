@@ -52,7 +52,7 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-[rgba(12,12,12,0.95)] border-b border-dashed border-white/15">
+      <header className="sticky top-0 z-40 w-full bg-[rgba(255,255,255,0.95)] border-b border-dashed border-black/25">
         <div className="flex h-[60px] w-full items-center justify-between px-4 sm:px-6 md:pl-8 md:pr-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
@@ -153,12 +153,12 @@ export function Navbar() {
 
         {/* Menu Panel */}
         <div
-          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-bg-elevated border-l border-dashed border-white/15 transform transition-transform duration-300 overflow-y-auto ${
+          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-bg-elevated border-l border-dashed border-black/25 transform transition-transform duration-300 overflow-y-auto ${
             mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
           {/* Close Button */}
-          <div className="flex justify-end p-6 border-b border-dashed border-white/15">
+          <div className="flex justify-end p-6 border-b border-dashed border-black/25">
             <button
               onClick={() => setMobileMenuOpen(false)}
               className="font-mono text-sm text-text-muted hover:text-primary transition-colors"
@@ -174,7 +174,7 @@ export function Navbar() {
             {navDropdowns.map((dropdown) => {
               const expanded = expandedMobileSection === dropdown.id;
               return (
-                <div key={dropdown.id} className="border-b border-dashed border-white/15 overflow-hidden">
+                <div key={dropdown.id} className="border-b border-dashed border-black/25 overflow-hidden">
                   <button
                     onClick={() => toggleMobileSection(dropdown.id)}
                     className={cn(
@@ -195,7 +195,7 @@ export function Navbar() {
                         : "max-h-0 opacity-0"
                     )}
                   >
-                    <div className="px-4 py-3 border-t border-dashed border-white/10">
+                    <div className="px-4 py-3 border-t border-dashed border-black/20">
                       {dropdown.columns.map((column) => (
                         <div key={column.title} className="mb-4 last:mb-0">
                           <div className="flex flex-col gap-1">
@@ -269,7 +269,7 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="font-mono text-sm px-4 py-3 border-b border-dashed border-white/15 transition-colors duration-150 text-left text-text-secondary hover:text-primary"
+                    className="font-mono text-sm px-4 py-3 border-b border-dashed border-black/25 transition-colors duration-150 text-left text-text-secondary hover:text-primary"
                   >
                     <span className="text-text-muted">&gt; </span>{link.label.toLowerCase()}
                   </a>
@@ -282,7 +282,7 @@ export function Navbar() {
                   to={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
-                    "font-mono text-sm px-4 py-3 border-b border-dashed border-white/15 transition-colors duration-150 text-left",
+                    "font-mono text-sm px-4 py-3 border-b border-dashed border-black/25 transition-colors duration-150 text-left",
                     active
                       ? "text-primary"
                       : "text-text-secondary hover:text-primary"

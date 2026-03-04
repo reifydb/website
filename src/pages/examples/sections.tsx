@@ -66,13 +66,13 @@ export const exampleSections: ExampleSection[] = [
       <div className="space-y-3 text-sm text-text-secondary leading-relaxed">
         <p>
           Sorting and limiting are composable transforms, just like everything else in RQL.
-          Chain <code className="text-xs bg-white/5 px-1.5 py-0.5 rounded font-mono text-primary">sort</code> and{' '}
-          <code className="text-xs bg-white/5 px-1.5 py-0.5 rounded font-mono text-primary">take</code> to get
+          Chain <code className="text-xs bg-black/5 px-1.5 py-0.5 rounded font-mono text-primary">sort</code> and{' '}
+          <code className="text-xs bg-black/5 px-1.5 py-0.5 rounded font-mono text-primary">take</code> to get
           top-N results in a single readable pipeline.
         </p>
         <p>
-          Sort accepts <code className="text-xs bg-white/5 px-1.5 py-0.5 rounded font-mono text-primary">asc</code> or{' '}
-          <code className="text-xs bg-white/5 px-1.5 py-0.5 rounded font-mono text-primary">desc</code> per
+          Sort accepts <code className="text-xs bg-black/5 px-1.5 py-0.5 rounded font-mono text-primary">asc</code> or{' '}
+          <code className="text-xs bg-black/5 px-1.5 py-0.5 rounded font-mono text-primary">desc</code> per
           column, and you can sort by multiple columns at once.
         </p>
       </div>
