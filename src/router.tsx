@@ -10,6 +10,7 @@ import { DocsGate } from '@/components/docs-gate';
 import { BlogListingPage, BlogPostPage } from '@/pages/blog';
 import { ExamplesPage } from '@/pages/examples';
 import { TourPage } from '@/pages/tour';
+import { PlaygroundPage } from '@/pages/playground';
 import { NotFoundPage } from '@/pages/not-found';
 import {
   DocsOverview,
@@ -258,6 +259,10 @@ export const router = createBrowserRouter([
       {
         path: '/blog/:slug',
         element: <BlogPostPage />,
+      },
+      {
+        path: '/playground',
+        element: <PlaygroundPage />,
       },
       {
         path: '*',
