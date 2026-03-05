@@ -13,8 +13,8 @@ export function RqlExpressionsPage() {
             Expressions
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            Expressions are used in filters, computed columns, and aggregations. They include
-            operators, literals, column references, and function calls.
+            Expressions show up everywhere in RQL: filters, computed columns, aggregations.
+            They are built from operators, literals, column references, and function calls.
           </p>
         </div>
 
@@ -177,26 +177,26 @@ export function RqlExpressionsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Built-in Modules</h2>
           <p className="text-text-secondary mb-4">
-            RQL includes built-in modules for common operations. Call module functions using
+            RQL ships with built-in modules for common operations. Call them with
             the <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">::</code> syntax.
           </p>
 
           <h3 className="text-lg font-bold mt-6 mb-3">math</h3>
-          <p className="text-text-secondary mb-3">Mathematical functions and aggregations.</p>
+          <p className="text-text-secondary mb-3">Sums, averages, rounding, and more.</p>
           <ExecutableSnippet
             title="math module"
             initialCode={getExampleById('expr-math-module')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">text</h3>
-          <p className="text-text-secondary mb-3">String manipulation functions.</p>
+          <p className="text-text-secondary mb-3">Lowercase, uppercase, trim, and more.</p>
           <ExecutableSnippet
             title="text module"
             initialCode={getExampleById('expr-text-module')!.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">date</h3>
-          <p className="text-text-secondary mb-3">Date and time functions.</p>
+          <p className="text-text-secondary mb-3">Extract, format, and calculate with dates.</p>
           <ExecutableSnippet
             title="date module"
             initialCode={getExampleById('expr-date-module')!.code}
@@ -207,7 +207,7 @@ export function RqlExpressionsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Case Expression</h2>
           <p className="text-text-secondary mb-4">
-            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">case</code> for conditional logic:
+            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">case</code> when you need if/else logic inside a query:
           </p>
           <ExecutableSnippet
             title="Case Expression"
@@ -219,7 +219,7 @@ export function RqlExpressionsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Named Arguments</h2>
           <p className="text-text-secondary mb-4">
-            Use named arguments for clarity:
+            Named arguments make your intent obvious:
           </p>
           <ExecutableSnippet
             title="Named Arguments"
@@ -229,7 +229,7 @@ export function RqlExpressionsPage() {
 
         {/* Tip */}
         <Callout variant="tip" title="Combining Expressions">
-          Expressions can be combined freely. Use parentheses to control precedence when needed.
+          You can combine expressions freely. Use parentheses when you need to control precedence.
         </Callout>
       </div>
     </Layout>

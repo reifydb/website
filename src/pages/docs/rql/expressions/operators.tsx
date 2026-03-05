@@ -9,7 +9,7 @@ export function OperatorsPage() {
             Operators
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            RQL provides a comprehensive set of operators for arithmetic, comparison, and logical operations.
+            All the operators you can use in RQL expressions.
           </p>
         </div>
 

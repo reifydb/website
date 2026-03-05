@@ -49,7 +49,7 @@ export function FaqSection() {
               Frequently Asked Questions
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-              Common questions about ReifyDB
+              Honest answers to the questions engineers actually ask
             </p>
           </div>
         </ScrollReveal>

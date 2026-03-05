@@ -22,7 +22,7 @@ export function CodeExampleSection() {
               See RQL in Action
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-              A query language designed for application state.
+              Write queries the way you think about your data. No translation, no ceremony.
             </p>
           </div>
         </ScrollReveal>

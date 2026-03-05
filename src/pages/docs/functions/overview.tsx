@@ -11,8 +11,8 @@ export function FunctionsOverviewPage() {
             Functions
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            RQL includes built-in modules with functions for common operations.
-            Call module functions using the{' '}
+            RQL comes with built-in function modules for the operations you use most.
+            Call them with the{' '}
             <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">::</code> syntax.
           </p>
         </div>
@@ -26,7 +26,7 @@ export function FunctionsOverviewPage() {
             >
               <h3 className="font-bold text-primary-color mb-1">date</h3>
               <p className="text-text-secondary text-sm">
-                Date and time functions: year, month, day, hour, now, add, diff, format.
+                Work with dates and times: year, month, day, hour, now, add, diff, format.
               </p>
             </Link>
 
@@ -36,7 +36,7 @@ export function FunctionsOverviewPage() {
             >
               <h3 className="font-bold text-primary-color mb-1">math</h3>
               <p className="text-text-secondary text-sm">
-                Mathematical functions and aggregations: sum, avg, min, max, count, abs, round.
+                Numbers and aggregations: sum, avg, min, max, count, abs, round.
               </p>
             </Link>
 
@@ -46,16 +46,16 @@ export function FunctionsOverviewPage() {
             >
               <h3 className="font-bold text-primary-color mb-1">text</h3>
               <p className="text-text-secondary text-sm">
-                String manipulation functions: lower, upper, trim, length, concat, substring.
+                String operations: lower, upper, trim, length, concat, substring.
               </p>
             </Link>
           </div>
         </section>
 
         <Callout variant="tip" title="Syntax">
-          Module functions are called with{' '}
-          <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">module::function(args)</code>,
-          for example <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">text::lower(name)</code>.
+          Call any module function with{' '}
+          <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">module::function(args)</code>.
+          For example: <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">text::lower(name)</code>.
         </Callout>
       </div>
     </Layout>

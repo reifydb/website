@@ -13,8 +13,7 @@ export function TextModuleOverviewPage() {
             text Module
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            The <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">text</code> module
-            provides functions for string manipulation and text processing.
+            String manipulation functions for cleaning, formatting, and transforming text in your queries.
           </p>
         </div>
 

@@ -7,21 +7,21 @@ import { ScrollReveal } from '@/components/ui';
 const quickLinks = [
   {
     title: 'Installation',
-    description: 'Get ReifyDB running on your machine.',
+    description: 'Get ReifyDB running in a few minutes.',
     href: '/docs/installation',
     icon: Zap,
     color: 'text-primary',
   },
   {
     title: 'Quick Start',
-    description: 'Write your first query in minutes.',
+    description: 'Write your first query and see results immediately.',
     href: '/docs/quick-start',
     icon: BookOpen,
     color: 'text-feature-blue',
   },
   {
     title: 'RQL Basics',
-    description: 'Learn the query language fundamentals.',
+    description: 'Learn how RQL works, from the ground up.',
     href: '/docs/rql/basics',
     icon: Code,
     color: 'text-feature-green',
@@ -39,12 +39,11 @@ export function DocsOverview() {
               ReifyDB Documentation
             </h1>
             <p className="text-base text-text-muted mb-3 italic">
-              Built on the premise that databases should optimize for reasoning about state,
-              not just storing it.
+              Your database should work the way you think. ReifyDB does.
             </p>
             <p className="text-lg text-text-secondary leading-relaxed">
-              ReifyDB is a database for live application state. It provides transactional guarantees,
-              incremental derived state, and programmable state transitions - all in one coherent model.
+              ReifyDB is a database for live application state. You get transactional guarantees,
+              incremental derived views, and programmable state transitions in one coherent system.
             </p>
           </div>
         </ScrollReveal>
@@ -61,16 +60,16 @@ export function DocsOverview() {
           <section>
             <h2 className="text-2xl font-black tracking-tight mb-4">What is ReifyDB?</h2>
             <p className="text-text-secondary mb-4">
-              Modern applications scatter state across databases, caches, queues, and in-memory stores.
-              ReifyDB unifies live application state into a single, coherent system.
+              You have probably split your application state across a database, a cache, a queue, and maybe an in-memory store.
+              ReifyDB brings all of that into one system.
             </p>
             <p className="text-text-secondary mb-4">
-              <strong className="text-text-primary">Live application state</strong> is the data your application reads, updates, and reasons
-              about on every request-user sessions, shopping carts, account balances, game state, and more.
+              <strong className="text-text-primary">Live application state</strong> is the data your application reads, writes, and reasons
+              about on every request. User sessions, shopping carts, account balances, game state. The stuff that has to be right.
             </p>
             <p className="text-text-secondary">
-              With ReifyDB, you get ACID transactions, incrementally-maintained materialized views,
-              and a query language (RQL) designed specifically for application state.
+              You get ACID transactions, materialized views that stay fresh automatically,
+              and a query language (RQL) built for the way you actually work with state.
             </p>
           </section>
         </ScrollReveal>
@@ -110,19 +109,19 @@ export function DocsOverview() {
             <ul className="space-y-3 text-text-secondary">
               <li className="flex items-start gap-3">
                 <span className="text-primary font-mono">--</span>
-                <span><strong className="text-text-primary">Transactional</strong> - Full ACID guarantees for your application state.</span>
+                <span><strong className="text-text-primary">Transactional</strong> - Your application state stays consistent. Full ACID guarantees, real rollback.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-mono">--</span>
-                <span><strong className="text-text-primary">Incremental</strong> - Materialized views update automatically as data changes.</span>
+                <span><strong className="text-text-primary">Incremental</strong> - Your views update the moment your data changes. No cron, no polling.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-mono">--</span>
-                <span><strong className="text-text-primary">Embeddable</strong> - Run in-process or as a standalone server.</span>
+                <span><strong className="text-text-primary">Embeddable</strong> - Embed it in your app or run it as a standalone server. Your call.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-mono">--</span>
-                <span><strong className="text-text-primary">RQL</strong> - A query language designed for application state, not just tables.</span>
+                <span><strong className="text-text-primary">RQL</strong> - A query language that fits how you think about your data, not how a database thinks about tables.</span>
               </li>
             </ul>
           </section>

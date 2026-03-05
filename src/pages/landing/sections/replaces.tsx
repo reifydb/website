@@ -4,22 +4,22 @@ const replacements = [
   {
     before: 'PostgreSQL + Redis',
     after: 'Single Transactional Store',
-    description: 'No more cache invalidation headaches or consistency gaps between your database and cache layer.',
+    description: 'You know that moment when your cache says one thing and your database says another? That goes away. One store, one source of truth.',
   },
   {
     before: 'Batch Materialized Views',
     after: 'Incremental Derived State',
-    description: 'Views update as data changes, not on a schedule. No polling, no refresh jobs, no stale data.',
+    description: 'Your views update when your data changes, not whenever a cron job gets around to it. No polling, no refresh buttons, no stale numbers.',
   },
   {
     before: 'Scattered Service Logic',
     after: 'Programmable Transitions',
-    description: 'State logic lives in the database, not scattered across microservices, workers, and cron jobs.',
+    description: 'Stop scattering your state logic across microservices, workers, and cron jobs. Put it next to the data where it belongs.',
   },
   {
     before: 'Redis + Kafka + Custom Code',
     after: 'Native State Primitives',
-    description: 'Counters, queues, ring buffers, histograms, all in one engine with unified transactional guarantees.',
+    description: 'Counters, queues, ring buffers, histograms. You do not need three systems and a pile of glue code. One engine, full transactional guarantees.',
   },
 ];
 
@@ -37,7 +37,7 @@ export function ReplacesSection() {
               What ReifyDB Replaces
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-              Modern applications manage state across multiple systems. ReifyDB centralizes it all.
+              You have probably duct-taped three or four systems together just to manage state. Here is what you can stop maintaining.
             </p>
           </div>
         </ScrollReveal>

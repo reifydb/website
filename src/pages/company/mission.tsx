@@ -25,9 +25,10 @@ export function MissionPage() {
             <div className="border-2 border-dashed border-black/25 bg-white p-8 sm:p-12 mb-12 transition-all duration-300 hover:border-primary/50">
               <h2 className="text-2xl font-bold mb-6">Mission Statement</h2>
               <p className="text-text-secondary text-lg leading-relaxed">
-                Modern software is constrained by infrastructure that treats application state as a storage problem.
-                In reality, the challenge is understanding, evolving, and trusting that state as systems grow.
-                ReifyDB is built on the belief that databases should optimize for reasoning - not just persistence.
+                Most engineers have felt it, that moment where you're fighting your own infrastructure instead of
+                building the thing you set out to build. Your database should work with you, not against you. ReifyDB
+                exists because we believe the way you think about your data is the right way to store it, query it, and
+                evolve it. No translation. No friction. Just building.
               </p>
             </div>
           </ScrollReveal>
@@ -50,44 +51,29 @@ export function MissionPage() {
                 {/* Story Content */}
                 <div className="flex-1">
                   <p className="text-text-secondary mb-6 leading-relaxed">
-                    ReifyDB emerged from years spent building high-performance systems and repeatedly
-                    encountering the same structural friction in modern data infrastructure. Developers
-                    were forced to translate between their domain model and the database, manage
-                    unnecessary layers of abstraction, and accept complexity as the cost of building
-                    serious software.
-
-                    ReifyDB was created on the belief that application state should be clear,
-                    predictable, and aligned with how engineers naturally design systems.
-                    Infrastructure should support ambitious software, not constrain it.
+                    When Dominique's daughter was born, everything slowed down for a moment. For the
+                    first time in years, he stepped back and asked a simple question: what actually
+                    makes me happy? And maybe more importantly, what doesn't?
                   </p>
 
-                  <h3 className="font-bold mb-4">What ReifyDB Reconsiders</h3>
-                  <ul className="space-y-3 text-text-secondary">
-                    <li className="flex items-start gap-3">
-                      <span className="text-primary">--</span>
-                      <span>The artificial divide between application logic and the data that defines it</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-primary">--</span>
-                      <span>Translation layers that distort domain models and introduce accidental complexity</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-primary">--</span>
-                      <span>State that is difficult to reason about, evolve, or trust under load</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-primary">--</span>
-                      <span>Infrastructure that demands constant orchestration instead of providing clarity</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-primary">--</span>
-                      <span>Systems that optimize storage but neglect how engineers actually build software</span>
-                    </li>
-                  </ul>
+                  <p className="text-text-secondary mb-6 leading-relaxed">
+                    The answer was painfully clear. Throughout his career building software, the most
+                    frustrating part was always the same: working with data infrastructure. The endless
+                    translation between how you think about your domain and how the database forces you
+                    to store it. The layers of abstraction that nobody asked for. The friction that
+                    quietly drains your energy, sprint after sprint, year after year. Every engineer
+                    knows the feeling. You just learn to live with it.
+                  </p>
 
-                  <p className="text-text-secondary mt-6 leading-relaxed">
-                    Great software deserves infrastructure that is equally well designed.
-                    ReifyDB exists to provide that foundation.
+                  <p className="text-text-secondary mb-6 leading-relaxed">
+                    Dominique decided to stop living with it. ReifyDB started as a question: what if
+                    the database actually worked the way engineers think? No translation layers, no
+                    accidental complexity, just infrastructure that gets out of your way and lets you
+                    build.
+                  </p>
+
+                  <p className="text-text-secondary font-bold leading-relaxed">
+                    That's what ReifyDB is for.
                   </p>
                 </div>
               </div>

@@ -32,8 +32,8 @@ export function LandingPage() {
 
         <CtaSection
           variant="banner"
-          title="Ready to explore ReifyDB?"
-          description="Read the docs or book a call to learn how ReifyDB can simplify your application state."
+          title="Want to see if ReifyDB fits your workload?"
+          description="Read the docs, try the examples, or book a call. We will be honest about whether ReifyDB is the right fit."
         />
       </main>
 

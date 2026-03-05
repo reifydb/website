@@ -4,17 +4,17 @@ const heroHighlights = [
   {
     marker: '[~]',
     title: 'ACID core for live state',
-    description: 'Serializable transactions with rollback, not best-effort Lua scripts or cache hacks.',
+    description: 'Real transactions with real rollback. Not best-effort Lua scripts or cache hacks you have to debug at 2 AM.',
   },
   {
     marker: '[+]',
     title: 'Derived views stay fresh',
-    description: 'Incremental materialization removes the cron-tangle and stale dashboards.',
+    description: 'Your views update as your data changes. No cron jobs. No stale dashboards. No "have you tried refreshing?"',
   },
   {
     marker: '[>]',
     title: 'Logic lives next to data',
-    description: 'Programmable transitions cut network hops and keep invariants close to the facts.',
+    description: 'Put your logic next to your data, inside the transaction. Fewer network hops, tighter guarantees.',
   },
 ];
 
@@ -32,12 +32,12 @@ export function HeroSection() {
           {/* Main Title */}
           <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black tracking-tight mb-6 leading-[1.05] mx-auto max-w-5xl">
             The database for{' '}
-            <span className="text-primary">live application state</span>
+            <span className="text-primary">Live State</span>
           </h1>
 
           {/* Subtitle */}
           <p className="max-w-3xl mx-auto text-lg sm:text-xl text-text-secondary mb-10 leading-relaxed">
-            Write, enforce logic, and keep derived views fresh in one transactional flow — no caches, cron, or drift.
+            Your state, your logic, your derived views, all in one transactional flow. No caches to invalidate. No cron to babysit. No drift to debug.
           </p>
 
           {/* CTAs */}

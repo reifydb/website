@@ -12,31 +12,31 @@ const values: Value[] = [
     id: 'respect-the-developers-mind',
     title: "Respect the Developer's Mind",
     description:
-        'Software should align with how engineers naturally think. Systems must reduce cognitive load, not increase it. Great infrastructure fades into the background, allowing builders to stay in flow and focus on what they are creating not on fighting their tools.',
+        'You already know how your data fits together. Your database should respect that, not force you to rethink it in a language it invented. The best infrastructure disappears. You stay in flow, building what matters, not wrestling with tooling.',
   },
   {
     id: 'complexity-must-justify-itself',
     title: 'Complexity Must Justify Itself',
     description:
-        'Every layer of abstraction carries a cost. Complexity is introduced only when it unlocks meaningful capability. If a feature requires ceremony, it is not finished. Powerful systems should feel inevitable, not complicated.',
+        'If you need a tutorial just to insert a row, something went wrong. Every layer we add has to earn its place. If a feature feels complicated, we are not done building it yet. The right answer should feel obvious.',
   },
   {
     id: 'correctness-is-a-feature',
     title: 'Correctness Is a Feature',
     description:
-        'Fast systems are impressive. Correct systems are trusted. ReifyDB is built for environments where mistakes compound: trading engines, workflows, and stateful applications. Where precision is not optional but foundational.',
+        'Speed is great until your data is wrong. We build for the workloads where mistakes compound, where one bad write can cascade through an entire system. You should not have to choose between fast and correct. You get both.',
   },
   {
     id: 'truth-over-theater',
     title: 'Truth Over Theater',
     description:
-        'Not every workload belongs in ReifyDB. Clear boundaries build more trust than inflated claims. Honest software outlasts hype, and credibility is earned through transparency.',
+        'Not every workload belongs in ReifyDB, and we will tell you that upfront. We would rather lose a sale than waste your time. Clear boundaries build more trust than big promises, and honest software outlasts hype every time.',
   },
   {
     id: 'software-is-a-long-term-relationship',
     title: 'Software Is a Long-Term Relationship',
     description:
-        "Infrastructure becomes part of a system's foundation. Stability, backward compatibility, and predictable evolution matter more than short-term novelty. Technology should improve with time, not decay under it.",
+        "You are going to build on top of ReifyDB for years. We take that seriously. Stability, backward compatibility, and predictable upgrades matter more than chasing the latest trend. Your infrastructure should get better with time, not rot under you.",
   },
 ];
 

@@ -14,7 +14,7 @@ export function RqlBasicsPage() {
             RQL Basics
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            RQL (Relational Query Language) is a query language designed for application state.
+            RQL is a query language built for the way you actually work with application state.
           </p>
         </div>
 
@@ -22,12 +22,12 @@ export function RqlBasicsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">What is RQL?</h2>
           <p className="text-text-secondary mb-4">
-            RQL is a pipeline-based query language. You start with a data source and apply
-            transforms to filter, aggregate, and shape the data.
+            RQL is pipeline-based. You start with your data and chain transforms to filter,
+            aggregate, and shape it.
           </p>
           <p className="text-text-secondary">
-            Unlike SQL, RQL reads top-to-bottom like a data processing pipeline. Each line
-            transforms the data from the previous step.
+            Unlike SQL, RQL reads top to bottom. Each line takes the output of the previous one
+            and transforms it. No nested subqueries, no inside-out reading.
           </p>
         </section>
 
@@ -35,14 +35,14 @@ export function RqlBasicsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Query Structure</h2>
           <p className="text-text-secondary mb-4">
-            Every RQL query starts with a data source, followed by transforms:
+            Every query starts with a data source, then you chain transforms:
           </p>
           <ExecutableSnippet
             title={getExampleById('rql-query-structure')!.title}
             initialCode={getExampleById('rql-query-structure')!.code}
           />
           <p className="text-text-muted text-sm mt-3">
-            Transforms are separated by newlines. Each transform operates on the result of the previous one.
+            Each transform operates on the result of the one above it. One line, one step.
           </p>
         </section>
 
@@ -50,18 +50,18 @@ export function RqlBasicsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Data Sources</h2>
           <p className="text-text-secondary mb-4">
-            The <code className="bg-bg-tertiary border border-dashed border-black/25 px-1.5 py-0.5 text-xs font-mono">from</code> transform specifies where data comes from.
+            The <code className="bg-bg-tertiary border border-dashed border-black/25 px-1.5 py-0.5 text-xs font-mono">from</code> transform tells RQL where your data lives.
           </p>
 
           <h3 className="text-lg font-bold mt-6 mb-3">Tables</h3>
           <p className="text-text-secondary mb-3">
-            Query data from a table:
+            Pull data from a table:
           </p>
           <ExecutableSnippet title={getExampleById('rql-tables')!.title} initialCode={getExampleById('rql-tables')!.code} />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Inline Data</h3>
           <p className="text-text-secondary mb-3">
-            Query inline arrays for prototyping:
+            Use inline arrays when you want to prototype without creating a table:
           </p>
           <ExecutableSnippet
             title={getExampleById('rql-inline-data')!.title}
@@ -93,7 +93,7 @@ export function RqlBasicsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Literals</h2>
           <p className="text-text-secondary mb-4">
-            RQL supports these literal types:
+            These are the literal types you can use in RQL:
           </p>
           <div className="overflow-x-auto">
             <table className="w-full border-2 border-dashed border-black/25 text-sm overflow-hidden">
@@ -127,7 +127,7 @@ export function RqlBasicsPage() {
 
         {/* Next Steps */}
         <Callout variant="tip" title="Next Steps">
-          Learn about the available transforms in{' '}
+          Now that you know the basics, see what you can do with{' '}
           <Link to="/docs/rql/transforms" className="text-primary hover:text-primary-light font-medium transition-colors">
             Transforms
           </Link>.

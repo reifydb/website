@@ -4,22 +4,22 @@ const capabilities = [
   {
     marker: '[01]',
     title: 'ACID core for live state',
-    description: 'Serializable transactions with rollback keep mutable state consistent under contention. No best-effort scripts or cache drift.',
+    description: 'Your state stays consistent, even under contention. Serializable transactions with real rollback, not the best-effort scripts you are used to patching together.',
   },
   {
     marker: '[02]',
     title: 'Incremental derived views',
-    description: 'Materialization stays fresh as changes flow through the same pipeline. No cron, no polling, no stale dashboards.',
+    description: 'Your views update the moment your data changes. No cron job to schedule, no polling loop to tune, no dashboard that is quietly three minutes behind.',
   },
   {
     marker: '[03]',
     title: 'Programmable transitions',
-    description: 'Application logic runs next to the data inside the transaction envelope. Fewer hops, tighter invariants.',
+    description: 'Your validation and business rules run inside the transaction, right next to the data. Fewer round trips, fewer places for things to go wrong.',
   },
   {
     marker: '[04]',
     title: 'Native state primitives',
-    description: 'Tables, counters, ring buffers, histograms, and views share one transactional, memory-resident core, embedded or server mode.',
+    description: 'Tables, counters, ring buffers, histograms, and views all live in one transactional core. Embed it in your app or run it as a server.',
   },
 ];
 
@@ -37,7 +37,7 @@ export function CapabilitiesSection() {
               Why ReifyDB
             </h2>
             <p className="max-w-3xl mx-auto text-text-secondary text-lg">
-              A single engine for live application state — transactional, incremental, and programmable in one flow.
+              You should not need four systems to manage state that lives in one place. ReifyDB gives you transactions, incremental views, and programmable logic in a single engine.
             </p>
           </div>
         </ScrollReveal>

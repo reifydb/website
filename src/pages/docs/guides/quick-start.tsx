@@ -14,7 +14,7 @@ export function QuickStartPage() {
             Quick Start
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            Get up and running with ReifyDB in minutes.
+            From zero to your first query in about five minutes.
           </p>
         </div>
 
@@ -22,7 +22,7 @@ export function QuickStartPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Start ReifyDB</h2>
           <p className="text-text-secondary mb-4">
-            Launch the ReifyDB server:
+            Start the ReifyDB server:
           </p>
           <CodeBlock
             language="bash"
@@ -37,14 +37,14 @@ export function QuickStartPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Your First Query</h2>
           <p className="text-text-secondary mb-4">
-            RQL lets you query inline data directly. Click <strong>Run</strong> to try it:
+            RQL lets you query data inline, no tables required. Click <strong>Run</strong> to try it:
           </p>
           <ExecutableSnippet
             title={getExampleById('guide-first-query')!.title}
             initialCode={getExampleById('guide-first-query')!.code}
           />
           <p className="text-text-muted text-sm mt-3">
-            This queries an inline array of records. Great for prototyping!
+            This queries inline records directly. Great for prototyping and testing ideas.
           </p>
         </section>
 
@@ -52,7 +52,7 @@ export function QuickStartPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Filtering Data</h2>
           <p className="text-text-secondary mb-4">
-            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">filter</code> to keep specific rows:
+            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">filter</code> to keep only the rows you care about:
           </p>
           <ExecutableSnippet
             title={getExampleById('guide-filtering-data')!.title}
@@ -64,7 +64,7 @@ export function QuickStartPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Creating a Table</h2>
           <p className="text-text-secondary mb-4">
-            Create a persistent table to store data:
+            When you are ready to persist data, create a table:
           </p>
           <ExecutableSnippet
             title={getExampleById('guide-creating-table')!.title}
@@ -76,7 +76,7 @@ export function QuickStartPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Inserting Data</h2>
           <p className="text-text-secondary mb-4">
-            Insert records into your table:
+            Add some records:
           </p>
           <ExecutableSnippet
             title={getExampleById('guide-inserting-data')!.title}
@@ -88,7 +88,7 @@ export function QuickStartPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Querying Tables</h2>
           <p className="text-text-secondary mb-4">
-            Query your table just like inline data:
+            Query your table the same way you queried inline data:
           </p>
           <ExecutableSnippet
             title={getExampleById('guide-querying-tables')!.title}
@@ -98,7 +98,7 @@ export function QuickStartPage() {
 
         {/* Next Steps */}
         <Callout variant="tip" title="Next Steps">
-          Learn more about the query language in{' '}
+          You have the basics. Dive deeper in{' '}
           <Link to="/docs/rql/basics" className="text-primary-color hover:underline font-medium">
             RQL Basics
           </Link>.

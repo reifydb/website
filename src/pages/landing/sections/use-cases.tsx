@@ -3,27 +3,27 @@ import { ScrollReveal } from '@/components/ui';
 const useCases = [
   {
     title: 'User & Session State',
-    description: 'Manage user sessions, preferences, and authentication state with transactional guarantees.',
+    description: 'Sessions, preferences, auth tokens. You need them consistent and fast. You get both.',
   },
   {
     title: 'Trading & Financial State',
-    description: 'Track positions, balances, and order state with low latency and strong consistency.',
+    description: 'Positions, balances, order state. One bad write here can cost real money. ReifyDB makes sure that does not happen.',
   },
   {
     title: 'Game & Simulation State',
-    description: 'Handle game world state, player data, and real-time simulation updates.',
+    description: 'Player state, world state, simulation ticks. Everything stays consistent even when thousands of updates hit at once.',
   },
   {
     title: 'Workflow & Process State',
-    description: 'Coordinate multi-step workflows, task queues, and process orchestration.',
+    description: 'Multi-step workflows, task queues, process coordination. No more duct-taping Redis, Postgres, and a cron job together.',
   },
   {
     title: 'Counters, Queues & Buffers',
-    description: 'Native primitives for counters, ring buffers, histograms, and rate limits.',
+    description: 'Counters, ring buffers, histograms, rate limiters. Built in, transactional, and ready to use. No external dependencies.',
   },
   {
     title: 'Leaderboards & Rankings',
-    description: 'Real-time leaderboards and ranking systems that stay consistent under concurrent updates.',
+    description: 'Rankings that stay correct even when thousands of scores update at the same time. No eventual consistency surprises.',
   },
 ];
 
@@ -41,7 +41,7 @@ export function UseCasesSection() {
               Built for Live Application State
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-              ReifyDB is designed to manage state that your application reads, updates, and reasons about on every request.
+              If your application reads it, writes it, and reasons about it on every request, that is the state ReifyDB was built for.
             </p>
           </div>
         </ScrollReveal>

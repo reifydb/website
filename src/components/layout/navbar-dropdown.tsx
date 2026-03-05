@@ -5,6 +5,7 @@ import type { NavDropdown, NavDropdownItem } from './navbar-data';
 interface NavbarDropdownProps {
   dropdown: NavDropdown;
   isOpen: boolean;
+  instant?: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
 }
@@ -36,7 +37,7 @@ function ItemLink({ item, className, children }: { item: NavDropdownItem; classN
   );
 }
 
-export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }: NavbarDropdownProps) {
+export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMouseLeave }: NavbarDropdownProps) {
   const location = useLocation();
 
   const isDropdownActive = dropdown.columns.some((col) =>
@@ -69,15 +70,18 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
       {/* Dropdown Panel */}
       <div
         className={cn(
-          "absolute left-0 top-full mt-1 w-80 z-30 bg-bg-elevated border-2 border-dashed border-black/25 transition-all duration-200",
-          isOpen
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-2 pointer-events-none"
+          "absolute left-0 top-full pt-1 w-80 z-30",
+          isOpen ? "pointer-events-auto" : "pointer-events-none"
         )}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
       >
-        <div className="p-3">
+        <div
+          className={cn(
+            "bg-bg-elevated border-2 border-dashed border-black/25 transition-all",
+            instant ? "duration-0" : "duration-200",
+            isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+          )}
+        >
+          <div className="p-3">
           {dropdown.columns.map((column) => (
             <div key={column.title}>
               <h3 className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-2 px-1">
@@ -101,6 +105,7 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
               </div>
             </div>
           ))}
+          </div>
         </div>
       </div>
     </div>

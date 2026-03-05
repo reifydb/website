@@ -13,8 +13,7 @@ export function DateModuleOverviewPage() {
             date Module
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            The <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">date</code> module
-            provides functions for date and time manipulation and extraction.
+            Everything you need to work with dates and timestamps in RQL.
           </p>
         </div>
 
@@ -31,7 +30,7 @@ export function DateModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Date Extraction</h2>
           <p className="text-text-secondary mb-4">
-            Extract individual components from dates and timestamps.
+            Pull out the parts you need from any date or timestamp.
           </p>
           <div className="grid gap-3">
             <Link
@@ -100,7 +99,7 @@ export function DateModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Date Manipulation</h2>
           <p className="text-text-secondary mb-4">
-            Create, modify, and calculate with dates and timestamps.
+            Add time, compute differences, or grab the current timestamp.
           </p>
           <div className="grid gap-3">
             <Link
@@ -139,7 +138,7 @@ export function DateModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Formatting</h2>
           <p className="text-text-secondary mb-4">
-            Convert dates to formatted strings for display.
+            Turn dates into readable strings.
           </p>
           <div className="grid gap-3">
             <Link

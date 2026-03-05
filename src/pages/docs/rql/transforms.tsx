@@ -7,37 +7,37 @@ import { getExampleById } from '@/lib/examples';
 const transforms = [
   {
     name: 'from',
-    description: 'Start a query with a data source (table or inline data).',
+    description: 'Start your query here. Point it at a table or use inline data.',
     exampleId: 'transform-from',
   },
   {
     name: 'filter',
-    description: 'Keep only rows that match a condition.',
+    description: 'Keep only the rows you want.',
     exampleId: 'transform-filter',
   },
   {
     name: 'extend',
-    description: 'Add new computed columns.',
+    description: 'Add computed columns to your results.',
     exampleId: 'transform-extend',
   },
   {
     name: 'sort',
-    description: 'Order rows by one or more columns.',
+    description: 'Order your results by any column.',
     exampleId: 'transform-sort',
   },
   {
     name: 'take',
-    description: 'Limit the number of rows returned.',
+    description: 'Grab only the first N rows.',
     exampleId: 'transform-take',
   },
   {
     name: 'distinct',
-    description: 'Remove duplicate values.',
+    description: 'Remove duplicate rows.',
     exampleId: 'transform-distinct',
   },
   {
     name: 'aggregate',
-    description: 'Compute aggregate values over groups.',
+    description: 'Summarize your data with counts, sums, averages, and more.',
     exampleId: 'transform-aggregate',
   },
 ];
@@ -52,8 +52,8 @@ export function RqlTransformsPage() {
             Transforms
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            Transforms are the building blocks of RQL queries. Chain them together to filter,
-            shape, and aggregate your data.
+            Transforms are how you shape your data in RQL. Chain them together to filter,
+            compute, and aggregate.
           </p>
         </div>
 
@@ -61,8 +61,8 @@ export function RqlTransformsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Pipeline Processing</h2>
           <p className="text-text-secondary mb-4">
-            RQL queries are pipelines. Data flows from one transform to the next, with each
-            transform modifying the data before passing it on.
+            Every query is a pipeline. Your data flows from one transform to the next. Each step
+            takes the output of the previous one.
           </p>
           <ExecutableSnippet
             title="Pipeline Processing"
@@ -92,14 +92,14 @@ export function RqlTransformsPage() {
 
         {/* Additional Transforms */}
         <Callout variant="info" title="More Transforms">
-          Additional transforms include <code>derive</code>, <code>deferred</code>, <code>append</code>,{' '}
+          More transforms are on the way: <code>derive</code>, <code>deferred</code>, <code>append</code>,{' '}
           <code>union</code>, <code>map</code>, <code>view</code>, <code>with</code>, <code>create</code>,
-          and <code>insert</code>. Documentation for these is coming soon.
+          and <code>insert</code>. Documentation coming soon.
         </Callout>
 
         {/* Next Steps */}
         <Callout variant="tip" title="Next Steps">
-          Learn about operators and functions in{' '}
+          Ready for more? Learn about operators and functions in{' '}
           <Link to="/docs/rql/expressions" className="text-primary-color hover:underline font-medium">
             Expressions
           </Link>.

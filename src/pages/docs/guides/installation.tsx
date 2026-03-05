@@ -12,7 +12,7 @@ export function InstallationPage() {
             Installation
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            Get ReifyDB installed and running on your machine.
+            Get ReifyDB on your machine. It takes about two minutes.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ export function InstallationPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Install Rust</h2>
           <p className="text-text-secondary mb-4">
-            If you don't have Rust installed, use rustup to install it:
+            If you do not have Rust installed yet, grab it with rustup:
           </p>
           <CodeBlock
             language="bash"
@@ -50,7 +50,7 @@ export function InstallationPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Install ReifyDB</h2>
           <p className="text-text-secondary mb-4">
-            Install ReifyDB using Cargo:
+            Once Rust is ready, install ReifyDB with Cargo:
           </p>
           <CodeBlock
             language="bash"
@@ -62,7 +62,7 @@ export function InstallationPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Build from Source</h2>
           <p className="text-text-secondary mb-4">
-            Alternatively, clone and build from source:
+            If you prefer building from source:
           </p>
           <CodeBlock
             language="bash"
@@ -79,7 +79,7 @@ cargo build --release`}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Verify Installation</h2>
           <p className="text-text-secondary mb-4">
-            Confirm ReifyDB is installed correctly:
+            Make sure everything worked:
           </p>
           <CodeBlock
             language="bash"
@@ -89,11 +89,11 @@ cargo build --release`}
 
         {/* Next Steps */}
         <Callout variant="tip" title="Next Steps">
-          Now that ReifyDB is installed, head to the{' '}
+          You are all set. Head to the{' '}
           <Link to="/docs/quick-start" className="text-primary-color hover:underline font-medium">
             Quick Start
           </Link>{' '}
-          guide to write your first query.
+          guide and write your first query.
         </Callout>
       </div>
     </Layout>

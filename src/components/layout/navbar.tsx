@@ -11,6 +11,7 @@ export function Navbar() {
   const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
   const location = useLocation();
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const prevOpenDropdownRef = useRef<string | null>(null);
 
   // Close dropdown with delay (for better UX when moving between menu items)
   const handleMouseLeave = () => {
@@ -35,6 +36,16 @@ export function Navbar() {
       }
     };
   }, []);
+
+  // Compute switching flag during render
+  const isSwitching = prevOpenDropdownRef.current !== null
+    && openDropdown !== null
+    && prevOpenDropdownRef.current !== openDropdown;
+
+  // Update previous dropdown ref after render
+  useEffect(() => {
+    prevOpenDropdownRef.current = openDropdown;
+  }, [openDropdown]);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -75,6 +86,7 @@ export function Navbar() {
                 key={dropdown.id}
                 dropdown={dropdown}
                 isOpen={openDropdown === dropdown.id}
+                instant={isSwitching}
                 onMouseEnter={() => handleMouseEnter(dropdown.id)}
                 onMouseLeave={handleMouseLeave}
               />

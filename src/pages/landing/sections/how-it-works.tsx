@@ -4,17 +4,17 @@ const steps = [
   {
     number: '01',
     title: 'Write state transactionally',
-    description: 'ACID writes keep live state coherent and rollbackable, even under contention.',
+    description: 'You write your state with full ACID guarantees. If something goes wrong, it rolls back. No partial writes, no guessing.',
   },
   {
     number: '02',
     title: 'Validate and apply logic',
-    description: 'Programmable transitions run inside the same transaction to enforce invariants and emit changes.',
+    description: 'Your business rules run inside the same transaction. Invariants hold. Changes propagate. Nothing slips through the cracks.',
   },
   {
     number: '03',
     title: 'Stay fresh automatically',
-    description: 'Incremental materialized views update immediately, no cron jobs, no polling, no stale dashboards.',
+    description: 'Your derived views update the moment the transaction commits. You never poll, you never schedule, you never wonder if the data is stale.',
   },
 ];
 
@@ -32,7 +32,7 @@ export function HowItWorksSection() {
               How It Works
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-              Write, enforce logic, and keep derived state fresh inside one transactional pipeline.
+              Three steps, one transaction. Nothing drifts apart because nothing ever leaves the envelope.
             </p>
           </div>
         </ScrollReveal>
@@ -66,7 +66,7 @@ export function HowItWorksSection() {
         <ScrollReveal delay={200}>
           <div className="mt-10 text-center">
             <p className="text-sm text-text-muted mb-4">
-              One ACID envelope means writes, logic, and derived state cannot drift apart.
+              One ACID envelope. Writes, logic, and derived state move together or not at all.
             </p>
             <div className="inline-flex gap-3 items-center justify-center">
               <a

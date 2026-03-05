@@ -11,8 +11,8 @@ export function SortPage() {
             Sort Transform
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            The <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">sort</code> transform
-            orders rows by one or more columns.
+            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">sort</code> to
+            order your results by any column.
           </p>
         </div>
 
@@ -23,14 +23,14 @@ export function SortPage() {
             initialCode={getExampleById('sort-basic')!.code}
           />
           <p className="text-text-secondary mt-4">
-            By default, sorting is in ascending order.
+            Sorting is ascending by default.
           </p>
         </section>
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Descending Order</h2>
           <p className="text-text-secondary mb-4">
-            Use a minus sign for descending order:
+            Prefix a column with <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">-</code> to sort descending:
           </p>
           <ExecutableSnippet
             title="Descending Order"
@@ -41,22 +41,22 @@ export function SortPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Multiple Columns</h2>
           <p className="text-text-secondary mb-4">
-            Sort by multiple columns with a list:
+            Pass multiple columns to break ties:
           </p>
           <ExecutableSnippet
             title="Multiple Columns"
             initialCode={getExampleById('sort-multiple')!.code}
           />
           <p className="text-text-secondary mt-4">
-            This sorts by total (descending) first, then by created_at (ascending) for ties.
+            This sorts by total descending first, then by created_at ascending for ties.
           </p>
         </section>
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Combined with Take</h2>
           <p className="text-text-secondary mb-4">
-            Sort is often combined with <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">take</code>
-            to get top N results:
+            Combine <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">sort</code> with <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">take</code>
+            to get the top N results:
           </p>
           <ExecutableSnippet
             title="Combined with Take"

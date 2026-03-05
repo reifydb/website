@@ -13,8 +13,7 @@ export function MathModuleOverviewPage() {
             math Module
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            The <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">math</code> module
-            provides mathematical functions and aggregations for numerical data processing.
+            Number crunching and aggregations for your queries.
           </p>
         </div>
 
@@ -31,7 +30,7 @@ export function MathModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Aggregation Functions</h2>
           <p className="text-text-secondary mb-4">
-            Use these functions with the <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm">aggregate</code> transform to compute values across multiple rows.
+            Use these with the <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm">aggregate</code> transform to summarize your data.
           </p>
           <div className="grid gap-3">
             <Link
@@ -90,7 +89,7 @@ export function MathModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Scalar Functions</h2>
           <p className="text-text-secondary mb-4">
-            Transform individual numeric values row-by-row.
+            Apply math to individual values, row by row.
           </p>
           <div className="grid gap-3">
             <Link
