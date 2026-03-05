@@ -74,7 +74,7 @@ export function CtaSection({
 
   // Default: banner variant
   return (
-    <section className="bg-bg-secondary section-pattern">
+    <section className="bg-bg-secondary">
       <ScrollReveal>
         <div className="max-w-4xl mx-auto px-6 py-8 sm:py-12">
           <div className="border-2 border-dashed border-black/25 p-6 sm:p-8 text-center dotted-card">

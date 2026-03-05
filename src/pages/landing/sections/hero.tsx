@@ -20,7 +20,7 @@ const heroHighlights = [
 
 export function HeroSection() {
   return (
-    <section className="relative py-16 sm:py-24 lg:py-28 overflow-hidden section-pattern">
+    <section className="relative py-16 sm:py-24 lg:py-28 overflow-hidden">
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
         <div className="text-center">
           {/* Status Badge */}

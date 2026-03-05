@@ -10,7 +10,7 @@ export function CodeExampleSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="code-example" className="relative z-10 py-16 sm:py-24 section-pattern">
+    <section id="code-example" className="relative z-10 py-16 sm:py-24">
       <div className="mx-auto max-w-4xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>

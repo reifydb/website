@@ -22,7 +22,7 @@ export function BlogPostPage() {
               to="/blog"
               className="inline-flex items-center text-sm text-text-muted hover:text-primary transition-colors duration-200 mb-8"
             >
-              &lt;-- back to blog
+              &lt;-- Back to Blog
             </Link>
 
             <div className="mb-10 text-center">

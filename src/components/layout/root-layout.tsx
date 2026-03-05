@@ -3,9 +3,9 @@ import { ScrollToTop } from '@/components/scroll-to-top';
 
 export function RootLayout() {
   return (
-    <>
+    <div className="min-h-screen section-pattern">
       <ScrollToTop />
       <Outlet />
-    </>
+    </div>
   );
 }

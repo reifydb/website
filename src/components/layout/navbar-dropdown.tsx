@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib';
-import type { NavDropdown } from './navbar-data';
+import type { NavDropdown, NavDropdownItem } from './navbar-data';
 
 interface NavbarDropdownProps {
   dropdown: NavDropdown;
@@ -9,7 +9,45 @@ interface NavbarDropdownProps {
   onMouseLeave: () => void;
 }
 
+const prefixMatchPaths = ['/docs', '/blog'];
+
+function ItemLink({ item, className, children }: { item: NavDropdownItem; className?: string; children: React.ReactNode }) {
+  const isExternal = item.href.startsWith('http');
+  const isAnchor = item.href.startsWith('/#');
+
+  if (isExternal) {
+    return (
+      <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>
+        {children}
+      </a>
+    );
+  }
+  if (isAnchor) {
+    return (
+      <a href={item.href} className={className}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link to={item.href} className={className}>
+      {children}
+    </Link>
+  );
+}
+
 export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }: NavbarDropdownProps) {
+  const location = useLocation();
+
+  const isDropdownActive = dropdown.columns.some((col) =>
+    col.items.some((item) => {
+      if (prefixMatchPaths.some((p) => item.href === p)) {
+        return location.pathname.startsWith(item.href);
+      }
+      return location.pathname === item.href;
+    })
+  );
+
   return (
     <div
       className="relative"
@@ -20,100 +58,49 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
       <button
         className={cn(
           "px-3 py-2 transition-colors duration-150",
-          isOpen
+          isOpen || isDropdownActive
             ? "text-primary"
             : "text-text-secondary hover:text-primary"
         )}
       >
-        [{dropdown.label}/]
+        [{isDropdownActive && '*'}{dropdown.label}/]
       </button>
 
       {/* Dropdown Panel */}
       <div
         className={cn(
-          "absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-200",
+          "absolute left-0 top-full mt-1 w-80 z-30 bg-bg-elevated border-2 border-dashed border-black/25 transition-all duration-200",
           isOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
         )}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
-        <div className={cn(
-          "bg-bg-elevated border-2 border-dashed border-black/25 overflow-hidden",
-          dropdown.columns.length === 1 ? "min-w-[200px]" : "min-w-[400px]"
-        )}>
-          <div className={cn(
-            "grid gap-0",
-            dropdown.columns.length === 1 ? "grid-cols-1" : "grid-cols-2"
-          )}>
-            {dropdown.columns.map((column, colIndex) => (
-              <div
-                key={column.title}
-                className={cn(
-                  "p-4",
-                  dropdown.columns.length > 1 && colIndex < dropdown.columns.length - 1 && "border-r border-black/20"
-                )}
-              >
-                <h3 className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-3 px-3">
-                  <span className="text-primary"># </span>{column.title}
-                </h3>
-                <div className="flex flex-col gap-1">
-                  {column.items.map((item) => {
-                    const isExternal = item.href.startsWith('http');
-                    const isAnchor = item.href.startsWith('/#');
-
-                    const content = (
-                      <>
-                        <div className="text-sm text-text-secondary group-hover:text-primary transition-colors">
-                          <span className="text-text-muted">-- </span>{item.label}
+        <div className="p-3">
+          {dropdown.columns.map((column) => (
+            <div key={column.title}>
+              <h3 className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-2 px-1">
+                <span className="text-primary"># </span>{column.title}
+              </h3>
+              <div className="flex flex-col gap-2">
+                {column.items.map((item) => (
+                  <ItemLink key={item.label} item={item} className="group block">
+                    <div className="border-2 border-dashed border-black/10 p-4 transition-all duration-150 hover:border-primary hover:bg-primary/5">
+                      <div className="font-bold text-sm text-text-primary group-hover:text-primary transition-colors">
+                        {item.label}
+                      </div>
+                      {item.description && (
+                        <div className="text-xs text-text-secondary mt-1">
+                          {item.description}
                         </div>
-                        {item.description && (
-                          <div className="text-xs text-text-tertiary mt-0.5 pl-[1.5ch]">
-                            {item.description}
-                          </div>
-                        )}
-                      </>
-                    );
-
-                    if (isExternal) {
-                      return (
-                        <a
-                          key={item.label}
-                          href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group px-3 py-2 transition-colors"
-                        >
-                          {content}
-                        </a>
-                      );
-                    }
-
-                    if (isAnchor) {
-                      return (
-                        <a
-                          key={item.label}
-                          href={item.href}
-                          className="group px-3 py-2 transition-colors"
-                        >
-                          {content}
-                        </a>
-                      );
-                    }
-
-                    return (
-                      <Link
-                        key={item.label}
-                        to={item.href}
-                        className="group px-3 py-2 transition-colors"
-                      >
-                        {content}
-                      </Link>
-                    );
-                  })}
-                </div>
+                      )}
+                    </div>
+                  </ItemLink>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

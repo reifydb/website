@@ -29,7 +29,7 @@ const useCases = [
 
 export function UseCasesSection() {
   return (
-    <section id="use-cases" className="py-16 sm:py-24 bg-bg-secondary section-pattern">
+    <section id="use-cases" className="py-16 sm:py-24 bg-bg-secondary">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>

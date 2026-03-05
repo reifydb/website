@@ -207,6 +207,11 @@ export function Navbar() {
                                 <>
                                   <span className="text-text-muted">-- </span>
                                   <span className="text-text-secondary group-hover:text-primary transition-colors">{item.label}</span>
+                                  {item.description && (
+                                    <span className="block text-xs text-text-tertiary mt-0.5 pl-[1.5ch]">
+                                      {item.description}
+                                    </span>
+                                  )}
                                 </>
                               );
 
