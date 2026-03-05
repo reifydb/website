@@ -18,14 +18,14 @@ export function RqlCodeBlock({ code, className }: RqlCodeBlockProps) {
   };
 
   return (
-    <div className={cn('border-2 border-dashed border-white/15 bg-code-bg overflow-hidden', className)}>
-      <div className="flex justify-between items-center px-4 py-2 border-b border-dashed border-white/15 bg-code-bg-elevated">
+    <div className={cn('border-2 border-dashed border-border-default bg-bg-secondary overflow-hidden', className)}>
+      <div className="flex justify-between items-center px-4 py-2 border-b border-dashed border-border-default bg-bg-tertiary">
         <span className="text-xs font-bold text-primary-color uppercase tracking-wider">
           RQL
         </span>
         <button
           onClick={handleCopy}
-          className="p-1.5 hover:text-primary transition-colors"
+          className="p-1.5 text-text-secondary hover:text-primary transition-colors"
           aria-label={copied ? 'Copied' : 'Copy code'}
         >
           <span className="font-mono text-xs">{copied ? '[ok]' : '[cp]'}</span>

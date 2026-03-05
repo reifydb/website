@@ -62,7 +62,7 @@ export function TourPage() {
       </div>
 
       {/* Main content */}
-      <main className="flex-1 flex flex-col bg-bg-primary">
+      <main className="flex-1 flex flex-col">
         <div className="flex-1 flex flex-col max-w-3xl w-full mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12">
           <TourStepView key={step.id} step={step} />
         </div>

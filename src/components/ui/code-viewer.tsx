@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import Editor, { type OnMount } from '@monaco-editor/react';
 import type { editor } from 'monaco-editor';
 import { rqlLanguageDefinition, rqlLanguageConfiguration } from '@/lib/rql-language';
-import { premiumDarkTheme } from '@/lib/monaco-themes';
+import { brutalistLightTheme } from '@/lib/monaco-themes';
 
 let languageRegistered = false;
 
@@ -12,7 +12,7 @@ function registerRqlLanguage(monaco: typeof import('monaco-editor')) {
   monaco.languages.register({ id: 'rql' });
   monaco.languages.setMonarchTokensProvider('rql', rqlLanguageDefinition);
   monaco.languages.setLanguageConfiguration('rql', rqlLanguageConfiguration);
-  monaco.editor.defineTheme('premium-dark', premiumDarkTheme);
+  monaco.editor.defineTheme('brutalist-light', brutalistLightTheme);
 
   languageRegistered = true;
 }
@@ -42,7 +42,7 @@ export function CodeViewer({ code, className }: CodeViewerProps) {
       <Editor
         height="100%"
         language="rql"
-        theme="premium-dark"
+        theme="brutalist-light"
         value={code}
         beforeMount={handleBeforeMount}
         onMount={handleEditorDidMount}
