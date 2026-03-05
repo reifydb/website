@@ -15,11 +15,11 @@ importers:
         specifier: link:/home/deedee/Workspace/yellow/reifydb/pkg/typescript/console
         version: link:../../../Workspace/yellow/reifydb/pkg/typescript/console
       '@reifydb/core':
-        specifier: ^0.3.0
-        version: 0.3.0
+        specifier: ^0.4.0
+        version: 0.4.0
       '@reifydb/wasm':
-        specifier: ^0.3.0
-        version: 0.3.0
+        specifier: ^0.4.0
+        version: 0.4.0
       '@tsparticles/engine':
         specifier: ^3.9.1
         version: 3.9.1
@@ -506,12 +506,12 @@ packages:
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
-  '@reifydb/core@0.3.0':
-    resolution: {integrity: sha512-Xb5quHINY647BC6guhEYGquMVh75E3fmwYw3QvZG0ECsUVRl4IctncngTKVPuZ+t9SgXbxQOuFfrsVVO4D9Upw==}
+  '@reifydb/core@0.4.0':
+    resolution: {integrity: sha512-9qm5x9+vchuM4I9edepb4ESpcN713OlFAnk3B6RIrTRRL3N49AwGTmZHGwJcARUuIGD3vCvXcjUdsZcDNYQSFA==}
     engines: {node: '>=16.0.0'}
 
-  '@reifydb/wasm@0.3.0':
-    resolution: {integrity: sha512-x0dMpVn+sMro56UsUggc8feEke6AdQoQCP1RUMj9BdbqZa2sW4He8YzPfCkM6gDd4SMPIxdi/UBMWDm6/j0BJQ==}
+  '@reifydb/wasm@0.4.0':
+    resolution: {integrity: sha512-ja4aFqfeUc2EZ/WscU4qfo3eWFyNMb3QTlj5a6l7lkXbyxN7/FqF2bonYO7p+ep1Wxy9mgpr6YlXMWSuHFpqwQ==}
     engines: {node: '>=16.0.0'}
 
   '@rolldown/pluginutils@1.0.0-beta.53':
@@ -2670,13 +2670,13 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
-  '@reifydb/core@0.3.0':
+  '@reifydb/core@0.4.0':
     dependencies:
       uuid: 11.1.0
 
-  '@reifydb/wasm@0.3.0':
+  '@reifydb/wasm@0.4.0':
     dependencies:
-      '@reifydb/core': 0.3.0
+      '@reifydb/core': 0.4.0
 
   '@rolldown/pluginutils@1.0.0-beta.53': {}
 
