@@ -70,7 +70,7 @@ export function FaqSection() {
               to="/faq"
               className="text-sm text-primary underline underline-offset-4 hover:text-primary-light transition-colors"
             >
-              view all faqs --&gt;
+              View All FAQs --&gt;
             </Link>
           </div>
         </ScrollReveal>

@@ -60,7 +60,7 @@ export function CodeExampleSection() {
               to="/examples"
               className="text-sm text-primary underline underline-offset-4 hover:text-primary-light transition-colors"
             >
-              explore all examples --&gt;
+              Explore All Examples --&gt;
             </Link>
           </div>
         </ScrollReveal>

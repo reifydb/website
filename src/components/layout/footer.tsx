@@ -20,17 +20,17 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <a href="/docs" className="text-white/60 hover:text-white hover:underline underline-offset-2 transition-colors">
-                  <span className="text-white/40 mr-2">├──</span>documentation
+                  <span className="text-white/40 mr-2">├──</span>Documentation
                 </a>
               </li>
               <li>
                 <a href="/blog" className="text-white/60 hover:text-white hover:underline underline-offset-2 transition-colors">
-                  <span className="text-white/40 mr-2">├──</span>blog
+                  <span className="text-white/40 mr-2">├──</span>Blog
                 </a>
               </li>
               <li>
                 <a href="/faq" className="text-white/60 hover:text-white hover:underline underline-offset-2 transition-colors">
-                  <span className="text-white/40 mr-2">└──</span>faq
+                  <span className="text-white/40 mr-2">└──</span>FAQ
                 </a>
               </li>
             </ul>
@@ -44,12 +44,12 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <a href="/contact" className="text-white/60 hover:text-white hover:underline underline-offset-2 transition-colors">
-                  <span className="text-white/40 mr-2">├──</span>contact
+                  <span className="text-white/40 mr-2">├──</span>Contact
                 </a>
               </li>
               <li>
                 <a href="/support" className="text-white/60 hover:text-white hover:underline underline-offset-2 transition-colors">
-                  <span className="text-white/40 mr-2">├──</span>support
+                  <span className="text-white/40 mr-2">├──</span>Support
                 </a>
               </li>
               <li>
@@ -59,7 +59,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="text-white/40 mr-2">└──</span>book a call
+                  <span className="text-white/40 mr-2">└──</span>Book a Call
                 </a>
               </li>
             </ul>
@@ -78,7 +78,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="text-white/40 mr-2">├──</span>github
+                  <span className="text-white/40 mr-2">├──</span>GitHub
                 </a>
               </li>
               <li>
@@ -88,7 +88,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="text-white/40 mr-2">└──</span>x (twitter)
+                  <span className="text-white/40 mr-2">└──</span>X (Twitter)
                 </a>
               </li>
             </ul>
@@ -98,7 +98,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 sm:mt-16 border-t border-dashed border-white/15 pt-8 sm:pt-10 text-xs text-white/60 flex flex-col items-center justify-between gap-4 md:flex-row">
           <div>
-            &copy; {new Date().getFullYear()} reifydb. all rights reserved.
+            &copy; {new Date().getFullYear()} ReifyDB. All Rights Reserved.
           </div>
           <a
             href="https://github.com/reifydb/reifydb/blob/main/license.md"
@@ -106,7 +106,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            license: AGPL-3.0
+            License: AGPL-3.0
           </a>
         </div>
       </div>

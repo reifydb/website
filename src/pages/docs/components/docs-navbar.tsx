@@ -62,7 +62,7 @@ export function DocsNavbar() {
                       : "text-text-secondary hover:text-primary"
                   )}
                 >
-                  [{active && '*'}{link.label.toLowerCase()}]
+                  [{active && '*'}{link.label}]
                 </Link>
               );
             })}
@@ -77,7 +77,7 @@ export function DocsNavbar() {
                 rel="noopener noreferrer"
                 className="font-mono text-sm border border-primary text-primary hover:bg-primary hover:text-bg-primary px-3 py-1 transition-colors duration-150"
               >
-                [&gt; book a call]
+                [&gt; Book a Call]
               </a>
             </div>
 
@@ -163,7 +163,7 @@ export function DocsNavbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="font-mono text-sm text-text-secondary hover:text-primary px-4 py-3 border-b border-dashed border-black/25 transition-colors duration-150 text-left"
                 >
-                  <span className="text-text-muted">&gt; </span>{link.label.toLowerCase()}
+                  <span className="text-text-muted">&gt; </span>{link.label}
                 </Link>
               ))}
               <a
@@ -173,7 +173,7 @@ export function DocsNavbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="font-mono text-sm border border-primary text-primary hover:bg-primary hover:text-bg-primary px-4 py-3 transition-colors duration-150 text-center mt-4"
               >
-                [&gt; book a call]
+                [&gt; Book a Call]
               </a>
             </nav>
           </div>

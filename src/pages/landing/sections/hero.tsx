@@ -24,7 +24,7 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
         <div className="text-center">
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 border border-dashed border-black/30 text-sm text-text-secondary">
+          <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 border border-dashed border-black/30 text-sm text-text-secondary bg-white">
             <span className="text-primary blink-cursor">█</span>
             Developer Preview — APIs subject to change
           </div>

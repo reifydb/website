@@ -25,7 +25,7 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
             : "text-text-secondary hover:text-primary"
         )}
       >
-        [{dropdown.label.toLowerCase()}/]
+        [{dropdown.label}/]
       </button>
 
       {/* Dropdown Panel */}
@@ -54,7 +54,7 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
                 )}
               >
                 <h3 className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-3 px-3">
-                  <span className="text-primary"># </span>{column.title.toLowerCase()}
+                  <span className="text-primary"># </span>{column.title}
                 </h3>
                 <div className="flex flex-col gap-1">
                   {column.items.map((item) => {
@@ -64,7 +64,7 @@ export function NavbarDropdown({ dropdown, isOpen, onMouseEnter, onMouseLeave }:
                     const content = (
                       <>
                         <div className="text-sm text-text-secondary group-hover:text-primary transition-colors">
-                          <span className="text-text-muted">-- </span>{item.label.toLowerCase()}
+                          <span className="text-text-muted">-- </span>{item.label}
                         </div>
                         {item.description && (
                           <div className="text-xs text-text-tertiary mt-0.5 pl-[1.5ch]">

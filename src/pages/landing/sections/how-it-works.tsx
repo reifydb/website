@@ -73,7 +73,7 @@ export function HowItWorksSection() {
                 href="#code-example"
                 className="text-sm text-text-secondary underline underline-offset-4 decoration-text-muted hover:text-text-primary hover:decoration-primary transition-colors"
               >
-                see the rql example --&gt;
+                See the RQL Example --&gt;
               </a>
               <Button size="md" href="https://cal.com/reifydb/30min">
                 Book a call
