@@ -16,12 +16,12 @@ function getTextContent(node: React.ReactNode): string {
 
 const components: Components = {
   h1: ({ children }) => (
-    <h1 className="text-3xl sm:text-4xl font-black tracking-tight mt-10 mb-4 text-text-primary">
+    <h1 className="text-3xl sm:text-4xl font-black tracking-tight mt-8 first:mt-0 mb-4 text-text-primary">
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="text-2xl sm:text-3xl font-black tracking-tight mt-8 mb-3 text-text-primary">
+    <h2 className="text-2xl sm:text-3xl font-black tracking-tight mt-8 first:mt-0 mb-3 text-text-primary">
       {children}
     </h2>
   ),

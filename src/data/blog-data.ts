@@ -29,3 +29,12 @@ export const blogPosts: BlogPost[] = Object.values(modules)
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((p) => p.slug === slug);
 }
+
+export function getAdjacentPosts(slug: string): { prev?: BlogPostMeta; next?: BlogPostMeta } {
+  const index = blogPosts.findIndex((p) => p.slug === slug);
+  if (index === -1) return {};
+  return {
+    prev: index < blogPosts.length - 1 ? blogPosts[index + 1] : undefined,
+    next: index > 0 ? blogPosts[index - 1] : undefined,
+  };
+}
