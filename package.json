@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
-    "@reifydb/console": "link:/home/deedee/Workspace/yellow/reifydb/pkg/typescript/console",
+    "@reifydb/console": "^0.4.0",
     "@reifydb/core": "^0.4.0",
     "@reifydb/wasm": "^0.4.0",
     "@tsparticles/engine": "^3.9.1",
