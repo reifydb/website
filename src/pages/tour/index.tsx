@@ -1,7 +1,6 @@
 import { useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Navbar } from '@/components/layout/navbar';
-import { Footer } from '@/components/layout/footer';
 import { tourSteps } from './tour-data';
 import { TourStepView } from './tour-step';
 
@@ -63,8 +62,8 @@ export function TourPage() {
       </div>
 
       {/* Main content */}
-      <main className="flex-1 bg-bg-primary">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12">
+      <main className="flex-1 flex flex-col bg-bg-primary">
+        <div className="flex-1 flex flex-col max-w-3xl w-full mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12">
           <TourStepView key={step.id} step={step} />
         </div>
       </main>
@@ -106,7 +105,6 @@ export function TourPage() {
         </div>
       </div>
 
-      <Footer />
     </div>
   );
 }

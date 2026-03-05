@@ -49,26 +49,26 @@ export function AsciiBarChart({ query, labelKey, valueKey }: AsciiBarChartProps)
   const maxLabelLen = data.length > 0 ? Math.max(...data.map(d => d.label.length)) : 8;
 
   return (
-    <div className="border-2 border-dashed border-white/15 bg-code-bg">
-      <div className="flex justify-between items-center px-4 py-2 border-b border-dashed border-white/15 bg-code-bg-elevated">
-        <span className="font-mono text-xs"><span className="text-primary">$</span> <span className="text-code-text-muted">ascii bar chart</span></span>
+    <div className="border-2 border-dashed border-black/25 bg-bg-secondary">
+      <div className="flex justify-between items-center px-4 py-2 border-b border-dashed border-black/25 bg-bg-primary">
+        <span className="font-mono text-xs"><span className="text-primary">$</span> <span className="text-text-muted">ascii bar chart</span></span>
         <button
           onClick={runQuery}
           disabled={status === 'running'}
-          className="font-mono text-xs text-code-text-muted hover:text-primary transition-colors disabled:opacity-50"
+          className="font-mono text-xs text-text-muted hover:text-primary transition-colors disabled:opacity-50"
         >
           {status === 'running' ? '[running...]' : '[refresh]'}
         </button>
       </div>
       <div className="p-4 font-mono text-xs">
         {status === 'idle' && (
-          <p className="text-code-text-muted">$ run the query above, then click [refresh] to render chart</p>
+          <p className="text-text-muted">$ run the query above, then click [refresh] to render chart</p>
         )}
         {status === 'error' && (
           <p className="text-status-error">ERR: {error}</p>
         )}
         {status === 'done' && data.length === 0 && (
-          <p className="text-code-text-muted">$ no data returned</p>
+          <p className="text-text-muted">$ no data returned</p>
         )}
         {data.length > 0 && (
           <div className="space-y-2">
@@ -78,7 +78,7 @@ export function AsciiBarChart({ query, labelKey, valueKey }: AsciiBarChartProps)
               return (
                 <div key={label} className="flex items-center gap-3">
                   <span
-                    className="text-code-text shrink-0"
+                    className="text-text-primary shrink-0"
                     style={{ minWidth: `${maxLabelLen}ch` }}
                   >
                     {label.padEnd(maxLabelLen)}

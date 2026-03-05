@@ -15,7 +15,7 @@ export interface TourStep {
 export const tourSteps: TourStep[] = [
   {
     id: 'welcome',
-    title: '00. Welcome to the Tour',
+    title: 'Welcome to the Tour',
     description: (
       <div>
         <p>This tour walks you through RQL interactively. Here's how to use the UI:</p>
@@ -59,7 +59,7 @@ export const tourSteps: TourStep[] = [
 
   {
     id: 'hello-rql',
-    title: '02. Hello RQL',
+    title: 'Hello RQL',
     description: (
       <p>
         RQL queries start with <code className="bg-bg-tertiary px-1 text-primary text-xs">from</code> - a data
@@ -76,7 +76,7 @@ export const tourSteps: TourStep[] = [
 
   {
     id: 'querying-tables',
-    title: '03. Querying Tables',
+    title: 'Querying Tables',
     description: (
       <p>
         Tables are organized in <strong>namespaces</strong>. Use{' '}
@@ -89,7 +89,7 @@ export const tourSteps: TourStep[] = [
 
   {
     id: 'filtering-rows',
-    title: '04. Filtering Rows',
+    title: 'Filtering Rows',
     description: (
       <p>
         The <code className="bg-bg-tertiary px-1 text-primary text-xs">filter</code> transform keeps only rows
@@ -115,7 +115,7 @@ filter {active == true}`,
 
   {
     id: 'sorting-limiting',
-    title: '05. Sorting & Limiting',
+    title: 'Sorting & Limiting',
     description: (
       <p>
         Chain <code className="bg-bg-tertiary px-1 text-primary text-xs">sort</code> and{' '}
@@ -140,7 +140,7 @@ take {3}`,
 
   {
     id: 'aggregating-data',
-    title: '06. Aggregating Data',
+    title: 'Aggregating Data',
     description: (
       <p>
         The <code className="bg-bg-tertiary px-1 text-primary text-xs">aggregate</code> transform computes
@@ -173,7 +173,7 @@ aggregate {total: math::sum(amount)} by {region}`,
 
   {
     id: 'extending-columns',
-    title: '07. Extending Columns',
+    title: 'Extending Columns',
     description: (
       <p>
         The <code className="bg-bg-tertiary px-1 text-primary text-xs">extend</code> transform adds new computed
@@ -195,7 +195,7 @@ extend { bonus: salary * 0.1 }`,
 
   {
     id: 'complex-pipeline',
-    title: '08. Complex Pipelines',
+    title: 'Complex Pipelines',
     description: (
       <p>
         Chain multiple transforms to build powerful pipelines. Data flows from one transform to the next. Here
@@ -222,7 +222,7 @@ sort {revenue: desc}`,
 
   {
     id: 'live-data',
-    title: '09. Live Data',
+    title: 'Live Data',
     description: (
       <p>
         RQL queries run against the <strong>current state</strong> of your data. Use the widget below to insert
