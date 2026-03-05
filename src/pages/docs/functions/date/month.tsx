@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { ExampleSnippet } from '@/components/ui';
 
 export function DateMonthPage() {
   return (
@@ -59,22 +60,10 @@ export function DateMonthPage() {
           </p>
         </section>
 
-        {/* TODO: Examples commented out - date::month not implemented yet */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Aggregate by month</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-month-aggregate')!.title}
-            initialCode={getExampleById('date-month-aggregate')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Filter by specific month</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-month-filter')!.title}
-            initialCode={getExampleById('date-month-filter')!.code}
-          />
-        </section> */}
+          <ExampleSnippet id="date-month-inline" />
+        </section>
 
         {/* Related Functions */}
         <section>

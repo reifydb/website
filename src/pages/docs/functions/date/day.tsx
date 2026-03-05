@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { ExampleSnippet } from '@/components/ui';
 
 export function DateDayPage() {
   return (
@@ -59,22 +60,10 @@ export function DateDayPage() {
           </p>
         </section>
 
-        {/* TODO: Examples commented out - date::day not implemented yet */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Filter by first day of month</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-day-filter')!.title}
-            initialCode={getExampleById('date-day-filter')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Extract day component</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-day-extract')!.title}
-            initialCode={getExampleById('date-day-extract')!.code}
-          />
-        </section> */}
+          <ExampleSnippet id="date-day-inline" />
+        </section>
 
         {/* Related Functions */}
         <section>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { ExampleSnippet } from '@/components/ui';
 
 export function TextConcatPage() {
   return (
@@ -43,7 +44,7 @@ export function TextConcatPage() {
               <tbody>
                 <tr className="border-t-2 border-border-default">
                   <td className="p-2 sm:p-3"><code>value1, value2, ...</code></td>
-                  <td className="p-2 sm:p-3">String</td>
+                  <td className="p-2 sm:p-3">Utf8</td>
                   <td className="p-2 sm:p-3">Two or more strings to concatenate together</td>
                 </tr>
               </tbody>
@@ -59,28 +60,10 @@ export function TextConcatPage() {
           </p>
         </section>
 
-        {/* TODO: Examples commented out - text::concat not implemented yet */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Build full name</h3>
-          <ExecutableSnippet
-            title={getExampleById('text-concat-fullname')!.title}
-            initialCode={getExampleById('text-concat-fullname')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Create display labels</h3>
-          <ExecutableSnippet
-            title={getExampleById('text-concat-labels')!.title}
-            initialCode={getExampleById('text-concat-labels')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Build URLs</h3>
-          <ExecutableSnippet
-            title={getExampleById('text-concat-urls')!.title}
-            initialCode={getExampleById('text-concat-urls')!.code}
-          />
-        </section> */}
+          <ExampleSnippet id="text-concat-inline" />
+        </section>
 
         {/* Related Functions */}
         <section>

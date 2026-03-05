@@ -2,30 +2,32 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 
-export function DateMinutePage() {
+
+export function ClockAdvancePage() {
   return (
     <Layout>
       <div className="space-y-8">
         {/* Header with breadcrumb */}
         <div>
           <div className="text-sm text-text-muted mb-2">
-            <Link to="/docs/functions/date" className="font-bold hover:text-primary-color">
-              date
+            <Link to="/docs/functions/clock" className="font-bold hover:text-primary-color">
+              clock
             </Link>
             {' module'}
+            <span className="ml-2 text-xs font-bold bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded">Internal</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
-            date::minute
+            clock::advance
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            Extract the minute from a timestamp.
+            Advance the system clock by a specified duration. Used for testing time-dependent logic.
           </p>
         </div>
 
         {/* Syntax */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2>
-          <RqlCodeBlock code={`date::minute(timestamp)`} />
+          <RqlCodeBlock code={`clock::advance(duration)`} />
         </section>
 
         {/* Parameters */}
@@ -42,9 +44,9 @@ export function DateMinutePage() {
               </thead>
               <tbody>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-2 sm:p-3"><code>timestamp</code></td>
-                  <td className="p-2 sm:p-3">Timestamp</td>
-                  <td className="p-2 sm:p-3">The timestamp to extract the minute from</td>
+                  <td className="p-2 sm:p-3"><code>duration</code></td>
+                  <td className="p-2 sm:p-3">Duration</td>
+                  <td className="p-2 sm:p-3">The duration to advance the clock by</td>
                 </tr>
               </tbody>
             </table>
@@ -55,39 +57,19 @@ export function DateMinutePage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2>
           <p className="text-text-secondary">
-            Returns an integer from 0-59 representing the minute.
+            Nothing. Advances the clock as a side effect.
           </p>
         </section>
-
-        {/* TODO: Examples commented out - date::minute not implemented yet */}
-        {/* <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Extract time components</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-minute-extract')!.title}
-            initialCode={getExampleById('date-minute-extract')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Filter by specific time</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-minute-filter')!.title}
-            initialCode={getExampleById('date-minute-filter')!.code}
-          />
-        </section> */}
 
         {/* Related Functions */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
-            <Link to="/docs/functions/date/hour" className="text-primary-color hover:underline">
-              date::hour
+            <Link to="/docs/functions/clock/set" className="text-primary-color hover:underline">
+              clock::set
             </Link>
-            <Link to="/docs/functions/date/second" className="text-primary-color hover:underline">
-              date::second
-            </Link>
-            <Link to="/docs/functions/date/format" className="text-primary-color hover:underline">
-              date::format
+            <Link to="/docs/functions/clock/now" className="text-primary-color hover:underline">
+              clock::now
             </Link>
           </div>
         </section>

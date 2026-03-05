@@ -95,9 +95,6 @@ export function MathAvgPage() {
             <Link to="/docs/functions/math/max" className="text-primary-color hover:underline">
               math::max
             </Link>
-            <Link to="/docs/functions/math/count" className="text-primary-color hover:underline">
-              math::count
-            </Link>
           </div>
         </section>
       </div>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { ExampleSnippet } from '@/components/ui';
 
 export function MathFloorPage() {
   return (
@@ -59,22 +60,10 @@ export function MathFloorPage() {
           </p>
         </section>
 
-        {/* TODO: Examples commented out - math::floor not implemented yet */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Floor values</h3>
-          <ExecutableSnippet
-            title={getExampleById('math-floor-values')!.title}
-            initialCode={getExampleById('math-floor-values')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Convert to integer</h3>
-          <ExecutableSnippet
-            title={getExampleById('math-floor-integer')!.title}
-            initialCode={getExampleById('math-floor-integer')!.code}
-          />
-        </section> */}
+          <ExampleSnippet id="math-floor-inline" />
+        </section>
 
         {/* Related Functions */}
         <section>

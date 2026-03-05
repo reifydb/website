@@ -45,7 +45,7 @@ export function TextUpperPage() {
               <tbody>
                 <tr className="border-t-2 border-border-default">
                   <td className="p-2 sm:p-3"><code>value</code></td>
-                  <td className="p-2 sm:p-3">String</td>
+                  <td className="p-2 sm:p-3">Utf8</td>
                   <td className="p-2 sm:p-3">The string to convert to uppercase</td>
                 </tr>
               </tbody>

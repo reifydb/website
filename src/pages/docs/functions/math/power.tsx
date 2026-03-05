@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { ExampleSnippet } from '@/components/ui';
 
 export function MathPowerPage() {
   return (
@@ -64,28 +65,10 @@ export function MathPowerPage() {
           </p>
         </section>
 
-        {/* TODO: Examples commented out - math::power not implemented yet */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Calculate squares</h3>
-          <ExecutableSnippet
-            title={getExampleById('math-power-squares')!.title}
-            initialCode={getExampleById('math-power-squares')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Compound growth</h3>
-          <ExecutableSnippet
-            title={getExampleById('math-power-compound')!.title}
-            initialCode={getExampleById('math-power-compound')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Square root (exponent 0.5)</h3>
-          <ExecutableSnippet
-            title={getExampleById('math-power-sqrt')!.title}
-            initialCode={getExampleById('math-power-sqrt')!.code}
-          />
-        </section> */}
+          <ExampleSnippet id="math-power-inline" />
+        </section>
 
         {/* Related Functions */}
         <section>

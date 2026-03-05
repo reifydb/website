@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { ExampleSnippet } from '@/components/ui';
 
 export function DateFormatPage() {
   return (
@@ -48,7 +49,7 @@ export function DateFormatPage() {
                 </tr>
                 <tr className="border-t-2 border-border-default">
                   <td className="p-2 sm:p-3"><code>format_string</code></td>
-                  <td className="p-2 sm:p-3">String</td>
+                  <td className="p-2 sm:p-3">Utf8</td>
                   <td className="p-2 sm:p-3">Format string using strftime syntax (e.g., "%Y-%m-%d")</td>
                 </tr>
               </tbody>
@@ -64,28 +65,10 @@ export function DateFormatPage() {
           </p>
         </section>
 
-        {/* TODO: Examples commented out - date::format not implemented yet */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Format as ISO date</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-format-iso')!.title}
-            initialCode={getExampleById('date-format-iso')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Include time</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-format-time')!.title}
-            initialCode={getExampleById('date-format-time')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Custom format</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-format-custom')!.title}
-            initialCode={getExampleById('date-format-custom')!.code}
-          />
-        </section> */}
+          <ExampleSnippet id="date-format-inline" />
+        </section>
 
         {/* Related Functions */}
         <section>

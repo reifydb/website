@@ -1,6 +1,7 @@
 export { Button } from './button'
 export { CodeViewer } from './code-viewer'
 export { CtaSection } from './cta-section'
+export { ExampleSnippet } from './example-snippet'
 export { ExecutableSnippet } from './executable-snippet'
 export { GitHubStars } from './github-stars'
 export { ScrollReveal } from './scroll-reveal'

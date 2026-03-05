@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { ExampleSnippet } from '@/components/ui';
 
 export function TextLowerPage() {
   return (
@@ -43,7 +44,7 @@ export function TextLowerPage() {
               <tbody>
                 <tr className="border-t-2 border-border-default">
                   <td className="p-2 sm:p-3"><code>value</code></td>
-                  <td className="p-2 sm:p-3">String</td>
+                  <td className="p-2 sm:p-3">Utf8</td>
                   <td className="p-2 sm:p-3">The string to convert to lowercase</td>
                 </tr>
               </tbody>
@@ -59,22 +60,10 @@ export function TextLowerPage() {
           </p>
         </section>
 
-        {/* TODO: Examples commented out - text::lower not implemented yet */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Normalize email addresses</h3>
-          <ExecutableSnippet
-            title={getExampleById('text-lower-email')!.title}
-            initialCode={getExampleById('text-lower-email')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Case-insensitive filtering</h3>
-          <ExecutableSnippet
-            title={getExampleById('text-lower-filter')!.title}
-            initialCode={getExampleById('text-lower-filter')!.code}
-          />
-        </section> */}
+          <ExampleSnippet id="text-lower-inline" />
+        </section>
 
         {/* Related Functions */}
         <section>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { ExampleSnippet } from '@/components/ui';
 
 export function DateNowPage() {
   return (
@@ -44,28 +45,10 @@ export function DateNowPage() {
           </p>
         </section>
 
-        {/* TODO: Examples commented out - date::now not implemented yet */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Find overdue tasks</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-now-overdue')!.title}
-            initialCode={getExampleById('date-now-overdue')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Add created timestamp</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-now-timestamp')!.title}
-            initialCode={getExampleById('date-now-timestamp')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Calculate time elapsed</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-now-elapsed')!.title}
-            initialCode={getExampleById('date-now-elapsed')!.code}
-          />
-        </section> */}
+          <ExampleSnippet id="date-now-inline" />
+        </section>
 
         {/* Related Functions */}
         <section>

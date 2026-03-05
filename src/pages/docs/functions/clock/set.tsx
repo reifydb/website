@@ -2,30 +2,32 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 
-export function DateHourPage() {
+
+export function ClockSetPage() {
   return (
     <Layout>
       <div className="space-y-8">
         {/* Header with breadcrumb */}
         <div>
           <div className="text-sm text-text-muted mb-2">
-            <Link to="/docs/functions/date" className="font-bold hover:text-primary-color">
-              date
+            <Link to="/docs/functions/clock" className="font-bold hover:text-primary-color">
+              clock
             </Link>
             {' module'}
+            <span className="ml-2 text-xs font-bold bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded">Internal</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
-            date::hour
+            clock::set
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            Extract the hour from a timestamp.
+            Set the system clock to a specific timestamp. Used for testing and deterministic replay.
           </p>
         </div>
 
         {/* Syntax */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2>
-          <RqlCodeBlock code={`date::hour(timestamp)`} />
+          <RqlCodeBlock code={`clock::set(timestamp)`} />
         </section>
 
         {/* Parameters */}
@@ -44,7 +46,7 @@ export function DateHourPage() {
                 <tr className="border-t-2 border-border-default">
                   <td className="p-2 sm:p-3"><code>timestamp</code></td>
                   <td className="p-2 sm:p-3">Timestamp</td>
-                  <td className="p-2 sm:p-3">The timestamp to extract the hour from</td>
+                  <td className="p-2 sm:p-3">The timestamp to set the clock to</td>
                 </tr>
               </tbody>
             </table>
@@ -55,39 +57,19 @@ export function DateHourPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2>
           <p className="text-text-secondary">
-            Returns an integer from 0-23 representing the hour in 24-hour format.
+            Nothing. Sets the clock as a side effect.
           </p>
         </section>
-
-        {/* TODO: Examples commented out - date::hour not implemented yet */}
-        {/* <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Extract time components</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-hour-extract')!.title}
-            initialCode={getExampleById('date-hour-extract')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Filter by business hours</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-hour-business')!.title}
-            initialCode={getExampleById('date-hour-business')!.code}
-          />
-        </section> */}
 
         {/* Related Functions */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
-            <Link to="/docs/functions/date/minute" className="text-primary-color hover:underline">
-              date::minute
+            <Link to="/docs/functions/clock/advance" className="text-primary-color hover:underline">
+              clock::advance
             </Link>
-            <Link to="/docs/functions/date/second" className="text-primary-color hover:underline">
-              date::second
-            </Link>
-            <Link to="/docs/functions/date/format" className="text-primary-color hover:underline">
-              date::format
+            <Link to="/docs/functions/clock/now" className="text-primary-color hover:underline">
+              clock::now
             </Link>
           </div>
         </section>

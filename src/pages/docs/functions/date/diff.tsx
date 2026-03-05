@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { ExampleSnippet } from '@/components/ui';
 
 export function DateDiffPage() {
   return (
@@ -53,7 +54,7 @@ export function DateDiffPage() {
                 </tr>
                 <tr className="border-t-2 border-border-default">
                   <td className="p-2 sm:p-3"><code>unit</code></td>
-                  <td className="p-2 sm:p-3">String</td>
+                  <td className="p-2 sm:p-3">Utf8</td>
                   <td className="p-2 sm:p-3">The unit of time to return (e.g., "days", "hours")</td>
                 </tr>
               </tbody>
@@ -69,28 +70,10 @@ export function DateDiffPage() {
           </p>
         </section>
 
-        {/* TODO: Examples commented out - date::diff not implemented yet */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Calculate days since creation</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-diff-days')!.title}
-            initialCode={getExampleById('date-diff-days')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Filter by age</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-diff-filter')!.title}
-            initialCode={getExampleById('date-diff-filter')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Calculate hours between events</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-diff-hours')!.title}
-            initialCode={getExampleById('date-diff-hours')!.code}
-          />
-        </section> */}
+          <ExampleSnippet id="date-diff-inline" />
+        </section>
 
         {/* Related Functions */}
         <section>

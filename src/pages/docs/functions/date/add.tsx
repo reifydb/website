@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { ExampleSnippet } from '@/components/ui';
 
 export function DateAddPage() {
   return (
@@ -64,28 +65,10 @@ export function DateAddPage() {
           </p>
         </section>
 
-        {/* TODO: Examples commented out - date::add not implemented yet */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Calculate expiration date</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-add-expiration')!.title}
-            initialCode={getExampleById('date-add-expiration')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Add days to current date</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-add-current')!.title}
-            initialCode={getExampleById('date-add-current')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Subtract days</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-add-subtract')!.title}
-            initialCode={getExampleById('date-add-subtract')!.code}
-          />
-        </section> */}
+          <ExampleSnippet id="date-add-inline" />
+        </section>
 
         {/* Related Functions */}
         <section>

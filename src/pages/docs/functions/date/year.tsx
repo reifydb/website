@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { ExampleSnippet } from '@/components/ui';
 
 export function DateYearPage() {
   return (
@@ -59,22 +60,10 @@ export function DateYearPage() {
           </p>
         </section>
 
-        {/* TODO: Examples commented out - date::year not implemented yet */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Filter by year</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-year-filter')!.title}
-            initialCode={getExampleById('date-year-filter')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Group by year</h3>
-          <ExecutableSnippet
-            title={getExampleById('date-year-group')!.title}
-            initialCode={getExampleById('date-year-group')!.code}
-          />
-        </section> */}
+          <ExampleSnippet id="date-year-inline" />
+        </section>
 
         {/* Related Functions */}
         <section>

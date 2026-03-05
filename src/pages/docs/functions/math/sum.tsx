@@ -89,9 +89,6 @@ export function MathSumPage() {
             <Link to="/docs/functions/math/avg" className="text-primary-color hover:underline">
               math::avg
             </Link>
-            <Link to="/docs/functions/math/count" className="text-primary-color hover:underline">
-              math::count
-            </Link>
             <Link to="/docs/functions/math/min" className="text-primary-color hover:underline">
               math::min
             </Link>

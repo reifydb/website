@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { ExampleSnippet } from '@/components/ui';
 
 export function MathCeilPage() {
   return (
@@ -59,22 +60,10 @@ export function MathCeilPage() {
           </p>
         </section>
 
-        {/* TODO: Examples commented out - math::ceil not implemented yet */}
-        {/* <section>
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-
-          <h3 className="text-lg font-bold mb-3">Ceiling values</h3>
-          <ExecutableSnippet
-            title={getExampleById('math-ceil-values')!.title}
-            initialCode={getExampleById('math-ceil-values')!.code}
-          />
-
-          <h3 className="text-lg font-bold mt-6 mb-3">Round up for capacity</h3>
-          <ExecutableSnippet
-            title={getExampleById('math-ceil-capacity')!.title}
-            initialCode={getExampleById('math-ceil-capacity')!.code}
-          />
-        </section> */}
+          <ExampleSnippet id="math-ceil-inline" />
+        </section>
 
         {/* Related Functions */}
         <section>
