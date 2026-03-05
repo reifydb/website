@@ -11,12 +11,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles = {
   primary: cn(
-    'border border-primary text-primary',
+    'bg-bg-primary border border-primary text-primary',
     'hover:bg-primary hover:text-bg-primary',
     'transition-all duration-200'
   ),
   secondary: cn(
-    'border-2 border-dashed border-black/25 text-text-secondary',
+    'bg-bg-primary border-2 border-dashed border-black/25 text-text-secondary',
     'hover:text-text-primary hover:border-black/40',
     'transition-all duration-200'
   ),
