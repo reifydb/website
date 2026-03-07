@@ -248,7 +248,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/blog
+URL: https://reifydb.com/blog/
 ===============================================================================
 
 $
@@ -313,7 +313,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/blog/introducing-reifydb
+URL: https://reifydb.com/blog/introducing-reifydb/
 ===============================================================================
 
 $
@@ -421,7 +421,7 @@ License: AGPL-3.0
 ^
 
 ===============================================================================
-URL: https://reifydb.com/company/mission
+URL: https://reifydb.com/company/mission/
 ===============================================================================
 
 $
@@ -493,7 +493,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/company/values
+URL: https://reifydb.com/company/values/
 ===============================================================================
 
 $
@@ -576,7 +576,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/contact
+URL: https://reifydb.com/contact/
 ===============================================================================
 
 $
@@ -652,7 +652,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs
+URL: https://reifydb.com/docs/
 ===============================================================================
 
 $
@@ -895,7 +895,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions
+URL: https://reifydb.com/docs/functions/
 ===============================================================================
 
 $
@@ -1145,7 +1145,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/blob
+URL: https://reifydb.com/docs/functions/blob/
 ===============================================================================
 
 $
@@ -1379,7 +1379,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/blob/b58
+URL: https://reifydb.com/docs/functions/blob/b58/
 ===============================================================================
 
 $
@@ -1608,7 +1608,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/blob/b64
+URL: https://reifydb.com/docs/functions/blob/b64/
 ===============================================================================
 
 $
@@ -1837,7 +1837,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/blob/b64url
+URL: https://reifydb.com/docs/functions/blob/b64url/
 ===============================================================================
 
 $
@@ -2066,7 +2066,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/blob/hex
+URL: https://reifydb.com/docs/functions/blob/hex/
 ===============================================================================
 
 $
@@ -2295,7 +2295,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/blob/utf8
+URL: https://reifydb.com/docs/functions/blob/utf8/
 ===============================================================================
 
 $
@@ -2524,7 +2524,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/clock
+URL: https://reifydb.com/docs/functions/clock/
 ===============================================================================
 
 $
@@ -2752,7 +2752,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/clock/advance
+URL: https://reifydb.com/docs/functions/clock/advance/
 ===============================================================================
 
 $
@@ -2971,7 +2971,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/clock/now
+URL: https://reifydb.com/docs/functions/clock/now/
 ===============================================================================
 
 $
@@ -3191,7 +3191,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/clock/set
+URL: https://reifydb.com/docs/functions/clock/set/
 ===============================================================================
 
 $
@@ -3410,7 +3410,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date
+URL: https://reifydb.com/docs/functions/date/
 ===============================================================================
 
 $
@@ -3742,7 +3742,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/add
+URL: https://reifydb.com/docs/functions/date/add/
 ===============================================================================
 
 $
@@ -3971,7 +3971,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/age
+URL: https://reifydb.com/docs/functions/date/age/
 ===============================================================================
 
 $
@@ -4200,7 +4200,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/day
+URL: https://reifydb.com/docs/functions/date/day/
 ===============================================================================
 
 $
@@ -4429,7 +4429,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/day_of_week
+URL: https://reifydb.com/docs/functions/date/day_of_week/
 ===============================================================================
 
 $
@@ -4657,7 +4657,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/day_of_year
+URL: https://reifydb.com/docs/functions/date/day_of_year/
 ===============================================================================
 
 $
@@ -4885,7 +4885,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/days_in_month
+URL: https://reifydb.com/docs/functions/date/days_in_month/
 ===============================================================================
 
 $
@@ -5113,7 +5113,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/diff
+URL: https://reifydb.com/docs/functions/date/diff/
 ===============================================================================
 
 $
@@ -5343,7 +5343,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/end_of_month
+URL: https://reifydb.com/docs/functions/date/end_of_month/
 ===============================================================================
 
 $
@@ -5571,7 +5571,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/format
+URL: https://reifydb.com/docs/functions/date/format/
 ===============================================================================
 
 $
@@ -5801,7 +5801,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/is_leap_year
+URL: https://reifydb.com/docs/functions/date/is_leap_year/
 ===============================================================================
 
 $
@@ -6029,7 +6029,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/month
+URL: https://reifydb.com/docs/functions/date/month/
 ===============================================================================
 
 $
@@ -6258,7 +6258,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/new
+URL: https://reifydb.com/docs/functions/date/new/
 ===============================================================================
 
 $
@@ -6488,7 +6488,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/now
+URL: https://reifydb.com/docs/functions/date/now/
 ===============================================================================
 
 $
@@ -6718,7 +6718,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/quarter
+URL: https://reifydb.com/docs/functions/date/quarter/
 ===============================================================================
 
 $
@@ -6946,7 +6946,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/start_of_month
+URL: https://reifydb.com/docs/functions/date/start_of_month/
 ===============================================================================
 
 $
@@ -7174,7 +7174,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/start_of_year
+URL: https://reifydb.com/docs/functions/date/start_of_year/
 ===============================================================================
 
 $
@@ -7402,7 +7402,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/subtract
+URL: https://reifydb.com/docs/functions/date/subtract/
 ===============================================================================
 
 $
@@ -7631,7 +7631,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/trunc
+URL: https://reifydb.com/docs/functions/date/trunc/
 ===============================================================================
 
 $
@@ -7860,7 +7860,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/week
+URL: https://reifydb.com/docs/functions/date/week/
 ===============================================================================
 
 $
@@ -8088,7 +8088,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/date/year
+URL: https://reifydb.com/docs/functions/date/year/
 ===============================================================================
 
 $
@@ -8317,7 +8317,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime
+URL: https://reifydb.com/docs/functions/datetime/
 ===============================================================================
 
 $
@@ -8653,7 +8653,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/add
+URL: https://reifydb.com/docs/functions/datetime/add/
 ===============================================================================
 
 $
@@ -8882,7 +8882,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/age
+URL: https://reifydb.com/docs/functions/datetime/age/
 ===============================================================================
 
 $
@@ -9111,7 +9111,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/date
+URL: https://reifydb.com/docs/functions/datetime/date/
 ===============================================================================
 
 $
@@ -9339,7 +9339,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/day
+URL: https://reifydb.com/docs/functions/datetime/day/
 ===============================================================================
 
 $
@@ -9567,7 +9567,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/day_of_week
+URL: https://reifydb.com/docs/functions/datetime/day_of_week/
 ===============================================================================
 
 $
@@ -9795,7 +9795,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/day_of_year
+URL: https://reifydb.com/docs/functions/datetime/day_of_year/
 ===============================================================================
 
 $
@@ -10023,7 +10023,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/diff
+URL: https://reifydb.com/docs/functions/datetime/diff/
 ===============================================================================
 
 $
@@ -10252,7 +10252,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/epoch
+URL: https://reifydb.com/docs/functions/datetime/epoch/
 ===============================================================================
 
 $
@@ -10480,7 +10480,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/epoch_millis
+URL: https://reifydb.com/docs/functions/datetime/epoch_millis/
 ===============================================================================
 
 $
@@ -10708,7 +10708,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/format
+URL: https://reifydb.com/docs/functions/datetime/format/
 ===============================================================================
 
 $
@@ -10937,7 +10937,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/from_epoch
+URL: https://reifydb.com/docs/functions/datetime/from_epoch/
 ===============================================================================
 
 $
@@ -11165,7 +11165,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/from_epoch_millis
+URL: https://reifydb.com/docs/functions/datetime/from_epoch_millis/
 ===============================================================================
 
 $
@@ -11393,7 +11393,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/hour
+URL: https://reifydb.com/docs/functions/datetime/hour/
 ===============================================================================
 
 $
@@ -11621,7 +11621,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/minute
+URL: https://reifydb.com/docs/functions/datetime/minute/
 ===============================================================================
 
 $
@@ -11849,7 +11849,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/month
+URL: https://reifydb.com/docs/functions/datetime/month/
 ===============================================================================
 
 $
@@ -12077,7 +12077,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/nanosecond
+URL: https://reifydb.com/docs/functions/datetime/nanosecond/
 ===============================================================================
 
 $
@@ -12305,7 +12305,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/new
+URL: https://reifydb.com/docs/functions/datetime/new/
 ===============================================================================
 
 $
@@ -12534,7 +12534,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/now
+URL: https://reifydb.com/docs/functions/datetime/now/
 ===============================================================================
 
 $
@@ -12763,7 +12763,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/quarter
+URL: https://reifydb.com/docs/functions/datetime/quarter/
 ===============================================================================
 
 $
@@ -12991,7 +12991,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/second
+URL: https://reifydb.com/docs/functions/datetime/second/
 ===============================================================================
 
 $
@@ -13219,7 +13219,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/subtract
+URL: https://reifydb.com/docs/functions/datetime/subtract/
 ===============================================================================
 
 $
@@ -13448,7 +13448,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/time
+URL: https://reifydb.com/docs/functions/datetime/time/
 ===============================================================================
 
 $
@@ -13676,7 +13676,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/trunc
+URL: https://reifydb.com/docs/functions/datetime/trunc/
 ===============================================================================
 
 $
@@ -13905,7 +13905,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/week
+URL: https://reifydb.com/docs/functions/datetime/week/
 ===============================================================================
 
 $
@@ -14133,7 +14133,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/datetime/year
+URL: https://reifydb.com/docs/functions/datetime/year/
 ===============================================================================
 
 $
@@ -14361,7 +14361,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration
+URL: https://reifydb.com/docs/functions/duration/
 ===============================================================================
 
 $
@@ -14655,7 +14655,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/add
+URL: https://reifydb.com/docs/functions/duration/add/
 ===============================================================================
 
 $
@@ -14884,7 +14884,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/days
+URL: https://reifydb.com/docs/functions/duration/days/
 ===============================================================================
 
 $
@@ -15114,7 +15114,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/format
+URL: https://reifydb.com/docs/functions/duration/format/
 ===============================================================================
 
 $
@@ -15342,7 +15342,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/get_days
+URL: https://reifydb.com/docs/functions/duration/get_days/
 ===============================================================================
 
 $
@@ -15570,7 +15570,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/get_months
+URL: https://reifydb.com/docs/functions/duration/get_months/
 ===============================================================================
 
 $
@@ -15798,7 +15798,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/get_nanos
+URL: https://reifydb.com/docs/functions/duration/get_nanos/
 ===============================================================================
 
 $
@@ -16026,7 +16026,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/hours
+URL: https://reifydb.com/docs/functions/duration/hours/
 ===============================================================================
 
 $
@@ -16256,7 +16256,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/millis
+URL: https://reifydb.com/docs/functions/duration/millis/
 ===============================================================================
 
 $
@@ -16485,7 +16485,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/minutes
+URL: https://reifydb.com/docs/functions/duration/minutes/
 ===============================================================================
 
 $
@@ -16715,7 +16715,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/months
+URL: https://reifydb.com/docs/functions/duration/months/
 ===============================================================================
 
 $
@@ -16946,7 +16946,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/negate
+URL: https://reifydb.com/docs/functions/duration/negate/
 ===============================================================================
 
 $
@@ -17174,7 +17174,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/scale
+URL: https://reifydb.com/docs/functions/duration/scale/
 ===============================================================================
 
 $
@@ -17403,7 +17403,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/seconds
+URL: https://reifydb.com/docs/functions/duration/seconds/
 ===============================================================================
 
 $
@@ -17633,7 +17633,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/subtract
+URL: https://reifydb.com/docs/functions/duration/subtract/
 ===============================================================================
 
 $
@@ -17862,7 +17862,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/trunc
+URL: https://reifydb.com/docs/functions/duration/trunc/
 ===============================================================================
 
 $
@@ -18090,7 +18090,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/weeks
+URL: https://reifydb.com/docs/functions/duration/weeks/
 ===============================================================================
 
 $
@@ -18320,7 +18320,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/duration/years
+URL: https://reifydb.com/docs/functions/duration/years/
 ===============================================================================
 
 $
@@ -18551,7 +18551,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/identity
+URL: https://reifydb.com/docs/functions/identity/
 ===============================================================================
 
 $
@@ -18762,7 +18762,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/identity/id
+URL: https://reifydb.com/docs/functions/identity/id/
 ===============================================================================
 
 $
@@ -18990,7 +18990,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/is
+URL: https://reifydb.com/docs/functions/is/
 ===============================================================================
 
 $
@@ -19223,7 +19223,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/is/anonymous
+URL: https://reifydb.com/docs/functions/is/anonymous/
 ===============================================================================
 
 $
@@ -19451,7 +19451,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/is/none
+URL: https://reifydb.com/docs/functions/is/none/
 ===============================================================================
 
 $
@@ -19679,7 +19679,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/is/root
+URL: https://reifydb.com/docs/functions/is/root/
 ===============================================================================
 
 $
@@ -19907,7 +19907,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/is/some
+URL: https://reifydb.com/docs/functions/is/some/
 ===============================================================================
 
 $
@@ -20135,7 +20135,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/is/type
+URL: https://reifydb.com/docs/functions/is/type/
 ===============================================================================
 
 $
@@ -20364,7 +20364,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math
+URL: https://reifydb.com/docs/functions/math/
 ===============================================================================
 
 $
@@ -20747,7 +20747,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/abs
+URL: https://reifydb.com/docs/functions/math/abs/
 ===============================================================================
 
 $
@@ -20989,7 +20989,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/acos
+URL: https://reifydb.com/docs/functions/math/acos/
 ===============================================================================
 
 $
@@ -21218,7 +21218,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/asin
+URL: https://reifydb.com/docs/functions/math/asin/
 ===============================================================================
 
 $
@@ -21447,7 +21447,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/atan
+URL: https://reifydb.com/docs/functions/math/atan/
 ===============================================================================
 
 $
@@ -21676,7 +21676,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/atan2
+URL: https://reifydb.com/docs/functions/math/atan2/
 ===============================================================================
 
 $
@@ -21906,7 +21906,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/avg
+URL: https://reifydb.com/docs/functions/math/avg/
 ===============================================================================
 
 $
@@ -22157,7 +22157,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/ceil
+URL: https://reifydb.com/docs/functions/math/ceil/
 ===============================================================================
 
 $
@@ -22385,7 +22385,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/clamp
+URL: https://reifydb.com/docs/functions/math/clamp/
 ===============================================================================
 
 $
@@ -22615,7 +22615,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/cos
+URL: https://reifydb.com/docs/functions/math/cos/
 ===============================================================================
 
 $
@@ -22844,7 +22844,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/e
+URL: https://reifydb.com/docs/functions/math/e/
 ===============================================================================
 
 $
@@ -23073,7 +23073,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/exp
+URL: https://reifydb.com/docs/functions/math/exp/
 ===============================================================================
 
 $
@@ -23301,7 +23301,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/floor
+URL: https://reifydb.com/docs/functions/math/floor/
 ===============================================================================
 
 $
@@ -23529,7 +23529,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/gcd
+URL: https://reifydb.com/docs/functions/math/gcd/
 ===============================================================================
 
 $
@@ -23758,7 +23758,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/lcm
+URL: https://reifydb.com/docs/functions/math/lcm/
 ===============================================================================
 
 $
@@ -23987,7 +23987,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/log
+URL: https://reifydb.com/docs/functions/math/log/
 ===============================================================================
 
 $
@@ -24216,7 +24216,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/log10
+URL: https://reifydb.com/docs/functions/math/log10/
 ===============================================================================
 
 $
@@ -24444,7 +24444,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/log2
+URL: https://reifydb.com/docs/functions/math/log2/
 ===============================================================================
 
 $
@@ -24672,7 +24672,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/max
+URL: https://reifydb.com/docs/functions/math/max/
 ===============================================================================
 
 $
@@ -24923,7 +24923,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/min
+URL: https://reifydb.com/docs/functions/math/min/
 ===============================================================================
 
 $
@@ -25174,7 +25174,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/mod
+URL: https://reifydb.com/docs/functions/math/mod/
 ===============================================================================
 
 $
@@ -25403,7 +25403,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/pi
+URL: https://reifydb.com/docs/functions/math/pi/
 ===============================================================================
 
 $
@@ -25633,7 +25633,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/power
+URL: https://reifydb.com/docs/functions/math/power/
 ===============================================================================
 
 $
@@ -25862,7 +25862,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/round
+URL: https://reifydb.com/docs/functions/math/round/
 ===============================================================================
 
 $
@@ -26106,7 +26106,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/sign
+URL: https://reifydb.com/docs/functions/math/sign/
 ===============================================================================
 
 $
@@ -26333,7 +26333,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/sin
+URL: https://reifydb.com/docs/functions/math/sin/
 ===============================================================================
 
 $
@@ -26562,7 +26562,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/sqrt
+URL: https://reifydb.com/docs/functions/math/sqrt/
 ===============================================================================
 
 $
@@ -26790,7 +26790,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/sum
+URL: https://reifydb.com/docs/functions/math/sum/
 ===============================================================================
 
 $
@@ -27041,7 +27041,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/tan
+URL: https://reifydb.com/docs/functions/math/tan/
 ===============================================================================
 
 $
@@ -27270,7 +27270,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/math/truncate
+URL: https://reifydb.com/docs/functions/math/truncate/
 ===============================================================================
 
 $
@@ -27499,7 +27499,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/meta
+URL: https://reifydb.com/docs/functions/meta/
 ===============================================================================
 
 $
@@ -27710,7 +27710,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/meta/type
+URL: https://reifydb.com/docs/functions/meta/type/
 ===============================================================================
 
 $
@@ -27937,7 +27937,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text
+URL: https://reifydb.com/docs/functions/text/
 ===============================================================================
 
 $
@@ -28276,7 +28276,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/ascii
+URL: https://reifydb.com/docs/functions/text/ascii/
 ===============================================================================
 
 $
@@ -28503,7 +28503,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/char
+URL: https://reifydb.com/docs/functions/text/char/
 ===============================================================================
 
 $
@@ -28730,7 +28730,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/concat
+URL: https://reifydb.com/docs/functions/text/concat/
 ===============================================================================
 
 $
@@ -28958,7 +28958,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/contains
+URL: https://reifydb.com/docs/functions/text/contains/
 ===============================================================================
 
 $
@@ -29188,7 +29188,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/count
+URL: https://reifydb.com/docs/functions/text/count/
 ===============================================================================
 
 $
@@ -29416,7 +29416,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/ends_with
+URL: https://reifydb.com/docs/functions/text/ends_with/
 ===============================================================================
 
 $
@@ -29645,7 +29645,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/format_bytes
+URL: https://reifydb.com/docs/functions/text/format_bytes/
 ===============================================================================
 
 $
@@ -29872,7 +29872,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/format_bytes_si
+URL: https://reifydb.com/docs/functions/text/format_bytes_si/
 ===============================================================================
 
 $
@@ -30099,7 +30099,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/index_of
+URL: https://reifydb.com/docs/functions/text/index_of/
 ===============================================================================
 
 $
@@ -30328,7 +30328,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/length
+URL: https://reifydb.com/docs/functions/text/length/
 ===============================================================================
 
 $
@@ -30581,7 +30581,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/lower
+URL: https://reifydb.com/docs/functions/text/lower/
 ===============================================================================
 
 $
@@ -30809,7 +30809,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/pad_left
+URL: https://reifydb.com/docs/functions/text/pad_left/
 ===============================================================================
 
 $
@@ -31039,7 +31039,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/pad_right
+URL: https://reifydb.com/docs/functions/text/pad_right/
 ===============================================================================
 
 $
@@ -31269,7 +31269,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/repeat
+URL: https://reifydb.com/docs/functions/text/repeat/
 ===============================================================================
 
 $
@@ -31498,7 +31498,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/replace
+URL: https://reifydb.com/docs/functions/text/replace/
 ===============================================================================
 
 $
@@ -31728,7 +31728,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/reverse
+URL: https://reifydb.com/docs/functions/text/reverse/
 ===============================================================================
 
 $
@@ -31956,7 +31956,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/starts_with
+URL: https://reifydb.com/docs/functions/text/starts_with/
 ===============================================================================
 
 $
@@ -32185,7 +32185,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/substring
+URL: https://reifydb.com/docs/functions/text/substring/
 ===============================================================================
 
 $
@@ -32441,7 +32441,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/trim
+URL: https://reifydb.com/docs/functions/text/trim/
 ===============================================================================
 
 $
@@ -32683,7 +32683,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/trim_end
+URL: https://reifydb.com/docs/functions/text/trim_end/
 ===============================================================================
 
 $
@@ -32911,7 +32911,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/trim_start
+URL: https://reifydb.com/docs/functions/text/trim_start/
 ===============================================================================
 
 $
@@ -33139,7 +33139,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/text/upper
+URL: https://reifydb.com/docs/functions/text/upper/
 ===============================================================================
 
 $
@@ -33381,7 +33381,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time
+URL: https://reifydb.com/docs/functions/time/
 ===============================================================================
 
 $
@@ -33650,7 +33650,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time/add
+URL: https://reifydb.com/docs/functions/time/add/
 ===============================================================================
 
 $
@@ -33879,7 +33879,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time/age
+URL: https://reifydb.com/docs/functions/time/age/
 ===============================================================================
 
 $
@@ -34108,7 +34108,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time/diff
+URL: https://reifydb.com/docs/functions/time/diff/
 ===============================================================================
 
 $
@@ -34337,7 +34337,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time/format
+URL: https://reifydb.com/docs/functions/time/format/
 ===============================================================================
 
 $
@@ -34565,7 +34565,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time/hour
+URL: https://reifydb.com/docs/functions/time/hour/
 ===============================================================================
 
 $
@@ -34793,7 +34793,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time/minute
+URL: https://reifydb.com/docs/functions/time/minute/
 ===============================================================================
 
 $
@@ -35021,7 +35021,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time/nanosecond
+URL: https://reifydb.com/docs/functions/time/nanosecond/
 ===============================================================================
 
 $
@@ -35248,7 +35248,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time/new
+URL: https://reifydb.com/docs/functions/time/new/
 ===============================================================================
 
 $
@@ -35477,7 +35477,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time/now
+URL: https://reifydb.com/docs/functions/time/now/
 ===============================================================================
 
 $
@@ -35706,7 +35706,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time/second
+URL: https://reifydb.com/docs/functions/time/second/
 ===============================================================================
 
 $
@@ -35934,7 +35934,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time/subtract
+URL: https://reifydb.com/docs/functions/time/subtract/
 ===============================================================================
 
 $
@@ -36163,7 +36163,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/functions/time/trunc
+URL: https://reifydb.com/docs/functions/time/trunc/
 ===============================================================================
 
 $
@@ -36391,7 +36391,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/installation
+URL: https://reifydb.com/docs/installation/
 ===============================================================================
 
 $
@@ -36637,7 +36637,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/quick-start
+URL: https://reifydb.com/docs/quick-start/
 ===============================================================================
 
 $
@@ -36949,7 +36949,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/rql/basics
+URL: https://reifydb.com/docs/rql/basics/
 ===============================================================================
 
 $
@@ -37220,7 +37220,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/rql/expressions
+URL: https://reifydb.com/docs/rql/expressions/
 ===============================================================================
 
 $
@@ -37526,7 +37526,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/rql/expressions/operators
+URL: https://reifydb.com/docs/rql/expressions/operators/
 ===============================================================================
 
 $
@@ -37755,7 +37755,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/rql/transforms
+URL: https://reifydb.com/docs/rql/transforms/
 ===============================================================================
 
 $
@@ -38081,7 +38081,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/rql/transforms/filter
+URL: https://reifydb.com/docs/rql/transforms/filter/
 ===============================================================================
 
 $
@@ -38326,7 +38326,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/rql/transforms/sort
+URL: https://reifydb.com/docs/rql/transforms/sort/
 ===============================================================================
 
 $
@@ -38590,7 +38590,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/examples
+URL: https://reifydb.com/examples/
 ===============================================================================
 
 $
@@ -38673,7 +38673,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/faq
+URL: https://reifydb.com/faq/
 ===============================================================================
 
 $
@@ -38755,7 +38755,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/playground
+URL: https://reifydb.com/playground/
 ===============================================================================
 
 $
@@ -38799,7 +38799,7 @@ SCHEMA
 $ run a query to see results
 
 ===============================================================================
-URL: https://reifydb.com/support
+URL: https://reifydb.com/support/
 ===============================================================================
 
 $
@@ -38878,7 +38878,7 @@ X (Twitter)
 License: AGPL-3.0
 
 ===============================================================================
-URL: https://reifydb.com/tour
+URL: https://reifydb.com/tour/
 ===============================================================================
 
 $

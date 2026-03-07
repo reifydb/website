@@ -5,687 +5,687 @@
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/contact</loc>
+    <loc>https://reifydb.com/contact/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/support</loc>
+    <loc>https://reifydb.com/support/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/faq</loc>
+    <loc>https://reifydb.com/faq/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/company/values</loc>
+    <loc>https://reifydb.com/company/values/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/company/mission</loc>
+    <loc>https://reifydb.com/company/mission/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs</loc>
+    <loc>https://reifydb.com/docs/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/installation</loc>
+    <loc>https://reifydb.com/docs/installation/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/quick-start</loc>
+    <loc>https://reifydb.com/docs/quick-start/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/rql/basics</loc>
+    <loc>https://reifydb.com/docs/rql/basics/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/rql/transforms</loc>
+    <loc>https://reifydb.com/docs/rql/transforms/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/rql/expressions</loc>
+    <loc>https://reifydb.com/docs/rql/expressions/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/rql/transforms/filter</loc>
+    <loc>https://reifydb.com/docs/rql/transforms/filter/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/rql/transforms/sort</loc>
+    <loc>https://reifydb.com/docs/rql/transforms/sort/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/rql/expressions/operators</loc>
+    <loc>https://reifydb.com/docs/rql/expressions/operators/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions</loc>
+    <loc>https://reifydb.com/docs/functions/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/blob</loc>
+    <loc>https://reifydb.com/docs/functions/blob/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/blob/b58</loc>
+    <loc>https://reifydb.com/docs/functions/blob/b58/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/blob/b64</loc>
+    <loc>https://reifydb.com/docs/functions/blob/b64/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/blob/b64url</loc>
+    <loc>https://reifydb.com/docs/functions/blob/b64url/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/blob/hex</loc>
+    <loc>https://reifydb.com/docs/functions/blob/hex/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/blob/utf8</loc>
+    <loc>https://reifydb.com/docs/functions/blob/utf8/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/clock</loc>
+    <loc>https://reifydb.com/docs/functions/clock/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/clock/now</loc>
+    <loc>https://reifydb.com/docs/functions/clock/now/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/clock/set</loc>
+    <loc>https://reifydb.com/docs/functions/clock/set/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/clock/advance</loc>
+    <loc>https://reifydb.com/docs/functions/clock/advance/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date</loc>
+    <loc>https://reifydb.com/docs/functions/date/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/year</loc>
+    <loc>https://reifydb.com/docs/functions/date/year/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/month</loc>
+    <loc>https://reifydb.com/docs/functions/date/month/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/day</loc>
+    <loc>https://reifydb.com/docs/functions/date/day/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/now</loc>
+    <loc>https://reifydb.com/docs/functions/date/now/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/add</loc>
+    <loc>https://reifydb.com/docs/functions/date/add/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/diff</loc>
+    <loc>https://reifydb.com/docs/functions/date/diff/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/format</loc>
+    <loc>https://reifydb.com/docs/functions/date/format/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/day_of_year</loc>
+    <loc>https://reifydb.com/docs/functions/date/day_of_year/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/day_of_week</loc>
+    <loc>https://reifydb.com/docs/functions/date/day_of_week/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/quarter</loc>
+    <loc>https://reifydb.com/docs/functions/date/quarter/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/week</loc>
+    <loc>https://reifydb.com/docs/functions/date/week/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/is_leap_year</loc>
+    <loc>https://reifydb.com/docs/functions/date/is_leap_year/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/days_in_month</loc>
+    <loc>https://reifydb.com/docs/functions/date/days_in_month/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/end_of_month</loc>
+    <loc>https://reifydb.com/docs/functions/date/end_of_month/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/start_of_month</loc>
+    <loc>https://reifydb.com/docs/functions/date/start_of_month/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/start_of_year</loc>
+    <loc>https://reifydb.com/docs/functions/date/start_of_year/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/new</loc>
+    <loc>https://reifydb.com/docs/functions/date/new/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/subtract</loc>
+    <loc>https://reifydb.com/docs/functions/date/subtract/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/trunc</loc>
+    <loc>https://reifydb.com/docs/functions/date/trunc/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/date/age</loc>
+    <loc>https://reifydb.com/docs/functions/date/age/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/year</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/year/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/month</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/month/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/day</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/day/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/hour</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/hour/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/minute</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/minute/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/second</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/second/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/nanosecond</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/nanosecond/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/day_of_year</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/day_of_year/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/day_of_week</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/day_of_week/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/quarter</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/quarter/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/week</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/week/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/date</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/date/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/time</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/time/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/epoch</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/epoch/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/epoch_millis</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/epoch_millis/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/new</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/new/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/now</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/now/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/from_epoch</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/from_epoch/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/from_epoch_millis</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/from_epoch_millis/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/add</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/add/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/subtract</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/subtract/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/diff</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/diff/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/trunc</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/trunc/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/age</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/age/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/datetime/format</loc>
+    <loc>https://reifydb.com/docs/functions/datetime/format/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration</loc>
+    <loc>https://reifydb.com/docs/functions/duration/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/years</loc>
+    <loc>https://reifydb.com/docs/functions/duration/years/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/months</loc>
+    <loc>https://reifydb.com/docs/functions/duration/months/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/weeks</loc>
+    <loc>https://reifydb.com/docs/functions/duration/weeks/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/days</loc>
+    <loc>https://reifydb.com/docs/functions/duration/days/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/hours</loc>
+    <loc>https://reifydb.com/docs/functions/duration/hours/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/minutes</loc>
+    <loc>https://reifydb.com/docs/functions/duration/minutes/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/seconds</loc>
+    <loc>https://reifydb.com/docs/functions/duration/seconds/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/millis</loc>
+    <loc>https://reifydb.com/docs/functions/duration/millis/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/get_months</loc>
+    <loc>https://reifydb.com/docs/functions/duration/get_months/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/get_days</loc>
+    <loc>https://reifydb.com/docs/functions/duration/get_days/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/get_nanos</loc>
+    <loc>https://reifydb.com/docs/functions/duration/get_nanos/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/add</loc>
+    <loc>https://reifydb.com/docs/functions/duration/add/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/subtract</loc>
+    <loc>https://reifydb.com/docs/functions/duration/subtract/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/negate</loc>
+    <loc>https://reifydb.com/docs/functions/duration/negate/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/scale</loc>
+    <loc>https://reifydb.com/docs/functions/duration/scale/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/trunc</loc>
+    <loc>https://reifydb.com/docs/functions/duration/trunc/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/duration/format</loc>
+    <loc>https://reifydb.com/docs/functions/duration/format/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/identity</loc>
+    <loc>https://reifydb.com/docs/functions/identity/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/identity/id</loc>
+    <loc>https://reifydb.com/docs/functions/identity/id/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/is</loc>
+    <loc>https://reifydb.com/docs/functions/is/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/is/some</loc>
+    <loc>https://reifydb.com/docs/functions/is/some/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/is/none</loc>
+    <loc>https://reifydb.com/docs/functions/is/none/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/is/type</loc>
+    <loc>https://reifydb.com/docs/functions/is/type/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/is/root</loc>
+    <loc>https://reifydb.com/docs/functions/is/root/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/is/anonymous</loc>
+    <loc>https://reifydb.com/docs/functions/is/anonymous/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math</loc>
+    <loc>https://reifydb.com/docs/functions/math/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/sum</loc>
+    <loc>https://reifydb.com/docs/functions/math/sum/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/avg</loc>
+    <loc>https://reifydb.com/docs/functions/math/avg/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/min</loc>
+    <loc>https://reifydb.com/docs/functions/math/min/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/max</loc>
+    <loc>https://reifydb.com/docs/functions/math/max/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/abs</loc>
+    <loc>https://reifydb.com/docs/functions/math/abs/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/round</loc>
+    <loc>https://reifydb.com/docs/functions/math/round/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/floor</loc>
+    <loc>https://reifydb.com/docs/functions/math/floor/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/ceil</loc>
+    <loc>https://reifydb.com/docs/functions/math/ceil/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/power</loc>
+    <loc>https://reifydb.com/docs/functions/math/power/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/acos</loc>
+    <loc>https://reifydb.com/docs/functions/math/acos/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/asin</loc>
+    <loc>https://reifydb.com/docs/functions/math/asin/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/atan</loc>
+    <loc>https://reifydb.com/docs/functions/math/atan/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/atan2</loc>
+    <loc>https://reifydb.com/docs/functions/math/atan2/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/clamp</loc>
+    <loc>https://reifydb.com/docs/functions/math/clamp/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/cos</loc>
+    <loc>https://reifydb.com/docs/functions/math/cos/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/e</loc>
+    <loc>https://reifydb.com/docs/functions/math/e/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/exp</loc>
+    <loc>https://reifydb.com/docs/functions/math/exp/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/gcd</loc>
+    <loc>https://reifydb.com/docs/functions/math/gcd/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/lcm</loc>
+    <loc>https://reifydb.com/docs/functions/math/lcm/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/log</loc>
+    <loc>https://reifydb.com/docs/functions/math/log/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/log10</loc>
+    <loc>https://reifydb.com/docs/functions/math/log10/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/log2</loc>
+    <loc>https://reifydb.com/docs/functions/math/log2/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/mod</loc>
+    <loc>https://reifydb.com/docs/functions/math/mod/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/pi</loc>
+    <loc>https://reifydb.com/docs/functions/math/pi/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/sign</loc>
+    <loc>https://reifydb.com/docs/functions/math/sign/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/sin</loc>
+    <loc>https://reifydb.com/docs/functions/math/sin/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/sqrt</loc>
+    <loc>https://reifydb.com/docs/functions/math/sqrt/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/tan</loc>
+    <loc>https://reifydb.com/docs/functions/math/tan/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/math/truncate</loc>
+    <loc>https://reifydb.com/docs/functions/math/truncate/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/meta</loc>
+    <loc>https://reifydb.com/docs/functions/meta/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/meta/type</loc>
+    <loc>https://reifydb.com/docs/functions/meta/type/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text</loc>
+    <loc>https://reifydb.com/docs/functions/text/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/lower</loc>
+    <loc>https://reifydb.com/docs/functions/text/lower/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/upper</loc>
+    <loc>https://reifydb.com/docs/functions/text/upper/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/trim</loc>
+    <loc>https://reifydb.com/docs/functions/text/trim/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/length</loc>
+    <loc>https://reifydb.com/docs/functions/text/length/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/concat</loc>
+    <loc>https://reifydb.com/docs/functions/text/concat/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/substring</loc>
+    <loc>https://reifydb.com/docs/functions/text/substring/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/ascii</loc>
+    <loc>https://reifydb.com/docs/functions/text/ascii/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/char</loc>
+    <loc>https://reifydb.com/docs/functions/text/char/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/contains</loc>
+    <loc>https://reifydb.com/docs/functions/text/contains/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/count</loc>
+    <loc>https://reifydb.com/docs/functions/text/count/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/ends_with</loc>
+    <loc>https://reifydb.com/docs/functions/text/ends_with/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/index_of</loc>
+    <loc>https://reifydb.com/docs/functions/text/index_of/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/pad_left</loc>
+    <loc>https://reifydb.com/docs/functions/text/pad_left/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/pad_right</loc>
+    <loc>https://reifydb.com/docs/functions/text/pad_right/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/repeat</loc>
+    <loc>https://reifydb.com/docs/functions/text/repeat/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/replace</loc>
+    <loc>https://reifydb.com/docs/functions/text/replace/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/reverse</loc>
+    <loc>https://reifydb.com/docs/functions/text/reverse/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/starts_with</loc>
+    <loc>https://reifydb.com/docs/functions/text/starts_with/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/trim_end</loc>
+    <loc>https://reifydb.com/docs/functions/text/trim_end/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/trim_start</loc>
+    <loc>https://reifydb.com/docs/functions/text/trim_start/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/format_bytes</loc>
+    <loc>https://reifydb.com/docs/functions/text/format_bytes/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/text/format_bytes_si</loc>
+    <loc>https://reifydb.com/docs/functions/text/format_bytes_si/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time</loc>
+    <loc>https://reifydb.com/docs/functions/time/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time/hour</loc>
+    <loc>https://reifydb.com/docs/functions/time/hour/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time/minute</loc>
+    <loc>https://reifydb.com/docs/functions/time/minute/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time/second</loc>
+    <loc>https://reifydb.com/docs/functions/time/second/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time/nanosecond</loc>
+    <loc>https://reifydb.com/docs/functions/time/nanosecond/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time/new</loc>
+    <loc>https://reifydb.com/docs/functions/time/new/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time/now</loc>
+    <loc>https://reifydb.com/docs/functions/time/now/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time/add</loc>
+    <loc>https://reifydb.com/docs/functions/time/add/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time/subtract</loc>
+    <loc>https://reifydb.com/docs/functions/time/subtract/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time/diff</loc>
+    <loc>https://reifydb.com/docs/functions/time/diff/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time/trunc</loc>
+    <loc>https://reifydb.com/docs/functions/time/trunc/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time/age</loc>
+    <loc>https://reifydb.com/docs/functions/time/age/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/functions/time/format</loc>
+    <loc>https://reifydb.com/docs/functions/time/format/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/examples</loc>
+    <loc>https://reifydb.com/examples/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/tour</loc>
+    <loc>https://reifydb.com/tour/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/blog</loc>
+    <loc>https://reifydb.com/blog/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/playground</loc>
+    <loc>https://reifydb.com/playground/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/blog/introducing-reifydb</loc>
+    <loc>https://reifydb.com/blog/introducing-reifydb/</loc>
     <lastmod>2026-03-07</lastmod>
   </url>
 </urlset>
