@@ -16,8 +16,8 @@ export function ContactPage() {
                 Get in Touch
               </h1>
               <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-                Whether you have questions about ReifyDB, want to discuss your use case,
-                or are interested in commercial licensing, I'd love to hear from you.
+                Whether you have questions about ReifyDB or want to discuss your use case,
+                I'd love to hear from you.
               </p>
             </div>
           </ScrollReveal>
@@ -28,7 +28,7 @@ export function ContactPage() {
               <span className="text-primary text-2xl font-mono">[&gt;]</span>
               <h2 className="text-2xl font-bold mb-4 mt-4">Book a Call</h2>
               <p className="text-text-muted mb-6 max-w-md mx-auto">
-                Schedule a 30-minute call to discuss ReifyDB, your use case, or explore commercial options.
+                Schedule a 30-minute call to discuss ReifyDB, your use case, or explore how ReifyDB can help.
               </p>
               <a
                 href="https://cal.com/reifydb/30min"
@@ -70,17 +70,6 @@ export function ContactPage() {
             </ScrollReveal>
           </div>
 
-          {/* Commercial Licensing Note */}
-          <ScrollReveal delay={350}>
-            <div className="mt-12 p-6 border-2 border-dashed border-black/25 transition-all duration-300 hover:border-primary/50">
-              <h3 className="font-bold mb-2">Commercial Licensing</h3>
-              <p className="text-text-muted text-sm leading-relaxed">
-                If you want to use ReifyDB without AGPL obligations - embed it in proprietary applications,
-                offer it as a hosted service, or avoid open-sourcing your modifications - contact me about
-                commercial licensing options.
-              </p>
-            </div>
-          </ScrollReveal>
         </div>
       </main>
 

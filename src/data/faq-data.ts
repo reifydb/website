@@ -18,7 +18,7 @@ export const faqs: FaqItemData[] = [
   },
   {
     question: 'What is the licensing model?',
-    answer: 'ReifyDB uses dual licensing: AGPL-3.0 for open-source users and contributors, and a commercial license for closed-source or hosted use. This keeps ReifyDB open, fair, and sustainable while making it easy for teams to build with confidence.',
+    answer: 'ReifyDB is licensed under Apache 2.0. You are free to use, modify, and distribute it under the terms of the license.',
   },
   {
     question: 'Can I embed ReifyDB in my application?',
@@ -30,7 +30,7 @@ export const faqs: FaqItemData[] = [
   },
   {
     question: 'Why should I trust a new database?',
-    answer: 'ReifyDB is open source under AGPL-3.0, so you can inspect every line. The core is written in Rust for memory safety and performance. Development is active and transparent on GitHub. For production use cases requiring support guarantees, commercial licenses are available.',
+    answer: 'ReifyDB is open source under Apache 2.0, so you can inspect every line. The core is written in Rust for memory safety and performance. Development is active and transparent on GitHub.',
   },
   {
     question: 'What can I use ReifyDB for today?',

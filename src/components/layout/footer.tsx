@@ -84,7 +84,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            License: AGPL-3.0
+            License: Apache-2.0
           </a>
         </div>
       </div>
