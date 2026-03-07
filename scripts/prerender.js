@@ -131,8 +131,13 @@ async function prerender() {
           // Extract title from h1
           const h1Text = await page.$eval('h1', (el) => el.textContent?.trim() || '').catch(() => '');
 
-          // Get the full HTML
-          let html = await page.evaluate(() => document.documentElement.outerHTML);
+          // Get the cleaned HTML — remove runtime-injected styles but keep scripts
+          let html = await page.evaluate(() => {
+            // Remove runtime-injected <style> tags (Monaco codicon CSS, etc.)
+            // These bloat the HTML and overwhelm text extractors
+            document.querySelectorAll('style').forEach((el) => el.remove());
+            return document.documentElement.outerHTML;
+          });
 
           // Inject per-page title if h1 was found
           if (h1Text) {
