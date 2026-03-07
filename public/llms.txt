@@ -1,0 +1,47 @@
+# ReifyDB
+
+> A database designed to manage live application state with transactional guarantees, incremental derived state, and programmable state transitions.
+
+## Docs
+
+- [Introduction](https://reifydb.com/docs): Overview of ReifyDB
+- [Installation](https://reifydb.com/docs/installation): How to install ReifyDB
+- [Quick Start](https://reifydb.com/docs/quick-start): Get started quickly
+
+## RQL (ReifyDB Query Language)
+
+- [Basics](https://reifydb.com/docs/rql/basics): RQL fundamentals
+- [Transforms](https://reifydb.com/docs/rql/transforms): Data transformation overview
+  - [Filter](https://reifydb.com/docs/rql/transforms/filter): Filtering data
+  - [Sort](https://reifydb.com/docs/rql/transforms/sort): Sorting data
+- [Expressions](https://reifydb.com/docs/rql/expressions): Expression overview
+  - [Operators](https://reifydb.com/docs/rql/expressions/operators): Available operators
+
+## Functions
+
+- [Overview](https://reifydb.com/docs/functions): Function reference overview
+- [blob](https://reifydb.com/docs/functions/blob): Binary data functions (b58, b64, b64url, hex, utf8)
+- [clock](https://reifydb.com/docs/functions/clock): Clock manipulation (advance, now, set)
+- [date](https://reifydb.com/docs/functions/date): Date functions (add, age, day, diff, format, month, year, etc.)
+- [datetime](https://reifydb.com/docs/functions/datetime): DateTime functions (add, age, date, day, diff, epoch, format, etc.)
+- [duration](https://reifydb.com/docs/functions/duration): Duration functions (add, days, format, hours, minutes, months, etc.)
+- [identity](https://reifydb.com/docs/functions/identity): Identity functions (id)
+- [is](https://reifydb.com/docs/functions/is): Type checking (anonymous, none, root, some, type)
+- [math](https://reifydb.com/docs/functions/math): Math functions (abs, avg, ceil, cos, exp, floor, log, max, min, pi, round, sin, sqrt, sum, tan, etc.)
+- [meta](https://reifydb.com/docs/functions/meta): Metadata functions (type)
+- [text](https://reifydb.com/docs/functions/text): Text functions (concat, contains, length, lower, replace, substring, trim, upper, etc.)
+- [time](https://reifydb.com/docs/functions/time): Time functions (add, age, diff, format, hour, minute, now, second, etc.)
+
+## Other
+
+- [Examples](https://reifydb.com/examples): Example queries and usage
+- [Playground](https://reifydb.com/playground): Interactive RQL playground
+- [Tour](https://reifydb.com/tour): Guided tour of ReifyDB
+- [Blog](https://reifydb.com/blog): Latest news and articles
+- [FAQ](https://reifydb.com/faq): Frequently asked questions
+- [Support](https://reifydb.com/support): Get help with ReifyDB
+- [Contact](https://reifydb.com/contact): Contact information
+
+## Optional
+
+- [Full content](https://reifydb.com/llms-full.txt): Complete site content in plain text

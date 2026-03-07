@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "prerender": "node scripts/prerender.js"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
