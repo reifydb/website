@@ -172,10 +172,11 @@ async function prerender() {
   // --- Generate sitemap.xml ---
   const today = new Date().toISOString().split('T')[0];
   const sitemapEntries = routes
-    .map(
-      (route) =>
-        `  <url>\n    <loc>${BASE_URL}${route}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`,
-    )
+    .map((route) => {
+      // Add trailing slash for GitHub Pages canonical URLs (avoids 301 redirects)
+      const loc = route === '/' ? `${BASE_URL}/` : `${BASE_URL}${route}/`;
+      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`;
+    })
     .join('\n');
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -190,7 +191,7 @@ ${sitemapEntries}
   pageTexts.sort((a, b) => a.route.localeCompare(b.route));
   const llmsFull = pageTexts
     .map(({ route, text }) => {
-      const url = `${BASE_URL}${route}`;
+      const url = route === '/' ? `${BASE_URL}/` : `${BASE_URL}${route}/`;
       const trimmed = text.trim();
       return `===============================================================================\nURL: ${url}\n===============================================================================\n\n${trimmed}`;
     })
