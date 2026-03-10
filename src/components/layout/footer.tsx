@@ -22,6 +22,7 @@ const sections = [
     links: [
       { label: "GitHub", href: "https://github.com/reifydb/reifydb" },
       { label: "X (Twitter)", href: "https://x.com/reifydb" },
+      { label: "Discord", href: "https://discord.gg/rQxDkSua" },
     ],
   },
 ] as const;

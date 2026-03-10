@@ -143,6 +143,16 @@ export function DocsOverview() {
                 </a>
               </li>
               <li>
+                <a
+                  href="https://discord.gg/rQxDkSua"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-primary-light font-medium transition-colors link-underline"
+                >
+                  Discord Community --&gt;
+                </a>
+              </li>
+              <li>
                 <Link to="/contact" className="text-primary hover:text-primary-light font-medium transition-colors link-underline">
                   Contact Me --&gt;
                 </Link>

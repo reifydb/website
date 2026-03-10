@@ -72,6 +72,17 @@ export function FaqSection() {
             >
               View All FAQs --&gt;
             </Link>
+            <p className="mt-3 text-sm text-text-muted">
+              Still have questions?{' '}
+              <a
+                href="https://discord.gg/rQxDkSua"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline underline-offset-4 hover:text-primary-light transition-colors"
+              >
+                Ask on Discord --&gt;
+              </a>
+            </p>
           </div>
         </ScrollReveal>
       </div>
