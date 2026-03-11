@@ -61,6 +61,18 @@ Logic lives next to data
 
 Put your logic next to your data, inside the transaction. Fewer network hops, tighter guarantees.
 
+# BUILDING-WITH
+
+Building With
+
+Backed by world-class partners and programs.
+
+A
+
+APPWORKS COHORT #32
+
+Selected for AppWorks accelerator program, Asia's leading founder community and venture fund.
+
 # CAPABILITIES
 
 Why ReifyDB
