@@ -1,4 +1,5 @@
 export { HeroSection } from './hero'
+export { BuildingWithSection } from './building-with'
 export { UseCasesSection } from './use-cases'
 export { CapabilitiesSection } from './capabilities'
 export { HowItWorksSection } from './how-it-works'
