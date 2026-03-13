@@ -74,7 +74,7 @@ export function Navbar() {
             />
             <span className="text-primary font-mono">$</span>
             <span className="font-bold text-lg tracking-tight text-text-primary">
-              reifydb
+              ReifyDB
             </span>
           </Link>
 

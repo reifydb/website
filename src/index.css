@@ -569,3 +569,15 @@ h1, h2, h3, h4, h5, h6 {
 .sidebar-no-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
 }
+
+/* ========================================
+   FULLSCREEN
+   ======================================== */
+
+div:fullscreen {
+  background-color: var(--color-bg-primary);
+}
+
+div::backdrop {
+  background-color: var(--color-bg-primary);
+}

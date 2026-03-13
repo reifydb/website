@@ -10,6 +10,7 @@ import { DocsGate } from '@/components/docs-gate';
 import { BlogListingPage, BlogPostPage } from '@/pages/blog';
 import { ExamplesPage } from '@/pages/examples';
 import { TourPage } from '@/pages/tour';
+import { PitchPage } from '@/pages/pitch';
 import { PlaygroundPage } from '@/pages/playground';
 import { NotFoundPage } from '@/pages/not-found';
 import {
@@ -877,6 +878,10 @@ export const router = createBrowserRouter([
       {
         path: '/tour',
         element: <TourPage />,
+      },
+      {
+        path: '/pitch',
+        element: <PitchPage />,
       },
       {
         path: '/blog',
