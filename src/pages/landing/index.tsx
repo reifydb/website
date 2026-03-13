@@ -7,6 +7,7 @@ import {
   CodeExampleSection,
   UseCasesSection,
   HowItWorksSection,
+  AmdahlSection,
   ReplacesSection,
   FaqSection,
 } from './sections';
@@ -28,6 +29,8 @@ export function LandingPage() {
         <UseCasesSection />
 
         <HowItWorksSection />
+
+        <AmdahlSection />
 
         <ReplacesSection />
 

@@ -12,14 +12,14 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/console':
-        specifier: ^0.4.0
-        version: 0.4.0(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^0.4.1
+        version: 0.4.1(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/core':
-        specifier: ^0.4.0
-        version: 0.4.0
+        specifier: ^0.4.1
+        version: 0.4.1
       '@reifydb/wasm':
-        specifier: ^0.4.0
-        version: 0.4.0
+        specifier: ^0.4.1
+        version: 0.4.1
       '@tsparticles/engine':
         specifier: ^3.9.1
         version: 3.9.1
@@ -77,7 +77,7 @@ importers:
         version: 5.1.2(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2))
       '@vitest/browser':
         specifier: ^4.0.18
-        version: 4.0.18(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2))(vitest@4.0.18(@types/node@24.10.4)(@vitest/browser-playwright@4.0.18)(happy-dom@20.5.0)(jiti@2.6.1)(jsdom@28.0.0)(lightningcss@1.30.2))
+        version: 4.0.18(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2))(vitest@4.0.18)
       '@vitest/browser-playwright':
         specifier: ^4.0.18
         version: 4.0.18(playwright@1.58.1)(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2))(vitest@4.0.18)
@@ -506,12 +506,12 @@ packages:
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
-  '@reifydb/client@0.4.0':
-    resolution: {integrity: sha512-CohJkph0EaBtG42fbvYZYbCmTtW1tmq4w5uR6eoy/B1JK63eskrQAaL+/63at0hb6V273EYXpaaG2T7Ne9umeQ==}
+  '@reifydb/client@0.4.1':
+    resolution: {integrity: sha512-HcKZTJZoIFM82r44JOdFkQmUSZxFZEhIITqVMpXTI0BnjlZOPMTQabAiUkq6lHed85uGbfpH3GU/Py+psx3saA==}
     engines: {node: '>=16.0.0'}
 
-  '@reifydb/console@0.4.0':
-    resolution: {integrity: sha512-L9bQ4w623Wa+d21xRMJW/ztRy2iXk7fUoiu42Pdz/sRjos7POrT/aEIxjX7CwGs1UtcHaeJDBl5xaUt4I3CPvw==}
+  '@reifydb/console@0.4.1':
+    resolution: {integrity: sha512-FqHCY4ZELCHKs7t1uGvcAMqaa8+q4lGAyFHSs4/LYhfjh7dSowMNNc4DEQyg45rQ0HWfH7MZBmkSqW7VXn0ODA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@monaco-editor/react': '>=4.0.0'
@@ -519,12 +519,12 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@reifydb/core@0.4.0':
-    resolution: {integrity: sha512-9qm5x9+vchuM4I9edepb4ESpcN713OlFAnk3B6RIrTRRL3N49AwGTmZHGwJcARUuIGD3vCvXcjUdsZcDNYQSFA==}
+  '@reifydb/core@0.4.1':
+    resolution: {integrity: sha512-U5tSt1E3aXXGJLcJWgBdBooTePom3VMqML+PDMj2HM57UQkRmgYav3Z3XjC6mTCI8c444+QrAmHUD9SJQFyfFA==}
     engines: {node: '>=16.0.0'}
 
-  '@reifydb/wasm@0.4.0':
-    resolution: {integrity: sha512-ja4aFqfeUc2EZ/WscU4qfo3eWFyNMb3QTlj5a6l7lkXbyxN7/FqF2bonYO7p+ep1Wxy9mgpr6YlXMWSuHFpqwQ==}
+  '@reifydb/wasm@0.4.1':
+    resolution: {integrity: sha512-DhL//3WEtVPzEy8D86OyqRYzBzCKlODhL7kuil6p5dpbWJdvZYhDCBxrXmFCyxBsW/G+o4Br4mEqZL9vbQ7MSw==}
     engines: {node: '>=16.0.0'}
 
   '@rolldown/pluginutils@1.0.0-beta.53':
@@ -2683,20 +2683,20 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
-  '@reifydb/client@0.4.0':
+  '@reifydb/client@0.4.1':
     dependencies:
-      '@reifydb/core': 0.4.0
+      '@reifydb/core': 0.4.1
       uuid: 11.1.0
       ws: 8.19.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@reifydb/console@0.4.0(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@reifydb/console@0.4.1(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@monaco-editor/react': 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@reifydb/client': 0.4.0
-      '@reifydb/core': 0.4.0
+      '@reifydb/client': 0.4.1
+      '@reifydb/core': 0.4.1
       monaco-editor: 0.55.1
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -2704,13 +2704,13 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@reifydb/core@0.4.0':
+  '@reifydb/core@0.4.1':
     dependencies:
       uuid: 11.1.0
 
-  '@reifydb/wasm@0.4.0':
+  '@reifydb/wasm@0.4.1':
     dependencies:
-      '@reifydb/core': 0.4.0
+      '@reifydb/core': 0.4.1
 
   '@rolldown/pluginutils@1.0.0-beta.53': {}
 
@@ -3272,7 +3272,7 @@ snapshots:
 
   '@vitest/browser-playwright@4.0.18(playwright@1.58.1)(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2))(vitest@4.0.18)':
     dependencies:
-      '@vitest/browser': 4.0.18(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2))(vitest@4.0.18(@types/node@24.10.4)(@vitest/browser-playwright@4.0.18)(happy-dom@20.5.0)(jiti@2.6.1)(jsdom@28.0.0)(lightningcss@1.30.2))
+      '@vitest/browser': 4.0.18(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2))(vitest@4.0.18)
       '@vitest/mocker': 4.0.18(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2))
       playwright: 1.58.1
       tinyrainbow: 3.0.3
@@ -3283,7 +3283,7 @@ snapshots:
       - utf-8-validate
       - vite
 
-  '@vitest/browser@4.0.18(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2))(vitest@4.0.18(@types/node@24.10.4)(@vitest/browser-playwright@4.0.18)(happy-dom@20.5.0)(jiti@2.6.1)(jsdom@28.0.0)(lightningcss@1.30.2))':
+  '@vitest/browser@4.0.18(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2))(vitest@4.0.18)':
     dependencies:
       '@vitest/mocker': 4.0.18(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2))
       '@vitest/utils': 4.0.18
