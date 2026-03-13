@@ -81,7 +81,7 @@ export function PitchPage() {
       </div>
 
       {/* Main content — top-aligned, horizontally centered */}
-      <main className="flex-1 flex justify-center">
+      <main className="flex-1 flex justify-center items-center">
         <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 md:px-8 py-2 sm:py-4">
           {slide.content}
         </div>
