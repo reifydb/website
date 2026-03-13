@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { landingExamples, type CodeExample } from '@/lib/examples';
+import { landingExamples, guideExamples, type CodeExample } from '@/lib/examples';
 import { PipelineVisual } from './widgets/pipeline-visual';
 
 export interface ExampleSection {
@@ -14,6 +14,7 @@ export interface ExampleSection {
 }
 
 const [inlineData, filterAgg, sortLimit] = landingExamples;
+const builtInTesting = guideExamples.find((e) => e.id === 'guide-built-in-testing')!;
 
 export const exampleSections: ExampleSection[] = [
   {
@@ -74,6 +75,29 @@ export const exampleSections: ExampleSection[] = [
           Sort accepts <code className="text-xs bg-black/5 px-1.5 py-0.5 rounded font-mono text-primary">asc</code> or{' '}
           <code className="text-xs bg-black/5 px-1.5 py-0.5 rounded font-mono text-primary">desc</code> per
           column, and you can sort by multiple columns at once.
+        </p>
+      </div>
+    ),
+  },
+  {
+    id: builtInTesting.id,
+    title: builtInTesting.title,
+    subtitle: 'Define and run tests inside the database',
+    example: builtInTesting,
+    body: (
+      <div className="space-y-3 text-sm text-text-secondary leading-relaxed">
+        <p>
+          ReifyDB has built-in testing primitives. Use{' '}
+          <code className="text-xs bg-black/5 px-1.5 py-0.5 rounded font-mono text-primary">CREATE TEST PROCEDURE</code> to
+          define reusable setup logic, and{' '}
+          <code className="text-xs bg-black/5 px-1.5 py-0.5 rounded font-mono text-primary">CREATE TEST</code> to
+          write assertions against your data using pipeline syntax.
+        </p>
+        <p>
+          Run all tests in a namespace with{' '}
+          <code className="text-xs bg-black/5 px-1.5 py-0.5 rounded font-mono text-primary">RUN TESTS</code>.
+          Each test runs in its own transaction that is rolled back afterward, so tests never interfere
+          with each other or leave behind state.
         </p>
       </div>
     ),
