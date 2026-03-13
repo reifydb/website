@@ -28,7 +28,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+11
 [> Start]
 █
 Developer Preview — APIs subject to change
@@ -147,6 +147,8 @@ Positions, balances, order state. One bad write here can cost real money. ReifyD
 >Game & Simulation State
 
 Player state, world state, simulation ticks. Everything stays consistent even when thousands of updates hit at once.
+
+[> Try Demo]
 
 >Workflow & Process State
 
@@ -331,7 +333,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+11
 [> Start]
 Blog
 
@@ -398,7 +400,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+11
 [> Start]
 <-- back to blog
 Introducing ReifyDB
@@ -508,7 +510,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+11
 [> Start]
 The Mission
 
@@ -582,7 +584,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+11
 [> Start]
 Values
 
@@ -667,7 +669,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+11
 [> Start]
 Get in Touch
 
@@ -39006,7 +39008,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+11
 [> Start]
 EXAMPLES
 Inline Data
@@ -39092,7 +39094,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+11
 [> Start]
 Frequently Asked Questions
 
@@ -39176,7 +39178,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+11
 [> Start]
 $ reifydb pitch
 slide 1 of 5
@@ -39225,7 +39227,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+11
 [> Start]
 ●
 [wasm]
@@ -39269,7 +39271,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+11
 [> Start]
 Support
 
@@ -39350,7 +39352,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+11
 [> Start]
 $ reifydb tour
 step 1 of 9
@@ -39398,3 +39400,114 @@ $ ctrl+enter to run
 [run]
 [< prev]
 [next >]
+
+===============================================================================
+URL: https://reifydb.com/use-cases/iot-farming/
+===============================================================================
+
+$
+ReifyDB
+[Developers/]
+# BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+[Resources/]
+# LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+[Company/]
+# ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+11
+[> Start]
+# ACTIONS
+↖
+Select
+✂
+Harvest
+✕
+Remove
+# CROPS
+🌾
+Wheat
+🍅
+Tomato
+🌽
+Corn
+🥬
+Lettuce
+# SENSORS
+💧
+Moisture
+🌡
+Temp
+☀
+Light
+# ACTUATORS
+🚿
+Sprinkler
+🔥
+Heater
+💡
+Lamp
+# SPEED
+⏸
+1x
+2x
+4x
+# WEATHER
+☀
+Sunny
+# RESOURCES
+Water
+0.0L
+Energy
+0.0kW
+Yield
+0
+Tick
+13
+# FARM
+Crops
+0
+Sensors
+0
+Actuators
+0
+# AUTOMATION RULES
+moisture
+temperature
+light
+<
+>
+<=
+>=
+→
+sprinkler
+heater
+lamp
+[+]
+●
+[wasm]
+ctrl+enter to run
+[clear]
+[run]
+1
+FROM farm::crops
+RESULTS
+HISTORY
+SCHEMA
+$ run a query to see results
