@@ -12,6 +12,7 @@ import { ExamplesPage } from '@/pages/examples';
 import { TourPage } from '@/pages/tour';
 import { PitchPage } from '@/pages/pitch';
 import { PlaygroundPage } from '@/pages/playground';
+import { IoTFarmingPage } from '@/pages/use-cases/iot-farming';
 import { NotFoundPage } from '@/pages/not-found';
 import {
   DocsOverview,
@@ -894,6 +895,10 @@ export const router = createBrowserRouter([
       {
         path: '/playground',
         element: <PlaygroundPage />,
+      },
+      {
+        path: '/use-cases/iot-farming',
+        element: <IoTFarmingPage />,
       },
       {
         path: '*',

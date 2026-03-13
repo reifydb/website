@@ -1,0 +1,41 @@
+type EventCallback = (...args: any[]) => void;
+
+class EventBus {
+  private listeners = new Map<string, Set<EventCallback>>();
+
+  on(event: string, callback: EventCallback): void {
+    if (!this.listeners.has(event)) {
+      this.listeners.set(event, new Set());
+    }
+    this.listeners.get(event)!.add(callback);
+  }
+
+  off(event: string, callback: EventCallback): void {
+    this.listeners.get(event)?.delete(callback);
+  }
+
+  emit(event: string, ...args: any[]): void {
+    this.listeners.get(event)?.forEach(cb => cb(...args));
+  }
+
+  removeAll(): void {
+    this.listeners.clear();
+  }
+}
+
+export const eventBus = new EventBus();
+
+// Event names
+export const EVENTS = {
+  // Phaser → React
+  TILE_CLICKED: 'tile:clicked',
+  STATE_UPDATED: 'state:updated',
+  CROP_HARVESTED: 'crop:harvested',
+
+  // React → Phaser
+  TOOL_CHANGED: 'tool:changed',
+  SPEED_CHANGED: 'speed:changed',
+  RULE_ADDED: 'rule:added',
+  RULE_TOGGLED: 'rule:toggled',
+  RULE_REMOVED: 'rule:removed',
+} as const;

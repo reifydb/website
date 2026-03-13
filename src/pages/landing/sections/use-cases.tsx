@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import { ScrollReveal } from '@/components/ui';
 
-const useCases = [
+const useCases: { title: string; description: string; href?: string }[] = [
   {
     title: 'User & Session State',
     description: 'Sessions, preferences, auth tokens. You need them consistent and fast. You get both.',
@@ -12,6 +13,7 @@ const useCases = [
   {
     title: 'Game & Simulation State',
     description: 'Player state, world state, simulation ticks. Everything stays consistent even when thousands of updates hit at once.',
+    href: '/use-cases/iot-farming',
   },
   {
     title: 'Workflow & Process State',
@@ -50,15 +52,32 @@ export function UseCasesSection() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {useCases.map((useCase, index) => (
             <ScrollReveal key={useCase.title} delay={index * 75}>
-              <div className="group border-2 border-dashed border-black/25 p-6 h-full dotted-card">
-                <h3 className="text-lg font-bold mb-2">
-                  <span className="text-primary mr-2">&gt;</span>
-                  {useCase.title}
-                </h3>
-                <p className="text-text-muted text-sm leading-relaxed pl-5">
-                  {useCase.description}
-                </p>
-              </div>
+              {useCase.href ? (
+                <Link to={useCase.href} className="block h-full">
+                  <div className="group border-2 border-dashed border-black/25 p-6 h-full dotted-card hover:border-primary/50 transition-colors">
+                    <h3 className="text-lg font-bold mb-2">
+                      <span className="text-primary mr-2">&gt;</span>
+                      {useCase.title}
+                    </h3>
+                    <p className="text-text-muted text-sm leading-relaxed pl-5">
+                      {useCase.description}
+                    </p>
+                    <p className="text-primary text-xs font-mono mt-3 pl-5 opacity-0 group-hover:opacity-100 transition-opacity">
+                      [&gt; Try Demo]
+                    </p>
+                  </div>
+                </Link>
+              ) : (
+                <div className="group border-2 border-dashed border-black/25 p-6 h-full dotted-card">
+                  <h3 className="text-lg font-bold mb-2">
+                    <span className="text-primary mr-2">&gt;</span>
+                    {useCase.title}
+                  </h3>
+                  <p className="text-text-muted text-sm leading-relaxed pl-5">
+                    {useCase.description}
+                  </p>
+                </div>
+              )}
             </ScrollReveal>
           ))}
         </div>
