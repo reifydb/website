@@ -3,7 +3,7 @@ URL: https://reifydb.com/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Developers/]
 # BUILD
 Docs
@@ -185,6 +185,43 @@ One ACID envelope. Writes, logic, and derived state move together or not at all.
 
 See the RQL Example -->
 [> BOOK A CALL]
++======================================================================================================+
+                                   AMDAHL'S LAW: THE NETWORK CEILING                                    
++======================================================================================================+
+Every database has a speed limit, set by the slowest step that can't run in parallel.
++-- PARAMETERS ----------------------------------------------------------------------------------------+
+Network Round Trip Time: 5 ms
+1 ms
+10 ms
+Contention: 10%
+1%
+90%
++------------------------------------------------------------------------------------------------------+
++------------------------------------------------------+
+                      TRADITIONAL                       
++------------------------------------------------------+
+
+  ( [ APP ] -> [ DB ] -> [ APP ] ) × N
+
+  Engine: 100,000 TPS
+  Network ceiling:
+  (1,000 / 5) × (1 / 10%) = 2.0k TPS
+
++------------------------------------------------------+
++-------------------------------------------+
+                   REIFYDB                   
++-------------------------------------------+
+
+  [ APP ] ---[ N stmts · 1 ACID TX ]---> [ ReifyDB ]
+
+  Engine: 100,000 TPS
+  No round trips.
+  Actual: 100,000 TPS
+
++-------------------------------------------+
++======================================================================================================+
+  The network is the hard limit. ReifyDB eliminates round trips from the hot path.
++======================================================================================================+
 
 # REPLACES
 
@@ -269,7 +306,7 @@ URL: https://reifydb.com/blog/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Developers/]
 # BUILD
 Docs
@@ -336,7 +373,7 @@ URL: https://reifydb.com/blog/introducing-reifydb/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Developers/]
 # BUILD
 Docs
@@ -446,7 +483,7 @@ URL: https://reifydb.com/company/mission/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Developers/]
 # BUILD
 Docs
@@ -520,7 +557,7 @@ URL: https://reifydb.com/company/values/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Developers/]
 # BUILD
 Docs
@@ -605,7 +642,7 @@ URL: https://reifydb.com/contact/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Developers/]
 # BUILD
 Docs
@@ -683,7 +720,7 @@ URL: https://reifydb.com/docs/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -929,7 +966,7 @@ URL: https://reifydb.com/docs/functions/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -1181,7 +1218,7 @@ URL: https://reifydb.com/docs/functions/blob/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -1417,7 +1454,7 @@ URL: https://reifydb.com/docs/functions/blob/b58/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -1648,7 +1685,7 @@ URL: https://reifydb.com/docs/functions/blob/b64/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -1879,7 +1916,7 @@ URL: https://reifydb.com/docs/functions/blob/b64url/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -2110,7 +2147,7 @@ URL: https://reifydb.com/docs/functions/blob/hex/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -2341,7 +2378,7 @@ URL: https://reifydb.com/docs/functions/blob/utf8/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -2572,7 +2609,7 @@ URL: https://reifydb.com/docs/functions/clock/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -2802,7 +2839,7 @@ URL: https://reifydb.com/docs/functions/clock/advance/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -3023,7 +3060,7 @@ URL: https://reifydb.com/docs/functions/clock/now/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -3245,7 +3282,7 @@ URL: https://reifydb.com/docs/functions/clock/set/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -3466,7 +3503,7 @@ URL: https://reifydb.com/docs/functions/date/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -3800,7 +3837,7 @@ URL: https://reifydb.com/docs/functions/date/add/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -4031,7 +4068,7 @@ URL: https://reifydb.com/docs/functions/date/age/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -4262,7 +4299,7 @@ URL: https://reifydb.com/docs/functions/date/day/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -4493,7 +4530,7 @@ URL: https://reifydb.com/docs/functions/date/day_of_week/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -4723,7 +4760,7 @@ URL: https://reifydb.com/docs/functions/date/day_of_year/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -4953,7 +4990,7 @@ URL: https://reifydb.com/docs/functions/date/days_in_month/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -5183,7 +5220,7 @@ URL: https://reifydb.com/docs/functions/date/diff/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -5415,7 +5452,7 @@ URL: https://reifydb.com/docs/functions/date/end_of_month/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -5645,7 +5682,7 @@ URL: https://reifydb.com/docs/functions/date/format/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -5877,7 +5914,7 @@ URL: https://reifydb.com/docs/functions/date/is_leap_year/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -6107,7 +6144,7 @@ URL: https://reifydb.com/docs/functions/date/month/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -6338,7 +6375,7 @@ URL: https://reifydb.com/docs/functions/date/new/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -6570,7 +6607,7 @@ URL: https://reifydb.com/docs/functions/date/now/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -6802,7 +6839,7 @@ URL: https://reifydb.com/docs/functions/date/quarter/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -7032,7 +7069,7 @@ URL: https://reifydb.com/docs/functions/date/start_of_month/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -7262,7 +7299,7 @@ URL: https://reifydb.com/docs/functions/date/start_of_year/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -7492,7 +7529,7 @@ URL: https://reifydb.com/docs/functions/date/subtract/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -7723,7 +7760,7 @@ URL: https://reifydb.com/docs/functions/date/trunc/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -7954,7 +7991,7 @@ URL: https://reifydb.com/docs/functions/date/week/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -8184,7 +8221,7 @@ URL: https://reifydb.com/docs/functions/date/year/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -8415,7 +8452,7 @@ URL: https://reifydb.com/docs/functions/datetime/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -8753,7 +8790,7 @@ URL: https://reifydb.com/docs/functions/datetime/add/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -8984,7 +9021,7 @@ URL: https://reifydb.com/docs/functions/datetime/age/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -9215,7 +9252,7 @@ URL: https://reifydb.com/docs/functions/datetime/date/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -9445,7 +9482,7 @@ URL: https://reifydb.com/docs/functions/datetime/day/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -9675,7 +9712,7 @@ URL: https://reifydb.com/docs/functions/datetime/day_of_week/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -9905,7 +9942,7 @@ URL: https://reifydb.com/docs/functions/datetime/day_of_year/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -10135,7 +10172,7 @@ URL: https://reifydb.com/docs/functions/datetime/diff/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -10366,7 +10403,7 @@ URL: https://reifydb.com/docs/functions/datetime/epoch/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -10596,7 +10633,7 @@ URL: https://reifydb.com/docs/functions/datetime/epoch_millis/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -10826,7 +10863,7 @@ URL: https://reifydb.com/docs/functions/datetime/format/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -11057,7 +11094,7 @@ URL: https://reifydb.com/docs/functions/datetime/from_epoch/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -11287,7 +11324,7 @@ URL: https://reifydb.com/docs/functions/datetime/from_epoch_millis/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -11517,7 +11554,7 @@ URL: https://reifydb.com/docs/functions/datetime/hour/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -11747,7 +11784,7 @@ URL: https://reifydb.com/docs/functions/datetime/minute/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -11977,7 +12014,7 @@ URL: https://reifydb.com/docs/functions/datetime/month/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -12207,7 +12244,7 @@ URL: https://reifydb.com/docs/functions/datetime/nanosecond/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -12437,7 +12474,7 @@ URL: https://reifydb.com/docs/functions/datetime/new/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -12668,7 +12705,7 @@ URL: https://reifydb.com/docs/functions/datetime/now/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -12899,7 +12936,7 @@ URL: https://reifydb.com/docs/functions/datetime/quarter/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -13129,7 +13166,7 @@ URL: https://reifydb.com/docs/functions/datetime/second/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -13359,7 +13396,7 @@ URL: https://reifydb.com/docs/functions/datetime/subtract/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -13590,7 +13627,7 @@ URL: https://reifydb.com/docs/functions/datetime/time/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -13820,7 +13857,7 @@ URL: https://reifydb.com/docs/functions/datetime/trunc/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -14051,7 +14088,7 @@ URL: https://reifydb.com/docs/functions/datetime/week/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -14281,7 +14318,7 @@ URL: https://reifydb.com/docs/functions/datetime/year/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -14511,7 +14548,7 @@ URL: https://reifydb.com/docs/functions/duration/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -14807,7 +14844,7 @@ URL: https://reifydb.com/docs/functions/duration/add/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -15038,7 +15075,7 @@ URL: https://reifydb.com/docs/functions/duration/days/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -15270,7 +15307,7 @@ URL: https://reifydb.com/docs/functions/duration/format/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -15500,7 +15537,7 @@ URL: https://reifydb.com/docs/functions/duration/get_days/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -15730,7 +15767,7 @@ URL: https://reifydb.com/docs/functions/duration/get_months/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -15960,7 +15997,7 @@ URL: https://reifydb.com/docs/functions/duration/get_nanos/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -16190,7 +16227,7 @@ URL: https://reifydb.com/docs/functions/duration/hours/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -16422,7 +16459,7 @@ URL: https://reifydb.com/docs/functions/duration/millis/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -16653,7 +16690,7 @@ URL: https://reifydb.com/docs/functions/duration/minutes/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -16885,7 +16922,7 @@ URL: https://reifydb.com/docs/functions/duration/months/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -17118,7 +17155,7 @@ URL: https://reifydb.com/docs/functions/duration/negate/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -17348,7 +17385,7 @@ URL: https://reifydb.com/docs/functions/duration/scale/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -17579,7 +17616,7 @@ URL: https://reifydb.com/docs/functions/duration/seconds/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -17811,7 +17848,7 @@ URL: https://reifydb.com/docs/functions/duration/subtract/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -18042,7 +18079,7 @@ URL: https://reifydb.com/docs/functions/duration/trunc/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -18272,7 +18309,7 @@ URL: https://reifydb.com/docs/functions/duration/weeks/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -18504,7 +18541,7 @@ URL: https://reifydb.com/docs/functions/duration/years/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -18737,7 +18774,7 @@ URL: https://reifydb.com/docs/functions/identity/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -18950,7 +18987,7 @@ URL: https://reifydb.com/docs/functions/identity/id/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -19180,7 +19217,7 @@ URL: https://reifydb.com/docs/functions/is/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -19415,7 +19452,7 @@ URL: https://reifydb.com/docs/functions/is/anonymous/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -19645,7 +19682,7 @@ URL: https://reifydb.com/docs/functions/is/none/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -19875,7 +19912,7 @@ URL: https://reifydb.com/docs/functions/is/root/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -20105,7 +20142,7 @@ URL: https://reifydb.com/docs/functions/is/some/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -20335,7 +20372,7 @@ URL: https://reifydb.com/docs/functions/is/type/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -20566,7 +20603,7 @@ URL: https://reifydb.com/docs/functions/math/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -20951,7 +20988,7 @@ URL: https://reifydb.com/docs/functions/math/abs/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -21195,7 +21232,7 @@ URL: https://reifydb.com/docs/functions/math/acos/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -21426,7 +21463,7 @@ URL: https://reifydb.com/docs/functions/math/asin/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -21657,7 +21694,7 @@ URL: https://reifydb.com/docs/functions/math/atan/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -21888,7 +21925,7 @@ URL: https://reifydb.com/docs/functions/math/atan2/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -22120,7 +22157,7 @@ URL: https://reifydb.com/docs/functions/math/avg/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -22373,7 +22410,7 @@ URL: https://reifydb.com/docs/functions/math/ceil/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -22603,7 +22640,7 @@ URL: https://reifydb.com/docs/functions/math/clamp/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -22835,7 +22872,7 @@ URL: https://reifydb.com/docs/functions/math/cos/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -23066,7 +23103,7 @@ URL: https://reifydb.com/docs/functions/math/e/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -23297,7 +23334,7 @@ URL: https://reifydb.com/docs/functions/math/exp/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -23527,7 +23564,7 @@ URL: https://reifydb.com/docs/functions/math/floor/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -23757,7 +23794,7 @@ URL: https://reifydb.com/docs/functions/math/gcd/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -23988,7 +24025,7 @@ URL: https://reifydb.com/docs/functions/math/lcm/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -24219,7 +24256,7 @@ URL: https://reifydb.com/docs/functions/math/log/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -24450,7 +24487,7 @@ URL: https://reifydb.com/docs/functions/math/log10/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -24680,7 +24717,7 @@ URL: https://reifydb.com/docs/functions/math/log2/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -24910,7 +24947,7 @@ URL: https://reifydb.com/docs/functions/math/max/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -25163,7 +25200,7 @@ URL: https://reifydb.com/docs/functions/math/min/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -25416,7 +25453,7 @@ URL: https://reifydb.com/docs/functions/math/mod/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -25647,7 +25684,7 @@ URL: https://reifydb.com/docs/functions/math/pi/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -25879,7 +25916,7 @@ URL: https://reifydb.com/docs/functions/math/power/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -26110,7 +26147,7 @@ URL: https://reifydb.com/docs/functions/math/round/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -26356,7 +26393,7 @@ URL: https://reifydb.com/docs/functions/math/sign/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -26585,7 +26622,7 @@ URL: https://reifydb.com/docs/functions/math/sin/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -26816,7 +26853,7 @@ URL: https://reifydb.com/docs/functions/math/sqrt/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -27046,7 +27083,7 @@ URL: https://reifydb.com/docs/functions/math/sum/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -27299,7 +27336,7 @@ URL: https://reifydb.com/docs/functions/math/tan/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -27530,7 +27567,7 @@ URL: https://reifydb.com/docs/functions/math/truncate/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -27761,7 +27798,7 @@ URL: https://reifydb.com/docs/functions/meta/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -27974,7 +28011,7 @@ URL: https://reifydb.com/docs/functions/meta/type/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -28203,7 +28240,7 @@ URL: https://reifydb.com/docs/functions/text/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -28544,7 +28581,7 @@ URL: https://reifydb.com/docs/functions/text/ascii/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -28773,7 +28810,7 @@ URL: https://reifydb.com/docs/functions/text/char/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -29002,7 +29039,7 @@ URL: https://reifydb.com/docs/functions/text/concat/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -29232,7 +29269,7 @@ URL: https://reifydb.com/docs/functions/text/contains/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -29464,7 +29501,7 @@ URL: https://reifydb.com/docs/functions/text/count/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -29694,7 +29731,7 @@ URL: https://reifydb.com/docs/functions/text/ends_with/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -29925,7 +29962,7 @@ URL: https://reifydb.com/docs/functions/text/format_bytes/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -30154,7 +30191,7 @@ URL: https://reifydb.com/docs/functions/text/format_bytes_si/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -30383,7 +30420,7 @@ URL: https://reifydb.com/docs/functions/text/index_of/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -30614,7 +30651,7 @@ URL: https://reifydb.com/docs/functions/text/length/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -30869,7 +30906,7 @@ URL: https://reifydb.com/docs/functions/text/lower/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -31099,7 +31136,7 @@ URL: https://reifydb.com/docs/functions/text/pad_left/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -31331,7 +31368,7 @@ URL: https://reifydb.com/docs/functions/text/pad_right/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -31563,7 +31600,7 @@ URL: https://reifydb.com/docs/functions/text/repeat/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -31794,7 +31831,7 @@ URL: https://reifydb.com/docs/functions/text/replace/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -32026,7 +32063,7 @@ URL: https://reifydb.com/docs/functions/text/reverse/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -32256,7 +32293,7 @@ URL: https://reifydb.com/docs/functions/text/starts_with/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -32487,7 +32524,7 @@ URL: https://reifydb.com/docs/functions/text/substring/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -32745,7 +32782,7 @@ URL: https://reifydb.com/docs/functions/text/trim/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -32989,7 +33026,7 @@ URL: https://reifydb.com/docs/functions/text/trim_end/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -33219,7 +33256,7 @@ URL: https://reifydb.com/docs/functions/text/trim_start/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -33449,7 +33486,7 @@ URL: https://reifydb.com/docs/functions/text/upper/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -33693,7 +33730,7 @@ URL: https://reifydb.com/docs/functions/time/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -33964,7 +34001,7 @@ URL: https://reifydb.com/docs/functions/time/add/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -34195,7 +34232,7 @@ URL: https://reifydb.com/docs/functions/time/age/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -34426,7 +34463,7 @@ URL: https://reifydb.com/docs/functions/time/diff/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -34657,7 +34694,7 @@ URL: https://reifydb.com/docs/functions/time/format/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -34887,7 +34924,7 @@ URL: https://reifydb.com/docs/functions/time/hour/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -35117,7 +35154,7 @@ URL: https://reifydb.com/docs/functions/time/minute/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -35347,7 +35384,7 @@ URL: https://reifydb.com/docs/functions/time/nanosecond/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -35576,7 +35613,7 @@ URL: https://reifydb.com/docs/functions/time/new/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -35807,7 +35844,7 @@ URL: https://reifydb.com/docs/functions/time/now/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -36038,7 +36075,7 @@ URL: https://reifydb.com/docs/functions/time/second/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -36268,7 +36305,7 @@ URL: https://reifydb.com/docs/functions/time/subtract/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -36499,7 +36536,7 @@ URL: https://reifydb.com/docs/functions/time/trunc/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -36729,7 +36766,7 @@ URL: https://reifydb.com/docs/installation/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -36977,7 +37014,7 @@ URL: https://reifydb.com/docs/quick-start/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -37291,7 +37328,7 @@ URL: https://reifydb.com/docs/rql/basics/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -37564,7 +37601,7 @@ URL: https://reifydb.com/docs/rql/expressions/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -37872,7 +37909,7 @@ URL: https://reifydb.com/docs/rql/expressions/operators/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -38103,7 +38140,7 @@ URL: https://reifydb.com/docs/rql/transforms/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -38431,7 +38468,7 @@ URL: https://reifydb.com/docs/rql/transforms/filter/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -38678,7 +38715,7 @@ URL: https://reifydb.com/docs/rql/transforms/sort/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Home]
 [Contact]
 [Support]
@@ -38944,7 +38981,7 @@ URL: https://reifydb.com/examples/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Developers/]
 # BUILD
 Docs
@@ -38975,6 +39012,7 @@ EXAMPLES
 Inline Data
 Filter + Aggregate
 Sorting + Limiting
+Built-in Testing
 Inline Data
 
 Query data without a database connection
@@ -39029,7 +39067,7 @@ URL: https://reifydb.com/faq/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Developers/]
 # BUILD
 Docs
@@ -39109,11 +39147,60 @@ Discord
 License: Apache-2.0
 
 ===============================================================================
+URL: https://reifydb.com/pitch/
+===============================================================================
+
+$
+ReifyDB
+[Developers/]
+# BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+[Resources/]
+# LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+[Company/]
+# ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+10
+[> Start]
+$ reifydb pitch
+slide 1 of 5
+[full]
++----------------------------------------------------------------------------------------------+
+                                                                                              
+                                                                                              
+                                                                                              
+                                          ReifyDB                                             
+                                                                                              
+                                   The Live State Database                                    
+                                                                                              
+                                                                                              
+                                                                                              
++----------------------------------------------------------------------------------------------+
+[< prev]
+[next >]
+
+===============================================================================
 URL: https://reifydb.com/playground/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [*Developers/]
 # BUILD
 Docs
@@ -39157,7 +39244,7 @@ URL: https://reifydb.com/support/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [Developers/]
 # BUILD
 Docs
@@ -39238,7 +39325,7 @@ URL: https://reifydb.com/tour/
 ===============================================================================
 
 $
-reifydb
+ReifyDB
 [*Developers/]
 # BUILD
 Docs
