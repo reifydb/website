@@ -5,7 +5,7 @@ import { createFarmExecutor } from '../engine/farm-db';
 
 const DEFAULT_HEIGHT = 320;
 const MIN_HEIGHT = 150;
-const MAX_HEIGHT = 600;
+const MAX_HEIGHT = 1200;
 
 export function ConsolePanel() {
   const executor = useMemo(() => createFarmExecutor(), []);
@@ -39,7 +39,7 @@ export function ConsolePanel() {
   }, [dragging]);
 
   return (
-    <div style={{ height }}>
+    <div className="absolute bottom-0 left-0 right-0 z-50 shadow-[0_-2px_8px_rgba(0,0,0,0.15)]" style={{ height }}>
       {/* Drag handle */}
       <div
         onMouseDown={onMouseDown}

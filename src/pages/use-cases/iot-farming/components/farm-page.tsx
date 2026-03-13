@@ -8,7 +8,6 @@ import { InfoPanel } from './info-panel';
 import { IoTOverlay } from './iot-overlay';
 import { RuleEditor } from './rule-editor';
 import { ConsolePanel } from './console-panel';
-import { DISPLAY_TILE_SIZE, GRID_WIDTH, GRID_HEIGHT } from '../engine/constants';
 
 export function FarmPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -32,9 +31,9 @@ export function FarmPage() {
   return (
     <div className="min-h-screen flex flex-col bg-bg-secondary">
       <Navbar />
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 relative">
         {/* Main content area */}
-        <div className="flex-1 flex">
+        <div className="h-full flex">
           {/* Toolbar */}
           <Toolbar
             currentTool={gameState.toolMode}
@@ -44,23 +43,16 @@ export function FarmPage() {
           />
 
           {/* Game canvas area */}
-          <div className="flex-1 flex flex-col items-center justify-center p-4">
+          <div className="flex-1 flex flex-col overflow-hidden">
             {loading ? (
-              <div className="font-mono text-sm text-text-muted animate-pulse">
+              <div className="flex-1 flex items-center justify-center font-mono text-sm text-text-muted animate-pulse">
                 Initializing farm database...
               </div>
             ) : (
-              <div className="relative" style={{
-                width: GRID_WIDTH * DISPLAY_TILE_SIZE,
-                height: GRID_HEIGHT * DISPLAY_TILE_SIZE,
-              }}>
+              <div className="relative flex-1">
                 <div
                   ref={containerRef}
-                  className="border-2 border-dashed border-black/25"
-                  style={{
-                    width: GRID_WIDTH * DISPLAY_TILE_SIZE,
-                    height: GRID_HEIGHT * DISPLAY_TILE_SIZE,
-                  }}
+                  className="w-full h-full border-2 border-dashed border-black/25"
                 />
                 <IoTOverlay
                   sensors={gameState.sensors}

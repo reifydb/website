@@ -51,3 +51,9 @@ export const READINGS_MAX_AGE = 50;
 
 export const HEALTH_DECAY_RATE = 0.02;
 export const HEALTH_RECOVERY_RATE = 0.01;
+
+// World-level constants
+export const WORLD_WIDTH = 48;   // tiles
+export const WORLD_HEIGHT = 36;  // tiles
+export const FARM_OFFSET_X = 16; // farm grid starts at world tile 16
+export const FARM_OFFSET_Y = 12; // farm grid starts at world tile 12

@@ -32,6 +32,8 @@ export const EVENTS = {
   STATE_UPDATED: 'state:updated',
   CROP_HARVESTED: 'crop:harvested',
 
+  CAMERA_MOVED: 'camera:moved',
+
   // React → Phaser
   TOOL_CHANGED: 'tool:changed',
   SPEED_CHANGED: 'speed:changed',

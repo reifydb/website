@@ -1,3 +1,4 @@
+export type WorldTile = 'water' | 'grass' | 'dark_grass';
 export type SoilType = 'normal' | 'sandy' | 'clay';
 export type CropType = 'wheat' | 'tomato' | 'corn' | 'lettuce';
 export type SensorType = 'moisture' | 'temperature' | 'light';
