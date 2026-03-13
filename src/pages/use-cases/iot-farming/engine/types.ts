@@ -80,7 +80,16 @@ export interface FarmStats {
   current_tick: number;
 }
 
-export interface GameState {
+export interface UIStateRow {
+  tool_mode: string;
+  speed: number;
+  selected_x: number;
+  selected_y: number;
+  camera_x: number;
+  camera_y: number;
+}
+
+export interface GameSnapshot {
   tiles: Tile[];
   crops: Crop[];
   sensors: Sensor[];
@@ -89,7 +98,12 @@ export interface GameState {
   rules: Rule[];
   weather: Weather;
   stats: FarmStats;
+}
+
+export interface UIState {
   selectedTile: { x: number; y: number } | null;
   toolMode: ToolMode;
   speed: number;
 }
+
+export type GameState = GameSnapshot & UIState;

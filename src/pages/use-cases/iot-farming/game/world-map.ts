@@ -10,23 +10,6 @@ function createRng(seed: number) {
   };
 }
 
-function isInsideEllipse(
-  x: number, y: number,
-  cx: number, cy: number,
-  rx: number, ry: number,
-  rng: () => number,
-  wobble: number,
-): boolean {
-  const angle = Math.atan2(y - cy, x - cx);
-  // Seeded wobble on the edge for irregular shape
-  const noiseIdx = Math.floor(((angle + Math.PI) / (2 * Math.PI)) * 32);
-  // Use a simple hash for per-edge-segment noise
-  const noise = (Math.sin(noiseIdx * 127.1 + seed) * 0.5 + 0.5) * wobble;
-  const dx = (x - cx) / (rx + noise * rx);
-  const dy = (y - cy) / (ry + noise * ry);
-  return dx * dx + dy * dy <= 1;
-}
-
 const seed = 42;
 
 export function generateWorldMap(): WorldTile[] {

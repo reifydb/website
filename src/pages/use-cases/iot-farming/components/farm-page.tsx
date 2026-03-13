@@ -12,7 +12,7 @@ import { ConsolePanel } from './console-panel';
 export function FarmPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { db, loading, error } = useFarmDB();
-  const gameRef = usePhaser(containerRef, db);
+  usePhaser(containerRef, db);
   const { gameState, setToolMode, setSpeed, addRule, toggleRule, removeRule } = useGameState();
 
   if (error) {
@@ -52,6 +52,7 @@ export function FarmPage() {
               <div className="relative flex-1">
                 <div
                   ref={containerRef}
+                  tabIndex={-1}
                   className="w-full h-full border-2 border-dashed border-black/25"
                 />
                 <IoTOverlay

@@ -13,7 +13,8 @@ function generateSeedCommand(): string {
   cmd += 'create table farm::actuators { id: int4, actuator_type: utf8, x: int4, y: int4, active: bool, power_usage: float4, radius: int4 };\n';
   cmd += 'create table farm::rules { id: int4, sensor_type: utf8, operator: utf8, threshold: float4, actuator_type: utf8, enabled: bool };\n';
   cmd += 'create table farm::weather { condition: utf8, intensity: float4, tick_changed: int4 };\n';
-  cmd += 'create table farm::stats { water_used: float4, energy_used: float4, total_yield: float4, current_tick: int4 };\n\n';
+  cmd += 'create table farm::stats { water_used: float4, energy_used: float4, total_yield: float4, current_tick: int4 };\n';
+  cmd += 'create table farm::ui_state { tool_mode: utf8, speed: int4, selected_x: int4, selected_y: int4, camera_x: float4, camera_y: float4 };\n\n';
 
   const tiles: string[] = [];
   for (let y = 0; y < GRID_HEIGHT; y++) {
@@ -27,7 +28,8 @@ function generateSeedCommand(): string {
   cmd += `INSERT farm::tiles [\n${tiles.join(',\n')}\n];\n\n`;
 
   cmd += 'INSERT farm::weather [\n  { condition: "sunny", intensity: 1.0, tick_changed: 0 }\n];\n\n';
-  cmd += 'INSERT farm::stats [\n  { water_used: 0.0, energy_used: 0.0, total_yield: 0.0, current_tick: 0 }\n]';
+  cmd += 'INSERT farm::stats [\n  { water_used: 0.0, energy_used: 0.0, total_yield: 0.0, current_tick: 0 }\n];\n\n';
+  cmd += 'INSERT farm::ui_state [\n  { tool_mode: "select", speed: 1, selected_x: -1, selected_y: -1, camera_x: 0.0, camera_y: 0.0 }\n]';
 
   return cmd;
 }

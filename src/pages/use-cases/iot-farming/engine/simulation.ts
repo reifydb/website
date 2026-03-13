@@ -1,9 +1,10 @@
 import type {
-  GameState, Tile, Crop, Sensor, Actuator, Rule, CropType, SensorType, ActuatorType,
-  GrowthStage, WeatherCondition,
+  GameSnapshot, Tile, Crop, Sensor, Actuator, Rule, SensorReading,
+  CropType, SensorType, ActuatorType, GrowthStage, WeatherCondition, Weather, FarmStats,
+  UIStateRow,
 } from './types';
 import {
-  GRID_WIDTH, GRID_HEIGHT, CROP_CONFIGS, WEATHER_EFFECTS, WEATHER_CYCLE,
+  CROP_CONFIGS, WEATHER_EFFECTS, WEATHER_CYCLE,
   WEATHER_MIN_TICKS, WEATHER_MAX_TICKS, SOIL_MOISTURE_DECAY,
   SPRINKLER_MOISTURE_BOOST, HEATER_TEMP_BOOST, LAMP_LIGHT_BOOST,
   ACTUATOR_DEFAULT_RADIUS, SENSOR_DEFAULT_RADIUS, READINGS_MAX_AGE,
@@ -40,168 +41,177 @@ function checkConditions(crop: Crop, tile: Tile): { inRange: number; outOfRange:
   return { inRange: 0, outOfRange: true };
 }
 
-export function createInitialState(): GameState {
-  const tiles: Tile[] = [];
-  for (let y = 0; y < GRID_HEIGHT; y++) {
-    for (let x = 0; x < GRID_WIDTH; x++) {
-      let soil_type: 'normal' | 'sandy' | 'clay' = 'normal';
-      if ((x < 4 && y < 3) || (x > 12 && y > 9)) soil_type = 'sandy';
-      if (x >= 10 && x <= 13 && y >= 4 && y <= 7) soil_type = 'clay';
-      tiles.push({ x, y, soil_type, moisture: 0.5, temperature: 0.5, light: 1.0 });
-    }
+// --- DB helpers ---
+
+// WasmDB returns Value wrapper objects (Float4Value, Int4Value, etc.);
+// unwrap to plain JS primitives using explicit type coercion.
+function unwrap(v: unknown): unknown {
+  if (v == null || typeof v !== 'object') return v;
+  const obj = v as any;
+  const t = obj.type;
+  if (typeof t !== 'string') return v;
+  // Numeric types → Number() coercion (calls valueOf internally)
+  if (t === 'Float4' || t === 'Float8' || t === 'Int4' || t === 'Int2' || t === 'Int1' ||
+      t === 'Uint4' || t === 'Uint2' || t === 'Uint1' || t === 'Decimal') {
+    return obj.value !== undefined ? Number(obj.value) : 0;
   }
-
-  return {
-    tiles,
-    crops: [],
-    sensors: [],
-    readings: [],
-    actuators: [],
-    rules: [],
-    weather: { condition: 'sunny', intensity: 1.0, tick_changed: 0 },
-    stats: { water_used: 0, energy_used: 0, total_yield: 0, current_tick: 0 },
-    selectedTile: null,
-    toolMode: 'select',
-    speed: 1,
-  };
+  // BigInt numeric types (cast to JS number for game use)
+  if (t === 'Int8' || t === 'Int16' || t === 'Uint8' || t === 'Uint16') {
+    return obj.value !== undefined ? Number(obj.value) : 0;
+  }
+  // String type
+  if (t === 'Utf8') return obj.value !== undefined ? String(obj.value) : '';
+  // Boolean type
+  if (t === 'Boolean') return obj.value !== undefined ? Boolean(obj.value) : false;
+  // None type
+  if (t === 'None') return undefined;
+  // Fallback for unknown types
+  const raw = typeof obj.valueOf === 'function' ? obj.valueOf() : v;
+  return raw !== v ? raw : (obj.value !== undefined ? obj.value : v);
 }
 
-export function getTile(state: GameState, x: number, y: number): Tile | undefined {
-  return state.tiles.find(t => t.x === x && t.y === y);
+function toPlain<T>(row: Record<string, unknown>): T {
+  const out: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(row)) {
+    out[k] = unwrap(v);
+  }
+  return out as T;
 }
 
-export function getCropAt(state: GameState, x: number, y: number): Crop | undefined {
-  return state.crops.find(c => c.x === x && c.y === y);
+function queryRows<T>(db: WasmDB, rql: string): T[] {
+  const raw = db.admin(rql);
+  if (!Array.isArray(raw)) return [];
+  return raw.map(r => toPlain<T>(r as Record<string, unknown>));
 }
 
-export function getSensorAt(state: GameState, x: number, y: number): Sensor | undefined {
-  return state.sensors.find(s => s.x === x && s.y === y);
+function writeTiles(db: WasmDB, tiles: Tile[]): void {
+  const rows = tiles.map(t =>
+    `{ x: ${t.x}, y: ${t.y}, soil_type: "${t.soil_type}", moisture: ${t.moisture.toFixed(3)}, temperature: ${t.temperature.toFixed(3)}, light: ${t.light.toFixed(3)} }`
+  ).join(',\n  ');
+  db.admin(`DELETE farm::tiles FILTER true;\nINSERT farm::tiles [\n  ${rows}\n]`);
 }
 
-export function getActuatorAt(state: GameState, x: number, y: number): Actuator | undefined {
-  return state.actuators.find(a => a.x === x && a.y === y);
+function writeStats(db: WasmDB, stats: FarmStats): void {
+  db.admin(`DELETE farm::stats FILTER true;\nINSERT farm::stats [\n  { water_used: ${stats.water_used.toFixed(1)}, energy_used: ${stats.energy_used.toFixed(1)}, total_yield: ${stats.total_yield.toFixed(0)}, current_tick: ${stats.current_tick} }\n]`);
 }
 
-let nextCropId = 1;
-let nextSensorId = 1;
-let nextActuatorId = 1;
-let nextRuleId = 1;
-
-export function placeCrop(state: GameState, cropType: CropType, x: number, y: number): boolean {
-  if (getCropAt(state, x, y) || getSensorAt(state, x, y) || getActuatorAt(state, x, y)) return false;
-  state.crops.push({
-    id: nextCropId++,
-    crop_type: cropType,
-    x, y,
-    growth_stage: 'seed',
-    growth_progress: 0,
-    health: 1.0,
-    planted_tick: state.stats.current_tick,
-  });
-  return true;
+function writeCrops(db: WasmDB, crops: Crop[]): void {
+  if (crops.length > 0) {
+    const rows = crops.map(c =>
+      `{ id: ${c.id}, crop_type: "${c.crop_type}", x: ${c.x}, y: ${c.y}, growth_stage: "${c.growth_stage}", growth_progress: ${c.growth_progress.toFixed(1)}, health: ${c.health.toFixed(3)}, planted_tick: ${c.planted_tick} }`
+    ).join(',\n  ');
+    db.admin(`DELETE farm::crops FILTER true;\nINSERT farm::crops [\n  ${rows}\n]`);
+  } else {
+    db.admin('DELETE farm::crops FILTER true');
+  }
 }
 
-export function placeSensor(state: GameState, sensorType: SensorType, x: number, y: number): boolean {
-  if (getSensorAt(state, x, y) || getActuatorAt(state, x, y)) return false;
-  state.sensors.push({
-    id: nextSensorId++,
-    sensor_type: sensorType,
-    x, y,
-    radius: SENSOR_DEFAULT_RADIUS,
-  });
-  return true;
+function writeActuators(db: WasmDB, actuators: Actuator[]): void {
+  if (actuators.length > 0) {
+    const rows = actuators.map(a =>
+      `{ id: ${a.id}, actuator_type: "${a.actuator_type}", x: ${a.x}, y: ${a.y}, active: ${a.active}, power_usage: ${a.power_usage.toFixed(1)}, radius: ${a.radius} }`
+    ).join(',\n  ');
+    db.admin(`DELETE farm::actuators FILTER true;\nINSERT farm::actuators [\n  ${rows}\n]`);
+  } else {
+    db.admin('DELETE farm::actuators FILTER true');
+  }
 }
 
-export function placeActuator(state: GameState, actuatorType: ActuatorType, x: number, y: number): boolean {
-  if (getSensorAt(state, x, y) || getActuatorAt(state, x, y)) return false;
-  state.actuators.push({
-    id: nextActuatorId++,
-    actuator_type: actuatorType,
-    x, y,
-    active: false,
-    power_usage: actuatorType === 'sprinkler' ? 1.0 : actuatorType === 'heater' ? 2.0 : 1.5,
-    radius: ACTUATOR_DEFAULT_RADIUS,
-  });
-  return true;
+function writeReadings(db: WasmDB, readings: SensorReading[]): void {
+  if (readings.length > 0) {
+    const rows = readings.map(r =>
+      `{ sensor_id: ${r.sensor_id}, tick: ${r.tick}, value: ${r.value.toFixed(3)} }`
+    ).join(',\n  ');
+    db.admin(`DELETE farm::readings FILTER true;\nINSERT farm::readings [\n  ${rows}\n]`);
+  } else {
+    db.admin('DELETE farm::readings FILTER true');
+  }
 }
 
-export function addRule(state: GameState, rule: Omit<Rule, 'id'>): Rule {
-  const newRule = { ...rule, id: nextRuleId++ };
-  state.rules.push(newRule);
-  return newRule;
+function writeWeather(db: WasmDB, weather: Weather): void {
+  db.admin(`DELETE farm::weather FILTER true;\nINSERT farm::weather [\n  { condition: "${weather.condition}", intensity: ${weather.intensity.toFixed(2)}, tick_changed: ${weather.tick_changed} }\n]`);
 }
 
-export function removeAt(state: GameState, x: number, y: number): boolean {
-  const ci = state.crops.findIndex(c => c.x === x && c.y === y);
-  if (ci >= 0) { state.crops.splice(ci, 1); return true; }
-  const si = state.sensors.findIndex(s => s.x === x && s.y === y);
-  if (si >= 0) { state.sensors.splice(si, 1); return true; }
-  const ai = state.actuators.findIndex(a => a.x === x && a.y === y);
-  if (ai >= 0) { state.actuators.splice(ai, 1); return true; }
-  return false;
-}
+// --- Tick functions (all DB-driven) ---
 
-export function harvestCrop(state: GameState, x: number, y: number): boolean {
-  const crop = getCropAt(state, x, y);
-  if (!crop || crop.growth_stage !== 'harvestable') return false;
-  state.stats.total_yield += 1;
-  const idx = state.crops.indexOf(crop);
-  state.crops.splice(idx, 1);
-  return true;
-}
+function tickWeather(db: WasmDB, currentTick: number): void {
+  const weather = queryRows<Weather>(db, 'FROM farm::weather')[0];
+  if (!weather) return;
 
-function tickWeather(state: GameState): void {
-  const tick = state.stats.current_tick;
-  const elapsed = tick - state.weather.tick_changed;
+  const elapsed = currentTick - weather.tick_changed;
   const duration = WEATHER_MIN_TICKS + Math.floor(Math.random() * (WEATHER_MAX_TICKS - WEATHER_MIN_TICKS));
 
   if (elapsed >= duration) {
-    const currentIdx = WEATHER_CYCLE.indexOf(state.weather.condition);
+    const currentIdx = WEATHER_CYCLE.indexOf(weather.condition);
     const nextIdx = (currentIdx + 1) % WEATHER_CYCLE.length;
-    state.weather.condition = WEATHER_CYCLE[nextIdx] as WeatherCondition;
-    state.weather.intensity = 0.8 + Math.random() * 0.4;
-    state.weather.tick_changed = tick;
+    weather.condition = WEATHER_CYCLE[nextIdx] as WeatherCondition;
+    weather.intensity = 0.8 + Math.random() * 0.4;
+    weather.tick_changed = currentTick;
+    writeWeather(db, weather);
   }
 }
 
-function tickSoil(state: GameState): void {
-  const effects = WEATHER_EFFECTS[state.weather.condition];
-  for (const tile of state.tiles) {
+function tickSoil(db: WasmDB): void {
+  const weather = queryRows<Weather>(db, 'FROM farm::weather')[0];
+  if (!weather) return;
+  const tiles = queryRows<Tile>(db, 'FROM farm::tiles');
+
+  const effects = WEATHER_EFFECTS[weather.condition];
+  for (const tile of tiles) {
     const decayMul = SOIL_MOISTURE_DECAY[tile.soil_type] || 1.0;
     tile.moisture = clamp01(tile.moisture + effects.moistureDelta * decayMul);
     tile.temperature = clamp01(tile.temperature + effects.tempDelta);
     tile.light = effects.light;
   }
+
+  writeTiles(db, tiles);
 }
 
-function tickActuators(state: GameState): void {
-  for (const act of state.actuators) {
-    if (!act.active) continue;
-    for (const tile of state.tiles) {
+function tickActuators(db: WasmDB): void {
+  const actuators = queryRows<Actuator>(db, 'FROM farm::actuators');
+  if (actuators.length === 0) return;
+
+  const activeActuators = actuators.filter(a => a.active);
+  if (activeActuators.length === 0) return;
+
+  const tiles = queryRows<Tile>(db, 'FROM farm::tiles');
+  const stats = queryRows<FarmStats>(db, 'FROM farm::stats')[0];
+  if (!stats) return;
+
+  for (const act of activeActuators) {
+    for (const tile of tiles) {
       if (dist(act.x, act.y, tile.x, tile.y) <= act.radius) {
         switch (act.actuator_type) {
           case 'sprinkler':
             tile.moisture = clamp01(tile.moisture + SPRINKLER_MOISTURE_BOOST);
-            state.stats.water_used += 0.1;
+            stats.water_used += 0.1;
             break;
           case 'heater':
             tile.temperature = clamp01(tile.temperature + HEATER_TEMP_BOOST);
-            state.stats.energy_used += 0.2;
+            stats.energy_used += 0.2;
             break;
           case 'lamp':
             tile.light = clamp01(tile.light + LAMP_LIGHT_BOOST);
-            state.stats.energy_used += 0.15;
+            stats.energy_used += 0.15;
             break;
         }
       }
     }
   }
+
+  writeTiles(db, tiles);
+  writeStats(db, stats);
 }
 
-function tickSensors(state: GameState): void {
-  const tick = state.stats.current_tick;
-  for (const sensor of state.sensors) {
-    const nearbyTiles = state.tiles.filter(t => dist(sensor.x, sensor.y, t.x, t.y) <= sensor.radius);
+function tickSensors(db: WasmDB, currentTick: number): void {
+  const sensors = queryRows<Sensor>(db, 'FROM farm::sensors');
+  if (sensors.length === 0) return;
+
+  const tiles = queryRows<Tile>(db, 'FROM farm::tiles');
+  const readings = queryRows<SensorReading>(db, 'FROM farm::readings');
+
+  for (const sensor of sensors) {
+    const nearbyTiles = tiles.filter(t => dist(sensor.x, sensor.y, t.x, t.y) <= sensor.radius);
     if (nearbyTiles.length === 0) continue;
 
     let sum = 0;
@@ -213,26 +223,40 @@ function tickSensors(state: GameState): void {
       }
     }
     const avg = sum / nearbyTiles.length;
-    state.readings.push({ sensor_id: sensor.id, tick, value: Math.round(avg * 1000) / 1000 });
+    readings.push({ sensor_id: sensor.id, tick: currentTick, value: Math.round(avg * 1000) / 1000 });
   }
 
-  const cutoff = tick - READINGS_MAX_AGE;
-  state.readings = state.readings.filter(r => r.tick > cutoff);
+  const cutoff = currentTick - READINGS_MAX_AGE;
+  const filtered = readings.filter(r => r.tick > cutoff);
+  writeReadings(db, filtered);
 }
 
-function tickRules(state: GameState): void {
-  for (const act of state.actuators) {
+function tickRules(db: WasmDB): void {
+  const actuators = queryRows<Actuator>(db, 'FROM farm::actuators');
+  if (actuators.length === 0) return;
+
+  // Reset all actuators
+  for (const act of actuators) {
     act.active = false;
   }
 
-  for (const rule of state.rules) {
+  const rules = queryRows<Rule>(db, 'FROM farm::rules');
+  if (rules.length === 0) {
+    writeActuators(db, actuators);
+    return;
+  }
+
+  const sensors = queryRows<Sensor>(db, 'FROM farm::sensors');
+  const readings = queryRows<SensorReading>(db, 'FROM farm::readings');
+
+  for (const rule of rules) {
     if (!rule.enabled) continue;
 
-    const matchingSensors = state.sensors.filter(s => s.sensor_type === rule.sensor_type);
+    const matchingSensors = sensors.filter(s => s.sensor_type === rule.sensor_type);
     if (matchingSensors.length === 0) continue;
 
     const sensorIds = new Set(matchingSensors.map(s => s.id));
-    const sensorReadings = state.readings.filter(r => sensorIds.has(r.sensor_id));
+    const sensorReadings = readings.filter(r => sensorIds.has(r.sensor_id));
     if (sensorReadings.length === 0) continue;
 
     const latestTick = Math.max(...sensorReadings.map(r => r.tick));
@@ -250,20 +274,28 @@ function tickRules(state: GameState): void {
     }
 
     if (triggered) {
-      for (const act of state.actuators) {
+      for (const act of actuators) {
         if (act.actuator_type === rule.actuator_type) {
           act.active = true;
         }
       }
     }
   }
+
+  writeActuators(db, actuators);
 }
 
-function tickCrops(state: GameState): void {
-  for (const crop of state.crops) {
+function tickCrops(db: WasmDB): void {
+  const crops = queryRows<Crop>(db, 'FROM farm::crops');
+  if (crops.length === 0) return;
+
+  const tiles = queryRows<Tile>(db, 'FROM farm::tiles');
+  let changed = false;
+
+  for (const crop of crops) {
     if (crop.growth_stage === 'harvestable' || crop.health <= 0) continue;
 
-    const tile = getTile(state, crop.x, crop.y);
+    const tile = tiles.find(t => t.x === crop.x && t.y === crop.y);
     if (!tile) continue;
 
     const { inRange, outOfRange } = checkConditions(crop, tile);
@@ -283,75 +315,182 @@ function tickCrops(state: GameState): void {
         crop.growth_progress = 0;
       }
     }
+
+    changed = true;
+  }
+
+  if (changed) {
+    writeCrops(db, crops);
   }
 }
 
-export function simulationTick(state: GameState): void {
-  state.stats.current_tick += 1;
-  tickWeather(state);
-  tickSoil(state);
-  tickActuators(state);
-  tickSensors(state);
-  tickRules(state);
-  tickCrops(state);
+// --- Public API ---
+
+export function simulationTick(db: WasmDB): void {
+  const stats = queryRows<FarmStats>(db, 'FROM farm::stats')[0];
+  if (!stats) return;
+  stats.current_tick += 1;
+  writeStats(db, stats);
+
+  const currentTick = stats.current_tick;
+  tickWeather(db, currentTick);
+  tickSoil(db);
+  tickActuators(db);
+  tickSensors(db, currentTick);
+  tickRules(db);
+  tickCrops(db);
 }
 
-export function syncToDb(state: GameState, db: WasmDB): void {
-  try {
-    const tileRows = state.tiles.map(t =>
-      `{ x: ${t.x}, y: ${t.y}, soil_type: "${t.soil_type}", moisture: ${t.moisture.toFixed(3)}, temperature: ${t.temperature.toFixed(3)}, light: ${t.light.toFixed(3)} }`
-    ).join(',\n  ');
-    db.admin(`DELETE farm::tiles;\nINSERT farm::tiles [\n  ${tileRows}\n]`);
+export function placeCrop(db: WasmDB, cropType: CropType, x: number, y: number): boolean {
+  const cropsAt = queryRows<Crop>(db, `FROM farm::crops FILTER x == ${x} AND y == ${y}`);
+  if (cropsAt.length > 0) return false;
+  const sensorsAt = queryRows<Sensor>(db, `FROM farm::sensors FILTER x == ${x} AND y == ${y}`);
+  if (sensorsAt.length > 0) return false;
+  const actuatorsAt = queryRows<Actuator>(db, `FROM farm::actuators FILTER x == ${x} AND y == ${y}`);
+  if (actuatorsAt.length > 0) return false;
 
-    if (state.crops.length > 0) {
-      const cropRows = state.crops.map(c =>
-        `{ id: ${c.id}, crop_type: "${c.crop_type}", x: ${c.x}, y: ${c.y}, growth_stage: "${c.growth_stage}", growth_progress: ${c.growth_progress.toFixed(1)}, health: ${c.health.toFixed(3)}, planted_tick: ${c.planted_tick} }`
-      ).join(',\n  ');
-      db.admin(`DELETE farm::crops;\nINSERT farm::crops [\n  ${cropRows}\n]`);
-    } else {
-      db.admin('DELETE farm::crops');
-    }
+  const allCrops = queryRows<Crop>(db, 'FROM farm::crops SORT id DESC');
+  const nextId = allCrops.length > 0 ? allCrops[0].id + 1 : 1;
 
-    if (state.sensors.length > 0) {
-      const sensorRows = state.sensors.map(s =>
+  const stats = queryRows<FarmStats>(db, 'FROM farm::stats')[0];
+  const tick = stats?.current_tick ?? 0;
+
+  db.admin(`INSERT farm::crops [\n  { id: ${nextId}, crop_type: "${cropType}", x: ${x}, y: ${y}, growth_stage: "seed", growth_progress: 0.0, health: 1.000, planted_tick: ${tick} }\n]`);
+  return true;
+}
+
+export function placeSensor(db: WasmDB, sensorType: SensorType, x: number, y: number): boolean {
+  const sensorsAt = queryRows<Sensor>(db, `FROM farm::sensors FILTER x == ${x} AND y == ${y}`);
+  if (sensorsAt.length > 0) return false;
+  const actuatorsAt = queryRows<Actuator>(db, `FROM farm::actuators FILTER x == ${x} AND y == ${y}`);
+  if (actuatorsAt.length > 0) return false;
+
+  const allSensors = queryRows<Sensor>(db, 'FROM farm::sensors SORT id DESC');
+  const nextId = allSensors.length > 0 ? allSensors[0].id + 1 : 1;
+
+  db.admin(`INSERT farm::sensors [\n  { id: ${nextId}, sensor_type: "${sensorType}", x: ${x}, y: ${y}, radius: ${SENSOR_DEFAULT_RADIUS} }\n]`);
+  return true;
+}
+
+export function placeActuator(db: WasmDB, actuatorType: ActuatorType, x: number, y: number): boolean {
+  const sensorsAt = queryRows<Sensor>(db, `FROM farm::sensors FILTER x == ${x} AND y == ${y}`);
+  if (sensorsAt.length > 0) return false;
+  const actuatorsAt = queryRows<Actuator>(db, `FROM farm::actuators FILTER x == ${x} AND y == ${y}`);
+  if (actuatorsAt.length > 0) return false;
+
+  const allActuators = queryRows<Actuator>(db, 'FROM farm::actuators SORT id DESC');
+  const nextId = allActuators.length > 0 ? allActuators[0].id + 1 : 1;
+
+  const powerUsage = actuatorType === 'sprinkler' ? 1.0 : actuatorType === 'heater' ? 2.0 : 1.5;
+  db.admin(`INSERT farm::actuators [\n  { id: ${nextId}, actuator_type: "${actuatorType}", x: ${x}, y: ${y}, active: false, power_usage: ${powerUsage.toFixed(1)}, radius: ${ACTUATOR_DEFAULT_RADIUS} }\n]`);
+  return true;
+}
+
+export function addRule(db: WasmDB, rule: Omit<Rule, 'id'>): Rule {
+  const allRules = queryRows<Rule>(db, 'FROM farm::rules SORT id DESC');
+  const nextId = allRules.length > 0 ? allRules[0].id + 1 : 1;
+
+  const newRule = { ...rule, id: nextId };
+  db.admin(`INSERT farm::rules [\n  { id: ${nextId}, sensor_type: "${rule.sensor_type}", operator: "${rule.operator}", threshold: ${rule.threshold.toFixed(2)}, actuator_type: "${rule.actuator_type}", enabled: ${rule.enabled} }\n]`);
+  return newRule;
+}
+
+export function removeAt(db: WasmDB, x: number, y: number): boolean {
+  const crops = queryRows<Crop>(db, `FROM farm::crops FILTER x == ${x} AND y == ${y}`);
+  if (crops.length > 0) {
+    // Re-read all crops, remove the one at position, rewrite
+    const allCrops = queryRows<Crop>(db, 'FROM farm::crops');
+    const filtered = allCrops.filter(c => !(c.x === x && c.y === y));
+    writeCrops(db, filtered);
+    return true;
+  }
+
+  const sensors = queryRows<Sensor>(db, `FROM farm::sensors FILTER x == ${x} AND y == ${y}`);
+  if (sensors.length > 0) {
+    const allSensors = queryRows<Sensor>(db, 'FROM farm::sensors');
+    const filtered = allSensors.filter(s => !(s.x === x && s.y === y));
+    if (filtered.length > 0) {
+      const rows = filtered.map(s =>
         `{ id: ${s.id}, sensor_type: "${s.sensor_type}", x: ${s.x}, y: ${s.y}, radius: ${s.radius} }`
       ).join(',\n  ');
-      db.admin(`DELETE farm::sensors;\nINSERT farm::sensors [\n  ${sensorRows}\n]`);
+      db.admin(`DELETE farm::sensors FILTER true;\nINSERT farm::sensors [\n  ${rows}\n]`);
     } else {
-      db.admin('DELETE farm::sensors');
+      db.admin('DELETE farm::sensors FILTER true');
     }
-
-    if (state.readings.length > 0) {
-      const readingRows = state.readings.map(r =>
-        `{ sensor_id: ${r.sensor_id}, tick: ${r.tick}, value: ${r.value.toFixed(3)} }`
-      ).join(',\n  ');
-      db.admin(`DELETE farm::readings;\nINSERT farm::readings [\n  ${readingRows}\n]`);
-    } else {
-      db.admin('DELETE farm::readings');
-    }
-
-    if (state.actuators.length > 0) {
-      const actRows = state.actuators.map(a =>
-        `{ id: ${a.id}, actuator_type: "${a.actuator_type}", x: ${a.x}, y: ${a.y}, active: ${a.active}, power_usage: ${a.power_usage.toFixed(1)}, radius: ${a.radius} }`
-      ).join(',\n  ');
-      db.admin(`DELETE farm::actuators;\nINSERT farm::actuators [\n  ${actRows}\n]`);
-    } else {
-      db.admin('DELETE farm::actuators');
-    }
-
-    if (state.rules.length > 0) {
-      const ruleRows = state.rules.map(r =>
-        `{ id: ${r.id}, sensor_type: "${r.sensor_type}", operator: "${r.operator}", threshold: ${r.threshold.toFixed(2)}, actuator_type: "${r.actuator_type}", enabled: ${r.enabled} }`
-      ).join(',\n  ');
-      db.admin(`DELETE farm::rules;\nINSERT farm::rules [\n  ${ruleRows}\n]`);
-    } else {
-      db.admin('DELETE farm::rules');
-    }
-
-    db.admin(`DELETE farm::weather;\nINSERT farm::weather [\n  { condition: "${state.weather.condition}", intensity: ${state.weather.intensity.toFixed(2)}, tick_changed: ${state.weather.tick_changed} }\n]`);
-
-    db.admin(`DELETE farm::stats;\nINSERT farm::stats [\n  { water_used: ${state.stats.water_used.toFixed(1)}, energy_used: ${state.stats.energy_used.toFixed(1)}, total_yield: ${state.stats.total_yield.toFixed(0)}, current_tick: ${state.stats.current_tick} }\n]`);
-  } catch (e) {
-    console.warn('Failed to sync game state to DB:', e);
+    return true;
   }
+
+  const actuators = queryRows<Actuator>(db, `FROM farm::actuators FILTER x == ${x} AND y == ${y}`);
+  if (actuators.length > 0) {
+    const allActuators = queryRows<Actuator>(db, 'FROM farm::actuators');
+    const filtered = allActuators.filter(a => !(a.x === x && a.y === y));
+    writeActuators(db, filtered);
+    return true;
+  }
+
+  return false;
+}
+
+export function harvestCrop(db: WasmDB, x: number, y: number): boolean {
+  const crops = queryRows<Crop>(db, `FROM farm::crops FILTER x == ${x} AND y == ${y}`);
+  const crop = crops[0];
+  if (!crop || crop.growth_stage !== 'harvestable') return false;
+
+  const stats = queryRows<FarmStats>(db, 'FROM farm::stats')[0];
+  if (stats) {
+    stats.total_yield += 1;
+    writeStats(db, stats);
+  }
+
+  const allCrops = queryRows<Crop>(db, 'FROM farm::crops');
+  const filtered = allCrops.filter(c => !(c.x === x && c.y === y));
+  writeCrops(db, filtered);
+  return true;
+}
+
+export function toggleRule(db: WasmDB, ruleId: number): void {
+  const rules = queryRows<Rule>(db, 'FROM farm::rules');
+  const rule = rules.find(r => r.id === ruleId);
+  if (rule) {
+    rule.enabled = !rule.enabled;
+    const rows = rules.map(r =>
+      `{ id: ${r.id}, sensor_type: "${r.sensor_type}", operator: "${r.operator}", threshold: ${r.threshold.toFixed(2)}, actuator_type: "${r.actuator_type}", enabled: ${r.enabled} }`
+    ).join(',\n  ');
+    db.admin(`DELETE farm::rules FILTER true;\nINSERT farm::rules [\n  ${rows}\n]`);
+  }
+}
+
+export function removeRule(db: WasmDB, ruleId: number): void {
+  const rules = queryRows<Rule>(db, 'FROM farm::rules');
+  const filtered = rules.filter(r => r.id !== ruleId);
+  if (filtered.length > 0) {
+    const rows = filtered.map(r =>
+      `{ id: ${r.id}, sensor_type: "${r.sensor_type}", operator: "${r.operator}", threshold: ${r.threshold.toFixed(2)}, actuator_type: "${r.actuator_type}", enabled: ${r.enabled} }`
+    ).join(',\n  ');
+    db.admin(`DELETE farm::rules FILTER true;\nINSERT farm::rules [\n  ${rows}\n]`);
+  } else {
+    db.admin('DELETE farm::rules FILTER true');
+  }
+}
+
+export function queryUIState(db: WasmDB): UIStateRow {
+  const rows = queryRows<UIStateRow>(db, 'FROM farm::ui_state');
+  return rows[0] ?? { tool_mode: 'select', speed: 1, selected_x: -1, selected_y: -1, camera_x: 0, camera_y: 0 };
+}
+
+export function writeUIState(db: WasmDB, state: UIStateRow): void {
+  db.admin(`DELETE farm::ui_state FILTER true;\nINSERT farm::ui_state [\n  { tool_mode: "${state.tool_mode}", speed: ${state.speed}, selected_x: ${state.selected_x}, selected_y: ${state.selected_y}, camera_x: ${Number(state.camera_x).toFixed(1)}, camera_y: ${Number(state.camera_y).toFixed(1)} }\n]`);
+}
+
+export function queryGameSnapshot(db: WasmDB): GameSnapshot {
+  const tiles = queryRows<Tile>(db, 'FROM farm::tiles');
+  const crops = queryRows<Crop>(db, 'FROM farm::crops');
+  const sensors = queryRows<Sensor>(db, 'FROM farm::sensors');
+  const readings = queryRows<SensorReading>(db, 'FROM farm::readings');
+  const actuators = queryRows<Actuator>(db, 'FROM farm::actuators');
+  const rules = queryRows<Rule>(db, 'FROM farm::rules');
+  const weather = queryRows<Weather>(db, 'FROM farm::weather')[0] ?? { condition: 'sunny' as WeatherCondition, intensity: 1.0, tick_changed: 0 };
+  const stats = queryRows<FarmStats>(db, 'FROM farm::stats')[0] ?? { water_used: 0, energy_used: 0, total_yield: 0, current_tick: 0 };
+
+  return { tiles, crops, sensors, readings, actuators, rules, weather, stats };
 }

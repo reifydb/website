@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { ToolMode } from '../engine/types';
 
 interface ToolbarProps {

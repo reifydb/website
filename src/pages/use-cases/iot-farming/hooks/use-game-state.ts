@@ -1,10 +1,18 @@
 import { useState, useEffect, useCallback } from 'react';
 import { eventBus, EVENTS } from '../game/event-bus';
 import type { GameState } from '../engine/types';
-import { createInitialState } from '../engine/simulation';
+
+const defaultState: GameState = {
+  tiles: [], crops: [], sensors: [], readings: [], actuators: [], rules: [],
+  weather: { condition: 'sunny', intensity: 1.0, tick_changed: 0 },
+  stats: { water_used: 0, energy_used: 0, total_yield: 0, current_tick: 0 },
+  selectedTile: null,
+  toolMode: 'select',
+  speed: 1,
+};
 
 export function useGameState() {
-  const [gameState, setGameState] = useState<GameState>(createInitialState);
+  const [gameState, setGameState] = useState<GameState>(defaultState);
 
   useEffect(() => {
     const handler = (state: GameState) => {

@@ -17,13 +17,24 @@ export function usePhaser(
     const game = new Phaser.Game(config);
     gameRef.current = game;
 
-    // Pass DB to scene once it's ready
-    game.events.on('ready', () => {
+    // Pass DB to scene.
+    // In some browsers, base64 textures load synchronously during boot,
+    // causing the 'ready' event to fire inside the Game constructor
+    // (before we can register a listener). Try both approaches:
+    const trySetDB = () => {
       const scene = game.scene.getScene('FarmScene') as FarmScene;
       if (scene) {
         scene.setDB(db);
+        return true;
       }
-    });
+      return false;
+    };
+
+    // Immediate attempt (scene instance exists after boot)
+    if (!trySetDB()) {
+      // Fallback: wait for ready event (deferred boot)
+      game.events.once('ready', trySetDB);
+    }
 
     return () => {
       game.destroy(true);

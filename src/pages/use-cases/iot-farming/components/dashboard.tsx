@@ -45,9 +45,9 @@ export function Dashboard({ stats, weather, cropCount, sensorCount, actuatorCoun
           # resources
         </div>
         <div className="border border-dashed border-black/25 p-2 bg-bg-secondary space-y-0.5">
-          <StatRow label="Water" value={stats.water_used.toFixed(1)} unit="L" />
-          <StatRow label="Energy" value={stats.energy_used.toFixed(1)} unit="kW" />
-          <StatRow label="Yield" value={stats.total_yield.toFixed(0)} />
+          <StatRow label="Water" value={Number(stats.water_used).toFixed(1)} unit="L" />
+          <StatRow label="Energy" value={Number(stats.energy_used).toFixed(1)} unit="kW" />
+          <StatRow label="Yield" value={Number(stats.total_yield).toFixed(0)} />
           <StatRow label="Tick" value={stats.current_tick} />
         </div>
       </div>

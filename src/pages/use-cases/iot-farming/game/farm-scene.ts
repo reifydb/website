@@ -4,15 +4,18 @@ import { eventBus, EVENTS } from './event-bus';
 import { generateWorldMap, getWorldTile, isGrassTile } from './world-map';
 import { computeAutotile } from './autotile';
 import {
-  createInitialState,
   simulationTick,
-  syncToDb,
+  queryGameSnapshot,
+  queryUIState,
+  writeUIState,
   placeCrop,
   placeSensor,
   placeActuator,
   addRule,
   removeAt,
   harvestCrop,
+  toggleRule,
+  removeRule,
 } from '../engine/simulation';
 import {
   GRID_WIDTH, GRID_HEIGHT, TILE_SIZE, BASE_TICK_MS, DISPLAY_SCALE,
@@ -34,8 +37,12 @@ const CAMERA_SCROLL_SPEED = 2; // px per frame
 const WATER_ANIM_INTERVAL = 250; // ms
 
 export class FarmScene extends Phaser.Scene {
-  private gameState!: GameState;
   private db: WasmDB | null = null;
+
+  // Local UI state (not in DB)
+  private toolMode: ToolMode = 'select';
+  private speed = 1;
+  private selectedTile: { x: number; y: number } | null = null;
 
   // World map
   private worldMap!: WorldTile[];
@@ -57,7 +64,6 @@ export class FarmScene extends Phaser.Scene {
 
   // Tick timing
   private tickAccumulator = 0;
-  private syncCounter = 0;
 
   // Camera input
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -80,7 +86,6 @@ export class FarmScene extends Phaser.Scene {
   }
 
   create(): void {
-    this.gameState = createInitialState();
     this.worldMap = generateWorldMap();
 
     const rng = createRng(12345);
@@ -212,18 +217,21 @@ export class FarmScene extends Phaser.Scene {
     // --- Layer 5: Fence around farm perimeter ---
     this.placeFarmFence();
 
-    // --- Soil type overlays (depth 8) ---
-    for (const tile of this.gameState.tiles) {
-      if (tile.soil_type !== 'normal') {
-        const color = tile.soil_type === 'sandy' ? 0xdec98a : 0x8b6914;
-        const rect = this.add.rectangle(
-          (tile.x + FARM_OFFSET_X) * TILE_SIZE + TILE_SIZE / 2,
-          (tile.y + FARM_OFFSET_Y) * TILE_SIZE + TILE_SIZE / 2,
-          TILE_SIZE, TILE_SIZE,
-          color, 0.15,
-        );
-        rect.setDepth(8);
-        this.soilOverlays.set(`${tile.x},${tile.y}`, rect);
+    // --- Soil type overlays (depth 8) from DB ---
+    if (this.db) {
+      const snapshot = queryGameSnapshot(this.db);
+      for (const tile of snapshot.tiles) {
+        if (tile.soil_type !== 'normal') {
+          const color = tile.soil_type === 'sandy' ? 0xdec98a : 0x8b6914;
+          const rect = this.add.rectangle(
+            (tile.x + FARM_OFFSET_X) * TILE_SIZE + TILE_SIZE / 2,
+            (tile.y + FARM_OFFSET_Y) * TILE_SIZE + TILE_SIZE / 2,
+            TILE_SIZE, TILE_SIZE,
+            color, 0.15,
+          );
+          rect.setDepth(8);
+          this.soilOverlays.set(`${tile.x},${tile.y}`, rect);
+        }
       }
     }
 
@@ -291,12 +299,34 @@ export class FarmScene extends Phaser.Scene {
 
     // --- Keyboard input for camera scrolling ---
     this.cursors = this.input.keyboard!.createCursorKeys();
+    // Don't capture these keys so they still reach text inputs (e.g. console editor)
+    this.input.keyboard!.removeCapture([
+      Phaser.Input.Keyboard.KeyCodes.UP,
+      Phaser.Input.Keyboard.KeyCodes.DOWN,
+      Phaser.Input.Keyboard.KeyCodes.LEFT,
+      Phaser.Input.Keyboard.KeyCodes.RIGHT,
+      Phaser.Input.Keyboard.KeyCodes.SPACE,
+    ]);
     this.wasdKeys = {
-      W: this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.W),
-      A: this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.A),
-      S: this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.S),
-      D: this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.D),
+      W: this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.W, false),
+      A: this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.A, false),
+      S: this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.S, false),
+      D: this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.D, false),
     };
+
+    // --- Restore UI state from DB ---
+    if (this.db) {
+      const ui = queryUIState(this.db);
+      this.toolMode = ui.tool_mode as ToolMode;
+      this.speed = ui.speed;
+      if (ui.selected_x >= 0) {
+        this.selectedTile = { x: ui.selected_x, y: ui.selected_y };
+      }
+      if (ui.camera_x !== 0 || ui.camera_y !== 0) {
+        this.cameras.main.scrollX = ui.camera_x;
+        this.cameras.main.scrollY = ui.camera_y;
+      }
+    }
 
     // --- Input handling (farm-local coords) ---
     this.input.on('pointermove', (pointer: Phaser.Input.Pointer) => {
@@ -328,53 +358,70 @@ export class FarmScene extends Phaser.Scene {
 
     // --- Listen for React events ---
     eventBus.on(EVENTS.TOOL_CHANGED, (mode: ToolMode) => {
-      this.gameState.toolMode = mode;
+      this.toolMode = mode;
+      if (this.db) {
+        const ui = queryUIState(this.db);
+        ui.tool_mode = mode;
+        writeUIState(this.db, ui);
+      }
+      this.emitStateUpdate();
     });
 
     eventBus.on(EVENTS.SPEED_CHANGED, (speed: number) => {
-      this.gameState.speed = speed;
+      this.speed = speed;
+      if (this.db) {
+        const ui = queryUIState(this.db);
+        ui.speed = speed;
+        writeUIState(this.db, ui);
+      }
     });
 
     eventBus.on(EVENTS.RULE_ADDED, (rule: Omit<Rule, 'id'>) => {
-      addRule(this.gameState, rule);
-      this.emitStateUpdate();
+      if (this.db) {
+        addRule(this.db, rule);
+        this.emitStateUpdate();
+      }
     });
 
     eventBus.on(EVENTS.RULE_TOGGLED, (ruleId: number) => {
-      const rule = this.gameState.rules.find(r => r.id === ruleId);
-      if (rule) rule.enabled = !rule.enabled;
-      this.emitStateUpdate();
+      if (this.db) {
+        toggleRule(this.db, ruleId);
+        this.emitStateUpdate();
+      }
     });
 
     eventBus.on(EVENTS.RULE_REMOVED, (ruleId: number) => {
-      const idx = this.gameState.rules.findIndex(r => r.id === ruleId);
-      if (idx >= 0) this.gameState.rules.splice(idx, 1);
-      this.emitStateUpdate();
+      if (this.db) {
+        removeRule(this.db, ruleId);
+        this.emitStateUpdate();
+      }
     });
 
     // Initial state emit
     this.emitStateUpdate();
-
-    // Initial DB sync
-    if (this.db) {
-      syncToDb(this.gameState, this.db);
-    }
   }
 
   update(_time: number, delta: number): void {
     // --- Camera scrolling ---
+    // Skip camera keys when a text input has focus (e.g. console editor)
+    const el = document.activeElement;
+    const typing = el instanceof HTMLElement && (
+      el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable
+    );
     const cam = this.cameras.main;
-    if (this.cursors.left.isDown || this.wasdKeys.A.isDown) {
-      cam.scrollX -= CAMERA_SCROLL_SPEED;
-    }
-    if (this.cursors.right.isDown || this.wasdKeys.D.isDown) {
-      cam.scrollX += CAMERA_SCROLL_SPEED;
-    }
-    if (this.cursors.up.isDown || this.wasdKeys.W.isDown) {
-      cam.scrollY -= CAMERA_SCROLL_SPEED;
-    }
-    if (this.cursors.down.isDown || this.wasdKeys.S.isDown) {
-      cam.scrollY += CAMERA_SCROLL_SPEED;
+    if (!typing) {
+      if (this.cursors.left.isDown || this.wasdKeys.A.isDown) {
+        cam.scrollX -= CAMERA_SCROLL_SPEED;
+      }
+      if (this.cursors.right.isDown || this.wasdKeys.D.isDown) {
+        cam.scrollX += CAMERA_SCROLL_SPEED;
+      }
+      if (this.cursors.up.isDown || this.wasdKeys.W.isDown) {
+        cam.scrollY -= CAMERA_SCROLL_SPEED;
+      }
+      if (this.cursors.down.isDown || this.wasdKeys.S.isDown) {
+        cam.scrollY += CAMERA_SCROLL_SPEED;
+      }
     }
 
     // Emit camera position if changed
@@ -384,6 +431,12 @@ export class FarmScene extends Phaser.Scene {
       this.lastCamX = camX;
       this.lastCamY = camY;
       eventBus.emit(EVENTS.CAMERA_MOVED, { scrollX: camX, scrollY: camY });
+      if (this.db) {
+        const ui = queryUIState(this.db);
+        ui.camera_x = camX;
+        ui.camera_y = camY;
+        writeUIState(this.db, ui);
+      }
     }
 
     // --- Water animation ---
@@ -398,19 +451,13 @@ export class FarmScene extends Phaser.Scene {
     }
 
     // --- Simulation ticks ---
-    if (this.gameState.speed > 0) {
-      const tickInterval = BASE_TICK_MS / this.gameState.speed;
+    if (this.speed > 0 && this.db) {
+      const tickInterval = BASE_TICK_MS / this.speed;
       this.tickAccumulator += delta;
 
       while (this.tickAccumulator >= tickInterval) {
         this.tickAccumulator -= tickInterval;
-        simulationTick(this.gameState);
-
-        this.syncCounter++;
-        if (this.syncCounter >= 5 && this.db) {
-          syncToDb(this.gameState, this.db);
-          this.syncCounter = 0;
-        }
+        simulationTick(this.db);
       }
 
       this.updateVisuals();
@@ -419,22 +466,29 @@ export class FarmScene extends Phaser.Scene {
   }
 
   private handleTileClick(x: number, y: number): void {
-    const mode = this.gameState.toolMode;
+    if (!this.db) return;
+    const mode = this.toolMode;
 
     if (mode === 'select') {
-      this.gameState.selectedTile = { x, y };
+      this.selectedTile = { x, y };
       this.selectionRect?.setPosition(
         (x + FARM_OFFSET_X) * TILE_SIZE + TILE_SIZE / 2,
         (y + FARM_OFFSET_Y) * TILE_SIZE + TILE_SIZE / 2,
       );
       this.selectionRect?.setVisible(true);
+      if (this.db) {
+        const ui = queryUIState(this.db);
+        ui.selected_x = x;
+        ui.selected_y = y;
+        writeUIState(this.db, ui);
+      }
       eventBus.emit(EVENTS.TILE_CLICKED, { x, y });
       this.emitStateUpdate();
       return;
     }
 
     if (mode === 'harvest') {
-      if (harvestCrop(this.gameState, x, y)) {
+      if (harvestCrop(this.db, x, y)) {
         eventBus.emit(EVENTS.CROP_HARVESTED, { x, y });
       }
       this.emitStateUpdate();
@@ -442,36 +496,39 @@ export class FarmScene extends Phaser.Scene {
     }
 
     if (mode === 'remove') {
-      removeAt(this.gameState, x, y);
+      removeAt(this.db, x, y);
       this.emitStateUpdate();
       return;
     }
 
     if (mode.startsWith('plant_')) {
       const cropType = mode.replace('plant_', '') as CropType;
-      placeCrop(this.gameState, cropType, x, y);
+      placeCrop(this.db, cropType, x, y);
       this.emitStateUpdate();
       return;
     }
 
     if (mode.startsWith('place_') && mode.endsWith('_sensor')) {
       const sensorType = mode.replace('place_', '').replace('_sensor', '') as SensorType;
-      placeSensor(this.gameState, sensorType, x, y);
+      placeSensor(this.db, sensorType, x, y);
       this.emitStateUpdate();
       return;
     }
 
     if (mode === 'place_sprinkler' || mode === 'place_heater' || mode === 'place_lamp') {
       const actuatorType = mode.replace('place_', '') as ActuatorType;
-      placeActuator(this.gameState, actuatorType, x, y);
+      placeActuator(this.db, actuatorType, x, y);
       this.emitStateUpdate();
       return;
     }
   }
 
   private updateVisuals(): void {
+    if (!this.db) return;
+    const snapshot = queryGameSnapshot(this.db);
+
     // Moisture overlay on tiles
-    for (const tile of this.gameState.tiles) {
+    for (const tile of snapshot.tiles) {
       const key = `moisture_${tile.x},${tile.y}`;
       let overlay = this.soilOverlays.get(key);
 
@@ -494,7 +551,7 @@ export class FarmScene extends Phaser.Scene {
     }
 
     // Crop sprites
-    const existingCropIds = new Set(this.gameState.crops.map(c => c.id));
+    const existingCropIds = new Set(snapshot.crops.map(c => c.id));
 
     for (const [id, sprite] of this.cropSprites) {
       if (!existingCropIds.has(id)) {
@@ -503,7 +560,7 @@ export class FarmScene extends Phaser.Scene {
       }
     }
 
-    for (const crop of this.gameState.crops) {
+    for (const crop of snapshot.crops) {
       let sprite = this.cropSprites.get(crop.id);
       const frame = getCropFrame(crop.crop_type, crop.growth_stage);
       const worldX = (crop.x + FARM_OFFSET_X) * TILE_SIZE + TILE_SIZE / 2;
@@ -533,7 +590,7 @@ export class FarmScene extends Phaser.Scene {
     }
 
     // Weather visuals
-    const weather = this.gameState.weather;
+    const weather = snapshot.weather;
     if (weather.condition === 'rainy') {
       if (!this.rainEmitter?.emitting) this.rainEmitter?.start();
       this.weatherTint?.setAlpha(0.15);
@@ -578,10 +635,29 @@ export class FarmScene extends Phaser.Scene {
   }
 
   private emitStateUpdate(): void {
-    eventBus.emit(EVENTS.STATE_UPDATED, { ...this.gameState });
+    if (!this.db) return;
+    const snapshot = queryGameSnapshot(this.db);
+    const state: GameState = {
+      ...snapshot,
+      selectedTile: this.selectedTile,
+      toolMode: this.toolMode,
+      speed: this.speed,
+    };
+    eventBus.emit(EVENTS.STATE_UPDATED, state);
   }
 
   getGameState(): GameState {
-    return this.gameState;
+    if (!this.db) {
+      return {
+        tiles: [], crops: [], sensors: [], readings: [], actuators: [], rules: [],
+        weather: { condition: 'sunny', intensity: 1.0, tick_changed: 0 },
+        stats: { water_used: 0, energy_used: 0, total_yield: 0, current_tick: 0 },
+        selectedTile: this.selectedTile,
+        toolMode: this.toolMode,
+        speed: this.speed,
+      };
+    }
+    const snapshot = queryGameSnapshot(this.db);
+    return { ...snapshot, selectedTile: this.selectedTile, toolMode: this.toolMode, speed: this.speed };
   }
 }
