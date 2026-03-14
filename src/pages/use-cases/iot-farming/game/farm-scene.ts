@@ -36,6 +36,14 @@ function createRng(seed: number) {
 const CAMERA_SCROLL_SPEED = 2; // px per frame
 const WATER_ANIM_INTERVAL = 250; // ms
 
+const GROWTH_BORDER_COLOR: Record<string, number> = {
+  seed: 0xa3a3a3,
+  sprout: 0x86efac,
+  growing: 0x22c55e,
+  mature: 0x0d9488,
+  harvestable: 0xfbbf24,
+};
+
 export class FarmScene extends Phaser.Scene {
   private db: WasmDB | null = null;
 
@@ -55,6 +63,7 @@ export class FarmScene extends Phaser.Scene {
   // Farm sprites
   private soilOverlays: Map<string, Phaser.GameObjects.Rectangle> = new Map();
   private cropSprites: Map<number, Phaser.GameObjects.Sprite> = new Map();
+  private cropBorders: Map<number, Phaser.GameObjects.Rectangle> = new Map();
   private selectionRect: Phaser.GameObjects.Rectangle | null = null;
   private hoverRect: Phaser.GameObjects.Rectangle | null = null;
 
@@ -459,7 +468,9 @@ export class FarmScene extends Phaser.Scene {
         this.tickAccumulator -= tickInterval;
         simulationTick(this.db);
       }
+    }
 
+    if (this.db) {
       this.updateVisuals();
       this.emitStateUpdate();
     }
@@ -488,39 +499,63 @@ export class FarmScene extends Phaser.Scene {
     }
 
     if (mode === 'harvest') {
-      if (harvestCrop(this.db, x, y)) {
+      const ok = harvestCrop(this.db, x, y);
+      this.flashTile(x, y, ok ? 0x22c55e : 0xef4444);
+      if (ok) {
         eventBus.emit(EVENTS.CROP_HARVESTED, { x, y });
+        this.updateVisuals();
       }
       this.emitStateUpdate();
       return;
     }
 
     if (mode === 'remove') {
-      removeAt(this.db, x, y);
+      const ok = removeAt(this.db, x, y);
+      this.flashTile(x, y, ok ? 0x22c55e : 0xef4444);
+      if (ok) this.updateVisuals();
       this.emitStateUpdate();
       return;
     }
 
     if (mode.startsWith('plant_')) {
       const cropType = mode.replace('plant_', '') as CropType;
-      placeCrop(this.db, cropType, x, y);
+      const ok = placeCrop(this.db, cropType, x, y);
+      this.flashTile(x, y, ok ? 0x22c55e : 0xef4444);
+      if (ok) this.updateVisuals();
       this.emitStateUpdate();
       return;
     }
 
     if (mode.startsWith('place_') && mode.endsWith('_sensor')) {
       const sensorType = mode.replace('place_', '').replace('_sensor', '') as SensorType;
-      placeSensor(this.db, sensorType, x, y);
+      const ok = placeSensor(this.db, sensorType, x, y);
+      this.flashTile(x, y, ok ? 0x22c55e : 0xef4444);
+      if (ok) this.updateVisuals();
       this.emitStateUpdate();
       return;
     }
 
     if (mode === 'place_sprinkler' || mode === 'place_heater' || mode === 'place_lamp') {
       const actuatorType = mode.replace('place_', '') as ActuatorType;
-      placeActuator(this.db, actuatorType, x, y);
+      const ok = placeActuator(this.db, actuatorType, x, y);
+      this.flashTile(x, y, ok ? 0x22c55e : 0xef4444);
+      if (ok) this.updateVisuals();
       this.emitStateUpdate();
       return;
     }
+  }
+
+  private flashTile(x: number, y: number, color: number): void {
+    const worldX = (x + FARM_OFFSET_X) * TILE_SIZE + TILE_SIZE / 2;
+    const worldY = (y + FARM_OFFSET_Y) * TILE_SIZE + TILE_SIZE / 2;
+    const rect = this.add.rectangle(worldX, worldY, TILE_SIZE, TILE_SIZE, color, 0.5)
+      .setDepth(95);
+    this.tweens.add({
+      targets: rect,
+      alpha: 0,
+      duration: 300,
+      onComplete: () => rect.destroy(),
+    });
   }
 
   private updateVisuals(): void {
@@ -557,6 +592,11 @@ export class FarmScene extends Phaser.Scene {
       if (!existingCropIds.has(id)) {
         sprite.destroy();
         this.cropSprites.delete(id);
+        const border = this.cropBorders.get(id);
+        if (border) {
+          border.destroy();
+          this.cropBorders.delete(id);
+        }
       }
     }
 
@@ -569,8 +609,19 @@ export class FarmScene extends Phaser.Scene {
       if (!sprite) {
         sprite = this.add.sprite(worldX, worldY, 'farming-plants', frame).setDepth(10);
         this.cropSprites.set(crop.id, sprite);
+        const borderColor = GROWTH_BORDER_COLOR[crop.growth_stage] ?? 0xa3a3a3;
+        const border = this.add.rectangle(worldX, worldY, TILE_SIZE, TILE_SIZE)
+          .setStrokeStyle(1.5, borderColor)
+          .setFillStyle(0, 0)
+          .setDepth(9);
+        this.cropBorders.set(crop.id, border);
       } else {
         sprite.setFrame(frame);
+        const border = this.cropBorders.get(crop.id);
+        if (border) {
+          const borderColor = GROWTH_BORDER_COLOR[crop.growth_stage] ?? 0xa3a3a3;
+          border.setStrokeStyle(1.5, borderColor);
+        }
       }
 
       if (crop.health < 0.3) {
