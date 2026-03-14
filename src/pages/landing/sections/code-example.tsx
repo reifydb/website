@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ExecutableSnippet, ScrollReveal } from '@/components/ui';
 import { cn } from '@/lib';
-import { landingExamples } from '@/lib/examples';
+import { guideExamples } from '@/lib/examples';
 
-const examples = landingExamples;
+const examples = [guideExamples.find((ex) => ex.id === 'guide-built-in-testing')!];
 
 export function CodeExampleSection() {
   const [activeIndex, setActiveIndex] = useState(0);
