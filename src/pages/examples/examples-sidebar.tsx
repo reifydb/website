@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { cn } from '@/lib';
 import type { ExampleSection } from './sections';
 
@@ -48,6 +49,20 @@ interface ExamplesSidebarMobileProps {
 }
 
 export function ExamplesSidebarMobile({ sections, activeId, onSelect, isOpen, onClose }: ExamplesSidebarMobileProps) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
     <div
       className={cn(
@@ -61,7 +76,7 @@ export function ExamplesSidebarMobile({ sections, activeId, onSelect, isOpen, on
       {/* Drawer */}
       <div
         className={cn(
-          'absolute top-0 left-0 h-full w-72 max-w-[85vw] bg-bg-elevated border-r border-dashed border-black/25 transform transition-transform duration-300 overflow-y-auto',
+          'absolute top-0 left-0 h-full w-72 max-w-[85vw] bg-bg-elevated border-r border-dashed border-black/25 z-10 transition-[translate] duration-300 overflow-y-auto',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
