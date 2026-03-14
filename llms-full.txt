@@ -108,24 +108,43 @@ See RQL in Action
 
 Write queries the way you think about your data. No translation, no ceremony.
 
-Inline Data
-Filter + Aggregate
-Sorting + Limiting
-$ Inline Data
+Built-in Testing
+$ Built-in Testing
 [[]]
 [cp]
 [↺]
-
-// Query inline data directly. Great for prototyping and testing.
-
 1
 2
 3
 4
-from [
-  {id: 1, name: "Alice", role: "admin"},
-  {id: 2, name: "Bob", role: "user"}
-]
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+CREATE NAMESPACE tp;
+CREATE TABLE tp::users { id: int4, name: utf8 };
+CREATE TEST PROCEDURE tp::seed_users AS {
+  INSERT tp::users [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }];
+};
+CREATE TEST tp::can_query {
+  CALL tp::seed_users();
+  FROM tp::users | ASSERT { id > 0 };
+};
+CREATE TEST tp::can_filter {
+  CALL tp::seed_users();
+  FROM tp::users | FILTER name == 'Alice' | ASSERT { id == 1 };
+};
+RUN TESTS tp | map { name, namespace, outcome, message };
 $ ctrl+enter to run
 [run]
 Explore All Examples -->
@@ -39011,33 +39030,51 @@ Reach out to the team
 11
 [> Start]
 EXAMPLES
-Inline Data
-Filter + Aggregate
-Sorting + Limiting
 Built-in Testing
-Inline Data
+Built-in Testing
 
-Query data without a database connection
+Define and run tests inside the database
 
-RQL lets you write queries against inline data: arrays of objects defined directly in the query. No tables, no schema setup, no connection required.
+ReifyDB has built-in testing primitives. Use CREATE TEST PROCEDURE to define reusable setup logic, and CREATE TEST to write assertions against your data using pipeline syntax.
 
-This is useful for prototyping queries, writing tests, or exploring how RQL transforms work before running them against real data.
+Run all tests in a namespace with RUN TESTS. Each test runs in its own transaction that is rolled back afterward, so tests never interfere with each other or leave behind state.
 
-$ Inline Data
+$ Built-in Testing
 [[]]
 [cp]
 [↺]
-
-// Query inline data directly. Great for prototyping and testing.
-
 1
 2
 3
 4
-from [
-  {id: 1, name: "Alice", role: "admin"},
-  {id: 2, name: "Bob", role: "user"}
-]
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+CREATE NAMESPACE tp;
+CREATE TABLE tp::users { id: int4, name: utf8 };
+CREATE TEST PROCEDURE tp::seed_users AS {
+  INSERT tp::users [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }];
+};
+CREATE TEST tp::can_query {
+  CALL tp::seed_users();
+  FROM tp::users | ASSERT { id > 0 };
+};
+CREATE TEST tp::can_filter {
+  CALL tp::seed_users();
+  FROM tp::users | FILTER name == 'Alice' | ASSERT { id == 1 };
+};
+RUN TESTS tp | map { name, namespace, outcome, message };
 $ ctrl+enter to run
 [run]
 # PRODUCT
