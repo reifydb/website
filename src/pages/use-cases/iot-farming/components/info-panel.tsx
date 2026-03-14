@@ -83,9 +83,7 @@ export function InfoPanel({ gameState }: InfoPanelProps) {
               <span className="text-text-primary">{sensor.radius}</span>
             </div>
             {(() => {
-              const latest = gameState.readings
-                .filter(r => r.sensor_id === sensor.id)
-                .sort((a, b) => b.tick - a.tick)[0];
+              const latest = gameState.latestReadings.find(r => r.sensor_id === sensor.id);
               return latest ? (
                 <div className="flex justify-between text-xs font-mono">
                   <span className="text-text-muted">Reading</span>
@@ -103,6 +101,9 @@ export function InfoPanel({ gameState }: InfoPanelProps) {
           weather={gameState.weather}
           cropCount={gameState.crops.length}
           sensorCount={gameState.sensors.length}
+          cropSummary={gameState.cropSummary}
+          soilOverview={gameState.soilOverview}
+          alerts={gameState.alerts}
         />
       </div>
     </div>

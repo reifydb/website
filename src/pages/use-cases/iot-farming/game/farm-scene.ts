@@ -594,8 +594,13 @@ export class FarmScene extends Phaser.Scene {
         sprite.setFrame(frame);
         const border = this.cropBorders.get(crop.id);
         if (border) {
-          const borderColor = GROWTH_BORDER_COLOR[crop.growth_stage] ?? 0xa3a3a3;
-          border.setStrokeStyle(1.5, borderColor);
+          const isAlert = snapshot.alerts.some(a => a.id === crop.id);
+          if (isAlert) {
+            border.setStrokeStyle(2, 0xff0000);
+          } else {
+            const borderColor = GROWTH_BORDER_COLOR[crop.growth_stage] ?? 0xa3a3a3;
+            border.setStrokeStyle(1.5, borderColor);
+          }
         }
       }
 
@@ -722,6 +727,7 @@ export class FarmScene extends Phaser.Scene {
         tiles: [], crops: [], sensors: [], readings: [],
         weather: { condition: 'sunny', intensity: 1.0, tick_changed: 0 },
         stats: { water_used: 0, energy_used: 0, total_yield: 0, current_tick: 0 },
+        cropSummary: [], soilOverview: [], alerts: [], latestReadings: [],
         selectedTile: this.selectedTile,
         toolMode: this.toolMode,
         speed: this.speed,

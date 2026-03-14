@@ -1,10 +1,13 @@
-import type { FarmStats, Weather } from '../engine/types';
+import type { FarmStats, Weather, CropSummary, SoilOverview, Alert } from '../engine/types';
 
 interface DashboardProps {
   stats: FarmStats;
   weather: Weather;
   cropCount: number;
   sensorCount: number;
+  cropSummary: CropSummary[];
+  soilOverview: SoilOverview[];
+  alerts: Alert[];
 }
 
 function StatRow({ label, value, unit }: { label: string; value: string | number; unit?: string }) {
@@ -24,7 +27,7 @@ const weatherIcons: Record<string, string> = {
   rainy: '🌧',
 };
 
-export function Dashboard({ stats, weather, cropCount, sensorCount }: DashboardProps) {
+export function Dashboard({ stats, weather, cropCount, sensorCount, cropSummary, soilOverview, alerts }: DashboardProps) {
   return (
     <div className="space-y-3">
       <div>
@@ -60,6 +63,67 @@ export function Dashboard({ stats, weather, cropCount, sensorCount }: DashboardP
           <StatRow label="Sensors" value={sensorCount} />
         </div>
       </div>
+
+      {cropSummary.length > 0 && (
+        <div>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted mb-1">
+            # crop health <span className="text-[8px] opacity-60">(view)</span>
+          </div>
+          <div className="border border-dashed border-black/25 p-2 bg-bg-secondary space-y-1.5">
+            {cropSummary.map(cs => (
+              <div key={cs.crop_type} className="space-y-0.5">
+                <div className="flex justify-between text-xs font-mono">
+                  <span className="text-text-muted capitalize">{cs.crop_type}</span>
+                  <span className="text-text-primary">{cs.total}</span>
+                </div>
+                <div className="w-full bg-black/10 h-1.5 rounded">
+                  <div
+                    className={`h-full rounded ${cs.avg_health > 0.7 ? 'bg-green-500' : cs.avg_health > 0.3 ? 'bg-yellow-500' : 'bg-red-500'}`}
+                    style={{ width: `${(cs.avg_health * 100).toFixed(0)}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {soilOverview.length > 0 && (
+        <div>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted mb-1">
+            # soil conditions <span className="text-[8px] opacity-60">(view)</span>
+          </div>
+          <div className="border border-dashed border-black/25 p-2 bg-bg-secondary space-y-0.5">
+            {soilOverview.map(so => (
+              <div key={so.soil_type} className="flex justify-between text-xs font-mono">
+                <span className="text-text-muted capitalize">{so.soil_type}</span>
+                <span className="text-text-primary text-[10px]">
+                  M:{(so.avg_moisture * 100).toFixed(0)}% T:{(so.avg_temp * 100).toFixed(0)}%
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {alerts.length > 0 && (
+        <div>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted mb-1">
+            # alerts <span className="text-[8px] opacity-60">(view)</span>
+          </div>
+          <div className="border border-dashed border-red-400/50 p-2 bg-bg-secondary space-y-0.5">
+            <div className="text-xs font-mono text-red-600 font-bold">
+              {alerts.length} crop{alerts.length !== 1 ? 's' : ''} at risk
+            </div>
+            {alerts.slice(0, 5).map(a => (
+              <div key={a.id} className="flex justify-between text-xs font-mono">
+                <span className="text-text-muted capitalize">{a.crop_type} [{a.x},{a.y}]</span>
+                <span className="text-red-600">{(a.health * 100).toFixed(0)}%</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

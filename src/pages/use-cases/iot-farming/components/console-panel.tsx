@@ -7,10 +7,26 @@ const DEFAULT_HEIGHT = 320;
 const MIN_HEIGHT = 150;
 const MAX_HEIGHT = 1200;
 
+const COOKBOOK_QUERIES = [
+  { label: 'Crop Summary', query: 'FROM farm::crop_summary' },
+  { label: 'Soil Overview', query: 'FROM farm::soil_overview' },
+  { label: 'Alerts', query: 'FROM farm::alerts' },
+  { label: 'Aggregation', query: 'FROM farm::tiles | aggregate { avg: math::avg(moisture) } by { soil_type }' },
+  { label: 'Filter + Sort', query: 'FROM farm::crops | FILTER health < 0.5 | sort { health }' },
+  { label: 'Latest Readings', query: 'FROM farm::latest_readings' },
+];
+
 export function ConsolePanel() {
   const executor = useMemo(() => createFarmExecutor(), []);
   const [height, setHeight] = useState(DEFAULT_HEIGHT);
   const [dragging, setDragging] = useState<{ startY: number; startHeight: number } | null>(null);
+  const [activeQuery, setActiveQuery] = useState('FROM farm::crops');
+  const [consoleKey, setConsoleKey] = useState(0);
+
+  const loadQuery = useCallback((query: string) => {
+    setActiveQuery(query);
+    setConsoleKey(k => k + 1);
+  }, []);
 
   const onMouseDown = useCallback(
     (e: React.MouseEvent) => {
@@ -47,10 +63,24 @@ export function ConsolePanel() {
       >
         <div className="w-8 h-0.5 rounded bg-black/25" />
       </div>
-      <div className="h-[calc(100%-6px)]">
+      {/* Cookbook query buttons */}
+      <div className="flex items-center gap-1 px-2 py-1 bg-bg-secondary border-b border-black/10 overflow-x-auto">
+        <span className="text-[10px] font-mono text-text-muted whitespace-nowrap mr-1">Cookbook:</span>
+        {COOKBOOK_QUERIES.map(({ label, query }) => (
+          <button
+            key={label}
+            onClick={() => loadQuery(query)}
+            className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-black/15 bg-bg-primary text-text-muted hover:text-text-primary hover:border-black/30 whitespace-nowrap transition-colors"
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      <div className="h-[calc(100%-6px-28px)]">
         <Console
+          key={consoleKey}
           executor={executor}
-          initialCode="FROM farm::crops"
+          initialCode={activeQuery}
           historyKey="iot-farming"
         />
       </div>

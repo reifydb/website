@@ -67,6 +67,34 @@ export interface UIStateRow {
   camera_y: number;
 }
 
+export interface CropSummary {
+  crop_type: CropType;
+  total: number;
+  avg_health: number;
+}
+
+export interface SoilOverview {
+  soil_type: SoilType;
+  avg_moisture: number;
+  avg_temp: number;
+  avg_light: number;
+}
+
+export interface Alert {
+  id: number;
+  crop_type: CropType;
+  x: number;
+  y: number;
+  health: number;
+  growth_stage: GrowthStage;
+}
+
+export interface LatestReading {
+  sensor_id: number;
+  value: number;
+  tick: number;
+}
+
 export interface GameSnapshot {
   tiles: Tile[];
   crops: Crop[];
@@ -74,6 +102,10 @@ export interface GameSnapshot {
   readings: SensorReading[];
   weather: Weather;
   stats: FarmStats;
+  cropSummary: CropSummary[];
+  soilOverview: SoilOverview[];
+  alerts: Alert[];
+  latestReadings: LatestReading[];
 }
 
 export interface UIState {

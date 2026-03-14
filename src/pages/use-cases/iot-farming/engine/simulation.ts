@@ -1,7 +1,7 @@
 import type {
   GameSnapshot, Tile, Crop, Sensor, SensorReading,
   CropType, SensorType, GrowthStage, WeatherCondition, Weather, FarmStats,
-  UIStateRow,
+  UIStateRow, CropSummary, SoilOverview, Alert, LatestReading,
 } from './types';
 import {
   CROP_CONFIGS, WEATHER_EFFECTS, WEATHER_CYCLE,
@@ -10,10 +10,6 @@ import {
   HEALTH_DECAY_RATE, HEALTH_RECOVERY_RATE, GROWTH_STAGES,
 } from './constants';
 import type { WasmDB } from '@reifydb/wasm';
-
-function clamp01(v: number): number {
-  return Math.max(0, Math.min(1, v));
-}
 
 function dist(x1: number, y1: number, x2: number, y2: number): number {
   return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
@@ -83,55 +79,7 @@ function queryRows<T>(db: WasmDB, rql: string): T[] {
   return raw.map(r => toPlain<T>(r as Record<string, unknown>));
 }
 
-function writeTiles(db: WasmDB, tiles: Tile[]): void {
-  const rows = tiles.map(t =>
-    `{ x: ${t.x}, y: ${t.y}, soil_type: "${t.soil_type}", moisture: ${t.moisture.toFixed(3)}, temperature: ${t.temperature.toFixed(3)}, light: ${t.light.toFixed(3)} }`
-  ).join(',\n  ');
-  db.admin(`DELETE farm::tiles FILTER true;\nINSERT farm::tiles [\n  ${rows}\n]`);
-}
-
-function writeStats(db: WasmDB, stats: FarmStats): void {
-  db.admin(`DELETE farm::stats FILTER true;\nINSERT farm::stats [\n  { water_used: ${stats.water_used.toFixed(1)}, energy_used: ${stats.energy_used.toFixed(1)}, total_yield: ${stats.total_yield.toFixed(0)}, current_tick: ${stats.current_tick} }\n]`);
-}
-
-function writeCrops(db: WasmDB, crops: Crop[]): void {
-  if (crops.length > 0) {
-    const rows = crops.map(c =>
-      `{ id: ${c.id}, crop_type: "${c.crop_type}", x: ${c.x}, y: ${c.y}, growth_stage: "${c.growth_stage}", growth_progress: ${c.growth_progress.toFixed(1)}, health: ${c.health.toFixed(3)}, planted_tick: ${c.planted_tick} }`
-    ).join(',\n  ');
-    db.admin(`DELETE farm::crops FILTER true;\nINSERT farm::crops [\n  ${rows}\n]`);
-  } else {
-    db.admin('DELETE farm::crops FILTER true');
-  }
-}
-
-function writeSensors(db: WasmDB, sensors: Sensor[]): void {
-  if (sensors.length > 0) {
-    const rows = sensors.map(s =>
-      `{ id: ${s.id}, sensor_type: "${s.sensor_type}", x: ${s.x}, y: ${s.y}, radius: ${s.radius} }`
-    ).join(',\n  ');
-    db.admin(`DELETE farm::sensors FILTER true;\nINSERT farm::sensors [\n  ${rows}\n]`);
-  } else {
-    db.admin('DELETE farm::sensors FILTER true');
-  }
-}
-
-function writeReadings(db: WasmDB, readings: SensorReading[]): void {
-  if (readings.length > 0) {
-    const rows = readings.map(r =>
-      `{ sensor_id: ${r.sensor_id}, tick: ${r.tick}, value: ${r.value.toFixed(3)} }`
-    ).join(',\n  ');
-    db.admin(`DELETE farm::readings FILTER true;\nINSERT farm::readings [\n  ${rows}\n]`);
-  } else {
-    db.admin('DELETE farm::readings FILTER true');
-  }
-}
-
-function writeWeather(db: WasmDB, weather: Weather): void {
-  db.admin(`DELETE farm::weather FILTER true;\nINSERT farm::weather [\n  { condition: "${weather.condition}", intensity: ${weather.intensity.toFixed(2)}, tick_changed: ${weather.tick_changed} }\n]`);
-}
-
-// --- Tick functions (all DB-driven) ---
+// --- Tick functions (targeted UPDATE/INSERT/DELETE for incremental view updates) ---
 
 function tickWeather(db: WasmDB, currentTick: number): void {
   const weather = queryRows<Weather>(db, 'FROM farm::weather')[0];
@@ -143,27 +91,22 @@ function tickWeather(db: WasmDB, currentTick: number): void {
   if (elapsed >= duration) {
     const currentIdx = WEATHER_CYCLE.indexOf(weather.condition);
     const nextIdx = (currentIdx + 1) % WEATHER_CYCLE.length;
-    weather.condition = WEATHER_CYCLE[nextIdx] as WeatherCondition;
-    weather.intensity = 0.8 + Math.random() * 0.4;
-    weather.tick_changed = currentTick;
-    writeWeather(db, weather);
+    const newCondition = WEATHER_CYCLE[nextIdx];
+    const newIntensity = (0.8 + Math.random() * 0.4).toFixed(2);
+    db.admin(`UPDATE farm::weather { condition: "${newCondition}", intensity: ${newIntensity}, tick_changed: ${currentTick} } FILTER true`);
   }
 }
 
 function tickSoil(db: WasmDB): void {
   const weather = queryRows<Weather>(db, 'FROM farm::weather')[0];
   if (!weather) return;
-  const tiles = queryRows<Tile>(db, 'FROM farm::tiles');
-
   const effects = WEATHER_EFFECTS[weather.condition];
-  for (const tile of tiles) {
-    const decayMul = SOIL_MOISTURE_DECAY[tile.soil_type] || 1.0;
-    tile.moisture = clamp01(tile.moisture + effects.moistureDelta * decayMul);
-    tile.temperature = clamp01(tile.temperature + effects.tempDelta);
-    tile.light = effects.light;
-  }
 
-  writeTiles(db, tiles);
+  // Batch UPDATE per soil type — 3 statements instead of rewriting 192 rows
+  for (const [soilType, decayMul] of Object.entries(SOIL_MOISTURE_DECAY)) {
+    const moistureDelta = effects.moistureDelta * decayMul;
+    db.admin(`UPDATE farm::tiles { moisture: math::min(1.0, math::max(0.0, moisture + ${moistureDelta.toFixed(4)})), temperature: math::min(1.0, math::max(0.0, temperature + ${effects.tempDelta.toFixed(4)})), light: ${effects.light.toFixed(1)} } FILTER soil_type == "${soilType}"`);
+  }
 }
 
 function tickSensors(db: WasmDB, currentTick: number): void {
@@ -171,8 +114,8 @@ function tickSensors(db: WasmDB, currentTick: number): void {
   if (sensors.length === 0) return;
 
   const tiles = queryRows<Tile>(db, 'FROM farm::tiles');
-  const readings = queryRows<SensorReading>(db, 'FROM farm::readings');
 
+  const newReadings: string[] = [];
   for (const sensor of sensors) {
     const nearbyTiles = tiles.filter(t => dist(sensor.x, sensor.y, t.x, t.y) <= sensor.radius);
     if (nearbyTiles.length === 0) continue;
@@ -185,13 +128,17 @@ function tickSensors(db: WasmDB, currentTick: number): void {
         case 'light': sum += tile.light; break;
       }
     }
-    const avg = sum / nearbyTiles.length;
-    readings.push({ sensor_id: sensor.id, tick: currentTick, value: Math.round(avg * 1000) / 1000 });
+    const avg = Math.round(sum / nearbyTiles.length * 1000) / 1000;
+    newReadings.push(`{ sensor_id: ${sensor.id}, tick: ${currentTick}, value: ${avg.toFixed(3)} }`);
   }
 
+  // INSERT only new readings (append)
+  if (newReadings.length > 0) {
+    db.admin(`INSERT farm::readings [\n  ${newReadings.join(',\n  ')}\n]`);
+  }
+  // DELETE only stale readings
   const cutoff = currentTick - READINGS_MAX_AGE;
-  const filtered = readings.filter(r => r.tick > cutoff);
-  writeReadings(db, filtered);
+  db.admin(`DELETE farm::readings FILTER tick <= ${cutoff}`);
 }
 
 function tickCrops(db: WasmDB): void {
@@ -199,7 +146,6 @@ function tickCrops(db: WasmDB): void {
   if (crops.length === 0) return;
 
   const tiles = queryRows<Tile>(db, 'FROM farm::tiles');
-  let changed = false;
 
   for (const crop of crops) {
     if (crop.growth_stage === 'harvestable' || crop.health <= 0) continue;
@@ -209,27 +155,30 @@ function tickCrops(db: WasmDB): void {
 
     const { inRange, outOfRange } = checkConditions(crop, tile);
 
+    let newHealth = crop.health;
     if (outOfRange) {
-      crop.health = Math.max(0, crop.health - HEALTH_DECAY_RATE);
+      newHealth = Math.max(0, newHealth - HEALTH_DECAY_RATE);
     } else {
-      crop.health = Math.min(1, crop.health + HEALTH_RECOVERY_RATE);
+      newHealth = Math.min(1, newHealth + HEALTH_RECOVERY_RATE);
     }
 
-    if (crop.health > 0) {
-      crop.growth_progress += inRange;
+    let newProgress = crop.growth_progress;
+    let newStage = crop.growth_stage;
+
+    if (newHealth > 0) {
+      newProgress += inRange;
       const stageIdx = GROWTH_STAGES.indexOf(crop.growth_stage);
       const config = CROP_CONFIGS[crop.crop_type];
-      if (crop.growth_progress >= config.stagesNeeded && stageIdx < GROWTH_STAGES.length - 1) {
-        crop.growth_stage = GROWTH_STAGES[stageIdx + 1] as GrowthStage;
-        crop.growth_progress = 0;
+      if (newProgress >= config.stagesNeeded && stageIdx < GROWTH_STAGES.length - 1) {
+        newStage = GROWTH_STAGES[stageIdx + 1] as GrowthStage;
+        newProgress = 0;
       }
     }
 
-    changed = true;
-  }
-
-  if (changed) {
-    writeCrops(db, crops);
+    // Only UPDATE if values changed — triggers incremental view recomputation only for affected rows
+    if (newHealth !== crop.health || newProgress !== crop.growth_progress || newStage !== crop.growth_stage) {
+      db.admin(`UPDATE farm::crops { health: ${newHealth.toFixed(3)}, growth_progress: ${newProgress.toFixed(1)}, growth_stage: "${newStage}" } FILTER id == ${crop.id}`);
+    }
   }
 }
 
@@ -238,10 +187,9 @@ function tickCrops(db: WasmDB): void {
 export function simulationTick(db: WasmDB): void {
   const stats = queryRows<FarmStats>(db, 'FROM farm::stats')[0];
   if (!stats) return;
-  stats.current_tick += 1;
-  writeStats(db, stats);
+  const currentTick = stats.current_tick + 1;
+  db.admin(`UPDATE farm::stats { current_tick: ${currentTick} } FILTER true`);
 
-  const currentTick = stats.current_tick;
   tickWeather(db, currentTick);
   tickSoil(db);
   tickSensors(db, currentTick);
@@ -249,47 +197,42 @@ export function simulationTick(db: WasmDB): void {
 }
 
 export function placeCrop(db: WasmDB, cropType: CropType, x: number, y: number): boolean {
-  const allCrops = queryRows<Crop>(db, 'FROM farm::crops');
-  if (allCrops.some(c => c.x === x && c.y === y)) return false;
-  const allSensors = queryRows<Sensor>(db, 'FROM farm::sensors');
-  if (allSensors.some(s => s.x === x && s.y === y)) return false;
+  const existing = queryRows<Crop>(db, `FROM farm::crops FILTER x == ${x} AND y == ${y}`);
+  if (existing.length > 0) return false;
+  const existingSensors = queryRows<Sensor>(db, `FROM farm::sensors FILTER x == ${x} AND y == ${y}`);
+  if (existingSensors.length > 0) return false;
 
+  const allCrops = queryRows<Crop>(db, 'FROM farm::crops');
   const nextId = allCrops.length > 0 ? Math.max(...allCrops.map(c => c.id)) + 1 : 1;
 
   const stats = queryRows<FarmStats>(db, 'FROM farm::stats')[0];
   const tick = stats?.current_tick ?? 0;
 
-  allCrops.push({ id: nextId, crop_type: cropType, x, y, growth_stage: 'seed' as GrowthStage, growth_progress: 0, health: 1, planted_tick: tick });
-  writeCrops(db, allCrops);
+  db.admin(`INSERT farm::crops [\n  { id: ${nextId}, crop_type: "${cropType}", x: ${x}, y: ${y}, growth_stage: "seed", growth_progress: 0.0, health: 1.000, planted_tick: ${tick} }\n]`);
   return true;
 }
 
 export function placeSensor(db: WasmDB, sensorType: SensorType, x: number, y: number): boolean {
-  const allSensors = queryRows<Sensor>(db, 'FROM farm::sensors');
-  if (allSensors.some(s => s.x === x && s.y === y)) return false;
+  const existing = queryRows<Sensor>(db, `FROM farm::sensors FILTER x == ${x} AND y == ${y}`);
+  if (existing.length > 0) return false;
 
+  const allSensors = queryRows<Sensor>(db, 'FROM farm::sensors');
   const nextId = allSensors.length > 0 ? Math.max(...allSensors.map(s => s.id)) + 1 : 1;
 
-  allSensors.push({ id: nextId, sensor_type: sensorType, x, y, radius: SENSOR_DEFAULT_RADIUS });
-  writeSensors(db, allSensors);
+  db.admin(`INSERT farm::sensors [\n  { id: ${nextId}, sensor_type: "${sensorType}", x: ${x}, y: ${y}, radius: ${SENSOR_DEFAULT_RADIUS} }\n]`);
   return true;
 }
 
 export function removeAt(db: WasmDB, x: number, y: number): boolean {
   const crops = queryRows<Crop>(db, `FROM farm::crops FILTER x == ${x} AND y == ${y}`);
   if (crops.length > 0) {
-    // Re-read all crops, remove the one at position, rewrite
-    const allCrops = queryRows<Crop>(db, 'FROM farm::crops');
-    const filtered = allCrops.filter(c => !(c.x === x && c.y === y));
-    writeCrops(db, filtered);
+    db.admin(`DELETE farm::crops FILTER x == ${x} AND y == ${y}`);
     return true;
   }
 
   const sensors = queryRows<Sensor>(db, `FROM farm::sensors FILTER x == ${x} AND y == ${y}`);
   if (sensors.length > 0) {
-    const allSensors = queryRows<Sensor>(db, 'FROM farm::sensors');
-    const filtered = allSensors.filter(s => !(s.x === x && s.y === y));
-    writeSensors(db, filtered);
+    db.admin(`DELETE farm::sensors FILTER x == ${x} AND y == ${y}`);
     return true;
   }
 
@@ -303,13 +246,10 @@ export function harvestCrop(db: WasmDB, x: number, y: number): boolean {
 
   const stats = queryRows<FarmStats>(db, 'FROM farm::stats')[0];
   if (stats) {
-    stats.total_yield += 1;
-    writeStats(db, stats);
+    db.admin(`UPDATE farm::stats { total_yield: ${(stats.total_yield + 1).toFixed(1)} } FILTER true`);
   }
 
-  const allCrops = queryRows<Crop>(db, 'FROM farm::crops');
-  const filtered = allCrops.filter(c => !(c.x === x && c.y === y));
-  writeCrops(db, filtered);
+  db.admin(`DELETE farm::crops FILTER x == ${x} AND y == ${y}`);
   return true;
 }
 
@@ -319,7 +259,7 @@ export function queryUIState(db: WasmDB): UIStateRow {
 }
 
 export function writeUIState(db: WasmDB, state: UIStateRow): void {
-  db.admin(`DELETE farm::ui_state FILTER true;\nINSERT farm::ui_state [\n  { tool_mode: "${state.tool_mode}", speed: ${state.speed}, selected_x: ${state.selected_x}, selected_y: ${state.selected_y}, camera_x: ${Number(state.camera_x).toFixed(1)}, camera_y: ${Number(state.camera_y).toFixed(1)} }\n]`);
+  db.admin(`UPDATE farm::ui_state { tool_mode: "${state.tool_mode}", speed: ${state.speed}, selected_x: ${state.selected_x}, selected_y: ${state.selected_y}, camera_x: ${Number(state.camera_x).toFixed(1)}, camera_y: ${Number(state.camera_y).toFixed(1)} } FILTER true`);
 }
 
 export function queryGameSnapshot(db: WasmDB): GameSnapshot {
@@ -329,6 +269,10 @@ export function queryGameSnapshot(db: WasmDB): GameSnapshot {
   const readings = queryRows<SensorReading>(db, 'FROM farm::readings');
   const weather = queryRows<Weather>(db, 'FROM farm::weather')[0] ?? { condition: 'sunny' as WeatherCondition, intensity: 1.0, tick_changed: 0 };
   const stats = queryRows<FarmStats>(db, 'FROM farm::stats')[0] ?? { water_used: 0, energy_used: 0, total_yield: 0, current_tick: 0 };
+  const cropSummary = queryRows<CropSummary>(db, 'FROM farm::crop_summary');
+  const soilOverview = queryRows<SoilOverview>(db, 'FROM farm::soil_overview');
+  const alerts = queryRows<Alert>(db, 'FROM farm::alerts');
+  const latestReadings = queryRows<LatestReading>(db, 'FROM farm::latest_readings');
 
-  return { tiles, crops, sensors, readings, weather, stats };
+  return { tiles, crops, sensors, readings, weather, stats, cropSummary, soilOverview, alerts, latestReadings };
 }

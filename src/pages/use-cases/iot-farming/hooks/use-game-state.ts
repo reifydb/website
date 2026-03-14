@@ -6,6 +6,7 @@ const defaultState: GameState = {
   tiles: [], crops: [], sensors: [], readings: [],
   weather: { condition: 'sunny', intensity: 1.0, tick_changed: 0 },
   stats: { water_used: 0, energy_used: 0, total_yield: 0, current_tick: 0 },
+  cropSummary: [], soilOverview: [], alerts: [], latestReadings: [],
   selectedTile: null,
   toolMode: 'select',
   speed: 1,
