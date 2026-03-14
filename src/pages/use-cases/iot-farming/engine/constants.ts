@@ -40,12 +40,7 @@ export const WEATHER_CYCLE: readonly string[] = ['sunny', 'cloudy', 'rainy', 'cl
 export const WEATHER_MIN_TICKS = 20;
 export const WEATHER_MAX_TICKS = 40;
 
-export const SPRINKLER_MOISTURE_BOOST = 0.05;
-export const HEATER_TEMP_BOOST = 0.03;
-export const LAMP_LIGHT_BOOST = 0.3;
-
 export const SENSOR_DEFAULT_RADIUS = 3;
-export const ACTUATOR_DEFAULT_RADIUS = 2;
 
 export const READINGS_MAX_AGE = 50;
 

@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import type { Sensor, Actuator } from '../engine/types';
+import type { Sensor } from '../engine/types';
 import { DISPLAY_TILE_SIZE, DISPLAY_SCALE, FARM_OFFSET_X, FARM_OFFSET_Y } from '../engine/constants';
 import { eventBus, EVENTS } from '../game/event-bus';
 
 interface IoTOverlayProps {
   sensors: Sensor[];
-  actuators: Actuator[];
 }
 
 const sensorColors: Record<string, string> = {
@@ -20,19 +19,7 @@ const sensorLabels: Record<string, string> = {
   light: '☀',
 };
 
-const actuatorColors: Record<string, string> = {
-  sprinkler: '#06b6d4',
-  heater: '#f97316',
-  lamp: '#eab308',
-};
-
-const actuatorLabels: Record<string, string> = {
-  sprinkler: '🚿',
-  heater: '🔥',
-  lamp: '💡',
-};
-
-export function IoTOverlay({ sensors, actuators }: IoTOverlayProps) {
+export function IoTOverlay({ sensors }: IoTOverlayProps) {
   const [cameraScroll, setCameraScroll] = useState({ scrollX: 0, scrollY: 0 });
 
   useEffect(() => {
@@ -109,34 +96,6 @@ export function IoTOverlay({ sensors, actuators }: IoTOverlayProps) {
           );
         })}
 
-        {/* Actuator markers */}
-        {actuators.map(actuator => {
-          const x = actuator.x * DISPLAY_TILE_SIZE;
-          const y = actuator.y * DISPLAY_TILE_SIZE;
-          const color = actuatorColors[actuator.actuator_type] || '#888';
-          return (
-            <div
-              key={`a-${actuator.id}`}
-              className="absolute flex items-center justify-center pointer-events-auto"
-              style={{
-                left: x,
-                top: y,
-                width: DISPLAY_TILE_SIZE,
-                height: DISPLAY_TILE_SIZE,
-              }}
-              title={`${actuator.actuator_type} (${actuator.active ? 'ON' : 'OFF'})`}
-            >
-              <div
-                className={`w-6 h-6 rounded border-2 flex items-center justify-center text-[10px] bg-white/90 shadow-sm transition-all ${
-                  actuator.active ? 'animate-pulse' : ''
-                }`}
-                style={{ borderColor: color }}
-              >
-                {actuatorLabels[actuator.actuator_type]}
-              </div>
-            </div>
-          );
-        })}
       </div>
     </div>
   );

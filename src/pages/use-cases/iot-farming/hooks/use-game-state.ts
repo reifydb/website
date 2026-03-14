@@ -3,7 +3,7 @@ import { eventBus, EVENTS } from '../game/event-bus';
 import type { GameState } from '../engine/types';
 
 const defaultState: GameState = {
-  tiles: [], crops: [], sensors: [], readings: [], actuators: [], rules: [],
+  tiles: [], crops: [], sensors: [], readings: [],
   weather: { condition: 'sunny', intensity: 1.0, tick_changed: 0 },
   stats: { water_used: 0, energy_used: 0, total_yield: 0, current_tick: 0 },
   selectedTile: null,
@@ -32,17 +32,5 @@ export function useGameState() {
     eventBus.emit(EVENTS.SPEED_CHANGED, speed);
   }, []);
 
-  const addRule = useCallback((rule: Omit<import('../engine/types').Rule, 'id'>) => {
-    eventBus.emit(EVENTS.RULE_ADDED, rule);
-  }, []);
-
-  const toggleRule = useCallback((ruleId: number) => {
-    eventBus.emit(EVENTS.RULE_TOGGLED, ruleId);
-  }, []);
-
-  const removeRule = useCallback((ruleId: number) => {
-    eventBus.emit(EVENTS.RULE_REMOVED, ruleId);
-  }, []);
-
-  return { gameState, setToolMode, setSpeed, addRule, toggleRule, removeRule };
+  return { gameState, setToolMode, setSpeed };
 }

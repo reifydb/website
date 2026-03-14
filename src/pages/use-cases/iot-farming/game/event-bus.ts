@@ -37,7 +37,4 @@ export const EVENTS = {
   // React → Phaser
   TOOL_CHANGED: 'tool:changed',
   SPEED_CHANGED: 'speed:changed',
-  RULE_ADDED: 'rule:added',
-  RULE_TOGGLED: 'rule:toggled',
-  RULE_REMOVED: 'rule:removed',
 } as const;

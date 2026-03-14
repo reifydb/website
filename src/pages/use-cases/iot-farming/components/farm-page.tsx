@@ -6,14 +6,13 @@ import { useGameState } from '../hooks/use-game-state';
 import { Toolbar } from './toolbar';
 import { InfoPanel } from './info-panel';
 import { IoTOverlay } from './iot-overlay';
-import { RuleEditor } from './rule-editor';
 import { ConsolePanel } from './console-panel';
 
 export function FarmPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { db, loading, error } = useFarmDB();
   usePhaser(containerRef, db);
-  const { gameState, setToolMode, setSpeed, addRule, toggleRule, removeRule } = useGameState();
+  const { gameState, setToolMode, setSpeed } = useGameState();
 
   if (error) {
     return (
@@ -57,24 +56,13 @@ export function FarmPage() {
                 />
                 <IoTOverlay
                   sensors={gameState.sensors}
-                  actuators={gameState.actuators}
                 />
               </div>
             )}
           </div>
 
-          {/* Right panel: Info + Rules */}
-          <div className="flex flex-col">
-            <InfoPanel gameState={gameState} />
-            <div className="border-l-2 border-dashed border-black/25 bg-bg-primary p-3 w-52">
-              <RuleEditor
-                rules={gameState.rules}
-                onAddRule={addRule}
-                onToggleRule={toggleRule}
-                onRemoveRule={removeRule}
-              />
-            </div>
-          </div>
+          {/* Right panel: Info */}
+          <InfoPanel gameState={gameState} />
         </div>
 
         {/* Console panel */}

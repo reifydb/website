@@ -5,7 +5,6 @@ interface DashboardProps {
   weather: Weather;
   cropCount: number;
   sensorCount: number;
-  actuatorCount: number;
 }
 
 function StatRow({ label, value, unit }: { label: string; value: string | number; unit?: string }) {
@@ -25,7 +24,7 @@ const weatherIcons: Record<string, string> = {
   rainy: '🌧',
 };
 
-export function Dashboard({ stats, weather, cropCount, sensorCount, actuatorCount }: DashboardProps) {
+export function Dashboard({ stats, weather, cropCount, sensorCount }: DashboardProps) {
   return (
     <div className="space-y-3">
       <div>
@@ -59,7 +58,6 @@ export function Dashboard({ stats, weather, cropCount, sensorCount, actuatorCoun
         <div className="border border-dashed border-black/25 p-2 bg-bg-secondary space-y-0.5">
           <StatRow label="Crops" value={cropCount} />
           <StatRow label="Sensors" value={sensorCount} />
-          <StatRow label="Actuators" value={actuatorCount} />
         </div>
       </div>
     </div>

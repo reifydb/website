@@ -10,18 +10,14 @@ import {
   writeUIState,
   placeCrop,
   placeSensor,
-  placeActuator,
-  addRule,
   removeAt,
   harvestCrop,
-  toggleRule,
-  removeRule,
 } from '../engine/simulation';
 import {
   GRID_WIDTH, GRID_HEIGHT, TILE_SIZE, BASE_TICK_MS, DISPLAY_SCALE,
   WORLD_WIDTH, WORLD_HEIGHT, FARM_OFFSET_X, FARM_OFFSET_Y,
 } from '../engine/constants';
-import type { GameState, ToolMode, CropType, SensorType, ActuatorType, Rule, WorldTile } from '../engine/types';
+import type { GameState, ToolMode, CropType, SensorType, WorldTile } from '../engine/types';
 import type { WasmDB } from '@reifydb/wasm';
 
 // Seeded LCG random
@@ -35,6 +31,12 @@ function createRng(seed: number) {
 
 const CAMERA_SCROLL_SPEED = 2; // px per frame
 const WATER_ANIM_INTERVAL = 250; // ms
+
+const SENSOR_COLOR: Record<string, number> = {
+  moisture: 0x3b82f6,
+  temperature: 0xef4444,
+  light: 0xeab308,
+};
 
 const GROWTH_BORDER_COLOR: Record<string, number> = {
   seed: 0xa3a3a3,
@@ -64,6 +66,8 @@ export class FarmScene extends Phaser.Scene {
   private soilOverlays: Map<string, Phaser.GameObjects.Rectangle> = new Map();
   private cropSprites: Map<number, Phaser.GameObjects.Sprite> = new Map();
   private cropBorders: Map<number, Phaser.GameObjects.Rectangle> = new Map();
+  private sensorSprites: Map<number, Phaser.GameObjects.Arc> = new Map();
+  private sensorRadii: Map<number, Phaser.GameObjects.Arc> = new Map();
   private selectionRect: Phaser.GameObjects.Rectangle | null = null;
   private hoverRect: Phaser.GameObjects.Rectangle | null = null;
 
@@ -385,27 +389,6 @@ export class FarmScene extends Phaser.Scene {
       }
     });
 
-    eventBus.on(EVENTS.RULE_ADDED, (rule: Omit<Rule, 'id'>) => {
-      if (this.db) {
-        addRule(this.db, rule);
-        this.emitStateUpdate();
-      }
-    });
-
-    eventBus.on(EVENTS.RULE_TOGGLED, (ruleId: number) => {
-      if (this.db) {
-        toggleRule(this.db, ruleId);
-        this.emitStateUpdate();
-      }
-    });
-
-    eventBus.on(EVENTS.RULE_REMOVED, (ruleId: number) => {
-      if (this.db) {
-        removeRule(this.db, ruleId);
-        this.emitStateUpdate();
-      }
-    });
-
     // Initial state emit
     this.emitStateUpdate();
   }
@@ -535,14 +518,6 @@ export class FarmScene extends Phaser.Scene {
       return;
     }
 
-    if (mode === 'place_sprinkler' || mode === 'place_heater' || mode === 'place_lamp') {
-      const actuatorType = mode.replace('place_', '') as ActuatorType;
-      const ok = placeActuator(this.db, actuatorType, x, y);
-      this.flashTile(x, y, ok ? 0x22c55e : 0xef4444);
-      if (ok) this.updateVisuals();
-      this.emitStateUpdate();
-      return;
-    }
   }
 
   private flashTile(x: number, y: number, color: number): void {
@@ -640,6 +615,50 @@ export class FarmScene extends Phaser.Scene {
       }
     }
 
+    // --- Sensor sprites ---
+    const existingSensorIds = new Set(snapshot.sensors.map(s => s.id));
+
+    for (const [id, shape] of this.sensorSprites) {
+      if (!existingSensorIds.has(id)) {
+        shape.destroy();
+        this.sensorSprites.delete(id);
+        const radiusCircle = this.sensorRadii.get(id);
+        if (radiusCircle) {
+          radiusCircle.destroy();
+          this.sensorRadii.delete(id);
+        }
+      }
+    }
+
+    for (const sensor of snapshot.sensors) {
+      const worldX = (sensor.x + FARM_OFFSET_X) * TILE_SIZE + TILE_SIZE / 2;
+      const worldY = (sensor.y + FARM_OFFSET_Y) * TILE_SIZE + TILE_SIZE / 2;
+      let shape = this.sensorSprites.get(sensor.id);
+
+      if (!shape) {
+        const color = SENSOR_COLOR[sensor.sensor_type] ?? 0x3b82f6;
+        shape = this.add.circle(worldX, worldY, 4, color)
+          .setStrokeStyle(1, 0xffffff)
+          .setDepth(11);
+        this.sensorSprites.set(sensor.id, shape);
+
+        // Radius coverage circle (hidden by default, shown when selected)
+        const pixelRadius = sensor.radius * TILE_SIZE;
+        const radiusCircle = this.add.circle(worldX, worldY, pixelRadius, color, 0.15)
+          .setStrokeStyle(1, color, 0.4)
+          .setDepth(10.5)
+          .setVisible(false);
+        this.sensorRadii.set(sensor.id, radiusCircle);
+      }
+
+      // Show radius only when this sensor's tile is selected
+      const radiusCircle = this.sensorRadii.get(sensor.id);
+      if (radiusCircle) {
+        const selected = this.selectedTile?.x === sensor.x && this.selectedTile?.y === sensor.y;
+        radiusCircle.setVisible(selected);
+      }
+    }
+
     // Weather visuals
     const weather = snapshot.weather;
     if (weather.condition === 'rainy') {
@@ -700,7 +719,7 @@ export class FarmScene extends Phaser.Scene {
   getGameState(): GameState {
     if (!this.db) {
       return {
-        tiles: [], crops: [], sensors: [], readings: [], actuators: [], rules: [],
+        tiles: [], crops: [], sensors: [], readings: [],
         weather: { condition: 'sunny', intensity: 1.0, tick_changed: 0 },
         stats: { water_used: 0, energy_used: 0, total_yield: 0, current_tick: 0 },
         selectedTile: this.selectedTile,

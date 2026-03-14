@@ -1,13 +1,12 @@
 import type {
-  GameSnapshot, Tile, Crop, Sensor, Actuator, Rule, SensorReading,
-  CropType, SensorType, ActuatorType, GrowthStage, WeatherCondition, Weather, FarmStats,
+  GameSnapshot, Tile, Crop, Sensor, SensorReading,
+  CropType, SensorType, GrowthStage, WeatherCondition, Weather, FarmStats,
   UIStateRow,
 } from './types';
 import {
   CROP_CONFIGS, WEATHER_EFFECTS, WEATHER_CYCLE,
   WEATHER_MIN_TICKS, WEATHER_MAX_TICKS, SOIL_MOISTURE_DECAY,
-  SPRINKLER_MOISTURE_BOOST, HEATER_TEMP_BOOST, LAMP_LIGHT_BOOST,
-  ACTUATOR_DEFAULT_RADIUS, SENSOR_DEFAULT_RADIUS, READINGS_MAX_AGE,
+  SENSOR_DEFAULT_RADIUS, READINGS_MAX_AGE,
   HEALTH_DECAY_RATE, HEALTH_RECOVERY_RATE, GROWTH_STAGES,
 } from './constants';
 import type { WasmDB } from '@reifydb/wasm';
@@ -106,17 +105,6 @@ function writeCrops(db: WasmDB, crops: Crop[]): void {
   }
 }
 
-function writeActuators(db: WasmDB, actuators: Actuator[]): void {
-  if (actuators.length > 0) {
-    const rows = actuators.map(a =>
-      `{ id: ${a.id}, actuator_type: "${a.actuator_type}", x: ${a.x}, y: ${a.y}, active: ${a.active}, power_usage: ${a.power_usage.toFixed(1)}, radius: ${a.radius} }`
-    ).join(',\n  ');
-    db.admin(`DELETE farm::actuators FILTER true;\nINSERT farm::actuators [\n  ${rows}\n]`);
-  } else {
-    db.admin('DELETE farm::actuators FILTER true');
-  }
-}
-
 function writeSensors(db: WasmDB, sensors: Sensor[]): void {
   if (sensors.length > 0) {
     const rows = sensors.map(s =>
@@ -125,17 +113,6 @@ function writeSensors(db: WasmDB, sensors: Sensor[]): void {
     db.admin(`DELETE farm::sensors FILTER true;\nINSERT farm::sensors [\n  ${rows}\n]`);
   } else {
     db.admin('DELETE farm::sensors FILTER true');
-  }
-}
-
-function writeRules(db: WasmDB, rules: Rule[]): void {
-  if (rules.length > 0) {
-    const rows = rules.map(r =>
-      `{ id: ${r.id}, sensor_type: "${r.sensor_type}", operator: "${r.operator}", threshold: ${r.threshold.toFixed(2)}, actuator_type: "${r.actuator_type}", enabled: ${r.enabled} }`
-    ).join(',\n  ');
-    db.admin(`DELETE farm::rules FILTER true;\nINSERT farm::rules [\n  ${rows}\n]`);
-  } else {
-    db.admin('DELETE farm::rules FILTER true');
   }
 }
 
@@ -189,42 +166,6 @@ function tickSoil(db: WasmDB): void {
   writeTiles(db, tiles);
 }
 
-function tickActuators(db: WasmDB): void {
-  const actuators = queryRows<Actuator>(db, 'FROM farm::actuators');
-  if (actuators.length === 0) return;
-
-  const activeActuators = actuators.filter(a => a.active);
-  if (activeActuators.length === 0) return;
-
-  const tiles = queryRows<Tile>(db, 'FROM farm::tiles');
-  const stats = queryRows<FarmStats>(db, 'FROM farm::stats')[0];
-  if (!stats) return;
-
-  for (const act of activeActuators) {
-    for (const tile of tiles) {
-      if (dist(act.x, act.y, tile.x, tile.y) <= act.radius) {
-        switch (act.actuator_type) {
-          case 'sprinkler':
-            tile.moisture = clamp01(tile.moisture + SPRINKLER_MOISTURE_BOOST);
-            stats.water_used += 0.1;
-            break;
-          case 'heater':
-            tile.temperature = clamp01(tile.temperature + HEATER_TEMP_BOOST);
-            stats.energy_used += 0.2;
-            break;
-          case 'lamp':
-            tile.light = clamp01(tile.light + LAMP_LIGHT_BOOST);
-            stats.energy_used += 0.15;
-            break;
-        }
-      }
-    }
-  }
-
-  writeTiles(db, tiles);
-  writeStats(db, stats);
-}
-
 function tickSensors(db: WasmDB, currentTick: number): void {
   const sensors = queryRows<Sensor>(db, 'FROM farm::sensors');
   if (sensors.length === 0) return;
@@ -251,60 +192,6 @@ function tickSensors(db: WasmDB, currentTick: number): void {
   const cutoff = currentTick - READINGS_MAX_AGE;
   const filtered = readings.filter(r => r.tick > cutoff);
   writeReadings(db, filtered);
-}
-
-function tickRules(db: WasmDB): void {
-  const actuators = queryRows<Actuator>(db, 'FROM farm::actuators');
-  if (actuators.length === 0) return;
-
-  // Reset all actuators
-  for (const act of actuators) {
-    act.active = false;
-  }
-
-  const rules = queryRows<Rule>(db, 'FROM farm::rules');
-  if (rules.length === 0) {
-    writeActuators(db, actuators);
-    return;
-  }
-
-  const sensors = queryRows<Sensor>(db, 'FROM farm::sensors');
-  const readings = queryRows<SensorReading>(db, 'FROM farm::readings');
-
-  for (const rule of rules) {
-    if (!rule.enabled) continue;
-
-    const matchingSensors = sensors.filter(s => s.sensor_type === rule.sensor_type);
-    if (matchingSensors.length === 0) continue;
-
-    const sensorIds = new Set(matchingSensors.map(s => s.id));
-    const sensorReadings = readings.filter(r => sensorIds.has(r.sensor_id));
-    if (sensorReadings.length === 0) continue;
-
-    const latestTick = Math.max(...sensorReadings.map(r => r.tick));
-    const latestReadings = sensorReadings.filter(r => r.tick === latestTick);
-    const avgValue = latestReadings.reduce((sum, r) => sum + r.value, 0) / latestReadings.length;
-
-    let triggered = false;
-    switch (rule.operator) {
-      case '<': triggered = avgValue < rule.threshold; break;
-      case '>': triggered = avgValue > rule.threshold; break;
-      case '<=': triggered = avgValue <= rule.threshold; break;
-      case '>=': triggered = avgValue >= rule.threshold; break;
-      case '==': triggered = Math.abs(avgValue - rule.threshold) < 0.01; break;
-      case '!=': triggered = Math.abs(avgValue - rule.threshold) >= 0.01; break;
-    }
-
-    if (triggered) {
-      for (const act of actuators) {
-        if (act.actuator_type === rule.actuator_type) {
-          act.active = true;
-        }
-      }
-    }
-  }
-
-  writeActuators(db, actuators);
 }
 
 function tickCrops(db: WasmDB): void {
@@ -357,9 +244,7 @@ export function simulationTick(db: WasmDB): void {
   const currentTick = stats.current_tick;
   tickWeather(db, currentTick);
   tickSoil(db);
-  tickActuators(db);
   tickSensors(db, currentTick);
-  tickRules(db);
   tickCrops(db);
 }
 
@@ -368,8 +253,6 @@ export function placeCrop(db: WasmDB, cropType: CropType, x: number, y: number):
   if (allCrops.some(c => c.x === x && c.y === y)) return false;
   const allSensors = queryRows<Sensor>(db, 'FROM farm::sensors');
   if (allSensors.some(s => s.x === x && s.y === y)) return false;
-  const allActuators = queryRows<Actuator>(db, 'FROM farm::actuators');
-  if (allActuators.some(a => a.x === x && a.y === y)) return false;
 
   const nextId = allCrops.length > 0 ? Math.max(...allCrops.map(c => c.id)) + 1 : 1;
 
@@ -384,38 +267,12 @@ export function placeCrop(db: WasmDB, cropType: CropType, x: number, y: number):
 export function placeSensor(db: WasmDB, sensorType: SensorType, x: number, y: number): boolean {
   const allSensors = queryRows<Sensor>(db, 'FROM farm::sensors');
   if (allSensors.some(s => s.x === x && s.y === y)) return false;
-  const allActuators = queryRows<Actuator>(db, 'FROM farm::actuators');
-  if (allActuators.some(a => a.x === x && a.y === y)) return false;
 
   const nextId = allSensors.length > 0 ? Math.max(...allSensors.map(s => s.id)) + 1 : 1;
 
   allSensors.push({ id: nextId, sensor_type: sensorType, x, y, radius: SENSOR_DEFAULT_RADIUS });
   writeSensors(db, allSensors);
   return true;
-}
-
-export function placeActuator(db: WasmDB, actuatorType: ActuatorType, x: number, y: number): boolean {
-  const allSensors = queryRows<Sensor>(db, 'FROM farm::sensors');
-  if (allSensors.some(s => s.x === x && s.y === y)) return false;
-  const allActuators = queryRows<Actuator>(db, 'FROM farm::actuators');
-  if (allActuators.some(a => a.x === x && a.y === y)) return false;
-
-  const nextId = allActuators.length > 0 ? Math.max(...allActuators.map(a => a.id)) + 1 : 1;
-
-  const powerUsage = actuatorType === 'sprinkler' ? 1.0 : actuatorType === 'heater' ? 2.0 : 1.5;
-  allActuators.push({ id: nextId, actuator_type: actuatorType, x, y, active: false, power_usage: powerUsage, radius: ACTUATOR_DEFAULT_RADIUS });
-  writeActuators(db, allActuators);
-  return true;
-}
-
-export function addRule(db: WasmDB, rule: Omit<Rule, 'id'>): Rule {
-  const allRules = queryRows<Rule>(db, 'FROM farm::rules');
-  const nextId = allRules.length > 0 ? Math.max(...allRules.map(r => r.id)) + 1 : 1;
-
-  const newRule = { ...rule, id: nextId };
-  allRules.push(newRule as Rule);
-  writeRules(db, allRules as Rule[]);
-  return newRule;
 }
 
 export function removeAt(db: WasmDB, x: number, y: number): boolean {
@@ -433,14 +290,6 @@ export function removeAt(db: WasmDB, x: number, y: number): boolean {
     const allSensors = queryRows<Sensor>(db, 'FROM farm::sensors');
     const filtered = allSensors.filter(s => !(s.x === x && s.y === y));
     writeSensors(db, filtered);
-    return true;
-  }
-
-  const actuators = queryRows<Actuator>(db, `FROM farm::actuators FILTER x == ${x} AND y == ${y}`);
-  if (actuators.length > 0) {
-    const allActuators = queryRows<Actuator>(db, 'FROM farm::actuators');
-    const filtered = allActuators.filter(a => !(a.x === x && a.y === y));
-    writeActuators(db, filtered);
     return true;
   }
 
@@ -464,21 +313,6 @@ export function harvestCrop(db: WasmDB, x: number, y: number): boolean {
   return true;
 }
 
-export function toggleRule(db: WasmDB, ruleId: number): void {
-  const rules = queryRows<Rule>(db, 'FROM farm::rules');
-  const rule = rules.find(r => r.id === ruleId);
-  if (rule) {
-    rule.enabled = !rule.enabled;
-    writeRules(db, rules);
-  }
-}
-
-export function removeRule(db: WasmDB, ruleId: number): void {
-  const rules = queryRows<Rule>(db, 'FROM farm::rules');
-  const filtered = rules.filter(r => r.id !== ruleId);
-  writeRules(db, filtered);
-}
-
 export function queryUIState(db: WasmDB): UIStateRow {
   const rows = queryRows<UIStateRow>(db, 'FROM farm::ui_state');
   return rows[0] ?? { tool_mode: 'select', speed: 1, selected_x: -1, selected_y: -1, camera_x: 0, camera_y: 0 };
@@ -493,10 +327,8 @@ export function queryGameSnapshot(db: WasmDB): GameSnapshot {
   const crops = queryRows<Crop>(db, 'FROM farm::crops');
   const sensors = queryRows<Sensor>(db, 'FROM farm::sensors');
   const readings = queryRows<SensorReading>(db, 'FROM farm::readings');
-  const actuators = queryRows<Actuator>(db, 'FROM farm::actuators');
-  const rules = queryRows<Rule>(db, 'FROM farm::rules');
   const weather = queryRows<Weather>(db, 'FROM farm::weather')[0] ?? { condition: 'sunny' as WeatherCondition, intensity: 1.0, tick_changed: 0 };
   const stats = queryRows<FarmStats>(db, 'FROM farm::stats')[0] ?? { water_used: 0, energy_used: 0, total_yield: 0, current_tick: 0 };
 
-  return { tiles, crops, sensors, readings, actuators, rules, weather, stats };
+  return { tiles, crops, sensors, readings, weather, stats };
 }

@@ -10,8 +10,6 @@ function generateSeedCommand(): string {
   cmd += 'create table farm::crops { id: int4, crop_type: utf8, x: int4, y: int4, growth_stage: utf8, growth_progress: float4, health: float4, planted_tick: int4 };\n';
   cmd += 'create table farm::sensors { id: int4, sensor_type: utf8, x: int4, y: int4, radius: int4 };\n';
   cmd += 'create table farm::readings { sensor_id: int4, tick: int4, value: float4 };\n';
-  cmd += 'create table farm::actuators { id: int4, actuator_type: utf8, x: int4, y: int4, active: bool, power_usage: float4, radius: int4 };\n';
-  cmd += 'create table farm::rules { id: int4, sensor_type: utf8, operator: utf8, threshold: float4, actuator_type: utf8, enabled: bool };\n';
   cmd += 'create table farm::weather { condition: utf8, intensity: float4, tick_changed: int4 };\n';
   cmd += 'create table farm::stats { water_used: float4, energy_used: float4, total_yield: float4, current_tick: int4 };\n';
   cmd += 'create table farm::ui_state { tool_mode: utf8, speed: int4, selected_x: int4, selected_y: int4, camera_x: float4, camera_y: float4 };\n\n';

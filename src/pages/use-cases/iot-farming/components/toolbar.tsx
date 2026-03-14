@@ -26,12 +26,6 @@ const sensorTools: ToolItem[] = [
   { mode: 'place_light_sensor', label: 'Light', icon: '☀' },
 ];
 
-const actuatorTools: ToolItem[] = [
-  { mode: 'place_sprinkler', label: 'Sprinkler', icon: '🚿' },
-  { mode: 'place_heater', label: 'Heater', icon: '🔥' },
-  { mode: 'place_lamp', label: 'Lamp', icon: '💡' },
-];
-
 const actionTools: ToolItem[] = [
   { mode: 'select', label: 'Select', icon: '↖' },
   { mode: 'harvest', label: 'Harvest', icon: '✂' },
@@ -82,7 +76,6 @@ export function Toolbar({ currentTool, speed, onToolChange, onSpeedChange }: Too
       <ToolSection title="actions" tools={actionTools} currentTool={currentTool} onToolChange={onToolChange} />
       <ToolSection title="crops" tools={cropTools} currentTool={currentTool} onToolChange={onToolChange} />
       <ToolSection title="sensors" tools={sensorTools} currentTool={currentTool} onToolChange={onToolChange} />
-      <ToolSection title="actuators" tools={actuatorTools} currentTool={currentTool} onToolChange={onToolChange} />
 
       <div className="mb-3 mt-auto">
         <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted mb-1.5 px-1">
