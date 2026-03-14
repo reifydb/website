@@ -39456,21 +39456,14 @@ Moisture
 Temp
 ☀
 Light
-# ACTUATORS
-🚿
-Sprinkler
-🔥
-Heater
-💡
-Lamp
 # SPEED
 ⏸
 1x
 2x
 4x
 # WEATHER
-☀
-Sunny
+🌧
+Rainy
 # RESOURCES
 Water
 0.0L
@@ -39479,27 +39472,19 @@ Energy
 Yield
 0
 Tick
-13
+1111111111
 # FARM
 Crops
 0
 Sensors
 0
-Actuators
-0
-# AUTOMATION RULES
-moisture
-temperature
-light
-<
->
-<=
->=
-→
-sprinkler
-heater
-lamp
-[+]
+Cookbook:
+Crop Summary
+Soil Overview
+Alerts
+Aggregation
+Filter + Sort
+Latest Readings
 ●
 [wasm]
 ctrl+enter to run
