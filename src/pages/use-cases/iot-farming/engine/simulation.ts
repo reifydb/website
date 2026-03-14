@@ -163,14 +163,14 @@ function tickCrops(db: WasmDB): void {
     }
 
     let newProgress = crop.growth_progress;
-    let newStage = crop.growth_stage;
+    let newStage: GrowthStage = crop.growth_stage;
 
     if (newHealth > 0) {
       newProgress += inRange;
       const stageIdx = GROWTH_STAGES.indexOf(crop.growth_stage);
       const config = CROP_CONFIGS[crop.crop_type];
       if (newProgress >= config.stagesNeeded && stageIdx < GROWTH_STAGES.length - 1) {
-        newStage = GROWTH_STAGES[stageIdx + 1] as GrowthStage;
+        newStage = GROWTH_STAGES[stageIdx + 1];
         newProgress = 0;
       }
     }

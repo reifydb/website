@@ -28,7 +28,7 @@ export const CROP_CONFIGS: Record<CropType, {
   lettuce: { moisture: [0.5, 0.9], temperature: [0.2, 0.5], light: [0.3, 0.7], stagesNeeded: 10 },
 };
 
-export const GROWTH_STAGES: readonly string[] = ['seed', 'sprout', 'growing', 'mature', 'harvestable'] as const;
+export const GROWTH_STAGES = ['seed', 'sprout', 'growing', 'mature', 'harvestable'] as const;
 
 export const WEATHER_EFFECTS: Record<string, { tempDelta: number; moistureDelta: number; light: number }> = {
   sunny:  { tempDelta: 0.01,  moistureDelta: -0.01,  light: 1.0 },
