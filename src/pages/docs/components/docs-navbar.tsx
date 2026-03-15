@@ -141,24 +141,26 @@ export function DocsNavbar() {
                     </button>
                     <div
                       className={cn(
-                        'overflow-hidden transition-all duration-200',
-                        isSectionOpen ? 'max-h-[2000px]' : 'max-h-0'
+                        'grid transition-[grid-template-rows] duration-150',
+                        isSectionOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
                       )}
                     >
-                      <ul className="space-y-0.5 border-l border-dashed border-black/25 ml-3">
-                        {section.items.map((item) => (
-                          <AccordionItem
-                            key={item.id}
-                            item={item}
-                            currentPath={currentPath}
-                            depth={0}
-                            openItems={openItems}
-                            onToggle={toggleItem}
-                            onNavigate={() => setMobileMenuOpen(false)}
-                            devMode={isLocalhost}
-                          />
-                        ))}
-                      </ul>
+                      <div className="overflow-hidden">
+                        <ul className="space-y-0.5 border-l border-dashed border-black/25 ml-3">
+                          {section.items.map((item) => (
+                            <AccordionItem
+                              key={item.id}
+                              item={item}
+                              currentPath={currentPath}
+                              depth={0}
+                              openItems={openItems}
+                              onToggle={toggleItem}
+                              onNavigate={() => setMobileMenuOpen(false)}
+                              devMode={isLocalhost}
+                            />
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 );

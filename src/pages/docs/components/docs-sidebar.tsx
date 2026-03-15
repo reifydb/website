@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo, memo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib';
 import { useIsLocalhost } from '@/hooks';
@@ -58,7 +58,7 @@ export interface AccordionItemProps {
   devMode?: boolean;
 }
 
-export function AccordionItem({ item, currentPath, depth, openItems, onToggle, onNavigate, devMode }: AccordionItemProps) {
+export const AccordionItem = memo(function AccordionItem({ item, currentPath, depth, openItems, onToggle, onNavigate, devMode }: AccordionItemProps) {
   const hasChildren = item.children && item.children.length > 0;
   const isOpen = openItems.has(item.id);
   const isActive = item.href === currentPath;
@@ -74,7 +74,7 @@ export function AccordionItem({ item, currentPath, depth, openItems, onToggle, o
 
   const itemStyles = cn(
     'w-full flex items-center py-1.5 text-sm text-left',
-    'transition-all duration-150',
+    'transition-colors duration-150',
     isActive
       ? 'text-primary font-medium'
       : 'text-text-secondary hover:text-primary',
@@ -102,41 +102,48 @@ export function AccordionItem({ item, currentPath, depth, openItems, onToggle, o
       {hasChildren && (
         <div
           className={cn(
-            'overflow-hidden transition-all duration-200',
-            isOpen ? 'max-h-[1000px]' : 'max-h-0'
+            'grid transition-[grid-template-rows] duration-150',
+            isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
           )}
         >
-          <ul className="space-y-0.5 border-l border-dashed border-black/25 ml-3">
-            {item.children!.map((child) => (
-              <AccordionItem
-                key={child.id}
-                item={child}
-                currentPath={currentPath}
-                depth={depth + 1}
-                openItems={openItems}
-                onToggle={onToggle}
-                onNavigate={onNavigate}
-                devMode={devMode}
-              />
-            ))}
-          </ul>
+          <div className="overflow-hidden">
+            <ul className="space-y-0.5 border-l border-dashed border-black/25 ml-3">
+              {item.children!.map((child) => (
+                <AccordionItem
+                  key={child.id}
+                  item={child}
+                  currentPath={currentPath}
+                  depth={depth + 1}
+                  openItems={openItems}
+                  onToggle={onToggle}
+                  onNavigate={onNavigate}
+                  devMode={devMode}
+                />
+              ))}
+            </ul>
+          </div>
         </div>
       )}
     </li>
   );
-}
+});
+
+const noop = () => {};
 
 export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
   const navigate = useNavigate();
   const isLocalhost = useIsLocalhost();
 
   // In dev mode show all items; in production only show published
-  const displaySections = isLocalhost
-    ? sections.filter((s) => s.items.length > 0)
-    : sections.map((s) => ({
-        ...s,
-        items: filterPublished(s.items),
-      })).filter((s) => s.items.length > 0);
+  const displaySections = useMemo(() =>
+    isLocalhost
+      ? sections.filter((s) => s.items.length > 0)
+      : sections.map((s) => ({
+          ...s,
+          items: filterPublished(s.items),
+        })).filter((s) => s.items.length > 0),
+    [sections, isLocalhost]
+  );
 
   const [openItems, setOpenItems] = useState<Set<string>>(() => {
     // Use persisted state if available, otherwise expand ancestors of current page
@@ -189,24 +196,26 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
               </button>
               <div
                 className={cn(
-                  'overflow-hidden transition-all duration-200',
-                  isSectionOpen ? 'max-h-[2000px]' : 'max-h-0'
+                  'grid transition-[grid-template-rows] duration-150',
+                  isSectionOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
                 )}
               >
-                <ul className="space-y-0.5 border-l border-dashed border-black/25 ml-3">
-                  {section.items.map((item) => (
-                    <AccordionItem
-                      key={item.id}
-                      item={item}
-                      currentPath={currentPath}
-                      depth={0}
-                      openItems={openItems}
-                      onToggle={toggleItem}
-                      onNavigate={() => {}}
-                      devMode={isLocalhost}
-                    />
-                  ))}
-                </ul>
+                <div className="overflow-hidden">
+                  <ul className="space-y-0.5 border-l border-dashed border-black/25 ml-3">
+                    {section.items.map((item) => (
+                      <AccordionItem
+                        key={item.id}
+                        item={item}
+                        currentPath={currentPath}
+                        depth={0}
+                        openItems={openItems}
+                        onToggle={toggleItem}
+                        onNavigate={noop}
+                        devMode={isLocalhost}
+                      />
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           );
