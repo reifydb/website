@@ -1,5 +1,9 @@
+import { createContext, useContext } from 'react';
 import { useIsLocalhost } from '@/hooks';
+import { useLocation } from 'react-router-dom';
 import { DocsWipTerminal } from '@/components/demo/docs-wip-terminal';
+import { NotFoundPage } from '@/pages/not-found';
+import { navSections, getPublishedPaths } from '@/pages/docs/data/navigation';
 import type {ReactNode} from "react";
 
 interface DocsGateProps {
@@ -7,20 +11,41 @@ interface DocsGateProps {
 }
 
 /**
- * Conditionally renders documentation content based on environment.
- * - Localhost: Shows actual documentation (children)
- * - Production: Shows WIP terminal page
- *
- * To disable this gate and show docs in production, set SHOW_DOCS_IN_PRODUCTION to true.
+ * Conditionally renders documentation content based on environment and publish status.
+ * - Localhost: Shows all documentation, with a banner on unpublished pages
+ * - Production: Shows WIP terminal page (when SHOW_DOCS_IN_PRODUCTION is false)
+ * - Unpublished pages on production: Shows 404
  */
 const SHOW_DOCS_IN_PRODUCTION = true;
 
+const publishedPaths = getPublishedPaths(navSections);
+
+const DraftContext = createContext(false);
+
+export function useIsDraft(): boolean {
+  return useContext(DraftContext);
+}
+
 export function DocsGate({ children }: DocsGateProps) {
   const isLocalhost = useIsLocalhost();
+  const { pathname } = useLocation();
 
-  if (isLocalhost || SHOW_DOCS_IN_PRODUCTION) {
-    return <>{children}</>;
+  if (!(isLocalhost || SHOW_DOCS_IN_PRODUCTION)) {
+    return <DocsWipTerminal />;
   }
 
-  return <DocsWipTerminal />;
+  const isPublished = !pathname.startsWith('/docs') || publishedPaths.has(pathname);
+
+  // In production, unpublished pages show 404
+  if (!isPublished && !isLocalhost) {
+    return <NotFoundPage />;
+  }
+
+  const isDraft = !isPublished;
+
+  return (
+    <DraftContext.Provider value={isDraft}>
+      {children}
+    </DraftContext.Provider>
+  );
 }

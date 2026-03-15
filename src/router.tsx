@@ -23,7 +23,191 @@ import {
   RqlExpressionsPage,
   FilterPage,
   SortPage,
+  MapPage,
+  ExtendPage,
+  AggregatePage,
+  DistinctPage,
+  TakePage,
+  JoinPage,
+  MatchPage,
+  PatchPage,
   OperatorsPage,
+  ConditionalsPage,
+  LiteralsPage,
+  FieldAccessPage,
+  PaginationPage,
+  HierarchicalDataPage,
+  TimeSeriesPage,
+  TextSearchPage,
+  DynamicQueriesPage,
+  // Architecture
+  ArchitectureOverviewPage,
+  VolcanoPage,
+  TypesPage,
+  ArchitectureStorageEnginePage,
+  IncrementalMaintenancePage,
+  TransactionEnginePage,
+  WireProtocolPage,
+  // Scripting
+  ScriptingOverviewPage,
+  NamespacesPage,
+  TablesPage,
+  EnumsPage,
+  DictionariesPage,
+  DropPage,
+  ConstraintsPage,
+  IndexesPage,
+  StorageTablesPage,
+  RingbuffersPage,
+  SeriesPage,
+  DmlInsertPage,
+  DmlUpdatePage,
+  DmlDeletePage,
+  UpsertPage,
+  BatchOperationsPage,
+  ViewsOverviewPage,
+  DeferredViewsPage,
+  TransactionalViewsPage,
+  ProceduresOverviewPage,
+  ControlFlowPage,
+  EventsOverviewPage,
+  HandlersPage,
+  DispatchPage,
+  TestingOverviewPage,
+  MigrationsOverviewPage,
+  SubscriptionsOverviewPage,
+  AccessControlOverviewPage,
+  // Tutorials
+  FirstAppPage,
+  LiveDashboardPage,
+  RealTimeChatPage,
+  TaskManagerPage,
+  // Coming From
+  ComingFromSqlPage,
+  ComingFromMongoPage,
+  ComingFromRedisPage,
+  ComingFromFirebasePage,
+  // Concepts
+  ConceptsOverviewPage,
+  DataModelPage,
+  ConceptsNamespacesPage,
+  MaterializedViewsPage,
+  RealTimeSubscriptionsPage,
+  StorageEnginesPage,
+  ConsistencyModelPage,
+  EmbeddedVsServerPage,
+  // Guides
+  GuidesOverviewPage,
+  UsersAuthGuidePage,
+  ECommerceGuidePage,
+  IoTGuidePage,
+  CmsGuidePage,
+  MultiTenancyGuidePage,
+  RelationshipsGuidePage,
+  LiveQueriesGuidePage,
+  ReactiveViewsGuidePage,
+  EventSourcingGuidePage,
+  NotificationsGuidePage,
+  UnitTestingGuidePage,
+  IntegrationTestingGuidePage,
+  FixturesGuidePage,
+  SoftDeletesGuidePage,
+  AuditTrailGuidePage,
+  StateMachinesGuidePage,
+  CqrsGuidePage,
+  ComputedFieldsGuidePage,
+  DataVersioningGuidePage,
+  // Client SDKs
+  SdksOverviewPage,
+  TsQuickStartPage,
+  TsConnectionPage,
+  TsQueriesPage,
+  TsMutationsPage,
+  TsSubscriptionsPage,
+  TsTransactionsPage,
+  TsTypeSafetyPage,
+  TsErrorHandlingPage,
+  TsApiReferencePage,
+  RustQuickStartPage,
+  RustEmbeddedPage,
+  RustClientPage,
+  RustApiReferencePage,
+  PythonQuickStartPage,
+  PythonConnectionPage,
+  PythonQueriesPage,
+  PythonApiReferencePage,
+  GoQuickStartPage,
+  GoConnectionPage,
+  GoQueriesPage,
+  GoApiReferencePage,
+  // Security
+  SecurityOverviewPage,
+  AuthenticationPage,
+  AuthorizationPage,
+  RowLevelSecurityPage,
+  EncryptionPage,
+  AuditLoggingPage,
+  TlsPage,
+  // Operations
+  StandalonePage,
+  EmbeddedDeploymentPage,
+  DockerPage,
+  KubernetesPage,
+  SystemdPage,
+  BackupOverviewPage,
+  SnapshotsPage,
+  PointInTimePage,
+  MonitoringOverviewPage,
+  MetricsPage,
+  LoggingPage,
+  HealthChecksPage,
+  UpgradesPage,
+  ScalingPage,
+  // Performance
+  PerformanceOverviewPage,
+  QueryOptimizationPage,
+  IndexingStrategiesPage,
+  ExplainPage,
+  ViewTuningPage,
+  MemoryManagementPage,
+  BenchmarksPage,
+  // Tools
+  CliOverviewPage,
+  CliCommandsPage,
+  CliScriptingPage,
+  ConsoleOverviewPage,
+  QueryEditorPage,
+  SchemaBrowserPage,
+  ToolsPlaygroundPage,
+  // Integrations
+  IntegrationsOverviewPage,
+  HttpApiOverviewPage,
+  HttpApiAuthPage,
+  HttpApiQueryPage,
+  HttpApiMutationPage,
+  HttpApiSubscriptionPage,
+  HttpApiErrorsPage,
+  WebhooksPage,
+  CdcPage,
+  ReactIntegrationPage,
+  NextjsIntegrationPage,
+  SvelteIntegrationPage,
+  // Troubleshooting
+  TroubleshootingOverviewPage,
+  CommonErrorsPage,
+  ConnectionIssuesPage,
+  SlowQueriesPage,
+  TransactionConflictsPage,
+  ViewIssuesPage,
+  FaqDocsPage,
+  // Resources
+  ChangelogPage,
+  RoadmapPage,
+  GlossaryPage,
+  ContributingPage,
+  CommunityPage,
+  ReleaseNotesPage,
+  // Functions
   FunctionsOverviewPage,
   // Blob module
   BlobModuleOverviewPage,
@@ -115,6 +299,12 @@ import {
   IsTypePage,
   IsRootPage,
   IsAnonymousPage,
+  // JSON module
+  JsonModuleOverviewPage,
+  JsonArrayPage,
+  JsonObjectPage,
+  JsonSerializePage,
+  JsonPrettyPage,
   // Math module
   MathModuleOverviewPage,
   MathSumPage,
@@ -217,6 +407,7 @@ export const router = createBrowserRouter([
         path: '/company/mission',
         element: <MissionPage />,
       },
+      // ─── Getting Started ────────────────────────────────
       {
         path: '/docs',
         element: <DocsGate><DocsOverview /></DocsGate>,
@@ -229,6 +420,74 @@ export const router = createBrowserRouter([
         path: '/docs/quick-start',
         element: <DocsGate><QuickStartPage /></DocsGate>,
       },
+      // Tutorials
+      {
+        path: '/docs/tutorials/first-app',
+        element: <DocsGate><FirstAppPage /></DocsGate>,
+      },
+      {
+        path: '/docs/tutorials/live-dashboard',
+        element: <DocsGate><LiveDashboardPage /></DocsGate>,
+      },
+      {
+        path: '/docs/tutorials/real-time-chat',
+        element: <DocsGate><RealTimeChatPage /></DocsGate>,
+      },
+      {
+        path: '/docs/tutorials/task-manager',
+        element: <DocsGate><TaskManagerPage /></DocsGate>,
+      },
+      // Coming From
+      {
+        path: '/docs/coming-from/sql',
+        element: <DocsGate><ComingFromSqlPage /></DocsGate>,
+      },
+      {
+        path: '/docs/coming-from/mongodb',
+        element: <DocsGate><ComingFromMongoPage /></DocsGate>,
+      },
+      {
+        path: '/docs/coming-from/redis',
+        element: <DocsGate><ComingFromRedisPage /></DocsGate>,
+      },
+      {
+        path: '/docs/coming-from/firebase',
+        element: <DocsGate><ComingFromFirebasePage /></DocsGate>,
+      },
+      // ─── Concepts ───────────────────────────────────────
+      {
+        path: '/docs/concepts',
+        element: <DocsGate><ConceptsOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/concepts/data-model',
+        element: <DocsGate><DataModelPage /></DocsGate>,
+      },
+      {
+        path: '/docs/concepts/namespaces',
+        element: <DocsGate><ConceptsNamespacesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/concepts/materialized-views',
+        element: <DocsGate><MaterializedViewsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/concepts/real-time',
+        element: <DocsGate><RealTimeSubscriptionsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/concepts/storage-engines',
+        element: <DocsGate><StorageEnginesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/concepts/consistency',
+        element: <DocsGate><ConsistencyModelPage /></DocsGate>,
+      },
+      {
+        path: '/docs/concepts/embedded-vs-server',
+        element: <DocsGate><EmbeddedVsServerPage /></DocsGate>,
+      },
+      // ─── RQL ────────────────────────────────────────────
       {
         path: '/docs/rql/basics',
         element: <DocsGate><RqlBasicsPage /></DocsGate>,
@@ -250,9 +509,580 @@ export const router = createBrowserRouter([
         element: <DocsGate><SortPage /></DocsGate>,
       },
       {
+        path: '/docs/rql/transforms/map',
+        element: <DocsGate><MapPage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/transforms/extend',
+        element: <DocsGate><ExtendPage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/transforms/aggregate',
+        element: <DocsGate><AggregatePage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/transforms/distinct',
+        element: <DocsGate><DistinctPage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/transforms/take',
+        element: <DocsGate><TakePage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/transforms/join',
+        element: <DocsGate><JoinPage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/transforms/match',
+        element: <DocsGate><MatchPage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/transforms/patch',
+        element: <DocsGate><PatchPage /></DocsGate>,
+      },
+      {
         path: '/docs/rql/expressions/operators',
         element: <DocsGate><OperatorsPage /></DocsGate>,
       },
+      {
+        path: '/docs/rql/expressions/conditionals',
+        element: <DocsGate><ConditionalsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/expressions/literals',
+        element: <DocsGate><LiteralsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/expressions/field-access',
+        element: <DocsGate><FieldAccessPage /></DocsGate>,
+      },
+      // RQL Patterns
+      {
+        path: '/docs/rql/patterns/pagination',
+        element: <DocsGate><PaginationPage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/patterns/hierarchical-data',
+        element: <DocsGate><HierarchicalDataPage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/patterns/time-series',
+        element: <DocsGate><TimeSeriesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/patterns/text-search',
+        element: <DocsGate><TextSearchPage /></DocsGate>,
+      },
+      {
+        path: '/docs/rql/patterns/dynamic-queries',
+        element: <DocsGate><DynamicQueriesPage /></DocsGate>,
+      },
+      // ─── Scripting ──────────────────────────────────────
+      {
+        path: '/docs/scripting',
+        element: <DocsGate><ScriptingOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/schema/namespaces',
+        element: <DocsGate><NamespacesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/schema/tables',
+        element: <DocsGate><TablesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/schema/enums',
+        element: <DocsGate><EnumsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/schema/dictionaries',
+        element: <DocsGate><DictionariesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/schema/drop',
+        element: <DocsGate><DropPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/schema/constraints',
+        element: <DocsGate><ConstraintsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/schema/indexes',
+        element: <DocsGate><IndexesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/storage/tables',
+        element: <DocsGate><StorageTablesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/storage/ringbuffers',
+        element: <DocsGate><RingbuffersPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/storage/series',
+        element: <DocsGate><SeriesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/dml/insert',
+        element: <DocsGate><DmlInsertPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/dml/update',
+        element: <DocsGate><DmlUpdatePage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/dml/delete',
+        element: <DocsGate><DmlDeletePage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/dml/upsert',
+        element: <DocsGate><UpsertPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/dml/batch',
+        element: <DocsGate><BatchOperationsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/views',
+        element: <DocsGate><ViewsOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/views/deferred',
+        element: <DocsGate><DeferredViewsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/views/transactional',
+        element: <DocsGate><TransactionalViewsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/procedures',
+        element: <DocsGate><ProceduresOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/procedures/control-flow',
+        element: <DocsGate><ControlFlowPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/events',
+        element: <DocsGate><EventsOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/events/handlers',
+        element: <DocsGate><HandlersPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/events/dispatch',
+        element: <DocsGate><DispatchPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/testing',
+        element: <DocsGate><TestingOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/migrations',
+        element: <DocsGate><MigrationsOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/subscriptions',
+        element: <DocsGate><SubscriptionsOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/scripting/access-control',
+        element: <DocsGate><AccessControlOverviewPage /></DocsGate>,
+      },
+      // ─── Guides ─────────────────────────────────────────
+      {
+        path: '/docs/guides',
+        element: <DocsGate><GuidesOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/modeling/users-auth',
+        element: <DocsGate><UsersAuthGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/modeling/e-commerce',
+        element: <DocsGate><ECommerceGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/modeling/iot',
+        element: <DocsGate><IoTGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/modeling/cms',
+        element: <DocsGate><CmsGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/modeling/multi-tenancy',
+        element: <DocsGate><MultiTenancyGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/modeling/relationships',
+        element: <DocsGate><RelationshipsGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/real-time/live-queries',
+        element: <DocsGate><LiveQueriesGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/real-time/reactive-views',
+        element: <DocsGate><ReactiveViewsGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/real-time/event-sourcing',
+        element: <DocsGate><EventSourcingGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/real-time/notifications',
+        element: <DocsGate><NotificationsGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/testing/unit-testing',
+        element: <DocsGate><UnitTestingGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/testing/integration-testing',
+        element: <DocsGate><IntegrationTestingGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/testing/fixtures',
+        element: <DocsGate><FixturesGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/patterns/soft-deletes',
+        element: <DocsGate><SoftDeletesGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/patterns/audit-trail',
+        element: <DocsGate><AuditTrailGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/patterns/state-machines',
+        element: <DocsGate><StateMachinesGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/patterns/cqrs',
+        element: <DocsGate><CqrsGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/patterns/computed-fields',
+        element: <DocsGate><ComputedFieldsGuidePage /></DocsGate>,
+      },
+      {
+        path: '/docs/guides/patterns/data-versioning',
+        element: <DocsGate><DataVersioningGuidePage /></DocsGate>,
+      },
+      // ─── Client SDKs ───────────────────────────────────
+      {
+        path: '/docs/sdks',
+        element: <DocsGate><SdksOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/typescript/quick-start',
+        element: <DocsGate><TsQuickStartPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/typescript/connection',
+        element: <DocsGate><TsConnectionPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/typescript/queries',
+        element: <DocsGate><TsQueriesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/typescript/mutations',
+        element: <DocsGate><TsMutationsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/typescript/subscriptions',
+        element: <DocsGate><TsSubscriptionsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/typescript/transactions',
+        element: <DocsGate><TsTransactionsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/typescript/type-safety',
+        element: <DocsGate><TsTypeSafetyPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/typescript/error-handling',
+        element: <DocsGate><TsErrorHandlingPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/typescript/api-reference',
+        element: <DocsGate><TsApiReferencePage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/rust/quick-start',
+        element: <DocsGate><RustQuickStartPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/rust/embedded',
+        element: <DocsGate><RustEmbeddedPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/rust/client',
+        element: <DocsGate><RustClientPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/rust/api-reference',
+        element: <DocsGate><RustApiReferencePage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/python/quick-start',
+        element: <DocsGate><PythonQuickStartPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/python/connection',
+        element: <DocsGate><PythonConnectionPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/python/queries',
+        element: <DocsGate><PythonQueriesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/python/api-reference',
+        element: <DocsGate><PythonApiReferencePage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/go/quick-start',
+        element: <DocsGate><GoQuickStartPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/go/connection',
+        element: <DocsGate><GoConnectionPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/go/queries',
+        element: <DocsGate><GoQueriesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/sdks/go/api-reference',
+        element: <DocsGate><GoApiReferencePage /></DocsGate>,
+      },
+      // ─── Architecture ──────────────────────────────────
+      {
+        path: '/docs/architecture',
+        element: <DocsGate><ArchitectureOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/architecture/volcano',
+        element: <DocsGate><VolcanoPage /></DocsGate>,
+      },
+      {
+        path: '/docs/architecture/types',
+        element: <DocsGate><TypesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/architecture/storage-engine',
+        element: <DocsGate><ArchitectureStorageEnginePage /></DocsGate>,
+      },
+      {
+        path: '/docs/architecture/incremental-maintenance',
+        element: <DocsGate><IncrementalMaintenancePage /></DocsGate>,
+      },
+      {
+        path: '/docs/architecture/transaction-engine',
+        element: <DocsGate><TransactionEnginePage /></DocsGate>,
+      },
+      {
+        path: '/docs/architecture/wire-protocol',
+        element: <DocsGate><WireProtocolPage /></DocsGate>,
+      },
+      // ─── Security ──────────────────────────────────────
+      {
+        path: '/docs/security',
+        element: <DocsGate><SecurityOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/security/authentication',
+        element: <DocsGate><AuthenticationPage /></DocsGate>,
+      },
+      {
+        path: '/docs/security/authorization',
+        element: <DocsGate><AuthorizationPage /></DocsGate>,
+      },
+      {
+        path: '/docs/security/row-level-security',
+        element: <DocsGate><RowLevelSecurityPage /></DocsGate>,
+      },
+      {
+        path: '/docs/security/encryption',
+        element: <DocsGate><EncryptionPage /></DocsGate>,
+      },
+      {
+        path: '/docs/security/audit-logging',
+        element: <DocsGate><AuditLoggingPage /></DocsGate>,
+      },
+      {
+        path: '/docs/security/tls',
+        element: <DocsGate><TlsPage /></DocsGate>,
+      },
+      // ─── Operations ────────────────────────────────────
+      {
+        path: '/docs/operations/deployment/standalone',
+        element: <DocsGate><StandalonePage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/deployment/embedded',
+        element: <DocsGate><EmbeddedDeploymentPage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/deployment/docker',
+        element: <DocsGate><DockerPage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/deployment/kubernetes',
+        element: <DocsGate><KubernetesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/deployment/systemd',
+        element: <DocsGate><SystemdPage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/backup',
+        element: <DocsGate><BackupOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/backup/snapshots',
+        element: <DocsGate><SnapshotsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/backup/point-in-time',
+        element: <DocsGate><PointInTimePage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/monitoring',
+        element: <DocsGate><MonitoringOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/monitoring/metrics',
+        element: <DocsGate><MetricsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/monitoring/logging',
+        element: <DocsGate><LoggingPage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/monitoring/health-checks',
+        element: <DocsGate><HealthChecksPage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/upgrades',
+        element: <DocsGate><UpgradesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/operations/scaling',
+        element: <DocsGate><ScalingPage /></DocsGate>,
+      },
+      // ─── Performance ───────────────────────────────────
+      {
+        path: '/docs/performance',
+        element: <DocsGate><PerformanceOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/performance/query-optimization',
+        element: <DocsGate><QueryOptimizationPage /></DocsGate>,
+      },
+      {
+        path: '/docs/performance/indexing',
+        element: <DocsGate><IndexingStrategiesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/performance/explain',
+        element: <DocsGate><ExplainPage /></DocsGate>,
+      },
+      {
+        path: '/docs/performance/view-tuning',
+        element: <DocsGate><ViewTuningPage /></DocsGate>,
+      },
+      {
+        path: '/docs/performance/memory',
+        element: <DocsGate><MemoryManagementPage /></DocsGate>,
+      },
+      {
+        path: '/docs/performance/benchmarks',
+        element: <DocsGate><BenchmarksPage /></DocsGate>,
+      },
+      // ─── Tools ─────────────────────────────────────────
+      {
+        path: '/docs/tools/cli',
+        element: <DocsGate><CliOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/tools/cli/commands',
+        element: <DocsGate><CliCommandsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/tools/cli/scripting',
+        element: <DocsGate><CliScriptingPage /></DocsGate>,
+      },
+      {
+        path: '/docs/tools/console',
+        element: <DocsGate><ConsoleOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/tools/console/query-editor',
+        element: <DocsGate><QueryEditorPage /></DocsGate>,
+      },
+      {
+        path: '/docs/tools/console/schema-browser',
+        element: <DocsGate><SchemaBrowserPage /></DocsGate>,
+      },
+      {
+        path: '/docs/tools/playground',
+        element: <DocsGate><ToolsPlaygroundPage /></DocsGate>,
+      },
+      // ─── Integrations ──────────────────────────────────
+      {
+        path: '/docs/integrations',
+        element: <DocsGate><IntegrationsOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/integrations/http-api',
+        element: <DocsGate><HttpApiOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/integrations/http-api/authentication',
+        element: <DocsGate><HttpApiAuthPage /></DocsGate>,
+      },
+      {
+        path: '/docs/integrations/http-api/query',
+        element: <DocsGate><HttpApiQueryPage /></DocsGate>,
+      },
+      {
+        path: '/docs/integrations/http-api/mutation',
+        element: <DocsGate><HttpApiMutationPage /></DocsGate>,
+      },
+      {
+        path: '/docs/integrations/http-api/subscription',
+        element: <DocsGate><HttpApiSubscriptionPage /></DocsGate>,
+      },
+      {
+        path: '/docs/integrations/http-api/errors',
+        element: <DocsGate><HttpApiErrorsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/integrations/webhooks',
+        element: <DocsGate><WebhooksPage /></DocsGate>,
+      },
+      {
+        path: '/docs/integrations/cdc',
+        element: <DocsGate><CdcPage /></DocsGate>,
+      },
+      {
+        path: '/docs/integrations/frameworks/react',
+        element: <DocsGate><ReactIntegrationPage /></DocsGate>,
+      },
+      {
+        path: '/docs/integrations/frameworks/nextjs',
+        element: <DocsGate><NextjsIntegrationPage /></DocsGate>,
+      },
+      {
+        path: '/docs/integrations/frameworks/svelte',
+        element: <DocsGate><SvelteIntegrationPage /></DocsGate>,
+      },
+      // ─── Functions (UNCHANGED) ─────────────────────────
       {
         path: '/docs/functions',
         element: <DocsGate><FunctionsOverviewPage /></DocsGate>,
@@ -596,6 +1426,27 @@ export const router = createBrowserRouter([
         path: '/docs/functions/is/anonymous',
         element: <DocsGate><IsAnonymousPage /></DocsGate>,
       },
+      // JSON module
+      {
+        path: '/docs/functions/json',
+        element: <DocsGate><JsonModuleOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/json/array',
+        element: <DocsGate><JsonArrayPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/json/object',
+        element: <DocsGate><JsonObjectPage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/json/serialize',
+        element: <DocsGate><JsonSerializePage /></DocsGate>,
+      },
+      {
+        path: '/docs/functions/json/pretty',
+        element: <DocsGate><JsonPrettyPage /></DocsGate>,
+      },
       // Math module
       {
         path: '/docs/functions/math',
@@ -872,6 +1723,61 @@ export const router = createBrowserRouter([
         path: '/docs/functions/time/format',
         element: <DocsGate><TimeFormatPage /></DocsGate>,
       },
+      // ─── Troubleshooting ───────────────────────────────
+      {
+        path: '/docs/troubleshooting',
+        element: <DocsGate><TroubleshootingOverviewPage /></DocsGate>,
+      },
+      {
+        path: '/docs/troubleshooting/common-errors',
+        element: <DocsGate><CommonErrorsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/troubleshooting/connection-issues',
+        element: <DocsGate><ConnectionIssuesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/troubleshooting/slow-queries',
+        element: <DocsGate><SlowQueriesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/troubleshooting/transaction-conflicts',
+        element: <DocsGate><TransactionConflictsPage /></DocsGate>,
+      },
+      {
+        path: '/docs/troubleshooting/view-issues',
+        element: <DocsGate><ViewIssuesPage /></DocsGate>,
+      },
+      {
+        path: '/docs/troubleshooting/faq',
+        element: <DocsGate><FaqDocsPage /></DocsGate>,
+      },
+      // ─── Resources ─────────────────────────────────────
+      {
+        path: '/docs/resources/changelog',
+        element: <DocsGate><ChangelogPage /></DocsGate>,
+      },
+      {
+        path: '/docs/resources/roadmap',
+        element: <DocsGate><RoadmapPage /></DocsGate>,
+      },
+      {
+        path: '/docs/resources/glossary',
+        element: <DocsGate><GlossaryPage /></DocsGate>,
+      },
+      {
+        path: '/docs/resources/contributing',
+        element: <DocsGate><ContributingPage /></DocsGate>,
+      },
+      {
+        path: '/docs/resources/community',
+        element: <DocsGate><CommunityPage /></DocsGate>,
+      },
+      {
+        path: '/docs/resources/release-notes',
+        element: <DocsGate><ReleaseNotesPage /></DocsGate>,
+      },
+      // ─── Non-docs pages ────────────────────────────────
       {
         path: '/examples',
         element: <ExamplesPage />,

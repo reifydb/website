@@ -158,6 +158,13 @@ export { TextTrimStartPage } from './text/trim_start';
 export { TextFormatBytesPage } from './text/format_bytes';
 export { TextFormatBytesSiPage } from './text/format_bytes_si';
 
+// JSON module
+export { JsonModuleOverviewPage } from './json';
+export { JsonArrayPage } from './json/array';
+export { JsonObjectPage } from './json/object';
+export { JsonSerializePage } from './json/serialize';
+export { JsonPrettyPage } from './json/pretty';
+
 // Time module
 export { TimeModuleOverviewPage } from './time';
 export { TimeHourPage } from './time/hour';

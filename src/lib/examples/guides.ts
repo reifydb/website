@@ -25,7 +25,7 @@ export const guideExamples: CodeExample[] = [
   {id: 2, name: "Bob", role: "user"},
   {id: 3, name: "Carol", role: "user"}
 ]
-filter role == "user"`,
+filter { role == "user" }`,
     expected: `id | name  | role
 ---+-------+-----
 2  | Bob   | user
@@ -61,7 +61,7 @@ app       | todos | 2`,
     title: 'Querying Tables',
     category: 'guide',
     code: `from app::users
-filter role == "admin"`,
+filter { role == "admin" }`,
   },
   {
     id: 'guide-built-in-testing',

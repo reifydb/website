@@ -6,7 +6,7 @@ export const rqlExamples: CodeExample[] = [
     title: 'Query Structure',
     category: 'rql',
     code: `from app::users
-filter age >= 18`,
+filter { age >= 18 }`,
   },
   {
     id: 'rql-tables',

@@ -91,6 +91,16 @@ export function FunctionsOverviewPage() {
             </Link>
 
             <Link
+              to="/docs/functions/json"
+              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+            >
+              <h3 className="font-bold text-primary-color mb-1">json</h3>
+              <p className="text-text-secondary text-sm">
+                Build and serialize JSON: array, object, serialize, pretty.
+              </p>
+            </Link>
+
+            <Link
               to="/docs/functions/math"
               className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
             >

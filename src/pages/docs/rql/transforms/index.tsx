@@ -1,2 +1,10 @@
 export { FilterPage } from './filter';
 export { SortPage } from './sort';
+export { MapPage } from './map';
+export { ExtendPage } from './extend';
+export { AggregatePage } from './aggregate';
+export { DistinctPage } from './distinct';
+export { TakePage } from './take';
+export { JoinPage } from './join';
+export { MatchPage } from './match';
+export { PatchPage } from './patch';

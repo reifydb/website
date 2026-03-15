@@ -5,7 +5,7 @@
  * These examples are consumed by both documentation pages and automated tests.
  */
 
-export type ExampleCategory = 'landing' | 'guide' | 'rql' | 'function';
+export type ExampleCategory = 'landing' | 'guide' | 'rql' | 'function' | 'scripting';
 
 export type ExampleComponent = 'snippet' | string;
 
@@ -34,6 +34,7 @@ export * from './guides';
 export * from './rql';
 export * from './transforms';
 export * from './expressions';
+export * from './architecture';
 export * from './functions/math';
 export * from './functions/text';
 export * from './functions/date';
@@ -44,6 +45,8 @@ export * from './functions/time';
 export * from './functions/is';
 export * from './functions/identity';
 export * from './functions/meta';
+export * from './functions/json';
+export * from './scripting/index';
 
 // Import for aggregation
 import { landingExamples } from './landing';
@@ -51,6 +54,7 @@ import { guideExamples } from './guides';
 import { rqlExamples } from './rql';
 import { transformExamples } from './transforms';
 import { expressionExamples } from './expressions';
+import { architectureExamples } from './architecture';
 import { mathExamples } from './functions/math';
 import { textExamples } from './functions/text';
 import { dateExamples } from './functions/date';
@@ -61,6 +65,17 @@ import { timeExamples } from './functions/time';
 import { isExamples } from './functions/is';
 import { identityExamples } from './functions/identity';
 import { metaExamples } from './functions/meta';
+import { jsonExamples } from './functions/json';
+import { scriptingSchemaExamples } from './scripting/schema';
+import { scriptingStorageExamples } from './scripting/storage';
+import { scriptingDmlExamples } from './scripting/dml';
+import { scriptingViewsExamples } from './scripting/views';
+import { scriptingProceduresExamples } from './scripting/procedures';
+import { scriptingEventsExamples } from './scripting/events';
+import { scriptingTestingExamples } from './scripting/testing';
+import { scriptingMigrationsExamples } from './scripting/migrations';
+import { scriptingSubscriptionsExamples } from './scripting/subscriptions';
+import { scriptingAccessControlExamples } from './scripting/access-control';
 
 /** All examples combined for testing */
 export const allExamples: CodeExample[] = [
@@ -69,6 +84,7 @@ export const allExamples: CodeExample[] = [
   ...rqlExamples,
   ...transformExamples,
   ...expressionExamples,
+  ...architectureExamples,
   ...mathExamples,
   ...textExamples,
   ...dateExamples,
@@ -79,6 +95,17 @@ export const allExamples: CodeExample[] = [
   ...isExamples,
   ...identityExamples,
   ...metaExamples,
+  ...jsonExamples,
+  ...scriptingSchemaExamples,
+  ...scriptingStorageExamples,
+  ...scriptingDmlExamples,
+  ...scriptingViewsExamples,
+  ...scriptingProceduresExamples,
+  ...scriptingEventsExamples,
+  ...scriptingTestingExamples,
+  ...scriptingMigrationsExamples,
+  ...scriptingSubscriptionsExamples,
+  ...scriptingAccessControlExamples,
 ];
 
 /** Get examples by category */

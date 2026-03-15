@@ -1,16 +1,26 @@
 import { useState, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib';
-import { navSections } from '../data/navigation';
+import { useIsLocalhost } from '@/hooks';
+import { navSections, filterPublished } from '../data/navigation';
 import { AccordionItem, findAllAncestors } from './docs-sidebar';
 
 export function DocsNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const currentPath = location.pathname;
+  const isLocalhost = useIsLocalhost();
+
+  // In dev mode show all items; in production only show published
+  const displaySections = isLocalhost
+    ? navSections.filter((s) => s.items.length > 0)
+    : navSections.map((s) => ({
+        ...s,
+        items: filterPublished(s.items),
+      })).filter((s) => s.items.length > 0);
 
   const [openItems, setOpenItems] = useState<Set<string>>(() => {
-    return findAllAncestors(navSections, currentPath);
+    return findAllAncestors(displaySections, currentPath);
   });
 
   const toggleItem = useCallback((id: string) => {
@@ -117,7 +127,7 @@ export function DocsNavbar() {
 
             {/* Docs Navigation */}
             <nav className="flex-1 overflow-y-auto p-4 sidebar-no-scrollbar">
-              {navSections.map((section) => {
+              {displaySections.map((section) => {
                 const sectionId = `section-${section.title}`;
                 const isSectionOpen = openItems.has(sectionId);
 
@@ -145,6 +155,7 @@ export function DocsNavbar() {
                             openItems={openItems}
                             onToggle={toggleItem}
                             onNavigate={() => setMobileMenuOpen(false)}
+                            devMode={isLocalhost}
                           />
                         ))}
                       </ul>

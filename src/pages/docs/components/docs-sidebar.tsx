@@ -1,6 +1,8 @@
 import { useState, useCallback, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib';
+import { useIsLocalhost } from '@/hooks';
+import { filterPublished } from '../data/navigation';
 import type { NavSection, NavItem } from '../data/navigation';
 
 interface DocsSidebarProps {
@@ -39,6 +41,13 @@ export function findAllAncestors(sections: NavSection[], targetPath: string): Se
 // Persist open items across component remounts
 let persistedOpenItems: Set<string> | null = null;
 
+/** Check whether a nav item (or any of its children) is published */
+function isItemPublished(item: NavItem): boolean {
+  if (item.published === true) return true;
+  if (item.children) return item.children.some(isItemPublished);
+  return false;
+}
+
 export interface AccordionItemProps {
   item: NavItem;
   currentPath: string;
@@ -46,12 +55,14 @@ export interface AccordionItemProps {
   openItems: Set<string>;
   onToggle: (id: string) => void;
   onNavigate: () => void;
+  devMode?: boolean;
 }
 
-export function AccordionItem({ item, currentPath, depth, openItems, onToggle, onNavigate }: AccordionItemProps) {
+export function AccordionItem({ item, currentPath, depth, openItems, onToggle, onNavigate, devMode }: AccordionItemProps) {
   const hasChildren = item.children && item.children.length > 0;
   const isOpen = openItems.has(item.id);
   const isActive = item.href === currentPath;
+  const published = isItemPublished(item);
 
   const handleClick = () => {
     if (hasChildren) {
@@ -66,7 +77,8 @@ export function AccordionItem({ item, currentPath, depth, openItems, onToggle, o
     'transition-all duration-150',
     isActive
       ? 'text-primary font-medium'
-      : 'text-text-secondary hover:text-primary'
+      : 'text-text-secondary hover:text-primary',
+    devMode && !published && 'opacity-50 italic'
   );
 
   return (
@@ -104,6 +116,7 @@ export function AccordionItem({ item, currentPath, depth, openItems, onToggle, o
                 openItems={openItems}
                 onToggle={onToggle}
                 onNavigate={onNavigate}
+                devMode={devMode}
               />
             ))}
           </ul>
@@ -115,12 +128,22 @@ export function AccordionItem({ item, currentPath, depth, openItems, onToggle, o
 
 export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
   const navigate = useNavigate();
+  const isLocalhost = useIsLocalhost();
+
+  // In dev mode show all items; in production only show published
+  const displaySections = isLocalhost
+    ? sections.filter((s) => s.items.length > 0)
+    : sections.map((s) => ({
+        ...s,
+        items: filterPublished(s.items),
+      })).filter((s) => s.items.length > 0);
+
   const [openItems, setOpenItems] = useState<Set<string>>(() => {
     // Use persisted state if available, otherwise expand ancestors of current page
     if (persistedOpenItems) {
       return persistedOpenItems;
     }
-    return findAllAncestors(sections, currentPath);
+    return findAllAncestors(displaySections, currentPath);
   });
 
   // Sync state to module variable for persistence across remounts
@@ -152,7 +175,7 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
     <aside className="hidden lg:flex w-72 border-r border-dashed border-black/25 bg-bg-secondary flex-col">
       {/* Navigation */}
       <nav className="flex-1 p-4 pt-6 overflow-y-auto sidebar-no-scrollbar">
-        {sections.map((section) => {
+        {displaySections.map((section) => {
           const sectionId = `section-${section.title}`;
           const isSectionOpen = openItems.has(sectionId);
 
@@ -180,6 +203,7 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
                       openItems={openItems}
                       onToggle={toggleItem}
                       onNavigate={() => {}}
+                      devMode={isLocalhost}
                     />
                   ))}
                 </ul>

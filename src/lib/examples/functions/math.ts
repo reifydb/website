@@ -152,7 +152,7 @@ extend { abs_amount: math::abs(amount) }`,
     title: 'Filter by absolute magnitude',
     category: 'function',
     code: `from app::balances
-filter math::abs(balance) > 1000`,
+filter { math::abs(balance) > 1000 }`,
     expected: `id | balance
 ---+--------
 3  | 3200

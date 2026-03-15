@@ -26,7 +26,7 @@ export const landingExamples: CodeExample[] = [
   {id: 3, region: "West", status: "completed", total: 320},
   {id: 4, region: "East", status: "completed", total: 410}
 ]
-filter status == "completed"
+filter { status == "completed" }
 aggregate {math::sum(total)} by {region}`,
     expected: `region | math::sum(total)
 -------+-----------------

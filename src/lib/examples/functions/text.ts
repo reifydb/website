@@ -11,7 +11,7 @@ extend {
   full_name: text::concat(first_name, " ", last_name),
   email_lower: text::lower(email)
 }
-filter text::length(full_name) > 0`,
+filter { text::length(full_name) > 0 }`,
   },
 
   // text::concat
@@ -63,7 +63,7 @@ extend { lower_email: text::lower(email) }`,
     title: 'Case-insensitive filtering',
     category: 'function',
     code: `from app::products
-filter text::lower(category) == "electronics"`,
+filter { text::lower(category) == "electronics" }`,
     expected: `id | name   | sku     | price              | category
 ---+--------+---------+--------------------+------------
 2  | Gadget | GDT-002 | 49.9900016784668   | Electronics
@@ -112,7 +112,7 @@ extend { clean_value: text::trim(value) }`,
     title: 'Filter non-empty strings',
     category: 'function',
     code: `from app::inputs
-filter text::length(value) > 0`,
+filter { text::length(value) > 0 }`,
     expected: `id | value
 ---+----------------
 4  |    spaces
@@ -127,7 +127,7 @@ filter text::length(value) > 0`,
     title: 'Filter by minimum length',
     category: 'function',
     code: `from app::posts
-filter text::length(content) > 100`,
+filter { text::length(content) > 100 }`,
     expected: `(empty)`,
   },
   {
@@ -148,7 +148,7 @@ extend { char_count: text::length(body) }`,
     title: 'Validate input length',
     category: 'function',
     code: `from app::usernames
-filter text::length(username) >= 3 and text::length(username) <= 20`,
+filter { text::length(username) >= 3 and text::length(username) <= 20 }`,
     expected: `id | username
 ---+-------------
 4  | david_brown
