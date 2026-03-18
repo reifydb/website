@@ -126,7 +126,7 @@ export function Navbar() {
             {/* Desktop GitHub + CTA */}
             <div className="hidden lg:flex items-center gap-3">
               <a
-                href="https://discord.gg/rQxDkSua"
+                href="https://discord.gg/HPBwUSPuUS"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center px-3 py-2 border-2 border-transparent rounded-sm hover:border-primary/60 hover:bg-bg-primary transition-all"

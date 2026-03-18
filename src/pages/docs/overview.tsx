@@ -144,7 +144,7 @@ export function DocsOverview() {
               </li>
               <li>
                 <a
-                  href="https://discord.gg/rQxDkSua"
+                  href="https://discord.gg/HPBwUSPuUS"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary hover:text-primary-light font-medium transition-colors link-underline"

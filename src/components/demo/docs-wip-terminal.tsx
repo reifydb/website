@@ -122,7 +122,7 @@ export function DocsWipTerminal() {
                 View on GitHub
               </a>
               <a
-                href="https://discord.gg/rQxDkSua"
+                href="https://discord.gg/HPBwUSPuUS"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-bg-tertiary text-text-primary font-semibold border border-black/20 rounded-lg hover:border-primary/50 transition-all"

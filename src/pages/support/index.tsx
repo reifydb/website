@@ -116,7 +116,7 @@ export function SupportPage() {
                   </svg>
                 </a>
                 <a
-                  href="https://discord.gg/rQxDkSua"
+                  href="https://discord.gg/HPBwUSPuUS"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 border border-dashed border-black/25 transition-all duration-300 hover:border-primary/50"

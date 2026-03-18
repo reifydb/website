@@ -72,7 +72,7 @@ export function ContactPage() {
             {/* Discord */}
             <ScrollReveal delay={350}>
               <a
-                href="https://discord.gg/rQxDkSua"
+                href="https://discord.gg/HPBwUSPuUS"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border-2 border-dashed border-black/25 bg-white p-6 transition-all duration-300 hover:border-primary/50 text-center group block h-full"
