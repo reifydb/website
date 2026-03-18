@@ -41,14 +41,14 @@ export function AmdahlSimulator() {
             -webkit-appearance: none;
             width: 14px;
             height: 14px;
-            background: #14B8A6;
+            background: #1de5d2;
             border-radius: 0;
             cursor: pointer;
           }
           .amdahl-slider::-moz-range-thumb {
             width: 14px;
             height: 14px;
-            background: #14B8A6;
+            background: #1de5d2;
             border-radius: 0;
             border: none;
             cursor: pointer;

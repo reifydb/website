@@ -129,22 +129,22 @@
   --color-text-muted: #9CA3AF;
 
   /* Primary Colors - Teal */
-  --color-primary: #14B8A6;
-  --color-primary-light: #2DD4BF;
-  --color-primary-dark: #0D9488;
+  --color-primary: #1de5d2;
+  --color-primary-light: #50ede0;
+  --color-primary-dark: #17c7b6;
 
   /* Accent Colors - All teal */
-  --color-accent-warm: #14B8A6;
-  --color-accent-cool: #14B8A6;
-  --color-accent-pink: #14B8A6;
+  --color-accent-warm: #1de5d2;
+  --color-accent-cool: #1de5d2;
+  --color-accent-pink: #1de5d2;
 
   /* Feature card colors - All teal */
-  --color-feature-orange: #14B8A6;
-  --color-feature-blue: #14B8A6;
-  --color-feature-purple: #14B8A6;
-  --color-feature-purple-light: #2DD4BF;
-  --color-feature-green: #14B8A6;
-  --color-feature-teal: #14B8A6;
+  --color-feature-orange: #1de5d2;
+  --color-feature-blue: #1de5d2;
+  --color-feature-purple: #1de5d2;
+  --color-feature-purple-light: #50ede0;
+  --color-feature-green: #1de5d2;
+  --color-feature-teal: #1de5d2;
 
   /* Border Colors - Black-based for light theme */
   --color-border-default: rgba(0, 0, 0, 0.30);
@@ -183,7 +183,7 @@
   --color-status-success: #22C55E;
   --color-status-warning: #F59E0B;
   --color-status-error: #EF4444;
-  --color-status-info: #14B8A6;
+  --color-status-info: #1de5d2;
 
   /* Navbar */
   --color-navbar-bg: rgba(255, 255, 255, 0.92);
@@ -252,10 +252,10 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
+    box-shadow: 0 0 20px rgba(29, 229, 210, 0.4);
   }
   50% {
-    box-shadow: 0 0 30px rgba(20, 184, 166, 0.6);
+    box-shadow: 0 0 30px rgba(29, 229, 210, 0.6);
   }
 }
 

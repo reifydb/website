@@ -83,7 +83,7 @@ export function HeroTerminal() {
   }, []);
 
   return (
-    <div className="group relative bg-code-bg border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-primary/30 hover:shadow-[0_0_50px_rgba(20,184,166,0.15)]">
+    <div className="group relative bg-code-bg border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-primary/30 hover:shadow-[0_0_50px_rgba(29,229,210,0.15)]">
       {/* macOS Chrome Header */}
       <div className="h-8 sm:h-10 bg-code-bg-elevated border-b border-white/10 flex items-center px-3 sm:px-4 gap-2">
         <div className="flex gap-1.5">
@@ -102,7 +102,7 @@ export function HeroTerminal() {
           <span className="text-code-text-muted hidden sm:inline">: </span>
           <span className="text-code-text ml-1">{displayCommand}</span>
           <span
-            className={`ml-0.5 text-primary transition-opacity ${showCursor ? 'opacity-100 drop-shadow-[0_0_8px_rgba(20,184,166,0.8)]' : 'opacity-0'}`}
+            className={`ml-0.5 text-primary transition-opacity ${showCursor ? 'opacity-100 drop-shadow-[0_0_8px_rgba(29,229,210,0.8)]' : 'opacity-0'}`}
           >
             █
           </span>
