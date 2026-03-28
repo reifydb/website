@@ -164,7 +164,7 @@ export function HaikuTypewriter({
         className={`transition-opacity duration-500 ${phase === 'haiku-fade' ? 'opacity-0' : 'opacity-100'}`}
       >
         {currentHaiku.lines.map((markup, i) => (
-          <span key={`${haikuIndex}-${i}`} className="block min-h-[1.2em]">
+          <span key={`${haikuIndex}-${i}`} className="block min-h-[1.3em]">
             {renderSegments(renderColoredText(markup, displayLengths[i]))}
             {i === lineIndex && phase !== 'haiku-fade' && (
               <span
