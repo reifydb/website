@@ -27,12 +27,12 @@ const capabilities = [
   {
     title: 'Incremental derived views',
     description: 'Your views update the moment your data changes. No cron job to schedule, no polling loop to tune, no dashboard that is quietly three minutes behind.',
-    accent: 'bg-accent-lime/10 text-accent-lime',
+    accent: 'bg-accent-cyan/10 text-accent-cyan',
   },
   {
     title: 'Programmable transitions',
     description: 'Your validation and business rules run inside the transaction, right next to the data. Fewer round trips, fewer places for things to go wrong.',
-    accent: 'bg-accent-purple/10 text-accent-purple',
+    accent: 'bg-accent-cyan/10 text-accent-cyan',
   },
   {
     title: 'Native state primitives',

@@ -1,7 +1,7 @@
 import { Snippet } from '@reifydb/console';
 import '@reifydb/console/styles.css';
 import { wasmExecutor } from '@/lib/wasm-executor-singleton';
-import { premiumDarkTheme } from '@reifydb/console';
+import { premiumDarkTheme } from '@/lib/monaco-themes';
 import { cn } from '@/lib';
 
 interface ExecutableSnippetProps {

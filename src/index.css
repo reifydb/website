@@ -80,7 +80,7 @@
 
 /* ========================================
    REIFYDB DESIGN SYSTEM
-   Dark Mode + Coral/Lime/Purple Accents
+   Dark Mode + Indigo/Lime/Cyan Accents
    ======================================== */
 
 @theme {
@@ -95,25 +95,24 @@
   --color-text-secondary: #A0A0A0;
   --color-text-muted: #666666;
 
-  /* Primary Colors - Coral */
-  --color-primary: #F43F5E;
-  --color-primary-light: #FB7185;
-  --color-primary-dark: #E11D48;
+  /* Primary Colors - Indigo */
+  --color-primary: #818cf8;
+  --color-primary-light: #a5b4fc;
+  --color-primary-dark: #6366f1;
 
   /* Accent Colors - Multi-accent */
-  --color-accent-lime: #c4f042;
-  --color-accent-purple: #9e8cfc;
-  --color-accent-warm: #c4f042;
-  --color-accent-cool: #9e8cfc;
-  --color-accent-pink: #9e8cfc;
+  --color-accent-cyan: #22d3ee;
+  --color-accent-warm: #22d3ee;
+  --color-accent-cool: #22d3ee;
+  --color-accent-pink: #22d3ee;
 
   /* Feature card colors - Varied accents */
   --color-feature-orange: #c4f042;
-  --color-feature-blue: #9e8cfc;
-  --color-feature-purple: #9e8cfc;
-  --color-feature-purple-light: #b8abfd;
+  --color-feature-blue: #22d3ee;
+  --color-feature-purple: #818cf8;
+  --color-feature-purple-light: #a5b4fc;
   --color-feature-green: #c4f042;
-  --color-feature-teal: #F43F5E;
+  --color-feature-teal: #818cf8;
 
   /* Border Colors - White-based for dark theme */
   --color-border-default: rgba(255, 255, 255, 0.12);
@@ -128,9 +127,9 @@
   --color-code-text-muted: #737373;
 
   /* Glow Shadows */
-  --shadow-glow-primary: 0 0 20px rgba(244, 63, 94, 0.15);
+  --shadow-glow-primary: 0 0 20px rgba(129, 140, 248, 0.15);
   --shadow-glow-accent: 0 0 20px rgba(196, 240, 66, 0.10);
-  --shadow-glow-sm: 0 0 10px rgba(244, 63, 94, 0.10);
+  --shadow-glow-sm: 0 0 10px rgba(129, 140, 248, 0.10);
 
   /* Soft Shadows */
   --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -152,7 +151,7 @@
   --color-status-success: #22C55E;
   --color-status-warning: #F59E0B;
   --color-status-error: #DC2626;
-  --color-status-info: #F43F5E;
+  --color-status-info: #818cf8;
 
   /* Navbar */
   --color-navbar-bg: rgba(26, 26, 26, 0.80);
@@ -180,14 +179,19 @@
   --rdb-color-bg-secondary: var(--color-bg-secondary);
   --rdb-color-bg-elevated: var(--color-bg-elevated);
   --rdb-color-bg-tertiary: var(--color-bg-tertiary);
-  --rdb-color-primary: var(--color-primary);
-  --rdb-color-primary-hover: var(--color-primary-light);
+  --rdb-color-primary: var(--color-accent-cyan);
+  --rdb-color-primary-hover: var(--color-primary);
   --rdb-color-text: var(--color-text-primary);
   --rdb-color-secondary: var(--color-text-secondary);
   --rdb-color-muted: var(--color-text-muted);
   --rdb-color-border: var(--color-border-default);
   --rdb-color-error: var(--color-status-error);
   --rdb-color-success: var(--color-status-success);
+  --rdb-color-value-string: var(--color-primary);
+  --rdb-color-value-number: var(--color-primary);
+  --rdb-color-value-boolean: var(--color-primary);
+  --rdb-color-value-date: var(--color-primary);
+  --rdb-color-value-uuid: var(--color-primary);
 }
 
 /* ========================================
@@ -240,10 +244,10 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(244, 63, 94, 0.3);
+    box-shadow: 0 0 20px rgba(129, 140, 248, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(244, 63, 94, 0.5);
+    box-shadow: 0 0 40px rgba(129, 140, 248, 0.5);
   }
 }
 
