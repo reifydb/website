@@ -47,7 +47,7 @@ export function DocsNavbar() {
         <div className="flex h-[60px] w-full items-center justify-between px-4 sm:px-6 md:px-12">
           <Link to="/" className="flex items-center gap-2">
             <img
-              src="/img/logo.png"
+              src="/assets/img/logo.png"
               alt="ReifyDB"
               className="h-7 w-auto"
             />

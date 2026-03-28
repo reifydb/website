@@ -42,7 +42,7 @@ export function MissionPage() {
                 {/* Founder Photo */}
                 <div className="flex-shrink-0">
                   <img
-                    src="/img/me.jpeg"
+                    src="/assets/img/me.jpeg"
                     alt="Founder"
                     className="w-32 h-32 object-cover border border-white/[0.08] rounded"
                   />

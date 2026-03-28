@@ -11,11 +11,11 @@ export function HeroSection() {
 
       {/* Above the fold — H1 + Editor, vertically centered */}
       <div className="relative z-10 min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center mx-auto max-w-6xl px-6 md:px-8">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-8 leading-tight text-center">
-          <span className="border-b-4 border-primary pb-1">Live Application State</span>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-10 leading-[1.1] text-center">
+          <span className="text-primary">Live</span> Application State
         </h1>
 
-        <div className="w-full max-w-[50%] mx-auto">
+        <div className="w-full max-w-3xl mx-auto">
           <ExecutableSnippet
             initialCode={heroExample.code}
             title={heroExample.title}
@@ -23,7 +23,7 @@ export function HeroSection() {
           />
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-text-muted mt-6">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-text-muted mt-8">
           <a href="/examples" className="hover:text-primary transition-colors">
             Explore all examples &rarr;
           </a>
@@ -37,8 +37,8 @@ export function HeroSection() {
       </div>
 
       {/* Below the fold — subtitle, CTAs */}
-      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 pb-24 sm:pb-32 text-center">
-        <p className="max-w-3xl mx-auto text-lg sm:text-xl text-text-secondary mb-10 leading-relaxed">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 pb-20 sm:pb-28 text-center">
+        <p className="max-w-2xl mx-auto text-lg sm:text-xl text-text-secondary mb-8 leading-relaxed">
           Your state, your logic, your derived views, all in one transactional flow. No caches to invalidate. No cron to babysit. No drift to debug.
         </p>
 
