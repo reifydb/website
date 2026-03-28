@@ -25,7 +25,7 @@ export function HeroSection() {
       <div className="relative z-10 min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center mx-auto max-w-6xl px-6 md:px-8">
         <HaikuTypewriter
           haikus={heroHaikus}
-          className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-10 leading-[1.3] text-center"
+          className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-16 sm:mb-10 leading-[1.3] text-center pt-12 sm:pt-0"
         />
 
         <div className="w-full max-w-3xl mx-auto">

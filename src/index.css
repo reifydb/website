@@ -173,6 +173,22 @@
    Map @reifydb/console tokens to website design system
    ======================================== */
 
+/* On mobile, hide action button text labels — show icons only */
+@media (max-width: 639px) {
+  .rdb-snippet__action-btn {
+    font-size: 0;
+  }
+
+  .rdb-snippet__action-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .rdb-snippet__hint {
+    display: none;
+  }
+}
+
 .rdb-console,
 .rdb-snippet {
   --rdb-color-bg: var(--color-bg-primary);
