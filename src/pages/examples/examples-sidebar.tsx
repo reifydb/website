@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { X } from 'lucide-react';
 import { cn } from '@/lib';
 import type { ExampleSection } from './sections';
 
@@ -10,7 +11,7 @@ interface ExamplesSidebarProps {
 
 export function ExamplesSidebar({ sections, activeId, onSelect }: ExamplesSidebarProps) {
   return (
-    <aside className="hidden lg:flex w-60 border-r border-dashed border-black/25 bg-bg-secondary flex-col">
+    <aside className="hidden lg:flex w-60 border-r border-white/[0.08] bg-bg-secondary flex-col">
       <nav className="flex-1 p-4 pt-6 overflow-y-auto sidebar-no-scrollbar">
         <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 px-3">
           Examples
@@ -76,11 +77,11 @@ export function ExamplesSidebarMobile({ sections, activeId, onSelect, isOpen, on
       {/* Drawer */}
       <div
         className={cn(
-          'absolute top-0 left-0 h-full w-72 max-w-[85vw] bg-bg-elevated border-r border-dashed border-black/25 z-10 transition-[translate] duration-300 overflow-y-auto',
+          'absolute top-0 left-0 h-full w-72 max-w-[85vw] bg-bg-elevated border-r border-white/[0.08] z-10 transition-[translate] duration-300 overflow-y-auto',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <div className="flex items-center justify-between p-4 border-b border-dashed border-black/25">
+        <div className="flex items-center justify-between p-4 border-b border-white/[0.08]">
           <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider">
             Examples
           </h3>
@@ -89,7 +90,7 @@ export function ExamplesSidebarMobile({ sections, activeId, onSelect, isOpen, on
             className="w-8 h-8 flex items-center justify-center text-text-muted hover:text-text-primary transition-colors"
             aria-label="Close sidebar"
           >
-            <span className="font-mono text-sm">[x]</span>
+            <X size={16} />
           </button>
         </div>
         <nav className="p-4">

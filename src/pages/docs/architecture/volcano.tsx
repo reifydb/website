@@ -72,7 +72,7 @@ export function VolcanoPage() {
         {/* Execution Phases */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Execution Phases</h2>
-          <div className="border-2 border-dashed border-border-default p-6">
+          <div className="glass-card p-6">
             <ol className="space-y-3 list-decimal list-inside text-text-secondary">
               <li>
                 <span className="font-bold text-text-primary">Parse</span> — RQL text to AST

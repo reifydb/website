@@ -1,25 +1,22 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ExecutableSnippet, ScrollReveal } from '@/components/ui';
-import { cn } from '@/lib';
-import { guideExamples } from '@/lib/examples';
-
-const examples = [guideExamples.find((ex) => ex.id === 'guide-built-in-testing')!];
+import { Button, ExecutableSnippet, ScrollReveal } from '@/components/ui';
+import { landingExamples } from '@/lib/examples';
 
 export function CodeExampleSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="code-example" className="relative z-10 py-16 sm:py-24">
+    <section id="code-example" className="relative z-10 py-24 sm:py-32">
       <div className="mx-auto max-w-4xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-2">
-              # playground
+            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-3">
+              Playground
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
-              See RQL in Action
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
+              Query Pipelines
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg">
               Write queries the way you think about your data. No translation, no ceremony.
@@ -30,37 +27,33 @@ export function CodeExampleSection() {
         {/* Tab Bar */}
         <ScrollReveal delay={100}>
           <div className="flex flex-wrap gap-2 mb-6">
-            {examples.map((example, index) => (
-              <button
+            {landingExamples.map((example, index) => (
+              <Button
                 key={example.title}
+                size="sm"
+                variant={index === activeIndex ? 'primary' : 'secondary'}
                 onClick={() => setActiveIndex(index)}
-                className={cn(
-                  'px-4 py-2 text-sm font-medium transition-all duration-200',
-                  index === activeIndex
-                    ? 'bg-primary text-white'
-                    : 'border border-dashed border-black/25 text-text-secondary hover:text-text-primary hover:border-black/20'
-                )}
               >
                 {example.title}
-              </button>
+              </Button>
             ))}
           </div>
 
           {/* Snippet */}
           <ExecutableSnippet
-            key={examples[activeIndex].title}
-            initialCode={examples[activeIndex].code}
-            title={examples[activeIndex].title}
-            description={examples[activeIndex].description}
+            key={landingExamples[activeIndex].title}
+            initialCode={landingExamples[activeIndex].code}
+            title={landingExamples[activeIndex].title}
+            description={landingExamples[activeIndex].description}
           />
 
           {/* Explore all link */}
-          <div className="mt-6 text-center">
+          <div className="mt-8 text-center">
             <Link
               to="/examples"
-              className="text-sm text-primary underline underline-offset-4 hover:text-primary-light transition-colors"
+              className="text-sm text-primary hover:text-primary-light transition-colors"
             >
-              Explore All Examples --&gt;
+              Explore All Examples &rarr;
             </Link>
           </div>
         </ScrollReveal>

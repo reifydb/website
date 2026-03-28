@@ -25,15 +25,15 @@ const replacements = [
 
 export function ReplacesSection() {
   return (
-    <section id="replaces" className="py-16 sm:py-24 bg-bg-secondary">
+    <section id="replaces" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-2">
-              # replaces
+            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-3">
+              Replaces
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
               What ReifyDB Replaces
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg">
@@ -46,13 +46,13 @@ export function ReplacesSection() {
         <div className="grid gap-6 md:grid-cols-2">
           {replacements.map((item, index) => (
             <ScrollReveal key={item.before} delay={index * 75}>
-              <div className="border-2 border-dashed border-black/25 p-6 h-full dotted-card">
+              <div className="glass-card p-6 sm:p-8 h-full">
                 {/* Before --> After */}
                 <div className="flex items-center gap-3 mb-4 flex-wrap text-sm">
-                  <span className="text-status-error line-through">
+                  <span className="text-text-muted line-through">
                     {item.before}
                   </span>
-                  <span className="text-text-muted">--&gt;</span>
+                  <span className="text-text-muted">&rarr;</span>
                   <span className="text-primary font-bold">
                     {item.after}
                   </span>

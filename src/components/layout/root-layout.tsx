@@ -3,7 +3,7 @@ import { ScrollToTop } from '@/components/scroll-to-top';
 
 export function RootLayout() {
   return (
-    <div className="min-h-screen section-pattern">
+    <div className="min-h-screen">
       <ScrollToTop />
       <Outlet />
     </div>

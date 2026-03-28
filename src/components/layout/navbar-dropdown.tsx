@@ -64,19 +64,19 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
             : "text-text-secondary hover:text-primary"
         )}
       >
-        [{isDropdownActive && '*'}{dropdown.label}/]
+        {dropdown.label}
       </button>
 
       {/* Dropdown Panel */}
       <div
         className={cn(
-          "absolute left-0 top-full pt-1 w-80 z-30",
+          "absolute left-0 top-full pt-1 w-80 z-50",
           isOpen ? "pointer-events-auto" : "pointer-events-none"
         )}
       >
         <div
           className={cn(
-            "bg-bg-elevated border-2 border-dashed border-black/25 transition-all",
+            "bg-bg-elevated border border-white/[0.10] rounded-lg shadow-large transition-all",
             instant ? "duration-0" : "duration-200",
             isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
           )}
@@ -84,14 +84,14 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
           <div className="p-3">
           {dropdown.columns.map((column) => (
             <div key={column.title}>
-              <h3 className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-2 px-1">
-                <span className="text-primary"># </span>{column.title}
+              <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2 px-1">
+                {column.title}
               </h3>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
                 {column.items.map((item) => (
                   <ItemLink key={item.label} item={item} className="group block">
-                    <div className="border-2 border-dashed border-black/10 p-4 transition-all duration-150 hover:border-primary hover:bg-primary/5">
-                      <div className="font-bold text-sm text-text-primary group-hover:text-primary transition-colors">
+                    <div className="p-3 rounded-md transition-all duration-150 hover:bg-white/5">
+                      <div className="font-medium text-sm text-text-primary group-hover:text-primary transition-colors">
                         {item.label}
                       </div>
                       {item.description && (

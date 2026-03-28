@@ -49,8 +49,8 @@ export function AsciiBarChart({ query, labelKey, valueKey }: AsciiBarChartProps)
   const maxLabelLen = data.length > 0 ? Math.max(...data.map(d => d.label.length)) : 8;
 
   return (
-    <div className="border-2 border-dashed border-black/25 bg-bg-secondary">
-      <div className="flex justify-between items-center px-4 py-2 border-b border-dashed border-black/25 bg-bg-primary">
+    <div className="glass-card bg-bg-secondary">
+      <div className="flex justify-between items-center px-4 py-2 border-b border-white/[0.08] bg-bg-primary">
         <span className="font-mono text-xs"><span className="text-primary">$</span> <span className="text-text-muted">ascii bar chart</span></span>
         <button
           onClick={runQuery}

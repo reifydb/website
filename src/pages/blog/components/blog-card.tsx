@@ -8,7 +8,7 @@ interface BlogCardProps {
 export function BlogCard({ post }: BlogCardProps) {
   return (
     <Link to={`/blog/${post.slug}`} className="block group">
-      <article className="border-2 border-dashed border-black/25 p-6 sm:p-8 transition-all duration-300 hover:border-primary/50 bg-white">
+      <article className="glass-card p-6 sm:p-8 transition-all duration-300 hover:border-primary/50">
         <div className="flex flex-wrap items-center gap-3 mb-4">
           <span className="text-sm text-text-muted">{post.date}</span>
           <span className="text-sm text-text-muted">{post.readTime}</span>
@@ -20,7 +20,7 @@ export function BlogCard({ post }: BlogCardProps) {
           {post.excerpt}
         </p>
         <span className="text-primary text-sm font-medium">
-          read more --&gt;
+          Read more &rarr;
         </span>
       </article>
     </Link>

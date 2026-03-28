@@ -4,48 +4,7 @@
    SELF-HOSTED FONTS
    ======================================== */
 
-/* Archivo - Display/Headings */
-@font-face {
-  font-family: 'Archivo';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/archivo/Archivo-Regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Archivo';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/archivo/Archivo-Medium.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Archivo';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/archivo/Archivo-SemiBold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Archivo';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/archivo/Archivo-Bold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Archivo';
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url('/fonts/archivo/Archivo-Black.woff2') format('woff2');
-}
-
-/* Inter - Body Text */
+/* Inter - Body & Display */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
@@ -78,7 +37,15 @@
   src: url('/fonts/inter/Inter-Bold.woff2') format('woff2');
 }
 
-/* IBM Plex Mono - Code */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/inter/Inter-Bold.woff2') format('woff2');
+}
+
+/* IBM Plex Mono - Code only */
 @font-face {
   font-family: 'IBM Plex Mono';
   font-style: normal;
@@ -113,91 +80,114 @@
 
 /* ========================================
    REIFYDB DESIGN SYSTEM
-   Light Institutional + Teal Accent
+   Dark Mode + Coral/Lime/Purple Accents
    ======================================== */
 
 @theme {
-  /* Background Colors - Cool gray palette */
-  --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F5F7FA;
-  --color-bg-tertiary: #EFF1F5;
-  --color-bg-elevated: #E8EAF0;
+  /* Background Colors - Dark charcoal palette */
+  --color-bg-primary: #1a1a1a;
+  --color-bg-secondary: #222222;
+  --color-bg-tertiary: #2a2a2a;
+  --color-bg-elevated: #333333;
 
-  /* Text Colors - Dark on light */
-  --color-text-primary: #1A1A1A;
-  --color-text-secondary: #525252;
-  --color-text-muted: #9CA3AF;
+  /* Text Colors - Light on dark */
+  --color-text-primary: #F0F0F0;
+  --color-text-secondary: #A0A0A0;
+  --color-text-muted: #666666;
 
-  /* Primary Colors - Teal */
-  --color-primary: #1de5d2;
-  --color-primary-light: #50ede0;
-  --color-primary-dark: #17c7b6;
+  /* Primary Colors - Coral */
+  --color-primary: #F43F5E;
+  --color-primary-light: #FB7185;
+  --color-primary-dark: #E11D48;
 
-  /* Accent Colors - All teal */
-  --color-accent-warm: #1de5d2;
-  --color-accent-cool: #1de5d2;
-  --color-accent-pink: #1de5d2;
+  /* Accent Colors - Multi-accent */
+  --color-accent-lime: #c4f042;
+  --color-accent-purple: #9e8cfc;
+  --color-accent-warm: #c4f042;
+  --color-accent-cool: #9e8cfc;
+  --color-accent-pink: #9e8cfc;
 
-  /* Feature card colors - All teal */
-  --color-feature-orange: #1de5d2;
-  --color-feature-blue: #1de5d2;
-  --color-feature-purple: #1de5d2;
-  --color-feature-purple-light: #50ede0;
-  --color-feature-green: #1de5d2;
-  --color-feature-teal: #1de5d2;
+  /* Feature card colors - Varied accents */
+  --color-feature-orange: #c4f042;
+  --color-feature-blue: #9e8cfc;
+  --color-feature-purple: #9e8cfc;
+  --color-feature-purple-light: #b8abfd;
+  --color-feature-green: #c4f042;
+  --color-feature-teal: #F43F5E;
 
-  /* Border Colors - Black-based for light theme */
-  --color-border-default: rgba(0, 0, 0, 0.30);
-  --color-border-light: rgba(0, 0, 0, 0.18);
-  --color-border-subtle: rgba(0, 0, 0, 0.10);
+  /* Border Colors - White-based for dark theme */
+  --color-border-default: rgba(255, 255, 255, 0.12);
+  --color-border-light: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
 
-  /* Dark code block colors */
-  --color-code-bg: #1A1A1A;
-  --color-code-bg-elevated: #262626;
-  --color-code-border: rgba(255, 255, 255, 0.12);
+  /* Code block colors */
+  --color-code-bg: #111111;
+  --color-code-bg-elevated: #1e1e1e;
+  --color-code-border: rgba(255, 255, 255, 0.10);
   --color-code-text: #E5E5E5;
   --color-code-text-muted: #737373;
 
-  /* Glow Shadows - Disabled */
-  --shadow-glow-primary: none;
-  --shadow-glow-accent: none;
-  --shadow-glow-sm: none;
+  /* Glow Shadows */
+  --shadow-glow-primary: 0 0 20px rgba(244, 63, 94, 0.15);
+  --shadow-glow-accent: 0 0 20px rgba(196, 240, 66, 0.10);
+  --shadow-glow-sm: 0 0 10px rgba(244, 63, 94, 0.10);
 
-  /* Soft Shadows - Disabled */
-  --shadow-soft: none;
-  --shadow-medium: none;
-  --shadow-large: none;
+  /* Soft Shadows */
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-large: 0 8px 32px rgba(0, 0, 0, 0.5);
 
-  /* Rounded Corners - Zero for brutalist terminal */
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
+  /* Rounded Corners - Generous rounding */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
 
-  /* Fonts - All mono for terminal aesthetic */
-  --font-display: 'IBM Plex Mono', 'SF Mono', Monaco, Inconsolata, monospace;
-  --font-body: 'IBM Plex Mono', 'SF Mono', Monaco, Inconsolata, monospace;
+  /* Fonts - Inter for body/display, Plex Mono for code */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', 'SF Mono', Monaco, Inconsolata, monospace;
 
   /* Status colors */
   --color-status-success: #22C55E;
   --color-status-warning: #F59E0B;
-  --color-status-error: #EF4444;
-  --color-status-info: #1de5d2;
+  --color-status-error: #DC2626;
+  --color-status-info: #F43F5E;
 
   /* Navbar */
-  --color-navbar-bg: rgba(255, 255, 255, 0.92);
-  --shadow-navbar: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+  --color-navbar-bg: rgba(26, 26, 26, 0.80);
+  --shadow-navbar: 0 1px 0 0 rgba(255, 255, 255, 0.06);
 
-  /* Semantic grayscale - Pure neutrals */
-  --color-gray-50: #FAFAFA;
-  --color-gray-100: #F5F5F5;
-  --color-gray-200: #E5E5E5;
-  --color-gray-400: #A3A3A3;
-  --color-gray-500: #737373;
-  --color-gray-600: #525252;
-  --color-gray-800: #262626;
-  --color-gray-900: #171717;
+  /* Semantic grayscale - Dark mode */
+  --color-gray-50: #1a1a1a;
+  --color-gray-100: #222222;
+  --color-gray-200: #333333;
+  --color-gray-400: #666666;
+  --color-gray-500: #888888;
+  --color-gray-600: #aaaaaa;
+  --color-gray-800: #e0e0e0;
+  --color-gray-900: #f0f0f0;
+}
+
+/* ========================================
+   CONSOLE THEME OVERRIDES
+   Map @reifydb/console tokens to website design system
+   ======================================== */
+
+.rdb-console,
+.rdb-snippet {
+  --rdb-color-bg: var(--color-bg-primary);
+  --rdb-color-bg-secondary: var(--color-bg-secondary);
+  --rdb-color-bg-elevated: var(--color-bg-elevated);
+  --rdb-color-bg-tertiary: var(--color-bg-tertiary);
+  --rdb-color-primary: var(--color-primary);
+  --rdb-color-primary-hover: var(--color-primary-light);
+  --rdb-color-text: var(--color-text-primary);
+  --rdb-color-secondary: var(--color-text-secondary);
+  --rdb-color-muted: var(--color-text-muted);
+  --rdb-color-border: var(--color-border-default);
+  --rdb-color-error: var(--color-status-error);
+  --rdb-color-success: var(--color-status-success);
 }
 
 /* ========================================
@@ -222,8 +212,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* No background overlay — clean terminal black */
-
 /* Headings use display font */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
@@ -232,7 +220,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Selection */
 ::selection {
   background-color: var(--color-primary);
-  color: #FFFFFF;
+  color: #1a1a1a;
 }
 
 /* ========================================
@@ -252,10 +240,10 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(29, 229, 210, 0.4);
+    box-shadow: 0 0 20px rgba(244, 63, 94, 0.3);
   }
   50% {
-    box-shadow: 0 0 30px rgba(29, 229, 210, 0.6);
+    box-shadow: 0 0 40px rgba(244, 63, 94, 0.5);
   }
 }
 
@@ -275,8 +263,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Subtle pulse glow for background orbs */
 @keyframes glow-breathe {
-  0%, 100% { opacity: 0.4; filter: blur(128px); }
-  50% { opacity: 0.6; filter: blur(140px); }
+  0%, 100% { opacity: 0.3; filter: blur(128px); }
+  50% { opacity: 0.5; filter: blur(140px); }
 }
 
 /* Staggered fade-in for lists */
@@ -302,24 +290,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-glow-pulse {
-  animation: none;
+  animation: glow-pulse 3s ease-in-out infinite;
 }
 
 .animate-float {
-  animation: none;
+  animation: float 6s ease-in-out infinite;
 }
 
 .animate-float-delayed {
-  animation: none;
+  animation: float 6s ease-in-out infinite 3s;
 }
 
 .animate-shimmer {
   background-size: 200% auto;
-  animation: none;
+  animation: shimmer 3s linear infinite;
 }
 
 .animate-glow-breathe {
-  animation: none;
+  animation: glow-breathe 4s ease-in-out infinite;
 }
 
 .animate-slide-up {
@@ -327,7 +315,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-scanline {
-  animation: none;
+  animation: scanline 8s linear infinite;
 }
 
 /* Stagger delays */
@@ -343,7 +331,8 @@ h1, h2, h3, h4, h5, h6 {
   .animate-shimmer,
   .animate-glow-breathe,
   .animate-slide-up,
-  .animate-scanline {
+  .animate-scanline,
+  .animate-glow-pulse {
     animation: none;
   }
 
@@ -354,23 +343,56 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ========================================
-   PREMIUM CARD UTILITIES
+   GLASS CARD UTILITIES
    ======================================== */
 
+/* Frosted glass card (subtle) */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/* Glass card stronger (for hero, featured elements) */
+.glass-card-strong {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+
+.glass-card-strong:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: var(--shadow-glow-primary);
+}
+
+/* Legacy card classes - updated for dark theme */
 .premium-card {
-  background-color: #FFFFFF;
-  border: 2px solid var(--color-border-default);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border-default);
   border-radius: var(--radius-lg);
   transition: all 0.3s ease;
 }
 
 .premium-card:hover {
-  border-color: rgba(0, 0, 0, 0.30);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 .premium-card-elevated {
-  background-color: #FFFFFF;
-  border: 2px solid var(--color-border-default);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-border-default);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
 }
@@ -384,10 +406,11 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.9;
 }
 
-/* Card with white background (QuickNode-style lifted card) */
+/* Dotted card - now glass on dark */
 .dotted-card {
   position: relative;
-  background-color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-lg);
 }
 
 /* ========================================
@@ -418,15 +441,6 @@ h1, h2, h3, h4, h5, h6 {
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   padding: 1px;
-}
-
-/* ========================================
-   SECTION BACKGROUND PATTERNS
-   ======================================== */
-
-.section-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M24 0H0V24' stroke='%23000' stroke-opacity='.06' fill='none'/%3E%3Ccircle cx='0' cy='0' r='1' fill='%23000' fill-opacity='.4'/%3E%3C/svg%3E");
-  background-size: 24px 24px;
 }
 
 /* ========================================
@@ -500,16 +514,16 @@ h1, h2, h3, h4, h5, h6 {
   animation: blink-cursor 1s step-end infinite;
 }
 
-/* Terminal-style dashed border card */
+/* Terminal-style card */
 .terminal-card {
-  border-style: dashed;
+  border-radius: var(--radius-lg);
 }
 
 /* Glass effect */
 .glass {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(26, 26, 26, 0.80);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 /* ========================================
@@ -545,16 +559,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border-default);
-  border-radius: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* ========================================
@@ -581,3 +595,4 @@ div:fullscreen {
 div::backdrop {
   background-color: var(--color-bg-primary);
 }
+

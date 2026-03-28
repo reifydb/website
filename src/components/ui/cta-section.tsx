@@ -48,13 +48,13 @@ export function CtaSection({
     return (
       <ScrollReveal>
         <div className="max-w-6xl mx-auto px-6 py-8 sm:py-12">
-          <div className="border-2 border-dashed border-black/25 overflow-hidden dotted-card">
+          <div className="glass-card overflow-hidden">
             <div className="grid md:grid-cols-2">
               <div className="p-6 sm:p-8 flex flex-col justify-center">
                 <h3 className="text-lg sm:text-xl font-bold text-text-primary mb-2 sm:mb-3">{title}</h3>
                 <p className="text-sm sm:text-base text-text-muted">{description}</p>
               </div>
-              <div className="p-6 sm:p-8 flex items-center justify-center bg-bg-secondary border-t md:border-t-0 md:border-l border-dashed border-black/25">
+              <div className="p-6 sm:p-8 flex items-center justify-center border-t md:border-t-0 md:border-l border-white/[0.06]">
                 {isExternal ? (
                   <a href={buttonHref} target="_blank" rel="noopener noreferrer">
                     <Button size="lg">{buttonText}</Button>
@@ -74,12 +74,12 @@ export function CtaSection({
 
   // Default: banner variant
   return (
-    <section className="bg-bg-secondary">
+    <section className="py-16 sm:py-24">
       <ScrollReveal>
-        <div className="max-w-4xl mx-auto px-6 py-8 sm:py-12">
-          <div className="border-2 border-dashed border-black/25 p-6 sm:p-8 text-center dotted-card">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="glass-card-strong p-8 sm:p-12 text-center">
             <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-3 sm:mb-4">{title}</h3>
-            <p className="text-sm sm:text-base text-text-muted mb-4 sm:mb-6">{description}</p>
+            <p className="text-sm sm:text-base text-text-secondary mb-6 sm:mb-8">{description}</p>
             {isExternal ? (
               <a href={buttonHref} target="_blank" rel="noopener noreferrer">
                 <Button size="lg">{buttonText}</Button>

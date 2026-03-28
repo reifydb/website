@@ -3,10 +3,6 @@ import { ScrollReveal } from '@/components/ui';
 
 const useCases: { title: string; description: string; href?: string }[] = [
   {
-    title: 'User & Session State',
-    description: 'Sessions, preferences, auth tokens. You need them consistent and fast. You get both.',
-  },
-  {
     title: 'Trading & Financial State',
     description: 'Positions, balances, order state. One bad write here can cost real money. ReifyDB makes sure that does not happen.',
   },
@@ -23,23 +19,19 @@ const useCases: { title: string; description: string; href?: string }[] = [
     title: 'Counters, Queues & Buffers',
     description: 'Counters, ring buffers, histograms, rate limiters. Built in, transactional, and ready to use. No external dependencies.',
   },
-  {
-    title: 'Leaderboards & Rankings',
-    description: 'Rankings that stay correct even when thousands of scores update at the same time. No eventual consistency surprises.',
-  },
 ];
 
 export function UseCasesSection() {
   return (
-    <section id="use-cases" className="py-16 sm:py-24 bg-bg-secondary">
+    <section id="use-cases" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-2">
-              # use_cases
+            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-3">
+              Use Cases
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
               Built for Live Application State
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg">
@@ -48,32 +40,30 @@ export function UseCasesSection() {
           </div>
         </ScrollReveal>
 
-        {/* Use Cases Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Use Cases Grid - 2x2 */}
+        <div className="grid gap-6 sm:grid-cols-2">
           {useCases.map((useCase, index) => (
             <ScrollReveal key={useCase.title} delay={index * 75}>
               {useCase.href ? (
                 <Link to={useCase.href} className="block h-full">
-                  <div className="group border-2 border-dashed border-black/25 p-6 h-full dotted-card hover:border-primary/50 transition-colors">
-                    <h3 className="text-lg font-bold mb-2">
-                      <span className="text-primary mr-2">&gt;</span>
+                  <div className="group glass-card p-6 sm:p-8 h-full hover:border-primary/20">
+                    <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
                       {useCase.title}
                     </h3>
-                    <p className="text-text-muted text-sm leading-relaxed pl-5">
+                    <p className="text-text-muted text-sm leading-relaxed">
                       {useCase.description}
                     </p>
-                    <p className="text-primary text-xs font-mono mt-3 pl-5 opacity-0 group-hover:opacity-100 transition-opacity">
-                      [&gt; Try Demo]
+                    <p className="text-primary text-sm mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      Try Demo &rarr;
                     </p>
                   </div>
                 </Link>
               ) : (
-                <div className="group border-2 border-dashed border-black/25 p-6 h-full dotted-card">
+                <div className="glass-card p-6 sm:p-8 h-full">
                   <h3 className="text-lg font-bold mb-2">
-                    <span className="text-primary mr-2">&gt;</span>
                     {useCase.title}
                   </h3>
-                  <p className="text-text-muted text-sm leading-relaxed pl-5">
+                  <p className="text-text-muted text-sm leading-relaxed">
                     {useCase.description}
                   </p>
                 </div>

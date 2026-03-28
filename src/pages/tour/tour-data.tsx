@@ -37,7 +37,7 @@ export const tourSteps: TourStep[] = [
           <strong>Navigation:</strong>
         </p>
         <ul style={{ marginTop: '0.25rem', paddingLeft: '1.25rem' }}>
-          <li><code className="bg-bg-tertiary px-1 text-primary text-xs">[&lt; prev]</code> / <code className="bg-bg-tertiary px-1 text-primary text-xs">[next &gt;]</code> buttons at the bottom</li>
+          <li><strong>&larr; Prev</strong> / <strong>Next &rarr;</strong> buttons at the bottom</li>
           <li><strong>←</strong> / <strong>→</strong> arrow keys (when not typing in the editor)</li>
           <li>Dot indicators to jump to any step directly</li>
         </ul>
@@ -47,7 +47,7 @@ export const tourSteps: TourStep[] = [
         <ul style={{ marginTop: '0.25rem', paddingLeft: '1.25rem' }}>
           <li><code className="bg-bg-tertiary px-1 text-primary text-xs">[refresh]</code> on the ASCII bar chart: re-queries the DB after running the snippet above</li>
         </ul>
-        <p style={{ marginTop: '0.75rem' }}>Try <strong>[run]</strong> on the snippet below, then press <strong>[next &gt;]</strong> to begin.</p>
+        <p style={{ marginTop: '0.75rem' }}>Try <strong>Run</strong> on the snippet below, then press <strong>Next &rarr;</strong> to begin.</p>
       </div>
     ),
     code: `from [

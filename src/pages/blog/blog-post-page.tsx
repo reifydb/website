@@ -32,16 +32,16 @@ export function BlogPostPage() {
           <ScrollReveal>
             <Link
               to="/blog"
-              className="inline-flex items-center text-sm text-text-muted hover:text-primary transition-colors duration-200 mb-8 font-mono"
+              className="inline-flex items-center text-sm text-text-muted hover:text-primary transition-colors duration-200 mb-8"
             >
-              &lt;-- back to blog
+              &larr; Back to blog
             </Link>
 
             <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4 text-text-primary">
               {post.title}
             </h1>
 
-            <div className="font-mono text-sm text-text-muted mb-4">
+            <div className="text-sm text-text-muted mb-4">
               {post.date} · {post.readTime} · {post.author}
             </div>
 
@@ -49,11 +49,11 @@ export function BlogPostPage() {
               {post.excerpt}
             </p>
 
-            <hr className="border-dashed border-black/25" />
+            <hr className="border border-white/[0.08]" />
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <div className="border-2 border-dashed border-black/25 bg-white p-6 sm:p-10 mt-10">
+            <div className="glass-card p-6 sm:p-10 mt-10">
               <BlogMarkdownRenderer content={post.content} />
             </div>
           </ScrollReveal>
@@ -64,9 +64,9 @@ export function BlogPostPage() {
                 {adjacent.prev && (
                   <Link
                     to={`/blog/${adjacent.prev.slug}`}
-                    className="border-2 border-dashed border-black/25 p-5 hover:border-primary/50 transition-all duration-300 bg-white group"
+                    className="glass-card p-5 hover:border-primary/50 transition-all duration-300 group"
                   >
-                    <span className="text-sm text-text-muted font-mono">&lt;-- previous</span>
+                    <span className="text-sm text-text-muted">&larr; Previous</span>
                     <p className="font-bold text-text-primary group-hover:text-primary transition-colors duration-200 mt-1">
                       {adjacent.prev.title}
                     </p>
@@ -75,9 +75,9 @@ export function BlogPostPage() {
                 {adjacent.next && (
                   <Link
                     to={`/blog/${adjacent.next.slug}`}
-                    className={`border-2 border-dashed border-black/25 p-5 hover:border-primary/50 transition-all duration-300 bg-white group text-right${!adjacent.prev ? ' sm:col-start-2' : ''}`}
+                    className={`glass-card p-5 hover:border-primary/50 transition-all duration-300 group text-right${!adjacent.prev ? ' sm:col-start-2' : ''}`}
                   >
-                    <span className="text-sm text-text-muted font-mono">next --&gt;</span>
+                    <span className="text-sm text-text-muted">Next &rarr;</span>
                     <p className="font-bold text-text-primary group-hover:text-primary transition-colors duration-200 mt-1">
                       {adjacent.next.title}
                     </p>
@@ -93,7 +93,7 @@ export function BlogPostPage() {
 
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-6 right-6 z-50 w-10 h-10 border-2 border-dashed border-black/25 bg-white hover:border-primary/50 transition-all duration-300 flex items-center justify-center cursor-pointer ${showTopBtn ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed bottom-6 right-6 z-50 w-10 h-10 glass-card hover:border-primary/50 transition-all duration-300 flex items-center justify-center cursor-pointer ${showTopBtn ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         aria-label="Back to top"
       >
         <span className="font-mono text-sm text-text-muted group-hover:text-primary">^</span>

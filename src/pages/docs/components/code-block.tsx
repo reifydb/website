@@ -17,8 +17,8 @@ export function CodeBlock({ code, language = 'bash', className }: CodeBlockProps
   };
 
   return (
-    <div className={cn('border-2 border-dashed border-white/15 bg-code-bg overflow-hidden', className)}>
-      <div className="flex justify-between items-center px-4 py-2 border-b border-dashed border-white/15 bg-code-bg-elevated">
+    <div className={cn('border border-white/[0.08] rounded-lg bg-code-bg overflow-hidden', className)}>
+      <div className="flex justify-between items-center px-4 py-2 border-b border-white/[0.08] bg-code-bg-elevated">
         <span className="text-xs font-medium text-code-text-muted uppercase tracking-wider">
           {language}
         </span>
@@ -27,7 +27,7 @@ export function CodeBlock({ code, language = 'bash', className }: CodeBlockProps
           className="min-w-[44px] min-h-[44px] flex items-center justify-center text-code-text-muted hover:text-primary transition-colors"
           aria-label={copied ? 'Copied' : 'Copy code'}
         >
-          <span className="font-mono text-xs">{copied ? '[ok]' : '[cp]'}</span>
+          <span className="text-xs">{copied ? 'Copied' : 'Copy'}</span>
         </button>
       </div>
       <pre className="p-4 overflow-x-auto text-sm font-mono text-code-text">
@@ -57,15 +57,15 @@ export function TabbedCodeBlock({ examples, className }: TabbedCodeBlockProps) {
   };
 
   return (
-    <div className={cn('border-2 border-dashed border-white/15 bg-code-bg overflow-hidden', className)}>
-      <div className="flex items-center justify-between border-b border-dashed border-white/15 bg-code-bg-elevated">
+    <div className={cn('border border-white/[0.08] rounded-lg bg-code-bg overflow-hidden', className)}>
+      <div className="flex items-center justify-between border-b border-white/[0.08] bg-code-bg-elevated">
         <div className="flex">
           {examples.map((example, index) => (
             <button
               key={example.language}
               onClick={() => setActiveTab(index)}
               className={cn(
-                'px-4 py-2 text-xs font-medium uppercase tracking-wider transition-colors border-r border-dashed border-white/15',
+                'px-4 py-2 text-xs font-medium uppercase tracking-wider transition-colors border-r border-white/[0.08]',
                 activeTab === index
                   ? 'bg-primary text-white'
                   : 'text-code-text-muted hover:text-code-text'
@@ -80,7 +80,7 @@ export function TabbedCodeBlock({ examples, className }: TabbedCodeBlockProps) {
           className="min-w-[44px] min-h-[44px] flex items-center justify-center mr-2 text-code-text-muted hover:text-primary transition-colors"
           aria-label={copied ? 'Copied' : 'Copy code'}
         >
-          <span className="font-mono text-xs">{copied ? '[ok]' : '[cp]'}</span>
+          <span className="text-xs">{copied ? 'Copied' : 'Copy'}</span>
         </button>
       </div>
       <pre className="p-4 overflow-x-auto text-sm font-mono text-code-text">

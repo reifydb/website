@@ -107,7 +107,7 @@ export const AccordionItem = memo(function AccordionItem({ item, currentPath, de
           )}
         >
           <div className="overflow-hidden">
-            <ul className="space-y-0.5 border-l border-dashed border-black/25 ml-3">
+            <ul className="space-y-0.5 border-l border-white/[0.08] ml-3">
               {item.children!.map((child) => (
                 <AccordionItem
                   key={child.id}
@@ -179,7 +179,7 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
   };
 
   return (
-    <aside className="hidden lg:flex w-72 border-r border-dashed border-black/25 bg-bg-secondary flex-col">
+    <aside className="hidden lg:flex w-72 border-r border-white/[0.08] bg-bg-secondary flex-col">
       {/* Navigation */}
       <nav className="flex-1 p-4 pt-6 overflow-y-auto sidebar-no-scrollbar">
         {displaySections.map((section) => {
@@ -201,7 +201,7 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
                 )}
               >
                 <div className="overflow-hidden">
-                  <ul className="space-y-0.5 border-l border-dashed border-black/25 ml-3">
+                  <ul className="space-y-0.5 border-l border-white/[0.08] ml-3">
                     {section.items.map((item) => (
                       <AccordionItem
                         key={item.id}
@@ -223,12 +223,12 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
       </nav>
 
       {/* Footer */}
-      <div className="p-4 border-t border-dashed border-black/25">
+      <div className="p-4 border-t border-white/[0.08]">
         <button
           onClick={handleBack}
           className="text-xs text-text-muted hover:text-primary transition-colors font-semibold uppercase tracking-wider"
         >
-          &lt;-- Back
+          &larr; Back
         </button>
       </div>
     </aside>

@@ -11,13 +11,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles = {
   primary: cn(
-    'bg-bg-primary border border-primary text-primary',
-    'hover:bg-primary hover:text-bg-primary',
+    'bg-primary text-[#1a1a1a]',
+    'hover:bg-primary-light',
     'transition-all duration-200'
   ),
   secondary: cn(
-    'bg-bg-primary border-2 border-dashed border-black/25 text-text-secondary',
-    'hover:text-text-primary hover:border-black/40',
+    'bg-transparent border border-border-default text-text-secondary',
+    'hover:border-primary hover:text-primary',
     'transition-all duration-200'
   ),
   ghost: cn(
@@ -29,15 +29,9 @@ const variantStyles = {
 }
 
 const sizeStyles = {
-  sm: 'px-3 py-1.5 text-sm',
+  sm: 'px-4 py-2 text-sm',
   md: 'px-5 py-2.5 text-sm',
   lg: 'px-6 py-3 text-base',
-}
-
-function wrapChildren(variant: string, children: ReactNode) {
-  if (variant === 'primary') return <>[&gt; {children}]</>
-  if (variant === 'secondary') return <>[{children}]</>
-  return children
 }
 
 export function Button({
@@ -46,38 +40,38 @@ export function Button({
   href,
   children,
   className,
+  onClick,
   ...props
 }: ButtonProps) {
   const baseStyles = cn(
     'inline-flex items-center justify-center gap-2',
-    'font-mono font-medium uppercase tracking-wider transition-all duration-200',
+    'font-medium tracking-wide rounded-md transition-all duration-200',
     'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-bg-primary',
+    'disabled:opacity-30 disabled:cursor-not-allowed',
     variantStyles[variant],
     sizeStyles[size],
     className
   )
 
-  const wrapped = wrapChildren(variant, children)
-
   if (href) {
     // Use Link for internal routes, <a> for external
     if (href.startsWith('/')) {
       return (
-        <Link to={href} className={baseStyles}>
-          {wrapped}
+        <Link to={href} className={baseStyles} onClick={onClick}>
+          {children}
         </Link>
       )
     }
     return (
-      <a href={href} className={baseStyles} target="_blank" rel="noopener noreferrer">
-        {wrapped}
+      <a href={href} className={baseStyles} target="_blank" rel="noopener noreferrer" onClick={onClick}>
+        {children}
       </a>
     )
   }
 
   return (
-    <button className={baseStyles} {...props}>
-      {wrapped}
+    <button className={baseStyles} onClick={onClick} {...props}>
+      {children}
     </button>
   )
 }

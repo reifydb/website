@@ -19,7 +19,7 @@ export function FarmPage() {
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <div className="flex-1 flex items-center justify-center">
-          <div className="border-2 border-dashed border-red-500/50 p-6 font-mono text-sm text-red-600">
+          <div className="border border-red-500/30 p-6 font-mono text-sm text-red-600">
             Failed to initialize farm database: {error}
           </div>
         </div>
@@ -52,7 +52,7 @@ export function FarmPage() {
                 <div
                   ref={containerRef}
                   tabIndex={-1}
-                  className="w-full h-full border-2 border-dashed border-black/25"
+                  className="w-full h-full border border-white/[0.08]"
                 />
                 <IoTOverlay
                   sensors={gameState.sensors}

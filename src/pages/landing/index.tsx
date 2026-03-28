@@ -2,12 +2,8 @@ import { Navbar, Footer } from '@/components/layout';
 import { CtaSection } from '@/components/ui';
 import {
   HeroSection,
-  BuildingWithSection,
   CapabilitiesSection,
-  CodeExampleSection,
   UseCasesSection,
-  HowItWorksSection,
-  AmdahlSection,
   ReplacesSection,
   FaqSection,
 } from './sections';
@@ -20,17 +16,9 @@ export function LandingPage() {
       <main>
         <HeroSection />
 
-        <BuildingWithSection />
-
         <CapabilitiesSection />
 
-        <CodeExampleSection />
-
         <UseCasesSection />
-
-        <HowItWorksSection />
-
-        <AmdahlSection />
 
         <ReplacesSection />
 

@@ -12,8 +12,8 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/console':
-        specifier: ^0.4.2
-        version: 0.4.2(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: link:/home/deedee/Workspace/blue/reifydb/pkg/typescript/console
+        version: link:../reifydb/pkg/typescript/console
       '@reifydb/core':
         specifier: ^0.4.2
         version: 0.4.2
@@ -508,19 +508,6 @@ packages:
 
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
-
-  '@reifydb/client@0.4.2':
-    resolution: {integrity: sha512-QiLeaC/GTcXPKhwx0+K+xgbQmIG6S7ZCQf4MiXxcDIXI+x+l0tfp7YATVvz+K5kc/1pTxK94INSNfY/6jL/i9A==}
-    engines: {node: '>=16.0.0'}
-
-  '@reifydb/console@0.4.2':
-    resolution: {integrity: sha512-+U0zZw+6eZQo41ishOMvedi0piD41WdDTSW6Gw4bTETgWboEVUbfnNcrMIR7ZHVLbIyPc0/f7pQR3xTjCpeUuQ==}
-    engines: {node: '>=16.0.0'}
-    peerDependencies:
-      '@monaco-editor/react': '>=4.0.0'
-      monaco-editor: '>=0.40.0'
-      react: '>=18.0.0'
-      react-dom: '>=18.0.0'
 
   '@reifydb/core@0.4.2':
     resolution: {integrity: sha512-g0PXVkqEmnnsEy94eV6stg8lp9jsN/23nIrbue4laiO2QW7Op3pqHsM63f/ghjv1f9CqhQAXqFK+uCkDodokxg==}
@@ -2691,27 +2678,6 @@ snapshots:
       react-dom: 19.2.3(react@19.2.3)
 
   '@polka/url@1.0.0-next.29': {}
-
-  '@reifydb/client@0.4.2':
-    dependencies:
-      '@reifydb/core': 0.4.2
-      uuid: 11.1.0
-      ws: 8.19.0
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-
-  '@reifydb/console@0.4.2(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
-    dependencies:
-      '@monaco-editor/react': 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@reifydb/client': 0.4.2
-      '@reifydb/core': 0.4.2
-      monaco-editor: 0.55.1
-      react: 19.2.3
-      react-dom: 19.2.3(react@19.2.3)
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
 
   '@reifydb/core@0.4.2':
     dependencies:

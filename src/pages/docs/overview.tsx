@@ -83,7 +83,7 @@ export function DocsOverview() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="group border-2 border-dashed border-black/25 bg-white p-5 transition-all duration-300 hover:border-primary/50"
+                  className="group border-2 border-white/[0.08] p-5 transition-all duration-300 hover:border-primary/50"
                   style={{ animationDelay: `${index * 75}ms` }}
                 >
                   <div className="flex items-start gap-4">
@@ -94,7 +94,7 @@ export function DocsOverview() {
                       </h3>
                       <p className="text-sm text-text-muted">{link.description}</p>
                     </div>
-                    <span className="font-mono text-sm text-text-muted group-hover:text-primary transition-colors">--&gt;</span>
+                    <span className="text-sm text-text-muted group-hover:text-primary transition-colors">&rarr;</span>
                   </div>
                 </Link>
               ))}
@@ -108,19 +108,19 @@ export function DocsOverview() {
             <h2 className="text-2xl font-black tracking-tight mb-4">Key Features</h2>
             <ul className="space-y-3 text-text-secondary">
               <li className="flex items-start gap-3">
-                <span className="text-primary font-mono">--</span>
+                <span className="text-primary">—</span>
                 <span><strong className="text-text-primary">Transactional</strong> - Your application state stays consistent. Full ACID guarantees, real rollback.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-primary font-mono">--</span>
+                <span className="text-primary">—</span>
                 <span><strong className="text-text-primary">Incremental</strong> - Your views update the moment your data changes. No cron, no polling.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-primary font-mono">--</span>
+                <span className="text-primary">—</span>
                 <span><strong className="text-text-primary">Embeddable</strong> - Embed it in your app or run it as a standalone server. Your call.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-primary font-mono">--</span>
+                <span className="text-primary">—</span>
                 <span><strong className="text-text-primary">RQL</strong> - A query language that fits how you think about your data, not how a database thinks about tables.</span>
               </li>
             </ul>
@@ -129,7 +129,7 @@ export function DocsOverview() {
 
         {/* Links */}
         <ScrollReveal delay={250}>
-          <section className="pt-4 border-t border-dashed border-black/25">
+          <section className="pt-4 border-t border-white/[0.08]">
             <h2 className="text-lg font-black tracking-tight mb-4">Resources</h2>
             <ul className="space-y-2 text-text-secondary">
               <li>
@@ -139,7 +139,7 @@ export function DocsOverview() {
                   rel="noopener noreferrer"
                   className="text-primary hover:text-primary-light font-medium transition-colors link-underline"
                 >
-                  GitHub Repository --&gt;
+                  GitHub Repository &rarr;
                 </a>
               </li>
               <li>
@@ -149,12 +149,12 @@ export function DocsOverview() {
                   rel="noopener noreferrer"
                   className="text-primary hover:text-primary-light font-medium transition-colors link-underline"
                 >
-                  Discord Community --&gt;
+                  Discord Community &rarr;
                 </a>
               </li>
               <li>
                 <Link to="/contact" className="text-primary hover:text-primary-light font-medium transition-colors link-underline">
-                  Contact Me --&gt;
+                  Contact Me &rarr;
                 </Link>
               </li>
             </ul>

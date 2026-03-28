@@ -1,6 +1,7 @@
 import { useEffect, useCallback, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Navbar } from '@/components/layout/navbar';
+import { Button } from '@/components/ui';
 import { pitchSlides } from './pitch-data';
 
 export function PitchPage() {
@@ -50,17 +51,17 @@ export function PitchPage() {
   const progress = (currentSlide / pitchSlides.length) * 100;
 
   return (
-    <div ref={containerRef} className="min-h-screen flex flex-col bg-bg-primary section-pattern">
+    <div ref={containerRef} className="min-h-screen flex flex-col bg-bg-primary">
       {!isFullscreen && <Navbar />}
 
       {/* Progress header */}
-      <div className={`border-b border-dashed border-black/25 bg-bg-secondary sticky ${isFullscreen ? 'top-0' : 'top-[60px]'} z-30`}>
+      <div className={`border-b border-white/[0.08] bg-bg-secondary sticky ${isFullscreen ? 'top-0' : 'top-[60px]'} z-30`}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-4">
           <span className="font-mono text-xs text-text-muted shrink-0 hidden sm:inline">
             $ reifydb pitch
           </span>
           <div className="flex-1 flex items-center gap-3">
-            <div className="flex-1 h-px bg-black/10 relative">
+            <div className="flex-1 h-px bg-white/[0.05] relative">
               <div
                 className="absolute left-0 top-0 h-full bg-primary transition-all duration-300"
                 style={{ width: `${progress}%` }}
@@ -72,7 +73,7 @@ export function PitchPage() {
           </div>
           <button
             onClick={toggleFullscreen}
-            className="font-mono text-xs border border-black/30 text-text-secondary hover:border-primary hover:text-primary px-2 py-1 transition-colors shrink-0"
+            className="font-mono text-xs border border-white/[0.1] text-text-secondary hover:border-primary hover:text-primary px-2 py-1 transition-colors shrink-0"
             title={isFullscreen ? 'Exit fullscreen (Esc)' : 'Fullscreen (F)'}
           >
             {isFullscreen ? '[exit]' : '[full]'}
@@ -88,15 +89,16 @@ export function PitchPage() {
       </main>
 
       {/* Navigation bar */}
-      <div className="border-t border-dashed border-black/25 bg-bg-secondary sticky bottom-0 z-30">
+      <div className="border-t border-white/[0.08] bg-bg-secondary sticky bottom-0 z-30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-          <button
+          <Button
+            variant="secondary"
+            size="sm"
             onClick={() => goToSlide(currentSlide - 1)}
             disabled={currentSlide === 1}
-            className="font-mono text-sm border border-black/30 text-text-secondary hover:border-primary hover:text-primary px-4 py-2 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            [&lt; prev]
-          </button>
+            &larr; Prev
+          </Button>
 
           {/* Slide dots */}
           <div className="flex gap-1.5 items-center">
@@ -107,20 +109,21 @@ export function PitchPage() {
                 className={`transition-colors ${
                   i + 1 === currentSlide
                     ? 'w-3 h-3 bg-primary'
-                    : 'w-2 h-2 bg-black/15 hover:bg-black/30'
+                    : 'w-2 h-2 bg-white/[0.1] hover:bg-white/[0.2]'
                 }`}
                 title={`Slide ${i + 1}`}
               />
             ))}
           </div>
 
-          <button
+          <Button
+            variant="secondary"
+            size="sm"
             onClick={() => goToSlide(currentSlide + 1)}
             disabled={currentSlide === pitchSlides.length}
-            className="font-mono text-sm border border-black/30 text-text-secondary hover:border-primary hover:text-primary px-4 py-2 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            [next &gt;]
-          </button>
+            Next &rarr;
+          </Button>
         </div>
       </div>
     </div>

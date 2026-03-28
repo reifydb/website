@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { Navbar, Footer } from '@/components/layout';
+import { Button } from '@/components/ui';
 
 export function NotFoundPage() {
   return (
@@ -16,18 +16,12 @@ export function NotFoundPage() {
             The page you're looking for doesn't exist or has been moved.
           </p>
           <div className="flex gap-4 justify-center">
-            <Link
-              to="/"
-              className="px-6 py-3 font-mono border border-primary text-primary hover:bg-primary hover:text-white transition-colors"
-            >
-              [&gt; go home]
-            </Link>
-            <Link
-              to="/docs"
-              className="px-6 py-3 font-mono border-2 border-dashed border-black/25 text-text-secondary hover:text-text-primary hover:border-black/20 transition-colors"
-            >
-              [docs]
-            </Link>
+            <Button href="/" size="lg">
+              Go Home
+            </Button>
+            <Button href="/docs" variant="secondary" size="lg">
+              Docs
+            </Button>
           </div>
         </div>
       </main>

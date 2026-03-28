@@ -1,8 +1,10 @@
 import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
+import { Button } from '@/components/ui';
 import { cn } from '@/lib';
 import { navDropdowns, navDirectLinks } from './navbar-data';
 import { useState, useEffect } from 'react';
+import { X, ChevronDown, ChevronRight } from 'lucide-react';
 
 interface MobileMenuProps {
   open: boolean;
@@ -59,7 +61,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
       <div
         onClick={onClose}
         style={{ position: 'absolute', inset: 0 }}
-        className="bg-black/30"
+        className="bg-black/50"
       />
 
       {/* Panel */}
@@ -68,32 +70,32 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
         className="bg-bg-primary overflow-y-auto overflow-x-hidden"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-dashed border-black/25">
-          <span className="font-mono text-sm text-text-muted">$ nav</span>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.08]">
+          <span className="text-sm text-text-muted">Navigation</span>
           <button
             onClick={onClose}
-            className="font-mono text-base text-text-muted hover:text-text-primary transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="text-text-muted hover:text-text-primary transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Close menu"
           >
-            [x]
+            <X size={20} />
           </button>
         </div>
 
         {/* Navigation Links */}
-        <nav className="flex flex-col px-6 py-4 gap-1 border-l-2 border-primary">
+        <nav className="flex flex-col px-6 py-4 gap-1">
           {navDropdowns.map((dropdown) => {
             const expanded = expandedSection === dropdown.id;
             return (
-              <div key={dropdown.id} className="border-b border-dashed border-black/25 overflow-hidden">
+              <div key={dropdown.id} className="border-b border-white/[0.06] overflow-hidden">
                 <button
                   onClick={() => toggleSection(dropdown.id)}
                   className={cn(
-                    "w-full font-mono text-base px-4 py-4 transition-colors duration-150 flex items-center justify-between min-h-[48px]",
+                    "w-full text-base px-4 py-4 transition-colors duration-150 flex items-center justify-between min-h-[48px]",
                     expanded ? "text-text-primary" : "text-text-muted hover:text-text-primary"
                   )}
                 >
-                  {dropdown.label.toLowerCase()}/
-                  <span className="text-text-muted">{expanded ? '[~]' : '[+]'}</span>
+                  {dropdown.label}
+                  {expanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
                 </button>
 
                 <div
@@ -102,7 +104,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                     expanded ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
                   )}
                 >
-                  <div className="px-4 pb-3 border-t border-dashed border-black/25">
+                  <div className="px-4 pb-3 border-t border-white/[0.06]">
                     {dropdown.columns.map((column) => (
                       <div key={column.title} className="mt-2">
                         <div className="flex flex-col">
@@ -113,15 +115,14 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
 
                             const content = (
                               <>
-                                <span className="text-primary">&gt; </span>
                                 <span className="text-text-primary group-hover:text-primary transition-colors">{item.label}</span>
                                 {keyword && (
-                                  <span className="text-text-muted"> — {keyword}</span>
+                                  <span className="text-text-muted ml-2 text-sm">{keyword}</span>
                                 )}
                               </>
                             );
 
-                            const className = "group text-base py-3 font-mono min-h-[44px] flex items-center";
+                            const className = "group text-base py-3 min-h-[44px] flex items-center rounded-md px-2 hover:bg-white/5 transition-colors";
 
                             if (isExternal) {
                               return (
@@ -175,7 +176,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           {navDirectLinks.map((link) => {
             const isAnchor = link.href.startsWith('/#');
 
-            const className = "font-mono text-base px-4 py-4 min-h-[48px] flex items-center border-b border-dashed border-black/25 transition-colors duration-150 text-left text-text-muted hover:text-text-primary";
+            const className = "text-base px-4 py-4 min-h-[48px] flex items-center border-b border-white/[0.06] transition-colors duration-150 text-left text-text-muted hover:text-text-primary";
 
             if (isAnchor) {
               return (
@@ -185,7 +186,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                   onClick={onClose}
                   className={className}
                 >
-                  <span className="text-primary">&gt; </span>{link.label}
+                  {link.label}
                 </a>
               );
             }
@@ -197,22 +198,18 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 onClick={onClose}
                 className={className}
               >
-                <span className="text-primary">&gt; </span>{link.label}
+                {link.label}
               </Link>
             );
           })}
 
           {/* Divider */}
-          <div className="border-t border-dashed border-black/25 my-2" />
+          <div className="border-t border-white/[0.06] my-2" />
 
           {/* CTA Button */}
-          <Link
-            to="/docs"
-            onClick={onClose}
-            className="font-mono text-base border border-primary text-primary hover:bg-primary hover:text-bg-primary px-4 py-4 min-h-[48px] flex items-center justify-center transition-colors duration-150"
-          >
-            [&gt; get-started]
-          </Link>
+          <Button href="/docs" size="lg" onClick={onClose} className="w-full min-h-[48px]">
+            Get Started
+          </Button>
         </nav>
       </div>
     </div>,

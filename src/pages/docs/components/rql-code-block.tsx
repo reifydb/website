@@ -18,8 +18,8 @@ export function RqlCodeBlock({ code, className }: RqlCodeBlockProps) {
   };
 
   return (
-    <div className={cn('border-2 border-dashed border-border-default bg-bg-secondary overflow-hidden', className)}>
-      <div className="flex justify-between items-center px-4 py-2 border-b border-dashed border-border-default bg-bg-tertiary">
+    <div className={cn('border border-border-default rounded-lg bg-bg-secondary overflow-hidden', className)}>
+      <div className="flex justify-between items-center px-4 py-2 border-b border-border-default bg-bg-tertiary">
         <span className="text-xs font-bold text-primary-color uppercase tracking-wider">
           RQL
         </span>
@@ -28,7 +28,7 @@ export function RqlCodeBlock({ code, className }: RqlCodeBlockProps) {
           className="p-1.5 text-text-secondary hover:text-primary transition-colors"
           aria-label={copied ? 'Copied' : 'Copy code'}
         >
-          <span className="font-mono text-xs">{copied ? '[ok]' : '[cp]'}</span>
+          <span className="text-xs">{copied ? 'Copied' : 'Copy'}</span>
         </button>
       </div>
       <CodeViewer code={code} />

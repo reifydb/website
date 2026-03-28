@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const sections = [
   {
-    title: "product",
+    title: "Product",
     links: [
       { label: "Documentation", to: "/docs" },
       { label: "Blog", to: "/blog" },
@@ -10,7 +10,7 @@ const sections = [
     ],
   },
   {
-    title: "resources",
+    title: "Resources",
     links: [
       { label: "Contact", to: "/contact" },
       { label: "Support", to: "/support" },
@@ -18,7 +18,7 @@ const sections = [
     ],
   },
   {
-    title: "community",
+    title: "Community",
     links: [
       { label: "GitHub", href: "https://github.com/reifydb/reifydb" },
       { label: "X (Twitter)", href: "https://x.com/reifydb" },
@@ -29,24 +29,19 @@ const sections = [
 
 export function Footer() {
   return (
-    <footer className="relative z-10 bg-code-bg border-t-2 border-dashed border-white/10 py-12 sm:py-16 text-white">
+    <footer className="relative z-10 bg-bg-secondary border-t border-white/[0.06] py-12 sm:py-16 text-white">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 text-sm">
           {sections.map((section) => (
-            <div key={section.title} className="border border-dashed border-white/15">
-              <div className="px-4 py-2.5 border-b border-dashed border-white/15">
-                <span className="text-primary text-xs font-bold uppercase tracking-wider">
-                  # {section.title}
+            <div key={section.title} className="glass-card p-0 overflow-hidden">
+              <div className="px-4 py-3 border-b border-white/[0.06]">
+                <span className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
+                  {section.title}
                 </span>
               </div>
               <ul className="px-4 py-4 space-y-2.5">
                 {section.links.map((link) => {
-                  const className = "group flex items-center text-code-text/70 hover:text-code-text transition-colors";
-                  const cursor = (
-                    <span className="text-code-text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all duration-150 mr-2 inline-block">
-                      &gt;
-                    </span>
-                  );
+                  const className = "group flex items-center text-text-secondary hover:text-text-primary transition-colors";
 
                   return (
                     <li key={link.label}>
@@ -57,12 +52,10 @@ export function Footer() {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          {cursor}
                           {link.label}
                         </a>
                       ) : (
                         <Link to={link.to} className={className}>
-                          {cursor}
                           {link.label}
                         </Link>
                       )}
@@ -75,7 +68,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 sm:mt-16 border-t border-dashed border-white/10 pt-8 sm:pt-10 text-xs text-code-text-muted flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div className="mt-12 sm:mt-16 border-t border-white/[0.06] pt-8 sm:pt-10 text-xs text-text-muted flex flex-col items-center justify-between gap-4 md:flex-row">
           <div>
             &copy; {new Date().getFullYear()} ReifyDB. All Rights Reserved.
           </div>

@@ -22,7 +22,7 @@ export function MissionPage() {
 
           {/* Mission Statement */}
           <ScrollReveal delay={100}>
-            <div className="border-2 border-dashed border-black/25 bg-white p-8 sm:p-12 mb-12 transition-all duration-300 hover:border-primary/50">
+            <div className="glass-card p-8 sm:p-12 mb-12 transition-all duration-300 hover:border-primary/50">
               <h2 className="text-2xl font-bold mb-6">Mission Statement</h2>
               <p className="text-text-secondary text-lg leading-relaxed">
                 Most engineers have felt it, that moment where you're fighting your own infrastructure instead of
@@ -35,7 +35,7 @@ export function MissionPage() {
 
           {/* Origin Story */}
           <ScrollReveal delay={200}>
-            <div className="border-2 border-dashed border-black/25 bg-white p-8 sm:p-12 transition-all duration-300 hover:border-primary/50">
+            <div className="glass-card p-8 sm:p-12 transition-all duration-300 hover:border-primary/50">
               <h2 className="text-2xl font-bold mb-6">The Origin Story</h2>
 
               <div className="flex flex-col md:flex-row gap-8">
@@ -44,7 +44,7 @@ export function MissionPage() {
                   <img
                     src="/img/me.jpeg"
                     alt="Founder"
-                    className="w-32 h-32 object-cover border-2 border-dashed border-black/25"
+                    className="w-32 h-32 object-cover border border-white/[0.08] rounded"
                   />
                 </div>
 

@@ -56,7 +56,7 @@ export function IoTOverlay({ sensors }: IoTOverlayProps) {
           return (
             <div
               key={`sr-${sensor.id}`}
-              className="absolute rounded-full border border-dashed opacity-20"
+              className="absolute rounded-full border opacity-20"
               style={{
                 left: cx - r,
                 top: cy - r,
@@ -87,7 +87,7 @@ export function IoTOverlay({ sensors }: IoTOverlayProps) {
               title={`${sensor.sensor_type} sensor (r=${sensor.radius})`}
             >
               <div
-                className="w-6 h-6 rounded-full border-2 flex items-center justify-center text-[10px] bg-white/90 shadow-sm"
+                className="w-6 h-6 rounded-full border-2 flex items-center justify-center text-[10px] bg-bg-primary shadow-sm"
                 style={{ borderColor: color }}
               >
                 {sensorLabels[sensor.sensor_type]}

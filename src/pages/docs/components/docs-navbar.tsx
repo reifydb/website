@@ -43,7 +43,7 @@ export function DocsNavbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-[rgba(255,255,255,0.95)] border-b border-dashed border-black/25">
+      <header className="sticky top-0 z-40 w-full bg-[rgba(26,26,26,0.80)] backdrop-blur-xl border-b border-white/[0.08]">
         <div className="flex h-[60px] w-full items-center justify-between px-4 sm:px-6 md:px-12">
           <Link to="/" className="flex items-center gap-2">
             <img
@@ -51,14 +51,14 @@ export function DocsNavbar() {
               alt="ReifyDB"
               className="h-7 w-auto"
             />
-            <span className="text-primary font-mono">$</span>
+            <span className="text-primary">$</span>
             <span className="font-bold text-lg tracking-tight text-text-primary">
               ReifyDB
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden gap-0 lg:flex text-sm font-mono items-center">
+          <nav className="hidden gap-0 lg:flex text-sm items-center">
             {navLinks.map((link) => {
               const active = currentPath === link.href;
               return (
@@ -72,7 +72,7 @@ export function DocsNavbar() {
                       : "text-text-secondary hover:text-primary"
                   )}
                 >
-                  [{active && '*'}{link.label}]
+                  {link.label}
                 </Link>
               );
             })}
@@ -85,19 +85,19 @@ export function DocsNavbar() {
                 href="https://cal.com/reifydb/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-sm border border-primary text-primary hover:bg-primary hover:text-bg-primary px-3 py-1 transition-colors duration-150"
+                className="text-sm border border-primary text-primary hover:bg-primary hover:text-bg-primary px-3 py-1 transition-colors duration-150"
               >
-                [&gt; Book a Call]
+                Book a Call
               </a>
             </div>
 
             {/* Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden font-mono text-sm text-text-muted hover:text-primary transition-colors"
+              className="lg:hidden text-sm text-text-muted hover:text-primary transition-colors"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? '[x]' : '[=]'}
+              {mobileMenuOpen ? 'Close' : 'Menu'}
             </button>
           </div>
         </div>
@@ -113,15 +113,15 @@ export function DocsNavbar() {
           />
 
           {/* Menu Panel */}
-          <div className="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-bg-secondary border-l border-dashed border-black/25 flex flex-col">
+          <div className="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-bg-secondary border-l border-white/[0.08] flex flex-col">
             {/* Close Button */}
-            <div className="flex justify-end p-6 border-b border-dashed border-black/25 shrink-0">
+            <div className="flex justify-end p-6 border-b border-white/[0.08] shrink-0">
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-mono text-sm text-text-muted hover:text-primary transition-colors"
+                className="text-sm text-text-muted hover:text-primary transition-colors"
                 aria-label="Close menu"
               >
-                [x]
+                Close
               </button>
             </div>
 
@@ -146,7 +146,7 @@ export function DocsNavbar() {
                       )}
                     >
                       <div className="overflow-hidden">
-                        <ul className="space-y-0.5 border-l border-dashed border-black/25 ml-3">
+                        <ul className="space-y-0.5 border-l border-white/[0.08] ml-3">
                           {section.items.map((item) => (
                             <AccordionItem
                               key={item.id}
@@ -168,13 +168,13 @@ export function DocsNavbar() {
             </nav>
 
             {/* Site-wide Links */}
-            <nav className="p-6 border-t border-dashed border-black/25 flex flex-col gap-2 shrink-0">
+            <nav className="p-6 border-t border-white/[0.08] flex flex-col gap-2 shrink-0">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="font-mono text-sm text-text-secondary hover:text-primary px-4 py-3 border-b border-dashed border-black/25 transition-colors duration-150 text-left"
+                  className="text-sm text-text-secondary hover:text-primary px-4 py-3 border-b border-white/[0.08] transition-colors duration-150 text-left"
                 >
                   <span className="text-text-muted">&gt; </span>{link.label}
                 </Link>
@@ -184,9 +184,9 @@ export function DocsNavbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-mono text-sm border border-primary text-primary hover:bg-primary hover:text-bg-primary px-4 py-3 transition-colors duration-150 text-center mt-4"
+                className="text-sm border border-primary text-primary hover:bg-primary hover:text-bg-primary px-4 py-3 transition-colors duration-150 text-center mt-4"
               >
-                [&gt; Book a Call]
+                Book a Call
               </a>
             </nav>
           </div>
