@@ -67,8 +67,8 @@ filter { role == "admin" }`,
     id: 'guide-built-in-testing',
     title: 'Built-in Testing',
     category: 'guide',
-    code: `CREATE NAMESPACE tp;
-CREATE TABLE tp::users { id: int4, name: utf8 };
+    code: `CREATE NAMESPACE IF NOT EXISTS tp;
+CREATE TABLE IF NOT EXISTS tp::users { id: int4, name: utf8 };
 
 CREATE TEST PROCEDURE tp::seed_users AS {
   INSERT tp::users [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }];
