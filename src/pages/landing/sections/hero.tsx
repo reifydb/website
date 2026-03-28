@@ -1,3 +1,4 @@
+import { DotGridBackground } from '@/components/backgrounds/dot-grid-background';
 import { Button, ExecutableSnippet } from '@/components/ui';
 import { guideExamples } from '@/lib/examples';
 
@@ -6,11 +7,12 @@ const heroExample = guideExamples.find((ex) => ex.id === 'guide-built-in-testing
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden">
+      <DotGridBackground className="absolute inset-0 z-0" />
+
       {/* Above the fold — H1 + Editor, vertically centered */}
-      <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center mx-auto max-w-6xl px-6 md:px-8">
+      <div className="relative z-10 min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center mx-auto max-w-6xl px-6 md:px-8">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-8 leading-tight text-center">
-          Your backend, minus the{' '}
-          <span className="text-primary">plumbing</span>
+          <span className="border-b-4 border-primary pb-1">Live Application State</span>
         </h1>
 
         <div className="w-full max-w-[50%] mx-auto">
@@ -35,7 +37,7 @@ export function HeroSection() {
       </div>
 
       {/* Below the fold — subtitle, CTAs */}
-      <div className="mx-auto max-w-6xl px-6 md:px-8 pb-24 sm:pb-32 text-center">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 pb-24 sm:pb-32 text-center">
         <p className="max-w-3xl mx-auto text-lg sm:text-xl text-text-secondary mb-10 leading-relaxed">
           Your state, your logic, your derived views, all in one transactional flow. No caches to invalidate. No cron to babysit. No drift to debug.
         </p>
