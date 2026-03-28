@@ -1,4 +1,4 @@
-import type { ReactNode, ButtonHTMLAttributes } from 'react'
+import type { ReactNode, MouseEventHandler, ButtonHTMLAttributes } from 'react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib'
 
@@ -57,13 +57,13 @@ export function Button({
     // Use Link for internal routes, <a> for external
     if (href.startsWith('/')) {
       return (
-        <Link to={href} className={baseStyles} onClick={onClick}>
+        <Link to={href} className={baseStyles} onClick={onClick as unknown as MouseEventHandler<HTMLAnchorElement>}>
           {children}
         </Link>
       )
     }
     return (
-      <a href={href} className={baseStyles} target="_blank" rel="noopener noreferrer" onClick={onClick}>
+      <a href={href} className={baseStyles} target="_blank" rel="noopener noreferrer" onClick={onClick as unknown as MouseEventHandler<HTMLAnchorElement>}>
         {children}
       </a>
     )

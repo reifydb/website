@@ -1,8 +1,20 @@
 import { DotGridBackground } from '@/components/backgrounds/dot-grid-background';
+import { HaikuTypewriter } from '@/components/demo';
+import type { Haiku } from '@/components/demo';
 import { Button, ExecutableSnippet } from '@/components/ui';
 import { guideExamples } from '@/lib/examples';
 
 const heroExample = guideExamples.find((ex) => ex.id === 'guide-built-in-testing')!;
+
+const heroHaikus: Haiku[] = [
+  { lines: ['No {cyan:cache}. No {cyan:cron job}.', 'Your {primary:state} stays {green:consistent} here', 'Nothing {cyan:drifts} apart'] },
+  { lines: ['{primary:Write state}. {cyan:Derive views}.', 'One {green:transactional} engine', 'Nothing left to {cyan:drift}'] },
+  { lines: ['Stop {cyan:duct-taping} state', '{primary:Transact}, {cyan:derive}, stay in {green:sync}', 'One {primary:database}. Done.'] },
+  { lines: ['No {cyan:polls}. No {cyan:stale reads}.', 'Your {primary:views} update when {primary:state} does', '{green:Fresh data}. Always.'] },
+  { lines: ['No {cyan:Redis}. No {cyan:cron}.', 'One {green:transaction} holds it all', '{primary:State} never goes {cyan:stale}'] },
+  { lines: ['No {cyan:sync bugs} to chase', 'Your {cyan:cache} and {primary:data} agree', "Because there's no {cyan:cache}"] },
+  { lines: ['One {primary:engine}, one {green:truth}', '{primary:State} derives the moment you', '{green:Commit}. No {cyan:drift} left.'] },
+];
 
 export function HeroSection() {
   return (
@@ -11,9 +23,10 @@ export function HeroSection() {
 
       {/* Above the fold — H1 + Editor, vertically centered */}
       <div className="relative z-10 min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center mx-auto max-w-6xl px-6 md:px-8">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-10 leading-[1.1] text-center">
-          <span className="text-primary">Live</span> Application State
-        </h1>
+        <HaikuTypewriter
+          haikus={heroHaikus}
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-10 leading-[1.3] text-center"
+        />
 
         <div className="w-full max-w-3xl mx-auto">
           <ExecutableSnippet

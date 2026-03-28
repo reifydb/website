@@ -336,7 +336,8 @@ h1, h2, h3, h4, h5, h6 {
   .animate-glow-breathe,
   .animate-slide-up,
   .animate-scanline,
-  .animate-glow-pulse {
+  .animate-glow-pulse,
+  .blink-cursor {
     animation: none;
   }
 
