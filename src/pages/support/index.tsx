@@ -1,5 +1,6 @@
 import { Navbar, Footer } from '@/components/layout';
 import { ScrollReveal } from '@/components/ui';
+import { Card, CardContent } from '@reifydb/ui';
 import {
   Briefcase,
   Github,
@@ -73,20 +74,24 @@ export function SupportPage() {
                   href={option.href}
                   target={option.external ? '_blank' : undefined}
                   rel={option.external ? 'noopener noreferrer' : undefined}
-                  className="glass-card p-6 transition-all duration-300 hover:border-primary/50 group block h-full"
+                  className="block h-full"
                 >
-                  <div className="flex items-start gap-4">
-                    <option.icon className={`h-6 w-6 ${option.color} shrink-0`} strokeWidth={2} />
-                    <div className="flex-1">
-                      <h3 className="font-bold mb-1">{option.title}</h3>
-                      <p className="text-text-muted text-sm mb-3 leading-relaxed">
-                        {option.description}
-                      </p>
-                      <span className="text-primary font-semibold text-sm">
-                        {option.linkText} &rarr;
-                      </span>
+                  <Card className="h-full group transition-all duration-300 hover:border-primary/50">
+                    <CardContent>
+                    <div className="flex items-start gap-4">
+                      <option.icon className={`h-6 w-6 ${option.color} shrink-0`} strokeWidth={2} />
+                      <div className="flex-1">
+                        <h3 className="font-bold mb-1">{option.title}</h3>
+                        <p className="text-text-muted text-sm mb-3 leading-relaxed">
+                          {option.description}
+                        </p>
+                        <span className="text-primary font-semibold text-sm">
+                          {option.linkText} &rarr;
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                    </CardContent>
+                  </Card>
                 </a>
               </ScrollReveal>
             ))}

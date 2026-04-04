@@ -1,4 +1,5 @@
 import { ScrollReveal } from '@/components/ui';
+import { Card, CardContent, Badge } from '@reifydb/ui';
 
 const replacements = [
   {
@@ -30,9 +31,7 @@ export function ReplacesSection() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-3">
-              Replaces
-            </p>
+            <Badge variant="active" className="text-xs mb-3 uppercase tracking-[0.12em]">Replaces</Badge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
               What ReifyDB Replaces
             </h2>
@@ -46,22 +45,20 @@ export function ReplacesSection() {
         <div className="grid gap-6 md:grid-cols-2">
           {replacements.map((item, index) => (
             <ScrollReveal key={item.before} delay={index * 75}>
-              <div className="glass-card p-6 sm:p-8 h-full">
-                {/* Before --> After */}
-                <div className="flex items-center gap-3 mb-4 flex-wrap text-sm">
-                  <span className="text-text-muted line-through">
-                    {item.before}
-                  </span>
-                  <span className="text-text-muted">&rarr;</span>
-                  <span className="text-primary font-bold">
-                    {item.after}
-                  </span>
-                </div>
-                {/* Description */}
-                <p className="text-text-muted text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
+              <Card className="sm:p-8 h-full">
+                <CardContent>
+                  {/* Before --> After */}
+                  <div className="flex items-center gap-3 mb-4 flex-wrap text-sm">
+                    <Badge variant="outline" className="line-through">{item.before}</Badge>
+                    <span className="text-text-muted">&rarr;</span>
+                    <Badge variant="active">{item.after}</Badge>
+                  </div>
+                  {/* Description */}
+                  <p className="text-text-muted text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </CardContent>
+              </Card>
             </ScrollReveal>
           ))}
         </div>

@@ -10,7 +10,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/assets/fonts/inter/Inter-Regular.woff2') format('woff2');
+  src: url('/assets/fonts/inter/inter-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -18,7 +18,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('/assets/fonts/inter/Inter-Medium.woff2') format('woff2');
+  src: url('/assets/fonts/inter/inter-medium.woff2') format('woff2');
 }
 
 @font-face {
@@ -26,7 +26,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('/assets/fonts/inter/Inter-SemiBold.woff2') format('woff2');
+  src: url('/assets/fonts/inter/inter-semi-bold.woff2') format('woff2');
 }
 
 @font-face {
@@ -34,7 +34,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/assets/fonts/inter/Inter-Bold.woff2') format('woff2');
+  src: url('/assets/fonts/inter/inter-bold.woff2') format('woff2');
 }
 
 @font-face {
@@ -42,7 +42,7 @@
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url('/assets/fonts/inter/Inter-Bold.woff2') format('woff2');
+  src: url('/assets/fonts/inter/inter-bold.woff2') format('woff2');
 }
 
 /* IBM Plex Mono - Code only */
@@ -51,7 +51,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2') format('woff2');
+  src: url('/assets/fonts/ibm-plex-mono/ibm-plex-mono-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -59,7 +59,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('/assets/fonts/ibm-plex-mono/IBMPlexMono-Medium.woff2') format('woff2');
+  src: url('/assets/fonts/ibm-plex-mono/ibm-plex-mono-medium.woff2') format('woff2');
 }
 
 @font-face {
@@ -67,7 +67,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('/assets/fonts/ibm-plex-mono/IBMPlexMono-SemiBold.woff2') format('woff2');
+  src: url('/assets/fonts/ibm-plex-mono/ibm-plex-mono-semi-bold.woff2') format('woff2');
 }
 
 @font-face {
@@ -75,7 +75,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/assets/fonts/ibm-plex-mono/IBMPlexMono-Bold.woff2') format('woff2');
+  src: url('/assets/fonts/ibm-plex-mono/ibm-plex-mono-bold.woff2') format('woff2');
 }
 
 /* ========================================
@@ -361,6 +361,22 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
     transform: none;
   }
+}
+
+/* ========================================
+   CARD UTILITIES (@reifydb/ui compatible)
+   ======================================== */
+
+/* Solid card with hover glow (used by @reifydb/ui Card) */
+.card-modern {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card-modern:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--color-primary) 8%, transparent);
 }
 
 /* ========================================

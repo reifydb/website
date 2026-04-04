@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, ExecutableSnippet, ScrollReveal } from '@/components/ui';
+import { ExecutableSnippet, ScrollReveal } from '@/components/ui';
+import { ChipGroup } from '@reifydb/ui';
 import { landingExamples } from '@/lib/examples';
 
 export function CodeExampleSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const chipOptions = landingExamples.map((example, index) => ({
+    value: String(index),
+    label: example.title,
+  }));
 
   return (
     <section id="code-example" className="relative z-10 py-24 sm:py-32">
@@ -26,18 +32,12 @@ export function CodeExampleSection() {
 
         {/* Tab Bar */}
         <ScrollReveal delay={100}>
-          <div className="flex flex-wrap gap-2 mb-6">
-            {landingExamples.map((example, index) => (
-              <Button
-                key={example.title}
-                size="sm"
-                variant={index === activeIndex ? 'primary' : 'secondary'}
-                onClick={() => setActiveIndex(index)}
-              >
-                {example.title}
-              </Button>
-            ))}
-          </div>
+          <ChipGroup
+            options={chipOptions}
+            value={String(activeIndex)}
+            onChange={(value) => setActiveIndex(Number(value))}
+            className="flex-wrap mb-6"
+          />
 
           {/* Snippet */}
           <ExecutableSnippet

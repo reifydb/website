@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ScrollReveal } from '@/components/ui';
+import { Card, CardContent, Badge } from '@reifydb/ui';
 
 const useCases: { title: string; description: string; href?: string }[] = [
   {
@@ -28,9 +29,7 @@ export function UseCasesSection() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-3">
-              Use Cases
-            </p>
+            <Badge variant="active" className="text-xs mb-3 uppercase tracking-[0.12em]">Use Cases</Badge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
               Built for Live Application State
             </h2>
@@ -46,27 +45,31 @@ export function UseCasesSection() {
             <ScrollReveal key={useCase.title} delay={index * 75}>
               {useCase.href ? (
                 <Link to={useCase.href} className="block h-full">
-                  <div className="group glass-card p-6 sm:p-8 h-full hover:border-primary/20">
-                    <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                  <Card className="sm:p-8 h-full group hover:border-primary/20">
+                    <CardContent>
+                      <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                        {useCase.title}
+                      </h3>
+                      <p className="text-text-muted text-sm leading-relaxed">
+                        {useCase.description}
+                      </p>
+                      <p className="text-primary text-sm mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        Try Demo &rarr;
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ) : (
+                <Card className="sm:p-8 h-full">
+                  <CardContent>
+                    <h3 className="text-lg font-bold mb-2">
                       {useCase.title}
                     </h3>
                     <p className="text-text-muted text-sm leading-relaxed">
                       {useCase.description}
                     </p>
-                    <p className="text-primary text-sm mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      Try Demo &rarr;
-                    </p>
-                  </div>
-                </Link>
-              ) : (
-                <div className="glass-card p-6 sm:p-8 h-full">
-                  <h3 className="text-lg font-bold mb-2">
-                    {useCase.title}
-                  </h3>
-                  <p className="text-text-muted text-sm leading-relaxed">
-                    {useCase.description}
-                  </p>
-                </div>
+                  </CardContent>
+                </Card>
               )}
             </ScrollReveal>
           ))}

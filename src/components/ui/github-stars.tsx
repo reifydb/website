@@ -1,5 +1,6 @@
 import { Github, Star } from 'lucide-react';
 import { useGitHubStars } from '@/hooks/use-github-stars';
+import { Skeleton } from '@reifydb/ui';
 
 export function GitHubStars() {
   const { formatted, loading } = useGitHubStars();
@@ -12,12 +13,14 @@ export function GitHubStars() {
       className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-white/5 transition-all"
     >
       <Github size={18} className="text-text-secondary" />
-      {!loading && formatted && (
+      {loading ? (
+        <Skeleton className="h-4 w-8" />
+      ) : formatted ? (
         <span className="flex items-center gap-1 text-sm font-medium text-text-secondary">
           <Star size={14} className="fill-current" />
           {formatted}
         </span>
-      )}
+      ) : null}
     </a>
   );
 }

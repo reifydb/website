@@ -1,5 +1,6 @@
 import { Navbar, Footer } from '@/components/layout';
 import { ScrollReveal } from '@/components/ui';
+import { Card, CardContent } from '@reifydb/ui';
 
 interface Value {
   id: string;
@@ -80,14 +81,16 @@ export function ValuesPage() {
                     </div>
 
                     {/* Content Card */}
-                    <div className="flex-1 glass-card p-6 sm:p-8 transition-all duration-300 hover:border-primary/50">
+                    <Card className="flex-1 sm:p-8 transition-all duration-300 hover:border-primary/50">
+                      <CardContent>
                       <h2 className="text-xl sm:text-2xl font-bold mb-3">
                         {value.title}
                       </h2>
                       <p className="text-text-secondary leading-relaxed">
                         {value.description}
                       </p>
-                    </div>
+                      </CardContent>
+                    </Card>
                   </div>
                 </ScrollReveal>
               );

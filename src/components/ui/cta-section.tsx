@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from './button';
 import { ScrollReveal } from './scroll-reveal';
+import { Card, CardContent } from '@reifydb/ui';
 
 interface CtaSectionProps {
   title: string;
@@ -48,12 +49,12 @@ export function CtaSection({
     return (
       <ScrollReveal>
         <div className="max-w-6xl mx-auto px-6 py-8 sm:py-12">
-          <div className="glass-card overflow-hidden">
+          <Card className="overflow-hidden p-0">
             <div className="grid md:grid-cols-2">
-              <div className="p-6 sm:p-8 flex flex-col justify-center">
+              <CardContent className="p-6 sm:p-8 flex flex-col justify-center">
                 <h3 className="text-lg sm:text-xl font-bold text-text-primary mb-2 sm:mb-3">{title}</h3>
                 <p className="text-sm sm:text-base text-text-muted">{description}</p>
-              </div>
+              </CardContent>
               <div className="p-6 sm:p-8 flex items-center justify-center border-t md:border-t-0 md:border-l border-white/[0.06]">
                 {isExternal ? (
                   <a href={buttonHref} target="_blank" rel="noopener noreferrer">
@@ -66,7 +67,7 @@ export function CtaSection({
                 )}
               </div>
             </div>
-          </div>
+          </Card>
         </div>
       </ScrollReveal>
     );

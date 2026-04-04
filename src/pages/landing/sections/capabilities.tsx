@@ -1,4 +1,5 @@
 import { ScrollReveal, Button } from '@/components/ui';
+import { Card, CardContent, Badge } from '@reifydb/ui';
 
 const pipeline = [
   {
@@ -48,9 +49,7 @@ export function CapabilitiesSection() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-16 sm:mb-20">
-            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-3">
-              How It Works
-            </p>
+            <Badge variant="active" className="text-xs mb-3 uppercase tracking-[0.12em]">How It Works</Badge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
               Why ReifyDB
             </h2>
@@ -65,9 +64,7 @@ export function CapabilitiesSection() {
           {pipeline.map((step, index) => (
             <ScrollReveal key={step.title} delay={index * 100}>
               <div className="glass-card p-6 text-center h-full">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary font-bold text-sm mb-4">
-                  {step.number}
-                </div>
+                <Badge variant="active" className="justify-center w-10 h-10 rounded-full bg-primary/10 font-bold text-sm mb-4">{step.number}</Badge>
                 <h3 className="text-base font-bold mb-2">{step.title}</h3>
                 <p className="text-text-muted text-sm leading-relaxed">
                   {step.description}
@@ -81,15 +78,17 @@ export function CapabilitiesSection() {
         <div className="grid gap-6 sm:grid-cols-2">
           {capabilities.map((capability, index) => (
             <ScrollReveal key={capability.title} delay={index * 75}>
-              <div className="glass-card p-6 sm:p-8 h-full">
-                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-md ${capability.accent} font-bold text-sm mb-4`}>
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <h3 className="text-lg font-bold mb-2 text-text-primary">{capability.title}</h3>
-                <p className="text-text-muted text-sm leading-relaxed">
-                  {capability.description}
-                </p>
-              </div>
+              <Card className="sm:p-8 h-full">
+                <CardContent>
+                  <Badge variant="active" className={`justify-center w-10 h-10 rounded-md font-bold text-sm mb-4 ${capability.accent}`}>
+                    {String(index + 1).padStart(2, '0')}
+                  </Badge>
+                  <h3 className="text-lg font-bold mb-2 text-text-primary">{capability.title}</h3>
+                  <p className="text-text-muted text-sm leading-relaxed">
+                    {capability.description}
+                  </p>
+                </CardContent>
+              </Card>
             </ScrollReveal>
           ))}
         </div>
