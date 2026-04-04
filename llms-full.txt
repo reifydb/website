@@ -27,9 +27,9 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
-No cac█
+No c█
 $ Built-in Testing
 Expand
 Copy
@@ -76,9 +76,7 @@ Your state, your logic, your derived views, all in one transactional flow. No ca
 
 Read the Docs
 View on GitHub
-
 HOW IT WORKS
-
 Why ReifyDB
 
 You should not need four systems to manage state that lives in one place. ReifyDB gives you transactions, incremental views, and programmable logic in a single engine.
@@ -120,9 +118,7 @@ Tables, counters, ring buffers, histograms, and views all live in one transactio
 
 Book a call
 Read the docs
-
 USE CASES
-
 Built for Live Application State
 
 If your application reads it, writes it, and reasons about it on every request, that is the state ReifyDB was built for.
@@ -146,7 +142,6 @@ Counters, Queues & Buffers
 Counters, ring buffers, histograms, rate limiters. Built in, transactional, and ready to use. No external dependencies.
 
 REPLACES
-
 What ReifyDB Replaces
 
 You have probably duct-taped three or four systems together just to manage state. Here is what you can stop maintaining.
@@ -240,7 +235,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
 Blog
 
@@ -297,7 +292,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
 ← Back to blog
 Introducing ReifyDB
@@ -397,7 +392,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
 The Mission
 
@@ -461,7 +456,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
 Values
 
@@ -536,7 +531,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
 Get in Touch
 
@@ -146088,7 +146083,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
 EXAMPLES
 Built-in Testing
@@ -146182,7 +146177,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
 Frequently Asked Questions
 
@@ -146256,7 +146251,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
 $ reifydb pitch
 slide 1 of 5
@@ -146304,7 +146299,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
 ●
 [wasm]
@@ -146315,7 +146310,7 @@ Run
 FROM app::users
 RESULTS
 HISTORY
-SCHEMA
+SHAPE
 $ run a query to see results
 
 ===============================================================================
@@ -146347,7 +146342,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
 Support
 
@@ -146418,7 +146413,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
 $ reifydb tour
 step 1 of 9
@@ -146496,7 +146491,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-11
+10
 Get Started
 # ACTIONS
 ↖
@@ -146559,5 +146554,5 @@ Run
 FROM farm::crops
 RESULTS
 HISTORY
-SCHEMA
+SHAPE
 $ run a query to see results
