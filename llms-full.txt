@@ -29,7 +29,7 @@ Contact
 Reach out to the team
 10
 Get Started
-No c█
+No ca█
 $ Built-in Testing
 Expand
 Copy
@@ -112456,8 +112456,7 @@ Reset
 2
 3
 from app::orders
-extend { region_label: match region { "North" => "Northern", "South" => "Southern", else => 
-"Other" } }
+extend { region_label: match region { "North" => "Northern", "South" => "Southern", else => "Other" } }
 map { id, region, region_label }
 $ ctrl+enter to run
 Run
