@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { loader } from '@monaco-editor/react';
 import { App } from './app';
+import '@reifydb/ui/styles.css';
 import './index.css';
 
 loader.config({

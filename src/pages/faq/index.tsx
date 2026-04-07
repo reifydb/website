@@ -25,7 +25,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
           isOpen ? 'max-h-96' : 'max-h-0'
         )}
       >
-        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-white/[0.06] pt-4">
+        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-border-light pt-4">
           {answer}
         </div>
       </div>

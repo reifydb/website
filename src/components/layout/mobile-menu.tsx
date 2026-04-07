@@ -70,7 +70,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
         className="bg-bg-primary overflow-y-auto overflow-x-hidden"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.08]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-border-default">
           <span className="text-sm text-text-muted">Navigation</span>
           <button
             onClick={onClose}
@@ -86,7 +86,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           {navDropdowns.map((dropdown) => {
             const expanded = expandedSection === dropdown.id;
             return (
-              <div key={dropdown.id} className="border-b border-white/[0.06] overflow-hidden">
+              <div key={dropdown.id} className="border-b border-border-light overflow-hidden">
                 <button
                   onClick={() => toggleSection(dropdown.id)}
                   className={cn(
@@ -104,7 +104,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                     expanded ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
                   )}
                 >
-                  <div className="px-4 pb-3 border-t border-white/[0.06]">
+                  <div className="px-4 pb-3 border-t border-border-light">
                     {dropdown.columns.map((column) => (
                       <div key={column.title} className="mt-2">
                         <div className="flex flex-col">
@@ -176,7 +176,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           {navDirectLinks.map((link) => {
             const isAnchor = link.href.startsWith('/#');
 
-            const className = "text-base px-4 py-4 min-h-[48px] flex items-center border-b border-white/[0.06] transition-colors duration-150 text-left text-text-muted hover:text-text-primary";
+            const className = "text-base px-4 py-4 min-h-[48px] flex items-center border-b border-border-light transition-colors duration-150 text-left text-text-muted hover:text-text-primary";
 
             if (isAnchor) {
               return (
@@ -204,7 +204,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           })}
 
           {/* Divider */}
-          <div className="border-t border-white/[0.06] my-2" />
+          <div className="border-t border-border-light my-2" />
 
           {/* CTA Button */}
           <Button href="/docs" size="lg" onClick={onClose} className="w-full min-h-[48px]">

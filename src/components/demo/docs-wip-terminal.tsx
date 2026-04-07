@@ -83,7 +83,7 @@ export function DocsWipTerminal() {
               {/* Previous completed messages */}
               {messages.slice(0, messageIndex).map((msg, idx) => (
                 <div key={idx} className="flex items-center mb-2 text-code-text-muted">
-                  <span className="text-feature-teal">$</span>
+                  <span className="text-primary">$</span>
                   <span className="ml-2">{msg}</span>
                   <span className="ml-2 text-status-success">OK</span>
                 </div>
@@ -91,7 +91,7 @@ export function DocsWipTerminal() {
 
               {/* Current typing line */}
               <div className="flex items-center">
-                <span className="text-feature-teal">$</span>
+                <span className="text-primary">$</span>
                 <span className="ml-2 text-code-text">{displayText}</span>
                 <span
                   className={`ml-0.5 text-primary transition-opacity ${showCursor ? 'opacity-100' : 'opacity-0'}`}
@@ -117,7 +117,7 @@ export function DocsWipTerminal() {
                 href="https://github.com/reifydb/reifydb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent-warm text-white font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(129,140,248,0.4)] transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold rounded-[4px] hover:brightness-110 transition-all"
               >
                 View on GitHub
               </a>

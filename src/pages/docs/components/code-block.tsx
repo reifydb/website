@@ -17,8 +17,8 @@ export function CodeBlock({ code, language = 'bash', className }: CodeBlockProps
   };
 
   return (
-    <div className={cn('border border-white/[0.08] rounded-lg bg-code-bg overflow-hidden', className)}>
-      <div className="flex justify-between items-center px-4 py-2 border-b border-white/[0.08] bg-code-bg-elevated">
+    <div className={cn('border border-border-default rounded-lg bg-code-bg overflow-hidden', className)}>
+      <div className="flex justify-between items-center px-4 py-2 border-b border-border-default bg-code-bg-elevated">
         <span className="text-xs font-medium text-code-text-muted uppercase tracking-wider">
           {language}
         </span>
@@ -57,15 +57,15 @@ export function TabbedCodeBlock({ examples, className }: TabbedCodeBlockProps) {
   };
 
   return (
-    <div className={cn('border border-white/[0.08] rounded-lg bg-code-bg overflow-hidden', className)}>
-      <div className="flex items-center justify-between border-b border-white/[0.08] bg-code-bg-elevated">
+    <div className={cn('border border-border-default rounded-lg bg-code-bg overflow-hidden', className)}>
+      <div className="flex items-center justify-between border-b border-border-default bg-code-bg-elevated">
         <div className="flex">
           {examples.map((example, index) => (
             <button
               key={example.language}
               onClick={() => setActiveTab(index)}
               className={cn(
-                'px-4 py-2 text-xs font-medium uppercase tracking-wider transition-colors border-r border-white/[0.08]',
+                'px-4 py-2 text-xs font-medium uppercase tracking-wider transition-colors border-r border-border-default',
                 activeTab === index
                   ? 'bg-primary text-white'
                   : 'text-code-text-muted hover:text-code-text'

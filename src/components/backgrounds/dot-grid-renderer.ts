@@ -1,12 +1,11 @@
 const TAU = Math.PI * 2;
 
 // Palette colors as [r, g, b]
-const IDLE_COLOR: RGB = [51, 51, 51]; // #333333 (--color-bg-elevated)
+const IDLE_COLOR: RGB = [58, 58, 58]; // #3a3a3a (--color-bg-elevated)
 const PRIMARY: RGB = [129, 140, 248]; // #818cf8 (--color-primary)
 const PRIMARY_LIGHT: RGB = [165, 180, 252]; // #a5b4fc (--color-primary-light)
-const GLOW_CYAN: RGB = [34, 211, 238]; // #22d3ee (--color-accent-cyan)
-const GLOW_LIME: RGB = [196, 240, 66]; // #c4f042 (--color-feature-green)
-const GLOW_COLORS: RGB[] = [GLOW_CYAN, GLOW_LIME, PRIMARY, PRIMARY_LIGHT];
+const PRIMARY_DARK: RGB = [99, 102, 241]; // #6366f1 (--color-primary-dark)
+const GLOW_COLORS: RGB[] = [PRIMARY_DARK, PRIMARY, PRIMARY_LIGHT, PRIMARY];
 
 type RGB = [number, number, number];
 
@@ -49,7 +48,6 @@ export interface DotGridConfig {
   pulseIntervalMin?: number;
   pulseIntervalMax?: number;
   fadeMargin?: number;
-  reducedMotion?: boolean;
 }
 
 const defaults = {
@@ -59,7 +57,6 @@ const defaults = {
   pulseIntervalMin: 1200,
   pulseIntervalMax: 2800,
   fadeMargin: 80,
-  reducedMotion: false,
 };
 
 type ResolvedConfig = typeof defaults;
@@ -165,9 +162,7 @@ export class DotGridRenderer {
     this.canvas.style.width = width + 'px';
     this.canvas.style.height = height + 'px';
 
-    if (this.config.reducedMotion) {
-      this.renderStatic();
-    } else if (!this.running) {
+    if (!this.running) {
       this.start();
     }
   }
@@ -296,11 +291,10 @@ export class DotGridRenderer {
   }
 
   private pickPulseType(): PulseType {
-    const r = Math.random();
-    if (r < 0.30) return 'line';
-    if (r < 0.55) return 'radial';
-    if (r < 0.75) return 'cross';
-    return 'branch';
+    const types: PulseType[] = ['line'];
+    if (this.cols >= 10 && this.rows >= 10) types.push('radial');
+    if (this.cols >= 14 && this.rows >= 14) types.push('cross', 'branch');
+    return pickRandom(types);
   }
 
   private createBranchPulse(
@@ -374,9 +368,10 @@ export class DotGridRenderer {
   }
 
   private generateHorizontalPath(): GridPoint[] {
-    const row = randomInt(2, this.rows - 3);
-    const len = randomInt(8, Math.min(20, this.cols - 4));
-    const startCol = randomInt(2, this.cols - len - 2);
+    const maxLen = Math.max(3, this.cols - 4);
+    const row = randomInt(1, Math.max(1, this.rows - 2));
+    const len = randomInt(Math.min(3, maxLen), Math.min(20, maxLen));
+    const startCol = randomInt(1, Math.max(1, this.cols - len - 1));
     const path: GridPoint[] = [];
     for (let i = 0; i < len; i++) {
       path.push({ col: startCol + i, row });
@@ -385,9 +380,10 @@ export class DotGridRenderer {
   }
 
   private generateVerticalPath(): GridPoint[] {
-    const col = randomInt(2, this.cols - 3);
-    const len = randomInt(6, Math.min(15, this.rows - 4));
-    const startRow = randomInt(2, this.rows - len - 2);
+    const maxLen = Math.max(3, this.rows - 4);
+    const col = randomInt(1, Math.max(1, this.cols - 2));
+    const len = randomInt(Math.min(3, maxLen), Math.min(15, maxLen));
+    const startRow = randomInt(1, Math.max(1, this.rows - len - 1));
     const path: GridPoint[] = [];
     for (let i = 0; i < len; i++) {
       path.push({ col, row: startRow + i });
@@ -396,15 +392,18 @@ export class DotGridRenderer {
   }
 
   private generateLPath(): GridPoint[] {
+    if (this.cols < 8 || this.rows < 8) return this.generateHorizontalPath();
+
     const path: GridPoint[] = [];
-    const row = randomInt(3, this.rows - 6);
-    const hLen = randomInt(5, Math.min(12, this.cols - 6));
-    const startCol = randomInt(2, this.cols - hLen - 4);
+    const row = randomInt(3, Math.max(3, this.rows - 6));
+    const hLen = randomInt(3, Math.min(12, this.cols - 6));
+    const startCol = randomInt(1, Math.max(1, this.cols - hLen - 2));
     for (let i = 0; i < hLen; i++) {
       path.push({ col: startCol + i, row });
     }
     const dir = Math.random() < 0.5 ? 1 : -1;
-    const vLen = randomInt(4, Math.min(10, dir > 0 ? this.rows - row - 2 : row - 2));
+    const maxVLen = Math.max(2, dir > 0 ? this.rows - row - 2 : row - 2);
+    const vLen = randomInt(2, Math.min(10, maxVLen));
     const lastCol = startCol + hLen - 1;
     for (let i = 1; i <= vLen; i++) {
       path.push({ col: lastCol, row: row + i * dir });
@@ -654,61 +653,10 @@ export class DotGridRenderer {
     ctx.restore();
   }
 
-  private renderStatic(): void {
-    const ctx = this.ctx;
-    const spacing = this.spacing;
-    const r = this.config.dotRadius;
-
-    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    ctx.save();
-    ctx.scale(this.dpr, this.dpr);
-
-    ctx.fillStyle = 'rgba(51,51,51,0.6)';
-    ctx.beginPath();
-
-    for (let row = 0; row < this.rows; row++) {
-      for (let col = 0; col < this.cols; col++) {
-        const x = this.offsetX + col * spacing;
-        const y = this.offsetY + row * spacing;
-        const fade = this.edgeFade(x, y);
-        if (fade <= 0) continue;
-
-        if (fade < 0.99) {
-          ctx.fill();
-          ctx.beginPath();
-          ctx.fillStyle = `rgba(51,51,51,${(0.6 * fade).toFixed(3)})`;
-          ctx.arc(x, y, r, 0, TAU);
-          ctx.fill();
-          ctx.fillStyle = 'rgba(51,51,51,0.6)';
-          ctx.beginPath();
-        } else {
-          ctx.moveTo(x + r, y);
-          ctx.arc(x, y, r, 0, TAU);
-        }
-      }
-    }
-
-    ctx.fill();
-    ctx.restore();
-  }
-
   // --- External API ---
 
   setVisible(visible: boolean): void {
     this.isVisible = visible;
-  }
-
-  setReducedMotion(reduced: boolean): void {
-    this.config.reducedMotion = reduced;
-    if (reduced) {
-      this.running = false;
-      cancelAnimationFrame(this.animFrameId);
-      this.pulses = [];
-      this.connectionLines = [];
-      this.renderStatic();
-    } else if (!this.running) {
-      this.start();
-    }
   }
 
   destroy(): void {

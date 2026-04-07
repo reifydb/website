@@ -97,8 +97,8 @@ export function HeroTerminal() {
       {/* Terminal Body */}
       <div className="p-4 sm:p-6 font-mono text-[clamp(0.75rem,2vw,0.875rem)] leading-relaxed text-left">
         <div className="flex items-center justify-start">
-          <span className="text-feature-teal hidden sm:inline">you@reifydb</span>
-          <span className="text-feature-teal sm:hidden">$</span>
+          <span className="text-primary hidden sm:inline">you@reifydb</span>
+          <span className="text-primary sm:hidden">$</span>
           <span className="text-code-text-muted hidden sm:inline">: </span>
           <span className="text-code-text ml-1">{displayCommand}</span>
           <span

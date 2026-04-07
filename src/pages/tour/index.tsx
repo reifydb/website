@@ -43,13 +43,13 @@ export function TourPage() {
       <Navbar />
 
       {/* Progress header */}
-      <div className="border-b border-white/[0.08] bg-bg-secondary sticky top-[60px] z-30">
+      <div className="border-b border-border-default bg-bg-secondary sticky top-[60px] z-30">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-4">
           <span className="font-mono text-xs text-text-muted shrink-0 hidden sm:inline">
             $ reifydb tour
           </span>
           <div className="flex-1 flex items-center gap-3">
-            <div className="flex-1 h-px bg-white/[0.05] relative">
+            <div className="flex-1 h-px bg-bg-secondary relative">
               <div
                 className="absolute left-0 top-0 h-full bg-primary transition-all duration-300"
                 style={{ width: `${progress}%` }}
@@ -70,7 +70,7 @@ export function TourPage() {
       </main>
 
       {/* Navigation bar */}
-      <div className="border-t border-white/[0.08] bg-bg-secondary sticky bottom-0 z-30">
+      <div className="border-t border-border-default bg-bg-secondary sticky bottom-0 z-30">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
           <Button
             variant="secondary"
@@ -90,7 +90,7 @@ export function TourPage() {
                 className={`transition-colors ${
                   i + 1 === currentStep
                     ? 'w-3 h-3 bg-primary'
-                    : 'w-2 h-2 bg-white/[0.1] hover:bg-white/[0.2]'
+                    : 'w-2 h-2 bg-bg-elevated hover:bg-bg-elevated'
                 }`}
                 title={`Step ${i + 1}: ${tourSteps[i].title}`}
               />

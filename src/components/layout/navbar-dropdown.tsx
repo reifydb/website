@@ -76,7 +76,7 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
       >
         <div
           className={cn(
-            "bg-bg-elevated border border-white/[0.10] rounded-lg shadow-large transition-all",
+            "bg-bg-elevated border border-border-default rounded-lg shadow-large transition-all",
             instant ? "duration-0" : "duration-200",
             isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
           )}

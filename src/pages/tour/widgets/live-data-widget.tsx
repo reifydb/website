@@ -55,7 +55,7 @@ export function LiveDataWidget() {
 
   return (
     <div className="glass-card bg-bg-secondary">
-      <div className="px-4 py-2 border-b border-white/[0.08] bg-bg-primary font-mono text-xs">
+      <div className="px-4 py-2 border-b border-border-default bg-bg-primary font-mono text-xs">
         <span className="text-primary">$</span> <span className="text-text-muted">live data widget :: tour::events</span>
       </div>
       <div className="p-4 space-y-4">
@@ -64,7 +64,7 @@ export function LiveDataWidget() {
         ) : (
           <>
             {/* Row count display */}
-            <div className="font-mono text-sm border border-white/[0.08] px-3 py-2 bg-bg-primary">
+            <div className="font-mono text-sm border border-border-default px-3 py-2 bg-bg-primary">
               <span className="text-text-muted">rows in </span>
               <span className="text-primary">tour::events</span>
               <span className="text-text-muted">: </span>

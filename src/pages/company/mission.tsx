@@ -44,7 +44,7 @@ export function MissionPage() {
                   <img
                     src="/assets/img/me.jpeg"
                     alt="Founder"
-                    className="w-32 h-32 object-cover border border-white/[0.08] rounded"
+                    className="w-32 h-32 object-cover border border-border-default rounded"
                   />
                 </div>
 

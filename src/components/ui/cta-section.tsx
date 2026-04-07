@@ -55,7 +55,7 @@ export function CtaSection({
                 <h3 className="text-lg sm:text-xl font-bold text-text-primary mb-2 sm:mb-3">{title}</h3>
                 <p className="text-sm sm:text-base text-text-muted">{description}</p>
               </CardContent>
-              <div className="p-6 sm:p-8 flex items-center justify-center border-t md:border-t-0 md:border-l border-white/[0.06]">
+              <div className="p-6 sm:p-8 flex items-center justify-center border-t md:border-t-0 md:border-l border-border-light">
                 {isExternal ? (
                   <a href={buttonHref} target="_blank" rel="noopener noreferrer">
                     <Button size="lg">{buttonText}</Button>

@@ -13,12 +13,7 @@ export function DotGridBackground({ className, ...config }: DotGridBackgroundPro
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    const renderer = new DotGridRenderer(canvas, {
-      ...config,
-      reducedMotion: mql.matches,
-    });
+    const renderer = new DotGridRenderer(canvas, config);
     rendererRef.current = renderer;
 
     // Initial size
@@ -32,12 +27,6 @@ export function DotGridBackground({ className, ...config }: DotGridBackgroundPro
     });
     observer.observe(parent);
 
-    // Reduced motion
-    const onMotionChange = (e: MediaQueryListEvent) => {
-      renderer.setReducedMotion(e.matches);
-    };
-    mql.addEventListener('change', onMotionChange);
-
     // Tab visibility
     const onVisibility = () => renderer.setVisible(!document.hidden);
     document.addEventListener('visibilitychange', onVisibility);
@@ -45,7 +34,6 @@ export function DotGridBackground({ className, ...config }: DotGridBackgroundPro
     return () => {
       renderer.destroy();
       observer.disconnect();
-      mql.removeEventListener('change', onMotionChange);
       document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);

@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 
 export interface Haiku {
   lines: [string, string, string];
@@ -21,8 +21,8 @@ interface TextSegment {
 
 const colorMap: Record<string, string> = {
   primary: 'text-primary',
-  cyan: 'text-accent-cyan',
-  green: 'text-feature-green',
+  cyan: 'text-primary',
+  green: 'text-primary-light',
 };
 
 /** Parse "{color:text}" markup into segments. Plain text passes through. */
@@ -75,24 +75,27 @@ export function HaikuTypewriter({
   const [charIndex, setCharIndex] = useState(0);
   const [phase, setPhase] = useState<Phase>('typing');
   const [displayLengths, setDisplayLengths] = useState<number[]>([0, 0, 0]);
+  const [cursorVisible, setCursorVisible] = useState(true);
+  const blinkRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
 
   const plainLines = useMemo(
     () => haikus.map((h) => h.lines.map(plainText)),
     [haikus],
   );
-  const [reducedMotion, setReducedMotion] = useState(false);
+
+  // Cursor blink: solid while typing, blinks during pauses
+  useEffect(() => {
+    clearInterval(blinkRef.current);
+    if (phase === 'typing') {
+      setCursorVisible(true);
+    } else if (phase === 'line-pause' || phase === 'haiku-display') {
+      setCursorVisible(true);
+      blinkRef.current = setInterval(() => setCursorVisible((v) => !v), 750);
+    }
+    return () => clearInterval(blinkRef.current);
+  }, [phase]);
 
   useEffect(() => {
-    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mql.matches);
-    const onChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
-    mql.addEventListener('change', onChange);
-    return () => mql.removeEventListener('change', onChange);
-  }, []);
-
-  useEffect(() => {
-    if (reducedMotion) return;
-
     if (phase === 'typing') {
       const currentPlainLine = plainLines[haikuIndex][lineIndex];
       if (charIndex < currentPlainLine.length) {
@@ -135,7 +138,7 @@ export function HaikuTypewriter({
       }, 600);
       return () => clearTimeout(timeout);
     }
-  }, [phase, charIndex, lineIndex, haikuIndex, reducedMotion, haikus, typingSpeed, linePause, haikuPause]);
+  }, [phase, charIndex, lineIndex, haikuIndex, haikus, typingSpeed, linePause, haikuPause]);
 
   const currentHaiku = haikus[haikuIndex];
 
@@ -146,17 +149,7 @@ export function HaikuTypewriter({
       </span>
     ));
 
-  if (reducedMotion) {
-    return (
-      <h1 className={className}>
-        {haikus[0].lines.map((line, i) => (
-          <span key={i} className="block">
-            {renderSegments(parseLine(line))}
-          </span>
-        ))}
-      </h1>
-    );
-  }
+  const showCursor = phase !== 'haiku-fade';
 
   return (
     <h1 className={className} aria-label={plainLines[haikuIndex].join(' / ')}>
@@ -166,9 +159,9 @@ export function HaikuTypewriter({
         {currentHaiku.lines.map((markup, i) => (
           <span key={`${haikuIndex}-${i}`} className="block min-h-[1.3em]">
             {renderSegments(renderColoredText(markup, displayLengths[i]))}
-            {i === lineIndex && phase !== 'haiku-fade' && (
+            {i === lineIndex && showCursor && (
               <span
-                className="blink-cursor text-primary ml-0.5 drop-shadow-[0_0_8px_rgba(129,140,248,0.8)]"
+                className={`text-primary ml-0.5 drop-shadow-[0_0_8px_rgba(129,140,248,0.8)] ${cursorVisible ? 'opacity-100' : 'opacity-0'}`}
                 aria-hidden="true"
               >
                 █

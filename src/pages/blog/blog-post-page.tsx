@@ -49,7 +49,7 @@ export function BlogPostPage() {
               {post.excerpt}
             </p>
 
-            <hr className="border border-white/[0.08]" />
+            <hr className="border border-border-default" />
           </ScrollReveal>
 
           <ScrollReveal delay={100}>

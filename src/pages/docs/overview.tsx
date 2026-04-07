@@ -17,14 +17,14 @@ const quickLinks = [
     description: 'Write your first query and see results immediately.',
     href: '/docs/quick-start',
     icon: BookOpen,
-    color: 'text-feature-blue',
+    color: 'text-primary',
   },
   {
     title: 'RQL Basics',
     description: 'Learn how RQL works, from the ground up.',
     href: '/docs/rql/basics',
     icon: Code,
-    color: 'text-feature-green',
+    color: 'text-primary',
   },
 ];
 
@@ -83,7 +83,7 @@ export function DocsOverview() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="group border-2 border-white/[0.08] p-5 transition-all duration-300 hover:border-primary/50"
+                  className="group border-2 border-border-default p-5 transition-all duration-300 hover:border-primary/50"
                   style={{ animationDelay: `${index * 75}ms` }}
                 >
                   <div className="flex items-start gap-4">
@@ -129,7 +129,7 @@ export function DocsOverview() {
 
         {/* Links */}
         <ScrollReveal delay={250}>
-          <section className="pt-4 border-t border-white/[0.08]">
+          <section className="pt-4 border-t border-border-default">
             <h2 className="text-lg font-black tracking-tight mb-4">Resources</h2>
             <ul className="space-y-2 text-text-secondary">
               <li>

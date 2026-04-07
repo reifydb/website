@@ -52,7 +52,7 @@ export function FarmPage() {
                 <div
                   ref={containerRef}
                   tabIndex={-1}
-                  className="w-full h-full border border-white/[0.08]"
+                  className="w-full h-full border border-border-default"
                 />
                 <IoTOverlay
                   sensors={gameState.sensors}

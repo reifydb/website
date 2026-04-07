@@ -12,9 +12,9 @@ interface CalloutProps {
 
 const variantStyles: Record<CalloutVariant, { border: string; bg: string; icon: string }> = {
   info: {
-    border: 'border-feature-blue/50',
-    bg: 'bg-feature-blue/10',
-    icon: 'text-feature-blue',
+    border: 'border-primary/50',
+    bg: 'bg-primary/10',
+    icon: 'text-primary',
   },
   warning: {
     border: 'border-status-warning/50',
@@ -27,7 +27,7 @@ const variantStyles: Record<CalloutVariant, { border: string; bg: string; icon: 
     icon: 'text-status-success',
   },
   note: {
-    border: 'border-white/[0.12]',
+    border: 'border-border-default',
     bg: 'bg-bg-tertiary',
     icon: 'text-text-muted',
   },

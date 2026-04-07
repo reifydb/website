@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import Editor, { type OnMount } from '@monaco-editor/react';
 import type { editor } from 'monaco-editor';
 import { rqlLanguageDefinition, rqlLanguageConfiguration } from '@/lib/rql-language';
-import { premiumDarkTheme } from '@/lib/monaco-themes';
+import { premiumDarkTheme } from '@reifydb/console';
 
 let languageRegistered = false;
 
@@ -66,7 +66,7 @@ export function CodeViewer({ code, className }: CodeViewerProps) {
           overviewRulerBorder: false,
           renderLineHighlight: 'none',
           contextmenu: false,
-          fontFamily: "'IBM Plex Mono', monospace",
+          fontFamily: "'Inconsolata', monospace",
           fontSize: 13,
           padding: { top: 8, bottom: 8 },
           wordWrap: 'on',

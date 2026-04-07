@@ -29,12 +29,12 @@ const sections = [
 
 export function Footer() {
   return (
-    <footer className="relative z-10 bg-bg-secondary border-t border-white/[0.06] py-12 sm:py-16 text-white">
+    <footer className="relative z-10 bg-bg-secondary border-t border-border-light py-12 sm:py-16 text-white">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 text-sm">
           {sections.map((section) => (
             <div key={section.title} className="glass-card p-0 overflow-hidden">
-              <div className="px-4 py-3 border-b border-white/[0.06]">
+              <div className="px-4 py-3 border-b border-border-light">
                 <span className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
                   {section.title}
                 </span>
@@ -68,7 +68,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 sm:mt-16 border-t border-white/[0.06] pt-8 sm:pt-10 text-xs text-text-muted flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div className="mt-12 sm:mt-16 border-t border-border-light pt-8 sm:pt-10 text-xs text-text-muted flex flex-col items-center justify-between gap-4 md:flex-row">
           <div>
             &copy; {new Date().getFullYear()} ReifyDB. All Rights Reserved.
           </div>

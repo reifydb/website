@@ -71,9 +71,9 @@ const components: Components = {
     if (isBlock) {
       const lang = className?.replace('language-', '') ?? '';
       return (
-        <div className="my-4 border border-white/[0.08] overflow-hidden bg-code-bg">
+        <div className="my-4 border border-border-default overflow-hidden bg-code-bg">
           {lang && (
-            <div className="px-4 py-2 text-xs font-mono text-code-text-muted border-b border-white/[0.08] bg-code-bg-elevated">
+            <div className="px-4 py-2 text-xs font-mono text-code-text-muted border-b border-border-default bg-code-bg-elevated">
               {lang}
             </div>
           )}
@@ -86,14 +86,14 @@ const components: Components = {
       );
     }
     return (
-      <code className="bg-bg-tertiary border border-white/[0.08] px-1.5 py-0.5 font-mono text-sm text-primary-light">
+      <code className="bg-bg-tertiary border border-border-default px-1.5 py-0.5 font-mono text-sm text-primary-light">
         {children}
       </code>
     );
   },
   pre: ({ children }) => <>{children}</>,
   table: ({ children }) => (
-    <div className="my-4 overflow-x-auto border border-white/[0.08]">
+    <div className="my-4 overflow-x-auto border border-border-default">
       <table className="w-full text-sm text-text-secondary">{children}</table>
     </div>
   ),
@@ -101,14 +101,14 @@ const components: Components = {
     <thead className="bg-bg-elevated text-text-primary">{children}</thead>
   ),
   th: ({ children }) => (
-    <th className="px-4 py-3 text-left font-semibold border-b border-white/[0.08]">
+    <th className="px-4 py-3 text-left font-semibold border-b border-border-default">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="px-4 py-3 border-b border-white/[0.08]">{children}</td>
+    <td className="px-4 py-3 border-b border-border-default">{children}</td>
   ),
-  hr: () => <hr className="my-8 border border-white/[0.08]" />,
+  hr: () => <hr className="my-8 border border-border-default" />,
   strong: ({ children }) => (
     <strong className="font-bold text-text-primary">{children}</strong>
   ),

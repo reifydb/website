@@ -34,7 +34,7 @@ export function Dashboard({ stats, weather, cropCount, sensorCount, cropSummary,
         <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted mb-1">
           # weather
         </div>
-        <div className="border border-white/[0.08] p-2 bg-bg-secondary">
+        <div className="border border-border-default p-2 bg-bg-secondary">
           <div className="flex items-center gap-2">
             <span className="text-lg">{weatherIcons[weather.condition] || '?'}</span>
             <span className="text-xs font-mono capitalize text-text-primary">{weather.condition}</span>
@@ -46,7 +46,7 @@ export function Dashboard({ stats, weather, cropCount, sensorCount, cropSummary,
         <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted mb-1">
           # resources
         </div>
-        <div className="border border-white/[0.08] p-2 bg-bg-secondary space-y-0.5">
+        <div className="border border-border-default p-2 bg-bg-secondary space-y-0.5">
           <StatRow label="Water" value={Number(stats.water_used).toFixed(1)} unit="L" />
           <StatRow label="Energy" value={Number(stats.energy_used).toFixed(1)} unit="kW" />
           <StatRow label="Yield" value={Number(stats.total_yield).toFixed(0)} />
@@ -58,7 +58,7 @@ export function Dashboard({ stats, weather, cropCount, sensorCount, cropSummary,
         <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted mb-1">
           # farm
         </div>
-        <div className="border border-white/[0.08] p-2 bg-bg-secondary space-y-0.5">
+        <div className="border border-border-default p-2 bg-bg-secondary space-y-0.5">
           <StatRow label="Crops" value={cropCount} />
           <StatRow label="Sensors" value={sensorCount} />
         </div>
@@ -69,14 +69,14 @@ export function Dashboard({ stats, weather, cropCount, sensorCount, cropSummary,
           <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted mb-1">
             # crop health <span className="text-[8px] opacity-60">(view)</span>
           </div>
-          <div className="border border-white/[0.08] p-2 bg-bg-secondary space-y-1.5">
+          <div className="border border-border-default p-2 bg-bg-secondary space-y-1.5">
             {cropSummary.map(cs => (
               <div key={cs.crop_type} className="space-y-0.5">
                 <div className="flex justify-between text-xs font-mono">
                   <span className="text-text-muted capitalize">{cs.crop_type}</span>
                   <span className="text-text-primary">{cs.total}</span>
                 </div>
-                <div className="w-full bg-white/[0.05] h-1.5 rounded">
+                <div className="w-full bg-bg-secondary h-1.5 rounded">
                   <div
                     className={`h-full rounded ${cs.avg_health > 0.7 ? 'bg-green-500' : cs.avg_health > 0.3 ? 'bg-yellow-500' : 'bg-red-500'}`}
                     style={{ width: `${(cs.avg_health * 100).toFixed(0)}%` }}
@@ -93,7 +93,7 @@ export function Dashboard({ stats, weather, cropCount, sensorCount, cropSummary,
           <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted mb-1">
             # soil conditions <span className="text-[8px] opacity-60">(view)</span>
           </div>
-          <div className="border border-white/[0.08] p-2 bg-bg-secondary space-y-0.5">
+          <div className="border border-border-default p-2 bg-bg-secondary space-y-0.5">
             {soilOverview.map(so => (
               <div key={so.soil_type} className="flex justify-between text-xs font-mono">
                 <span className="text-text-muted capitalize">{so.soil_type}</span>

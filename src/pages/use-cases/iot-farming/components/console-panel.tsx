@@ -60,18 +60,18 @@ export function ConsolePanel() {
       {/* Drag handle */}
       <div
         onMouseDown={onMouseDown}
-        className="h-1.5 cursor-row-resize border-t border-white/[0.08] flex items-center justify-center"
+        className="h-1.5 cursor-row-resize border-t border-border-default flex items-center justify-center"
       >
-        <div className="w-8 h-0.5 rounded bg-white/[0.15]" />
+        <div className="w-8 h-0.5 rounded bg-border-default" />
       </div>
       {/* Cookbook query buttons */}
-      <div className="flex items-center gap-1 px-2 py-1 bg-bg-secondary border-b border-white/[0.05] overflow-x-auto">
+      <div className="flex items-center gap-1 px-2 py-1 bg-bg-secondary border-b border-border-subtle overflow-x-auto">
         <span className="text-[10px] font-mono text-text-muted whitespace-nowrap mr-1">Cookbook:</span>
         {COOKBOOK_QUERIES.map(({ label, query }) => (
           <button
             key={label}
             onClick={() => loadQuery(query)}
-            className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-white/[0.08] bg-bg-primary text-text-muted hover:text-text-primary hover:border-white/[0.15] whitespace-nowrap transition-colors"
+            className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-border-default bg-bg-primary text-text-muted hover:text-text-primary hover:border-border-default whitespace-nowrap transition-colors"
           >
             {label}
           </button>

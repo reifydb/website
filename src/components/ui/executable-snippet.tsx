@@ -1,7 +1,7 @@
 import { Snippet } from '@reifydb/console';
 import '@reifydb/console/styles.css';
 import { wasmExecutor } from '@/lib/wasm-executor-singleton';
-import { premiumDarkTheme } from '@/lib/monaco-themes';
+import { premiumDarkTheme } from '@reifydb/console';
 import { cn } from '@/lib';
 
 interface ExecutableSnippetProps {
@@ -18,7 +18,7 @@ export function ExecutableSnippet({
   className,
 }: ExecutableSnippetProps) {
   return (
-    <div className={cn('rounded-lg overflow-hidden glass-card-strong', className)}>
+    <div className={cn('overflow-hidden', className)}>
       <Snippet
         executor={wasmExecutor}
         initialCode={initialCode}

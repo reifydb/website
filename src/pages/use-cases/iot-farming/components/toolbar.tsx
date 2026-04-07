@@ -58,7 +58,7 @@ function ToolSection({ title, tools, currentTool, onToolChange }: {
             className={`flex items-center gap-1.5 px-2 py-1 text-xs font-mono border transition-colors ${
               currentTool === tool.mode
                 ? 'border-primary text-primary bg-primary/5'
-                : 'border-transparent text-text-secondary hover:text-text-primary hover:border-white/[0.08]'
+                : 'border-transparent text-text-secondary hover:text-text-primary hover:border-border-default'
             }`}
           >
             <span className="w-4 text-center">{tool.icon}</span>
@@ -72,7 +72,7 @@ function ToolSection({ title, tools, currentTool, onToolChange }: {
 
 export function Toolbar({ currentTool, speed, onToolChange, onSpeedChange }: ToolbarProps) {
   return (
-    <div className="w-36 border-r border-white/[0.08] bg-bg-primary p-3 flex flex-col overflow-y-auto">
+    <div className="w-36 border-r border-border-default bg-bg-primary p-3 flex flex-col overflow-y-auto">
       <ToolSection title="actions" tools={actionTools} currentTool={currentTool} onToolChange={onToolChange} />
       <ToolSection title="crops" tools={cropTools} currentTool={currentTool} onToolChange={onToolChange} />
       <ToolSection title="sensors" tools={sensorTools} currentTool={currentTool} onToolChange={onToolChange} />
@@ -89,7 +89,7 @@ export function Toolbar({ currentTool, speed, onToolChange, onSpeedChange }: Too
               className={`flex-1 px-1 py-1 text-xs font-mono border transition-colors ${
                 speed === s.value
                   ? 'border-primary text-primary bg-primary/5'
-                  : 'border-transparent text-text-secondary hover:text-text-primary hover:border-white/[0.08]'
+                  : 'border-transparent text-text-secondary hover:text-text-primary hover:border-border-default'
               }`}
             >
               {s.label}

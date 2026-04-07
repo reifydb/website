@@ -13,13 +13,13 @@ export function InfoPanel({ gameState }: InfoPanelProps) {
   const sensor = selectedTile ? sensors.find(s => s.x === selectedTile.x && s.y === selectedTile.y) : null;
 
   return (
-    <div className="w-52 border-l border-white/[0.08] bg-bg-primary p-3 flex flex-col overflow-y-auto">
+    <div className="w-52 border-l border-border-default bg-bg-primary p-3 flex flex-col overflow-y-auto">
       {tile && (
         <div className="mb-3">
           <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted mb-1">
             # tile [{selectedTile!.x}, {selectedTile!.y}]
           </div>
-          <div className="border border-white/[0.08] p-2 bg-bg-secondary space-y-0.5">
+          <div className="border border-border-default p-2 bg-bg-secondary space-y-0.5">
             <div className="flex justify-between text-xs font-mono">
               <span className="text-text-muted">Soil</span>
               <span className="text-text-primary capitalize">{tile.soil_type}</span>
@@ -45,7 +45,7 @@ export function InfoPanel({ gameState }: InfoPanelProps) {
           <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted mb-1">
             # crop
           </div>
-          <div className="border border-white/[0.08] p-2 bg-bg-secondary space-y-0.5">
+          <div className="border border-border-default p-2 bg-bg-secondary space-y-0.5">
             <div className="flex justify-between text-xs font-mono">
               <span className="text-text-muted">Type</span>
               <span className="text-text-primary capitalize">{crop.crop_type}</span>
@@ -73,7 +73,7 @@ export function InfoPanel({ gameState }: InfoPanelProps) {
           <div className="text-[10px] font-mono uppercase tracking-wider text-text-muted mb-1">
             # sensor
           </div>
-          <div className="border border-white/[0.08] p-2 bg-bg-secondary space-y-0.5">
+          <div className="border border-border-default p-2 bg-bg-secondary space-y-0.5">
             <div className="flex justify-between text-xs font-mono">
               <span className="text-text-muted">Type</span>
               <span className="text-text-primary capitalize">{sensor.sensor_type}</span>

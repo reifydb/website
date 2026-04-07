@@ -55,13 +55,13 @@ export function PitchPage() {
       {!isFullscreen && <Navbar />}
 
       {/* Progress header */}
-      <div className={`border-b border-white/[0.08] bg-bg-secondary sticky ${isFullscreen ? 'top-0' : 'top-[60px]'} z-30`}>
+      <div className={`border-b border-border-default bg-bg-secondary sticky ${isFullscreen ? 'top-0' : 'top-[60px]'} z-30`}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-4">
           <span className="font-mono text-xs text-text-muted shrink-0 hidden sm:inline">
             $ reifydb pitch
           </span>
           <div className="flex-1 flex items-center gap-3">
-            <div className="flex-1 h-px bg-white/[0.05] relative">
+            <div className="flex-1 h-px bg-bg-secondary relative">
               <div
                 className="absolute left-0 top-0 h-full bg-primary transition-all duration-300"
                 style={{ width: `${progress}%` }}
@@ -73,7 +73,7 @@ export function PitchPage() {
           </div>
           <button
             onClick={toggleFullscreen}
-            className="font-mono text-xs border border-white/[0.1] text-text-secondary hover:border-primary hover:text-primary px-2 py-1 transition-colors shrink-0"
+            className="font-mono text-xs border border-border-default text-text-secondary hover:border-primary hover:text-primary px-2 py-1 transition-colors shrink-0"
             title={isFullscreen ? 'Exit fullscreen (Esc)' : 'Fullscreen (F)'}
           >
             {isFullscreen ? '[exit]' : '[full]'}
@@ -89,7 +89,7 @@ export function PitchPage() {
       </main>
 
       {/* Navigation bar */}
-      <div className="border-t border-white/[0.08] bg-bg-secondary sticky bottom-0 z-30">
+      <div className="border-t border-border-default bg-bg-secondary sticky bottom-0 z-30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
           <Button
             variant="secondary"
@@ -109,7 +109,7 @@ export function PitchPage() {
                 className={`transition-colors ${
                   i + 1 === currentSlide
                     ? 'w-3 h-3 bg-primary'
-                    : 'w-2 h-2 bg-white/[0.1] hover:bg-white/[0.2]'
+                    : 'w-2 h-2 bg-bg-elevated hover:bg-bg-elevated'
                 }`}
                 title={`Slide ${i + 1}`}
               />

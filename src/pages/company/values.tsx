@@ -74,7 +74,7 @@ export function ValuesPage() {
                     }`}
                   >
                     {/* Number Badge */}
-                    <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 border border-white/[0.08] flex items-center justify-center">
+                    <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 border border-border-default flex items-center justify-center">
                       <span className="text-primary font-mono text-3xl sm:text-4xl font-bold">
                         {number}
                       </span>
