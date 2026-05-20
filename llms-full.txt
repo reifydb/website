@@ -27,9 +27,9 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
-No ca█
+No c█
 $ Built-in Testing
 Expand
 Copy
@@ -204,7 +204,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/blog/
@@ -235,7 +235,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
 Blog
 
@@ -261,7 +261,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/blog/introducing-reifydb/
@@ -292,7 +292,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
 ← Back to blog
 Introducing ReifyDB
@@ -360,7 +360,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 ^
 
 ===============================================================================
@@ -392,7 +392,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
 The Mission
 
@@ -425,7 +425,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/company/values/
@@ -456,7 +456,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
 Values
 
@@ -500,7 +500,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/contact/
@@ -531,7 +531,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
 Get in Touch
 
@@ -567,7 +567,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/
@@ -1019,7 +1019,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/
@@ -1432,7 +1432,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/incremental-maintenance/
@@ -1845,7 +1845,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/storage-engine/
@@ -2258,7 +2258,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/transaction-engine/
@@ -2671,7 +2671,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/types/
@@ -3173,7 +3173,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/volcano/
@@ -3653,7 +3653,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/wire-protocol/
@@ -4066,7 +4066,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/coming-from/firebase/
@@ -4479,7 +4479,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/coming-from/mongodb/
@@ -4892,7 +4892,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/coming-from/redis/
@@ -5305,7 +5305,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/coming-from/sql/
@@ -5718,7 +5718,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/
@@ -6131,7 +6131,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/consistency/
@@ -6544,7 +6544,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/data-model/
@@ -6957,7 +6957,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/embedded-vs-server/
@@ -7370,7 +7370,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/materialized-views/
@@ -7783,7 +7783,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/namespaces/
@@ -8196,7 +8196,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/real-time/
@@ -8609,7 +8609,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/storage-engines/
@@ -9022,7 +9022,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/
@@ -9486,7 +9486,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/blob/
@@ -9930,7 +9930,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/blob/b58/
@@ -10369,7 +10369,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/blob/b64/
@@ -10808,7 +10808,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/blob/b64url/
@@ -11247,7 +11247,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/blob/hex/
@@ -11686,7 +11686,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/blob/utf8/
@@ -12125,7 +12125,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/clock/
@@ -12563,7 +12563,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/clock/advance/
@@ -12992,7 +12992,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/clock/now/
@@ -13422,7 +13422,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/clock/set/
@@ -13851,7 +13851,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/
@@ -14393,7 +14393,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/add/
@@ -14832,7 +14832,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/age/
@@ -15271,7 +15271,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/day/
@@ -15710,7 +15710,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/day_of_week/
@@ -16148,7 +16148,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/day_of_year/
@@ -16586,7 +16586,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/days_in_month/
@@ -17024,7 +17024,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/diff/
@@ -17464,7 +17464,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/end_of_month/
@@ -17902,7 +17902,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/format/
@@ -18342,7 +18342,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/is_leap_year/
@@ -18780,7 +18780,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/month/
@@ -19219,7 +19219,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/new/
@@ -19659,7 +19659,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/now/
@@ -20099,7 +20099,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/quarter/
@@ -20537,7 +20537,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/start_of_month/
@@ -20975,7 +20975,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/start_of_year/
@@ -21413,7 +21413,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/subtract/
@@ -21852,7 +21852,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/trunc/
@@ -22291,7 +22291,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/week/
@@ -22729,7 +22729,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/year/
@@ -23168,7 +23168,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/
@@ -23714,7 +23714,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/add/
@@ -24153,7 +24153,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/age/
@@ -24592,7 +24592,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/date/
@@ -25030,7 +25030,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/day/
@@ -25468,7 +25468,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/day_of_week/
@@ -25906,7 +25906,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/day_of_year/
@@ -26344,7 +26344,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/diff/
@@ -26783,7 +26783,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/epoch/
@@ -27221,7 +27221,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/epoch_millis/
@@ -27659,7 +27659,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/format/
@@ -28098,7 +28098,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/from_epoch/
@@ -28536,7 +28536,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/from_epoch_millis/
@@ -28974,7 +28974,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/hour/
@@ -29412,7 +29412,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/minute/
@@ -29850,7 +29850,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/month/
@@ -30288,7 +30288,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/nanosecond/
@@ -30726,7 +30726,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/new/
@@ -31165,7 +31165,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/now/
@@ -31604,7 +31604,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/quarter/
@@ -32042,7 +32042,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/second/
@@ -32480,7 +32480,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/subtract/
@@ -32919,7 +32919,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/time/
@@ -33357,7 +33357,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/trunc/
@@ -33796,7 +33796,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/week/
@@ -34234,7 +34234,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/year/
@@ -34672,7 +34672,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/
@@ -35176,7 +35176,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/add/
@@ -35615,7 +35615,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/days/
@@ -36055,7 +36055,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/format/
@@ -36493,7 +36493,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/get_days/
@@ -36931,7 +36931,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/get_months/
@@ -37369,7 +37369,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/get_nanos/
@@ -37807,7 +37807,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/hours/
@@ -38247,7 +38247,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/millis/
@@ -38686,7 +38686,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/minutes/
@@ -39126,7 +39126,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/months/
@@ -39567,7 +39567,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/negate/
@@ -40005,7 +40005,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/scale/
@@ -40444,7 +40444,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/seconds/
@@ -40884,7 +40884,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/subtract/
@@ -41323,7 +41323,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/trunc/
@@ -41761,7 +41761,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/weeks/
@@ -42201,7 +42201,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/years/
@@ -42642,7 +42642,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/identity/
@@ -43063,7 +43063,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/identity/id/
@@ -43501,7 +43501,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/is/
@@ -43944,7 +43944,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/is/anonymous/
@@ -44382,7 +44382,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/is/none/
@@ -44820,7 +44820,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/is/root/
@@ -45258,7 +45258,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/is/some/
@@ -45696,7 +45696,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/is/type/
@@ -46135,7 +46135,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/json/
@@ -46584,7 +46584,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/json/array/
@@ -47039,7 +47039,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/json/object/
@@ -47497,7 +47497,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/json/pretty/
@@ -47941,7 +47941,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/json/serialize/
@@ -48385,7 +48385,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/
@@ -48978,7 +48978,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/abs/
@@ -49430,7 +49430,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/acos/
@@ -49869,7 +49869,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/asin/
@@ -50308,7 +50308,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/atan/
@@ -50747,7 +50747,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/atan2/
@@ -51187,7 +51187,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/avg/
@@ -51648,7 +51648,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/ceil/
@@ -52086,7 +52086,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/clamp/
@@ -52526,7 +52526,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/cos/
@@ -52965,7 +52965,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/e/
@@ -53404,7 +53404,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/exp/
@@ -53842,7 +53842,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/floor/
@@ -54280,7 +54280,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/gcd/
@@ -54719,7 +54719,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/lcm/
@@ -55158,7 +55158,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/log/
@@ -55597,7 +55597,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/log10/
@@ -56035,7 +56035,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/log2/
@@ -56473,7 +56473,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/max/
@@ -56934,7 +56934,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/min/
@@ -57395,7 +57395,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/mod/
@@ -57834,7 +57834,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/pi/
@@ -58274,7 +58274,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/power/
@@ -58713,7 +58713,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/round/
@@ -59167,7 +59167,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/sign/
@@ -59604,7 +59604,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/sin/
@@ -60043,7 +60043,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/sqrt/
@@ -60481,7 +60481,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/sum/
@@ -60942,7 +60942,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/tan/
@@ -61381,7 +61381,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/truncate/
@@ -61820,7 +61820,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/meta/
@@ -62241,7 +62241,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/meta/type/
@@ -62678,7 +62678,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/
@@ -63227,7 +63227,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/ascii/
@@ -63664,7 +63664,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/char/
@@ -64101,7 +64101,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/concat/
@@ -64539,7 +64539,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/contains/
@@ -64979,7 +64979,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/count/
@@ -65417,7 +65417,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/ends_with/
@@ -65856,7 +65856,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/format_bytes/
@@ -66293,7 +66293,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/format_bytes_si/
@@ -66730,7 +66730,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/index_of/
@@ -67169,7 +67169,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/length/
@@ -67632,7 +67632,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/lower/
@@ -68070,7 +68070,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/pad_left/
@@ -68510,7 +68510,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/pad_right/
@@ -68950,7 +68950,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/repeat/
@@ -69389,7 +69389,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/replace/
@@ -69829,7 +69829,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/reverse/
@@ -70267,7 +70267,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/starts_with/
@@ -70706,7 +70706,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/substring/
@@ -71172,7 +71172,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/trim/
@@ -71624,7 +71624,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/trim_end/
@@ -72062,7 +72062,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/trim_start/
@@ -72500,7 +72500,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/upper/
@@ -72952,7 +72952,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/
@@ -73431,7 +73431,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/add/
@@ -73870,7 +73870,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/age/
@@ -74309,7 +74309,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/diff/
@@ -74748,7 +74748,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/format/
@@ -75186,7 +75186,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/hour/
@@ -75624,7 +75624,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/minute/
@@ -76062,7 +76062,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/nanosecond/
@@ -76499,7 +76499,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/new/
@@ -76938,7 +76938,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/now/
@@ -77377,7 +77377,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/second/
@@ -77815,7 +77815,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/subtract/
@@ -78254,7 +78254,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/trunc/
@@ -78692,7 +78692,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/
@@ -79105,7 +79105,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/modeling/cms/
@@ -79518,7 +79518,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/modeling/e-commerce/
@@ -79931,7 +79931,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/modeling/iot/
@@ -80344,7 +80344,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/modeling/multi-tenancy/
@@ -80757,7 +80757,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/modeling/relationships/
@@ -81170,7 +81170,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/modeling/users-auth/
@@ -81583,7 +81583,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/patterns/audit-trail/
@@ -81996,7 +81996,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/patterns/computed-fields/
@@ -82409,7 +82409,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/patterns/cqrs/
@@ -82822,7 +82822,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/patterns/data-versioning/
@@ -83235,7 +83235,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/patterns/soft-deletes/
@@ -83648,7 +83648,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/patterns/state-machines/
@@ -84061,7 +84061,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/real-time/event-sourcing/
@@ -84474,7 +84474,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/real-time/live-queries/
@@ -84887,7 +84887,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/real-time/notifications/
@@ -85300,7 +85300,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/real-time/reactive-views/
@@ -85713,7 +85713,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/testing/fixtures/
@@ -86126,7 +86126,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/testing/integration-testing/
@@ -86539,7 +86539,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/testing/unit-testing/
@@ -86952,7 +86952,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/installation/
@@ -87408,7 +87408,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/
@@ -87821,7 +87821,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/cdc/
@@ -88234,7 +88234,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/frameworks/nextjs/
@@ -88647,7 +88647,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/frameworks/react/
@@ -89060,7 +89060,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/frameworks/svelte/
@@ -89473,7 +89473,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/http-api/
@@ -89886,7 +89886,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/http-api/authentication/
@@ -90299,7 +90299,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/http-api/errors/
@@ -90712,7 +90712,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/http-api/mutation/
@@ -91125,7 +91125,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/http-api/query/
@@ -91538,7 +91538,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/http-api/subscription/
@@ -91951,7 +91951,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/webhooks/
@@ -92364,7 +92364,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/backup/
@@ -92777,7 +92777,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/backup/point-in-time/
@@ -93190,7 +93190,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/backup/snapshots/
@@ -93603,7 +93603,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/deployment/docker/
@@ -94016,7 +94016,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/deployment/embedded/
@@ -94429,7 +94429,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/deployment/kubernetes/
@@ -94842,7 +94842,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/deployment/standalone/
@@ -95255,7 +95255,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/deployment/systemd/
@@ -95668,7 +95668,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/monitoring/
@@ -96081,7 +96081,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/monitoring/health-checks/
@@ -96494,7 +96494,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/monitoring/logging/
@@ -96907,7 +96907,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/monitoring/metrics/
@@ -97320,7 +97320,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/scaling/
@@ -97733,7 +97733,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/upgrades/
@@ -98146,7 +98146,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/
@@ -98559,7 +98559,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/benchmarks/
@@ -98972,7 +98972,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/explain/
@@ -99385,7 +99385,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/indexing/
@@ -99798,7 +99798,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/memory/
@@ -100211,7 +100211,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/query-optimization/
@@ -100624,7 +100624,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/view-tuning/
@@ -101037,7 +101037,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/quick-start/
@@ -101559,7 +101559,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/resources/changelog/
@@ -101972,7 +101972,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/resources/community/
@@ -102385,7 +102385,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/resources/contributing/
@@ -102798,7 +102798,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/resources/glossary/
@@ -103211,7 +103211,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/resources/release-notes/
@@ -103624,7 +103624,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/resources/roadmap/
@@ -104037,7 +104037,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/basics/
@@ -104518,7 +104518,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/expressions/
@@ -105034,7 +105034,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/expressions/conditionals/
@@ -105447,7 +105447,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/expressions/field-access/
@@ -105860,7 +105860,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/expressions/literals/
@@ -106273,7 +106273,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/expressions/operators/
@@ -106712,7 +106712,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/patterns/dynamic-queries/
@@ -107125,7 +107125,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/patterns/hierarchical-data/
@@ -107538,7 +107538,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/patterns/pagination/
@@ -107951,7 +107951,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/patterns/text-search/
@@ -108364,7 +108364,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/patterns/time-series/
@@ -108777,7 +108777,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/
@@ -109313,7 +109313,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/aggregate/
@@ -109792,7 +109792,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/distinct/
@@ -110233,7 +110233,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/extend/
@@ -110690,7 +110690,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/filter/
@@ -111145,7 +111145,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/join/
@@ -111590,7 +111590,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/map/
@@ -112047,7 +112047,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/match/
@@ -112492,7 +112492,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/patch/
@@ -112979,7 +112979,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/sort/
@@ -113453,7 +113453,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/take/
@@ -113896,7 +113896,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/
@@ -114418,7 +114418,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/access-control/
@@ -114864,7 +114864,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/dml/batch/
@@ -115277,7 +115277,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/dml/delete/
@@ -115738,7 +115738,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/dml/insert/
@@ -116197,7 +116197,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/dml/update/
@@ -116656,7 +116656,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/dml/upsert/
@@ -117069,7 +117069,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/events/
@@ -117532,7 +117532,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/events/dispatch/
@@ -117985,7 +117985,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/events/handlers/
@@ -118428,7 +118428,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/migrations/
@@ -118887,7 +118887,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/procedures/
@@ -119346,7 +119346,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/procedures/control-flow/
@@ -119819,7 +119819,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/constraints/
@@ -120232,7 +120232,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/dictionaries/
@@ -120659,7 +120659,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/drop/
@@ -121102,7 +121102,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/enums/
@@ -121557,7 +121557,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/indexes/
@@ -121970,7 +121970,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/namespaces/
@@ -122419,7 +122419,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/tables/
@@ -122880,7 +122880,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/storage/ringbuffers/
@@ -123325,7 +123325,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/storage/series/
@@ -123766,7 +123766,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/storage/tables/
@@ -124235,7 +124235,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/subscriptions/
@@ -124665,7 +124665,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/testing/
@@ -125149,7 +125149,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/views/
@@ -125660,7 +125660,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/views/deferred/
@@ -126179,7 +126179,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/views/transactional/
@@ -126640,7 +126640,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/
@@ -127053,7 +127053,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/go/api-reference/
@@ -127466,7 +127466,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/go/connection/
@@ -127879,7 +127879,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/go/queries/
@@ -128292,7 +128292,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/go/quick-start/
@@ -128705,7 +128705,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/python/api-reference/
@@ -129118,7 +129118,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/python/connection/
@@ -129531,7 +129531,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/python/queries/
@@ -129944,7 +129944,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/python/quick-start/
@@ -130357,7 +130357,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/rust/api-reference/
@@ -130770,7 +130770,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/rust/client/
@@ -131183,7 +131183,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/rust/embedded/
@@ -131596,7 +131596,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/rust/quick-start/
@@ -132009,7 +132009,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/api-reference/
@@ -132422,7 +132422,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/connection/
@@ -132835,7 +132835,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/error-handling/
@@ -133248,7 +133248,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/mutations/
@@ -133661,7 +133661,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/queries/
@@ -134074,7 +134074,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/quick-start/
@@ -134487,7 +134487,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/subscriptions/
@@ -134900,7 +134900,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/transactions/
@@ -135313,7 +135313,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/type-safety/
@@ -135726,7 +135726,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/
@@ -136139,7 +136139,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/audit-logging/
@@ -136552,7 +136552,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/authentication/
@@ -136965,7 +136965,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/authorization/
@@ -137378,7 +137378,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/encryption/
@@ -137791,7 +137791,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/row-level-security/
@@ -138204,7 +138204,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/tls/
@@ -138617,7 +138617,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/cli/
@@ -139030,7 +139030,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/cli/commands/
@@ -139443,7 +139443,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/cli/scripting/
@@ -139856,7 +139856,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/console/
@@ -140269,7 +140269,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/console/query-editor/
@@ -140682,7 +140682,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/console/schema-browser/
@@ -141095,7 +141095,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/playground/
@@ -141508,7 +141508,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/
@@ -141921,7 +141921,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/common-errors/
@@ -142334,7 +142334,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/connection-issues/
@@ -142747,7 +142747,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/faq/
@@ -143160,7 +143160,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/slow-queries/
@@ -143573,7 +143573,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/transaction-conflicts/
@@ -143986,7 +143986,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/view-issues/
@@ -144399,7 +144399,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/tutorials/first-app/
@@ -144812,7 +144812,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/tutorials/live-dashboard/
@@ -145225,7 +145225,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/tutorials/real-time-chat/
@@ -145638,7 +145638,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/docs/tutorials/task-manager/
@@ -146051,7 +146051,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/examples/
@@ -146082,7 +146082,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
 EXAMPLES
 Built-in Testing
@@ -146145,7 +146145,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/faq/
@@ -146176,7 +146176,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
 Frequently Asked Questions
 
@@ -146193,7 +146193,7 @@ PostgreSQL is disk-first: durable and query-rich, but slow for real-time state. 
 No. ReifyDB is in active development. APIs and guarantees may change. I recommend using it for experimentation and development, but not for production workloads yet.
 >What is the licensing model?
 [+]
-ReifyDB is licensed under Apache 2.0. You are free to use, modify, and distribute it under the terms of the license.
+ReifyDB is licensed under AGPL v3 or later. You are free to use, modify, and distribute it under the terms of the license.
 >Can I embed ReifyDB in my application?
 [+]
 Yes. ReifyDB can run embedded in your application process or as a standalone server. This is similar to how SQLite or DuckDB work - you choose the deployment model that fits your architecture.
@@ -146202,7 +146202,7 @@ Yes. ReifyDB can run embedded in your application process or as a standalone ser
 ReifyDB is written in Rust with a native Rust API. TypeScript/JavaScript clients are available for web and Node.js applications. More language bindings are planned.
 >Why should I trust a new database?
 [+]
-ReifyDB is open source under Apache 2.0, so you can inspect every line. The core is written in Rust for memory safety and performance. Development is active and transparent on GitHub.
+ReifyDB is open source under AGPL v3 or later, so you can inspect every line. The core is written in Rust for memory safety and performance. Development is active and transparent on GitHub.
 >What can I use ReifyDB for today?
 [+]
 ReifyDB is suitable for prototyping, internal tools, and non-critical workloads where you want to explore the programming model. Use it to build proofs-of-concept, understand incremental derived state, or experiment with colocating logic and data. Wait for a stable release before using it for production systems.
@@ -146219,7 +146219,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/pitch/
@@ -146250,7 +146250,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
 $ reifydb pitch
 slide 1 of 5
@@ -146298,7 +146298,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
 ●
 [wasm]
@@ -146341,7 +146341,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
 Support
 
@@ -146381,7 +146381,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
+License: AGPL v3 or later
 
 ===============================================================================
 URL: https://reifydb.com/tour/
@@ -146412,7 +146412,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
 $ reifydb tour
 step 1 of 9
@@ -146490,7 +146490,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-10
+12
 Get Started
 # ACTIONS
 ↖
