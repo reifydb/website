@@ -122,7 +122,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                               </>
                             );
 
-                            const className = "group text-base py-3 min-h-[44px] flex items-center rounded-md px-2 hover:bg-white/5 transition-colors";
+                            const className = "group text-base py-3 min-h-[44px] flex items-center rounded-none px-2 hover:bg-bg-tertiary transition-colors";
 
                             if (isExternal) {
                               return (

@@ -1,7 +1,7 @@
 import { Snippet } from '@reifydb/console';
 import '@reifydb/console/styles.css';
 import { wasmExecutor } from '@/lib/wasm-executor-singleton';
-import { premium_dark_theme } from '@reifydb/console';
+import { brutalist_light_theme } from '@reifydb/console';
 import { cn } from '@/lib';
 
 interface ExecutableSnippetProps {
@@ -18,14 +18,14 @@ export function ExecutableSnippet({
   className,
 }: ExecutableSnippetProps) {
   return (
-    <div className={cn('overflow-hidden', className)}>
+    <div className={className}>
       <Snippet
         executor={wasmExecutor}
         initial_code={initialCode}
         title={title}
         description={description}
-        theme="dark"
-        monaco_theme={premium_dark_theme}
+        theme="light"
+        monaco_theme={brutalist_light_theme}
       />
     </div>
   );

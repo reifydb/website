@@ -31,7 +31,7 @@ export function ReplacesSection() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <Badge variant="active" className="text-xs mb-3 uppercase tracking-[0.12em]">Replaces</Badge>
+            <Badge variant="active" className="text-xs mb-3 font-mono uppercase tracking-[0.2em]">Replaces</Badge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
               What ReifyDB Replaces
             </h2>

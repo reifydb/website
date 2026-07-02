@@ -76,7 +76,7 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
       >
         <div
           className={cn(
-            "bg-bg-elevated border border-border-default rounded-lg shadow-large transition-all",
+            "bg-bg-secondary border-2 border-border-default rounded-none shadow-[var(--shadow-hard)] transition-all",
             instant ? "duration-0" : "duration-200",
             isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
           )}
@@ -90,7 +90,7 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
               <div className="flex flex-col gap-1">
                 {column.items.map((item) => (
                   <ItemLink key={item.label} item={item} className="group block">
-                    <div className="p-3 rounded-md transition-all duration-150 hover:bg-white/5">
+                    <div className="p-3 rounded-none transition-all duration-150 hover:bg-bg-tertiary">
                       <div className="font-medium text-sm text-text-primary group-hover:text-primary transition-colors">
                         {item.label}
                       </div>

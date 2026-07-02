@@ -66,7 +66,7 @@ export function CodeViewer({ code, className }: CodeViewerProps) {
           overviewRulerBorder: false,
           renderLineHighlight: 'none',
           contextmenu: false,
-          fontFamily: "'Inconsolata', monospace",
+          fontFamily: "'JetBrains Mono Variable', monospace",
           fontSize: 13,
           padding: { top: 8, bottom: 8 },
           wordWrap: 'on',

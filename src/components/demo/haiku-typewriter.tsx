@@ -21,8 +21,8 @@ interface TextSegment {
 
 const colorMap: Record<string, string> = {
   primary: 'text-primary',
-  cyan: 'text-primary',
-  green: 'text-primary-light',
+  cyan: 'text-primary-dark',
+  green: 'text-status-success',
 };
 
 /** Parse "{color:text}" markup into segments. Plain text passes through. */

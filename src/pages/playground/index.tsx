@@ -2,7 +2,7 @@ import { Navbar } from '@/components/layout/navbar';
 import { Console } from '@reifydb/console';
 import '@reifydb/console/styles.css';
 import { wasmExecutor } from '@/lib/wasm-executor-singleton';
-import { premium_dark_theme } from '@reifydb/console';
+import { brutalist_light_theme } from '@reifydb/console';
 
 export function PlaygroundPage() {
   return (
@@ -13,8 +13,8 @@ export function PlaygroundPage() {
           executor={wasmExecutor}
           initial_code="FROM app::users"
           history_key="playground"
-          theme="dark"
-          monaco_theme={premium_dark_theme}
+          theme="light"
+          monaco_theme={brutalist_light_theme}
         />
       </div>
     </div>

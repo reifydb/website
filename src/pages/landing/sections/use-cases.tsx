@@ -28,7 +28,7 @@ export function UseCasesSection() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <Badge variant="active" className="text-xs mb-3 uppercase tracking-[0.12em]">Use Cases</Badge>
+            <Badge variant="active" className="text-xs mb-3 font-mono uppercase tracking-[0.2em]">Use Cases</Badge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
               Built for Live Application State
             </h2>

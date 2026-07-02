@@ -15,11 +15,14 @@
     "prerender": "node scripts/prerender.js"
   },
   "dependencies": {
+    "@fontsource-variable/ibm-plex-sans": "^5.2.8",
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@fontsource/archivo-black": "^5.2.8",
     "@monaco-editor/react": "^4.7.0",
-    "@reifydb/console": "^0.6.0",
-    "@reifydb/ui": "^0.6.0",
-    "@reifydb/core": "^0.6.0",
-    "@reifydb/wasm": "^0.6.0",
+    "@reifydb/console": "^0.7.0",
+    "@reifydb/core": "^0.7.0",
+    "@reifydb/ui": "^0.7.0",
+    "@reifydb/wasm": "^0.7.0",
     "@tsparticles/engine": "^3.9.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",

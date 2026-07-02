@@ -49,7 +49,7 @@ export function CapabilitiesSection() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-16 sm:mb-20">
-            <Badge variant="active" className="text-xs mb-3 uppercase tracking-[0.12em]">How It Works</Badge>
+            <Badge variant="active" className="text-xs mb-3 font-mono uppercase tracking-[0.2em]">How It Works</Badge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
               Why ReifyDB
             </h2>
@@ -64,7 +64,7 @@ export function CapabilitiesSection() {
           {pipeline.map((step, index) => (
             <ScrollReveal key={step.title} delay={index * 100}>
               <div className="glass-card p-6 text-center h-full">
-                <Badge variant="active" className="justify-center w-10 h-10 rounded-full bg-primary/10 font-bold text-sm mb-4">{step.number}</Badge>
+                <Badge variant="active" className="justify-center w-10 h-10 rounded-none bg-primary/10 font-bold text-sm mb-4">{step.number}</Badge>
                 <h3 className="text-base font-bold mb-2">{step.title}</h3>
                 <p className="text-text-muted text-sm leading-relaxed">
                   {step.description}
@@ -80,7 +80,7 @@ export function CapabilitiesSection() {
             <ScrollReveal key={capability.title} delay={index * 75}>
               <Card className="sm:p-8 h-full">
                 <CardContent>
-                  <Badge variant="active" className={`justify-center w-10 h-10 rounded-md font-bold text-sm mb-4 ${capability.accent}`}>
+                  <Badge variant="active" className={`justify-center w-10 h-10 rounded-none font-bold text-sm mb-4 ${capability.accent}`}>
                     {String(index + 1).padStart(2, '0')}
                   </Badge>
                   <h3 className="text-lg font-bold mb-2 text-text-primary">{capability.title}</h3>

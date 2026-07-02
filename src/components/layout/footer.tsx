@@ -29,7 +29,7 @@ const sections = [
 
 export function Footer() {
   return (
-    <footer className="relative z-10 bg-bg-secondary border-t border-border-light py-12 sm:py-16 text-white">
+    <footer className="relative z-10 bg-bg-secondary border-t border-border-light py-12 sm:py-16 text-text-secondary">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 text-sm">
           {sections.map((section) => (

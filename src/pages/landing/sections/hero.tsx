@@ -1,4 +1,3 @@
-import { DotGridBackground } from '@/components/backgrounds/dot-grid-background';
 import { HaikuTypewriter } from '@/components/demo';
 import type { Haiku } from '@/components/demo';
 import { Button, ExecutableSnippet } from '@/components/ui';
@@ -19,13 +18,15 @@ const heroHaikus: Haiku[] = [
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden">
-      <DotGridBackground className="absolute inset-0 z-0" />
-
       {/* Above the fold — H1 + Editor, vertically centered */}
       <div className="relative z-10 min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center mx-auto max-w-6xl px-6 md:px-8">
+        <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.25em] text-text-muted mb-6 text-center pt-12 sm:pt-0">
+          The reactive transactional database
+        </p>
+
         <HaikuTypewriter
           haikus={heroHaikus}
-          className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-16 sm:mb-10 leading-[1.3] text-center pt-12 sm:pt-0"
+          className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-16 sm:mb-10 leading-[1.3] text-center"
         />
 
         <div className="w-full max-w-3xl mx-auto">

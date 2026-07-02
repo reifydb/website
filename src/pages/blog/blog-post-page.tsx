@@ -53,7 +53,7 @@ export function BlogPostPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <div className="glass-card p-6 sm:p-10 mt-10">
+            <div className="font-body glass-card p-6 sm:p-10 mt-10">
               <BlogMarkdownRenderer content={post.content} />
             </div>
           </ScrollReveal>
