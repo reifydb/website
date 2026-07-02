@@ -32,8 +32,8 @@ export function TimeSecondPage() {
           />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
-          <Link to="/docs/functions/time/minute" className="text-primary-color hover:underline font-semibold">time::minute</Link>
-          <Link to="/docs/functions/time/nanosecond" className="text-primary-color hover:underline font-semibold">time::nanosecond</Link>
+          <Link to="/docs/functions/time/minute" className="text-primary-color hover:underline">time::minute</Link>
+          <Link to="/docs/functions/time/nanosecond" className="text-primary-color hover:underline">time::nanosecond</Link>
         </div></section>
       </div>
     </Layout>

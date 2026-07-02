@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
+import { Badge } from '@reifydb/ui';
 
 
 export function ClockAdvancePage() {
@@ -14,7 +15,7 @@ export function ClockAdvancePage() {
               clock
             </Link>
             {' module'}
-            <span className="ml-2 text-xs font-bold bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded">Internal</span>
+            <Badge variant="warning" className="ml-2">Internal</Badge>
           </div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
             clock::advance

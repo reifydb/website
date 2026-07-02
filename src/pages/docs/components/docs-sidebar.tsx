@@ -1,174 +1,14 @@
-import { useState, useCallback, useEffect, useMemo, memo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { cn } from '@/lib';
-import { useIsLocalhost } from '@/hooks';
-import { filterPublished } from '../data/navigation';
-import type { NavSection, NavItem } from '../data/navigation';
+import { useNavigate } from 'react-router-dom';
+import type { NavSection } from '../data/navigation';
+import { DocsNavTree } from './docs-nav-tree';
 
 interface DocsSidebarProps {
   sections: NavSection[];
   currentPath: string;
 }
 
-// Find all ancestor item IDs for a given path
-export function findAncestorIds(items: NavItem[], targetPath: string, ancestors: string[] = []): string[] | null {
-  for (const item of items) {
-    if (item.href === targetPath) {
-      return ancestors;
-    }
-    if (item.children) {
-      const found = findAncestorIds(item.children, targetPath, [...ancestors, item.id]);
-      if (found) return found;
-    }
-  }
-  return null;
-}
-
-// Find all ancestor IDs across all sections
-export function findAllAncestors(sections: NavSection[], targetPath: string): Set<string> {
-  const result = new Set<string>();
-  for (const section of sections) {
-    // Add section title as an ID so sections auto-expand too
-    const ancestors = findAncestorIds(section.items, targetPath, [`section-${section.title}`]);
-    if (ancestors) {
-      ancestors.forEach(id => result.add(id));
-      break;
-    }
-  }
-  return result;
-}
-
-// Persist open items across component remounts
-let persistedOpenItems: Set<string> | null = null;
-
-/** Check whether a nav item (or any of its children) is published */
-function isItemPublished(item: NavItem): boolean {
-  if (item.published === true) return true;
-  if (item.children) return item.children.some(isItemPublished);
-  return false;
-}
-
-export interface AccordionItemProps {
-  item: NavItem;
-  currentPath: string;
-  depth: number;
-  openItems: Set<string>;
-  onToggle: (id: string) => void;
-  onNavigate: () => void;
-  devMode?: boolean;
-}
-
-export const AccordionItem = memo(function AccordionItem({ item, currentPath, depth, openItems, onToggle, onNavigate, devMode }: AccordionItemProps) {
-  const hasChildren = item.children && item.children.length > 0;
-  const isOpen = openItems.has(item.id);
-  const isActive = item.href === currentPath;
-  const published = isItemPublished(item);
-
-  const handleClick = () => {
-    if (hasChildren) {
-      onToggle(item.id);
-    } else {
-      onNavigate();
-    }
-  };
-
-  const itemStyles = cn(
-    'w-full flex items-center py-1.5 text-sm text-left',
-    'transition-colors duration-150',
-    isActive
-      ? 'text-primary font-medium'
-      : 'text-text-secondary hover:text-primary',
-    devMode && !published && 'opacity-50 italic'
-  );
-
-  return (
-    <li>
-      {item.href && !hasChildren ? (
-        <Link
-          to={item.href}
-          onClick={onNavigate}
-          className={cn(itemStyles, 'block pl-4')}
-        >
-          <span className="truncate">{item.label}</span>
-        </Link>
-      ) : (
-        <button
-          onClick={handleClick}
-          className={cn(itemStyles, 'pl-4')}
-        >
-          <span className="truncate">{item.label}</span>
-        </button>
-      )}
-      {hasChildren && (
-        <div
-          className={cn(
-            'grid transition-[grid-template-rows] duration-150',
-            isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-          )}
-        >
-          <div className="overflow-hidden">
-            <ul className="space-y-0.5 border-l border-border-default ml-3">
-              {item.children!.map((child) => (
-                <AccordionItem
-                  key={child.id}
-                  item={child}
-                  currentPath={currentPath}
-                  depth={depth + 1}
-                  openItems={openItems}
-                  onToggle={onToggle}
-                  onNavigate={onNavigate}
-                  devMode={devMode}
-                />
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
-    </li>
-  );
-});
-
-const noop = () => {};
-
 export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
   const navigate = useNavigate();
-  const isLocalhost = useIsLocalhost();
-
-  // In dev mode show all items; in production only show published
-  const displaySections = useMemo(() =>
-    isLocalhost
-      ? sections.filter((s) => s.items.length > 0)
-      : sections.map((s) => ({
-          ...s,
-          items: filterPublished(s.items),
-        })).filter((s) => s.items.length > 0),
-    [sections, isLocalhost]
-  );
-
-  const [openItems, setOpenItems] = useState<Set<string>>(() => {
-    // Use persisted state if available, otherwise expand ancestors of current page
-    if (persistedOpenItems) {
-      return persistedOpenItems;
-    }
-    return findAllAncestors(displaySections, currentPath);
-  });
-
-  // Sync state to module variable for persistence across remounts
-  useEffect(() => {
-    persistedOpenItems = openItems;
-  }, [openItems]);
-
-  const toggleItem = useCallback((id: string) => {
-    setOpenItems(prev => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
-  }, []);
 
   const handleBack = () => {
     if (window.history.length > 1) {
@@ -180,49 +20,10 @@ export function DocsSidebar({ sections, currentPath }: DocsSidebarProps) {
 
   return (
     <aside className="hidden lg:flex w-72 border-r border-border-default bg-bg-secondary flex-col">
-      {/* Navigation */}
       <nav className="flex-1 p-4 pt-6 overflow-y-auto sidebar-no-scrollbar">
-        {displaySections.map((section) => {
-          const sectionId = `section-${section.title}`;
-          const isSectionOpen = openItems.has(sectionId);
-
-          return (
-            <div key={section.title} className="mb-4">
-              <button
-                onClick={() => toggleItem(sectionId)}
-                className="w-full flex items-center text-xs font-semibold text-text-muted uppercase tracking-wider mb-2 px-3 py-1 hover:text-primary transition-colors"
-              >
-                {section.title}
-              </button>
-              <div
-                className={cn(
-                  'grid transition-[grid-template-rows] duration-150',
-                  isSectionOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-                )}
-              >
-                <div className="overflow-hidden">
-                  <ul className="space-y-0.5 border-l border-border-default ml-3">
-                    {section.items.map((item) => (
-                      <AccordionItem
-                        key={item.id}
-                        item={item}
-                        currentPath={currentPath}
-                        depth={0}
-                        openItems={openItems}
-                        onToggle={toggleItem}
-                        onNavigate={noop}
-                        devMode={isLocalhost}
-                      />
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        <DocsNavTree sections={sections} currentPath={currentPath} />
       </nav>
 
-      {/* Footer */}
       <div className="p-4 border-t border-border-default">
         <button
           onClick={handleBack}

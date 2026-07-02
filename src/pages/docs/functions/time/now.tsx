@@ -29,8 +29,8 @@ export function TimeNowPage() {
           />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
-          <Link to="/docs/functions/time/new" className="text-primary-color hover:underline font-semibold">time::new</Link>
-          <Link to="/docs/functions/datetime/now" className="text-primary-color hover:underline font-semibold">datetime::now</Link>
+          <Link to="/docs/functions/time/new" className="text-primary-color hover:underline">time::new</Link>
+          <Link to="/docs/functions/datetime/now" className="text-primary-color hover:underline">datetime::now</Link>
         </div></section>
       </div>
     </Layout>

@@ -35,7 +35,7 @@ export function TimeTruncPage() {
           />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
-          <Link to="/docs/functions/time/format" className="text-primary-color hover:underline font-semibold">time::format</Link>
+          <Link to="/docs/functions/time/format" className="text-primary-color hover:underline">time::format</Link>
         </div></section>
       </div>
     </Layout>

@@ -54,8 +54,8 @@ export function DatetimeSubtractPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
-            <Link to="/docs/functions/datetime/add" className="border-2 border-border-default px-3 py-1 hover:bg-bg-tertiary transition-colors font-bold text-primary-color">datetime::add</Link>
-            <Link to="/docs/functions/datetime/diff" className="border-2 border-border-default px-3 py-1 hover:bg-bg-tertiary transition-colors font-bold text-primary-color">datetime::diff</Link>
+            <Link to="/docs/functions/datetime/add" className="text-primary-color hover:underline">datetime::add</Link>
+            <Link to="/docs/functions/datetime/diff" className="text-primary-color hover:underline">datetime::diff</Link>
           </div>
         </section>
       </div>

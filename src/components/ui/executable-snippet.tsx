@@ -8,6 +8,7 @@ interface ExecutableSnippetProps {
   title?: string;
   description?: string;
   className?: string;
+  readonly?: boolean;
 }
 
 export function ExecutableSnippet({
@@ -15,6 +16,7 @@ export function ExecutableSnippet({
   title,
   description,
   className,
+  readonly,
 }: ExecutableSnippetProps) {
   return (
     <div className={className}>
@@ -25,6 +27,7 @@ export function ExecutableSnippet({
         description={description}
         theme="light"
         monaco_theme={brutalist_light_theme}
+        readonly={readonly}
       />
     </div>
   );

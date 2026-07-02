@@ -51,9 +51,9 @@ export function BlobB58Page() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
-            <Link to="/docs/functions/blob/b64" className="border-2 border-border-default px-3 py-1.5 text-sm font-bold text-primary-color hover:bg-bg-tertiary transition-colors">blob::b64</Link>
-            <Link to="/docs/functions/blob/hex" className="border-2 border-border-default px-3 py-1.5 text-sm font-bold text-primary-color hover:bg-bg-tertiary transition-colors">blob::hex</Link>
-            <Link to="/docs/functions/blob/utf8" className="border-2 border-border-default px-3 py-1.5 text-sm font-bold text-primary-color hover:bg-bg-tertiary transition-colors">blob::utf8</Link>
+            <Link to="/docs/functions/blob/b64" className="text-primary-color hover:underline">blob::b64</Link>
+            <Link to="/docs/functions/blob/hex" className="text-primary-color hover:underline">blob::hex</Link>
+            <Link to="/docs/functions/blob/utf8" className="text-primary-color hover:underline">blob::utf8</Link>
           </div>
         </section>
       </div>

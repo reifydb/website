@@ -49,8 +49,8 @@ export function DatetimeEpochMillisPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
-            <Link to="/docs/functions/datetime/epoch" className="border-2 border-border-default px-3 py-1 hover:bg-bg-tertiary transition-colors font-bold text-primary-color">datetime::epoch</Link>
-            <Link to="/docs/functions/datetime/from_epoch_millis" className="border-2 border-border-default px-3 py-1 hover:bg-bg-tertiary transition-colors font-bold text-primary-color">datetime::from_epoch_millis</Link>
+            <Link to="/docs/functions/datetime/epoch" className="text-primary-color hover:underline">datetime::epoch</Link>
+            <Link to="/docs/functions/datetime/from_epoch_millis" className="text-primary-color hover:underline">datetime::from_epoch_millis</Link>
           </div>
         </section>
       </div>

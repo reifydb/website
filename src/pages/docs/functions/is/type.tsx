@@ -31,7 +31,7 @@ export function IsTypePage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
           <ExampleSnippet id="is-type" />
         </section>
-        <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/is/some" className="text-primary-color hover:underline font-mono">is::some</Link><Link to="/docs/functions/meta/type" className="text-primary-color hover:underline font-mono">meta::type</Link></div></section>
+        <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/is/some" className="text-primary-color hover:underline">is::some</Link><Link to="/docs/functions/meta/type" className="text-primary-color hover:underline">meta::type</Link></div></section>
       </div>
     </Layout>
   );

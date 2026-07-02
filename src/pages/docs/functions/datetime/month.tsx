@@ -49,8 +49,8 @@ export function DatetimeMonthPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
-            <Link to="/docs/functions/datetime/year" className="border-2 border-border-default px-3 py-1 hover:bg-bg-tertiary transition-colors font-bold text-primary-color">datetime::year</Link>
-            <Link to="/docs/functions/datetime/day" className="border-2 border-border-default px-3 py-1 hover:bg-bg-tertiary transition-colors font-bold text-primary-color">datetime::day</Link>
+            <Link to="/docs/functions/datetime/year" className="text-primary-color hover:underline">datetime::year</Link>
+            <Link to="/docs/functions/datetime/day" className="text-primary-color hover:underline">datetime::day</Link>
           </div>
         </section>
       </div>

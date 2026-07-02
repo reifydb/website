@@ -49,8 +49,8 @@ export function DatetimeMinutePage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
-            <Link to="/docs/functions/datetime/hour" className="border-2 border-border-default px-3 py-1 hover:bg-bg-tertiary transition-colors font-bold text-primary-color">datetime::hour</Link>
-            <Link to="/docs/functions/datetime/second" className="border-2 border-border-default px-3 py-1 hover:bg-bg-tertiary transition-colors font-bold text-primary-color">datetime::second</Link>
+            <Link to="/docs/functions/datetime/hour" className="text-primary-color hover:underline">datetime::hour</Link>
+            <Link to="/docs/functions/datetime/second" className="text-primary-color hover:underline">datetime::second</Link>
           </div>
         </section>
       </div>

@@ -34,8 +34,8 @@ export function DatetimeNowPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
-            <Link to="/docs/functions/datetime/new" className="border-2 border-border-default px-3 py-1 hover:bg-bg-tertiary transition-colors font-bold text-primary-color">datetime::new</Link>
-            <Link to="/docs/functions/datetime/age" className="border-2 border-border-default px-3 py-1 hover:bg-bg-tertiary transition-colors font-bold text-primary-color">datetime::age</Link>
+            <Link to="/docs/functions/datetime/new" className="text-primary-color hover:underline">datetime::new</Link>
+            <Link to="/docs/functions/datetime/age" className="text-primary-color hover:underline">datetime::age</Link>
           </div>
         </section>
       </div>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
+import { Badge } from '@reifydb/ui';
 
 export function ClockModuleOverviewPage() {
   return (
@@ -47,7 +48,7 @@ export function ClockModuleOverviewPage() {
             >
               <h3 className="font-bold text-primary-color mb-1">
                 clock::set
-                <span className="ml-2 text-xs font-bold bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded">Internal</span>
+                <Badge variant="warning" className="ml-2">Internal</Badge>
               </h3>
               <p className="text-text-secondary text-sm">
                 Set the system clock to a specific timestamp
@@ -60,7 +61,7 @@ export function ClockModuleOverviewPage() {
             >
               <h3 className="font-bold text-primary-color mb-1">
                 clock::advance
-                <span className="ml-2 text-xs font-bold bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded">Internal</span>
+                <Badge variant="warning" className="ml-2">Internal</Badge>
               </h3>
               <p className="text-text-secondary text-sm">
                 Advance the system clock by a specified duration

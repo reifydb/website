@@ -3,12 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui';
 import { cn } from '@/lib';
 import { navDropdowns, navDirectLinks } from './navbar-data';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import { X, ChevronDown, ChevronRight } from 'lucide-react';
 
 interface MobileMenuProps {
   open: boolean;
   onClose: () => void;
+  extra?: ReactNode;
 }
 
 const shortDescriptions: Record<string, string> = {
@@ -23,7 +24,7 @@ const shortDescriptions: Record<string, string> = {
   Contact: 'connect',
 };
 
-export function MobileMenu({ open, onClose }: MobileMenuProps) {
+export function MobileMenu({ open, onClose, extra }: MobileMenuProps) {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const location = useLocation();
 
@@ -83,6 +84,15 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
 
         {/* Navigation Links */}
         <nav className="flex flex-col px-6 py-4 gap-1">
+          {extra && (
+            <div className="mb-4 pb-4 border-b border-border-default">
+              <div className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 px-4">
+                Documentation
+              </div>
+              {extra}
+            </div>
+          )}
+
           {navDropdowns.map((dropdown) => {
             const expanded = expandedSection === dropdown.id;
             return (

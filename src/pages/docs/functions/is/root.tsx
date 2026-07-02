@@ -25,7 +25,7 @@ export function IsRootPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
           <ExampleSnippet id="is-root" />
         </section>
-        <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/is/anonymous" className="text-primary-color hover:underline font-mono">is::anonymous</Link></div></section>
+        <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/is/anonymous" className="text-primary-color hover:underline">is::anonymous</Link></div></section>
       </div>
     </Layout>
   );

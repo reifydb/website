@@ -25,7 +25,7 @@ export function IdentityIdPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
           <ExampleSnippet id="identity-id" />
         </section>
-        <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/meta/type" className="text-primary-color hover:underline font-mono">meta::type</Link></div></section>
+        <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/meta/type" className="text-primary-color hover:underline">meta::type</Link></div></section>
       </div>
     </Layout>
   );

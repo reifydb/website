@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button, GitHubStars } from '@/components/ui';
 import { cn } from '@/lib';
@@ -7,7 +7,11 @@ import { navDropdowns, navDirectLinks } from './navbar-data';
 import { MobileMenu } from './mobile-menu';
 import { Menu, X } from 'lucide-react';
 
-export function Navbar() {
+interface NavbarProps {
+  mobileExtra?: ReactNode;
+}
+
+export function Navbar({ mobileExtra }: NavbarProps = {}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
@@ -153,7 +157,7 @@ export function Navbar() {
         </div>
       </header>
 
-      <MobileMenu open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+      <MobileMenu open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} extra={mobileExtra} />
     </>
   );
 }

@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { useIsDraft } from '@/components/docs-gate';
-import { DocsSidebar } from './components';
+import { DocsSidebar, DocsNavTree } from './components';
 import { navSections } from './data/navigation';
 
 interface DocsLayoutProps {
@@ -26,7 +26,7 @@ export function Layout({ children }: DocsLayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col relative z-10">
-      <Navbar />
+      <Navbar mobileExtra={<DocsNavTree sections={navSections} currentPath={location.pathname} />} />
       <div className="flex flex-1">
         <DocsSidebar sections={navSections} currentPath={location.pathname} />
         <main className="flex-1 bg-bg-primary">

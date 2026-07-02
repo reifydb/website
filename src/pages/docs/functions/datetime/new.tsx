@@ -54,8 +54,8 @@ export function DatetimeNewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
-            <Link to="/docs/functions/datetime/now" className="border-2 border-border-default px-3 py-1 hover:bg-bg-tertiary transition-colors font-bold text-primary-color">datetime::now</Link>
-            <Link to="/docs/functions/datetime/from_epoch" className="border-2 border-border-default px-3 py-1 hover:bg-bg-tertiary transition-colors font-bold text-primary-color">datetime::from_epoch</Link>
+            <Link to="/docs/functions/datetime/now" className="text-primary-color hover:underline">datetime::now</Link>
+            <Link to="/docs/functions/datetime/from_epoch" className="text-primary-color hover:underline">datetime::from_epoch</Link>
           </div>
         </section>
       </div>

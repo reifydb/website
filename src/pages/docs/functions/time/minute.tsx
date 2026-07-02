@@ -32,8 +32,8 @@ export function TimeMinutePage() {
           />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
-          <Link to="/docs/functions/time/hour" className="text-primary-color hover:underline font-semibold">time::hour</Link>
-          <Link to="/docs/functions/time/second" className="text-primary-color hover:underline font-semibold">time::second</Link>
+          <Link to="/docs/functions/time/hour" className="text-primary-color hover:underline">time::hour</Link>
+          <Link to="/docs/functions/time/second" className="text-primary-color hover:underline">time::second</Link>
         </div></section>
       </div>
     </Layout>
