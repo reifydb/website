@@ -32,7 +32,7 @@ Get Started
 
 THE REACTIVE TRANSACTIONAL DATABASE
 
-No cac█
+No ca█
 $ Built-in Testing
 Expand
 Copy
@@ -1502,6 +1502,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -1934,6 +1935,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -2366,6 +2368,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -3320,6 +3323,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -3819,6 +3823,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -9447,7 +9452,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -9931,7 +9935,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -10395,7 +10398,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -10786,7 +10788,7 @@ blob::b58
 Encode or decode a blob using Base58 encoding.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 blob::b58(value)
@@ -10854,7 +10856,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -11245,7 +11246,7 @@ blob::b64
 Encode or decode a blob using Base64 encoding.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 blob::b64(value)
@@ -11313,7 +11314,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -11704,10 +11704,9 @@ blob::b64url
 Encode or decode a blob using URL-safe Base64 encoding.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-blob::b64url(value)
+Loading...
 Parameters
 Name	Type	Description
 value	Blob / Utf8	The blob to encode or string to decode
@@ -11720,8 +11719,7 @@ $ Decode a Base64URL string
 Expand
 Copy
 Reset
-1
-map {blob::b64url('SGVsbG8')}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -11772,7 +11770,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -12163,7 +12160,7 @@ blob::hex
 Encode or decode a blob using hexadecimal encoding.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 blob::hex(value)
@@ -12231,7 +12228,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -12622,7 +12618,7 @@ blob::utf8
 Encode or decode a blob as UTF-8 text.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 blob::utf8(value)
@@ -12690,7 +12686,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -13538,7 +13533,7 @@ clock::advance
 Advance the system clock by a specified duration. Used for testing time-dependent logic.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 clock::advance(duration)
@@ -13596,7 +13591,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -13987,10 +13981,9 @@ clock::now
 Get the current clock timestamp.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-clock::now()
+Loading...
 Parameters
 
 This function takes no parameters.
@@ -14046,7 +14039,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -14437,7 +14429,7 @@ clock::set
 Set the system clock to a specific timestamp. Used for testing and deterministic replay.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 clock::set(timestamp)
@@ -14495,7 +14487,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -14889,10 +14880,7 @@ $ Quick Example
 Expand
 Copy
 Reset
-1
-2
-from app::records
-extend { processed_at: date::now() }
+Loading...
 $ ctrl+enter to run
 Run
 Date Extraction
@@ -15447,7 +15435,7 @@ date::add
 Add time to a date.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 date::add(date_value, days: n)
@@ -15905,10 +15893,9 @@ date::age
 Calculate the duration between two dates.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-date::age(date_a, date_b)
+Loading...
 Parameters
 Name	Type	Description
 date_a	Date	The first date
@@ -15922,8 +15909,7 @@ $ Calculate age between dates
 Expand
 Copy
 Reset
-1
-map {date::age(cast('2024-03-20', date), cast('2022-01-15', date))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -15973,7 +15959,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -16364,10 +16349,9 @@ date::day
 Extract the day of the month from a date value.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-date::day(date_value)
+Loading...
 Parameters
 Name	Type	Description
 date_value	Date/Timestamp	The date to extract the day from
@@ -16380,8 +16364,7 @@ $ Extract day from date
 Expand
 Copy
 Reset
-1
-map {date::day(cast('2024-03-15', date))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -16822,7 +16805,7 @@ date::day_of_week
 Get the day of the week (1=Monday, 7=Sunday) from a date.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 date::day_of_week(date_value)
@@ -17279,7 +17262,7 @@ date::day_of_year
 Get the day of the year (1-366) from a date.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 date::day_of_year(date_value)
@@ -17346,6 +17329,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -17736,7 +17720,7 @@ date::days_in_month
 Get the number of days in the month of the given date.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 date::days_in_month(date_value)
@@ -18193,7 +18177,7 @@ date::diff
 Calculate the difference between two dates.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 date::diff(date1, date2, unit: "days")
@@ -18262,6 +18246,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -18652,7 +18637,7 @@ date::end_of_month
 Get the last day of the month for the given date.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 date::end_of_month(date_value)
@@ -19109,7 +19094,7 @@ date::format
 Format a date as a string.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 date::format(date_value, format_string)
@@ -19151,463 +19136,6 @@ License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/is_leap_year/
-===============================================================================
-
-ReifyDB
-Developers
-BUILD
-Docs
-Guides, references, and API documentation
-Tour
-Interactive walkthrough of core features
-Playground
-Try ReifyDB queries in the browser
-Resources
-LEARN
-Blog
-Engineering deep dives and product updates
-FAQ
-Frequently asked questions
-Support
-Get help from the team
-Company
-ABOUT
-Mission
-Why we are building ReifyDB
-Values
-The principles that guide our work
-Contact
-Reach out to the team
-Get Started
-GETTING STARTED
-Introduction
-Installation
-Quick Start
-Connect
-Tutorials
-Build Your First App
-Live Dashboard
-Real-Time Chat
-Task Manager
-Coming From...
-SQL Databases
-MongoDB
-Redis
-Firebase / Firestore
-CONCEPTS
-Overview
-Data Model
-Data Types
-Namespaces & Schemas
-Transactions & ACID
-Materialized Views
-Real-Time Subscriptions
-Storage Engines
-Consistency Model
-Error Handling
-Embedded vs. Server Mode
-RQL
-Basics
-Transforms
-Overview
-Filter
-Sort
-Map
-Extend
-Aggregate
-Distinct
-Take
-Join
-Match
-Patch
-Expressions
-Overview
-Operators
-Conditionals
-Literals
-Field Access
-Patterns & Recipes
-Pagination
-Hierarchical Data
-Time-Series Queries
-Text Search
-Dynamic Queries
-SCRIPTING
-Overview
-Schema
-Namespaces
-Tables
-Enums
-Dictionaries
-Drop & Cleanup
-Constraints
-Indexes
-Storage Primitives
-Tables
-Ringbuffers
-Series
-Data Manipulation
-Insert
-Update
-Delete
-Upsert
-Batch Operations
-Views
-Overview
-Deferred Views
-Transactional Views
-Procedures
-Overview
-Parameters & Control Flow
-Events
-Overview
-Handlers
-Dispatch
-Testing
-Migrations
-Subscriptions
-Access Control
-GUIDES
-Overview
-Data Modeling
-Users & Auth
-E-Commerce
-Content Management
-Multi-Tenancy
-Relationships
-Real-Time
-Live Queries
-Reactive Views
-Event Sourcing
-Notifications
-Testing
-Unit Testing
-Integration Testing
-Test Fixtures & Seeding
-Common Patterns
-Soft Deletes
-Audit Trail
-State Machines
-CQRS
-Computed Fields
-Data Versioning
-CLIENT SDKS
-Overview
-TypeScript / JavaScript
-Quick Start
-Connection
-Queries
-Mutations
-Subscriptions
-Transactions
-Type Safety
-Error Handling
-API Reference
-Rust
-Quick Start
-Embedded Mode
-Client Mode
-API Reference
-Python
-Quick Start
-Connection
-Queries
-API Reference
-Go
-Quick Start
-Connection
-Queries
-API Reference
-ARCHITECTURE
-Overview
-Volcano Execution Model
-Types & Expressions
-Storage Engine
-Incremental Maintenance
-Transaction Engine
-Wire Protocol
-SECURITY
-Overview
-Authentication
-Authorization & Roles
-Row-Level Security
-Encryption
-Audit Logging
-TLS & Network Security
-OPERATIONS
-Configuration
-Deployment
-Standalone
-Embedded
-Docker
-Kubernetes
-Systemd
-Backup & Restore
-Overview
-Snapshots
-Point-in-Time Recovery
-Monitoring
-Overview
-Metrics
-Logging
-Health Checks
-Upgrades
-Scaling
-PERFORMANCE
-Overview
-Query Optimization
-Indexing Strategies
-EXPLAIN & Query Plans
-View Tuning
-Memory Management
-Benchmarks
-TOOLS
-CLI
-Overview
-Command Reference
-Scripting with CLI
-Web Console
-Overview
-Query Editor
-Schema Browser
-Online Playground
-INTEGRATIONS
-Overview
-HTTP API
-Overview
-Authentication
-Query Endpoint
-Mutation Endpoint
-Subscription Endpoint
-Error Codes
-Webhooks
-Change Data Capture
-Frameworks
-React
-Next.js
-Svelte
-FUNCTIONS
-Overview
-blob
-b58
-b64
-b64url
-hex
-utf8
-clock
-advance
-now
-set
-date
-add
-age
-day
-day_of_week
-day_of_year
-days_in_month
-diff
-end_of_month
-format
-is_leap_year
-month
-new
-now
-quarter
-start_of_month
-start_of_year
-subtract
-trunc
-week
-year
-datetime
-add
-age
-date
-day
-day_of_week
-day_of_year
-diff
-epoch
-epoch_millis
-format
-from_epoch
-from_epoch_millis
-hour
-minute
-month
-nanosecond
-new
-now
-quarter
-second
-subtract
-time
-trunc
-week
-year
-duration
-add
-days
-format
-get_days
-get_months
-get_nanos
-hours
-millis
-minutes
-months
-negate
-scale
-seconds
-subtract
-trunc
-weeks
-years
-identity
-id
-is
-anonymous
-none
-root
-some
-type
-json
-array
-object
-serialize
-pretty
-math
-abs
-acos
-asin
-atan
-atan2
-avg
-ceil
-clamp
-cos
-e
-exp
-floor
-gcd
-lcm
-log
-log10
-log2
-max
-min
-mod
-pi
-power
-round
-sign
-sin
-sqrt
-sum
-tan
-truncate
-meta
-type
-text
-ascii
-char
-concat
-contains
-count
-ends_with
-format_bytes
-format_bytes_si
-index_of
-length
-lower
-pad_left
-pad_right
-repeat
-replace
-reverse
-starts_with
-substring
-trim
-trim_end
-trim_start
-upper
-time
-add
-age
-diff
-format
-hour
-minute
-nanosecond
-new
-now
-second
-subtract
-trunc
-TROUBLESHOOTING
-Overview
-Common Errors
-Connection Issues
-Slow Queries
-Transaction Conflicts
-View Issues
-FAQ
-RESOURCES
-Changelog
-Roadmap
-Glossary
-Contributing
-Community
-Release Notes
-← BACK
-DRAFT
-This page is not published. Only visible in development mode.
-date module
-date::is_leap_year
-
-Check if a date falls in a leap year.
-
-Syntax
-RQL
-Copy
-1
-date::is_leap_year(date_value)
-Parameters
-Name	Type	Description
-date_value	Date	The date to check for a leap year.
-Return Value
-
-Returns a Boolean indicating whether the date falls in a leap year.
-
-Examples
-$ Check if leap year
-Expand
-Copy
-Reset
-1
-map {date::is_leap_year(cast('2024-01-15', date))}
-$ ctrl+enter to run
-Run
-Related Functions
-date::year
-date::days_in_month
-PRODUCT
-Documentation
-Blog
-FAQ
-RESOURCES
-Contact
-Support
-Book a Call
-COMMUNITY
-GitHub
-X (Twitter)
-Discord
-© 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
-
-===============================================================================
-URL: https://reifydb.com/docs/functions/date/month/
 ===============================================================================
 
 ReifyDB
@@ -20021,12 +19549,469 @@ Release Notes
 DRAFT
 This page is not published. Only visible in development mode.
 date module
+date::is_leap_year
+
+Check if a date falls in a leap year.
+
+Syntax
+$ RQL
+Copy
+1
+date::is_leap_year(date_value)
+Parameters
+Name	Type	Description
+date_value	Date	The date to check for a leap year.
+Return Value
+
+Returns a Boolean indicating whether the date falls in a leap year.
+
+Examples
+$ Check if leap year
+Expand
+Copy
+Reset
+1
+map {date::is_leap_year(cast('2024-01-15', date))}
+$ ctrl+enter to run
+Run
+Related Functions
+date::year
+date::days_in_month
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/functions/date/month/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+Get Started
+GETTING STARTED
+Introduction
+Installation
+Quick Start
+Connect
+Tutorials
+Build Your First App
+Live Dashboard
+Real-Time Chat
+Task Manager
+Coming From...
+SQL Databases
+MongoDB
+Redis
+Firebase / Firestore
+CONCEPTS
+Overview
+Data Model
+Data Types
+Namespaces & Schemas
+Transactions & ACID
+Materialized Views
+Real-Time Subscriptions
+Storage Engines
+Consistency Model
+Error Handling
+Embedded vs. Server Mode
+RQL
+Basics
+Transforms
+Overview
+Filter
+Sort
+Map
+Extend
+Aggregate
+Distinct
+Take
+Join
+Match
+Patch
+Expressions
+Overview
+Operators
+Conditionals
+Literals
+Field Access
+Patterns & Recipes
+Pagination
+Hierarchical Data
+Time-Series Queries
+Text Search
+Dynamic Queries
+SCRIPTING
+Overview
+Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Drop & Cleanup
+Constraints
+Indexes
+Storage Primitives
+Tables
+Ringbuffers
+Series
+Data Manipulation
+Insert
+Update
+Delete
+Upsert
+Batch Operations
+Views
+Overview
+Deferred Views
+Transactional Views
+Procedures
+Overview
+Parameters & Control Flow
+Events
+Overview
+Handlers
+Dispatch
+Testing
+Migrations
+Subscriptions
+Access Control
+GUIDES
+Overview
+Data Modeling
+Users & Auth
+E-Commerce
+Content Management
+Multi-Tenancy
+Relationships
+Real-Time
+Live Queries
+Reactive Views
+Event Sourcing
+Notifications
+Testing
+Unit Testing
+Integration Testing
+Test Fixtures & Seeding
+Common Patterns
+Soft Deletes
+Audit Trail
+State Machines
+CQRS
+Computed Fields
+Data Versioning
+CLIENT SDKS
+Overview
+TypeScript / JavaScript
+Quick Start
+Connection
+Queries
+Mutations
+Subscriptions
+Transactions
+Type Safety
+Error Handling
+API Reference
+Rust
+Quick Start
+Embedded Mode
+Client Mode
+API Reference
+Python
+Quick Start
+Connection
+Queries
+API Reference
+Go
+Quick Start
+Connection
+Queries
+API Reference
+ARCHITECTURE
+Overview
+Volcano Execution Model
+Types & Expressions
+Storage Engine
+Incremental Maintenance
+Transaction Engine
+Wire Protocol
+SECURITY
+Overview
+Authentication
+Authorization & Roles
+Row-Level Security
+Encryption
+Audit Logging
+TLS & Network Security
+OPERATIONS
+Configuration
+Deployment
+Standalone
+Embedded
+Docker
+Kubernetes
+Systemd
+Backup & Restore
+Overview
+Snapshots
+Point-in-Time Recovery
+Monitoring
+Overview
+Metrics
+Logging
+Health Checks
+Upgrades
+Scaling
+PERFORMANCE
+Overview
+Query Optimization
+Indexing Strategies
+EXPLAIN & Query Plans
+View Tuning
+Memory Management
+Benchmarks
+TOOLS
+CLI
+Overview
+Command Reference
+Scripting with CLI
+Web Console
+Overview
+Query Editor
+Schema Browser
+Online Playground
+INTEGRATIONS
+Overview
+HTTP API
+Overview
+Authentication
+Query Endpoint
+Mutation Endpoint
+Subscription Endpoint
+Error Codes
+Webhooks
+Change Data Capture
+Frameworks
+React
+Next.js
+Svelte
+FUNCTIONS
+Overview
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+TROUBLESHOOTING
+Overview
+Common Errors
+Connection Issues
+Slow Queries
+Transaction Conflicts
+View Issues
+FAQ
+RESOURCES
+Changelog
+Roadmap
+Glossary
+Contributing
+Community
+Release Notes
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+date module
 date::month
 
 Extract the month (1-12) from a date value.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 date::month(date_value)
@@ -20484,10 +20469,9 @@ date::new
 Create a new date from year, month, and day components.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-date::new(year, month, day)
+Loading...
 Parameters
 Name	Type	Description
 year	Integer	The year component.
@@ -20502,8 +20486,7 @@ $ Create a new date
 Expand
 Copy
 Reset
-1
-map {date::new(2024, 3, 15)}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -20553,7 +20536,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -20944,7 +20926,7 @@ date::now
 Get the current timestamp.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 date::now()
@@ -21403,7 +21385,7 @@ date::quarter
 Get the quarter (1-4) from a date.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 date::quarter(date_value)
@@ -21470,6 +21452,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -21860,10 +21843,9 @@ date::start_of_month
 Get the first day of the month for the given date.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-date::start_of_month(date_value)
+Loading...
 Parameters
 Name	Type	Description
 date_value	Date	The date to get the first day of the month for.
@@ -21876,8 +21858,7 @@ $ Get start of month
 Expand
 Copy
 Reset
-1
-map {date::start_of_month(cast('2024-01-15', date))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -21927,6 +21908,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -22317,10 +22299,9 @@ date::start_of_year
 Get the first day of the year for the given date.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-date::start_of_year(date_value)
+Loading...
 Parameters
 Name	Type	Description
 date_value	Date	The date to get the first day of the year for.
@@ -22333,8 +22314,7 @@ $ Get start of year
 Expand
 Copy
 Reset
-1
-map {date::start_of_year(cast('2024-06-15', date))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -22774,10 +22754,9 @@ date::subtract
 Subtract a duration from a date.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-date::subtract(date_value, duration)
+Loading...
 Parameters
 Name	Type	Description
 date_value	Date	The date to subtract from.
@@ -22791,8 +22770,7 @@ $ Subtract duration from date
 Expand
 Copy
 Reset
-1
-map {date::subtract(cast('2024-01-15', date), cast('P10D', duration))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -23232,10 +23210,9 @@ date::trunc
 Truncate a date to a specified precision (e.g., month, year).
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-date::trunc(date_value, precision)
+Loading...
 Parameters
 Name	Type	Description
 date_value	Date	The date to truncate.
@@ -23249,8 +23226,7 @@ $ Truncate date to year
 Expand
 Copy
 Reset
-1
-map {date::trunc(cast('2024-03-15', date), 'year')}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -23273,463 +23249,6 @@ License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/week/
-===============================================================================
-
-ReifyDB
-Developers
-BUILD
-Docs
-Guides, references, and API documentation
-Tour
-Interactive walkthrough of core features
-Playground
-Try ReifyDB queries in the browser
-Resources
-LEARN
-Blog
-Engineering deep dives and product updates
-FAQ
-Frequently asked questions
-Support
-Get help from the team
-Company
-ABOUT
-Mission
-Why we are building ReifyDB
-Values
-The principles that guide our work
-Contact
-Reach out to the team
-Get Started
-GETTING STARTED
-Introduction
-Installation
-Quick Start
-Connect
-Tutorials
-Build Your First App
-Live Dashboard
-Real-Time Chat
-Task Manager
-Coming From...
-SQL Databases
-MongoDB
-Redis
-Firebase / Firestore
-CONCEPTS
-Overview
-Data Model
-Data Types
-Namespaces & Schemas
-Transactions & ACID
-Materialized Views
-Real-Time Subscriptions
-Storage Engines
-Consistency Model
-Error Handling
-Embedded vs. Server Mode
-RQL
-Basics
-Transforms
-Overview
-Filter
-Sort
-Map
-Extend
-Aggregate
-Distinct
-Take
-Join
-Match
-Patch
-Expressions
-Overview
-Operators
-Conditionals
-Literals
-Field Access
-Patterns & Recipes
-Pagination
-Hierarchical Data
-Time-Series Queries
-Text Search
-Dynamic Queries
-SCRIPTING
-Overview
-Schema
-Namespaces
-Tables
-Enums
-Dictionaries
-Drop & Cleanup
-Constraints
-Indexes
-Storage Primitives
-Tables
-Ringbuffers
-Series
-Data Manipulation
-Insert
-Update
-Delete
-Upsert
-Batch Operations
-Views
-Overview
-Deferred Views
-Transactional Views
-Procedures
-Overview
-Parameters & Control Flow
-Events
-Overview
-Handlers
-Dispatch
-Testing
-Migrations
-Subscriptions
-Access Control
-GUIDES
-Overview
-Data Modeling
-Users & Auth
-E-Commerce
-Content Management
-Multi-Tenancy
-Relationships
-Real-Time
-Live Queries
-Reactive Views
-Event Sourcing
-Notifications
-Testing
-Unit Testing
-Integration Testing
-Test Fixtures & Seeding
-Common Patterns
-Soft Deletes
-Audit Trail
-State Machines
-CQRS
-Computed Fields
-Data Versioning
-CLIENT SDKS
-Overview
-TypeScript / JavaScript
-Quick Start
-Connection
-Queries
-Mutations
-Subscriptions
-Transactions
-Type Safety
-Error Handling
-API Reference
-Rust
-Quick Start
-Embedded Mode
-Client Mode
-API Reference
-Python
-Quick Start
-Connection
-Queries
-API Reference
-Go
-Quick Start
-Connection
-Queries
-API Reference
-ARCHITECTURE
-Overview
-Volcano Execution Model
-Types & Expressions
-Storage Engine
-Incremental Maintenance
-Transaction Engine
-Wire Protocol
-SECURITY
-Overview
-Authentication
-Authorization & Roles
-Row-Level Security
-Encryption
-Audit Logging
-TLS & Network Security
-OPERATIONS
-Configuration
-Deployment
-Standalone
-Embedded
-Docker
-Kubernetes
-Systemd
-Backup & Restore
-Overview
-Snapshots
-Point-in-Time Recovery
-Monitoring
-Overview
-Metrics
-Logging
-Health Checks
-Upgrades
-Scaling
-PERFORMANCE
-Overview
-Query Optimization
-Indexing Strategies
-EXPLAIN & Query Plans
-View Tuning
-Memory Management
-Benchmarks
-TOOLS
-CLI
-Overview
-Command Reference
-Scripting with CLI
-Web Console
-Overview
-Query Editor
-Schema Browser
-Online Playground
-INTEGRATIONS
-Overview
-HTTP API
-Overview
-Authentication
-Query Endpoint
-Mutation Endpoint
-Subscription Endpoint
-Error Codes
-Webhooks
-Change Data Capture
-Frameworks
-React
-Next.js
-Svelte
-FUNCTIONS
-Overview
-blob
-b58
-b64
-b64url
-hex
-utf8
-clock
-advance
-now
-set
-date
-add
-age
-day
-day_of_week
-day_of_year
-days_in_month
-diff
-end_of_month
-format
-is_leap_year
-month
-new
-now
-quarter
-start_of_month
-start_of_year
-subtract
-trunc
-week
-year
-datetime
-add
-age
-date
-day
-day_of_week
-day_of_year
-diff
-epoch
-epoch_millis
-format
-from_epoch
-from_epoch_millis
-hour
-minute
-month
-nanosecond
-new
-now
-quarter
-second
-subtract
-time
-trunc
-week
-year
-duration
-add
-days
-format
-get_days
-get_months
-get_nanos
-hours
-millis
-minutes
-months
-negate
-scale
-seconds
-subtract
-trunc
-weeks
-years
-identity
-id
-is
-anonymous
-none
-root
-some
-type
-json
-array
-object
-serialize
-pretty
-math
-abs
-acos
-asin
-atan
-atan2
-avg
-ceil
-clamp
-cos
-e
-exp
-floor
-gcd
-lcm
-log
-log10
-log2
-max
-min
-mod
-pi
-power
-round
-sign
-sin
-sqrt
-sum
-tan
-truncate
-meta
-type
-text
-ascii
-char
-concat
-contains
-count
-ends_with
-format_bytes
-format_bytes_si
-index_of
-length
-lower
-pad_left
-pad_right
-repeat
-replace
-reverse
-starts_with
-substring
-trim
-trim_end
-trim_start
-upper
-time
-add
-age
-diff
-format
-hour
-minute
-nanosecond
-new
-now
-second
-subtract
-trunc
-TROUBLESHOOTING
-Overview
-Common Errors
-Connection Issues
-Slow Queries
-Transaction Conflicts
-View Issues
-FAQ
-RESOURCES
-Changelog
-Roadmap
-Glossary
-Contributing
-Community
-Release Notes
-← BACK
-DRAFT
-This page is not published. Only visible in development mode.
-date module
-date::week
-
-Get the ISO week number (1-53) from a date.
-
-Syntax
-RQL
-Copy
-1
-date::week(date_value)
-Parameters
-Name	Type	Description
-date_value	Date	The date to extract the ISO week number from.
-Return Value
-
-Returns an Integer representing the ISO week number (1-53).
-
-Examples
-$ Get week number from date
-Expand
-Copy
-Reset
-1
-map {date::week(cast('2024-01-01', date))}
-$ ctrl+enter to run
-Run
-Related Functions
-date::quarter
-date::day_of_week
-PRODUCT
-Documentation
-Blog
-FAQ
-RESOURCES
-Contact
-Support
-Book a Call
-COMMUNITY
-GitHub
-X (Twitter)
-Discord
-© 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
-
-===============================================================================
-URL: https://reifydb.com/docs/functions/date/year/
 ===============================================================================
 
 ReifyDB
@@ -24143,12 +23662,469 @@ Release Notes
 DRAFT
 This page is not published. Only visible in development mode.
 date module
+date::week
+
+Get the ISO week number (1-53) from a date.
+
+Syntax
+$ RQL
+Copy
+1
+date::week(date_value)
+Parameters
+Name	Type	Description
+date_value	Date	The date to extract the ISO week number from.
+Return Value
+
+Returns an Integer representing the ISO week number (1-53).
+
+Examples
+$ Get week number from date
+Expand
+Copy
+Reset
+1
+map {date::week(cast('2024-01-01', date))}
+$ ctrl+enter to run
+Run
+Related Functions
+date::quarter
+date::day_of_week
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/functions/date/year/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+Get Started
+GETTING STARTED
+Introduction
+Installation
+Quick Start
+Connect
+Tutorials
+Build Your First App
+Live Dashboard
+Real-Time Chat
+Task Manager
+Coming From...
+SQL Databases
+MongoDB
+Redis
+Firebase / Firestore
+CONCEPTS
+Overview
+Data Model
+Data Types
+Namespaces & Schemas
+Transactions & ACID
+Materialized Views
+Real-Time Subscriptions
+Storage Engines
+Consistency Model
+Error Handling
+Embedded vs. Server Mode
+RQL
+Basics
+Transforms
+Overview
+Filter
+Sort
+Map
+Extend
+Aggregate
+Distinct
+Take
+Join
+Match
+Patch
+Expressions
+Overview
+Operators
+Conditionals
+Literals
+Field Access
+Patterns & Recipes
+Pagination
+Hierarchical Data
+Time-Series Queries
+Text Search
+Dynamic Queries
+SCRIPTING
+Overview
+Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Drop & Cleanup
+Constraints
+Indexes
+Storage Primitives
+Tables
+Ringbuffers
+Series
+Data Manipulation
+Insert
+Update
+Delete
+Upsert
+Batch Operations
+Views
+Overview
+Deferred Views
+Transactional Views
+Procedures
+Overview
+Parameters & Control Flow
+Events
+Overview
+Handlers
+Dispatch
+Testing
+Migrations
+Subscriptions
+Access Control
+GUIDES
+Overview
+Data Modeling
+Users & Auth
+E-Commerce
+Content Management
+Multi-Tenancy
+Relationships
+Real-Time
+Live Queries
+Reactive Views
+Event Sourcing
+Notifications
+Testing
+Unit Testing
+Integration Testing
+Test Fixtures & Seeding
+Common Patterns
+Soft Deletes
+Audit Trail
+State Machines
+CQRS
+Computed Fields
+Data Versioning
+CLIENT SDKS
+Overview
+TypeScript / JavaScript
+Quick Start
+Connection
+Queries
+Mutations
+Subscriptions
+Transactions
+Type Safety
+Error Handling
+API Reference
+Rust
+Quick Start
+Embedded Mode
+Client Mode
+API Reference
+Python
+Quick Start
+Connection
+Queries
+API Reference
+Go
+Quick Start
+Connection
+Queries
+API Reference
+ARCHITECTURE
+Overview
+Volcano Execution Model
+Types & Expressions
+Storage Engine
+Incremental Maintenance
+Transaction Engine
+Wire Protocol
+SECURITY
+Overview
+Authentication
+Authorization & Roles
+Row-Level Security
+Encryption
+Audit Logging
+TLS & Network Security
+OPERATIONS
+Configuration
+Deployment
+Standalone
+Embedded
+Docker
+Kubernetes
+Systemd
+Backup & Restore
+Overview
+Snapshots
+Point-in-Time Recovery
+Monitoring
+Overview
+Metrics
+Logging
+Health Checks
+Upgrades
+Scaling
+PERFORMANCE
+Overview
+Query Optimization
+Indexing Strategies
+EXPLAIN & Query Plans
+View Tuning
+Memory Management
+Benchmarks
+TOOLS
+CLI
+Overview
+Command Reference
+Scripting with CLI
+Web Console
+Overview
+Query Editor
+Schema Browser
+Online Playground
+INTEGRATIONS
+Overview
+HTTP API
+Overview
+Authentication
+Query Endpoint
+Mutation Endpoint
+Subscription Endpoint
+Error Codes
+Webhooks
+Change Data Capture
+Frameworks
+React
+Next.js
+Svelte
+FUNCTIONS
+Overview
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+TROUBLESHOOTING
+Overview
+Common Errors
+Connection Issues
+Slow Queries
+Transaction Conflicts
+View Issues
+FAQ
+RESOURCES
+Changelog
+Roadmap
+Glossary
+Contributing
+Community
+Release Notes
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+date module
 date::year
 
 Extract the year from a date value.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 date::year(date_value)
@@ -25171,7 +25147,7 @@ datetime::add
 Add a duration to a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::add(datetime_value, duration)
@@ -25629,7 +25605,7 @@ datetime::age
 Calculate the duration between two datetimes.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::age(datetime_a, datetime_b)
@@ -26087,7 +26063,7 @@ datetime::date
 Extract the date component from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::date(datetime_value)
@@ -26544,10 +26520,9 @@ datetime::day
 Extract the day of the month from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-datetime::day(datetime_value)
+Loading...
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to extract the day from
@@ -26560,8 +26535,7 @@ $ Extract day from datetime
 Expand
 Copy
 Reset
-1
-map {datetime::day(cast('2024-03-15T14:30:00Z', datetime))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -27001,7 +26975,7 @@ datetime::day_of_week
 Get the day of the week (1=Monday, 7=Sunday) from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::day_of_week(datetime_value)
@@ -27458,10 +27432,9 @@ datetime::day_of_year
 Get the day of the year (1-366) from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-datetime::day_of_year(datetime_value)
+Loading...
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to get the day of the year from
@@ -27474,8 +27447,7 @@ $ Get day of year from datetime
 Expand
 Copy
 Reset
-1
-map {datetime::day_of_year(cast('2024-03-15T14:30:00Z', datetime))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -27915,7 +27887,7 @@ datetime::diff
 Calculate the difference between two datetimes.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::diff(datetime_a, datetime_b)
@@ -28373,10 +28345,9 @@ datetime::epoch
 Get the Unix epoch timestamp in seconds from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-datetime::epoch(datetime_value)
+Loading...
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to convert to epoch seconds
@@ -28389,8 +28360,7 @@ $ Get epoch seconds from datetime
 Expand
 Copy
 Reset
-1
-map {datetime::epoch(cast('2024-03-15T14:30:45Z', datetime))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -28830,10 +28800,9 @@ datetime::epoch_millis
 Get the Unix epoch timestamp in milliseconds from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-datetime::epoch_millis(datetime_value)
+Loading...
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to convert to epoch milliseconds
@@ -28846,8 +28815,7 @@ $ Get epoch milliseconds from datetime
 Expand
 Copy
 Reset
-1
-map {datetime::epoch_millis(cast('2024-03-15T14:30:45Z', datetime))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -29287,10 +29255,9 @@ datetime::format
 Format a datetime as a string.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-datetime::format(datetime_value, format_string)
+Loading...
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to format
@@ -29304,8 +29271,7 @@ $ Format datetime as string
 Expand
 Copy
 Reset
-1
-map {datetime::format(cast('2024-03-15T14:30:45Z', datetime), '%Y-%m-%dT%H:%M:%SZ')}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -29745,10 +29711,9 @@ datetime::from_epoch
 Create a datetime from a Unix epoch timestamp in seconds.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-datetime::from_epoch(seconds)
+Loading...
 Parameters
 Name	Type	Description
 seconds	Integer	The number of seconds since the Unix epoch
@@ -29761,8 +29726,7 @@ $ Create datetime from epoch seconds
 Expand
 Copy
 Reset
-1
-map {datetime::from_epoch(1710513045)}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -30202,10 +30166,9 @@ datetime::from_epoch_millis
 Create a datetime from a Unix epoch timestamp in milliseconds.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-datetime::from_epoch_millis(milliseconds)
+Loading...
 Parameters
 Name	Type	Description
 milliseconds	Integer	The number of milliseconds since the Unix epoch
@@ -30218,8 +30181,7 @@ $ Create datetime from epoch milliseconds
 Expand
 Copy
 Reset
-1
-map {datetime::from_epoch_millis(1710513045000)}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -30659,7 +30621,7 @@ datetime::hour
 Extract the hour (0-23) from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::hour(datetime_value)
@@ -31116,10 +31078,9 @@ datetime::minute
 Extract the minute (0-59) from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-datetime::minute(datetime_value)
+Loading...
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to extract the minute from
@@ -31132,8 +31093,7 @@ $ Extract minute from datetime
 Expand
 Copy
 Reset
-1
-map {datetime::minute(cast('2024-03-15T14:30:00Z', datetime))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -31573,7 +31533,7 @@ datetime::month
 Extract the month (1-12) from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::month(datetime_value)
@@ -32030,7 +31990,7 @@ datetime::nanosecond
 Extract the nanosecond component from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::nanosecond(datetime_value)
@@ -32487,7 +32447,7 @@ datetime::new
 Create a new datetime from a date and time.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::new(date, time)
@@ -32945,7 +32905,7 @@ datetime::now
 Get the current datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::now()
@@ -33403,7 +33363,7 @@ datetime::quarter
 Get the quarter (1-4) from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::quarter(datetime_value)
@@ -33860,10 +33820,9 @@ datetime::second
 Extract the second (0-59) from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-datetime::second(datetime_value)
+Loading...
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to extract the second from
@@ -33876,8 +33835,7 @@ $ Extract second from datetime
 Expand
 Copy
 Reset
-1
-map {datetime::second(cast('2024-03-15T14:30:45Z', datetime))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -34317,10 +34275,9 @@ datetime::subtract
 Subtract a duration from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-datetime::subtract(datetime_value, duration)
+Loading...
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to subtract the duration from
@@ -34334,8 +34291,7 @@ $ Subtract duration from datetime
 Expand
 Copy
 Reset
-1
-map {datetime::subtract(cast('2024-03-15T14:30:00Z', datetime), cast('P10D', duration))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -34775,7 +34731,7 @@ datetime::time
 Extract the time component from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::time(datetime_value)
@@ -35232,10 +35188,9 @@ datetime::trunc
 Truncate a datetime to a specified precision.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-datetime::trunc(datetime_value, precision)
+Loading...
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to truncate
@@ -35249,8 +35204,7 @@ $ Truncate datetime to hour
 Expand
 Copy
 Reset
-1
-map {datetime::trunc(cast('2024-03-15T14:30:45Z', datetime), 'hour')}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -35690,7 +35644,7 @@ datetime::week
 Get the ISO week number (1-53) from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 datetime::week(datetime_value)
@@ -36147,10 +36101,9 @@ datetime::year
 Extract the year from a datetime.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-datetime::year(datetime_value)
+Loading...
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to extract the year from
@@ -36163,8 +36116,7 @@ $ Extract year from datetime
 Expand
 Copy
 Reset
-1
-map {datetime::year(cast('2024-03-15T14:30:00Z', datetime))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -37127,7 +37079,7 @@ duration::add
 Add two durations together.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::add(a, b)
@@ -37587,10 +37539,9 @@ Create a duration of the specified number of days.
 Alias: duration::day
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-duration::days(count)
+Loading...
 Parameters
 Name	Type	Description
 count	Integer	The number of days for the duration.
@@ -37603,8 +37554,7 @@ $ Create a duration of days
 Expand
 Copy
 Reset
-1
-map {duration::days(10)}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -38044,7 +37994,7 @@ duration::format
 Format a duration as a human-readable string.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::format(duration, format_string)
@@ -38501,7 +38451,7 @@ duration::get_days
 Get the days component of a duration.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::get_days(duration)
@@ -38958,7 +38908,7 @@ duration::get_months
 Get the months component of a duration.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::get_months(duration)
@@ -39415,7 +39365,7 @@ duration::get_nanos
 Get the nanoseconds component of a duration.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::get_nanos(duration)
@@ -39874,7 +39824,7 @@ Create a duration of the specified number of hours.
 Alias: duration::hour
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::hours(count)
@@ -40333,7 +40283,7 @@ Create a duration of the specified number of milliseconds.
 Alias: duration::milli
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::millis(count)
@@ -40791,7 +40741,7 @@ Create a duration of the specified number of minutes.
 Alias: duration::minute
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::minutes(count)
@@ -41250,7 +41200,7 @@ Create a duration of the specified number of months.
 Alias: duration::month
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::months(count)
@@ -41708,7 +41658,7 @@ duration::negate
 Negate a duration (flip its sign).
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::negate(duration)
@@ -42165,10 +42115,9 @@ duration::scale
 Scale a duration by a numeric factor.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-duration::scale(duration, factor)
+Loading...
 Parameters
 Name	Type	Description
 duration	Duration	The duration to scale.
@@ -42182,8 +42131,7 @@ $ Scale a duration
 Expand
 Copy
 Reset
-1
-map {duration::scale(duration::hours(2), 3)}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -42625,7 +42573,7 @@ Create a duration of the specified number of seconds.
 Alias: duration::second
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::seconds(count)
@@ -43082,7 +43030,7 @@ duration::subtract
 Subtract one duration from another.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::subtract(a, b)
@@ -43540,7 +43488,7 @@ duration::trunc
 Truncate a duration to a specified precision.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::trunc(duration, precision)
@@ -43999,7 +43947,7 @@ Create a duration of the specified number of weeks.
 Alias: duration::week
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 duration::weeks(count)
@@ -44458,10 +44406,9 @@ Create a duration of the specified number of years.
 Alias: duration::year
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-duration::years(count)
+Loading...
 Parameters
 Name	Type	Description
 count	Integer	The number of years for the duration.
@@ -44474,8 +44421,7 @@ $ Create a duration of years
 Expand
 Copy
 Reset
-1
-map {duration::years(2)}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -45356,7 +45302,7 @@ identity::id
 Get the unique identifier of a record.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 identity::id()
@@ -46275,7 +46221,7 @@ is::anonymous
 Check if the current user is anonymous (not authenticated).
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 is::anonymous()
@@ -46732,7 +46678,7 @@ is::none
 Check if a value is none (has no value).
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 is::none(value)
@@ -47189,7 +47135,7 @@ is::root
 Check if the current user has root privileges.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 is::root()
@@ -47646,7 +47592,7 @@ is::some
 Check if a value is not none (has some value).
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 is::some(value)
@@ -48103,10 +48049,9 @@ is::type
 Check if a value is of a specified type.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-is::type(value, type_name)
+Loading...
 Parameters
 Name	Type	Description
 value	Any	The value to check the type of
@@ -48120,8 +48065,7 @@ $ Check if a value is a specific type
 Expand
 Copy
 Reset
-1
-map {is::type(cast(42, int4), int4)}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -48564,12 +48508,7 @@ $ Quick Example
 Expand
 Copy
 Reset
-1
-2
-3
-from app::users
-extend { payload: json::object("name", name, "age", age) }
-map { name, payload }
+Loading...
 $ ctrl+enter to run
 Run
 Available Functions
@@ -49029,7 +48968,7 @@ json::array
 Build a JSON array from a list of values.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 json::array(value1, value2, ...)
@@ -49503,7 +49442,7 @@ json::object
 Build a JSON object from alternating key-value pairs.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 json::object(key1, value1, key2, value2, ...)
@@ -49980,10 +49919,9 @@ json::pretty
 Serialize a JSON value to a pretty-printed string with indentation.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-json::pretty(value)
+Loading...
 Parameters
 Name	Type	Description
 value	JSON	A JSON value (from json::array or json::object)
@@ -49997,12 +49935,7 @@ $ Pretty-print JSON
 Expand
 Copy
 Reset
-1
-2
-3
-from app::users
-extend { formatted: json::pretty(json::object("name", name, "age", age)) }
-map { name, formatted }
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -50443,10 +50376,9 @@ json::serialize
 Serialize a JSON value to a compact string.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-json::serialize(value)
+Loading...
 Parameters
 Name	Type	Description
 value	JSON	A JSON value (from json::array or json::object)
@@ -50460,12 +50392,7 @@ $ Serialize to JSON String
 Expand
 Copy
 Reset
-1
-2
-3
-from app::users
-extend { json_str: json::serialize(json::object("name", name, "age", age)) }
-map { name, json_str }
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -50909,16 +50836,7 @@ $ Quick Example
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-from app::sales
-aggregate {
-  total_revenue: math::sum(amount),
-  avg_sale: math::avg(amount)
-} by {region}
+Loading...
 $ ctrl+enter to run
 Run
 Aggregation Functions
@@ -51518,10 +51436,9 @@ math::abs
 Get the absolute value of a number.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-math::abs(value)
+Loading...
 Parameters
 Name	Type	Description
 value	Number	The number to get the absolute value of
@@ -51535,10 +51452,7 @@ $ Convert to absolute value
 Expand
 Copy
 Reset
-1
-2
-from app::transactions
-extend { abs_amount: math::abs(amount) }
+Loading...
 $ ctrl+enter to run
 Run
 Filter by absolute magnitude
@@ -51546,10 +51460,7 @@ $ Filter by absolute magnitude
 Expand
 Copy
 Reset
-1
-2
-from app::balances
-filter { math::abs(balance) > 1000 }
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -51989,7 +51900,7 @@ math::acos
 Compute the arccosine (inverse cosine) of a value in radians.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::acos(value)
@@ -52447,10 +52358,9 @@ math::asin
 Compute the arcsine (inverse sine) of a value in radians.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-math::asin(value)
+Loading...
 Parameters
 Name	Type	Description
 value	Number	A number between -1 and 1
@@ -52463,8 +52373,7 @@ $ Calculate arcsine
 Expand
 Copy
 Reset
-1
-map {math::asin(cast(0.5, float8))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -52905,7 +52814,7 @@ math::atan
 Compute the arctangent (inverse tangent) of a value in radians.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::atan(value)
@@ -53363,10 +53272,9 @@ math::atan2
 Compute the two-argument arctangent, returning the angle in radians between the positive x-axis and the point (x, y).
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-math::atan2(y, x)
+Loading...
 Parameters
 Name	Type	Description
 y	Number	The y-coordinate
@@ -53380,8 +53288,7 @@ $ Calculate two-argument arctangent
 Expand
 Copy
 Reset
-1
-map {math::atan2(cast(1.0, float8), cast(1.0, float8))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -53822,10 +53729,9 @@ math::avg
 Calculate the average (mean) of numeric values across multiple rows.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-math::avg(value)
+Loading...
 Parameters
 Name	Type	Description
 value	Number	The numeric field to average
@@ -53839,10 +53745,7 @@ $ Calculate average price
 Expand
 Copy
 Reset
-1
-2
-from app::products
-aggregate {math::avg(price)} by {category}
+Loading...
 $ ctrl+enter to run
 Run
 Average with total
@@ -53850,16 +53753,7 @@ $ Average with total
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-from app::sales
-aggregate {
-  avg_sale: math::avg(amount),
-  total_sales: math::sum(amount)
-}
+Loading...
 $ ctrl+enter to run
 Run
 INFO
@@ -54302,7 +54196,7 @@ math::ceil
 Round up to the nearest integer.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::ceil(value)
@@ -54759,7 +54653,7 @@ math::clamp
 Clamp a value within a specified range.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::clamp(value, min, max)
@@ -55218,10 +55112,9 @@ math::cos
 Compute the cosine of an angle in radians.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-math::cos(angle)
+Loading...
 Parameters
 Name	Type	Description
 angle	Number	The angle in radians
@@ -55234,8 +55127,7 @@ $ Calculate cosine
 Expand
 Copy
 Reset
-1
-map {math::cos(cast(0.0, float8))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -55676,7 +55568,7 @@ math::e
 Return Euler's number (approximately 2.71828).
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::e()
@@ -56134,7 +56026,7 @@ math::exp
 Compute Euler's number (e) raised to the given power.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::exp(value)
@@ -56591,7 +56483,7 @@ math::floor
 Round down to the nearest integer.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::floor(value)
@@ -57048,7 +56940,7 @@ math::gcd
 Compute the greatest common divisor of two integers.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::gcd(a, b)
@@ -57506,7 +57398,7 @@ math::lcm
 Compute the least common multiple of two integers.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::lcm(a, b)
@@ -57964,7 +57856,7 @@ math::log
 Compute the natural logarithm (base e) of a value.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::log(value)
@@ -58422,7 +58314,7 @@ math::log10
 Compute the base-10 logarithm of a value.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::log10(value)
@@ -58879,10 +58771,9 @@ math::log2
 Compute the base-2 logarithm of a value.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-math::log2(value)
+Loading...
 Parameters
 Name	Type	Description
 value	Number	A positive number
@@ -58895,8 +58786,7 @@ $ Calculate base-2 logarithm
 Expand
 Copy
 Reset
-1
-map {math::log2(cast(8.0, float8))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -59336,10 +59226,9 @@ math::max
 Find the maximum value across multiple rows.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-math::max(value)
+Loading...
 Parameters
 Name	Type	Description
 value	Number	The numeric field to find the maximum of
@@ -59353,10 +59242,7 @@ $ Find highest price
 Expand
 Copy
 Reset
-1
-2
-from app::products
-aggregate {math::max(price)} by {category}
+Loading...
 $ ctrl+enter to run
 Run
 Min and max together
@@ -59364,16 +59250,7 @@ $ Min and max together
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-from app::sales
-aggregate {
-  lowest: math::min(amount),
-  highest: math::max(amount)
-} by {month}
+Loading...
 $ ctrl+enter to run
 Run
 INFO
@@ -59816,7 +59693,7 @@ math::min
 Find the minimum value across multiple rows.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::min(value)
@@ -60296,7 +60173,7 @@ math::mod
 Compute the modulo (remainder) of a division.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::mod(a, b)
@@ -60754,7 +60631,7 @@ math::pi
 Return the mathematical constant pi (approximately 3.14159).
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::pi()
@@ -61213,10 +61090,9 @@ math::power
 Raise a number to a power (exponentiation).
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-math::power(base, exponent)
+Loading...
 Parameters
 Name	Type	Description
 base	Number	The base number
@@ -61230,8 +61106,7 @@ $ Calculate power
 Expand
 Copy
 Reset
-1
-map {math::power(cast(2, int4), cast(3, int4))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -61671,10 +61546,9 @@ math::round
 Round to the nearest integer or decimal place.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-math::round(value, decimal_places)
+Loading...
 Parameters
 Name	Type	Description
 value	Number	The number to round
@@ -61689,10 +61563,7 @@ $ Round to 2 decimal places
 Expand
 Copy
 Reset
-1
-2
-from app::prices
-extend { rounded: math::round(price, 2) }
+Loading...
 $ ctrl+enter to run
 Run
 Round to nearest integer
@@ -61700,10 +61571,7 @@ $ Round to nearest integer
 Expand
 Copy
 Reset
-1
-2
-from app::metrics
-extend { rounded_value: math::round(value) }
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -62144,7 +62012,7 @@ math::sign
 Return the sign of a number (-1, 0, or 1).
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::sign(value)
@@ -62600,7 +62468,7 @@ math::sin
 Compute the sine of an angle in radians.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::sin(angle)
@@ -63058,7 +62926,7 @@ math::sqrt
 Compute the square root of a value.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::sqrt(value)
@@ -63515,7 +63383,7 @@ math::sum
 Calculate the sum of numeric values across multiple rows.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::sum(value)
@@ -63995,7 +63863,7 @@ math::tan
 Compute the tangent of an angle in radians.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::tan(angle)
@@ -64453,7 +64321,7 @@ math::truncate
 Truncate a number toward zero.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 math::truncate(value)
@@ -65351,7 +65219,7 @@ meta::type
 Get the type name of a value as a string.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 meta::type(value)
@@ -65810,18 +65678,7 @@ $ Quick Example
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-6
-from app::users
-extend {
-  full_name: text::concat(first_name, " ", last_name),
-  email_lower: text::lower(email)
-}
-filter { text::length(full_name) > 0 }
+Loading...
 $ ctrl+enter to run
 Run
 Case & Whitespace
@@ -66375,7 +66232,7 @@ text::ascii
 Get the ASCII code of the first character in a string.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 text::ascii(value)
@@ -66831,7 +66688,7 @@ text::char
 Convert an ASCII code to its corresponding character.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 text::char(code)
@@ -67287,10 +67144,9 @@ text::concat
 Concatenate multiple strings together.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-text::concat(value1, value2, ...)
+Loading...
 Parameters
 Name	Type	Description
 value1, value2, ...	Utf8	Two or more strings to concatenate together
@@ -67303,8 +67159,7 @@ $ Concatenate two strings
 Expand
 Copy
 Reset
-1
-map {text::concat('hello', ' world')}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -67744,10 +67599,9 @@ text::contains
 Check if a string contains a specified substring.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-text::contains(value, search)
+Loading...
 Parameters
 Name	Type	Description
 value	Utf8	The string to search within.
@@ -67761,8 +67615,7 @@ $ Check if string contains substring
 Expand
 Copy
 Reset
-1
-map {text::contains('hello world', 'lo wo')}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -68203,10 +68056,9 @@ text::count
 Count the number of characters in a string.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-text::count(value)
+Loading...
 Parameters
 Name	Type	Description
 value	Utf8	The string to count characters in
@@ -68219,8 +68071,7 @@ $ Count characters in string
 Expand
 Copy
 Reset
-1
-map {text::count('hello')}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -68660,10 +68511,9 @@ text::ends_with
 Check if a string ends with a specified suffix.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-text::ends_with(value, suffix)
+Loading...
 Parameters
 Name	Type	Description
 value	Utf8	The string to check.
@@ -68677,8 +68527,7 @@ $ Check if string ends with suffix
 Expand
 Copy
 Reset
-1
-map {text::ends_with('hello world', 'world')}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -69118,10 +68967,9 @@ text::format_bytes
 Format a byte count as a human-readable string using binary units (KiB, MiB, GiB).
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-text::format_bytes(bytes)
+Loading...
 Parameters
 Name	Type	Description
 bytes	Integer	The byte count to format.
@@ -69134,8 +68982,7 @@ $ Format bytes (binary)
 Expand
 Copy
 Reset
-1
-map {text::format_bytes(cast(1048576, int4))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -69574,7 +69421,7 @@ text::format_bytes_si
 Format a byte count as a human-readable string using SI units (KB, MB, GB).
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 text::format_bytes_si(bytes)
@@ -70030,10 +69877,9 @@ text::index_of
 Find the index of the first occurrence of a substring.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-text::index_of(value, search)
+Loading...
 Parameters
 Name	Type	Description
 value	Utf8	The string to search within.
@@ -70047,8 +69893,7 @@ $ Find index of substring
 Expand
 Copy
 Reset
-1
-map {text::index_of('hello world', 'world')}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -70488,7 +70333,7 @@ text::length
 Get the length of a string.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 text::length(value)
@@ -70970,10 +70815,9 @@ text::lower
 Convert a string to lowercase.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-text::lower(value)
+Loading...
 Parameters
 Name	Type	Description
 value	Utf8	The string to convert to lowercase
@@ -70986,8 +70830,7 @@ $ Convert to lowercase
 Expand
 Copy
 Reset
-1
-map {text::lower('HELLO')}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -71427,10 +71270,9 @@ text::pad_left
 Pad a string on the left to a specified length.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-text::pad_left(value, length, pad_char)
+Loading...
 Parameters
 Name	Type	Description
 value	Utf8	The string to pad.
@@ -71445,8 +71287,7 @@ $ Pad string on the left
 Expand
 Copy
 Reset
-1
-map {text::pad_left('hi', 5, '0')}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -71886,7 +71727,7 @@ text::pad_right
 Pad a string on the right to a specified length.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 text::pad_right(value, length, pad_char)
@@ -72345,7 +72186,7 @@ text::repeat
 Repeat a string a specified number of times.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 text::repeat(value, count)
@@ -72803,7 +72644,7 @@ text::replace
 Replace all occurrences of a substring with another string.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 text::replace(value, search, replacement)
@@ -73262,10 +73103,9 @@ text::reverse
 Reverse the characters in a string.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-text::reverse(value)
+Loading...
 Parameters
 Name	Type	Description
 value	Utf8	The string to reverse.
@@ -73278,8 +73118,7 @@ $ Reverse a string
 Expand
 Copy
 Reset
-1
-map {text::reverse('hello')}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -73719,7 +73558,7 @@ text::starts_with
 Check if a string starts with a specified prefix.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 text::starts_with(value, prefix)
@@ -74177,10 +74016,9 @@ text::substring
 Extract a portion of a string.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-text::substring(value, start, end)
+Loading...
 Parameters
 Name	Type	Description
 value	Utf8	The string to extract from
@@ -74196,10 +74034,7 @@ $ Extract prefix
 Expand
 Copy
 Reset
-1
-2
-from app::codes
-extend { prefix: text::substring(code, 0, 3) }
+Loading...
 $ ctrl+enter to run
 Run
 Get first characters
@@ -74207,10 +74042,7 @@ $ Get first characters
 Expand
 Copy
 Reset
-1
-2
-from app::products
-extend { initial: text::substring(name, 0, 1) }
+Loading...
 $ ctrl+enter to run
 Run
 Extract middle portion
@@ -74218,10 +74050,7 @@ $ Extract middle portion
 Expand
 Copy
 Reset
-1
-2
-from app::identifiers
-extend { middle: text::substring(code, 3, 7) }
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -74662,7 +74491,7 @@ text::trim
 Remove leading and trailing whitespace from a string.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 text::trim(value)
@@ -75133,7 +74962,7 @@ text::trim_end
 Remove trailing whitespace from a string.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 text::trim_end(value)
@@ -75590,7 +75419,7 @@ text::trim_start
 Remove leading whitespace from a string.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 text::trim_start(value)
@@ -76047,7 +75876,7 @@ text::upper
 Convert a string to uppercase.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 text::upper(value)
@@ -77016,7 +76845,7 @@ time::add
 Add a duration to a time value.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 time::add(time_value, duration)
@@ -77474,10 +77303,9 @@ time::age
 Calculate the duration between two time values.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-time::age(time_a, time_b)
+Loading...
 Parameters
 Name	Type	Description
 time_a	Time	The first time value
@@ -77491,8 +77319,7 @@ $ Calculate duration between two times
 Expand
 Copy
 Reset
-1
-map {time::age(cast('14:00:00', time), cast('10:00:00', time))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -77932,7 +77759,7 @@ time::diff
 Calculate the difference between two time values.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 time::diff(time_a, time_b)
@@ -78390,7 +78217,7 @@ time::format
 Format a time value as a string.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 time::format(time_value, format_string)
@@ -78847,7 +78674,7 @@ time::hour
 Extract the hour (0-23) from a time value.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 time::hour(time_value)
@@ -79304,10 +79131,9 @@ time::minute
 Extract the minute (0-59) from a time value.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-time::minute(time_value)
+Loading...
 Parameters
 Name	Type	Description
 time_value	Time	The time value to extract the minute from
@@ -79320,8 +79146,7 @@ $ Extract the minute
 Expand
 Copy
 Reset
-1
-map {time::minute(cast('14:30:00', time))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -79761,7 +79586,7 @@ time::nanosecond
 Extract the nanosecond component from a time value.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 time::nanosecond(time_value)
@@ -80217,7 +80042,7 @@ time::new
 Create a new time from hour, minute, and second components.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 time::new(hour, minute, second)
@@ -80675,7 +80500,7 @@ time::now
 Get the current time of day.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 time::now()
@@ -81133,10 +80958,9 @@ time::second
 Extract the second (0-59) from a time value.
 
 Syntax
-RQL
+$ RQL
 Copy
-1
-time::second(time_value)
+Loading...
 Parameters
 Name	Type	Description
 time_value	Time	The time value to extract the second from
@@ -81149,8 +80973,7 @@ $ Extract the second
 Expand
 Copy
 Reset
-1
-map {time::second(cast('14:30:45', time))}
+Loading...
 $ ctrl+enter to run
 Run
 Related Functions
@@ -81590,7 +81413,7 @@ time::subtract
 Subtract a duration from a time value.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 time::subtract(time_value, duration)
@@ -82048,7 +81871,7 @@ time::trunc
 Truncate a time to a specified precision.
 
 Syntax
-RQL
+$ RQL
 Copy
 1
 time::trunc(time_value, precision)
@@ -82115,7 +81938,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -82981,7 +82803,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -84280,7 +84101,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -90818,7 +90638,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -91251,7 +91070,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -91684,7 +91502,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -92117,7 +91934,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -92550,7 +92366,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -92983,7 +92798,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -93416,7 +93230,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -93849,7 +93662,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -94282,7 +94094,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -94715,7 +94526,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -95148,7 +94958,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -95581,7 +95390,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -96014,7 +95822,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -96447,7 +96254,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -96880,7 +96686,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -97313,7 +97118,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -99045,7 +98849,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -99478,7 +99281,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -99911,7 +99713,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -100344,7 +100145,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -100777,7 +100577,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -101210,7 +101009,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -101643,7 +101441,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -102076,7 +101873,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -102509,7 +102305,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -102942,7 +102737,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -103375,7 +103169,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -103808,7 +103601,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -104241,7 +104033,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -104674,7 +104465,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -108644,10 +108434,7 @@ $ Query Structure
 Expand
 Copy
 Reset
-1
-2
-from app::users
-filter { age >= 18 }
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -108665,8 +108452,7 @@ $ Tables
 Expand
 Copy
 Reset
-1
-from app::users
+Loading...
 $ ctrl+enter to run
 Run
 Inline Data
@@ -108677,14 +108463,7 @@ $ Inline Data
 Expand
 Copy
 Reset
-1
-2
-3
-4
-from [
-  {id: 1, name: "Alice"},
-  {id: 2, name: "Bob"}
-]
+Loading...
 $ ctrl+enter to run
 Run
 Literals
@@ -109170,10 +108949,7 @@ $ math module
 Expand
 Copy
 Reset
-1
-2
-from app::orders
-aggregate {math::sum(total)} by {region}
+Loading...
 $ ctrl+enter to run
 Run
 text
@@ -109184,10 +108960,7 @@ $ text module
 Expand
 Copy
 Reset
-1
-2
-from app::users
-extend { lower_email: text::lower(email) }
+Loading...
 $ ctrl+enter to run
 Run
 date
@@ -109198,10 +108971,7 @@ $ date module
 Expand
 Copy
 Reset
-1
-2
-from app::records
-extend { processed_at: date::now() }
+Loading...
 $ ctrl+enter to run
 Run
 Case Expression
@@ -109212,10 +108982,7 @@ $ Case Expression
 Expand
 Copy
 Reset
-1
-2
-from app::orders
-extend { tax: total * 0.1 }
+Loading...
 $ ctrl+enter to run
 Run
 Named Arguments
@@ -109226,10 +108993,7 @@ $ Named Arguments
 Expand
 Copy
 Reset
-1
-2
-from app::users
-take 10
+Loading...
 $ ctrl+enter to run
 Run
 COMBINING EXPRESSIONS
@@ -114151,10 +113915,7 @@ $ Whole-Table Aggregation
 Expand
 Copy
 Reset
-1
-2
-from app::orders
-aggregate { total_revenue: math::sum(total) }
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -114165,10 +113926,7 @@ $ Group By
 Expand
 Copy
 Reset
-1
-2
-from app::orders
-aggregate { revenue: math::sum(total), orders: math::sum(1) } by { region }
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -114179,10 +113937,7 @@ $ Multiple Groups
 Expand
 Copy
 Reset
-1
-2
-from app::orders
-aggregate { revenue: math::sum(total) } by { region, status }
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -114193,20 +113948,7 @@ $ Multiple Aggregations
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-6
-7
-from app::orders
-aggregate {
-  total: math::sum(total),
-  average: math::avg(total),
-  smallest: math::min(total),
-  largest: math::max(total)
-}
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -114650,10 +114392,7 @@ $ Basic Usage
 Expand
 Copy
 Reset
-1
-2
-from app::products
-distinct { category }
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -114664,10 +114403,7 @@ $ Multiple Columns
 Expand
 Copy
 Reset
-1
-2
-from app::orders
-distinct { region, status }
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -115588,10 +115324,7 @@ $ Basic Syntax
 Expand
 Copy
 Reset
-1
-2
-from app::users
-filter { age >= 18 }
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -115605,10 +115338,7 @@ $ Multiple Conditions
 Expand
 Copy
 Reset
-1
-2
-from app::users
-filter { age >= 18 and status == "active" }
+Loading...
 $ ctrl+enter to run
 Run
 None Handling
@@ -115619,10 +115349,7 @@ $ None Handling
 Expand
 Copy
 Reset
-1
-2
-from app::users
-filter { deleted_at == none }
+Loading...
 $ ctrl+enter to run
 Run
 PRODUCT
@@ -116528,10 +116255,7 @@ $ Select Columns
 Expand
 Copy
 Reset
-1
-2
-from app::employees
-map { id, salary }
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -116542,10 +116266,7 @@ $ Rename and Compute
 Expand
 Copy
 Reset
-1
-2
-from app::employees
-map { employee_id: id, annual_salary: salary, double_salary: salary * 2 }
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -116556,10 +116277,7 @@ $ Constants
 Expand
 Copy
 Reset
-1
-2
-from [{ x: 1 }, { x: 2 }, { x: 3 }]
-map { x, label: "row", active: true }
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -119084,7 +118802,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -119550,7 +119267,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -119983,7 +119699,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -121337,22 +121052,7 @@ $ Update Rows
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-6
-7
-8
-CREATE NAMESPACE dm_u;
-CREATE TABLE dm_u::users { id: int4, name: utf8, active: bool };
-INSERT dm_u::users [
-  { id: 1, name: 'Alice', active: true },
-  { id: 2, name: 'Bob', active: true }
-];
-UPDATE dm_u::users { id: id, name: name, active: false } FILTER { id == 2 };
-FROM dm_u::users
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -121363,16 +121063,7 @@ $ Update with Expression
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-CREATE NAMESPACE dm_ue;
-CREATE TABLE dm_ue::scores { id: int4, points: int4 };
-INSERT dm_ue::scores [{ id: 1, points: 10 }, { id: 2, points: 20 }];
-UPDATE dm_ue::scores { id: id, points: points + 5 } FILTER { true };
-FROM dm_ue::scores
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -121422,7 +121113,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -121855,7 +121545,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -122338,7 +122027,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -122811,7 +122499,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -123205,26 +122892,7 @@ $ Handler
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-CREATE NAMESPACE ev_h;
-CREATE TABLE ev_h::audit { kind: utf8 };
-CREATE EVENT ev_h::order_event {
-  OrderPlaced { order_id: int4 }
-};
-CREATE HANDLER ev_h::on_placed ON ev_h::order_event::OrderPlaced {
-  INSERT ev_h::audit [{ kind: 'placed' }]
-};
-DISPATCH ev_h::order_event::OrderPlaced { order_id: 1 };
-FROM ev_h::audit
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -123274,7 +122942,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -123753,7 +123420,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -124232,7 +123898,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -125999,12 +125664,7 @@ $ Drop Table
 Expand
 Copy
 Reset
-1
-2
-3
-CREATE NAMESPACE sc_dr;
-CREATE TABLE sc_dr::temp { id: int4 };
-DROP TABLE sc_dr::temp
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -126015,10 +125675,7 @@ $ Drop If Exists
 Expand
 Copy
 Reset
-1
-2
-CREATE NAMESPACE sc_die;
-DROP TABLE IF EXISTS sc_die::nonexistent
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -127839,20 +127496,7 @@ $ Create Table
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-6
-7
-CREATE NAMESPACE sc_t;
-CREATE TABLE sc_t::users {
-  id: int4,
-  name: utf8,
-  age: int2,
-  active: bool
-}
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -127863,20 +127507,7 @@ $ Auto Increment
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-6
-7
-CREATE NAMESPACE sc_ai;
-CREATE TABLE sc_ai::users {
-  id: int4 WITH { auto_increment },
-  name: utf8
-};
-INSERT sc_ai::users [{ name: 'Alice' }, { name: 'Bob' }];
-FROM sc_ai::users
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -127926,7 +127557,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -128852,6 +128482,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -129340,7 +128971,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -129790,7 +129420,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -130294,7 +129923,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -130825,7 +130453,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -131364,7 +130991,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -131758,44 +131384,7 @@ $ Transactional View
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-CREATE NAMESPACE vw_t;
-CREATE TABLE vw_t::users {
-  id: int4,
-  name: utf8,
-  active: bool
-};
-CREATE VIEW vw_t::active_users {
-  id: int4,
-  name: utf8
-} AS {
-  FROM vw_t::users
-  FILTER active == true
-  MAP { id: id, name: name }
-};
-INSERT vw_t::users [
-  { id: 1, name: 'Alice', active: true },
-  { id: 2, name: 'Bob', active: false }
-];
-FROM vw_t::active_users
+Loading...
 $ ctrl+enter to run
 Run
 
@@ -132278,6 +131867,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -141370,6 +140960,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -142235,6 +141826,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -142667,6 +142259,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -144398,7 +143991,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -144831,7 +144423,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -145264,7 +144855,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -145697,7 +145287,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -146130,7 +145719,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -146563,7 +146151,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -146996,7 +146583,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -152545,16 +152131,7 @@ $ tour: welcome
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-from [
-  {step: 1, topic: "hello rql"},
-  {step: 2, topic: "querying tables"},
-  {step: 3, topic: "filtering rows"}
-]
+Loading...
 $ ctrl+enter to run
 Run
 ← Prev
