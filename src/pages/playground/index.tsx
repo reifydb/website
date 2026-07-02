@@ -2,7 +2,7 @@ import { Navbar } from '@/components/layout/navbar';
 import { Console } from '@reifydb/console';
 import '@reifydb/console/styles.css';
 import { wasmExecutor } from '@/lib/wasm-executor-singleton';
-import { premiumDarkTheme } from '@reifydb/console';
+import { premium_dark_theme } from '@reifydb/console';
 
 export function PlaygroundPage() {
   return (
@@ -11,10 +11,10 @@ export function PlaygroundPage() {
       <div style={{ height: 'calc(100vh - 60px)' }}>
         <Console
           executor={wasmExecutor}
-          initialCode="FROM app::users"
-          historyKey="playground"
+          initial_code="FROM app::users"
+          history_key="playground"
           theme="dark"
-          monacoTheme={premiumDarkTheme}
+          monaco_theme={premium_dark_theme}
         />
       </div>
     </div>

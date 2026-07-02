@@ -231,7 +231,6 @@ export const navSections: NavSection[] = [
         children: [
           { id: 'guides-modeling-users-auth', label: 'Users & Auth', href: '/docs/guides/modeling/users-auth', published: false },
           { id: 'guides-modeling-e-commerce', label: 'E-Commerce', href: '/docs/guides/modeling/e-commerce', published: false },
-          { id: 'guides-modeling-iot', label: 'IoT & Sensor Data', href: '/docs/guides/modeling/iot', published: false },
           { id: 'guides-modeling-cms', label: 'Content Management', href: '/docs/guides/modeling/cms', published: false },
           { id: 'guides-modeling-multi-tenancy', label: 'Multi-Tenancy', href: '/docs/guides/modeling/multi-tenancy', published: false },
           { id: 'guides-modeling-relationships', label: 'Relationships', href: '/docs/guides/modeling/relationships', published: false },

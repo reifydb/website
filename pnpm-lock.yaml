@@ -12,17 +12,17 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/console':
-        specifier: ^0.4.9
-        version: 0.4.9(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^0.6.0
+        version: 0.6.0(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/core':
-        specifier: ^0.4.9
-        version: 0.4.9
+        specifier: ^0.6.0
+        version: 0.6.0
       '@reifydb/ui':
-        specifier: ^0.4.9
-        version: 0.4.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^0.6.0
+        version: 0.6.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/wasm':
-        specifier: ^0.4.9
-        version: 0.4.9
+        specifier: ^0.6.0
+        version: 0.6.0
       '@tsparticles/engine':
         specifier: ^3.9.1
         version: 3.9.1
@@ -41,9 +41,6 @@ importers:
       monaco-editor:
         specifier: ^0.55.1
         version: 0.55.1
-      phaser:
-        specifier: ^3.90.0
-        version: 3.90.0
       react:
         specifier: ^19.2.0
         version: 19.2.3
@@ -512,12 +509,12 @@ packages:
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
-  '@reifydb/client@0.4.9':
-    resolution: {integrity: sha512-kuFgxkJy0r3mlkJLDozxYBhQ/K7tEOGx5RsL6lmoFGPdWBsBAqd1SZYzkyzW+h+jVlMNfL1jDgrMnQp+p5dStw==}
+  '@reifydb/client@0.6.0':
+    resolution: {integrity: sha512-6laC9t6Y/7KIrtVq6tb0Svk6ZJb8kqI+o3R9hFuaISMp3dWQO4AAzY4Ojtz4yjosbBvJ4LeStLc1PKkDoSK5BQ==}
     engines: {node: '>=16.0.0'}
 
-  '@reifydb/console@0.4.9':
-    resolution: {integrity: sha512-1yrkwd4dFSCfo5Ct7nJHWEJIyL8F/azZwec6ighrnTXQGI3fnbeDtuJglpDfLz4H7GEStWB29nzYgKbSseevLA==}
+  '@reifydb/console@0.6.0':
+    resolution: {integrity: sha512-gKG5V9ilPr/640cslHWAoVu33KH67lds4VZFXULTiqqJwqobEtWHxdPruxxKq+ecLSoP7MqQmE/qQ/S5jQ3yHg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@monaco-editor/react': '>=4.0.0'
@@ -525,19 +522,19 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@reifydb/core@0.4.9':
-    resolution: {integrity: sha512-lAlpYmmYhNNceNSzt2n8qUw2p8Bqj3jRIUPXXDf9FupJaV4jSPFS9fYWsvAVsiFECExZhepKI90HbiV95uXLlw==}
+  '@reifydb/core@0.6.0':
+    resolution: {integrity: sha512-ZrwRZtXuOGqgCAhk0Ch8Cl5AM/Eu6lR/39hoADBeTnm02rgIhinAyk2bpCDjwSWfXt74LazyBm50WJCLbBvM3Q==}
     engines: {node: '>=16.0.0'}
 
-  '@reifydb/ui@0.4.9':
-    resolution: {integrity: sha512-w0Qlz3v0R5nKKkNGF27qcmjc1RR1qiUcSnV1O9c3/CLEwToGWWzG1Z2vdFxtV5hux5DoCmsg2rOfc54q23f3cg==}
+  '@reifydb/ui@0.6.0':
+    resolution: {integrity: sha512-X9oosFyul5f1OvqqUOSo4ydwNwGB0QjdietxqHNiwgIQZUE5pEtkycFcM/rnSeY7rvlmVehZmhriSJXI5ZJp2w==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@reifydb/wasm@0.4.9':
-    resolution: {integrity: sha512-tZz+rzNojaGIJd+2YF7AJCOWGodUfEjOozKuYBNiJXRvJSFzwot6BPgFi/2MRJEMGYa9hQOD35vfguqyY55E9w==}
+  '@reifydb/wasm@0.6.0':
+    resolution: {integrity: sha512-QG6RYVZ6whY/PeSU9QSKCuHu4A+4ogNXiqeodH/D8wGlSP9fbnrsa+Eu0+RkOPgCEOqofWNUmECkXlGkPwofwA==}
     engines: {node: '>=16.0.0'}
 
   '@rolldown/pluginutils@1.0.0-beta.53':
@@ -1383,9 +1380,6 @@ packages:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
 
-  eventemitter3@5.0.4:
-    resolution: {integrity: sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw==}
-
   expect-type@1.3.0:
     resolution: {integrity: sha512-knvyeauYhqjOYvQ66MznSMs83wmHrCycNEN6Ao+2AeYEfxUIkuiVxdEa1qlGEPK+We3n0THiDciYSsCcgW/DoA==}
     engines: {node: '>=12.0.0'}
@@ -1914,9 +1908,6 @@ packages:
 
   pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
-
-  phaser@3.90.0:
-    resolution: {integrity: sha512-/cziz/5ZIn02uDkC9RzN8VF9x3Gs3XdFFf9nkiMEQT3p7hQlWuyjy4QWosU802qqno2YSLn2BfqwOKLv/sSVfQ==}
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -2706,20 +2697,20 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
-  '@reifydb/client@0.4.9':
+  '@reifydb/client@0.6.0':
     dependencies:
-      '@reifydb/core': 0.4.9
+      '@reifydb/core': 0.6.0
       uuid: 11.1.0
       ws: 8.19.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@reifydb/console@0.4.9(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@reifydb/console@0.6.0(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@monaco-editor/react': 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@reifydb/client': 0.4.9
-      '@reifydb/core': 0.4.9
+      '@reifydb/client': 0.6.0
+      '@reifydb/core': 0.6.0
       monaco-editor: 0.55.1
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -2727,19 +2718,19 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@reifydb/core@0.4.9':
+  '@reifydb/core@0.6.0':
     dependencies:
       uuid: 11.1.0
 
-  '@reifydb/ui@0.4.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@reifydb/ui@0.6.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       prismjs: 1.30.0
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
 
-  '@reifydb/wasm@0.4.9':
+  '@reifydb/wasm@0.6.0':
     dependencies:
-      '@reifydb/core': 0.4.9
+      '@reifydb/core': 0.6.0
 
   '@rolldown/pluginutils@1.0.0-beta.53': {}
 
@@ -3656,8 +3647,6 @@ snapshots:
 
   esutils@2.0.3: {}
 
-  eventemitter3@5.0.4: {}
-
   expect-type@1.3.0: {}
 
   extend@3.0.2: {}
@@ -4413,10 +4402,6 @@ snapshots:
   path-key@3.1.1: {}
 
   pathe@2.0.3: {}
-
-  phaser@3.90.0:
-    dependencies:
-      eventemitter3: 5.0.4
 
   picocolors@1.1.1: {}
 

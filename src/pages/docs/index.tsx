@@ -67,7 +67,6 @@ export {
   GuidesOverviewPage,
   UsersAuthGuidePage,
   ECommerceGuidePage,
-  IoTGuidePage,
   CmsGuidePage,
   MultiTenancyGuidePage,
   RelationshipsGuidePage,

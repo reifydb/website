@@ -12,7 +12,6 @@ import { ExamplesPage } from '@/pages/examples';
 import { TourPage } from '@/pages/tour';
 import { PitchPage } from '@/pages/pitch';
 import { PlaygroundPage } from '@/pages/playground';
-import { IoTFarmingPage } from '@/pages/use-cases/iot-farming';
 import { NotFoundPage } from '@/pages/not-found';
 import {
   DocsOverview,
@@ -100,7 +99,6 @@ import {
   GuidesOverviewPage,
   UsersAuthGuidePage,
   ECommerceGuidePage,
-  IoTGuidePage,
   CmsGuidePage,
   MultiTenancyGuidePage,
   RelationshipsGuidePage,
@@ -702,10 +700,6 @@ export const router = createBrowserRouter([
       {
         path: '/docs/guides/modeling/e-commerce',
         element: <DocsGate><ECommerceGuidePage /></DocsGate>,
-      },
-      {
-        path: '/docs/guides/modeling/iot',
-        element: <DocsGate><IoTGuidePage /></DocsGate>,
       },
       {
         path: '/docs/guides/modeling/cms',
@@ -1801,10 +1795,6 @@ export const router = createBrowserRouter([
       {
         path: '/playground',
         element: <PlaygroundPage />,
-      },
-      {
-        path: '/use-cases/iot-farming',
-        element: <IoTFarmingPage />,
       },
       {
         path: '*',

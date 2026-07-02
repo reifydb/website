@@ -10,7 +10,6 @@ const useCases: { title: string; description: string; href?: string }[] = [
   {
     title: 'Game & Simulation State',
     description: 'Player state, world state, simulation ticks. Everything stays consistent even when thousands of updates hit at once.',
-    href: '/use-cases/iot-farming',
   },
   {
     title: 'Workflow & Process State',
