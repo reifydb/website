@@ -27,45 +27,13 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-12
 Get Started
-No c█
+No cache█
 $ Built-in Testing
 Expand
 Copy
 Reset
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-CREATE NAMESPACE IF NOT EXISTS tp;
-CREATE TABLE IF NOT EXISTS tp::users { id: int4, name: utf8 };
-CREATE TEST PROCEDURE tp::seed_users AS {
-  INSERT tp::users [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }];
-};
-CREATE TEST tp::can_query {
-  CALL tp::seed_users();
-  FROM tp::users | ASSERT { id > 0 };
-};
-CREATE TEST tp::can_filter {
-  CALL tp::seed_users();
-  FROM tp::users | FILTER name == 'Alice' | ASSERT { id == 1 };
-};
-RUN TESTS tp | map { name, namespace, outcome, message };
+Loading...
 $ ctrl+enter to run
 Run
 Explore all examples →
@@ -130,8 +98,6 @@ Positions, balances, order state. One bad write here can cost real money. ReifyD
 Game & Simulation State
 
 Player state, world state, simulation ticks. Everything stays consistent even when thousands of updates hit at once.
-
-Try Demo →
 
 Workflow & Process State
 
@@ -204,7 +170,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/blog/
@@ -235,7 +201,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-12
+14
 Get Started
 Blog
 
@@ -261,7 +227,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/blog/introducing-reifydb/
@@ -292,7 +258,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-12
+14
 Get Started
 ← Back to blog
 Introducing ReifyDB
@@ -360,7 +326,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 ^
 
 ===============================================================================
@@ -392,7 +358,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-12
 Get Started
 The Mission
 
@@ -425,7 +390,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/company/values/
@@ -456,7 +421,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-12
 Get Started
 Values
 
@@ -500,7 +464,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/contact/
@@ -531,7 +495,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-12
 Get Started
 Get in Touch
 
@@ -567,7 +530,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/
@@ -672,7 +635,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -1019,7 +981,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/
@@ -1124,7 +1086,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -1432,7 +1393,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/incremental-maintenance/
@@ -1537,7 +1498,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -1845,7 +1805,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/storage-engine/
@@ -1950,7 +1910,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -2258,7 +2217,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/transaction-engine/
@@ -2363,7 +2322,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -2671,7 +2629,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/types/
@@ -2776,7 +2734,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -3173,7 +3130,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/volcano/
@@ -3278,7 +3235,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -3653,7 +3609,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/architecture/wire-protocol/
@@ -3758,7 +3714,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -4066,7 +4021,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/coming-from/firebase/
@@ -4171,7 +4126,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -4479,7 +4433,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/coming-from/mongodb/
@@ -4584,7 +4538,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -4892,7 +4845,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/coming-from/redis/
@@ -4997,7 +4950,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -5305,7 +5257,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/coming-from/sql/
@@ -5410,7 +5362,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -5718,7 +5669,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/
@@ -5823,7 +5774,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -6131,7 +6081,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/consistency/
@@ -6236,7 +6186,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -6544,7 +6493,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/data-model/
@@ -6649,7 +6598,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -6957,7 +6905,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/embedded-vs-server/
@@ -7062,7 +7010,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -7370,7 +7317,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/materialized-views/
@@ -7475,7 +7422,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -7783,7 +7729,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/namespaces/
@@ -7888,7 +7834,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -8196,7 +8141,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/real-time/
@@ -8301,7 +8246,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -8609,7 +8553,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/concepts/storage-engines/
@@ -8714,7 +8658,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -9022,7 +8965,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/
@@ -9127,7 +9070,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -9486,7 +9428,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/blob/
@@ -9591,7 +9533,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -9930,7 +9871,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/blob/b58/
@@ -10035,7 +9976,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -10369,7 +10309,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/blob/b64/
@@ -10474,7 +10414,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -10808,7 +10747,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/blob/b64url/
@@ -10913,7 +10852,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -11247,7 +11185,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/blob/hex/
@@ -11352,7 +11290,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -11686,7 +11623,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/blob/utf8/
@@ -11791,7 +11728,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -12125,7 +12061,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/clock/
@@ -12230,7 +12166,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -12563,7 +12498,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/clock/advance/
@@ -12668,7 +12603,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -12992,7 +12926,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/clock/now/
@@ -13097,7 +13031,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -13422,7 +13355,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/clock/set/
@@ -13527,7 +13460,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -13851,7 +13783,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/
@@ -13956,7 +13888,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -14393,7 +14324,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/add/
@@ -14498,7 +14429,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -14832,7 +14762,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/age/
@@ -14937,7 +14867,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -15271,7 +15200,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/day/
@@ -15376,7 +15305,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -15710,7 +15638,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/day_of_week/
@@ -15815,7 +15743,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -16148,7 +16075,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/day_of_year/
@@ -16253,7 +16180,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -16586,7 +16512,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/days_in_month/
@@ -16691,7 +16617,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -17024,7 +16949,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/diff/
@@ -17129,7 +17054,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -17464,7 +17388,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/end_of_month/
@@ -17569,7 +17493,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -17902,7 +17825,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/format/
@@ -18007,7 +17930,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -18342,7 +18264,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/is_leap_year/
@@ -18447,7 +18369,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -18780,7 +18701,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/month/
@@ -18885,7 +18806,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -19219,7 +19139,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/new/
@@ -19324,7 +19244,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -19659,7 +19578,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/now/
@@ -19764,7 +19683,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -20099,7 +20017,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/quarter/
@@ -20204,7 +20122,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -20537,7 +20454,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/start_of_month/
@@ -20642,7 +20559,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -20975,7 +20891,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/start_of_year/
@@ -21080,7 +20996,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -21413,7 +21328,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/subtract/
@@ -21518,7 +21433,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -21852,7 +21766,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/trunc/
@@ -21957,7 +21871,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -22291,7 +22204,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/week/
@@ -22396,7 +22309,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -22729,7 +22641,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/date/year/
@@ -22834,7 +22746,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -23168,7 +23079,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/
@@ -23273,7 +23184,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -23714,7 +23624,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/add/
@@ -23819,7 +23729,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -24153,7 +24062,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/age/
@@ -24258,7 +24167,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -24592,7 +24500,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/date/
@@ -24697,7 +24605,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -25030,7 +24937,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/day/
@@ -25135,7 +25042,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -25468,7 +25374,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/day_of_week/
@@ -25573,7 +25479,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -25906,7 +25811,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/day_of_year/
@@ -26011,7 +25916,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -26344,7 +26248,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/diff/
@@ -26449,7 +26353,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -26783,7 +26686,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/epoch/
@@ -26888,7 +26791,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -27221,7 +27123,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/epoch_millis/
@@ -27326,7 +27228,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -27659,7 +27560,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/format/
@@ -27764,7 +27665,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -28098,7 +27998,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/from_epoch/
@@ -28203,7 +28103,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -28536,7 +28435,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/from_epoch_millis/
@@ -28641,7 +28540,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -28974,7 +28872,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/hour/
@@ -29079,7 +28977,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -29412,7 +29309,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/minute/
@@ -29517,7 +29414,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -29850,7 +29746,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/month/
@@ -29955,7 +29851,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -30288,7 +30183,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/nanosecond/
@@ -30393,7 +30288,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -30726,7 +30620,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/new/
@@ -30831,7 +30725,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -31165,7 +31058,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/now/
@@ -31270,7 +31163,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -31604,7 +31496,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/quarter/
@@ -31709,7 +31601,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -32042,7 +31933,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/second/
@@ -32147,7 +32038,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -32480,7 +32370,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/subtract/
@@ -32585,7 +32475,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -32919,7 +32808,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/time/
@@ -33024,7 +32913,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -33357,7 +33245,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/trunc/
@@ -33462,7 +33350,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -33796,7 +33683,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/week/
@@ -33901,7 +33788,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -34234,7 +34120,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/datetime/year/
@@ -34339,7 +34225,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -34672,7 +34557,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/
@@ -34777,7 +34662,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -35176,7 +35060,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/add/
@@ -35281,7 +35165,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -35615,7 +35498,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/days/
@@ -35720,7 +35603,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -36055,7 +35937,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/format/
@@ -36160,7 +36042,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -36493,7 +36374,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/get_days/
@@ -36598,7 +36479,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -36931,7 +36811,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/get_months/
@@ -37036,7 +36916,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -37369,7 +37248,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/get_nanos/
@@ -37474,7 +37353,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -37807,7 +37685,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/hours/
@@ -37912,7 +37790,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -38247,7 +38124,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/millis/
@@ -38352,7 +38229,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -38686,7 +38562,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/minutes/
@@ -38791,7 +38667,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -39126,7 +39001,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/months/
@@ -39231,7 +39106,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -39567,7 +39441,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/negate/
@@ -39672,7 +39546,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -40005,7 +39878,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/scale/
@@ -40110,7 +39983,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -40444,7 +40316,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/seconds/
@@ -40549,7 +40421,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -40884,7 +40755,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/subtract/
@@ -40989,7 +40860,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -41323,7 +41193,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/trunc/
@@ -41428,7 +41298,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -41761,7 +41630,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/weeks/
@@ -41866,7 +41735,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -42201,7 +42069,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/duration/years/
@@ -42306,7 +42174,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -42642,7 +42509,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/identity/
@@ -42747,7 +42614,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -43063,7 +42929,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/identity/id/
@@ -43168,7 +43034,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -43501,7 +43366,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/is/
@@ -43606,7 +43471,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -43944,7 +43808,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/is/anonymous/
@@ -44049,7 +43913,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -44382,7 +44245,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/is/none/
@@ -44487,7 +44350,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -44820,7 +44682,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/is/root/
@@ -44925,7 +44787,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -45258,7 +45119,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/is/some/
@@ -45363,7 +45224,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -45696,7 +45556,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/is/type/
@@ -45801,7 +45661,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -46135,7 +45994,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/json/
@@ -46240,7 +46099,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -46584,7 +46442,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/json/array/
@@ -46689,7 +46547,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -47039,7 +46896,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/json/object/
@@ -47144,7 +47001,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -47497,7 +47353,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/json/pretty/
@@ -47602,7 +47458,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -47941,7 +47796,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/json/serialize/
@@ -48046,7 +47901,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -48385,7 +48239,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/
@@ -48490,7 +48344,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -48978,7 +48831,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/abs/
@@ -49083,7 +48936,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -49430,7 +49282,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/acos/
@@ -49535,7 +49387,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -49869,7 +49720,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/asin/
@@ -49974,7 +49825,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -50308,7 +50158,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/atan/
@@ -50413,7 +50263,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -50747,7 +50596,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/atan2/
@@ -50852,7 +50701,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -51187,7 +51035,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/avg/
@@ -51292,7 +51140,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -51648,7 +51495,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/ceil/
@@ -51753,7 +51600,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -52086,7 +51932,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/clamp/
@@ -52191,7 +52037,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -52526,7 +52371,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/cos/
@@ -52631,7 +52476,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -52965,7 +52809,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/e/
@@ -53070,7 +52914,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -53404,7 +53247,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/exp/
@@ -53509,7 +53352,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -53842,7 +53684,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/floor/
@@ -53947,7 +53789,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -54280,7 +54121,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/gcd/
@@ -54385,7 +54226,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -54719,7 +54559,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/lcm/
@@ -54824,7 +54664,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -55158,7 +54997,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/log/
@@ -55263,7 +55102,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -55597,7 +55435,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/log10/
@@ -55702,7 +55540,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -56035,7 +55872,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/log2/
@@ -56140,7 +55977,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -56473,7 +56309,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/max/
@@ -56578,7 +56414,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -56934,7 +56769,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/min/
@@ -57039,7 +56874,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -57395,7 +57229,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/mod/
@@ -57500,7 +57334,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -57834,7 +57667,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/pi/
@@ -57939,7 +57772,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -58274,7 +58106,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/power/
@@ -58379,7 +58211,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -58713,7 +58544,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/round/
@@ -58818,7 +58649,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -59167,7 +58997,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/sign/
@@ -59272,7 +59102,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -59604,7 +59433,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/sin/
@@ -59709,7 +59538,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -60043,7 +59871,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/sqrt/
@@ -60148,7 +59976,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -60481,7 +60308,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/sum/
@@ -60586,7 +60413,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -60942,7 +60768,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/tan/
@@ -61047,7 +60873,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -61381,7 +61206,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/math/truncate/
@@ -61486,7 +61311,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -61820,7 +61644,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/meta/
@@ -61925,7 +61749,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -62241,7 +62064,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/meta/type/
@@ -62346,7 +62169,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -62678,7 +62500,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/
@@ -62783,7 +62605,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -63227,7 +63048,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/ascii/
@@ -63332,7 +63153,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -63664,7 +63484,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/char/
@@ -63769,7 +63589,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -64101,7 +63920,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/concat/
@@ -64206,7 +64025,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -64539,7 +64357,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/contains/
@@ -64644,7 +64462,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -64979,7 +64796,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/count/
@@ -65084,7 +64901,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -65417,7 +65233,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/ends_with/
@@ -65522,7 +65338,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -65856,7 +65671,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/format_bytes/
@@ -65961,7 +65776,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -66293,7 +66107,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/format_bytes_si/
@@ -66398,7 +66212,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -66730,7 +66543,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/index_of/
@@ -66835,7 +66648,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -67169,7 +66981,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/length/
@@ -67274,7 +67086,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -67632,7 +67443,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/lower/
@@ -67737,7 +67548,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -68070,7 +67880,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/pad_left/
@@ -68175,7 +67985,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -68510,7 +68319,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/pad_right/
@@ -68615,7 +68424,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -68950,7 +68758,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/repeat/
@@ -69055,7 +68863,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -69389,7 +69196,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/replace/
@@ -69494,7 +69301,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -69829,7 +69635,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/reverse/
@@ -69934,7 +69740,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -70267,7 +70072,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/starts_with/
@@ -70372,7 +70177,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -70706,7 +70510,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/substring/
@@ -70811,7 +70615,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -71172,7 +70975,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/trim/
@@ -71277,7 +71080,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -71624,7 +71426,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/trim_end/
@@ -71729,7 +71531,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -72062,7 +71863,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/trim_start/
@@ -72167,7 +71968,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -72500,7 +72300,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/text/upper/
@@ -72605,7 +72405,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -72952,7 +72751,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/
@@ -73057,7 +72856,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -73431,7 +73229,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/add/
@@ -73536,7 +73334,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -73870,7 +73667,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/age/
@@ -73975,7 +73772,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -74309,7 +74105,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/diff/
@@ -74414,7 +74210,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -74748,7 +74543,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/format/
@@ -74853,7 +74648,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -75186,7 +74980,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/hour/
@@ -75291,7 +75085,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -75624,7 +75417,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/minute/
@@ -75729,7 +75522,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -76062,7 +75854,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/nanosecond/
@@ -76167,7 +75959,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -76499,7 +76290,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/new/
@@ -76604,7 +76395,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -76938,7 +76728,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/now/
@@ -77043,7 +76833,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -77377,7 +77166,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/second/
@@ -77482,7 +77271,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -77815,7 +77603,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/subtract/
@@ -77920,7 +77708,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -78254,7 +78041,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/functions/time/trunc/
@@ -78359,7 +78146,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -78692,7 +78478,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/
@@ -78797,7 +78583,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -79105,7 +78890,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/modeling/cms/
@@ -79210,7 +78995,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -79518,7 +79302,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/modeling/e-commerce/
@@ -79623,7 +79407,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -79931,420 +79714,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
-
-===============================================================================
-URL: https://reifydb.com/docs/guides/modeling/iot/
-===============================================================================
-
-$
-ReifyDB
-Home
-Contact
-Support
-Book a Call
-GETTING STARTED
-Introduction
-Installation
-Quick Start
-Connect
-Tutorials
-Build Your First App
-Live Dashboard
-Real-Time Chat
-Task Manager
-Coming From...
-SQL Databases
-MongoDB
-Redis
-Firebase / Firestore
-CONCEPTS
-Overview
-Data Model
-Data Types
-Namespaces & Schemas
-Transactions & ACID
-Materialized Views
-Real-Time Subscriptions
-Storage Engines
-Consistency Model
-Error Handling
-Embedded vs. Server Mode
-RQL
-Basics
-Transforms
-Overview
-Filter
-Sort
-Map
-Extend
-Aggregate
-Distinct
-Take
-Join
-Match
-Patch
-Expressions
-Overview
-Operators
-Conditionals
-Literals
-Field Access
-Patterns & Recipes
-Pagination
-Hierarchical Data
-Time-Series Queries
-Text Search
-Dynamic Queries
-SCRIPTING
-Overview
-Schema
-Namespaces
-Tables
-Enums
-Dictionaries
-Drop & Cleanup
-Constraints
-Indexes
-Storage Primitives
-Tables
-Ringbuffers
-Series
-Data Manipulation
-Insert
-Update
-Delete
-Upsert
-Batch Operations
-Views
-Overview
-Deferred Views
-Transactional Views
-Procedures
-Overview
-Parameters & Control Flow
-Events
-Overview
-Handlers
-Dispatch
-Testing
-Migrations
-Subscriptions
-Access Control
-GUIDES
-Overview
-Data Modeling
-Users & Auth
-E-Commerce
-IoT & Sensor Data
-Content Management
-Multi-Tenancy
-Relationships
-Real-Time
-Live Queries
-Reactive Views
-Event Sourcing
-Notifications
-Testing
-Unit Testing
-Integration Testing
-Test Fixtures & Seeding
-Common Patterns
-Soft Deletes
-Audit Trail
-State Machines
-CQRS
-Computed Fields
-Data Versioning
-CLIENT SDKS
-Overview
-TypeScript / JavaScript
-Quick Start
-Connection
-Queries
-Mutations
-Subscriptions
-Transactions
-Type Safety
-Error Handling
-API Reference
-Rust
-Quick Start
-Embedded Mode
-Client Mode
-API Reference
-Python
-Quick Start
-Connection
-Queries
-API Reference
-Go
-Quick Start
-Connection
-Queries
-API Reference
-ARCHITECTURE
-Overview
-Volcano Execution Model
-Types & Expressions
-Storage Engine
-Incremental Maintenance
-Transaction Engine
-Wire Protocol
-SECURITY
-Overview
-Authentication
-Authorization & Roles
-Row-Level Security
-Encryption
-Audit Logging
-TLS & Network Security
-OPERATIONS
-Configuration
-Deployment
-Standalone
-Embedded
-Docker
-Kubernetes
-Systemd
-Backup & Restore
-Overview
-Snapshots
-Point-in-Time Recovery
-Monitoring
-Overview
-Metrics
-Logging
-Health Checks
-Upgrades
-Scaling
-PERFORMANCE
-Overview
-Query Optimization
-Indexing Strategies
-EXPLAIN & Query Plans
-View Tuning
-Memory Management
-Benchmarks
-TOOLS
-CLI
-Overview
-Command Reference
-Scripting with CLI
-Web Console
-Overview
-Query Editor
-Schema Browser
-Online Playground
-INTEGRATIONS
-Overview
-HTTP API
-Overview
-Authentication
-Query Endpoint
-Mutation Endpoint
-Subscription Endpoint
-Error Codes
-Webhooks
-Change Data Capture
-Frameworks
-React
-Next.js
-Svelte
-FUNCTIONS
-Overview
-blob
-b58
-b64
-b64url
-hex
-utf8
-clock
-advance
-now
-set
-date
-add
-age
-day
-day_of_week
-day_of_year
-days_in_month
-diff
-end_of_month
-format
-is_leap_year
-month
-new
-now
-quarter
-start_of_month
-start_of_year
-subtract
-trunc
-week
-year
-datetime
-add
-age
-date
-day
-day_of_week
-day_of_year
-diff
-epoch
-epoch_millis
-format
-from_epoch
-from_epoch_millis
-hour
-minute
-month
-nanosecond
-new
-now
-quarter
-second
-subtract
-time
-trunc
-week
-year
-duration
-add
-days
-format
-get_days
-get_months
-get_nanos
-hours
-millis
-minutes
-months
-negate
-scale
-seconds
-subtract
-trunc
-weeks
-years
-identity
-id
-is
-anonymous
-none
-root
-some
-type
-json
-array
-object
-serialize
-pretty
-math
-abs
-acos
-asin
-atan
-atan2
-avg
-ceil
-clamp
-cos
-e
-exp
-floor
-gcd
-lcm
-log
-log10
-log2
-max
-min
-mod
-pi
-power
-round
-sign
-sin
-sqrt
-sum
-tan
-truncate
-meta
-type
-text
-ascii
-char
-concat
-contains
-count
-ends_with
-format_bytes
-format_bytes_si
-index_of
-length
-lower
-pad_left
-pad_right
-repeat
-replace
-reverse
-starts_with
-substring
-trim
-trim_end
-trim_start
-upper
-time
-add
-age
-diff
-format
-hour
-minute
-nanosecond
-new
-now
-second
-subtract
-trunc
-TROUBLESHOOTING
-Overview
-Common Errors
-Connection Issues
-Slow Queries
-Transaction Conflicts
-View Issues
-FAQ
-RESOURCES
-Changelog
-Roadmap
-Glossary
-Contributing
-Community
-Release Notes
-← BACK
-DRAFT
-This page is not published. Only visible in development mode.
-IoT & Sensor Data
-
-Handle high-frequency sensor data and IoT workloads.
-
-PRODUCT
-Documentation
-Blog
-FAQ
-RESOURCES
-Contact
-Support
-Book a Call
-COMMUNITY
-GitHub
-X (Twitter)
-Discord
-© 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/modeling/multi-tenancy/
@@ -80449,7 +79819,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -80757,7 +80126,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/modeling/relationships/
@@ -80862,7 +80231,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -81170,7 +80538,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/modeling/users-auth/
@@ -81275,7 +80643,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -81583,7 +80950,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/patterns/audit-trail/
@@ -81688,7 +81055,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -81996,7 +81362,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/patterns/computed-fields/
@@ -82101,7 +81467,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -82409,7 +81774,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/patterns/cqrs/
@@ -82514,7 +81879,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -82822,7 +82186,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/patterns/data-versioning/
@@ -82927,7 +82291,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -83235,7 +82598,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/patterns/soft-deletes/
@@ -83340,7 +82703,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -83648,7 +83010,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/patterns/state-machines/
@@ -83753,7 +83115,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -84061,7 +83422,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/real-time/event-sourcing/
@@ -84166,7 +83527,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -84474,7 +83834,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/real-time/live-queries/
@@ -84579,7 +83939,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -84887,7 +84246,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/real-time/notifications/
@@ -84992,7 +84351,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -85300,7 +84658,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/real-time/reactive-views/
@@ -85405,7 +84763,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -85713,7 +85070,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/testing/fixtures/
@@ -85818,7 +85175,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -86126,7 +85482,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/testing/integration-testing/
@@ -86231,7 +85587,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -86539,7 +85894,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/guides/testing/unit-testing/
@@ -86644,7 +85999,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -86952,7 +86306,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/installation/
@@ -87057,7 +86411,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -87408,7 +86761,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/
@@ -87513,7 +86866,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -87821,7 +87173,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/cdc/
@@ -87926,7 +87278,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -88234,7 +87585,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/frameworks/nextjs/
@@ -88339,7 +87690,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -88647,7 +87997,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/frameworks/react/
@@ -88752,7 +88102,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -89060,7 +88409,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/frameworks/svelte/
@@ -89165,7 +88514,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -89473,7 +88821,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/http-api/
@@ -89578,7 +88926,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -89886,7 +89233,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/http-api/authentication/
@@ -89991,7 +89338,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -90299,7 +89645,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/http-api/errors/
@@ -90404,7 +89750,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -90712,7 +90057,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/http-api/mutation/
@@ -90817,7 +90162,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -91125,7 +90469,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/http-api/query/
@@ -91230,7 +90574,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -91538,7 +90881,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/http-api/subscription/
@@ -91643,7 +90986,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -91951,7 +91293,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/integrations/webhooks/
@@ -92056,7 +91398,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -92364,7 +91705,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/backup/
@@ -92469,7 +91810,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -92777,7 +92117,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/backup/point-in-time/
@@ -92882,7 +92222,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -93190,7 +92529,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/backup/snapshots/
@@ -93295,7 +92634,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -93603,7 +92941,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/deployment/docker/
@@ -93708,7 +93046,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -94016,7 +93353,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/deployment/embedded/
@@ -94121,7 +93458,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -94429,7 +93765,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/deployment/kubernetes/
@@ -94534,7 +93870,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -94842,7 +94177,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/deployment/standalone/
@@ -94947,7 +94282,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -95255,7 +94589,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/deployment/systemd/
@@ -95360,7 +94694,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -95668,7 +95001,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/monitoring/
@@ -95773,7 +95106,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -96081,7 +95413,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/monitoring/health-checks/
@@ -96186,7 +95518,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -96494,7 +95825,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/monitoring/logging/
@@ -96599,7 +95930,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -96907,7 +96237,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/monitoring/metrics/
@@ -97012,7 +96342,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -97320,7 +96649,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/scaling/
@@ -97425,7 +96754,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -97733,7 +97061,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/operations/upgrades/
@@ -97838,7 +97166,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -98146,7 +97473,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/
@@ -98251,7 +97578,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -98559,7 +97885,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/benchmarks/
@@ -98664,7 +97990,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -98972,7 +98297,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/explain/
@@ -99077,7 +98402,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -99385,7 +98709,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/indexing/
@@ -99490,7 +98814,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -99798,7 +99121,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/memory/
@@ -99903,7 +99226,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -100211,7 +99533,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/query-optimization/
@@ -100316,7 +99638,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -100624,7 +99945,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/performance/view-tuning/
@@ -100729,7 +100050,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -101037,7 +100357,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/quick-start/
@@ -101142,7 +100462,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -101559,7 +100878,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/resources/changelog/
@@ -101664,7 +100983,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -101972,7 +101290,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/resources/community/
@@ -102077,7 +101395,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -102385,7 +101702,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/resources/contributing/
@@ -102490,7 +101807,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -102798,7 +102114,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/resources/glossary/
@@ -102903,7 +102219,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -103211,7 +102526,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/resources/release-notes/
@@ -103316,7 +102631,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -103624,7 +102938,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/resources/roadmap/
@@ -103729,7 +103043,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -104037,7 +103350,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/basics/
@@ -104142,7 +103455,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -104518,7 +103830,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/expressions/
@@ -104623,7 +103935,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -105034,7 +104345,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/expressions/conditionals/
@@ -105139,7 +104450,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -105447,7 +104757,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/expressions/field-access/
@@ -105552,7 +104862,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -105860,7 +105169,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/expressions/literals/
@@ -105965,7 +105274,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -106273,7 +105581,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/expressions/operators/
@@ -106378,7 +105686,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -106712,7 +106019,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/patterns/dynamic-queries/
@@ -106817,7 +106124,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -107125,7 +106431,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/patterns/hierarchical-data/
@@ -107230,7 +106536,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -107538,7 +106843,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/patterns/pagination/
@@ -107643,7 +106948,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -107951,7 +107255,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/patterns/text-search/
@@ -108056,7 +107360,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -108364,7 +107667,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/patterns/time-series/
@@ -108469,7 +107772,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -108777,7 +108079,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/
@@ -108882,7 +108184,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -109313,7 +108614,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/aggregate/
@@ -109418,7 +108719,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -109792,7 +109092,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/distinct/
@@ -109897,7 +109197,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -110233,7 +109532,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/extend/
@@ -110338,7 +109637,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -110690,7 +109988,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/filter/
@@ -110795,7 +110093,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -111145,7 +110442,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/join/
@@ -111250,7 +110547,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -111590,7 +110886,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/map/
@@ -111695,7 +110991,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -112047,7 +111342,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/match/
@@ -112152,7 +111447,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -112492,7 +111786,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/patch/
@@ -112597,7 +111891,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -112979,7 +112272,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/sort/
@@ -113084,7 +112377,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -113453,7 +112745,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/rql/transforms/take/
@@ -113558,7 +112850,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -113896,7 +113187,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/
@@ -114001,7 +113292,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -114418,7 +113708,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/access-control/
@@ -114523,7 +113813,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -114864,7 +114153,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/dml/batch/
@@ -114969,7 +114258,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -115277,7 +114565,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/dml/delete/
@@ -115382,7 +114670,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -115738,7 +115025,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/dml/insert/
@@ -115843,7 +115130,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -116197,7 +115483,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/dml/update/
@@ -116302,7 +115588,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -116656,7 +115941,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/dml/upsert/
@@ -116761,7 +116046,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -117069,7 +116353,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/events/
@@ -117174,7 +116458,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -117532,7 +116815,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/events/dispatch/
@@ -117637,7 +116920,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -117985,7 +117267,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/events/handlers/
@@ -118090,7 +117372,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -118428,7 +117709,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/migrations/
@@ -118533,7 +117814,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -118887,7 +118167,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/procedures/
@@ -118992,7 +118272,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -119346,7 +118625,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/procedures/control-flow/
@@ -119451,7 +118730,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -119819,7 +119097,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/constraints/
@@ -119924,7 +119202,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -120232,7 +119509,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/dictionaries/
@@ -120337,7 +119614,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -120659,7 +119935,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/drop/
@@ -120764,7 +120040,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -121102,7 +120377,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/enums/
@@ -121207,7 +120482,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -121557,7 +120831,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/indexes/
@@ -121662,7 +120936,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -121970,7 +121243,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/namespaces/
@@ -122075,7 +121348,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -122419,7 +121691,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/schema/tables/
@@ -122524,7 +121796,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -122880,7 +122151,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/storage/ringbuffers/
@@ -122985,7 +122256,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -123325,7 +122595,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/storage/series/
@@ -123430,7 +122700,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -123766,7 +123035,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/storage/tables/
@@ -123871,7 +123140,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -124235,7 +123503,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/subscriptions/
@@ -124340,7 +123608,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -124665,7 +123932,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/testing/
@@ -124770,7 +124037,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -125149,7 +124415,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/views/
@@ -125254,7 +124520,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -125660,7 +124925,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/views/deferred/
@@ -125765,7 +125030,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -126179,7 +125443,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/scripting/views/transactional/
@@ -126284,7 +125548,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -126640,7 +125903,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/
@@ -126745,7 +126008,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -127053,7 +126315,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/go/api-reference/
@@ -127158,7 +126420,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -127466,7 +126727,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/go/connection/
@@ -127571,7 +126832,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -127879,7 +127139,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/go/queries/
@@ -127984,7 +127244,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -128292,7 +127551,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/go/quick-start/
@@ -128397,7 +127656,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -128705,7 +127963,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/python/api-reference/
@@ -128810,7 +128068,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -129118,7 +128375,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/python/connection/
@@ -129223,7 +128480,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -129531,7 +128787,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/python/queries/
@@ -129636,7 +128892,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -129944,7 +129199,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/python/quick-start/
@@ -130049,7 +129304,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -130357,7 +129611,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/rust/api-reference/
@@ -130462,7 +129716,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -130770,7 +130023,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/rust/client/
@@ -130875,7 +130128,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -131183,7 +130435,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/rust/embedded/
@@ -131288,7 +130540,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -131596,7 +130847,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/rust/quick-start/
@@ -131701,7 +130952,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -132009,7 +131259,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/api-reference/
@@ -132114,7 +131364,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -132422,7 +131671,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/connection/
@@ -132527,7 +131776,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -132835,7 +132083,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/error-handling/
@@ -132940,7 +132188,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -133248,7 +132495,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/mutations/
@@ -133353,7 +132600,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -133661,7 +132907,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/queries/
@@ -133766,7 +133012,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -134074,7 +133319,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/quick-start/
@@ -134179,7 +133424,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -134487,7 +133731,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/subscriptions/
@@ -134592,7 +133836,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -134900,7 +134143,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/transactions/
@@ -135005,7 +134248,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -135313,7 +134555,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/sdks/typescript/type-safety/
@@ -135418,7 +134660,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -135726,7 +134967,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/
@@ -135831,7 +135072,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -136139,7 +135379,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/audit-logging/
@@ -136244,7 +135484,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -136552,7 +135791,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/authentication/
@@ -136657,7 +135896,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -136965,7 +136203,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/authorization/
@@ -137070,7 +136308,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -137378,7 +136615,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/encryption/
@@ -137483,7 +136720,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -137791,7 +137027,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/row-level-security/
@@ -137896,7 +137132,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -138204,7 +137439,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/security/tls/
@@ -138309,7 +137544,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -138617,7 +137851,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/cli/
@@ -138722,7 +137956,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -139030,7 +138263,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/cli/commands/
@@ -139135,7 +138368,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -139443,7 +138675,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/cli/scripting/
@@ -139548,7 +138780,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -139856,7 +139087,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/console/
@@ -139961,7 +139192,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -140269,7 +139499,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/console/query-editor/
@@ -140374,7 +139604,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -140682,7 +139911,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/console/schema-browser/
@@ -140787,7 +140016,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -141095,7 +140323,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/tools/playground/
@@ -141200,7 +140428,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -141508,7 +140735,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/
@@ -141613,7 +140840,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -141921,7 +141147,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/common-errors/
@@ -142026,7 +141252,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -142334,7 +141559,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/connection-issues/
@@ -142439,7 +141664,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -142747,7 +141971,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/faq/
@@ -142852,7 +142076,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -143160,7 +142383,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/slow-queries/
@@ -143265,7 +142488,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -143573,7 +142795,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/transaction-conflicts/
@@ -143678,7 +142900,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -143986,7 +143207,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/troubleshooting/view-issues/
@@ -144091,7 +143312,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -144399,7 +143619,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/tutorials/first-app/
@@ -144504,7 +143724,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -144812,7 +144031,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/tutorials/live-dashboard/
@@ -144917,7 +144136,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -145225,7 +144443,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/tutorials/real-time-chat/
@@ -145330,7 +144548,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -145638,7 +144855,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/docs/tutorials/task-manager/
@@ -145743,7 +144960,6 @@ Overview
 Data Modeling
 Users & Auth
 E-Commerce
-IoT & Sensor Data
 Content Management
 Multi-Tenancy
 Relationships
@@ -146051,7 +145267,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/examples/
@@ -146082,7 +145298,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-12
+14
 Get Started
 EXAMPLES
 Built-in Testing
@@ -146145,7 +145361,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/faq/
@@ -146176,7 +145392,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-12
 Get Started
 Frequently Asked Questions
 
@@ -146193,7 +145408,7 @@ PostgreSQL is disk-first: durable and query-rich, but slow for real-time state. 
 No. ReifyDB is in active development. APIs and guarantees may change. I recommend using it for experimentation and development, but not for production workloads yet.
 >What is the licensing model?
 [+]
-ReifyDB is licensed under AGPL v3 or later. You are free to use, modify, and distribute it under the terms of the license.
+ReifyDB is licensed under Apache 2.0. You are free to use, modify, and distribute it under the terms of the license.
 >Can I embed ReifyDB in my application?
 [+]
 Yes. ReifyDB can run embedded in your application process or as a standalone server. This is similar to how SQLite or DuckDB work - you choose the deployment model that fits your architecture.
@@ -146202,7 +145417,7 @@ Yes. ReifyDB can run embedded in your application process or as a standalone ser
 ReifyDB is written in Rust with a native Rust API. TypeScript/JavaScript clients are available for web and Node.js applications. More language bindings are planned.
 >Why should I trust a new database?
 [+]
-ReifyDB is open source under AGPL v3 or later, so you can inspect every line. The core is written in Rust for memory safety and performance. Development is active and transparent on GitHub.
+ReifyDB is open source under Apache 2.0, so you can inspect every line. The core is written in Rust for memory safety and performance. Development is active and transparent on GitHub.
 >What can I use ReifyDB for today?
 [+]
 ReifyDB is suitable for prototyping, internal tools, and non-critical workloads where you want to explore the programming model. Use it to build proofs-of-concept, understand incremental derived state, or experiment with colocating logic and data. Wait for a stable release before using it for production systems.
@@ -146219,7 +145434,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/pitch/
@@ -146250,7 +145465,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-12
+14
 Get Started
 $ reifydb pitch
 slide 1 of 5
@@ -146298,7 +145513,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-12
+14
 Get Started
 ●
 [wasm]
@@ -146309,7 +145524,7 @@ Run
 FROM app::users
 RESULTS
 HISTORY
-SHAPE
+CATALOG
 $ run a query to see results
 
 ===============================================================================
@@ -146341,7 +145556,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-12
+14
 Get Started
 Support
 
@@ -146381,7 +145596,7 @@ GitHub
 X (Twitter)
 Discord
 © 2026 ReifyDB. All Rights Reserved.
-License: AGPL v3 or later
+License: Apache-2.0
 
 ===============================================================================
 URL: https://reifydb.com/tour/
@@ -146412,7 +145627,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-12
+14
 Get Started
 $ reifydb tour
 step 1 of 9
@@ -146460,98 +145675,3 @@ $ ctrl+enter to run
 Run
 ← Prev
 Next →
-
-===============================================================================
-URL: https://reifydb.com/use-cases/iot-farming/
-===============================================================================
-
-ReifyDB
-Developers
-BUILD
-Docs
-Guides, references, and API documentation
-Tour
-Interactive walkthrough of core features
-Playground
-Try ReifyDB queries in the browser
-Resources
-LEARN
-Blog
-Engineering deep dives and product updates
-FAQ
-Frequently asked questions
-Support
-Get help from the team
-Company
-ABOUT
-Mission
-Why we are building ReifyDB
-Values
-The principles that guide our work
-Contact
-Reach out to the team
-12
-Get Started
-# ACTIONS
-↖
-Select
-✂
-Harvest
-✕
-Remove
-# CROPS
-🌾
-Wheat
-🍅
-Tomato
-🌽
-Corn
-🥬
-Lettuce
-# SENSORS
-💧
-Moisture
-🌡
-Temp
-☀
-Light
-# SPEED
-⏸
-1x
-2x
-4x
-# WEATHER
-🌧
-Rainy
-# RESOURCES
-Water
-0.0L
-Energy
-0.0kW
-Yield
-0
-Tick
-1111111111
-# FARM
-Crops
-0
-Sensors
-0
-Cookbook:
-Crop Summary
-Soil Overview
-Alerts
-Aggregation
-Filter + Sort
-Latest Readings
-●
-[wasm]
-ctrl+enter to run
-Clear
-Run
-1
-FROM farm::crops
-RESULTS
-HISTORY
-SHAPE
-$ run a query to see results
