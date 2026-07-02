@@ -2,9 +2,9 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { loader } from '@monaco-editor/react';
 import { App } from './app';
-import '@fontsource/archivo-black';
-import '@fontsource-variable/ibm-plex-sans';
-import '@fontsource-variable/jetbrains-mono';
+import '@fontsource/archivo-black/index.css';
+import '@fontsource-variable/ibm-plex-sans/index.css';
+import '@fontsource-variable/jetbrains-mono/index.css';
 import '@reifydb/ui/styles.css';
 import './index.css';
 

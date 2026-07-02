@@ -2,7 +2,6 @@ import { Snippet } from '@reifydb/console';
 import '@reifydb/console/styles.css';
 import { wasmExecutor } from '@/lib/wasm-executor-singleton';
 import { brutalist_light_theme } from '@reifydb/console';
-import { cn } from '@/lib';
 
 interface ExecutableSnippetProps {
   initialCode: string;
