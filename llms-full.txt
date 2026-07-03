@@ -36,7 +36,38 @@ $ Built-in Testing
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+CREATE NAMESPACE IF NOT EXISTS tp;
+CREATE TABLE IF NOT EXISTS tp::users { id: int4, name: utf8 };
+CREATE TEST PROCEDURE tp::seed_users AS {
+  INSERT tp::users [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }];
+};
+CREATE TEST tp::can_query {
+  CALL tp::seed_users();
+  FROM tp::users | ASSERT { id > 0 };
+};
+CREATE TEST tp::can_filter {
+  CALL tp::seed_users();
+  FROM tp::users | FILTER name == 'Alice' | ASSERT { id == 1 };
+};
+RUN TESTS tp | map { name, namespace, outcome, message };
 $ ctrl+enter to run
 Run
 Explore all examples →
@@ -902,6 +933,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -1841,6 +1873,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -3420,6 +3453,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -3809,6 +3843,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -4117,6 +4152,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -4484,6 +4520,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -4834,6 +4871,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -5146,6 +5184,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -5458,6 +5497,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -7665,7 +7705,7 @@ Syntax
 $ RQL
 Copy
 1
-b
+blob::b64(value)
 Parameters
 Name	Type	Description
 value	Blob / Utf8	The blob to encode or string to decode
@@ -7679,7 +7719,7 @@ Expand
 Copy
 Reset
 1
-m
+map {blob::b64('SGVsbG8=')}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -7990,7 +8030,8 @@ Encode or decode a blob using URL-safe Base64 encoding.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+blob::b64url(value)
 Parameters
 Name	Type	Description
 value	Blob / Utf8	The blob to encode or string to decode
@@ -8003,7 +8044,8 @@ $ Decode a Base64URL string
 Expand
 Copy
 Reset
-Loading...
+1
+map {blob::b64url('SGVsbG8')}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -10669,7 +10711,8 @@ Add time to a date.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+date::add(date_value, days: n)
 Parameters
 Name	Type	Description
 date_value	Date/Timestamp	The base date to add time to
@@ -10683,7 +10726,8 @@ $ Add duration to date
 Expand
 Copy
 Reset
-Loading...
+1
+map {date::add(cast('2024-01-15', date), cast('P10D', duration))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -10993,7 +11037,8 @@ Calculate the duration between two dates.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+date::age(date_a, date_b)
 Parameters
 Name	Type	Description
 date_a	Date	The first date
@@ -11007,7 +11052,8 @@ $ Calculate age between dates
 Expand
 Copy
 Reset
-Loading...
+1
+map {date::age(cast('2024-03-20', date), cast('2022-01-15', date))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -11643,7 +11689,8 @@ Get the day of the week (1=Monday, 7=Sunday) from a date.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+date::day_of_week(date_value)
 Parameters
 Name	Type	Description
 date_value	Date	The date to extract the day of the week from.
@@ -11656,7 +11703,8 @@ $ Get day of week
 Expand
 Copy
 Reset
-Loading...
+1
+map {date::day_of_week(cast('2024-01-01', date))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -12943,7 +12991,8 @@ Get the last day of the month for the given date.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+date::end_of_month(date_value)
 Parameters
 Name	Type	Description
 date_value	Date	The date to get the last day of the month for.
@@ -12956,7 +13005,8 @@ $ Get end of month
 Expand
 Copy
 Reset
-Loading...
+1
+map {date::end_of_month(cast('2024-01-15', date))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -13266,7 +13316,8 @@ Format a date as a string.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+date::format(date_value, format_string)
 Parameters
 Name	Type	Description
 date_value	Date/Timestamp	The date to format
@@ -13280,7 +13331,8 @@ $ Format date as string
 Expand
 Copy
 Reset
-Loading...
+1
+map {date::format(cast('2024-03-15', date), '%Y-%m-%d')}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -13916,7 +13968,8 @@ Extract the month (1-12) from a date value.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+date::month(date_value)
 Parameters
 Name	Type	Description
 date_value	Date/Timestamp	The date to extract the month from
@@ -13929,7 +13982,8 @@ $ Extract month from date
 Expand
 Copy
 Reset
-Loading...
+1
+map {date::month(cast('2024-03-15', date))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -14567,7 +14621,8 @@ Get the current timestamp.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+date::now()
 Parameters
 
 This function takes no parameters.
@@ -14581,7 +14636,8 @@ $ Get current date
 Expand
 Copy
 Reset
-Loading...
+1
+map {date::now()}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -15542,7 +15598,8 @@ Get the first day of the year for the given date.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+date::start_of_year(date_value)
 Parameters
 Name	Type	Description
 date_value	Date	The date to get the first day of the year for.
@@ -15555,7 +15612,8 @@ $ Get start of year
 Expand
 Copy
 Reset
-Loading...
+1
+map {date::start_of_year(cast('2024-06-15', date))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -16517,7 +16575,8 @@ Get the ISO week number (1-53) from a date.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+date::week(date_value)
 Parameters
 Name	Type	Description
 date_value	Date	The date to extract the ISO week number from.
@@ -16530,7 +16589,8 @@ $ Get week number from date
 Expand
 Copy
 Reset
-Loading...
+1
+map {date::week(cast('2024-01-01', date))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -16840,7 +16900,8 @@ Extract the year from a date value.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+date::year(date_value)
 Parameters
 Name	Type	Description
 date_value	Date/Timestamp	The date to extract the year from
@@ -16853,7 +16914,8 @@ $ Extract year from date
 Expand
 Copy
 Reset
-Loading...
+1
+map {date::year(cast('2024-03-15', date))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -16904,6 +16966,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -17337,6 +17400,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -17663,6 +17727,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -17989,6 +18054,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -18249,7 +18315,8 @@ Extract the date component from a datetime.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+datetime::date(datetime_value)
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to extract the date component from
@@ -18262,7 +18329,8 @@ $ Extract date from datetime
 Expand
 Copy
 Reset
-Loading...
+1
+map {datetime::date(cast('2024-03-15T14:30:00Z', datetime))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -18312,6 +18380,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -18637,6 +18706,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -18962,6 +19032,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -19222,7 +19293,8 @@ Get the day of the year (1-366) from a datetime.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+datetime::day_of_year(datetime_value)
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to get the day of the year from
@@ -19235,7 +19307,8 @@ $ Get day of year from datetime
 Expand
 Copy
 Reset
-Loading...
+1
+map {datetime::day_of_year(cast('2024-03-15T14:30:00Z', datetime))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -19285,6 +19358,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -19545,7 +19619,8 @@ Calculate the difference between two datetimes.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+datetime::diff(datetime_a, datetime_b)
 Parameters
 Name	Type	Description
 datetime_a	Datetime	The first datetime
@@ -19559,7 +19634,8 @@ $ Calculate difference between datetimes
 Expand
 Copy
 Reset
-Loading...
+1
+map {datetime::diff(cast('2024-03-15T14:30:00Z', datetime), cast('2024-03-10T14:30:00Z', datetime))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -19609,6 +19685,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -19934,6 +20011,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -20259,6 +20337,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -20585,6 +20664,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -20845,7 +20925,8 @@ Create a datetime from a Unix epoch timestamp in seconds.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+datetime::from_epoch(seconds)
 Parameters
 Name	Type	Description
 seconds	Integer	The number of seconds since the Unix epoch
@@ -20858,7 +20939,8 @@ $ Create datetime from epoch seconds
 Expand
 Copy
 Reset
-Loading...
+1
+map {datetime::from_epoch(1710513045)}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -20908,6 +20990,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -21233,6 +21316,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -21493,7 +21577,8 @@ Extract the hour (0-23) from a datetime.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+datetime::hour(datetime_value)
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to extract the hour from
@@ -21506,7 +21591,8 @@ $ Extract hour from datetime
 Expand
 Copy
 Reset
-Loading...
+1
+map {datetime::hour(cast('2024-03-15T14:30:00Z', datetime))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -21556,6 +21642,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -21881,6 +21968,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -22141,7 +22229,8 @@ Extract the month (1-12) from a datetime.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+datetime::month(datetime_value)
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to extract the month from
@@ -22154,7 +22243,8 @@ $ Extract month from datetime
 Expand
 Copy
 Reset
-Loading...
+1
+map {datetime::month(cast('2024-03-15T14:30:00Z', datetime))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -22204,6 +22294,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -22529,6 +22620,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -22789,7 +22881,8 @@ Create a new datetime from a date and time.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+datetime::new(date, time)
 Parameters
 Name	Type	Description
 date	Date	The date component
@@ -22803,7 +22896,8 @@ $ Create new datetime from date and time
 Expand
 Copy
 Reset
-Loading...
+1
+map {datetime::new(cast('2024-03-15', date), cast('14:30:45', time))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -22853,6 +22947,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -23113,7 +23208,8 @@ Get the current datetime.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+datetime::now()
 Parameters
 
 This function takes no parameters.
@@ -23127,7 +23223,8 @@ $ Get current datetime
 Expand
 Copy
 Reset
-Loading...
+1
+map {datetime::now()}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -23177,6 +23274,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -23502,6 +23600,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -23827,6 +23926,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -24087,7 +24187,8 @@ Subtract a duration from a datetime.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+datetime::subtract(datetime_value, duration)
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to subtract the duration from
@@ -24101,7 +24202,8 @@ $ Subtract duration from datetime
 Expand
 Copy
 Reset
-Loading...
+1
+map {datetime::subtract(cast('2024-03-15T14:30:00Z', datetime), cast('P10D', duration))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -24151,6 +24253,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -24476,6 +24579,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -24802,6 +24906,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -25127,6 +25232,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -25388,7 +25494,7 @@ Syntax
 $ RQL
 Copy
 1
-d
+datetime::year(datetime_value)
 Parameters
 Name	Type	Description
 datetime_value	Datetime	The datetime to extract the year from
@@ -25402,7 +25508,7 @@ Expand
 Copy
 Reset
 1
-m
+map {datetime::year(cast('2024-03-15T14:30:00Z', datetime))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -25452,6 +25558,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -25843,6 +25950,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -26103,7 +26211,8 @@ Add two durations together.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+duration::add(a, b)
 Parameters
 Name	Type	Description
 a	Duration	The first duration.
@@ -26117,7 +26226,8 @@ $ Add two durations
 Expand
 Copy
 Reset
-Loading...
+1
+map {duration::add(duration::hours(1), duration::minutes(30))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -26167,6 +26277,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -26429,7 +26540,8 @@ Alias: duration::day
 Syntax
 $ RQL
 Copy
-Loading...
+1
+duration::days(count)
 Parameters
 Name	Type	Description
 count	Integer	The number of days for the duration.
@@ -26442,7 +26554,8 @@ $ Create a duration of days
 Expand
 Copy
 Reset
-Loading...
+1
+map {duration::days(10)}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -26492,6 +26605,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -26817,6 +26931,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -27142,6 +27257,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -27402,7 +27518,8 @@ Get the months component of a duration.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+duration::get_months(duration)
 Parameters
 Name	Type	Description
 duration	Duration	The duration to extract the months component from.
@@ -27415,7 +27532,8 @@ $ Get months from duration
 Expand
 Copy
 Reset
-Loading...
+1
+map {duration::get_months(cast('P1Y2M', duration))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -27465,6 +27583,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -27790,6 +27909,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -28052,7 +28172,8 @@ Alias: duration::hour
 Syntax
 $ RQL
 Copy
-Loading...
+1
+duration::hours(count)
 Parameters
 Name	Type	Description
 count	Integer	The number of hours for the duration.
@@ -28065,7 +28186,8 @@ $ Create a duration of hours
 Expand
 Copy
 Reset
-Loading...
+1
+map {duration::hours(5)}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -28115,6 +28237,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -28441,6 +28564,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -28768,6 +28892,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -29096,6 +29221,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -29356,7 +29482,8 @@ Negate a duration (flip its sign).
 Syntax
 $ RQL
 Copy
-Loading...
+1
+duration::negate(duration)
 Parameters
 Name	Type	Description
 duration	Duration	The duration to negate.
@@ -29369,7 +29496,8 @@ $ Negate a duration
 Expand
 Copy
 Reset
-Loading...
+1
+map {duration::negate(duration::hours(2))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -29419,6 +29547,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -29679,7 +29808,8 @@ Scale a duration by a numeric factor.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+duration::scale(duration, factor)
 Parameters
 Name	Type	Description
 duration	Duration	The duration to scale.
@@ -29693,7 +29823,8 @@ $ Scale a duration
 Expand
 Copy
 Reset
-Loading...
+1
+map {duration::scale(duration::hours(2), 3)}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -29743,6 +29874,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -30070,6 +30202,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -30330,7 +30463,8 @@ Subtract one duration from another.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+duration::subtract(a, b)
 Parameters
 Name	Type	Description
 a	Duration	The duration to subtract from.
@@ -30344,7 +30478,8 @@ $ Subtract two durations
 Expand
 Copy
 Reset
-Loading...
+1
+map {duration::subtract(duration::hours(2), duration::minutes(30))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -30394,6 +30529,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -30719,6 +30855,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -31046,6 +31183,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -31374,6 +31512,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -31682,6 +31821,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -32007,6 +32147,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -32337,6 +32478,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -32597,7 +32739,8 @@ Check if the current user is anonymous (not authenticated).
 Syntax
 $ RQL
 Copy
-Loading...
+1
+is::anonymous()
 Parameters
 
 This function takes no parameters.
@@ -32611,7 +32754,8 @@ $ Check if the current user is anonymous
 Expand
 Copy
 Reset
-Loading...
+1
+map {is::anonymous()}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -32660,6 +32804,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -32920,7 +33065,8 @@ Check if a value is none (has no value).
 Syntax
 $ RQL
 Copy
-Loading...
+1
+is::none(value)
 Parameters
 Name	Type	Description
 value	Any	The value to check
@@ -32933,7 +33079,8 @@ $ Check if a value is none
 Expand
 Copy
 Reset
-Loading...
+1
+map {is::none(cast(42, int4))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -32983,6 +33130,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -33243,7 +33391,8 @@ Check if the current user has root privileges.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+is::root()
 Parameters
 
 This function takes no parameters.
@@ -33257,7 +33406,8 @@ $ Check if the current user is root
 Expand
 Copy
 Reset
-Loading...
+1
+map {is::root()}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -33306,6 +33456,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -33631,6 +33782,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -33891,7 +34043,8 @@ Check if a value is of a specified type.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+is::type(value, type_name)
 Parameters
 Name	Type	Description
 value	Any	The value to check the type of
@@ -33905,7 +34058,8 @@ $ Check if a value is a specific type
 Expand
 Copy
 Reset
-Loading...
+1
+map {is::type(cast(42, int4), int4)}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -33955,6 +34109,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -34291,6 +34446,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -34633,6 +34789,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -35238,7 +35395,8 @@ Serialize a JSON value to a pretty-printed string with indentation.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+json::pretty(value)
 Parameters
 Name	Type	Description
 value	JSON	A JSON value (from json::array or json::object)
@@ -35252,7 +35410,12 @@ $ Pretty-print JSON
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+from app::users
+extend { formatted: json::pretty(json::object("name", name, "age", age)) }
+map { name, formatted }
 $ ctrl+enter to run
 Run
 Related Functions
@@ -35563,7 +35726,8 @@ Serialize a JSON value to a compact string.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+json::serialize(value)
 Parameters
 Name	Type	Description
 value	JSON	A JSON value (from json::array or json::object)
@@ -35577,7 +35741,12 @@ $ Serialize to JSON String
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+from app::users
+extend { json_str: json::serialize(json::object("name", name, "age", age)) }
+map { name, json_str }
 $ ctrl+enter to run
 Run
 Related Functions
@@ -36368,7 +36537,8 @@ Get the absolute value of a number.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::abs(value)
 Parameters
 Name	Type	Description
 value	Number	The number to get the absolute value of
@@ -36382,7 +36552,10 @@ $ Convert to absolute value
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::transactions
+extend { abs_amount: math::abs(amount) }
 $ ctrl+enter to run
 Run
 Filter by absolute magnitude
@@ -36390,7 +36563,10 @@ $ Filter by absolute magnitude
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::balances
+filter { math::abs(balance) > 1000 }
 $ ctrl+enter to run
 Run
 Related Functions
@@ -36700,7 +36876,8 @@ Compute the arccosine (inverse cosine) of a value in radians.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::acos(value)
 Parameters
 Name	Type	Description
 value	Number	A number between -1 and 1
@@ -36713,7 +36890,8 @@ $ Calculate arccosine
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::acos(cast(0.5, float8))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -37024,7 +37202,8 @@ Compute the arcsine (inverse sine) of a value in radians.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::asin(value)
 Parameters
 Name	Type	Description
 value	Number	A number between -1 and 1
@@ -37037,7 +37216,8 @@ $ Calculate arcsine
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::asin(cast(0.5, float8))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -37348,7 +37528,8 @@ Compute the arctangent (inverse tangent) of a value in radians.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::atan(value)
 Parameters
 Name	Type	Description
 value	Number	The value to compute the arctangent of
@@ -37361,7 +37542,8 @@ $ Calculate arctangent
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::atan(cast(1.0, float8))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -37672,7 +37854,8 @@ Compute the two-argument arctangent, returning the angle in radians between the 
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::atan2(y, x)
 Parameters
 Name	Type	Description
 y	Number	The y-coordinate
@@ -37686,7 +37869,8 @@ $ Calculate two-argument arctangent
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::atan2(cast(1.0, float8), cast(1.0, float8))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -37737,6 +37921,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -37997,7 +38182,8 @@ Calculate the average (mean) of numeric values across multiple rows.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::avg(value)
 Parameters
 Name	Type	Description
 value	Number	The numeric field to average
@@ -38011,7 +38197,10 @@ $ Calculate average price
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::products
+aggregate {math::avg(price)} by {category}
 $ ctrl+enter to run
 Run
 Average with total
@@ -38019,7 +38208,16 @@ $ Average with total
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+from app::sales
+aggregate {
+  avg_sale: math::avg(amount),
+  total_sales: math::sum(amount)
+}
 $ ctrl+enter to run
 Run
 INFO
@@ -38657,7 +38855,8 @@ Clamp a value within a specified range.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::clamp(value, min, max)
 Parameters
 Name	Type	Description
 value	Number	The value to clamp
@@ -38672,7 +38871,8 @@ $ Clamp value to range
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::clamp(cast(5, int4), cast(0, int4), cast(10, int4))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -39634,7 +39834,8 @@ Compute Euler's number (e) raised to the given power.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::exp(value)
 Parameters
 Name	Type	Description
 value	Number	The exponent to raise e to
@@ -39647,7 +39848,8 @@ $ Calculate exponential
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::exp(cast(1.0, float8))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -39957,7 +40159,8 @@ Round down to the nearest integer.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::floor(value)
 Parameters
 Name	Type	Description
 value	Number	The number to round down
@@ -39970,7 +40173,8 @@ $ Floor a float
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::floor(cast(3.7, float8))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -40280,7 +40484,8 @@ Compute the greatest common divisor of two integers.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::gcd(a, b)
 Parameters
 Name	Type	Description
 a	Integer	The first integer
@@ -40294,7 +40499,8 @@ $ Greatest common divisor
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::gcd(cast(12, int4), cast(8, int4))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -40604,7 +40810,8 @@ Compute the least common multiple of two integers.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::lcm(a, b)
 Parameters
 Name	Type	Description
 a	Integer	The first integer
@@ -40618,7 +40825,8 @@ $ Least common multiple
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::lcm(cast(4, int4), cast(6, int4))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -40928,7 +41136,8 @@ Compute the natural logarithm (base e) of a value.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::log(value)
 Parameters
 Name	Type	Description
 value	Number	A positive number
@@ -40941,7 +41150,8 @@ $ Calculate natural logarithm
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::log(cast(2.0, float8))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -41252,7 +41462,8 @@ Compute the base-10 logarithm of a value.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::log10(value)
 Parameters
 Name	Type	Description
 value	Number	A positive number
@@ -41265,7 +41476,8 @@ $ Calculate base-10 logarithm
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::log10(cast(100.0, float8))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -41575,7 +41787,8 @@ Compute the base-2 logarithm of a value.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::log2(value)
 Parameters
 Name	Type	Description
 value	Number	A positive number
@@ -41588,7 +41801,8 @@ $ Calculate base-2 logarithm
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::log2(cast(8.0, float8))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -41898,7 +42112,8 @@ Find the maximum value across multiple rows.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::max(value)
 Parameters
 Name	Type	Description
 value	Number	The numeric field to find the maximum of
@@ -41912,7 +42127,10 @@ $ Find highest price
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::products
+aggregate {math::max(price)} by {category}
 $ ctrl+enter to run
 Run
 Min and max together
@@ -41920,7 +42138,16 @@ $ Min and max together
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+from app::sales
+aggregate {
+  lowest: math::min(amount),
+  highest: math::max(amount)
+} by {month}
 $ ctrl+enter to run
 Run
 INFO
@@ -42233,7 +42460,8 @@ Find the minimum value across multiple rows.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::min(value)
 Parameters
 Name	Type	Description
 value	Number	The numeric field to find the minimum of
@@ -42247,7 +42475,10 @@ $ Find lowest price
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::products
+aggregate {math::min(price)} by {category}
 $ ctrl+enter to run
 Run
 Min and max together
@@ -42255,7 +42486,16 @@ $ Min and max together
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+from app::sales
+aggregate {
+  lowest: math::min(amount),
+  highest: math::max(amount)
+} by {month}
 $ ctrl+enter to run
 Run
 INFO
@@ -42894,7 +43134,8 @@ Return the mathematical constant pi (approximately 3.14159).
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::pi()
 Parameters
 
 This function takes no parameters.
@@ -42908,7 +43149,8 @@ $ Get Pi constant
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::pi()}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -43219,7 +43461,8 @@ Raise a number to a power (exponentiation).
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::power(base, exponent)
 Parameters
 Name	Type	Description
 base	Number	The base number
@@ -43233,7 +43476,8 @@ $ Calculate power
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::power(cast(2, int4), cast(3, int4))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -43543,7 +43787,8 @@ Round to the nearest integer or decimal place.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::round(value, decimal_places)
 Parameters
 Name	Type	Description
 value	Number	The number to round
@@ -43558,7 +43803,10 @@ $ Round to 2 decimal places
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::prices
+extend { rounded: math::round(price, 2) }
 $ ctrl+enter to run
 Run
 Round to nearest integer
@@ -43566,7 +43814,10 @@ $ Round to nearest integer
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::metrics
+extend { rounded_value: math::round(value) }
 $ ctrl+enter to run
 Run
 Related Functions
@@ -44201,7 +44452,8 @@ Compute the sine of an angle in radians.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::sin(angle)
 Parameters
 Name	Type	Description
 angle	Number	The angle in radians
@@ -44214,7 +44466,8 @@ $ Calculate sine
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::sin(cast(1.0, float8))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -44525,7 +44778,8 @@ Compute the square root of a value.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::sqrt(value)
 Parameters
 Name	Type	Description
 value	Number	A non-negative number
@@ -44538,7 +44792,8 @@ $ Calculate square root
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::sqrt(cast(16.0, float8))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -44848,7 +45103,8 @@ Calculate the sum of numeric values across multiple rows.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::sum(value)
 Parameters
 Name	Type	Description
 value	Number	The numeric field to sum
@@ -44862,7 +45118,10 @@ $ Calculate total revenue
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::orders
+aggregate {math::sum(total)} by {region}
 $ ctrl+enter to run
 Run
 Multiple aggregations
@@ -44870,7 +45129,16 @@ $ Multiple aggregations
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+from app::sales
+aggregate {
+  total_revenue: math::sum(amount),
+  avg_sale: math::avg(amount)
+}
 $ ctrl+enter to run
 Run
 INFO
@@ -45183,7 +45451,8 @@ Compute the tangent of an angle in radians.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+math::tan(angle)
 Parameters
 Name	Type	Description
 angle	Number	The angle in radians
@@ -45196,7 +45465,8 @@ $ Calculate tangent
 Expand
 Copy
 Reset
-Loading...
+1
+map {math::tan(cast(1.0, float8))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -46141,7 +46411,8 @@ Get the type name of a value as a string.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+meta::type(value)
 Parameters
 Name	Type	Description
 value	Any	The value to get the type name of
@@ -46154,7 +46425,8 @@ $ Get the type of a value
 Expand
 Copy
 Reset
-Loading...
+1
+map {meta::type(cast(42, int4))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -46464,7 +46736,18 @@ $ Quick Example
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+6
+from app::users
+extend {
+  full_name: text::concat(first_name, " ", last_name),
+  email_lower: text::lower(email)
+}
+filter { text::length(full_name) > 0 }
 $ ctrl+enter to run
 Run
 Case & Whitespace
@@ -46888,7 +47171,8 @@ Get the ASCII code of the first character in a string.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+text::ascii(value)
 Parameters
 Name	Type	Description
 value	Utf8	The string whose first character's ASCII code will be returned.
@@ -46901,7 +47185,8 @@ $ Get ASCII code
 Expand
 Copy
 Reset
-Loading...
+1
+map {text::ascii('A')}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -47534,7 +47819,8 @@ Concatenate multiple strings together.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+text::concat(value1, value2, ...)
 Parameters
 Name	Type	Description
 value1, value2, ...	Utf8	Two or more strings to concatenate together
@@ -47547,7 +47833,8 @@ $ Concatenate two strings
 Expand
 Copy
 Reset
-Loading...
+1
+map {text::concat('hello', ' world')}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -48184,7 +48471,8 @@ Count the number of characters in a string.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+text::count(value)
 Parameters
 Name	Type	Description
 value	Utf8	The string to count characters in
@@ -48197,7 +48485,8 @@ $ Count characters in string
 Expand
 Copy
 Reset
-Loading...
+1
+map {text::count('hello')}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -49481,7 +49770,8 @@ Find the index of the first occurrence of a substring.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+text::index_of(value, search)
 Parameters
 Name	Type	Description
 value	Utf8	The string to search within.
@@ -49495,7 +49785,8 @@ $ Find index of substring
 Expand
 Copy
 Reset
-Loading...
+1
+map {text::index_of('hello world', 'world')}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -51134,7 +51425,8 @@ Repeat a string a specified number of times.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+text::repeat(value, count)
 Parameters
 Name	Type	Description
 value	Utf8	The string to repeat.
@@ -51148,7 +51440,8 @@ $ Repeat a string
 Expand
 Copy
 Reset
-Loading...
+1
+map {text::repeat('ab', 3)}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -51458,7 +51751,8 @@ Replace all occurrences of a substring with another string.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+text::replace(value, search, replacement)
 Parameters
 Name	Type	Description
 value	Utf8	The original string.
@@ -51473,7 +51767,8 @@ $ Replace substring
 Expand
 Copy
 Reset
-Loading...
+1
+map {text::replace('hello world', 'world', 'there')}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -51783,7 +52078,8 @@ Reverse the characters in a string.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+text::reverse(value)
 Parameters
 Name	Type	Description
 value	Utf8	The string to reverse.
@@ -51796,7 +52092,8 @@ $ Reverse a string
 Expand
 Copy
 Reset
-Loading...
+1
+map {text::reverse('hello')}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -52432,7 +52729,8 @@ Extract a portion of a string.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+text::substring(value, start, end)
 Parameters
 Name	Type	Description
 value	Utf8	The string to extract from
@@ -52448,7 +52746,10 @@ $ Extract prefix
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::codes
+extend { prefix: text::substring(code, 0, 3) }
 $ ctrl+enter to run
 Run
 Get first characters
@@ -52456,7 +52757,10 @@ $ Get first characters
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::products
+extend { initial: text::substring(name, 0, 1) }
 $ ctrl+enter to run
 Run
 Extract middle portion
@@ -52464,7 +52768,10 @@ $ Extract middle portion
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::identifiers
+extend { middle: text::substring(code, 3, 7) }
 $ ctrl+enter to run
 Run
 Related Functions
@@ -53439,7 +53746,8 @@ Remove leading whitespace from a string.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+text::trim_start(value)
 Parameters
 Name	Type	Description
 value	Utf8	The string to trim leading whitespace from.
@@ -53452,7 +53760,8 @@ $ Trim leading whitespace
 Expand
 Copy
 Reset
-Loading...
+1
+map {text::trim_start('   hello   ')}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -54467,7 +54776,8 @@ Add a duration to a time value.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+time::add(time_value, duration)
 Parameters
 Name	Type	Description
 time_value	Time	The base time value
@@ -54481,7 +54791,8 @@ $ Add a duration to a time
 Expand
 Copy
 Reset
-Loading...
+1
+map {time::add(cast('14:30:00', time), cast('PT1H', duration))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -54791,7 +55102,8 @@ Calculate the duration between two time values.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+time::age(time_a, time_b)
 Parameters
 Name	Type	Description
 time_a	Time	The first time value
@@ -54805,7 +55117,8 @@ $ Calculate duration between two times
 Expand
 Copy
 Reset
-Loading...
+1
+map {time::age(cast('14:00:00', time), cast('10:00:00', time))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -55442,7 +55755,7 @@ Syntax
 $ RQL
 Copy
 1
-t
+time::format(time_value, format_string)
 Parameters
 Name	Type	Description
 time_value	Time	The time value to format
@@ -55457,7 +55770,7 @@ Expand
 Copy
 Reset
 1
-m
+map {time::format(cast('14:30:45', time), '%H:%M:%S')}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -55766,7 +56079,8 @@ Extract the hour (0-23) from a time value.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+time::hour(time_value)
 Parameters
 Name	Type	Description
 time_value	Time	The time value to extract the hour from
@@ -55779,7 +56093,8 @@ $ Extract the hour
 Expand
 Copy
 Reset
-Loading...
+1
+map {time::hour(cast('14:30:00', time))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -57064,7 +57379,8 @@ Get the current time of day.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+time::now()
 Parameters
 
 This function takes no parameters.
@@ -57078,7 +57394,8 @@ $ Get the current time
 Expand
 Copy
 Reset
-Loading...
+1
+map {time::now()}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -57713,7 +58030,8 @@ Subtract a duration from a time value.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+time::subtract(time_value, duration)
 Parameters
 Name	Type	Description
 time_value	Time	The base time value
@@ -57727,7 +58045,8 @@ $ Subtract a duration from a time
 Expand
 Copy
 Reset
-Loading...
+1
+map {time::subtract(cast('14:30:00', time), cast('PT1H', duration))}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -58037,7 +58356,8 @@ Truncate a time to a specified precision.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+time::trunc(time_value, precision)
 Parameters
 Name	Type	Description
 time_value	Time	The time value to truncate
@@ -58051,7 +58371,8 @@ $ Truncate to hour precision
 Expand
 Copy
 Reset
-Loading...
+1
+map {time::trunc(cast('14:30:45', time), 'hour')}
 $ ctrl+enter to run
 Run
 Related Functions
@@ -62623,6 +62944,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -62935,6 +63257,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -63402,6 +63725,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -63731,6 +64055,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -64026,7 +64351,10 @@ $ math module
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::orders
+aggregate {math::sum(total)} by {region}
 $ ctrl+enter to run
 Run
 text
@@ -64037,7 +64365,10 @@ $ text module
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::users
+extend { lower_email: text::lower(email) }
 $ ctrl+enter to run
 Run
 date
@@ -64048,7 +64379,10 @@ $ date module
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::records
+extend { processed_at: date::now() }
 $ ctrl+enter to run
 Run
 Case Expression
@@ -64059,7 +64393,10 @@ $ Case Expression
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::orders
+extend { tax: total * 0.1 }
 $ ctrl+enter to run
 Run
 Named Arguments
@@ -64070,7 +64407,10 @@ $ Named Arguments
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::users
+take 10
 $ ctrl+enter to run
 Run
 COMBINING EXPRESSIONS
@@ -64119,6 +64459,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -64419,6 +64760,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -64745,6 +65087,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -65148,6 +65491,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -65412,7 +65756,16 @@ $ Pipeline Processing
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+from app::orders
+filter { status == "completed" }
+aggregate {revenue: math::sum(total)} by {region}
+sort {revenue}
+take 5
 $ ctrl+enter to run
 Run
 Transform Reference
@@ -65424,7 +65777,8 @@ $ from
 Expand
 Copy
 Reset
-Loading...
+1
+from app::users
 $ ctrl+enter to run
 Run
 filter
@@ -65435,7 +65789,10 @@ $ filter
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::users
+filter { age >= 18 }
 $ ctrl+enter to run
 Run
 extend
@@ -65446,7 +65803,10 @@ $ extend
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::employees
+extend { bonus: salary * 0.1 }
 $ ctrl+enter to run
 Run
 sort
@@ -65457,7 +65817,10 @@ $ sort
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::users
+sort {created_at}
 $ ctrl+enter to run
 Run
 take
@@ -65468,7 +65831,12 @@ $ take
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+from app::users
+sort {created_at}
+take 10
 $ ctrl+enter to run
 Run
 distinct
@@ -65479,7 +65847,10 @@ $ distinct
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::products
+distinct { category }
 $ ctrl+enter to run
 Run
 aggregate
@@ -65490,7 +65861,10 @@ $ aggregate
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::orders
+aggregate {math::sum(total)} by {region}
 $ ctrl+enter to run
 Run
 MORE TRANSFORMS
@@ -65541,6 +65915,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -65802,7 +66177,10 @@ $ Whole-Table Aggregation
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::orders
+aggregate { total_revenue: math::sum(total) }
 $ ctrl+enter to run
 Run
 
@@ -65813,7 +66191,10 @@ $ Group By
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::orders
+aggregate { revenue: math::sum(total), orders: math::sum(1) } by { region }
 $ ctrl+enter to run
 Run
 
@@ -65824,7 +66205,10 @@ $ Multiple Groups
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::orders
+aggregate { revenue: math::sum(total) } by { region, status }
 $ ctrl+enter to run
 Run
 
@@ -65835,7 +66219,20 @@ $ Multiple Aggregations
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+6
+7
+from app::orders
+aggregate {
+  total: math::sum(total),
+  average: math::avg(total),
+  smallest: math::min(total),
+  largest: math::max(total)
+}
 $ ctrl+enter to run
 Run
 
@@ -65885,6 +66282,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -66190,6 +66588,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -66502,6 +66901,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -66830,6 +67230,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -67091,7 +67492,10 @@ $ Basic Usage
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::employees
+extend { bonus: salary * 0.1 }
 $ ctrl+enter to run
 Run
 
@@ -67102,7 +67506,10 @@ $ Multiple Columns
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::employees
+extend { bonus: salary * 0.1, tax: salary * 0.3, net: salary * 0.6 }
 $ ctrl+enter to run
 Run
 
@@ -67113,7 +67520,12 @@ $ Chaining Extends
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+from app::employees
+extend { bonus: salary * 0.1 }
+extend { total_comp: salary + bonus }
 $ ctrl+enter to run
 Run
 
@@ -67163,6 +67575,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -67505,6 +67918,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -67765,7 +68179,8 @@ Starts a pipeline by naming its data source: a table, a view, or inline records.
 Syntax
 $ RQL
 Copy
-Loading...
+1
+from namespace::source
 
 Every query begins with from. The source can be a table, a view, a system vtable such as system::metrics, or an inline array of records.
 
@@ -67775,7 +68190,8 @@ $ from
 Expand
 Copy
 Reset
-Loading...
+1
+from app::users
 $ ctrl+enter to run
 Run
 Query Inline Data
@@ -67783,7 +68199,18 @@ $ Query Inline Data
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+6
+from [
+  { name: "Ada", born: 1815 },
+  { name: "Grace", born: 1906 },
+  { name: "Edsger", born: 1930 }
+]
+sort { born: asc }
 $ ctrl+enter to run
 Run
 
@@ -67836,6 +68263,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -68098,7 +68526,11 @@ Expand
 Copy
 Reset
 1
-f
+2
+3
+from app::employees
+inner join { from app::departments } as d using (dept_id, d.id)
+map { id, salary, department: d.name }
 $ ctrl+enter to run
 Run
 
@@ -68110,7 +68542,11 @@ Expand
 Copy
 Reset
 1
-f
+2
+3
+from app::employees
+left join { from app::departments } as d using (dept_id, d.id)
+map { id, salary, department: d.name }
 $ ctrl+enter to run
 Run
 
@@ -68160,6 +68596,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -68421,7 +68858,10 @@ $ Select Columns
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::employees
+map { id, salary }
 $ ctrl+enter to run
 Run
 
@@ -68432,7 +68872,10 @@ $ Rename and Compute
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::employees
+map { employee_id: id, annual_salary: salary, double_salary: salary * 2 }
 $ ctrl+enter to run
 Run
 
@@ -68443,7 +68886,10 @@ $ Constants
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from [{ x: 1 }, { x: 2 }, { x: 3 }]
+map { x, label: "row", active: true }
 $ ctrl+enter to run
 Run
 
@@ -68495,6 +68941,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -68829,6 +69276,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -69091,7 +69539,17 @@ Expand
 Copy
 Reset
 1
-f
+2
+3
+4
+5
+6
+from [
+  {id: 1, name: "Alice", status: "pending"},
+  {id: 2, name: "Bob", status: "inactive"},
+  {id: 3, name: "Carol", status: "pending"}
+]
+patch {status: "active"}
 $ ctrl+enter to run
 Run
 
@@ -69103,7 +69561,15 @@ Expand
 Copy
 Reset
 1
-f
+2
+3
+4
+5
+from [
+  {id: 1, name: "Alice"},
+  {id: 2, name: "Bob"}
+]
+patch {active: true, score: 0}
 $ ctrl+enter to run
 Run
 
@@ -69115,7 +69581,9 @@ Expand
 Copy
 Reset
 1
-f
+2
+from [{id: 1, x: 10}, {id: 2, x: 20}]
+patch {x: x * 2, label: "done"}
 $ ctrl+enter to run
 Run
 
@@ -69127,7 +69595,11 @@ Expand
 Copy
 Reset
 1
-f
+2
+3
+from [{id: 1, x: 10}, {id: 2, x: 20}, {id: 3, x: 30}]
+patch {y: x + 5}
+patch {z: y * 2}
 $ ctrl+enter to run
 Run
 
@@ -69179,6 +69651,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -69440,7 +69913,10 @@ $ Basic Syntax
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::users
+sort {created_at}
 $ ctrl+enter to run
 Run
 
@@ -69454,7 +69930,10 @@ $ Descending Order
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::users
+sort {created_at: desc}
 $ ctrl+enter to run
 Run
 Multiple Columns
@@ -69465,7 +69944,10 @@ $ Multiple Columns
 Expand
 Copy
 Reset
-Loading...
+1
+2
+from app::orders
+sort {region, total: desc}
 $ ctrl+enter to run
 Run
 
@@ -69479,7 +69961,12 @@ $ Combined with Take
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+from app::users
+sort {created_at: desc}
+take 10
 $ ctrl+enter to run
 Run
 PRODUCT
@@ -69526,6 +70013,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -69856,6 +70344,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -70172,6 +70661,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -70477,6 +70967,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -71217,6 +71708,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -71478,7 +71970,24 @@ $ Delete Rows
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+6
+7
+8
+9
+CREATE NAMESPACE dm_dl;
+CREATE TABLE dm_dl::items { id: int4, label: utf8 };
+INSERT dm_dl::items [
+  { id: 1, label: 'keep' },
+  { id: 2, label: 'remove' },
+  { id: 3, label: 'keep' }
+];
+DELETE dm_dl::items FILTER { label == 'remove' };
+FROM dm_dl::items
 $ ctrl+enter to run
 Run
 
@@ -71489,7 +71998,16 @@ $ Delete All
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+CREATE NAMESPACE dm_da;
+CREATE TABLE dm_da::temp { id: int4, val: utf8 };
+INSERT dm_da::temp [{ id: 1, val: 'a' }, { id: 2, val: 'b' }];
+DELETE dm_da::temp FILTER { true };
+FROM dm_da::temp
 $ ctrl+enter to run
 Run
 
@@ -71539,6 +72057,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -71885,6 +72404,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -72146,7 +72666,22 @@ $ Update Rows
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+6
+7
+8
+CREATE NAMESPACE dm_u;
+CREATE TABLE dm_u::users { id: int4, name: utf8, active: bool };
+INSERT dm_u::users [
+  { id: 1, name: 'Alice', active: true },
+  { id: 2, name: 'Bob', active: true }
+];
+UPDATE dm_u::users { id: id, name: name, active: false } FILTER { id == 2 };
+FROM dm_u::users
 $ ctrl+enter to run
 Run
 
@@ -72157,7 +72692,16 @@ $ Update with Expression
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+CREATE NAMESPACE dm_ue;
+CREATE TABLE dm_ue::scores { id: int4, points: int4 };
+INSERT dm_ue::scores [{ id: 1, points: 10 }, { id: 2, points: 20 }];
+UPDATE dm_ue::scores { id: id, points: points + 5 } FILTER { true };
+FROM dm_ue::scores
 $ ctrl+enter to run
 Run
 
@@ -72207,6 +72751,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -72553,6 +73098,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -72899,6 +73445,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -73161,7 +73708,23 @@ Expand
 Copy
 Reset
 1
-C
+2
+3
+4
+5
+6
+7
+8
+9
+CREATE NAMESPACE pr_cf;
+CREATE TABLE pr_cf::results { id: int4, label: utf8 };
+CREATE PROCEDURE pr_cf::classify { val: int4 } AS {
+  LET label = IF $val > 10 { 'high' } ELSE { 'low' };
+  INSERT pr_cf::results [{ id: $val, label: $label }]
+};
+CALL pr_cf::classify(5);
+CALL pr_cf::classify(15);
+FROM pr_cf::results
 $ ctrl+enter to run
 Run
 
@@ -73173,7 +73736,27 @@ Expand
 Copy
 Reset
 1
-C
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+CREATE NAMESPACE pr_w;
+CREATE TABLE pr_w::numbers { val: int4 };
+CREATE PROCEDURE pr_w::fill AS {
+  LET MUT i = 1;
+  WHILE $i <= 3 {
+    INSERT pr_w::numbers [{ val: $i }];
+    LET i = $i + 1;
+  }
+};
+CALL pr_w::fill();
+FROM pr_w::numbers
 $ ctrl+enter to run
 Run
 
@@ -73223,6 +73806,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -73537,6 +74121,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -73867,6 +74452,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -74209,6 +74795,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -74509,6 +75096,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -74770,7 +75358,8 @@ $ Create Namespace
 Expand
 Copy
 Reset
-Loading...
+1
+CREATE NAMESPACE sc
 $ ctrl+enter to run
 Run
 
@@ -74781,7 +75370,20 @@ $ Table in Namespace
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+6
+7
+CREATE NAMESPACE sc_t;
+CREATE TABLE sc_t::users {
+  id: int4,
+  name: utf8,
+  age: int2,
+  active: bool
+}
 $ ctrl+enter to run
 Run
 
@@ -74831,6 +75433,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -75179,6 +75782,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -75511,6 +76115,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -75776,7 +76381,20 @@ $ Create Series
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+6
+7
+CREATE NAMESPACE st_sr;
+CREATE TAG st_sr::source {
+  Sensor { location: utf8 }
+};
+CREATE SERIES st_sr::metrics {
+  value: float8
+} WITH { tag: st_sr::source, precision: microsecond }
 $ ctrl+enter to run
 Run
 
@@ -75826,6 +76444,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -76143,6 +76762,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -76514,6 +77134,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -76775,7 +77396,46 @@ $ Deferred View
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+CREATE NAMESPACE vw_d;
+CREATE TABLE vw_d::employees {
+  id: int4,
+  name: utf8,
+  active: bool
+};
+CREATE DEFERRED VIEW vw_d::active_employees {
+  id: int4,
+  name: utf8
+} AS {
+  FROM vw_d::employees
+  FILTER active == true
+  MAP { id: id, name: name }
+};
+INSERT vw_d::employees [
+  { id: 1, name: 'Alice', active: true },
+  { id: 2, name: 'Bob', active: false },
+  { id: 3, name: 'Carol', active: true }
+];
+FROM vw_d::active_employees
 $ ctrl+enter to run
 Run
 
@@ -76786,7 +77446,44 @@ $ Transactional View
 Expand
 Copy
 Reset
-Loading...
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+CREATE NAMESPACE vw_t;
+CREATE TABLE vw_t::users {
+  id: int4,
+  name: utf8,
+  active: bool
+};
+CREATE VIEW vw_t::active_users {
+  id: int4,
+  name: utf8
+} AS {
+  FROM vw_t::users
+  FILTER active == true
+  MAP { id: id, name: name }
+};
+INSERT vw_t::users [
+  { id: 1, name: 'Alice', active: true },
+  { id: 2, name: 'Bob', active: false }
+];
+FROM vw_t::active_users
 $ ctrl+enter to run
 Run
 
@@ -76836,6 +77533,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -77242,6 +77940,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
