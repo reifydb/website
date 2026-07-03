@@ -26,7 +26,7 @@ export function TestingOverviewPage() {
             <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">CREATE TEST PROCEDURE</code> defines
             reusable setup logic. <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">CREATE TEST</code> defines
             a test that calls setup procedures, runs queries, and asserts results.
-            Each test runs in isolation — data from one test never leaks into another.
+            Each test runs in isolation: data from one test never leaks into another.
           </p>
         </section>
 

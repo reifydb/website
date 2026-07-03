@@ -13,7 +13,7 @@ export function ScriptingOverviewPage() {
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             ReifyDB's scripting language lets you define schemas, manipulate data, create views,
-            procedures, events, tests, and more — all in a single coherent system.
+            procedures, tests, and more, all in a single coherent system.
           </p>
         </div>
 
@@ -56,35 +56,31 @@ export function ScriptingOverviewPage() {
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
-              <span><Link to="/docs/scripting/schema/namespaces" className="text-primary hover:text-primary-light font-medium transition-colors">Schema</Link> — Namespaces, tables, enums, dictionaries</span>
+              <span><Link to="/docs/scripting/schema/namespaces" className="text-primary hover:text-primary-light font-medium transition-colors">Schema</Link>: Namespaces, tables, enums, dictionaries</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
-              <span><Link to="/docs/scripting/storage/ringbuffers" className="text-primary hover:text-primary-light font-medium transition-colors">Storage Types</Link> — Ringbuffers, series, tags</span>
+              <span><Link to="/docs/scripting/storage/ringbuffers" className="text-primary hover:text-primary-light font-medium transition-colors">Storage Types</Link>: Ringbuffers, series, tags</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
-              <span><Link to="/docs/scripting/dml/insert" className="text-primary hover:text-primary-light font-medium transition-colors">Data Manipulation</Link> — Insert, update, delete</span>
+              <span><Link to="/docs/scripting/dml/insert" className="text-primary hover:text-primary-light font-medium transition-colors">Data Manipulation</Link>: Insert, update, delete</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
-              <span><Link to="/docs/scripting/views" className="text-primary hover:text-primary-light font-medium transition-colors">Views</Link> — Deferred and transactional materialized views</span>
+              <span><Link to="/docs/scripting/views" className="text-primary hover:text-primary-light font-medium transition-colors">Views</Link>: Deferred and transactional materialized views</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
-              <span><Link to="/docs/scripting/procedures" className="text-primary hover:text-primary-light font-medium transition-colors">Procedures</Link> — Reusable logic with parameters and control flow</span>
+              <span><Link to="/docs/scripting/procedures" className="text-primary hover:text-primary-light font-medium transition-colors">Procedures</Link>: Reusable logic with parameters and control flow</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
-              <span><Link to="/docs/scripting/events" className="text-primary hover:text-primary-light font-medium transition-colors">Events</Link> — Event-driven state transitions</span>
+              <span><Link to="/docs/scripting/testing" className="text-primary hover:text-primary-light font-medium transition-colors">Testing</Link>: Built-in test framework</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
-              <span><Link to="/docs/scripting/testing" className="text-primary hover:text-primary-light font-medium transition-colors">Testing</Link> — Built-in test framework</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-primary font-mono">--</span>
-              <span><Link to="/docs/scripting/migrations" className="text-primary hover:text-primary-light font-medium transition-colors">Migrations</Link> — Schema versioning with rollback</span>
+              <span><Link to="/docs/scripting/migrations" className="text-primary hover:text-primary-light font-medium transition-colors">Migrations</Link>: Schema versioning with rollback</span>
             </li>
           </ul>
         </section>

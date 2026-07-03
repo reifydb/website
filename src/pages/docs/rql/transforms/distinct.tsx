@@ -23,7 +23,7 @@ export function DistinctPage() {
             initialCode={getExampleById('distinct-basic')!.code}
           />
           <p className="text-text-secondary mt-4">
-            Keep only the first row for each unique value. The entire row is preserved — <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">distinct</code> just picks which rows survive.
+            Keep only the first row for each unique value. The entire row is preserved; <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">distinct</code> just picks which rows survive.
           </p>
         </section>
 

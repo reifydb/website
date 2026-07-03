@@ -6,24 +6,24 @@ import { ScrollReveal } from '@/components/ui';
 
 const quickLinks = [
   {
-    title: 'Installation',
-    description: 'Get ReifyDB running in a few minutes.',
-    href: '/docs/installation',
+    title: 'Quickstart',
+    description: 'Build a live view in your browser, nothing to install.',
+    href: '/docs/quick-start',
     icon: Zap,
     color: 'text-primary',
   },
   {
-    title: 'Quick Start',
-    description: 'Write your first query and see results immediately.',
-    href: '/docs/quick-start',
-    icon: BookOpen,
+    title: 'RQL in Five Minutes',
+    description: 'Learn the query language, one runnable concept at a time.',
+    href: '/docs/rql',
+    icon: Code,
     color: 'text-primary',
   },
   {
-    title: 'RQL Basics',
-    description: 'Learn how RQL works, from the ground up.',
-    href: '/docs/rql/basics',
-    icon: Code,
+    title: 'Installation',
+    description: 'Get ReifyDB running for real, embedded or as a server.',
+    href: '/docs/installation',
+    icon: BookOpen,
     color: 'text-primary',
   },
 ];
@@ -108,19 +108,19 @@ export function DocsOverview() {
             <h2 className="text-2xl font-black tracking-tight mb-4">Key Features</h2>
             <ul className="space-y-3 text-text-secondary">
               <li className="flex items-start gap-3">
-                <span className="text-primary">—</span>
+                <span className="text-primary font-mono">--</span>
                 <span><strong className="text-text-primary">Transactional</strong> - Your application state stays consistent. Full ACID guarantees, real rollback.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-primary">—</span>
+                <span className="text-primary font-mono">--</span>
                 <span><strong className="text-text-primary">Incremental</strong> - Your views update the moment your data changes. No cron, no polling.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-primary">—</span>
+                <span className="text-primary font-mono">--</span>
                 <span><strong className="text-text-primary">Embeddable</strong> - Embed it in your app or run it as a standalone server. Your call.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-primary">—</span>
+                <span className="text-primary font-mono">--</span>
                 <span><strong className="text-text-primary">RQL</strong> - A query language that fits how you think about your data, not how a database thinks about tables.</span>
               </li>
             </ul>

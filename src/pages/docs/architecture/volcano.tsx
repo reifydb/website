@@ -22,7 +22,7 @@ export function VolcanoPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Pipeline Model</h2>
           <p className="text-text-secondary mb-4">
             Every transform in your query becomes an operator in a pipeline. Operators are
-            chained together — each one pulls rows from the one below it.
+            chained together: each one pulls rows from the one below it.
           </p>
           <ExecutableSnippet
             title="Pipeline Model"
@@ -52,7 +52,7 @@ export function VolcanoPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Lazy Evaluation</h2>
           <p className="text-text-secondary">
             Nothing runs until a consumer pulls. If you <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">take 5</code>,
-            the pipeline stops after producing 5 rows — even if the source table has millions.
+            the pipeline stops after producing 5 rows, even if the source table has millions.
             Only the operators needed to satisfy the result actually execute.
           </p>
         </section>
@@ -62,7 +62,7 @@ export function VolcanoPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Streaming</h2>
           <p className="text-text-secondary">
             Rows flow through the pipeline without materializing full intermediate results.
-            A filter doesn't build a temporary table of passing rows — it passes each row
+            A filter doesn't build a temporary table of passing rows; it passes each row
             through immediately. The exceptions are operators that need all their input before
             producing output: <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">sort</code> and <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">aggregate</code>.
             These buffer internally.
@@ -75,21 +75,21 @@ export function VolcanoPage() {
           <div className="glass-card p-6">
             <ol className="space-y-3 list-decimal list-inside text-text-secondary">
               <li>
-                <span className="font-bold text-text-primary">Parse</span> — RQL text to AST
+                <span className="font-bold text-text-primary">Parse</span>: RQL text to AST
               </li>
               <li>
-                <span className="font-bold text-text-primary">Plan</span> — AST to operator DAG
+                <span className="font-bold text-text-primary">Plan</span>: AST to operator DAG
               </li>
               <li>
-                <span className="font-bold text-text-primary">Resolve Types</span> — infer and check types across the pipeline
+                <span className="font-bold text-text-primary">Resolve Types</span>: infer and check types across the pipeline
               </li>
               <li>
-                <span className="font-bold text-text-primary">Execute</span> — pull rows through the operator chain
+                <span className="font-bold text-text-primary">Execute</span>: pull rows through the operator chain
               </li>
             </ol>
           </div>
           <p className="text-text-secondary mt-4 mb-4">
-            The full pipeline in action — scan, filter, aggregate, sort.
+            The full pipeline in action: scan, filter, aggregate, sort.
           </p>
           <ExecutableSnippet
             title="Full Pipeline"

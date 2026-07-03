@@ -1,22 +1,48 @@
 export { Layout } from './layout.tsx';
 export { DocsOverview } from './overview';
-export { InstallationPage } from './guides/installation';
-export { QuickStartPage } from './guides/quick-start';
-export { RqlBasicsPage } from './rql/basics';
+export { ConnectPage } from './connect';
+export {
+  InstallationPage,
+  QuickStartPage,
+  ModelApplicationStatePage,
+  IncrementalViewsGuidePage,
+  WindowedAggregationGuidePage,
+  TtlGuidePage,
+  ImportExportGuidePage,
+} from './guides/index';
+export {
+  ConceptsOverviewPage,
+  DataModelPage,
+  TablesAndViewsPage,
+  TransactionsPage,
+  WorkingWithNonePage,
+  TtlPage,
+  DurabilityPage,
+} from './concepts/index';
+export { VolcanoPage, TypesPage } from './architecture/index';
+export { RqlFiveMinutesPage } from './rql/five-minutes';
+export { RqlForSqlUsersPage } from './rql/for-sql-users';
+export { RqlControlFlowPage } from './rql/control-flow';
 export { RqlTransformsPage } from './rql/transforms';
 export { RqlExpressionsPage } from './rql/expressions';
-export { FilterPage, SortPage, MapPage, ExtendPage, AggregatePage, DistinctPage, TakePage, JoinPage, MatchPage, PatchPage } from './rql/transforms/index';
-export { OperatorsPage, ConditionalsPage, LiteralsPage, FieldAccessPage } from './rql/expressions/index';
-export { PaginationPage, HierarchicalDataPage, TimeSeriesPage, TextSearchPage, DynamicQueriesPage } from './rql/patterns/index';
 export {
-  ArchitectureOverviewPage,
-  VolcanoPage,
-  TypesPage,
-  ArchitectureStorageEnginePage,
-  IncrementalMaintenancePage,
-  TransactionEnginePage,
-  WireProtocolPage,
-} from './architecture/index';
+  FromPage,
+  FilterPage,
+  SortPage,
+  MapPage,
+  ExtendPage,
+  AggregatePage,
+  DistinctPage,
+  TakePage,
+  JoinPage,
+  WindowPage,
+  ApplyPage,
+  CastPage,
+  WithPage,
+  MatchPage,
+  PatchPage,
+} from './rql/transforms/index';
+export { OperatorsPage, LiteralsPage } from './rql/expressions/index';
 export {
   ScriptingOverviewPage,
   NamespacesPage,
@@ -24,187 +50,46 @@ export {
   EnumsPage,
   DictionariesPage,
   DropPage,
-  ConstraintsPage,
   IndexesPage,
-  StorageTablesPage,
   RingbuffersPage,
   SeriesPage,
   DmlInsertPage,
   DmlUpdatePage,
   DmlDeletePage,
-  UpsertPage,
-  BatchOperationsPage,
   ViewsOverviewPage,
   DeferredViewsPage,
   TransactionalViewsPage,
   ProceduresOverviewPage,
   ControlFlowPage,
-  EventsOverviewPage,
-  HandlersPage,
-  DispatchPage,
   TestingOverviewPage,
   MigrationsOverviewPage,
   SubscriptionsOverviewPage,
   AccessControlOverviewPage,
 } from './scripting/index';
-// Tutorials
-export { FirstAppPage, LiveDashboardPage, RealTimeChatPage, TaskManagerPage } from './tutorials/index';
-// Coming From
-export { ComingFromSqlPage, ComingFromMongoPage, ComingFromRedisPage, ComingFromFirebasePage } from './coming-from/index';
-// Concepts
+export { RoutinesOverviewPage } from './routines/overview';
 export {
-  ConceptsOverviewPage,
-  DataModelPage,
-  ConceptsNamespacesPage,
-  MaterializedViewsPage,
-  RealTimeSubscriptionsPage,
-  StorageEnginesPage,
-  ConsistencyModelPage,
-  EmbeddedVsServerPage,
-} from './concepts/index';
-// Guides
-export {
-  GuidesOverviewPage,
-  UsersAuthGuidePage,
-  ECommerceGuidePage,
-  CmsGuidePage,
-  MultiTenancyGuidePage,
-  RelationshipsGuidePage,
-  LiveQueriesGuidePage,
-  ReactiveViewsGuidePage,
-  EventSourcingGuidePage,
-  NotificationsGuidePage,
-  UnitTestingGuidePage,
-  IntegrationTestingGuidePage,
-  FixturesGuidePage,
-  SoftDeletesGuidePage,
-  AuditTrailGuidePage,
-  StateMachinesGuidePage,
-  CqrsGuidePage,
-  ComputedFieldsGuidePage,
-  DataVersioningGuidePage,
-} from './guides/index';
-// Client SDKs
-export {
-  SdksOverviewPage,
-  TsQuickStartPage,
-  TsConnectionPage,
-  TsQueriesPage,
-  TsMutationsPage,
-  TsSubscriptionsPage,
-  TsTransactionsPage,
-  TsTypeSafetyPage,
-  TsErrorHandlingPage,
-  TsApiReferencePage,
-  RustQuickStartPage,
-  RustEmbeddedPage,
+  ClientsOverviewPage,
+  RustEmbeddedClientPage,
   RustClientPage,
-  RustApiReferencePage,
-  PythonQuickStartPage,
-  PythonConnectionPage,
-  PythonQueriesPage,
-  PythonApiReferencePage,
-  GoQuickStartPage,
-  GoConnectionPage,
-  GoQueriesPage,
-  GoApiReferencePage,
-} from './sdks/index';
-// Security
-export {
-  SecurityOverviewPage,
-  AuthenticationPage,
-  AuthorizationPage,
-  RowLevelSecurityPage,
-  EncryptionPage,
-  AuditLoggingPage,
-  TlsPage,
-} from './security/index';
-// Operations
-export {
-  StandalonePage,
-  EmbeddedDeploymentPage,
-  DockerPage,
-  KubernetesPage,
-  SystemdPage,
-  BackupOverviewPage,
-  SnapshotsPage,
-  PointInTimePage,
-  MonitoringOverviewPage,
-  MetricsPage,
-  LoggingPage,
-  HealthChecksPage,
-  UpgradesPage,
-  ScalingPage,
-} from './operations/index';
-// Performance
-export {
-  PerformanceOverviewPage,
-  QueryOptimizationPage,
-  IndexingStrategiesPage,
-  ExplainPage,
-  ViewTuningPage,
-  MemoryManagementPage,
-  BenchmarksPage,
-} from './performance/index';
-// Tools
-export {
-  CliOverviewPage,
-  CliCommandsPage,
-  CliScriptingPage,
-  ConsoleOverviewPage,
-  QueryEditorPage,
-  SchemaBrowserPage,
-  ToolsPlaygroundPage,
-} from './tools/index';
-// Integrations
-export {
-  IntegrationsOverviewPage,
-  HttpApiOverviewPage,
-  HttpApiAuthPage,
-  HttpApiQueryPage,
-  HttpApiMutationPage,
-  HttpApiSubscriptionPage,
-  HttpApiErrorsPage,
-  WebhooksPage,
-  CdcPage,
-  ReactIntegrationPage,
-  NextjsIntegrationPage,
-  SvelteIntegrationPage,
-} from './integrations/index';
-// Troubleshooting
-export {
-  TroubleshootingOverviewPage,
-  CommonErrorsPage,
-  ConnectionIssuesPage,
-  SlowQueriesPage,
-  TransactionConflictsPage,
-  ViewIssuesPage,
-  FaqDocsPage,
-} from './troubleshooting/index';
-// Resources
-export {
-  ChangelogPage,
-  RoadmapPage,
-  GlossaryPage,
-  ContributingPage,
-  CommunityPage,
-  ReleaseNotesPage,
-} from './resources/index';
+  TypeScriptClientPage,
+  PythonClientPage,
+  WireFormatsPage,
+} from './clients/index';
+export { RunServerPage, ConfigurationPage, ObservabilityPage } from './operate/index';
+export { RoadmapPage, CaveatsPage, TroubleshootingFaqPage, AiAgentsPage } from './resources/index';
 export {
   FunctionsOverviewPage,
-  // Blob module
+  ArithmeticPoliciesPage,
   BlobModuleOverviewPage,
   BlobB58Page,
   BlobB64Page,
   BlobB64urlPage,
   BlobHexPage,
   BlobUtf8Page,
-  // Clock module
   ClockModuleOverviewPage,
   ClockNowPage,
   ClockSetPage,
   ClockAdvancePage,
-  // Date module
   DateModuleOverviewPage,
   DateYearPage,
   DateMonthPage,
@@ -226,7 +111,6 @@ export {
   DateSubtractPage,
   DateTruncPage,
   DateAgePage,
-  // Datetime module
   DatetimeModuleOverviewPage,
   DatetimeYearPage,
   DatetimeMonthPage,
@@ -253,7 +137,6 @@ export {
   DatetimeTruncPage,
   DatetimeAgePage,
   DatetimeFormatPage,
-  // Duration module
   DurationModuleOverviewPage,
   DurationYearsPage,
   DurationMonthsPage,
@@ -272,17 +155,14 @@ export {
   DurationScalePage,
   DurationTruncPage,
   DurationFormatPage,
-  // Identity module
   IdentityModuleOverviewPage,
   IdentityIdPage,
-  // Is module
   IsModuleOverviewPage,
   IsSomePage,
   IsNonePage,
   IsTypePage,
   IsRootPage,
   IsAnonymousPage,
-  // Math module
   MathModuleOverviewPage,
   MathSumPage,
   MathAvgPage,
@@ -313,10 +193,8 @@ export {
   MathSqrtPage,
   MathTanPage,
   MathTruncatePage,
-  // Meta module
   MetaModuleOverviewPage,
   MetaTypePage,
-  // Text module
   TextModuleOverviewPage,
   TextLowerPage,
   TextUpperPage,
@@ -340,13 +218,11 @@ export {
   TextTrimStartPage,
   TextFormatBytesPage,
   TextFormatBytesSiPage,
-  // JSON module
   JsonModuleOverviewPage,
   JsonArrayPage,
   JsonObjectPage,
   JsonSerializePage,
   JsonPrettyPage,
-  // Time module
   TimeModuleOverviewPage,
   TimeHourPage,
   TimeMinutePage,

@@ -12,7 +12,7 @@ export function MatchPage() {
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">match</code> for
-            conditional logic — the RQL equivalent of SQL's <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">CASE</code>.
+            conditional logic, the RQL equivalent of SQL's <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">CASE</code>.
           </p>
         </div>
 
@@ -34,7 +34,7 @@ export function MatchPage() {
             initialCode={getExampleById('match-searched')!.code}
           />
           <p className="text-text-secondary mt-4">
-            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">when</code>/<code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">then</code> for condition-based matching. Each <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">when</code> is evaluated in order — the first match wins.
+            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">when</code>/<code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">then</code> for condition-based matching. Each <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">when</code> is evaluated in order; the first match wins.
           </p>
         </section>
 

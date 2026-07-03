@@ -31,7 +31,9 @@ export interface CodeExample {
 // Re-export all examples
 export * from './landing';
 export * from './guides';
+export * from './quickstart';
 export * from './rql';
+export * from './rql-flagship';
 export * from './transforms';
 export * from './expressions';
 export * from './architecture';
@@ -51,7 +53,9 @@ export * from './scripting/index';
 // Import for aggregation
 import { landingExamples } from './landing';
 import { guideExamples } from './guides';
+import { quickstartExamples } from './quickstart';
 import { rqlExamples } from './rql';
+import { rqlFiveMinutesExamples, rqlForSqlUsersExamples } from './rql-flagship';
 import { transformExamples } from './transforms';
 import { expressionExamples } from './expressions';
 import { architectureExamples } from './architecture';
@@ -81,7 +85,10 @@ import { scriptingAccessControlExamples } from './scripting/access-control';
 export const allExamples: CodeExample[] = [
   ...landingExamples,
   ...guideExamples,
+  ...quickstartExamples,
   ...rqlExamples,
+  ...rqlFiveMinutesExamples,
+  ...rqlForSqlUsersExamples,
   ...transformExamples,
   ...expressionExamples,
   ...architectureExamples,

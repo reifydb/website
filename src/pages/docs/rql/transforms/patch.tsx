@@ -63,7 +63,7 @@ export function PatchPage() {
         </section>
 
         <p className="text-text-secondary">
-          <strong>Patch updates</strong> the row shape — matched columns are replaced, new columns are added, and unmatched columns survive. <strong>Map replaces</strong> the row shape entirely. <strong>Extend adds</strong> columns but cannot replace existing ones. Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">patch</code> when you want to selectively update without losing anything.
+          <strong>Patch updates</strong> the row shape: matched columns are replaced, new columns are added, and unmatched columns survive. <strong>Map replaces</strong> the row shape entirely. <strong>Extend adds</strong> columns but cannot replace existing ones. Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">patch</code> when you want to selectively update without losing anything.
         </p>
 
       </div>

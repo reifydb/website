@@ -1,4 +1,5 @@
 export { FunctionsOverviewPage } from './overview';
+export { ArithmeticPoliciesPage } from './arithmetic-policies';
 
 // Blob module
 export { BlobModuleOverviewPage } from './blob';

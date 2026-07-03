@@ -1,47 +1,279 @@
 # ReifyDB
 
-> A database designed to manage live application state with transactional guarantees, incremental derived state, and programmable state transitions.
+> ReifyDB is an application state database: it stores, mutates, and derives live
+> application state under one transactional model, with incrementally maintained
+> views instead of caches and refresh jobs. It runs embedded (Rust, Python, WASM)
+> or as a server (HTTP, WebSocket, gRPC). Its query language is RQL, which is not
+> a SQL dialect.
 
-## Docs
+Key reminders when writing RQL:
 
-- [Introduction](https://reifydb.com/docs/): Overview of ReifyDB
-- [Installation](https://reifydb.com/docs/installation/): How to install ReifyDB
-- [Quick Start](https://reifydb.com/docs/quick-start/): Get started quickly
+- There is no SELECT. Projection is `map`, filtering is `filter`, grouping is
+  `aggregate ... by`, ordering is `sort { col: asc }`, limiting is `take`.
+- Queries are pipelines that read top to bottom, one operator per line, starting
+  with `from`.
+- The missing value is `none`, never null. `x == none` never matches; test with
+  `is::none(x)` / `is::some(x)`. `none` is typed and propagates through arithmetic.
+- Objects are addressed as `namespace::object` (e.g. `app::users`); everything
+  callable is namespaced (`math::sum`, `text::concat`).
+- Statements are separated by semicolons; keywords are case-insensitive.
 
-## RQL (ReifyDB Query Language)
+The full text of every documentation page is available at
+https://reifydb.com/llms-full.txt
 
-- [Basics](https://reifydb.com/docs/rql/basics/): RQL fundamentals
-- [Transforms](https://reifydb.com/docs/rql/transforms/): Data transformation overview
-  - [Filter](https://reifydb.com/docs/rql/transforms/filter/): Filtering data
-  - [Sort](https://reifydb.com/docs/rql/transforms/sort/): Sorting data
-- [Expressions](https://reifydb.com/docs/rql/expressions/): Expression overview
-  - [Operators](https://reifydb.com/docs/rql/expressions/operators/): Available operators
+## Getting Started
 
-## Functions
+- [Introduction](https://reifydb.com/docs/)
+- [Quickstart](https://reifydb.com/docs/quick-start/)
+- [Installation](https://reifydb.com/docs/installation/)
+- [Connect](https://reifydb.com/docs/connect/)
 
-- [Overview](https://reifydb.com/docs/functions/): Function reference overview
-- [blob](https://reifydb.com/docs/functions/blob/): Binary data functions (b58, b64, b64url, hex, utf8)
-- [clock](https://reifydb.com/docs/functions/clock/): Clock manipulation (advance, now, set)
-- [date](https://reifydb.com/docs/functions/date/): Date functions (add, age, day, diff, format, month, year, etc.)
-- [datetime](https://reifydb.com/docs/functions/datetime/): DateTime functions (add, age, date, day, diff, epoch, format, etc.)
-- [duration](https://reifydb.com/docs/functions/duration/): Duration functions (add, days, format, hours, minutes, months, etc.)
-- [identity](https://reifydb.com/docs/functions/identity/): Identity functions (id)
-- [is](https://reifydb.com/docs/functions/is/): Type checking (anonymous, none, root, some, type)
-- [math](https://reifydb.com/docs/functions/math/): Math functions (abs, avg, ceil, cos, exp, floor, log, max, min, pi, round, sin, sqrt, sum, tan, etc.)
-- [meta](https://reifydb.com/docs/functions/meta/): Metadata functions (type)
-- [text](https://reifydb.com/docs/functions/text/): Text functions (concat, contains, length, lower, replace, substring, trim, upper, etc.)
-- [time](https://reifydb.com/docs/functions/time/): Time functions (add, age, diff, format, hour, minute, now, second, etc.)
+## Concepts
 
-## Other
+- [Application State Database](https://reifydb.com/docs/concepts/)
+- [Data Model](https://reifydb.com/docs/concepts/data-model/)
+- [Tables & Views](https://reifydb.com/docs/concepts/tables-and-views/)
+- [Transactions](https://reifydb.com/docs/concepts/transactions/)
+- [Working with none](https://reifydb.com/docs/concepts/none/)
+- [Data Types](https://reifydb.com/docs/concepts/data-types/)
+- [How Queries Execute](https://reifydb.com/docs/concepts/execution/)
+- [TTL & Row Settings](https://reifydb.com/docs/concepts/ttl/)
+- [Durability & Storage](https://reifydb.com/docs/concepts/durability/)
 
-- [Examples](https://reifydb.com/examples/): Example queries and usage
-- [Playground](https://reifydb.com/playground/): Interactive RQL playground
-- [Tour](https://reifydb.com/tour/): Guided tour of ReifyDB
-- [Blog](https://reifydb.com/blog/): Latest news and articles
-- [FAQ](https://reifydb.com/faq/): Frequently asked questions
-- [Support](https://reifydb.com/support/): Get help with ReifyDB
-- [Contact](https://reifydb.com/contact/): Contact information
+## RQL
 
-## Optional
+- [RQL in Five Minutes](https://reifydb.com/docs/rql/)
+- [RQL for SQL Users](https://reifydb.com/docs/rql/for-sql-users/)
+- [Overview](https://reifydb.com/docs/rql/expressions/)
+- [Operators](https://reifydb.com/docs/rql/expressions/operators/)
+- [Literals](https://reifydb.com/docs/rql/expressions/literals/)
+- [Overview](https://reifydb.com/docs/rql/transforms/)
+- [from](https://reifydb.com/docs/rql/transforms/from/)
+- [filter](https://reifydb.com/docs/rql/transforms/filter/)
+- [map](https://reifydb.com/docs/rql/transforms/map/)
+- [extend](https://reifydb.com/docs/rql/transforms/extend/)
+- [aggregate](https://reifydb.com/docs/rql/transforms/aggregate/)
+- [sort](https://reifydb.com/docs/rql/transforms/sort/)
+- [distinct](https://reifydb.com/docs/rql/transforms/distinct/)
+- [take](https://reifydb.com/docs/rql/transforms/take/)
+- [join](https://reifydb.com/docs/rql/transforms/join/)
+- [window](https://reifydb.com/docs/rql/transforms/window/)
+- [apply](https://reifydb.com/docs/rql/transforms/apply/)
+- [cast](https://reifydb.com/docs/rql/transforms/cast/)
+- [with](https://reifydb.com/docs/rql/transforms/with/)
+- [insert](https://reifydb.com/docs/scripting/dml/insert/)
+- [update](https://reifydb.com/docs/scripting/dml/update/)
+- [delete](https://reifydb.com/docs/scripting/dml/delete/)
+- [patch](https://reifydb.com/docs/rql/transforms/patch/)
+- [Namespaces](https://reifydb.com/docs/scripting/schema/namespaces/)
+- [Tables](https://reifydb.com/docs/scripting/schema/tables/)
+- [Enums](https://reifydb.com/docs/scripting/schema/enums/)
+- [Dictionaries](https://reifydb.com/docs/scripting/schema/dictionaries/)
+- [Indexes](https://reifydb.com/docs/scripting/schema/indexes/)
+- [Ringbuffers](https://reifydb.com/docs/scripting/storage/ringbuffers/)
+- [Series](https://reifydb.com/docs/scripting/storage/series/)
+- [Views](https://reifydb.com/docs/scripting/views/)
+- [Deferred Views](https://reifydb.com/docs/scripting/views/deferred/)
+- [Transactional Views](https://reifydb.com/docs/scripting/views/transactional/)
+- [Subscriptions](https://reifydb.com/docs/scripting/subscriptions/)
+- [Drop & Cleanup](https://reifydb.com/docs/scripting/schema/drop/)
+- [Overview](https://reifydb.com/docs/scripting/)
+- [Variables & Control Flow](https://reifydb.com/docs/rql/control-flow/)
+- [Match](https://reifydb.com/docs/rql/transforms/match/)
+- [Testing](https://reifydb.com/docs/scripting/testing/)
+- [Migrations](https://reifydb.com/docs/scripting/migrations/)
 
-- [Full content](https://reifydb.com/llms-full.txt): Complete site content in plain text
+## Routines
+
+- [Overview](https://reifydb.com/docs/routines/)
+- [Overview](https://reifydb.com/docs/functions/)
+- [Arithmetic Policies](https://reifydb.com/docs/functions/arithmetic-policies/)
+- [blob](https://reifydb.com/docs/functions/blob/)
+- [b58](https://reifydb.com/docs/functions/blob/b58/)
+- [b64](https://reifydb.com/docs/functions/blob/b64/)
+- [b64url](https://reifydb.com/docs/functions/blob/b64url/)
+- [hex](https://reifydb.com/docs/functions/blob/hex/)
+- [utf8](https://reifydb.com/docs/functions/blob/utf8/)
+- [clock](https://reifydb.com/docs/functions/clock/)
+- [advance](https://reifydb.com/docs/functions/clock/advance/)
+- [now](https://reifydb.com/docs/functions/clock/now/)
+- [set](https://reifydb.com/docs/functions/clock/set/)
+- [date](https://reifydb.com/docs/functions/date/)
+- [add](https://reifydb.com/docs/functions/date/add/)
+- [age](https://reifydb.com/docs/functions/date/age/)
+- [day](https://reifydb.com/docs/functions/date/day/)
+- [day_of_week](https://reifydb.com/docs/functions/date/day_of_week/)
+- [day_of_year](https://reifydb.com/docs/functions/date/day_of_year/)
+- [days_in_month](https://reifydb.com/docs/functions/date/days_in_month/)
+- [diff](https://reifydb.com/docs/functions/date/diff/)
+- [end_of_month](https://reifydb.com/docs/functions/date/end_of_month/)
+- [format](https://reifydb.com/docs/functions/date/format/)
+- [is_leap_year](https://reifydb.com/docs/functions/date/is_leap_year/)
+- [month](https://reifydb.com/docs/functions/date/month/)
+- [new](https://reifydb.com/docs/functions/date/new/)
+- [now](https://reifydb.com/docs/functions/date/now/)
+- [quarter](https://reifydb.com/docs/functions/date/quarter/)
+- [start_of_month](https://reifydb.com/docs/functions/date/start_of_month/)
+- [start_of_year](https://reifydb.com/docs/functions/date/start_of_year/)
+- [subtract](https://reifydb.com/docs/functions/date/subtract/)
+- [trunc](https://reifydb.com/docs/functions/date/trunc/)
+- [week](https://reifydb.com/docs/functions/date/week/)
+- [year](https://reifydb.com/docs/functions/date/year/)
+- [datetime](https://reifydb.com/docs/functions/datetime/)
+- [add](https://reifydb.com/docs/functions/datetime/add/)
+- [age](https://reifydb.com/docs/functions/datetime/age/)
+- [date](https://reifydb.com/docs/functions/datetime/date/)
+- [day](https://reifydb.com/docs/functions/datetime/day/)
+- [day_of_week](https://reifydb.com/docs/functions/datetime/day_of_week/)
+- [day_of_year](https://reifydb.com/docs/functions/datetime/day_of_year/)
+- [diff](https://reifydb.com/docs/functions/datetime/diff/)
+- [epoch](https://reifydb.com/docs/functions/datetime/epoch/)
+- [epoch_millis](https://reifydb.com/docs/functions/datetime/epoch_millis/)
+- [format](https://reifydb.com/docs/functions/datetime/format/)
+- [from_epoch](https://reifydb.com/docs/functions/datetime/from_epoch/)
+- [from_epoch_millis](https://reifydb.com/docs/functions/datetime/from_epoch_millis/)
+- [hour](https://reifydb.com/docs/functions/datetime/hour/)
+- [minute](https://reifydb.com/docs/functions/datetime/minute/)
+- [month](https://reifydb.com/docs/functions/datetime/month/)
+- [nanosecond](https://reifydb.com/docs/functions/datetime/nanosecond/)
+- [new](https://reifydb.com/docs/functions/datetime/new/)
+- [now](https://reifydb.com/docs/functions/datetime/now/)
+- [quarter](https://reifydb.com/docs/functions/datetime/quarter/)
+- [second](https://reifydb.com/docs/functions/datetime/second/)
+- [subtract](https://reifydb.com/docs/functions/datetime/subtract/)
+- [time](https://reifydb.com/docs/functions/datetime/time/)
+- [trunc](https://reifydb.com/docs/functions/datetime/trunc/)
+- [week](https://reifydb.com/docs/functions/datetime/week/)
+- [year](https://reifydb.com/docs/functions/datetime/year/)
+- [duration](https://reifydb.com/docs/functions/duration/)
+- [add](https://reifydb.com/docs/functions/duration/add/)
+- [days](https://reifydb.com/docs/functions/duration/days/)
+- [format](https://reifydb.com/docs/functions/duration/format/)
+- [get_days](https://reifydb.com/docs/functions/duration/get_days/)
+- [get_months](https://reifydb.com/docs/functions/duration/get_months/)
+- [get_nanos](https://reifydb.com/docs/functions/duration/get_nanos/)
+- [hours](https://reifydb.com/docs/functions/duration/hours/)
+- [millis](https://reifydb.com/docs/functions/duration/millis/)
+- [minutes](https://reifydb.com/docs/functions/duration/minutes/)
+- [months](https://reifydb.com/docs/functions/duration/months/)
+- [negate](https://reifydb.com/docs/functions/duration/negate/)
+- [scale](https://reifydb.com/docs/functions/duration/scale/)
+- [seconds](https://reifydb.com/docs/functions/duration/seconds/)
+- [subtract](https://reifydb.com/docs/functions/duration/subtract/)
+- [trunc](https://reifydb.com/docs/functions/duration/trunc/)
+- [weeks](https://reifydb.com/docs/functions/duration/weeks/)
+- [years](https://reifydb.com/docs/functions/duration/years/)
+- [identity](https://reifydb.com/docs/functions/identity/)
+- [id](https://reifydb.com/docs/functions/identity/id/)
+- [is](https://reifydb.com/docs/functions/is/)
+- [anonymous](https://reifydb.com/docs/functions/is/anonymous/)
+- [none](https://reifydb.com/docs/functions/is/none/)
+- [root](https://reifydb.com/docs/functions/is/root/)
+- [some](https://reifydb.com/docs/functions/is/some/)
+- [type](https://reifydb.com/docs/functions/is/type/)
+- [json](https://reifydb.com/docs/functions/json/)
+- [array](https://reifydb.com/docs/functions/json/array/)
+- [object](https://reifydb.com/docs/functions/json/object/)
+- [serialize](https://reifydb.com/docs/functions/json/serialize/)
+- [pretty](https://reifydb.com/docs/functions/json/pretty/)
+- [math](https://reifydb.com/docs/functions/math/)
+- [abs](https://reifydb.com/docs/functions/math/abs/)
+- [acos](https://reifydb.com/docs/functions/math/acos/)
+- [asin](https://reifydb.com/docs/functions/math/asin/)
+- [atan](https://reifydb.com/docs/functions/math/atan/)
+- [atan2](https://reifydb.com/docs/functions/math/atan2/)
+- [avg](https://reifydb.com/docs/functions/math/avg/)
+- [ceil](https://reifydb.com/docs/functions/math/ceil/)
+- [clamp](https://reifydb.com/docs/functions/math/clamp/)
+- [cos](https://reifydb.com/docs/functions/math/cos/)
+- [e](https://reifydb.com/docs/functions/math/e/)
+- [exp](https://reifydb.com/docs/functions/math/exp/)
+- [floor](https://reifydb.com/docs/functions/math/floor/)
+- [gcd](https://reifydb.com/docs/functions/math/gcd/)
+- [lcm](https://reifydb.com/docs/functions/math/lcm/)
+- [log](https://reifydb.com/docs/functions/math/log/)
+- [log10](https://reifydb.com/docs/functions/math/log10/)
+- [log2](https://reifydb.com/docs/functions/math/log2/)
+- [max](https://reifydb.com/docs/functions/math/max/)
+- [min](https://reifydb.com/docs/functions/math/min/)
+- [mod](https://reifydb.com/docs/functions/math/mod/)
+- [pi](https://reifydb.com/docs/functions/math/pi/)
+- [power](https://reifydb.com/docs/functions/math/power/)
+- [round](https://reifydb.com/docs/functions/math/round/)
+- [sign](https://reifydb.com/docs/functions/math/sign/)
+- [sin](https://reifydb.com/docs/functions/math/sin/)
+- [sqrt](https://reifydb.com/docs/functions/math/sqrt/)
+- [sum](https://reifydb.com/docs/functions/math/sum/)
+- [tan](https://reifydb.com/docs/functions/math/tan/)
+- [truncate](https://reifydb.com/docs/functions/math/truncate/)
+- [meta](https://reifydb.com/docs/functions/meta/)
+- [type](https://reifydb.com/docs/functions/meta/type/)
+- [text](https://reifydb.com/docs/functions/text/)
+- [ascii](https://reifydb.com/docs/functions/text/ascii/)
+- [char](https://reifydb.com/docs/functions/text/char/)
+- [concat](https://reifydb.com/docs/functions/text/concat/)
+- [contains](https://reifydb.com/docs/functions/text/contains/)
+- [count](https://reifydb.com/docs/functions/text/count/)
+- [ends_with](https://reifydb.com/docs/functions/text/ends_with/)
+- [format_bytes](https://reifydb.com/docs/functions/text/format_bytes/)
+- [format_bytes_si](https://reifydb.com/docs/functions/text/format_bytes_si/)
+- [index_of](https://reifydb.com/docs/functions/text/index_of/)
+- [length](https://reifydb.com/docs/functions/text/length/)
+- [lower](https://reifydb.com/docs/functions/text/lower/)
+- [pad_left](https://reifydb.com/docs/functions/text/pad_left/)
+- [pad_right](https://reifydb.com/docs/functions/text/pad_right/)
+- [repeat](https://reifydb.com/docs/functions/text/repeat/)
+- [replace](https://reifydb.com/docs/functions/text/replace/)
+- [reverse](https://reifydb.com/docs/functions/text/reverse/)
+- [starts_with](https://reifydb.com/docs/functions/text/starts_with/)
+- [substring](https://reifydb.com/docs/functions/text/substring/)
+- [trim](https://reifydb.com/docs/functions/text/trim/)
+- [trim_end](https://reifydb.com/docs/functions/text/trim_end/)
+- [trim_start](https://reifydb.com/docs/functions/text/trim_start/)
+- [upper](https://reifydb.com/docs/functions/text/upper/)
+- [time](https://reifydb.com/docs/functions/time/)
+- [add](https://reifydb.com/docs/functions/time/add/)
+- [age](https://reifydb.com/docs/functions/time/age/)
+- [diff](https://reifydb.com/docs/functions/time/diff/)
+- [format](https://reifydb.com/docs/functions/time/format/)
+- [hour](https://reifydb.com/docs/functions/time/hour/)
+- [minute](https://reifydb.com/docs/functions/time/minute/)
+- [nanosecond](https://reifydb.com/docs/functions/time/nanosecond/)
+- [new](https://reifydb.com/docs/functions/time/new/)
+- [now](https://reifydb.com/docs/functions/time/now/)
+- [second](https://reifydb.com/docs/functions/time/second/)
+- [subtract](https://reifydb.com/docs/functions/time/subtract/)
+- [trunc](https://reifydb.com/docs/functions/time/trunc/)
+- [Overview](https://reifydb.com/docs/scripting/procedures/)
+- [Parameters & Control Flow](https://reifydb.com/docs/scripting/procedures/control-flow/)
+
+## Clients
+
+- [Overview](https://reifydb.com/docs/clients/)
+- [Rust (Embedded)](https://reifydb.com/docs/clients/rust-embedded/)
+- [Rust (Client)](https://reifydb.com/docs/clients/rust/)
+- [TypeScript / JavaScript](https://reifydb.com/docs/clients/typescript/)
+- [Python](https://reifydb.com/docs/clients/python/)
+- [Wire Formats](https://reifydb.com/docs/clients/wire-formats/)
+
+## Guides
+
+- [Model Application State](https://reifydb.com/docs/guides/model-application-state/)
+- [Build Incremental Views](https://reifydb.com/docs/guides/incremental-views/)
+- [Windowed Aggregation](https://reifydb.com/docs/guides/windowed-aggregation/)
+- [Expire Data with TTL](https://reifydb.com/docs/guides/expire-with-ttl/)
+- [Import & Export Data](https://reifydb.com/docs/guides/import-export/)
+
+## Operate
+
+- [Run the Server](https://reifydb.com/docs/operate/server/)
+- [Storage & Configuration](https://reifydb.com/docs/operate/configuration/)
+- [Metrics & Observability](https://reifydb.com/docs/operate/observability/)
+- [Access Control](https://reifydb.com/docs/scripting/access-control/)
+
+## Resources
+
+- [Roadmap & Experimental](https://reifydb.com/docs/resources/roadmap/)
+- [Caveats & Limitations](https://reifydb.com/docs/resources/caveats/)
+- [Troubleshooting & FAQ](https://reifydb.com/docs/resources/faq/)
+- [For AI Agents](https://reifydb.com/docs/resources/ai-agents/)

@@ -50,7 +50,7 @@ export function MapPage() {
         </section>
 
         <p className="text-text-secondary">
-          <strong>Map replaces</strong> the row shape — only mapped columns survive. <strong>Extend adds</strong> columns to the existing shape. Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">map</code> when you want to control exactly what comes out. Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">extend</code> when you want to add without losing anything.
+          <strong>Map replaces</strong> the row shape: only mapped columns survive. <strong>Extend adds</strong> columns to the existing shape. Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">map</code> when you want to control exactly what comes out. Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">extend</code> when you want to add without losing anything.
         </p>
 
       </div>

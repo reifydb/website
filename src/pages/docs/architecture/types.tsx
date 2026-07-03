@@ -69,7 +69,7 @@ export function TypesPage() {
                 <tr className="border-t-2 border-border-default">
                   <td className="p-2 sm:p-3">Other</td>
                   <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">bool</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">Option(T)</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">List(T)</code></td>
-                  <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">Option</code> wraps nullable values</td>
+                  <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">Option</code> wraps optional values that can be none</td>
                 </tr>
               </tbody>
             </table>
@@ -105,7 +105,7 @@ export function TypesPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">None Handling</h2>
           <p className="text-text-secondary mb-4">
             RQL uses three-valued logic. <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">none</code> propagates
-            through most operations — if any operand is <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">none</code>,
+            through most operations: if any operand is <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">none</code>,
             the result is <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">none</code>.
           </p>
           <ExecutableSnippet
@@ -114,7 +114,7 @@ export function TypesPage() {
           />
           <p className="text-text-secondary mt-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">is::some()</code> and <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">is::none()</code> to
-            test for presence. The null-coalescing operator <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">??</code> provides
+            test for presence. The none-coalescing operator <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">??</code> provides
             defaults: <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">value ?? fallback</code>.
           </p>
         </section>

@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prerender": "node scripts/prerender.js"
+    "prerender": "node scripts/prerender.js",
+    "llms": "node scripts/generate-llms.js"
   },
   "dependencies": {
     "@fontsource-variable/ibm-plex-sans": "^5.2.8",

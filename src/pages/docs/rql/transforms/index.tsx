@@ -1,3 +1,4 @@
+export { FromPage } from './from';
 export { FilterPage } from './filter';
 export { SortPage } from './sort';
 export { MapPage } from './map';
@@ -6,5 +7,9 @@ export { AggregatePage } from './aggregate';
 export { DistinctPage } from './distinct';
 export { TakePage } from './take';
 export { JoinPage } from './join';
+export { WindowPage } from './window';
+export { ApplyPage } from './apply';
+export { CastPage } from './cast';
+export { WithPage } from './with';
 export { MatchPage } from './match';
 export { PatchPage } from './patch';
