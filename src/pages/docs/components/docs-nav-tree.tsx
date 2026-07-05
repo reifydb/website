@@ -30,6 +30,28 @@ export function findAllAncestors(sections: NavSection[], targetPath: string): Se
   return result;
 }
 
+function findIdPathInItems(items: NavItem[], targetId: string, prefix: string[]): string[] | null {
+  for (const item of items) {
+    const path = [...prefix, item.id];
+    if (item.id === targetId) return path;
+    if (item.children) {
+      const found = findIdPathInItems(item.children, targetId, path);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
+export function findIdPath(sections: NavSection[], targetId: string): string[] | null {
+  for (const section of sections) {
+    const sectionId = `section-${section.title}`;
+    if (sectionId === targetId) return [sectionId];
+    const found = findIdPathInItems(section.items, targetId, [sectionId]);
+    if (found) return found;
+  }
+  return null;
+}
+
 let persistedOpenItems: Set<string> | null = null;
 
 function isItemPublished(item: NavItem): boolean {
@@ -152,15 +174,14 @@ export function DocsNavTree({ sections, currentPath, onNavigate = noop }: DocsNa
 
   const toggleItem = useCallback((id: string) => {
     setOpenItems(prev => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
+      const path = findIdPath(displaySections, id);
+      if (!path) return prev;
+      if (prev.has(id)) {
+        return new Set(path.slice(0, -1));
       }
-      return next;
+      return new Set(path);
     });
-  }, []);
+  }, [displaySections]);
 
   return (
     <>
