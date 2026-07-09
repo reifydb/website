@@ -73,8 +73,8 @@ export function ConceptsOverviewPage() {
             balances, inventory, anything an invariant depends on. Use deferred views
             when a moment of lag is fine and write latency matters - dashboards,
             counters, feeds. See{' '}
-            <Link to="/docs/concepts/tables-and-views" className="text-primary hover:text-primary-light font-medium transition-colors">
-              Tables &amp; Views
+            <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">
+              Views
             </Link>{' '}
             for the full comparison.
           </p>
@@ -156,7 +156,7 @@ export function ConceptsOverviewPage() {
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
               <span>
-                <Link to="/docs/concepts/tables-and-views" className="text-primary hover:text-primary-light font-medium transition-colors">Tables &amp; Views</Link>{' '}
+                <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">Views</Link>{' '}
                 - transactional vs deferred views in depth
               </span>
             </li>

@@ -12,6 +12,20 @@ import type { CodeExample } from './types';
 export { architectureTypesExamples } from '@/pages/docs/architecture/types.examples';
 export { architectureVolcanoExamples } from '@/pages/docs/architecture/volcano.examples';
 export { conceptsOverviewExamples } from '@/pages/docs/concepts/overview.examples';
+export { dataModelDictionariesExamples } from '@/pages/docs/concepts/data-model/dictionaries.examples';
+export { dataModelEnumsExamples } from '@/pages/docs/concepts/data-model/enums.examples';
+export { dataModelEventsExamples } from '@/pages/docs/concepts/data-model/events.examples';
+export { dataModelHandlersExamples } from '@/pages/docs/concepts/data-model/handlers.examples';
+export { dataModelNamespacesExamples } from '@/pages/docs/concepts/data-model/namespaces.examples';
+export { dataModelPoliciesExamples } from '@/pages/docs/concepts/data-model/policies.examples';
+export { dataModelProceduresExamples } from '@/pages/docs/concepts/data-model/procedures.examples';
+export { dataModelRingBuffersExamples } from '@/pages/docs/concepts/data-model/ring-buffers.examples';
+export { dataModelSequencesExamples } from '@/pages/docs/concepts/data-model/sequences.examples';
+export { dataModelSeriesExamples } from '@/pages/docs/concepts/data-model/series.examples';
+export { dataModelSubscriptionsExamples } from '@/pages/docs/concepts/data-model/subscriptions.examples';
+export { dataModelTablesExamples } from '@/pages/docs/concepts/data-model/tables.examples';
+export { dataModelTagsExamples } from '@/pages/docs/concepts/data-model/tags.examples';
+export { dataModelViewsExamples } from '@/pages/docs/concepts/data-model/views.examples';
 export { functionsBlobB58Examples } from '@/pages/docs/functions/blob/b58.examples';
 export { functionsBlobB64Examples } from '@/pages/docs/functions/blob/b64.examples';
 export { functionsBlobB64urlExamples } from '@/pages/docs/functions/blob/b64url.examples';
@@ -183,6 +197,20 @@ export { heroExamples } from '@/pages/landing/sections/hero.examples';
 import { architectureTypesExamples } from '@/pages/docs/architecture/types.examples';
 import { architectureVolcanoExamples } from '@/pages/docs/architecture/volcano.examples';
 import { conceptsOverviewExamples } from '@/pages/docs/concepts/overview.examples';
+import { dataModelDictionariesExamples } from '@/pages/docs/concepts/data-model/dictionaries.examples';
+import { dataModelEnumsExamples } from '@/pages/docs/concepts/data-model/enums.examples';
+import { dataModelEventsExamples } from '@/pages/docs/concepts/data-model/events.examples';
+import { dataModelHandlersExamples } from '@/pages/docs/concepts/data-model/handlers.examples';
+import { dataModelNamespacesExamples } from '@/pages/docs/concepts/data-model/namespaces.examples';
+import { dataModelPoliciesExamples } from '@/pages/docs/concepts/data-model/policies.examples';
+import { dataModelProceduresExamples } from '@/pages/docs/concepts/data-model/procedures.examples';
+import { dataModelRingBuffersExamples } from '@/pages/docs/concepts/data-model/ring-buffers.examples';
+import { dataModelSequencesExamples } from '@/pages/docs/concepts/data-model/sequences.examples';
+import { dataModelSeriesExamples } from '@/pages/docs/concepts/data-model/series.examples';
+import { dataModelSubscriptionsExamples } from '@/pages/docs/concepts/data-model/subscriptions.examples';
+import { dataModelTablesExamples } from '@/pages/docs/concepts/data-model/tables.examples';
+import { dataModelTagsExamples } from '@/pages/docs/concepts/data-model/tags.examples';
+import { dataModelViewsExamples } from '@/pages/docs/concepts/data-model/views.examples';
 import { functionsBlobB58Examples } from '@/pages/docs/functions/blob/b58.examples';
 import { functionsBlobB64Examples } from '@/pages/docs/functions/blob/b64.examples';
 import { functionsBlobB64urlExamples } from '@/pages/docs/functions/blob/b64url.examples';
@@ -356,6 +384,20 @@ export const allExamples: CodeExample[] = [
   ...architectureTypesExamples,
   ...architectureVolcanoExamples,
   ...conceptsOverviewExamples,
+  ...dataModelDictionariesExamples,
+  ...dataModelEnumsExamples,
+  ...dataModelEventsExamples,
+  ...dataModelHandlersExamples,
+  ...dataModelNamespacesExamples,
+  ...dataModelPoliciesExamples,
+  ...dataModelProceduresExamples,
+  ...dataModelRingBuffersExamples,
+  ...dataModelSequencesExamples,
+  ...dataModelSeriesExamples,
+  ...dataModelSubscriptionsExamples,
+  ...dataModelTablesExamples,
+  ...dataModelTagsExamples,
+  ...dataModelViewsExamples,
   ...functionsBlobB58Examples,
   ...functionsBlobB64Examples,
   ...functionsBlobB64urlExamples,
