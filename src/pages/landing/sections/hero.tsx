@@ -1,9 +1,9 @@
 import { HaikuTypewriter } from '@/components/demo';
 import type { Haiku } from '@/components/demo';
 import { Button, ExecutableSnippet } from '@/components/ui';
-import { guideExamples } from '@/lib/examples';
+import { heroExamples } from '@/lib/examples';
 
-const heroExample = guideExamples.find((ex) => ex.id === 'guide-built-in-testing')!;
+const heroExample = heroExamples.find((ex) => ex.id === 'guide-built-in-testing')!;
 
 const heroHaikus: Haiku[] = [
   { lines: ['No {cyan:cache}. No {cyan:cron job}.', 'Your {primary:state} stays {green:consistent} here', 'Nothing {cyan:drifts} apart'] },

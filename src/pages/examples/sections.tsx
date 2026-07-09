@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { guideExamples, type CodeExample } from '@/lib/examples';
+import { heroExamples, type CodeExample } from '@/lib/examples';
 
 export interface ExampleSection {
   id: string;
@@ -12,7 +12,7 @@ export interface ExampleSection {
   footer?: ReactNode;
 }
 
-const builtInTesting = guideExamples.find((e) => e.id === 'guide-built-in-testing')!;
+const builtInTesting = heroExamples.find((e) => e.id === 'guide-built-in-testing')!;
 
 export const exampleSections: ExampleSection[] = [
   {
