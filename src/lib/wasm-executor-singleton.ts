@@ -36,6 +36,10 @@ class LazyWasmExecutor implements Executor {
     return exec.execute(statement);
   }
 
+  isReady(): boolean {
+    return this.inner !== null;
+  }
+
 }
 
 export const wasmExecutor = new LazyWasmExecutor();

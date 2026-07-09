@@ -5,7 +5,7 @@
  * These examples are consumed by both documentation pages and automated tests.
  */
 
-export type ExampleCategory = 'landing' | 'guide' | 'rql' | 'function' | 'scripting';
+export type ExampleCategory = 'landing' | 'guide' | 'rql' | 'function' | 'scripting' | 'concept';
 
 export type ExampleComponent = 'snippet' | string;
 
@@ -37,6 +37,7 @@ export * from './rql-flagship';
 export * from './transforms';
 export * from './expressions';
 export * from './architecture';
+export * from './concepts';
 export * from './functions/math';
 export * from './functions/text';
 export * from './functions/date';
@@ -59,6 +60,7 @@ import { rqlFiveMinutesExamples, rqlForSqlUsersExamples } from './rql-flagship';
 import { transformExamples } from './transforms';
 import { expressionExamples } from './expressions';
 import { architectureExamples } from './architecture';
+import { conceptsOverviewExamples } from './concepts';
 import { mathExamples } from './functions/math';
 import { textExamples } from './functions/text';
 import { dateExamples } from './functions/date';
@@ -92,6 +94,7 @@ export const allExamples: CodeExample[] = [
   ...transformExamples,
   ...expressionExamples,
   ...architectureExamples,
+  ...conceptsOverviewExamples,
   ...mathExamples,
   ...textExamples,
   ...dateExamples,
