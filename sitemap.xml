@@ -25,7 +25,59 @@
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://reifydb.com/docs/concepts/tables-and-views/</loc>
+    <loc>https://reifydb.com/docs/concepts/data-model/namespaces/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/tables/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/views/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/ring-buffers/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/series/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/dictionaries/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/policies/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/subscriptions/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/enums/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/tags/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/events/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/handlers/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/procedures/</loc>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://reifydb.com/docs/concepts/data-model/sequences/</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>

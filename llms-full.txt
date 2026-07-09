@@ -603,7 +603,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -933,7 +946,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -943,7 +955,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -1242,7 +1267,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -1252,7 +1276,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -1561,7 +1598,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -1571,7 +1607,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -1875,7 +1924,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -1885,7 +1933,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -2198,7 +2259,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -2208,7 +2268,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -2521,7 +2594,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -2531,7 +2603,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -2841,7 +2926,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -3082,8 +3180,6 @@ Caveats & Limitations
 Troubleshooting & FAQ
 For AI Agents
 ← BACK
-DRAFT
-This page is not published. Only visible in development mode.
 Application State Database
 
 ReifyDB stores, mutates, and derives live application state under one transactional model. State lives in memory for low latency, is persisted asynchronously for durability, and is queried directly by your frontends: ReifyDB is built to replace the backend layer, not to sit behind one.
@@ -3165,7 +3261,7 @@ from cpt::order_count
 $ ctrl+enter to run
 Run
 
-Use transactional views for derived state that reads must never see stale - balances, inventory, anything an invariant depends on. Use deferred views when a moment of lag is fine and write latency matters - dashboards, counters, feeds. See Tables & Views for the full comparison.
+Use transactional views for derived state that reads must never see stale - balances, inventory, anything an invariant depends on. Use deferred views when a moment of lag is fine and write latency matters - dashboards, counters, feeds. See Views for the full comparison.
 
 State first, queries second
 
@@ -3224,7 +3320,7 @@ RQL in Five Minutes - the pipeline query language used on this page
 --
 Data Model - namespaces, tables, and the specialized state shapes
 --
-Tables & Views - transactional vs deferred views in depth
+Views - transactional vs deferred views in depth
 --
 Transactions - the model every state change goes through
 DIRECT CLIENT ACCESS
@@ -3283,7 +3379,372 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+Data Model
+
+ReifyDB models application state with a small set of purpose-built primitives instead of tables-for-everything. Each storage shape has distinct semantics - how rows are kept, ordered, evicted, or derived - and all of them participate in the same transactions. This page is the map; every primitive has its own page with runnable examples.
+
+Namespaces organize everything
+
+Every object lives in a namespace and is addressed as namespace::object, for example shop::orders. Namespaces nest, isolate names, and are the natural boundary for environments and tenants. The engine's own catalog is exposed the same way, under system::*.
+
+The storage shapes
+
+Six shapes hold rows. Two store what your application asserts, three specialize how state is kept, and one derives state from the others:
+
+--
+Tables - authoritative, mutable state; the primary shape. Typed columns, optional columns, auto-increment, primary keys, in-place schema evolution.
+--
+Views - derived state the engine maintains incrementally. Transactional (correct at commit) or deferred (catches up moments later), materialized into table, ring buffer, or series storage.
+--
+Ring Buffers - fixed capacity, oldest row evicted when full; optionally one buffer per partition key. "Keep the last N" without cleanup jobs.
+--
+Series - rows ordered by a required time or integer key. Measurements, audit trails, historical records; range queries follow the key.
+--
+Dictionaries - value interning: strings stored once, referenced by compact IDs, wired into table columns transparently.
+Reacting to change
+--
+Subscriptions - an append-only change stream over a source, tagged insert / update / delete; what a live frontend consumes.
+--
+Events - declared domain events with typed payloads, dispatched inside a transaction.
+--
+Handlers - reactions bound to event variants; they run synchronously in the dispatching transaction and can chain further dispatches.
+--
+Procedures - named, callable logic stored next to the data: typed parameters, scripted bodies, in-database tests.
+Types and identity
+--
+Enums - closed variant sets as column types, with optional payload fields.
+--
+Tags - variant sets that classify series entries.
+--
+Sequences - the counters behind auto-increment columns; inspectable and repositionable.
+Access control
+
+Because clients query the database directly, policies replace the API layer as the place where access rules live: row filters, column masks, and write constraints per identity, attached to tables, views, namespaces, sessions, and procedures. Non-root identities are denied by default.
+
+WHERE TO START
+If you are new to ReifyDB, read Tables and Views first - together they carry most applications. Reach for the specialized shapes when a table plus application code starts reimplementing eviction, ordering, or interning by hand.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/dictionaries/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -3526,22 +3987,5672 @@ For AI Agents
 ← BACK
 DRAFT
 This page is not published. Only visible in development mode.
+Dictionaries
+
+A dictionary maps values of one type to compact IDs of another - classic interning. Store a currency code, a stock symbol, or a country name once, and every row that references it carries a small integer instead of the repeated string.
+
+Creating a dictionary
+
+The declaration names the value type and the ID type: create dictionary ns::name for value_type as id_type. The ID type bounds how many distinct values the dictionary can hold - a uint2 allows 65,536. Inserting returns the assigned mapping. Run the snippets on this page in order:
+
+$ Create a Dictionary and Intern Values
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+create namespace dm_dict;
+create dictionary dm_dict::symbols for utf8 as uint2;
+insert dm_dict::symbols [
+  { value: "AAPL" },
+  { value: "MSFT" },
+  { value: "TSLA" }
+]
+$ ctrl+enter to run
+Run
+
+Inserting a value that is already interned is not an error - it returns the existing ID, so writers never need to check first:
+
+$ Inserting an Existing Value Returns Its ID
+Expand
+Copy
+Reset
+1
+insert dm_dict::symbols [{ value: "AAPL" }]
+$ ctrl+enter to run
+Run
+The mapping is queryable
+
+A dictionary reads like any other source - each row is an ID/value pair:
+
+$ Read the Mapping Back
+Expand
+Copy
+Reset
+1
+from dm_dict::symbols
+$ ctrl+enter to run
+Run
+Dictionary-encoded columns
+
+The real payoff is wiring a dictionary to a table column with with { dictionary: ns::dict }. Writers and readers keep using plain strings; the engine stores and compares the compact IDs underneath:
+
+$ Dictionary-Encode a Table Column
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+9
+create table dm_dict::trades {
+  symbol: utf8 with { dictionary: dm_dict::symbols },
+  qty: int4
+};
+insert dm_dict::trades [
+  { symbol: "AAPL", qty: 100 },
+  { symbol: "NVDA", qty: 50 }
+];
+from dm_dict::trades
+$ ctrl+enter to run
+Run
+
+Note the insert above used "NVDA", which was not in the dictionary. Unknown values are interned automatically on write:
+
+$ Unknown Values Are Interned on Write
+Expand
+Copy
+Reset
+1
+from dm_dict::symbols filter { value == "NVDA" }
+$ ctrl+enter to run
+Run
+When to use one
+
+Dictionaries pay off when a string column has low cardinality relative to its row count - status names, symbols, categories, country codes. They are the wrong tool for high-cardinality values like emails or UUIDs, where nearly every row would add a dictionary entry. For a fixed, closed set of variants known at design time, consider an enum instead: enums are schema, dictionaries are data.
+
+APPEND-ONLY
+Dictionaries support insert and read. Entries are not updated or deleted - an interned value keeps its ID for the lifetime of the dictionary.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/enums/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
 Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+Enums
 
-Namespaces organize state; tables, views, ringbuffers, sequences, series, and dictionaries hold it.
+An enum is a named, closed set of variants declared as schema. Columns typed by an enum can only hold one of its variants - the database enforces what would otherwise be a stringly-typed convention in application code.
 
+Declaring and using an enum
+
+Declare the variants once, then use the enum as a column type. Values are written as variant paths - dm_enum::status::Active - so a typo is a schema error, not silent bad data. Under the hood each variant is stored as a compact tag (its index), which is what a plain read shows. Run the snippets on this page in order:
+
+$ A Plain Enum as a Column Type
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+create namespace dm_enum;
+create enum dm_enum::status { Active, Inactive, Pending };
+create table dm_enum::tasks { id: int4, status: dm_enum::status };
+insert dm_enum::tasks [
+  { id: 1, status: dm_enum::status::Active },
+  { id: 2, status: dm_enum::status::Inactive }
+];
+from dm_enum::tasks
+$ ctrl+enter to run
+Run
+Variants with payloads
+
+Variants can carry typed fields, making an enum a full sum type. A column holding Circle { radius } or Rectangle { width, height } stores exactly one variant's payload; reads flatten the variant tag and every possible field, with none for fields of the variants not present:
+
+$ Enum Variants Can Carry Payloads
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+9
+create enum dm_enum::shape {
+  Circle { radius: float8 },
+  Rectangle { width: float8, height: float8 }
+};
+create table dm_enum::drawings { id: int4, s: dm_enum::shape };
+insert dm_enum::drawings [
+  { id: 1, s: dm_enum::shape::Circle { radius: 2.5 } }
+];
+from dm_enum::drawings
+$ ctrl+enter to run
+Run
+Enum, dictionary, or plain string?
+--
+Fixed set known at design time, enforced by the schema: enum.
+--
+Open set discovered at runtime, stored compactly: a dictionary.
+--
+Free-form text: a plain utf8 column.
+RELATED TYPE DECLARATIONS
+The same variant syntax powers two sibling primitives: tags classify series entries, and events dispatch to handlers.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/events/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+Events
+
+An event is a declared type with variants that carry typed payloads. Handlers subscribe to a specific variant, and dispatch runs every matching handler synchronously, inside the dispatching transaction - in-database domain events with transactional guarantees.
+
+Events and handlers
+
+Declare the event's variants and payload fields, then bind handlers with create handler ... on ns::event::Variant. Inside the handler body, payload fields are available with an event_ prefix - the id field below is read as event_id. Handlers covers them in depth: several handlers per variant, scripted bodies, chained dispatch, lifecycle. Run the snippets on this page in order:
+
+$ Declare an Event and a Handler
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+create namespace dm_evt;
+create table dm_evt::audit { order_id: int4 };
+create event dm_evt::order_event { OrderPlaced { id: int4 } };
+create handler dm_evt::on_placed on dm_evt::order_event::OrderPlaced {
+  insert dm_evt::audit [{ order_id: event_id }]
+}
+$ ctrl+enter to run
+Run
+Dispatching
+
+dispatch names a variant and supplies its payload. The result reports how many handlers ran; several handlers can subscribe to the same variant and each one runs:
+
+$ Dispatch Runs Handlers in the Same Transaction
+Expand
+Copy
+Reset
+1
+dispatch dm_evt::order_event::OrderPlaced { id: 42 }
+$ ctrl+enter to run
+Run
+
+Because handlers run in the same transaction, their writes are already visible - and if the transaction rolls back, the handler's effects roll back with it:
+
+$ The Handler Wrote to the Audit Table
+Expand
+Copy
+Reset
+1
+from dm_evt::audit
+$ ctrl+enter to run
+Run
+Events or views?
+
+Both react to change, so choose by what you are modeling. State that is a function of other state - counts, sums, projections - belongs in a view: declarative, incrementally maintained, impossible to forget. Events are for actions with their own meaning - "an order was placed" - where several independent reactions should fire and each reaction is an imperative step. If a change stream for external consumers is what you need, see subscriptions.
+
+SYNCHRONOUS BY DESIGN
+Dispatch does not queue. Handlers execute before the dispatching statement returns, and chained dispatches from within handlers execute in the same transaction as well.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/handlers/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+Handlers
+
+A handler binds a block of statements to one variant of an event. When that variant is dispatched, every subscribed handler runs synchronously, inside the dispatching transaction. Handlers are how one domain event fans out into independent reactions without the caller knowing about any of them.
+
+Several handlers, one event
+
+Start with an event and the state the reactions will touch. Run the snippets on this page in order:
+
+$ An Event and the Tables Handlers Will Write
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+create namespace dm_h;
+create table dm_h::audit { kind: utf8 };
+create table dm_h::stats { total: int4 };
+create event dm_h::order_event {
+  OrderPlaced { id: int4, amount: int4 },
+  OrderShipped { id: int4 }
+}
+$ ctrl+enter to run
+Run
+
+Each handler is an independent concern - here one records an audit entry while another tracks revenue. Payload fields are available in the body with an event_ prefix (amount becomes event_amount). The dispatch reports how many handlers ran:
+
+$ Several Handlers, One Variant
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+create handler dm_h::record_order on dm_h::order_event::OrderPlaced {
+  insert dm_h::audit [{ kind: "placed" }]
+};
+create handler dm_h::track_revenue on dm_h::order_event::OrderPlaced {
+  insert dm_h::stats [{ total: event_amount }]
+};
+dispatch dm_h::order_event::OrderPlaced { id: 1, amount: 250 }
+$ ctrl+enter to run
+Run
+
+Adding a third reaction later means adding a handler - the dispatching code does not change. Both effects are already committed:
+
+$ Each Handler Did Its Own Work
+Expand
+Copy
+Reset
+1
+from dm_h::stats
+$ ctrl+enter to run
+Run
+Bodies are scripts
+
+A handler body is not limited to a single statement - it is ReifyDB Scripting, with variables, control flow, and any number of reads and writes, just like a procedure body:
+
+$ Handler Bodies Are Scripts
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+create table dm_h::results { sum: int4 };
+create event dm_h::evt { Compute };
+create handler dm_h::on_compute on dm_h::evt::Compute {
+  let $a = 10;
+  let $b = 20;
+  insert dm_h::results [{ sum: $a + $b }]
+};
+dispatch dm_h::evt::Compute { }
+$ ctrl+enter to run
+Run
+$ Read the Computed Result
+Expand
+Copy
+Reset
+1
+from dm_h::results
+$ ctrl+enter to run
+Run
+Chained dispatch
+
+A handler can itself dispatch, so one domain event can trigger the next stage of a process. The whole chain executes in the original transaction: either everything commits or nothing does. Note that handlers_fired counts the handlers of the dispatched variant itself - three are now subscribed to OrderPlaced:
+
+$ Handlers Can Dispatch Further Events
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+create handler dm_h::on_shipped on dm_h::order_event::OrderShipped {
+  insert dm_h::audit [{ kind: "shipped" }]
+};
+create handler dm_h::auto_ship on dm_h::order_event::OrderPlaced {
+  dispatch dm_h::order_event::OrderShipped { id: event_id }
+};
+dispatch dm_h::order_event::OrderPlaced { id: 2, amount: 99 }
+$ ctrl+enter to run
+Run
+
+The audit trail shows the full story: this page dispatched OrderPlaced twice (two placed entries), and the chained OrderShipped handler wrote shipped:
+
+$ The Whole Chain Committed Together
+Expand
+Copy
+Reset
+1
+from dm_h::audit
+$ ctrl+enter to run
+Run
+Lifecycle
+
+Handlers are catalog objects: drop handler unsubscribes one without touching the event or the other handlers, and system::handlers lists what is currently bound:
+
+$ Drop a Handler
+Expand
+Copy
+Reset
+1
+drop handler dm_h::auto_ship
+$ ctrl+enter to run
+Run
+$ Dispatch Reflects the Remaining Handlers
+Expand
+Copy
+Reset
+1
+dispatch dm_h::order_event::OrderPlaced { id: 3, amount: 10 }
+$ ctrl+enter to run
+Run
+Handler, view, or subscription?
+--
+Derived state that must track its sources: a view - declarative and impossible to forget.
+--
+Pushing changes out to connected clients: a subscription.
+--
+Imperative side effects of a named domain event, atomic with the event itself: a handler.
+SYNCHRONOUS AND TRANSACTIONAL
+Handlers never run in the background. If a handler fails, the dispatching transaction fails with it - which is exactly what you want when the reaction is part of the operation's correctness.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/namespaces/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
 Namespaces
 
-Every object is addressed as namespace::object, for example company::employees. This section will cover creating namespaces and how the default namespace works.
+Namespaces organize every other object in ReifyDB. Tables, views, ring buffers, series, dictionaries, and types all live inside a namespace and are addressed as namespace::object. A namespace must exist before you can create objects in it.
 
-Tables and views
+Creating a namespace
 
-Tables hold authoritative, mutable state. Views hold derived state the engine maintains incrementally. This section will summarize both and link to the deep dive.
+create namespace registers the container; from then on, every reference to an object inside it uses the :: separator. Run the snippets on this page in order:
 
-Specialized primitives
+$ Create a Namespace and Address Objects Inside It
+Expand
+Copy
+Reset
+1
+2
+3
+4
+create namespace dm_ns;
+create table dm_ns::users { id: int4, name: utf8 };
+insert dm_ns::users [{ id: 1, name: "Ada" }];
+from dm_ns::users
+$ ctrl+enter to run
+Run
+Names are scoped, not global
 
-Ringbuffers for bounded queues, sequences for id generation, series for time-series data, dictionaries for interned values. This section will describe when each one beats a plain table.
+Two namespaces can hold objects with the same name without conflict. This is the natural way to separate environments, tenants, or subsystems inside one database: prod::orders and staging::orders are entirely distinct tables.
 
+$ The Same Object Name in Two Namespaces
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+create namespace dm_ns_prod;
+create namespace dm_ns_staging;
+create table dm_ns_prod::orders { id: int4 };
+create table dm_ns_staging::orders { id: int4 };
+insert dm_ns_prod::orders [{ id: 1001 }];
+insert dm_ns_staging::orders [{ id: 1 }];
+from dm_ns_prod::orders
+$ ctrl+enter to run
+Run
+Idempotent creation
+
+if not exists makes creation safe to re-run, which matters for setup scripts and migrations. The result reports created: false when the namespace was already there:
+
+$ Idempotent Creation with IF NOT EXISTS
+Expand
+Copy
+Reset
+1
+create namespace dm_ns if not exists
+$ ctrl+enter to run
+Run
+Nested namespaces
+
+Namespaces nest. Creating dm_ns::internal places a child namespace under dm_ns, and objects inside it are addressed with the full path, for example dm_ns::internal::audit. Use nesting to group related state without inventing name prefixes:
+
+$ Nested Namespaces
+Expand
+Copy
+Reset
+1
+2
+3
+4
+create namespace dm_ns::internal;
+create table dm_ns::internal::audit { id: int4, action: utf8 };
+insert dm_ns::internal::audit [{ id: 1, action: "login" }];
+from dm_ns::internal::audit
+$ ctrl+enter to run
+Run
+Inspecting namespaces
+
+The system catalog is itself queryable. system::namespaces lists every namespace with its full name, its local name, and the id of its parent - nested namespaces show up as children of the namespace that contains them:
+
+$ Inspect Namespaces via the System Catalog
+Expand
+Copy
+Reset
+1
+2
+from system::namespaces
+filter { local_name == "internal" }
+$ ctrl+enter to run
+Run
+
+The system namespace also exposes system::tables, system::views, system::policies, and storage metrics. Reads on system::* are policy-gated for non-root identities.
+
+Where to go next
+--
+Tables - the primary shape for authoritative state
+--
+Policies - control what each identity may read and write, per namespace or per object
+--
+Data Model overview - all primitives at a glance
+RESERVED NAMESPACES
+ReifyDB reserves a few namespaces for itself, most visibly system (the queryable catalog) and default. Your application namespaces live alongside them.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/policies/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+Policies
+
+Policies are row-level security declared in the database. Because frontends query ReifyDB directly, there is no backend API layer to enforce access rules - policies are that layer. Non-root identities are denied by default; a policy grants access and shapes what each operation may see and do. Root bypasses policies entirely.
+
+Read policies: filter and mask
+
+A policy attaches to an object and defines a pipeline per operation. The from pipeline runs on reads - a filter restricts which rows non-root identities can see at all. Run the snippets on this page in order:
+
+$ A Read Policy That Filters Rows
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+9
+create namespace dm_pol;
+create table dm_pol::documents { id: int4, title: utf8, public: bool };
+insert dm_pol::documents [
+  { id: 1, title: "Launch plan", public: true },
+  { id: 2, title: "Salary bands", public: false }
+];
+create table policy public_only on dm_pol::documents {
+  from: { filter { public == true } }
+}
+$ ctrl+enter to run
+Run
+
+A map in the from pipeline reshapes what readers get: mask a column by overwriting it, or hide it by omitting it from the projection:
+
+$ A Read Policy That Masks Columns
+Expand
+Copy
+Reset
+1
+2
+3
+4
+create table dm_pol::people { name: utf8, email: utf8 };
+create table policy mask_email on dm_pol::people {
+  from: { map { name, email: "REDACTED" } }
+}
+$ ctrl+enter to run
+Run
+Write policies: require
+
+The insert, update, and delete operations take a require pipeline - a predicate every affected row must satisfy, or the mutation is rejected:
+
+$ A Write Policy That Rejects Invalid Mutations
+Expand
+Copy
+Reset
+1
+2
+3
+create table policy no_private_inserts on dm_pol::documents {
+  insert: { require { public == true } }
+}
+$ ctrl+enter to run
+Run
+
+For a non-root identity, a violating write fails with a policy error and the transaction does not commit:
+
+TEXT
+Copy
+> insert dm_pol::documents [{ id: 3, title: "Comp review", public: false }]
+
+Error POLICY_001
+  Policy 'no_private_inserts' denied insert on dm_pol::documents
+
+HELP
+  The write operation violates a policy constraint
+Policies attach to more than tables
+
+The same mechanism covers every primitive an identity can touch. Each target has its own statement form and its own set of valid operations:
+
+--
+create table policy, create view policy, create series policy, create ringbuffer policy, create dictionary policy - data shapes, with from / insert / update / delete operations
+--
+create namespace policy ... on ns - one rule for everything inside a namespace
+--
+create procedure policy - who may call a routine
+--
+create session policy - which session kinds (query, command, subscription) an identity may open
+
+Policy predicates can reference the caller: tenant isolation is one policy comparing a row column to the requesting identity, for example filter { org_id == $identity.org_id }.
+
+Lifecycle and inspection
+
+Policies are catalog objects: list them through the system catalog, disable and re-enable them without losing their definition, and drop them when obsolete.
+
+$ Inspect Policies via the System Catalog
+Expand
+Copy
+Reset
+1
+2
+3
+from system::policies
+filter { target_namespace == "dm_pol" }
+map { name, target_type, target_shape, enabled }
+$ ctrl+enter to run
+Run
+$ Disable and Re-Enable a Policy
+Expand
+Copy
+Reset
+1
+alter table policy public_only disable
+$ ctrl+enter to run
+Run
+$ Re-Enable It
+Expand
+Copy
+Reset
+1
+alter table policy public_only enable
+$ ctrl+enter to run
+Run
+$ Drop a Policy
+Expand
+Copy
+Reset
+1
+drop table policy no_private_inserts
+$ ctrl+enter to run
+Run
+
+Disabling a policy does not open access up - with no active policy, non-root identities fall back to default deny.
+
+THESE SNIPPETS RUN AS ROOT
+The in-browser playground executes as root, which policies never restrict - so you can create, inspect, and drop policies here, but you will not see enforcement. Enforcement applies to non-root identities connecting through client sessions, as in the static example above.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/procedures/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+Procedures
+
+A procedure is named, callable logic stored in the catalog next to the data it operates on. In an architecture where frontends query the database directly, procedures are where multi-step business operations live - invoked with call, executed transactionally, governed by policies like any other object.
+
+Creating and calling
+
+The body is a block of statements; calling the procedure returns the result of its last statement. Run the snippets on this page in order:
+
+$ Create and Call a Procedure
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+create namespace dm_proc;
+create procedure dm_proc::health as {
+  map { status: "ok" }
+};
+call dm_proc::health()
+$ ctrl+enter to run
+Run
+Parameters
+
+Parameters are declared as a typed record and referenced in the body with a $ prefix. Calls pass arguments positionally:
+
+$ Typed Parameters
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+create table dm_proc::users { id: int4, name: utf8 };
+create procedure dm_proc::add_user { id: int4, name: utf8 } as {
+  insert dm_proc::users [{ id: $id, name: $name }]
+};
+call dm_proc::add_user(1, "Ada");
+call dm_proc::add_user(2, "Grace");
+from dm_proc::users
+$ ctrl+enter to run
+Run
+The body is a full script
+
+Procedure bodies are ReifyDB Scripting, not just single queries: variables with let, conditionals, loops, and any number of reads and writes. See Parameters & Control Flow for the scripting constructs in depth.
+
+$ The Body Is a Full Script
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+create procedure dm_proc::stats as {
+  let $total = 10;
+  let $active = 7;
+  map { total: $total, active: $active, ratio: $active * 100 / $total }
+};
+call dm_proc::stats()
+$ ctrl+enter to run
+Run
+
+Procedures compose - a procedure can call another:
+
+$ Procedures Call Procedures
+Expand
+Copy
+Reset
+1
+2
+3
+4
+create procedure dm_proc::wrapper as {
+  call dm_proc::health()
+};
+call dm_proc::wrapper()
+$ ctrl+enter to run
+Run
+Test procedures
+
+ReifyDB's testing framework runs inside the database. create test procedure declares a helper callable only from test context - fixtures like seeding rows - and create test plus run tests execute assertions against real data:
+
+$ Test Procedures and In-Database Tests
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+create test procedure dm_proc::seed as {
+  insert dm_proc::users [{ id: 99, name: "Test" }]
+};
+create test dm_proc::user_exists {
+  call dm_proc::seed();
+  from dm_proc::users | filter id == 99 | assert { name == "Test" }
+};
+run tests dm_proc
+$ ctrl+enter to run
+Run
+
+Each test runs in a transaction that is rolled back, so tests never leak state into your data - the seeded row does not survive the run:
+
+$ Tests Roll Back - the Seed Row Is Gone
+Expand
+Copy
+Reset
+1
+from dm_proc::users filter { id == 99 }
+$ ctrl+enter to run
+Run
+Beyond RQL bodies
+
+RQL is one of several procedure kinds the catalog manages. Procedures can also be backed by built-in native implementations, by functions loaded from FFI libraries, or by WASM modules - all invoked through the same call statement with the same typed parameters. Event-driven logic, by contrast, is not a procedure kind: declare an event and attach handlers, which run automatically on dispatch instead of being called.
+
+Access control
+
+Who may invoke a procedure is governed by a policy with the call operation: create procedure policy on ns::proc { call: { filter { ... } } }. Like all policies, procedure policies apply to non-root identities.
+
+PROCEDURE OR VIEW?
+If the logic computes state from other state, you usually want a view - it stays correct by itself. Reach for a procedure when the operation is an action: multiple writes that belong together, validation with branching, or an API-like entry point you want to expose to clients.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/ring-buffers/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+Ring Buffers
+
+A ring buffer is a fixed-capacity store: when it is full, inserting a new row evicts the oldest one. It is the shape for "keep the last N" state - recent activity, latest readings, bounded logs - without a cleanup job, a cron task, or a delete query anywhere.
+
+The last N rows, per key
+
+Capacity is declared at creation with with { capacity: N }. Adding partition_by turns one buffer into an independent buffer per distinct key combination - "the last N events per region" or "the last N actions per user" in a single object. Here each region keeps its own two newest events: the third east insert evicts the first, while west is untouched. Run the snippets on this page in order:
+
+$ One Buffer per Partition
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+create namespace dm_rbp;
+create ringbuffer dm_rbp::region_events {
+  id: int4,
+  region: utf8
+} with { capacity: 2, partition_by: { region } };
+insert dm_rbp::region_events [
+  { id: 1, region: "east" },
+  { id: 2, region: "east" },
+  { id: 3, region: "east" },
+  { id: 4, region: "west" }
+];
+from dm_rbp::region_events
+$ ctrl+enter to run
+Run
+Eviction, step by step
+
+An unpartitioned buffer is one queue. Filling it to capacity keeps everything:
+
+$ Create a Ring Buffer and Fill It to Capacity
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+create namespace dm_rb;
+create ringbuffer dm_rb::recent_logins {
+  user_id: int4,
+  at: utf8
+} with { capacity: 3 };
+insert dm_rb::recent_logins [
+  { user_id: 1, at: "09:00" },
+  { user_id: 2, at: "09:05" },
+  { user_id: 3, at: "09:12" }
+];
+from dm_rb::recent_logins
+$ ctrl+enter to run
+Run
+
+One insert past capacity and the oldest row is gone. The write succeeds normally; eviction is a property of the store, not an error:
+
+$ One More Insert Evicts the Oldest Row
+Expand
+Copy
+Reset
+1
+2
+insert dm_rb::recent_logins [{ user_id: 4, at: "09:20" }];
+from dm_rb::recent_logins
+$ ctrl+enter to run
+Run
+Rows stay mutable
+
+Unlike a log, a ring buffer's rows are ordinary rows. You can update them in place and delete them ahead of eviction, with the same filter semantics as tables:
+
+$ Ring Buffer Rows Are Mutable
+Expand
+Copy
+Reset
+1
+update dm_rb::recent_logins { at: "09:21" } filter { user_id == 4 }
+$ ctrl+enter to run
+Run
+$ Delete Without Waiting for Eviction
+Expand
+Copy
+Reset
+1
+2
+delete dm_rb::recent_logins filter { user_id == 2 };
+from dm_rb::recent_logins
+$ ctrl+enter to run
+Run
+Ring buffer or something else?
+--
+Bound by count: ring buffer. Bound by age: a table or series with a TTL.
+--
+Unbounded, time-ordered history: a series.
+--
+Derived state that should keep only its newest N rows: a ring-buffer-backed view gives eviction semantics to computed data too.
+EVERYTHING IS TRANSACTIONAL
+Inserts, evictions, updates, and deletes on ring buffers participate in the same transactions as every other write. A view over a ring buffer sees evictions as ordinary deletes.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/sequences/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+Sequences
+
+A sequence is a monotonic counter the engine maintains for ID generation. You rarely create one directly: declaring a column with { auto_increment } gives that column its own sequence, and the engine draws from it on every insert.
+
+Auto-increment columns
+
+Any integer column can auto-increment. Writers simply omit the column and each row receives the next value - no coordination, no SELECT MAX, no application-side counters. Run the snippets on this page in order:
+
+$ Auto-Increment Assigns IDs at Insert
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+create namespace dm_seq;
+create table dm_seq::tickets {
+  id: int8 with { auto_increment },
+  title: utf8
+};
+insert dm_seq::tickets [{ title: "First" }, { title: "Second" }];
+from dm_seq::tickets
+$ ctrl+enter to run
+Run
+Repositioning a sequence
+
+The sequence behind a column is addressed as namespace::table::column. alter sequence ... set value N repositions it; the next insert draws N + 1. This is how imports preserve existing IDs and how ID ranges are carved out:
+
+$ Reposition a Sequence with ALTER SEQUENCE
+Expand
+Copy
+Reset
+1
+2
+3
+alter sequence dm_seq::tickets::id set value 1000;
+insert dm_seq::tickets [{ title: "After the jump" }];
+from dm_seq::tickets
+$ ctrl+enter to run
+Run
+Reading generated IDs back
+
+The row's generated ID is often needed immediately - to reference it, to return it to a client. returning hands it back from the insert itself, in the same statement:
+
+$ Read Generated IDs Back with RETURNING
+Expand
+Copy
+Reset
+1
+insert dm_seq::tickets [{ title: "Another" }] returning { id, title }
+$ ctrl+enter to run
+Run
+WHERE ELSE SEQUENCES APPEAR
+The catalog uses sequences internally to assign IDs to every object it manages - the IDs you see in DDL results and in system catalog queries come from the same machinery.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/series/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+Series
+
+A series stores rows ordered by a required key column - a timestamp or an integer. It is the shape for measurements, audit trails, and historical records: data that arrives in order, is queried by range, and grows without an upper bound.
+
+The key defines the order
+
+Every series declares its ordering column with with { key: column }. The key can be an integer - useful for sequence numbers, block heights, or logical clocks. Reads return the newest entries first. Run the snippets on this page in order:
+
+$ A Series Ordered by an Integer Key
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+create namespace dm_srs;
+create series dm_srs::readings {
+  seq: int8,
+  celsius: float8
+} with { key: seq };
+insert dm_srs::readings [
+  { seq: 1, celsius: 21.5 },
+  { seq: 2, celsius: 22.0 },
+  { seq: 3, celsius: 21.8 }
+];
+from dm_srs::readings
+$ ctrl+enter to run
+Run
+Time-keyed series and precision
+
+With a datetime key, the series stores timestamps at a declared precision: second, millisecond (the default), microsecond, or nanosecond:
+
+$ A Series Keyed by Time
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+9
+create series dm_srs::temps {
+  at: datetime,
+  celsius: float8
+} with { key: at, precision: millisecond };
+insert dm_srs::temps [
+  { at: datetime::from_epoch_millis(1704067200000), celsius: 5.5 },
+  { at: datetime::from_epoch_millis(1704070800000), celsius: 6.0 }
+];
+from dm_srs::temps
+$ ctrl+enter to run
+Run
+
+If a write omits the key, the engine assigns the current time - so an append-only event log needs nothing beyond the payload:
+
+$ Omit the Key and the Engine Timestamps the Row
+Expand
+Copy
+Reset
+1
+2
+3
+create series dm_srs::pings { at: datetime, note: utf8 } with { key: at };
+insert dm_srs::pings [{ note: "deploy started" }];
+from dm_srs::pings map { note }
+$ ctrl+enter to run
+Run
+Range queries follow the key
+
+Filters on the key column select by the series' native order, which is what time-window and "since X" queries compile to:
+
+$ Key Filters Use the Series Order
+Expand
+Copy
+Reset
+1
+from dm_srs::readings filter { seq >= 2 }
+$ ctrl+enter to run
+Run
+History can be corrected
+
+A series is ordered, not immutable. Late corrections - a recalibrated sensor, an amended audit record - are ordinary updates selected by key:
+
+$ Correct a Recorded Value
+Expand
+Copy
+Reset
+1
+update dm_srs::readings { celsius: 22.4 } filter { seq == 2 }
+$ ctrl+enter to run
+Run
+Classifying entries with tags
+
+A series can attach a tag type - a named set of variants, optionally with payload fields - to classify where each entry came from or what kind it is, without widening the schema:
+
+$ Attach a Tag Type for Classification
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+create tag dm_srs::origin { Sensor { location: utf8 }, Manual };
+create series dm_srs::tagged_readings {
+  at: datetime,
+  v: float8
+} with { key: at, tag: dm_srs::origin, precision: microsecond }
+$ ctrl+enter to run
+Run
+Series or something else?
+--
+Current state keyed by identity (one row per user, per order): a table.
+--
+Only the last N entries matter: a ring buffer.
+--
+Derived history - the output of a pipeline recorded over time: a series-backed view.
+BOUNDING GROWTH
+A series grows without limit by design. To expire old entries, attach a TTL - see TTL & Row Settings.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/subscriptions/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+Subscriptions
+
+A subscription is a change stream over a data source. It uses the same change-data-capture flow machinery as deferred views, but instead of materializing into a storage shape, it produces an append-only log of changes that connected clients consume - the primitive behind live queries in a frontend.
+
+Creating a subscription
+
+The declaration mirrors a view: a column list and a pipeline. The pipeline supports from, filter, and map, so a client can subscribe to exactly the slice of state it renders:
+
+RQL
+Copy
+create subscription { id: int4, status: utf8 } as {
+  from shop::orders
+  filter { status != "draft" }
+  map { id, status }
+}
+The change log
+
+Each entry in the stream is a row of the declared shape plus an implicit _op column recording what happened to it: 1 for insert, 2 for update, 3 for delete. The log is append-only - an update does not rewrite an earlier entry, it appends a new one:
+
+TEXT
+Copy
+id | status    | _op
+---+-----------+----
+1  | placed    | 1
+2  | placed    | 1
+1  | shipped   | 2
+2  | cancelled | 3
+Subscription, view, or event?
+--
+You want the current derived state, queryable at any time: a view.
+--
+You want to push each change to consumers as it happens - a live-updating UI, a sync layer: a subscription.
+--
+You want imperative reactions inside the database when something happens: an event with handlers.
+
+Like deferred views, subscriptions are eventually consistent: entries are produced from the change log after the source transaction commits.
+
+NOT RUNNABLE IN THE BROWSER PLAYGROUND
+The examples on this page are static. Subscriptions are consumed over a client connection (for example WebSocket) and are not available in the in-browser WASM build that powers the runnable snippets elsewhere in these docs.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/tables/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+Tables
+
+Tables hold authoritative, mutable state - the facts your application asserts directly. They are the primary storage shape: rows are inserted, updated, and deleted transactionally, and everything derived (views, subscriptions) ultimately sources from them or from the other storage shapes.
+
+Creating a table
+
+A table is a named set of typed columns inside a namespace. Column types include integers (int1 through int16, uint1 through uint16), floats (float4, float8), bool, strings (utf8, with text as an alias), blob, and temporal types (date, time, datetime, duration). See Data Types for the full list. Run the snippets on this page in order:
+
+$ Create a Table and Insert Rows
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+create namespace dm_tbl;
+create table dm_tbl::products {
+  id: int4,
+  name: utf8,
+  price: float8,
+  discontinued: bool
+};
+insert dm_tbl::products [
+  { id: 1, name: "Widget", price: 9.99, discontinued: false },
+  { id: 2, name: "Gadget", price: 24.5, discontinued: false }
+];
+from dm_tbl::products
+$ ctrl+enter to run
+Run
+
+Reads return the newest rows first by default; add sort for an explicit order.
+
+Optional columns
+
+Columns are non-nullable unless declared Option(type). An optional column that was never set holds none - ReifyDB's explicit absent value, which queries can test for and which renders distinctly in results. See Working with none.
+
+$ Optional Columns Hold none
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+create table dm_tbl::customers {
+  id: int4,
+  name: utf8,
+  referral: Option(utf8)
+};
+insert dm_tbl::customers [
+  { id: 1, name: "Ada", referral: "friend" },
+  { id: 2, name: "Grace" }
+];
+from dm_tbl::customers
+$ ctrl+enter to run
+Run
+Auto-increment columns
+
+An integer column declared with { auto_increment } is assigned the next value of a per-column sequence on insert, so writers never need to coordinate IDs. The sequence itself can be inspected and repositioned - see Sequences.
+
+$ Auto-Increment Columns
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+create table dm_tbl::tickets {
+  id: int8 with { auto_increment },
+  title: utf8
+};
+insert dm_tbl::tickets [{ title: "First" }, { title: "Second" }];
+from dm_tbl::tickets
+$ ctrl+enter to run
+Run
+Primary keys
+
+A primary key is declared as a separate statement after the table exists, and can span multiple columns: create primary key on ns::table { col1, col2 }.
+
+$ Define a Primary Key
+Expand
+Copy
+Reset
+1
+2
+create table dm_tbl::accounts { id: int4, owner: utf8 };
+create primary key on dm_tbl::accounts { id }
+$ ctrl+enter to run
+Run
+Updating and deleting
+
+update sets the listed fields and leaves every other column untouched; delete removes whatever matches the filter. Both take a filter to select rows, and both accept returning to hand back the affected rows in the same statement - useful when the write itself computes something you need, like a generated ID or the post-update value:
+
+$ Update Rows and Return the Result
+Expand
+Copy
+Reset
+1
+2
+3
+update dm_tbl::products { price: 19.99 }
+filter { name == "Gadget" }
+returning { id, name, price }
+$ ctrl+enter to run
+Run
+
+Without returning, mutations report what happened as a count:
+
+$ Delete Rows by Predicate
+Expand
+Copy
+Reset
+1
+2
+update dm_tbl::products { discontinued: true } filter { id == 1 };
+delete dm_tbl::products filter { discontinued == true }
+$ ctrl+enter to run
+Run
+System columns
+
+Every stored row carries engine-maintained columns prefixed with #. They are not returned by default; project them explicitly when you need them. #rownum is the row's stable number within its table:
+
+$ System Columns
+Expand
+Copy
+Reset
+1
+from dm_tbl::customers map { row: #rownum, name }
+$ ctrl+enter to run
+Run
+Evolving the schema
+
+alter table adds and drops columns in place. Add new columns as Option(type) when existing rows have no value for them:
+
+$ Evolve the Schema with ALTER TABLE
+Expand
+Copy
+Reset
+1
+alter table dm_tbl::customers add column email: Option(utf8)
+$ ctrl+enter to run
+Run
+When a table is not the right shape
+--
+Bounded recent history with automatic eviction: use a ring buffer
+--
+Time-ordered measurements and audit records: use a series
+--
+Repeated low-cardinality strings: intern them with a dictionary
+--
+State computed from other state: never write it by hand - derive it with a view
+ROW LIFETIME
+Tables keep rows until you delete them. To expire rows by age instead, attach a TTL - see TTL & Row Settings.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/tags/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+Tags
+
+A tag is a named set of variants used to classify data - most prominently the entries of a series. Where an enum types a column and an event triggers handlers, a tag labels rows: same variant syntax, different role.
+
+Declaring a tag
+
+Variants can be bare labels or carry typed payload fields. Here Sensor records where a reading came from, while Manual is a plain marker. Run the snippets on this page in order:
+
+$ A Tag Type with Payload and Unit Variants
+Expand
+Copy
+Reset
+1
+2
+create namespace dm_tag;
+create tag dm_tag::origin { Sensor { location: utf8 }, Manual }
+$ ctrl+enter to run
+Run
+Attaching it to a series
+
+A series opts into classification with with { tag: ns::tag_type }. Entries can then be labeled with a variant - which sensor produced the value, whether a record was entered by hand - without adding columns to the series schema itself:
+
+$ Attach the Tag to a Series
+Expand
+Copy
+Reset
+1
+2
+3
+4
+create series dm_tag::readings {
+  at: datetime,
+  v: float8
+} with { key: at, tag: dm_tag::origin, precision: microsecond }
+$ ctrl+enter to run
+Run
+CLASSIFICATION, NOT DISPATCH
+Tags describe data at rest. If you need variants that trigger behavior when something happens, declare an event and attach handlers to it.
+PRODUCT
+Documentation
+Blog
+FAQ
+RESOURCES
+Contact
+Support
+Book a Call
+COMMUNITY
+GitHub
+X (Twitter)
+Discord
+© 2026 ReifyDB. All Rights Reserved.
+License: Apache-2.0
+
+===============================================================================
+URL: https://reifydb.com/docs/concepts/data-model/views/
+===============================================================================
+
+ReifyDB
+Developers
+BUILD
+Docs
+Guides, references, and API documentation
+Tour
+Interactive walkthrough of core features
+Playground
+Try ReifyDB queries in the browser
+Resources
+LEARN
+Blog
+Engineering deep dives and product updates
+FAQ
+Frequently asked questions
+Support
+Get help from the team
+Company
+ABOUT
+Mission
+Why we are building ReifyDB
+Values
+The principles that guide our work
+Contact
+Reach out to the team
+14
+Get Started
+GETTING STARTED
+Introduction
+Quickstart
+Installation
+Connect
+CONCEPTS
+Application State Database
+Data Model
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
+Transactions
+Working with none
+Data Types
+How Queries Execute
+TTL & Row Settings
+Durability & Storage
+RQL
+RQL in Five Minutes
+RQL for SQL Users
+Expressions
+Overview
+Operators
+Literals
+Pipeline Operators
+Overview
+from
+filter
+map
+extend
+aggregate
+sort
+distinct
+take
+join
+window
+apply
+cast
+with
+Writing Data
+insert
+update
+delete
+patch
+Defining Schema
+Namespaces
+Tables
+Enums
+Dictionaries
+Indexes
+Ringbuffers
+Series
+Views
+Deferred Views
+Transactional Views
+Subscriptions
+Drop & Cleanup
+Scripting
+Overview
+Variables & Control Flow
+Match
+Testing
+Migrations
+ROUTINES
+Overview
+Functions
+Overview
+Arithmetic Policies
+blob
+b58
+b64
+b64url
+hex
+utf8
+clock
+advance
+now
+set
+date
+add
+age
+day
+day_of_week
+day_of_year
+days_in_month
+diff
+end_of_month
+format
+is_leap_year
+month
+new
+now
+quarter
+start_of_month
+start_of_year
+subtract
+trunc
+week
+year
+datetime
+add
+age
+date
+day
+day_of_week
+day_of_year
+diff
+epoch
+epoch_millis
+format
+from_epoch
+from_epoch_millis
+hour
+minute
+month
+nanosecond
+new
+now
+quarter
+second
+subtract
+time
+trunc
+week
+year
+duration
+add
+days
+format
+get_days
+get_months
+get_nanos
+hours
+millis
+minutes
+months
+negate
+scale
+seconds
+subtract
+trunc
+weeks
+years
+identity
+id
+is
+anonymous
+none
+root
+some
+type
+json
+array
+object
+serialize
+pretty
+math
+abs
+acos
+asin
+atan
+atan2
+avg
+ceil
+clamp
+cos
+e
+exp
+floor
+gcd
+lcm
+log
+log10
+log2
+max
+min
+mod
+pi
+power
+round
+sign
+sin
+sqrt
+sum
+tan
+truncate
+meta
+type
+text
+ascii
+char
+concat
+contains
+count
+ends_with
+format_bytes
+format_bytes_si
+index_of
+length
+lower
+pad_left
+pad_right
+repeat
+replace
+reverse
+starts_with
+substring
+trim
+trim_end
+trim_start
+upper
+time
+add
+age
+diff
+format
+hour
+minute
+nanosecond
+new
+now
+second
+subtract
+trunc
+Procedures
+Overview
+Parameters & Control Flow
+CLIENTS
+Overview
+Rust (Embedded)
+Rust (Client)
+TypeScript / JavaScript
+Python
+Wire Formats
+GUIDES
+Model Application State
+Build Incremental Views
+Windowed Aggregation
+Expire Data with TTL
+Import & Export Data
+OPERATE
+Run the Server
+Storage & Configuration
+Metrics & Observability
+Access Control
+RESOURCES
+Roadmap & Experimental
+Caveats & Limitations
+Troubleshooting & FAQ
+For AI Agents
+← BACK
+DRAFT
+This page is not published. Only visible in development mode.
+Views
+
+A view is derived state the engine maintains for you. You declare a pipeline over source data; ReifyDB builds a dataflow behind it and keeps the result materialized as the sources change. Reading a view is a lookup, never a recomputation. Two decisions define every view: when it is maintained (transactional or deferred) and where its rows live (table, ring buffer, or series).
+
+Transactional views
+
+A transactional view is maintained inside the writing transaction: when a commit returns, the view is already correct. create view and create transactional view are synonyms. Create the view before writing data, then run the snippets on this page in order:
+
+$ A Transactional View Is Maintained by the Write Itself
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+create namespace dm_vw;
+create table dm_vw::orders { id: int4, region: utf8, total: float8 };
+create transactional view dm_vw::revenue { region: utf8, revenue: float8 } as {
+  from dm_vw::orders
+  aggregate { revenue: math::sum(total) } by { region }
+}
+$ ctrl+enter to run
+Run
+
+Write to the source table - there is nothing to refresh and no second system to notify:
+
+$ Write to the Source Table
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+insert dm_vw::orders [
+  { id: 1, region: "eu", total: 10.0 },
+  { id: 2, region: "us", total: 20.0 },
+  { id: 3, region: "eu", total: 5.0 }
+]
+$ ctrl+enter to run
+Run
+$ The View Is Already Current
+Expand
+Copy
+Reset
+1
+from dm_vw::revenue sort { region: asc }
+$ ctrl+enter to run
+Run
+Rows enter and leave with FILTER
+
+When a view's pipeline contains a filter, membership follows the predicate: a source row that matches appears in the view, and a row that stops matching disappears from it.
+
+$ Rows Enter and Leave a Filtered View
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+create table dm_vw::users { id: int4, name: utf8, active: bool };
+create view dm_vw::active_users { id: int4, name: utf8 } as {
+  from dm_vw::users
+  filter { active == true }
+  map { id, name }
+}
+$ ctrl+enter to run
+Run
+$ Only Matching Rows Appear
+Expand
+Copy
+Reset
+1
+2
+3
+4
+insert dm_vw::users [
+  { id: 1, name: "Alice", active: true },
+  { id: 2, name: "Bob", active: false }
+];
+$ ctrl+enter to run
+Run
+$ Read the View
+Expand
+Copy
+Reset
+1
+from dm_vw::active_users
+$ ctrl+enter to run
+Run
+
+Deactivate Alice and she leaves the view - no application code deletes anything from it:
+
+$ A Row That Stops Matching Leaves the View
+Expand
+Copy
+Reset
+1
+update dm_vw::users { active: false } filter { id == 1 }
+$ ctrl+enter to run
+Run
+$ The View Reflects the Change
+Expand
+Copy
+Reset
+1
+from dm_vw::active_users
+$ ctrl+enter to run
+Run
+GATE: membership as an explicit signal
+
+gate also controls membership with a boolean expression, but it models membership as explicit transitions: a row whose gate flips from false to true is recorded as entering the view, changes while true are updates, and a flip back to false is recorded as leaving. Use it when downstream consumers care about the transition itself, not just the current contents:
+
+$ GATE Tracks Membership Explicitly
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+create view dm_vw::gated_users { id: int4, name: utf8 } as {
+  from dm_vw::users
+  gate { active }
+  map { id, name }
+}
+$ ctrl+enter to run
+Run
+
+Bob's active flag is currently false. Flip it and he enters the gated view:
+
+$ A Row Enters When Its Gate Turns True
+Expand
+Copy
+Reset
+1
+update dm_vw::users { active: true } filter { id == 2 }
+$ ctrl+enter to run
+Run
+$ Read the Gated View
+Expand
+Copy
+Reset
+1
+from dm_vw::gated_users
+$ ctrl+enter to run
+Run
+Deferred views
+
+A deferred view is maintained asynchronously, driven by the change stream after each commit. Writes stay cheap; the view is eventually consistent and catches up moments later. Declare it with create deferred view:
+
+$ A Deferred View Catches Up After the Commit
+Expand
+Copy
+Reset
+1
+2
+3
+4
+create deferred view dm_vw::order_count { orders: int8 } as {
+  from dm_vw::orders
+  aggregate { orders: math::count(id) } by {}
+}
+$ ctrl+enter to run
+Run
+$ Write, Then Read the Deferred View
+Expand
+Copy
+Reset
+1
+insert dm_vw::orders [{ id: 4, region: "eu", total: 7.5 }]
+$ ctrl+enter to run
+Run
+
+By the time you read it, the deferred flow has processed the change log - here it counts all four orders written on this page, including those written before the view existed:
+
+$ The Deferred View Has Caught Up
+Expand
+Copy
+Reset
+1
+from dm_vw::order_count
+$ ctrl+enter to run
+Run
+
+Choose transactional views for derived state that reads must never see stale - balances, inventory, anything an invariant depends on. Choose deferred views when a moment of lag is fine and write latency matters - dashboards, counters, feeds.
+
+Backing storage: table, ring buffer, or series
+
+By default a view materializes into table storage. Deferred views can instead materialize into a ring buffer - the derived rows themselves get "keep the last N" semantics:
+
+$ A View Backed by a Ring Buffer
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+create table dm_vw::clicks { id: int4, page: utf8 };
+create deferred ringbuffer view dm_vw::recent_clicks {
+  id: int4,
+  page: utf8
+} with { capacity: 2 } as {
+  from dm_vw::clicks
+  map { id, page }
+}
+$ ctrl+enter to run
+Run
+$ The Backing Buffer Evicts Old Derived Rows
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+insert dm_vw::clicks [
+  { id: 1, page: "/home" },
+  { id: 2, page: "/pricing" },
+  { id: 3, page: "/docs" }
+]
+$ ctrl+enter to run
+Run
+
+Three rows flowed into a capacity-2 buffer; the oldest derived row was evicted:
+
+$ Only the Newest Derived Rows Remain
+Expand
+Copy
+Reset
+1
+from dm_vw::recent_clicks
+$ ctrl+enter to run
+Run
+
+A series-backed view records its output as a keyed, time-ordered history - derived data you can range-query like any other series:
+
+$ A View Backed by a Series
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+create deferred series view dm_vw::click_log {
+  id: int4
+} with { precision: millisecond } as {
+  from dm_vw::clicks
+  map { id }
+}
+$ ctrl+enter to run
+Run
+Views compose
+
+A view can source from another view, and a single write propagates through the whole chain within the same maintenance model:
+
+$ Views Can Source From Other Views
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+create view dm_vw::big_clicks { id: int4 } as {
+  from dm_vw::clicks
+  filter { id > 1 }
+  map { id }
+};
+create view dm_vw::biggest_clicks { id: int4 } as {
+  from dm_vw::big_clicks
+  filter { id > 2 }
+  map { id }
+}
+$ ctrl+enter to run
+Run
+$ One Write Flows Through the Whole Chain
+Expand
+Copy
+Reset
+1
+insert dm_vw::clicks [{ id: 4, page: "/blog" }]
+$ ctrl+enter to run
+Run
+$ Read the End of the Chain
+Expand
+Copy
+Reset
+1
+from dm_vw::biggest_clicks
+$ ctrl+enter to run
+Run
+Materialized sort order
+
+A sort inside the view definition materializes the rows in that order, so readers get sorted results without sorting at query time:
+
+$ Materialized Sort Order
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+create view dm_vw::sorted_clicks { id: int4 } as {
+  from dm_vw::clicks
+  map { id }
+  sort { id: desc }
+}
+$ ctrl+enter to run
+Run
+CREATE VIEWS BEFORE WRITING DATA
+A view tracks changes from the moment it exists. Transactional views reflect writes that happen after their creation, so declare views alongside your tables, before data starts flowing. Deferred views are driven by the change log and can also process earlier writes, as the order count above shows.
 PRODUCT
 Documentation
 Blog
@@ -3596,7 +9707,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -3986,7 +10110,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -4295,7 +10432,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -4663,7 +10813,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -4976,319 +11139,6 @@ Discord
 License: Apache-2.0
 
 ===============================================================================
-URL: https://reifydb.com/docs/concepts/tables-and-views/
-===============================================================================
-
-ReifyDB
-Developers
-BUILD
-Docs
-Guides, references, and API documentation
-Tour
-Interactive walkthrough of core features
-Playground
-Try ReifyDB queries in the browser
-Resources
-LEARN
-Blog
-Engineering deep dives and product updates
-FAQ
-Frequently asked questions
-Support
-Get help from the team
-Company
-ABOUT
-Mission
-Why we are building ReifyDB
-Values
-The principles that guide our work
-Contact
-Reach out to the team
-14
-Get Started
-GETTING STARTED
-Introduction
-Quickstart
-Installation
-Connect
-CONCEPTS
-Application State Database
-Data Model
-Tables & Views
-Transactions
-Working with none
-Data Types
-How Queries Execute
-TTL & Row Settings
-Durability & Storage
-RQL
-RQL in Five Minutes
-RQL for SQL Users
-Expressions
-Overview
-Operators
-Literals
-Pipeline Operators
-Overview
-from
-filter
-map
-extend
-aggregate
-sort
-distinct
-take
-join
-window
-apply
-cast
-with
-Writing Data
-insert
-update
-delete
-patch
-Defining Schema
-Namespaces
-Tables
-Enums
-Dictionaries
-Indexes
-Ringbuffers
-Series
-Views
-Deferred Views
-Transactional Views
-Subscriptions
-Drop & Cleanup
-Scripting
-Overview
-Variables & Control Flow
-Match
-Testing
-Migrations
-ROUTINES
-Overview
-Functions
-Overview
-Arithmetic Policies
-blob
-b58
-b64
-b64url
-hex
-utf8
-clock
-advance
-now
-set
-date
-add
-age
-day
-day_of_week
-day_of_year
-days_in_month
-diff
-end_of_month
-format
-is_leap_year
-month
-new
-now
-quarter
-start_of_month
-start_of_year
-subtract
-trunc
-week
-year
-datetime
-add
-age
-date
-day
-day_of_week
-day_of_year
-diff
-epoch
-epoch_millis
-format
-from_epoch
-from_epoch_millis
-hour
-minute
-month
-nanosecond
-new
-now
-quarter
-second
-subtract
-time
-trunc
-week
-year
-duration
-add
-days
-format
-get_days
-get_months
-get_nanos
-hours
-millis
-minutes
-months
-negate
-scale
-seconds
-subtract
-trunc
-weeks
-years
-identity
-id
-is
-anonymous
-none
-root
-some
-type
-json
-array
-object
-serialize
-pretty
-math
-abs
-acos
-asin
-atan
-atan2
-avg
-ceil
-clamp
-cos
-e
-exp
-floor
-gcd
-lcm
-log
-log10
-log2
-max
-min
-mod
-pi
-power
-round
-sign
-sin
-sqrt
-sum
-tan
-truncate
-meta
-type
-text
-ascii
-char
-concat
-contains
-count
-ends_with
-format_bytes
-format_bytes_si
-index_of
-length
-lower
-pad_left
-pad_right
-repeat
-replace
-reverse
-starts_with
-substring
-trim
-trim_end
-trim_start
-upper
-time
-add
-age
-diff
-format
-hour
-minute
-nanosecond
-new
-now
-second
-subtract
-trunc
-Procedures
-Overview
-Parameters & Control Flow
-CLIENTS
-Overview
-Rust (Embedded)
-Rust (Client)
-TypeScript / JavaScript
-Python
-Wire Formats
-GUIDES
-Model Application State
-Build Incremental Views
-Windowed Aggregation
-Expire Data with TTL
-Import & Export Data
-OPERATE
-Run the Server
-Storage & Configuration
-Metrics & Observability
-Access Control
-RESOURCES
-Roadmap & Experimental
-Caveats & Limitations
-Troubleshooting & FAQ
-For AI Agents
-← BACK
-DRAFT
-This page is not published. Only visible in development mode.
-Tables & Views
-
-Tables hold the state you write. Views hold the state ReifyDB derives from it, kept current incrementally instead of recomputed.
-
-Incremental maintenance
-
-When a row changes, the engine applies the delta to every affected view via change data capture and the flow engine. This section will explain the mechanism and its cost model.
-
-Transactional vs deferred views
-
-Transactional views update inside the writing transaction; readers can never observe them stale. Deferred views update asynchronously for cheaper writes. This section will help you choose.
-
-Views over views
-
-Derived state can feed further derived state. This section will cover composing views and where windowed aggregation fits.
-
-PRODUCT
-Documentation
-Blog
-FAQ
-RESOURCES
-Contact
-Support
-Book a Call
-COMMUNITY
-GitHub
-X (Twitter)
-Discord
-© 2026 ReifyDB. All Rights Reserved.
-License: Apache-2.0
-
-===============================================================================
 URL: https://reifydb.com/docs/concepts/transactions/
 ===============================================================================
 
@@ -5327,7 +11177,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -5640,7 +11503,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -5953,7 +11829,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -6256,7 +12145,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -6266,7 +12154,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -6608,7 +12509,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -6618,7 +12518,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -6922,7 +12835,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -6932,7 +12844,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -7254,7 +13179,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -7264,7 +13188,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -7581,7 +13518,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -7591,7 +13527,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -7908,7 +13857,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -7918,7 +13866,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -8235,7 +14196,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -8245,7 +14205,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -8562,7 +14535,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -8572,7 +14544,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -8889,7 +14874,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -8899,7 +14883,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -9215,7 +15212,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -9225,7 +15221,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -9532,7 +15541,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -9542,7 +15550,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -9850,7 +15871,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -9860,7 +15880,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -10167,7 +16200,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -10177,7 +16209,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -10597,7 +16642,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -10607,7 +16651,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -10924,7 +16981,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -10934,7 +16990,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -11251,7 +17320,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -11261,7 +17329,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -11578,7 +17659,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -11588,7 +17668,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -11904,7 +17997,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -11914,7 +18006,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -12230,7 +18335,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -12240,7 +18344,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -12556,7 +18673,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -12566,7 +18682,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -12884,7 +19013,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -12894,7 +19022,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -13210,7 +19351,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -13220,7 +19360,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -13538,7 +19691,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -13548,7 +19700,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -13864,7 +20029,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -13874,7 +20038,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -14191,7 +20368,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -14201,7 +20377,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -14519,7 +20708,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -14529,7 +20717,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -14847,7 +21048,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -14857,7 +21057,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -15173,7 +21386,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -15183,7 +21395,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -15499,7 +21724,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -15509,7 +21733,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -15825,7 +22062,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -15835,7 +22071,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -16152,7 +22401,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -16162,7 +22410,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -16479,7 +22740,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -16489,7 +22749,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -16805,7 +23078,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -16815,7 +23087,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -17132,7 +23417,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -17142,7 +23426,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -17566,7 +23863,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -17576,7 +23872,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -17893,7 +24202,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -17903,7 +24211,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -18220,7 +24541,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -18230,7 +24550,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -18546,7 +24879,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -18556,7 +24888,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -18872,7 +25217,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -18882,7 +25226,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -19198,7 +25555,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -19208,7 +25564,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -19524,7 +25893,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -19534,7 +25902,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -19851,7 +26232,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -19861,7 +26241,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -20177,7 +26570,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -20187,7 +26579,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -20503,7 +26908,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -20513,7 +26917,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -20830,7 +27247,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -20840,7 +27256,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -21156,7 +27585,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -21166,7 +27594,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -21482,7 +27923,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -21492,7 +27932,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -21808,7 +28261,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -21818,7 +28270,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -22134,7 +28599,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -22144,7 +28608,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -22460,7 +28937,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -22470,7 +28946,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -22786,7 +29275,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -22796,7 +29284,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -23113,7 +29614,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -23123,7 +29623,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -23440,7 +29953,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -23450,7 +29962,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -23766,7 +30291,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -23776,7 +30300,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -24092,7 +30629,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -24102,7 +30638,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -24419,7 +30968,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -24429,7 +30977,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -24745,7 +31306,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -24755,7 +31315,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -25072,7 +31645,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -25082,7 +31654,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -25398,7 +31983,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -25408,7 +31992,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -25724,7 +32321,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -25734,7 +32330,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -26125,7 +32734,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -26442,7 +33064,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -26452,7 +33073,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -26779,7 +33413,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -27104,7 +33751,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -27420,7 +34080,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -27430,7 +34089,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -27755,7 +34427,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -28071,7 +34756,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -28081,7 +34765,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -28399,7 +35096,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -28409,7 +35105,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -28726,7 +35435,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -28736,7 +35444,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -29054,7 +35775,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -29064,7 +35784,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -29392,7 +36125,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -29717,7 +36463,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -30034,7 +36793,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -30044,7 +36802,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -30371,7 +37142,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -30697,7 +37481,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -31013,7 +37810,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -31023,7 +37819,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -31341,7 +38150,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -31351,7 +38159,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -31679,7 +38500,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -31987,7 +38821,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -32312,7 +39159,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -32642,7 +39502,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -32967,7 +39840,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -33292,7 +40178,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -33617,7 +40516,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -33942,7 +40854,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -34268,7 +41193,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -34604,7 +41542,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -34946,7 +41897,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -35291,7 +42255,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -35622,7 +42599,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -35953,7 +42943,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -36433,7 +43436,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -36772,7 +43788,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -37098,7 +44127,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -37424,7 +44466,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -37750,7 +44805,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -38077,7 +45145,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -38425,7 +45506,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -38750,7 +45844,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -39077,7 +46184,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -39403,7 +46523,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -39729,7 +46862,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -40054,7 +47200,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -40379,7 +47538,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -40705,7 +47877,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -41031,7 +48216,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -41357,7 +48555,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -41682,7 +48893,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -42007,7 +49231,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -42355,7 +49592,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -42703,7 +49953,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -43029,7 +50292,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -43356,7 +50632,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -43682,7 +50971,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -44023,7 +51325,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -44347,7 +51662,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -44673,7 +52001,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -44998,7 +52339,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -45346,7 +52700,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -45672,7 +53039,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -45998,7 +53378,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -46306,7 +53699,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -46630,7 +54036,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -47066,7 +54485,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -47390,7 +54822,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -47714,7 +55159,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -48039,7 +55497,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -48366,7 +55837,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -48691,7 +56175,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -49017,7 +56514,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -49341,7 +56851,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -49665,7 +57188,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -49991,7 +57527,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -50341,7 +57890,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -50666,7 +58228,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -50993,7 +58568,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -51320,7 +58908,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -51646,7 +59247,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -51973,7 +59587,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -52298,7 +59925,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -52624,7 +60264,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -52977,7 +60630,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -53316,7 +60982,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -53641,7 +61320,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -53966,7 +61658,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -54305,7 +62010,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -54671,7 +62389,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -54997,7 +62728,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -55323,7 +63067,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -55649,7 +63406,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -55974,7 +63744,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -56299,7 +64082,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -56624,7 +64420,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -56948,7 +64757,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -57274,7 +65096,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -57600,7 +65435,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -57925,7 +65773,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -58251,7 +66112,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -58567,7 +66441,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -58577,7 +66450,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -58877,7 +66763,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -58887,7 +66772,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -59187,7 +67085,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -59197,7 +67094,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -59501,7 +67411,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -59511,7 +67420,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -59811,7 +67733,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -59821,7 +67742,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -60131,7 +68065,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -60465,7 +68412,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -60475,7 +68421,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -60779,7 +68738,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -60789,7 +68747,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -61095,7 +69066,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -61105,7 +69075,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -61422,7 +69405,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -61850,7 +69846,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -61860,7 +69855,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -62164,7 +70172,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -62174,7 +70181,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -62478,7 +70498,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -62488,7 +70507,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -62788,7 +70820,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -62798,7 +70829,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -63102,7 +71146,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -63112,7 +71155,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -63425,7 +71481,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -63893,7 +71962,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -64223,7 +72305,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -64627,7 +72722,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -64928,7 +73036,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -65255,7 +73376,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -65659,7 +73793,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -66073,7 +74220,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -66083,7 +74229,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -66440,7 +74599,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -66450,7 +74608,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -66746,7 +74917,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -66756,7 +74926,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -67069,7 +75252,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -67398,7 +75594,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -67743,7 +75952,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -68086,7 +76308,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -68421,7 +76656,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -68431,7 +76665,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -68764,7 +77011,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -69099,7 +77359,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -69109,7 +77368,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -69434,7 +77706,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -69444,7 +77715,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -69819,7 +78103,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -70171,7 +78468,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -70181,7 +78477,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -70502,7 +78811,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -70512,7 +78820,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -70819,7 +79140,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -70829,7 +79149,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -71125,7 +79458,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -71135,7 +79467,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -71533,7 +79878,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -71543,7 +79887,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -71867,7 +80224,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -71877,7 +80233,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -72216,7 +80585,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -72226,7 +80594,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -72563,7 +80944,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -72573,7 +80953,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -72910,7 +81303,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -72920,7 +81312,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -73257,7 +81662,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -73267,7 +81671,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -73604,7 +82021,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -73614,7 +82030,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -73965,7 +82394,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -73975,7 +82403,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -74280,7 +82721,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -74290,7 +82730,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -74611,7 +83064,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -74621,7 +83073,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -74954,7 +83419,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -74964,7 +83428,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -75255,7 +83732,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -75265,7 +83741,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -75592,7 +84081,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -75602,7 +84090,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -75941,7 +84442,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -75951,7 +84451,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -76274,7 +84787,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -76284,7 +84796,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -76603,7 +85128,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -76613,7 +85137,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -76921,7 +85458,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -76931,7 +85467,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -77293,7 +85842,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -77303,7 +85851,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -77692,7 +86253,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -77702,7 +86262,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
@@ -78099,7 +86672,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -78109,7 +86681,20 @@ Connect
 CONCEPTS
 Application State Database
 Data Model
-Tables & Views
+Namespaces
+Tables
+Views
+Ring Buffers
+Series
+Dictionaries
+Policies
+Subscriptions
+Enums
+Tags
+Events
+Handlers
+Procedures
+Sequences
 Transactions
 Working with none
 Data Types
