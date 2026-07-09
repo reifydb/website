@@ -31,7 +31,7 @@ Get Started
 
 THE REACTIVE TRANSACTIONAL DATABASE
 
-No cach█
+No cache█
 $ Built-in Testing
 Expand
 Copy
@@ -933,6 +933,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -1241,6 +1242,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -1559,6 +1561,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -1872,6 +1875,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -2194,6 +2198,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -2516,6 +2521,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -3080,20 +3086,149 @@ DRAFT
 This page is not published. Only visible in development mode.
 Application State Database
 
-ReifyDB stores, mutates, and derives live application state under one transactional model. This page explains what that means and when to reach for it.
+ReifyDB stores, mutates, and derives live application state under one transactional model. State lives in memory for low latency, is persisted asynchronously for durability, and is queried directly by your frontends: ReifyDB is built to replace the backend layer, not to sit behind one.
 
 The problem it replaces
 
-Most applications bolt together a database, a cache, and glue workers that keep derived data fresh. This section will show how tables plus incrementally maintained views replace the database-plus-cache pattern and the polling jobs around it.
+Most applications fragment their state across systems: a database for persistence, a cache for speed, and background workers that keep derived data fresh. Each seam adds failure modes - cache invalidation bugs, stale read models, polling jobs that recompute what a write already knew.
+
+ReifyDB collapses those layers into one engine: tables hold authoritative state, and views derive from them incrementally as data changes. Run the snippets on this page in order. First, a table and two views that aggregate it - one transactional, one deferred:
+
+$ A Table and Two Views Derived From It
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+create namespace cpt;
+create table cpt::orders { id: int4, region: utf8, total: float8 };
+create transactional view cpt::revenue_by_region { region: utf8, revenue: float8 } as {
+  from cpt::orders
+  aggregate { revenue: math::sum(total) } by { region }
+};
+create deferred view cpt::order_count { orders: int8 } as {
+  from cpt::orders
+  aggregate { orders: math::count(id) } by {}
+}
+$ ctrl+enter to run
+Run
+
+Now write to the table. There is no second system to notify and no refresh job to schedule:
+
+$ Write to the Table
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+insert cpt::orders [
+  { id: 1, region: "North", total: 120.0 },
+  { id: 2, region: "South", total: 80.0 },
+  { id: 3, region: "North", total: 45.5 }
+]
+$ ctrl+enter to run
+Run
+
+The transactional view was maintained by the write itself. Reading it costs a lookup, not a recomputation:
+
+$ The View Is Already Current
+Expand
+Copy
+Reset
+1
+2
+from cpt::revenue_by_region
+sort { region: asc }
+$ ctrl+enter to run
+Run
+Transactional or deferred
+
+The two views above are kept fresh in different ways, and the difference is the main decision you make per view. A transactional view is maintained inside the writing transaction: when the commit returns, the view is already correct, at the cost of doing that work on the write path. A deferred view is maintained asynchronously from the change stream after the commit: writes stay cheap, and the view catches up moments later - it is eventually consistent.
+
+$ The Deferred View Caught Up
+Expand
+Copy
+Reset
+1
+from cpt::order_count
+$ ctrl+enter to run
+Run
+
+Use transactional views for derived state that reads must never see stale - balances, inventory, anything an invariant depends on. Use deferred views when a moment of lag is fine and write latency matters - dashboards, counters, feeds. See Tables & Views for the full comparison.
+
+State first, queries second
+
+In ReifyDB, state is the primary concept and queries are secondary. Tables represent authoritative state; views represent derived state, not reports - you choose per view how fresh it must be.
+
+Alongside tables and views, the engine has specialized state shapes - ring buffers, series, dictionaries - so state that would otherwise live in Redis or a custom service participates in the same transactions. A ring buffer, for example, is bounded state with eviction built in:
+
+$ A Ring Buffer Keeps the Last N Rows
+Expand
+Copy
+Reset
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+create namespace cpt_rb;
+create ringbuffer cpt_rb::recent_logins {
+  user_id: int4,
+  at: utf8
+} with { capacity: 3 };
+insert cpt_rb::recent_logins [
+  { user_id: 1, at: "09:00" },
+  { user_id: 2, at: "09:05" },
+  { user_id: 3, at: "09:12" },
+  { user_id: 4, at: "09:20" }
+];
+from cpt_rb::recent_logins
+$ ctrl+enter to run
+Run
+
+Four rows were inserted into a buffer with capacity three; the oldest was evicted. No cleanup job required.
 
 In-memory, asynchronously durable
 
-Commits are fast because durability is decoupled from commit latency: state lives in memory and is persisted asynchronously. This section will explain the trade-off and what it means for crash recovery.
+All state changes go through transactions, and a committed change is visible immediately - but the commit does not wait for disk. Persistence happens off the hot path with bounded latency, and recovery rebuilds state deterministically from durable storage.
+
+That trade is deliberate. Application state is read and written on every request, so ReifyDB prioritizes predictable low latency over synchronous durability on each individual write. See Durability & Storage for what this means for crash recovery.
 
 What ReifyDB is not
 
-Not a BI warehouse, not a place for ad-hoc analytics over cold data, and not a target for untrusted queries. This section will draw the boundary honestly.
+ReifyDB manages the live, mutable state your application reasons about on every request. It is not a BI warehouse and not an analytics engine for ad-hoc queries over cold historical data. Those workloads have different trade-offs and belong in different systems.
 
+Where to go next
+--
+Quickstart - build a live view and watch it maintain itself
+--
+RQL in Five Minutes - the pipeline query language used on this page
+--
+Data Model - namespaces, tables, and the specialized state shapes
+--
+Tables & Views - transactional vs deferred views in depth
+--
+Transactions - the model every state change goes through
+DIRECT CLIENT ACCESS
+ReifyDB runs embedded in your application or as a server that clients connect to directly over WebSocket or HTTP. Frontends send queries straight to the database - authentication, roles, and policies decide what each identity may read and write - so there is no backend API layer to build and maintain.
 PRODUCT
 Documentation
 Blog
@@ -6121,6 +6256,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -6472,6 +6608,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -6785,6 +6922,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -7116,6 +7254,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -7442,6 +7581,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -7768,6 +7908,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -8094,6 +8235,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -8420,6 +8562,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -8746,6 +8889,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -9071,6 +9215,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -9387,6 +9532,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -9704,6 +9850,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -10020,6 +10167,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -10449,6 +10597,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -10775,6 +10924,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -11101,6 +11251,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -11427,6 +11578,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -11752,6 +11904,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -12077,6 +12230,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -12402,6 +12556,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -12729,6 +12884,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -13054,6 +13210,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -13381,6 +13538,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -13706,6 +13864,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -14032,6 +14191,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -14359,6 +14519,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -14686,6 +14847,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -15011,6 +15173,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -15336,6 +15499,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -15661,6 +15825,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -15987,6 +16152,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -16313,6 +16479,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -16638,6 +16805,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -16964,6 +17132,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -17397,6 +17566,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -17723,6 +17893,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -18049,6 +18220,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -18374,6 +18546,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -18699,6 +18872,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -19024,6 +19198,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -19349,6 +19524,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -19675,6 +19851,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -20000,6 +20177,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -20325,6 +20503,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -20651,6 +20830,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -20976,6 +21156,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -21301,6 +21482,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -21626,6 +21808,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -21951,6 +22134,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -22276,6 +22460,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -22601,6 +22786,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -22927,6 +23113,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -23253,6 +23440,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -23578,6 +23766,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -23903,6 +24092,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -24229,6 +24419,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -24554,6 +24745,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -24880,6 +25072,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -25205,6 +25398,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -25530,6 +25724,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -26247,6 +26442,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -27224,6 +27420,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -27874,6 +28071,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -28201,6 +28399,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -28527,6 +28726,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -28854,6 +29054,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -29833,6 +30034,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -30811,6 +31013,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -31138,6 +31341,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -58363,6 +58567,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -58672,6 +58877,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -58981,6 +59187,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -59294,6 +59501,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -59603,6 +59811,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -60256,6 +60465,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -60569,6 +60779,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -60884,6 +61095,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -61638,6 +61850,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -61951,6 +62164,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -62264,6 +62478,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -62573,6 +62788,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -62886,6 +63102,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -71316,6 +71533,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -72692,6 +72910,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -73038,6 +73257,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -73384,6 +73604,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
