@@ -65,7 +65,7 @@ export const navSections: NavSection[] = [
   {
     title: 'Concepts',
     items: [
-      { id: 'concepts-overview', label: 'Application State Database', href: '/docs/concepts' },
+      { id: 'concepts-overview', label: 'Application State Database', href: '/docs/concepts', published: true },
       { id: 'concepts-data-model', label: 'Data Model', href: '/docs/concepts/data-model' },
       { id: 'concepts-tables-and-views', label: 'Tables & Views', href: '/docs/concepts/tables-and-views' },
       { id: 'concepts-transactions', label: 'Transactions', href: '/docs/concepts/transactions' },
