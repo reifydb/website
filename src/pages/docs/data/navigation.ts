@@ -88,7 +88,7 @@ export const navSections: NavSection[] = [
           { id: 'data-model-sequences', label: 'Sequences', href: '/docs/concepts/data-model/sequences' },
         ],
       },
-      { id: 'concepts-transactions', label: 'Transactions', href: '/docs/concepts/transactions' },
+      { id: 'concepts-transactions', label: 'Transactions', href: '/docs/concepts/transactions', published: true },
       { id: 'concepts-none', label: 'Working with none', href: '/docs/concepts/none' },
       { id: 'concepts-data-types', label: 'Data Types', href: '/docs/concepts/data-types' },
       { id: 'concepts-execution', label: 'How Queries Execute', href: '/docs/concepts/execution' },
@@ -458,6 +458,18 @@ export const navSections: NavSection[] = [
       { id: 'resources-caveats', label: 'Caveats & Limitations', href: '/docs/resources/caveats' },
       { id: 'resources-faq', label: 'Troubleshooting & FAQ', href: '/docs/resources/faq' },
       { id: 'resources-ai-agents', label: 'For AI Agents', href: '/docs/resources/ai-agents' },
+    ],
+  },
+  {
+    title: 'Contributors',
+    items: [
+      {
+        id: 'contributors-internals',
+        label: 'Internals',
+        children: [
+          { id: 'contributors-internals-transactions', label: 'Transactions', href: '/docs/contributors/internals/transactions' },
+        ],
+      },
     ],
   },
 ];

@@ -12,6 +12,7 @@ import type { CodeExample } from './types';
 export { architectureTypesExamples } from '@/pages/docs/architecture/types.examples';
 export { architectureVolcanoExamples } from '@/pages/docs/architecture/volcano.examples';
 export { conceptsOverviewExamples } from '@/pages/docs/concepts/overview.examples';
+export { conceptsTransactionsExamples } from '@/pages/docs/concepts/transactions.examples';
 export { dataModelDictionariesExamples } from '@/pages/docs/concepts/data-model/dictionaries.examples';
 export { dataModelEnumsExamples } from '@/pages/docs/concepts/data-model/enums.examples';
 export { dataModelEventsExamples } from '@/pages/docs/concepts/data-model/events.examples';
@@ -197,6 +198,7 @@ export { heroExamples } from '@/pages/landing/sections/hero.examples';
 import { architectureTypesExamples } from '@/pages/docs/architecture/types.examples';
 import { architectureVolcanoExamples } from '@/pages/docs/architecture/volcano.examples';
 import { conceptsOverviewExamples } from '@/pages/docs/concepts/overview.examples';
+import { conceptsTransactionsExamples } from '@/pages/docs/concepts/transactions.examples';
 import { dataModelDictionariesExamples } from '@/pages/docs/concepts/data-model/dictionaries.examples';
 import { dataModelEnumsExamples } from '@/pages/docs/concepts/data-model/enums.examples';
 import { dataModelEventsExamples } from '@/pages/docs/concepts/data-model/events.examples';
@@ -384,6 +386,7 @@ export const allExamples: CodeExample[] = [
   ...architectureTypesExamples,
   ...architectureVolcanoExamples,
   ...conceptsOverviewExamples,
+  ...conceptsTransactionsExamples,
   ...dataModelDictionariesExamples,
   ...dataModelEnumsExamples,
   ...dataModelEventsExamples,

@@ -55,21 +55,18 @@ export function Callout({ variant = 'note', title, children, className }: Callou
   return (
     <div
       className={cn(
-        'border-l-4 p-4 rounded-md',
+        'mt-6 border rounded-md overflow-hidden',
         styles.border,
-        styles.bg,
         className
       )}
     >
-      <div className="flex gap-3">
-        <Icon className={cn('w-5 h-5 flex-shrink-0 mt-0.5', styles.icon)} />
-        <div>
-          <strong className="text-text-primary font-semibold uppercase text-sm tracking-wider">
-            {title || defaultTitle}
-          </strong>
-          <div className="text-text-secondary text-sm mt-1">{children}</div>
-        </div>
+      <div className={cn('flex items-center gap-2 px-4 py-2.5 border-b', styles.border, styles.bg)}>
+        <Icon className={cn('w-4 h-4 flex-shrink-0', styles.icon)} />
+        <strong className="text-text-primary font-semibold text-sm">
+          {title || defaultTitle}
+        </strong>
       </div>
+      <div className="px-4 py-3 text-text-secondary text-sm">{children}</div>
     </div>
   );
 }

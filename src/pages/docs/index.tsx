@@ -32,6 +32,7 @@ export {
   TtlPage,
   DurabilityPage,
 } from './concepts/index';
+export { InternalsTransactionsPage } from './contributors/index';
 export { VolcanoPage, TypesPage } from './architecture/index';
 export { RqlFiveMinutesPage } from './rql/five-minutes';
 export { RqlForSqlUsersPage } from './rql/for-sql-users';
