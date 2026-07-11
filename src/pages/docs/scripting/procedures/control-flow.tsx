@@ -35,7 +35,7 @@ export function ControlFlowPage() {
             initialCode={getExampleById('scripting-procedure-while')!.code}
           />
           <p className="text-text-secondary mt-4">
-            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">LET MUT</code> for mutable
+            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">LET</code> to reassign
             variables and <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">WHILE</code> for
             loops. You can also use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">FOR</code> and{' '}
             <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">LOOP</code> with{' '}

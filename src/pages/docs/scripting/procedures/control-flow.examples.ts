@@ -26,7 +26,7 @@ FROM pr_cf::results`,
     code: `CREATE NAMESPACE pr_w;
 CREATE TABLE pr_w::numbers { val: int4 };
 CREATE PROCEDURE pr_w::fill AS {
-  LET MUT i = 1;
+  LET i = 1;
   WHILE $i <= 3 {
     INSERT pr_w::numbers [{ val: $i }];
     LET i = $i + 1;
