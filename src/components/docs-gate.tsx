@@ -34,7 +34,8 @@ export function DocsGate({ children }: DocsGateProps) {
     return <DocsWipTerminal />;
   }
 
-  const isPublished = !pathname.startsWith('/docs') || publishedPaths.has(pathname);
+  const normalizedPathname = pathname !== '/' && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+  const isPublished = !normalizedPathname.startsWith('/docs') || publishedPaths.has(normalizedPathname);
 
   // In production, unpublished pages show 404
   if (!isPublished && !isLocalhost) {
