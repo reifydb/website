@@ -36,7 +36,14 @@ export { InternalsTransactionsPage } from './contributors/index';
 export { VolcanoPage, TypesPage } from './architecture/index';
 export { RqlFiveMinutesPage } from './rql/five-minutes';
 export { RqlForSqlUsersPage } from './rql/for-sql-users';
-export { RqlControlFlowPage } from './rql/control-flow';
+export { RqlVariablesPage } from './rql/variables';
+export { RqlControlFlowPage } from './rql/control-flow/overview';
+export { RqlControlFlowConditionalsPage } from './rql/control-flow/conditionals';
+export { RqlControlFlowMatchPage } from './rql/control-flow/match';
+export { RqlControlFlowForPage } from './rql/control-flow/for';
+export { RqlControlFlowWhilePage } from './rql/control-flow/while';
+export { RqlControlFlowLoopPage } from './rql/control-flow/loop';
+export { RqlControlFlowClosuresPage } from './rql/control-flow/closures';
 export { RqlTransformsPage } from './rql/transforms';
 export { RqlExpressionsPage } from './rql/expressions';
 export {

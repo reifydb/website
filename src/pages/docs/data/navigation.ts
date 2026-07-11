@@ -163,7 +163,20 @@ export const navSections: NavSection[] = [
         label: 'Scripting',
         children: [
           { id: 'scripting-overview', label: 'Overview', href: '/docs/scripting' },
-          { id: 'scripting-control-flow', label: 'Variables & Control Flow', href: '/docs/rql/control-flow' },
+          { id: 'scripting-variables', label: 'Variables', href: '/docs/rql/variables' },
+          {
+            id: 'scripting-control-flow',
+            label: 'Control Flow',
+            href: '/docs/rql/control-flow',
+            children: [
+              { id: 'control-flow-conditionals', label: 'Conditionals', href: '/docs/rql/control-flow/conditionals' },
+              { id: 'control-flow-match', label: 'Match', href: '/docs/rql/control-flow/match' },
+              { id: 'control-flow-for', label: 'For Loops', href: '/docs/rql/control-flow/for' },
+              { id: 'control-flow-while', label: 'While Loops', href: '/docs/rql/control-flow/while' },
+              { id: 'control-flow-loop', label: 'Loop, Break & Continue', href: '/docs/rql/control-flow/loop' },
+              { id: 'control-flow-closures', label: 'Closures & Functions', href: '/docs/rql/control-flow/closures' },
+            ],
+          },
           { id: 'scripting-match', label: 'Match', href: '/docs/rql/transforms/match' },
           { id: 'scripting-testing', label: 'Testing', href: '/docs/scripting/testing' },
           { id: 'scripting-migrations', label: 'Migrations', href: '/docs/scripting/migrations' },

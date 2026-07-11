@@ -123,8 +123,8 @@ export function RqlForSqlUsersPage() {
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
               <span>
-                Arithmetic with explicit overflow policy - <Code>math::add::saturate</Code>,{' '}
-                <Code>math::add::none</Code>, and friends make numeric edge cases a choice
+                Arithmetic with explicit overflow policy - <Code>math::add_saturate</Code>,{' '}
+                <Code>math::add_none</Code>, and friends make numeric edge cases a choice
                 instead of a surprise
               </span>
             </li>
