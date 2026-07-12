@@ -39,15 +39,17 @@ map { revenue: $revenue }`,
   },
 {
     id: 'cf-for-inline-source',
-    title: 'Inline Sources Must Be Bound First',
-    description: 'A query source must be bound to a frame variable with let before the loop; an inline query in the for header does not parse.',
+    title: 'Iterating an Inline Query',
+    description: 'A query wrapped in curly braces can be used directly as the for source, without binding it to a frame variable first.',
     category: 'rql',
     code: `let $count = 0;
 for $row in { from cf_for::carts } {
   $count = $count + 1
 };
 map { count: $count }`,
-    expectsError: true,
+    expected: `count
+-----
+3`,
   },
 {
     id: 'cf-for-writes',

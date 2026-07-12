@@ -34,7 +34,7 @@ export function MatchPage() {
             initialCode={getExampleById('match-searched')!.code}
           />
           <p className="text-text-secondary mt-4">
-            Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">when</code>/<code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">then</code> for condition-based matching. Each <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">when</code> is evaluated in order; the first match wins.
+            Omit the scrutinee and write each arm as a full condition with <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">=&gt;</code>. Each condition is evaluated in order; the first match wins.
           </p>
         </section>
 

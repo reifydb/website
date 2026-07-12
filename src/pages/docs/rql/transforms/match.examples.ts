@@ -14,7 +14,7 @@ map { id, region, region_label }`,
     title: 'Searched Match',
     category: 'rql',
     code: `from app::orders
-extend { size: match { when total > 100 then "large", when total > 50 then "medium", else "small" } }
+extend { size: match { total > 100 => "large", total > 50 => "medium", else => "small" } }
 map { id, total, size }`,
   },
 ];

@@ -37,7 +37,7 @@ export function RqlControlFlowForPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Over query results</h2>
           <p className="text-text-secondary mb-4">
-            To iterate rows, first bind the query to a{' '}
+            To iterate rows, bind the query to a{' '}
             <Link to="/docs/rql/variables" className="text-primary hover:text-primary-light font-medium transition-colors">frame variable</Link>{' '}
             with <Code>let</Code>, then loop over it. Inside the block, each row's
             columns are reachable as fields on the loop variable
@@ -45,9 +45,8 @@ export function RqlControlFlowForPage() {
           </p>
           <ExampleSnippet id="cf-for-frame" />
           <p className="text-text-secondary mt-4 mb-4">
-            The binding step is required. Putting the query inline in the loop header
-            is a parse error - <Code>for</Code> iterates variables and ranges, not
-            subqueries:
+            The binding step is optional - a query wrapped in curly braces can also
+            sit directly in the loop header:
           </p>
           <ExampleSnippet id="cf-for-inline-source" />
         </section>
