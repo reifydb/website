@@ -20,13 +20,13 @@ extend { prefix: text::substring(code, 0, 3) }`,
     category: 'function',
     code: `from app::products
 extend { initial: text::substring(name, 0, 1) }`,
-    expected: `id | name        | sku     | price              | category    | initial
----+-------------+---------+--------------------+-------------+--------
-5  | Thingamajig | TMJ-005 | 15.5               | Accessories | T
-4  | Doohickey   | DHK-004 | 99.98999786376953  | Hardware    | D
-3  | Gizmo       | GZM-003 | 19.989999771118164 | Accessories | G
-2  | Gadget      | GDT-002 | 49.9900016784668   | Electronics | G
-1  | Widget      | WGT-001 | 29.989999771118164 | Electronics | W`,
+    expected: `id | name        | sku     | price | category    | initial
+---+-------------+---------+-------+-------------+--------
+5  | Thingamajig | TMJ-005 | 15.5  | Accessories | T
+4  | Doohickey   | DHK-004 | 99.99 | Hardware    | D
+3  | Gizmo       | GZM-003 | 19.99 | Accessories | G
+2  | Gadget      | GDT-002 | 49.99 | Electronics | G
+1  | Widget      | WGT-001 | 29.99 | Electronics | W`,
   },
 {
     id: 'text-substring-middle',

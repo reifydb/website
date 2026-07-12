@@ -6,8 +6,8 @@ export const scriptingSchemaNamespacesExamples: CodeExample[] = [
     title: 'Create Namespace',
     category: 'scripting',
     code: `CREATE NAMESPACE sc`,
-    expected: `namespace | created
-----------+--------
-sc        | true`,
+    expected: `id    | namespace | created
+------+-----------+--------
+16386 | sc        | true`,
   },
 ];

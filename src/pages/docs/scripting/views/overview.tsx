@@ -25,8 +25,13 @@ export function ViewsOverviewPage() {
           />
           <p className="text-text-secondary mt-4">
             Deferred views are incrementally maintained. They define their own schema
-            and a query that produces it.
+            and a query that produces it. The view updates asynchronously after the
+            write commits, so query it in a separate request:
           </p>
+          <ExecutableSnippet
+            title="Query the Deferred View"
+            initialCode={getExampleById('scripting-deferred-view-query')!.code}
+          />
         </section>
 
         <section>

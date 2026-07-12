@@ -13,7 +13,8 @@ INSERT dm_dl::items [
   { id: 3, label: 'keep' }
 ];
 DELETE dm_dl::items FILTER { label == 'remove' };
-FROM dm_dl::items`,
+FROM dm_dl::items
+sort { id: asc }`,
     expected: `id | label
 ---+------
 1  | keep

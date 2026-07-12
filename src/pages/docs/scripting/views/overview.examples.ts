@@ -23,8 +23,14 @@ INSERT vw_d::employees [
   { id: 1, name: 'Alice', active: true },
   { id: 2, name: 'Bob', active: false },
   { id: 3, name: 'Carol', active: true }
-];
-FROM vw_d::active_employees`,
+];`,
+  },
+{
+    id: 'scripting-deferred-view-query',
+    title: 'Query the Deferred View',
+    category: 'scripting',
+    code: `FROM vw_d::active_employees
+sort { id: asc }`,
     expected: `id | name
 ---+------
 1  | Alice

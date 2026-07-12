@@ -9,7 +9,8 @@ export const scriptingDmlInsertExamples: CodeExample[] = [
 CREATE TABLE dm_im::logs { id: int4, msg: utf8 };
 INSERT dm_im::logs [{ id: 1, msg: 'start' }];
 INSERT dm_im::logs [{ id: 2, msg: 'running' }, { id: 3, msg: 'done' }];
-FROM dm_im::logs`,
+FROM dm_im::logs
+sort { id: asc }`,
     expected: `id | msg
 ---+--------
 1  | start

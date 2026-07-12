@@ -25,8 +25,13 @@ INSERT vw_q::products [
   { id: 1, name: 'Widget', price: 9.99, in_stock: true },
   { id: 2, name: 'Gadget', price: 24.99, in_stock: false },
   { id: 3, name: 'Gizmo', price: 14.99, in_stock: true }
-];
-FROM vw_q::available
+];`,
+  },
+{
+    id: 'scripting-query-view-result',
+    title: 'Query the View',
+    category: 'scripting',
+    code: `FROM vw_q::available
 SORT { price: desc }`,
     expected: `id | name   | price
 ---+--------+------

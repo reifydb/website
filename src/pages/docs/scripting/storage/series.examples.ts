@@ -10,7 +10,8 @@ CREATE TAG st_sr::source {
   Sensor { location: utf8 }
 };
 CREATE SERIES st_sr::metrics {
+  at: datetime,
   value: float8
-} WITH { tag: st_sr::source, precision: microsecond }`,
+} WITH { key: at, tag: st_sr::source, precision: microsecond }`,
   },
 ];

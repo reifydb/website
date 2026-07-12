@@ -8,11 +8,11 @@ export const functionsMathSumExamples: CodeExample[] = [
     code: `from app::orders
 aggregate {math::sum(total)} by {region}`,
     expected: `region | math::sum(total)
--------+------------------
+-------+-----------------
 North  | 471.25
 West   | 55.25
 East   | 245
-South  | 89.98999786376953`,
+South  | 89.99`,
   },
 {
     id: 'math-sum-multiple',

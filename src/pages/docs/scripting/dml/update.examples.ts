@@ -12,7 +12,8 @@ INSERT dm_u::users [
   { id: 2, name: 'Bob', active: true }
 ];
 UPDATE dm_u::users { id: id, name: name, active: false } FILTER { id == 2 };
-FROM dm_u::users`,
+FROM dm_u::users
+sort { id: asc }`,
     expected: `id | name  | active
 ---+-------+-------
 1  | Alice | true
@@ -26,7 +27,8 @@ FROM dm_u::users`,
 CREATE TABLE dm_ue::scores { id: int4, points: int4 };
 INSERT dm_ue::scores [{ id: 1, points: 10 }, { id: 2, points: 20 }];
 UPDATE dm_ue::scores { id: id, points: points + 5 } FILTER { true };
-FROM dm_ue::scores`,
+FROM dm_ue::scores
+sort { id: asc }`,
     expected: `id | points
 ---+-------
 1  | 15

@@ -8,10 +8,10 @@ export const functionsMathMinExamples: CodeExample[] = [
     code: `from app::products
 aggregate {math::min(price)} by {category}`,
     expected: `category    | math::min(price)
-------------+-------------------
+------------+-----------------
 Accessories | 15.5
-Hardware    | 99.98999786376953
-Electronics | 29.989999771118164`,
+Hardware    | 99.99
+Electronics | 29.99`,
   },
 {
     id: 'math-min-max-together',

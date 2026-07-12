@@ -25,7 +25,8 @@ CREATE PROCEDURE pr_p::add_user { id: int4, name: utf8 } AS {
 };
 CALL pr_p::add_user(1, 'Alice');
 CALL pr_p::add_user(2, 'Bob');
-FROM pr_p::users`,
+FROM pr_p::users
+sort { id: asc }`,
     expected: `id | name
 ---+------
 1  | Alice

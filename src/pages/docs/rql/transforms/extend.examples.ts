@@ -8,12 +8,12 @@ export const rqlTransformsExtendExamples: CodeExample[] = [
     code: `from app::employees
 extend { bonus: salary * 0.1 }`,
     expected: `id | dept_id | salary | bonus
----+---------+--------+------
-5  | 3       | 90000  | 9000
-4  | 2       | 71000  | 7100
-3  | 2       | 65000  | 6500
-2  | 1       | 82000  | 8200
-1  | 1       | 75000  | 7500`,
+---+---------+--------+-------
+5  | 3       | 90000  | 9000.0
+4  | 2       | 71000  | 7100.0
+3  | 2       | 65000  | 6500.0
+2  | 1       | 82000  | 8200.0
+1  | 1       | 75000  | 7500.0`,
   },
 {
     id: 'extend-multiple',

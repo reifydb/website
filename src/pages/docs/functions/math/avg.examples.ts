@@ -8,10 +8,10 @@ export const functionsMathAvgExamples: CodeExample[] = [
     code: `from app::products
 aggregate {math::avg(price)} by {category}`,
     expected: `category    | math::avg(price)
-------------+-------------------
-Accessories | 17.744999885559082
-Hardware    | 99.98999786376953
-Electronics | 39.99000072479248`,
+------------+-----------------
+Accessories | 17.745
+Hardware    | 99.99
+Electronics | 39.99`,
   },
 {
     id: 'math-avg-with-total',

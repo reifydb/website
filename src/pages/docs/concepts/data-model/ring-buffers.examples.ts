@@ -12,7 +12,7 @@ export const dataModelRingBuffersExamples: CodeExample[] = [
 create ringbuffer dm_rbp::region_events {
   id: int4,
   region: utf8
-} with { capacity: 2, partition_by: { region } };
+} with { capacity: 2, partition: { by: { region } } };
 insert dm_rbp::region_events [
   { id: 1, region: "east" },
   { id: 2, region: "east" },

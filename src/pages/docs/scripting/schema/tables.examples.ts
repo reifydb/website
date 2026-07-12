@@ -11,7 +11,8 @@ CREATE TABLE sc_ai::users {
   name: utf8
 };
 INSERT sc_ai::users [{ name: 'Alice' }, { name: 'Bob' }];
-FROM sc_ai::users`,
+FROM sc_ai::users
+sort { id: asc }`,
     expected: `id | name
 ---+------
 1  | Alice

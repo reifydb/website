@@ -12,7 +12,8 @@ INSERT dm_i::users [
   { id: 2, name: 'Bob', active: false },
   { id: 3, name: 'Carol', active: true }
 ];
-FROM dm_i::users`,
+FROM dm_i::users
+sort { id: asc }`,
     expected: `id | name  | active
 ---+-------+-------
 1  | Alice | true
@@ -30,8 +31,8 @@ CREATE TABLE sc_t::users {
   age: int2,
   active: bool
 }`,
-    expected: `namespace | table | created
-----------+-------+--------
-sc_t      | users | true`,
+    expected: `id    | namespace | table | created
+------+-----------+-------+--------
+16417 | sc_t      | users | true`,
   },
 ];

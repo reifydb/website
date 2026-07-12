@@ -34,6 +34,10 @@ export function DeferredViewsPage() {
             title="Query a View"
             initialCode={getExampleById('scripting-query-view')!.code}
           />
+          <ExecutableSnippet
+            title="Query the View"
+            initialCode={getExampleById('scripting-query-view-result')!.code}
+          />
           <p className="text-text-secondary mt-4">
             Query a view just like a table. You can chain transforms like{' '}
             <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">SORT</code>,{' '}

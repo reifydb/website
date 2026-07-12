@@ -7,12 +7,12 @@ export const functionsMathRoundExamples: CodeExample[] = [
     category: 'function',
     code: `from app::prices
 extend { rounded: math::round(price, 2) }`,
-    expected: `id | price              | rounded
----+--------------------+-------------------
-4  | 29.989999771118164 | 29.989999771118164
-3  | 99.94999694824219  | 99.94999694824219
-2  | 49.5               | 49.5
-1  | 19.989999771118164 | 19.989999771118164`,
+    expected: `id | price | rounded
+---+-------+--------
+4  | 29.99 | 29.99
+3  | 99.95 | 99.95
+2  | 49.5  | 49.5
+1  | 19.99 | 19.99`,
   },
 {
     id: 'math-round-integer',

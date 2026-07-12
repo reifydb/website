@@ -36,12 +36,12 @@ filter { age >= 18 }`,
     code: `from app::employees
 extend { bonus: salary * 0.1 }`,
     expected: `id | dept_id | salary | bonus
----+---------+--------+------
-5  | 3       | 90000  | 9000
-4  | 2       | 71000  | 7100
-3  | 2       | 65000  | 6500
-2  | 1       | 82000  | 8200
-1  | 1       | 75000  | 7500`,
+---+---------+--------+-------
+5  | 3       | 90000  | 9000.0
+4  | 2       | 71000  | 7100.0
+3  | 2       | 65000  | 6500.0
+2  | 1       | 82000  | 8200.0
+1  | 1       | 75000  | 7500.0`,
   },
 {
     id: 'transform-sort',
@@ -64,11 +64,11 @@ take 10`,
     category: 'rql',
     code: `from app::products
 distinct { category }`,
-    expected: `id | name        | sku     | price             | category
----+-------------+---------+-------------------+------------
-5  | Thingamajig | TMJ-005 | 15.5              | Accessories
-4  | Doohickey   | DHK-004 | 99.98999786376953 | Hardware
-2  | Gadget      | GDT-002 | 49.9900016784668  | Electronics`,
+    expected: `id | name        | sku     | price | category
+---+-------------+---------+-------+------------
+5  | Thingamajig | TMJ-005 | 15.5  | Accessories
+4  | Doohickey   | DHK-004 | 99.99 | Hardware
+2  | Gadget      | GDT-002 | 49.99 | Electronics`,
   },
 {
     id: 'transform-aggregate',
@@ -77,10 +77,10 @@ distinct { category }`,
     code: `from app::orders
 aggregate {math::sum(total)} by {region}`,
     expected: `region | math::sum(total)
--------+------------------
+-------+-----------------
 North  | 471.25
 West   | 55.25
 East   | 245
-South  | 89.98999786376953`,
+South  | 89.99`,
   },
 ];
