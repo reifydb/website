@@ -27,7 +27,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 
 THE REACTIVE TRANSACTIONAL DATABASE
@@ -236,7 +235,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 Blog
 
@@ -393,7 +391,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 The Mission
 
@@ -457,7 +454,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 Values
 
@@ -532,7 +528,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 Get in Touch
 
@@ -962,6 +957,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -1332,6 +1328,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -1716,6 +1713,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -2305,6 +2303,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -2860,6 +2859,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -3540,6 +3540,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -8238,7 +8239,7 @@ create namespace dm_rbp;
 create ringbuffer dm_rbp::region_events {
   id: int4,
   region: utf8
-} with { capacity: 2, partition_by: { region } };
+} with { capacity: 2, partition: { by: { region } } };
 insert dm_rbp::region_events [
   { id: 1, region: "east" },
   { id: 2, region: "east" },
@@ -14760,7 +14761,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -15135,7 +15135,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -15642,7 +15641,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -15997,7 +15995,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -16347,7 +16344,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -16697,7 +16693,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -17047,7 +17042,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -17397,7 +17391,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -17747,7 +17740,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -18096,7 +18088,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -18436,7 +18427,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -18777,7 +18767,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -19117,7 +19106,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -19570,7 +19558,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -19920,7 +19907,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -20270,7 +20256,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -20620,7 +20605,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -20969,7 +20953,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -21318,7 +21301,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -21667,7 +21649,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -22018,7 +21999,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -22367,7 +22347,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -22718,7 +22697,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -23067,7 +23045,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -23417,7 +23394,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -23768,7 +23744,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -24119,7 +24094,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -24468,7 +24442,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -24817,7 +24790,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -25166,7 +25138,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -25516,7 +25487,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -25866,7 +25836,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -26215,7 +26184,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -26565,7 +26533,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -27720,7 +27687,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -28069,7 +28035,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -28418,7 +28383,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -28767,7 +28731,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -29465,7 +29428,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -31207,7 +31169,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -31556,7 +31517,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -31905,7 +31865,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -32254,7 +32213,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -33301,7 +33259,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -33650,7 +33607,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -34348,7 +34304,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -35046,7 +35001,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -35395,7 +35349,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -57733,7 +57686,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -58540,7 +58492,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -58888,7 +58839,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -59236,7 +59186,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -59585,7 +59534,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -59936,7 +59884,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -60285,7 +60232,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -60635,7 +60581,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -60983,7 +60928,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -61331,7 +61275,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -61681,7 +61624,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -62055,7 +61997,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -62404,7 +62345,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -62755,7 +62695,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -63106,7 +63045,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -63456,7 +63394,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -63807,7 +63744,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -64156,7 +64092,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -64506,7 +64441,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -64883,7 +64817,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -65246,7 +65179,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -65595,7 +65527,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -65944,7 +65875,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -66307,7 +66237,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -66697,7 +66626,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -67047,7 +66975,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -67397,7 +67324,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -67747,7 +67673,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -68096,7 +68021,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -68445,7 +68369,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -68794,7 +68717,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -69142,7 +69064,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -69492,7 +69413,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -69842,7 +69762,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -70191,7 +70110,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -70541,7 +70459,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -71893,6 +71810,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -75361,7 +75279,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -75694,7 +75611,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 GETTING STARTED
 Introduction
@@ -76031,6 +75947,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -78516,7 +78433,7 @@ $ ctrl+enter to run
 Run
 Over query results
 
-To iterate rows, first bind the query to a frame variable with let, then loop over it. Inside the block, each row's columns are reachable as fields on the loop variable ($row.qty):
+To iterate rows, bind the query to a frame variable with let, then loop over it. Inside the block, each row's columns are reachable as fields on the loop variable ($row.qty):
 
 $ Iterate Query Results
 Expand
@@ -78551,9 +78468,9 @@ map { revenue: $revenue }
 $ ctrl+enter to run
 Run
 
-The binding step is required. Putting the query inline in the loop header is a parse error - for iterates variables and ranges, not subqueries:
+The binding step is optional - a query wrapped in curly braces can also sit directly in the loop header:
 
-$ Inline Sources Must Be Bound First
+$ Iterating an Inline Query
 Expand
 Copy
 Reset
@@ -85544,13 +85461,12 @@ Reset
 2
 3
 from app::orders
-extend { size: match { when total > 100 then "large", when total > 50 then "medium", else 
-"small" } }
+extend { size: match { total > 100 => "large", total > 50 => "medium", else => "small" } }
 map { id, total, size }
 $ ctrl+enter to run
 Run
 
-Use when/then for condition-based matching. Each when is evaluated in order; the first match wins.
+Omit the scrutinee and write each arm as a full condition with =>. Each condition is evaluated in order; the first match wins.
 
 PRODUCT
 Documentation
@@ -85596,6 +85512,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -88317,6 +88234,7 @@ Reset
 6
 7
 8
+9
 CREATE NAMESPACE dm_i;
 CREATE TABLE dm_i::users { id: int4, name: utf8, active: bool };
 INSERT dm_i::users [
@@ -88325,6 +88243,7 @@ INSERT dm_i::users [
   { id: 3, name: 'Carol', active: true }
 ];
 FROM dm_i::users
+sort { id: asc }
 $ ctrl+enter to run
 Run
 
@@ -88431,6 +88350,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -88787,6 +88707,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -89080,6 +89001,7 @@ Reset
 7
 8
 9
+10
 CREATE NAMESPACE dm_dl;
 CREATE TABLE dm_dl::items { id: int4, label: utf8 };
 INSERT dm_dl::items [
@@ -89089,6 +89011,7 @@ INSERT dm_dl::items [
 ];
 DELETE dm_dl::items FILTER { label == 'remove' };
 FROM dm_dl::items
+sort { id: asc }
 $ ctrl+enter to run
 Run
 
@@ -89158,6 +89081,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -89450,6 +89374,7 @@ Reset
 6
 7
 8
+9
 CREATE NAMESPACE dm_i;
 CREATE TABLE dm_i::users { id: int4, name: utf8, active: bool };
 INSERT dm_i::users [
@@ -89458,6 +89383,7 @@ INSERT dm_i::users [
   { id: 3, name: 'Carol', active: true }
 ];
 FROM dm_i::users
+sort { id: asc }
 $ ctrl+enter to run
 Run
 
@@ -89473,11 +89399,13 @@ Reset
 3
 4
 5
+6
 CREATE NAMESPACE dm_im;
 CREATE TABLE dm_im::logs { id: int4, msg: utf8 };
 INSERT dm_im::logs [{ id: 1, msg: 'start' }];
 INSERT dm_im::logs [{ id: 2, msg: 'running' }, { id: 3, msg: 'done' }];
 FROM dm_im::logs
+sort { id: asc }
 $ ctrl+enter to run
 Run
 
@@ -89527,6 +89455,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -89819,6 +89748,7 @@ Reset
 6
 7
 8
+9
 CREATE NAMESPACE dm_u;
 CREATE TABLE dm_u::users { id: int4, name: utf8, active: bool };
 INSERT dm_u::users [
@@ -89827,6 +89757,7 @@ INSERT dm_u::users [
 ];
 UPDATE dm_u::users { id: id, name: name, active: false } FILTER { id == 2 };
 FROM dm_u::users
+sort { id: asc }
 $ ctrl+enter to run
 Run
 
@@ -89842,11 +89773,13 @@ Reset
 3
 4
 5
+6
 CREATE NAMESPACE dm_ue;
 CREATE TABLE dm_ue::scores { id: int4, points: int4 };
 INSERT dm_ue::scores [{ id: 1, points: 10 }, { id: 2, points: 20 }];
 UPDATE dm_ue::scores { id: id, points: points + 5 } FILTER { true };
 FROM dm_ue::scores
+sort { id: asc }
 $ ctrl+enter to run
 Run
 
@@ -89896,6 +89829,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -90265,6 +90199,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -90577,6 +90512,7 @@ Reset
 6
 7
 8
+9
 CREATE NAMESPACE pr_p;
 CREATE TABLE pr_p::users { id: int4, name: utf8 };
 CREATE PROCEDURE pr_p::add_user { id: int4, name: utf8 } AS {
@@ -90585,6 +90521,7 @@ CREATE PROCEDURE pr_p::add_user { id: int4, name: utf8 } AS {
 CALL pr_p::add_user(1, 'Alice');
 CALL pr_p::add_user(2, 'Bob');
 FROM pr_p::users
+sort { id: asc }
 $ ctrl+enter to run
 Run
 
@@ -90634,6 +90571,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -90927,15 +90865,17 @@ Reset
 7
 8
 9
+10
 CREATE NAMESPACE pr_cf;
 CREATE TABLE pr_cf::results { id: int4, label: utf8 };
 CREATE PROCEDURE pr_cf::classify { val: int4 } AS {
-  LET label = IF $val > 10 { 'high' } ELSE { 'low' };
+  LET $label = IF $val > 10 { 'high' } ELSE { 'low' };
   INSERT pr_cf::results [{ id: $val, label: $label }]
 };
 CALL pr_cf::classify(5);
 CALL pr_cf::classify(15);
 FROM pr_cf::results
+sort { id: asc }
 $ ctrl+enter to run
 Run
 
@@ -90957,17 +90897,19 @@ Reset
 9
 10
 11
+12
 CREATE NAMESPACE pr_w;
 CREATE TABLE pr_w::numbers { val: int4 };
 CREATE PROCEDURE pr_w::fill AS {
-  LET i = 1;
+  LET $i = 1;
   WHILE $i <= 3 {
     INSERT pr_w::numbers [{ val: $i }];
-    LET i = $i + 1;
+    $i = $i + 1;
   }
 };
 CALL pr_w::fill();
 FROM pr_w::numbers
+sort { val: asc }
 $ ctrl+enter to run
 Run
 
@@ -91017,6 +90959,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -91354,6 +91297,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -91707,6 +91651,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -92072,6 +92017,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -92395,6 +92341,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -92754,6 +92701,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -93069,6 +93017,7 @@ Reset
 5
 6
 7
+8
 CREATE NAMESPACE sc_ai;
 CREATE TABLE sc_ai::users {
   id: int4 WITH { auto_increment },
@@ -93076,6 +93025,7 @@ CREATE TABLE sc_ai::users {
 };
 INSERT sc_ai::users [{ name: 'Alice' }, { name: 'Bob' }];
 FROM sc_ai::users
+sort { id: asc }
 $ ctrl+enter to run
 Run
 
@@ -93125,6 +93075,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -93480,6 +93431,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -93775,13 +93727,15 @@ Reset
 5
 6
 7
+8
 CREATE NAMESPACE st_sr;
 CREATE TAG st_sr::source {
   Sensor { location: utf8 }
 };
 CREATE SERIES st_sr::metrics {
+  at: datetime,
   value: float8
-} WITH { tag: st_sr::source, precision: microsecond }
+} WITH { key: at, tag: st_sr::source, precision: microsecond }
 $ ctrl+enter to run
 Run
 
@@ -93831,6 +93785,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -94171,6 +94126,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -94565,6 +94521,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -94868,7 +94825,6 @@ Reset
 17
 18
 19
-20
 CREATE NAMESPACE vw_d;
 CREATE TABLE vw_d::employees {
   id: int4,
@@ -94888,12 +94844,21 @@ INSERT vw_d::employees [
   { id: 2, name: 'Bob', active: false },
   { id: 3, name: 'Carol', active: true }
 ];
-FROM vw_d::active_employees
 $ ctrl+enter to run
 Run
 
-Deferred views are incrementally maintained. They define their own schema and a query that produces it.
+Deferred views are incrementally maintained. They define their own schema and a query that produces it. The view updates asynchronously after the write commits, so query it in a separate request:
 
+$ Query the Deferred View
+Expand
+Copy
+Reset
+1
+2
+FROM vw_d::active_employees
+sort { id: asc }
+$ ctrl+enter to run
+Run
 Transactional View
 $ Transactional View
 Expand
@@ -94986,6 +94951,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -95289,7 +95255,6 @@ Reset
 17
 18
 19
-20
 CREATE NAMESPACE vw_d;
 CREATE TABLE vw_d::employees {
   id: int4,
@@ -95309,7 +95274,6 @@ INSERT vw_d::employees [
   { id: 2, name: 'Bob', active: false },
   { id: 3, name: 'Carol', active: true }
 ];
-FROM vw_d::active_employees
 $ ctrl+enter to run
 Run
 
@@ -95341,8 +95305,6 @@ Reset
 19
 20
 21
-22
-23
 CREATE NAMESPACE vw_q;
 CREATE TABLE vw_q::products {
   id: int4,
@@ -95364,6 +95326,14 @@ INSERT vw_q::products [
   { id: 2, name: 'Gadget', price: 24.99, in_stock: false },
   { id: 3, name: 'Gizmo', price: 14.99, in_stock: true }
 ];
+$ ctrl+enter to run
+Run
+$ Query the View
+Expand
+Copy
+Reset
+1
+2
 FROM vw_q::available
 SORT { price: desc }
 $ ctrl+enter to run
@@ -95415,6 +95385,7 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
+14
 Get Started
 GETTING STARTED
 Introduction
@@ -95786,7 +95757,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 EXAMPLES
 Built-in Testing
@@ -95880,7 +95850,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 Frequently Asked Questions
 
@@ -95954,7 +95923,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 $ reifydb pitch
 slide 1 of 5
@@ -96045,7 +96013,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 Support
 
@@ -96116,7 +96083,6 @@ Values
 The principles that guide our work
 Contact
 Reach out to the team
-14
 Get Started
 $ reifydb tour
 step 1 of 9
