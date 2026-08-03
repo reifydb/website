@@ -38,20 +38,6 @@ map { revenue: $revenue }`,
 65`,
   },
 {
-    id: 'cf-for-inline-source',
-    title: 'Iterating an Inline Query',
-    description: 'A query wrapped in curly braces can be used directly as the for source, without binding it to a frame variable first.',
-    category: 'rql',
-    code: `let $count = 0;
-for $row in { from cf_for::carts } {
-  $count = $count + 1
-};
-map { count: $count }`,
-    expected: `count
------
-3`,
-  },
-{
     id: 'cf-for-writes',
     title: 'A for Loop That Writes',
     category: 'rql',

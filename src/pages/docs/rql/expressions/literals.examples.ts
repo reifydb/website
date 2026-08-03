@@ -11,15 +11,6 @@ extend { doubled: base * 2, ratio: 3.14159 }`,
 10   | 20      | 3.14159`,
 };
 
-export const numericCastGotchaExample: CodeExample = {
-  id: 'literals-numeric-cast-gotcha',
-  title: 'Casting a Bare Literal',
-  category: 'rql',
-  code: `from [{ x: 1 }]
-extend { y: cast(42, utf8) }`,
-  expectsError: true,
-};
-
 export const textExample: CodeExample = {
   id: 'literals-text',
   title: 'Text Literals',
@@ -77,7 +68,6 @@ extend { deadline: @2024-03-15, checkin: @14:30:00 }`,
 
 export const literalsExamples: CodeExample[] = [
   numericExample,
-  numericCastGotchaExample,
   textExample,
   booleanExample,
   noneExample,

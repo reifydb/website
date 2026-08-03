@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
-import { Callout } from '../../components';
+import { Callout, RqlCodeBlock } from '../../components';
 import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
@@ -46,9 +46,14 @@ export function RqlControlFlowForPage() {
           <ExampleSnippet id="cf-for-frame" />
           <p className="text-text-secondary mt-4 mb-4">
             The binding step is optional - a query wrapped in curly braces can also
-            sit directly in the loop header:
+            sit directly in the loop header. This form needs a newer engine than the
+            playground currently runs, so the snippet below is not executable here:
           </p>
-          <ExampleSnippet id="cf-for-inline-source" />
+          <RqlCodeBlock code={`let $count = 0;
+for $row in { from cf_for::carts } {
+  $count = $count + 1
+};
+map { count: $count }`} />
         </section>
 
         <section>

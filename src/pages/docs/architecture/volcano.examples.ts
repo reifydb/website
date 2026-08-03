@@ -24,7 +24,7 @@ filter { age >= 18 and status == "active" }`,
     category: 'rql',
     code: `from app::orders
 filter { status == "completed" }
-aggregate { revenue: math::sum(total), orders: math::sum(1) } by { region }
+aggregate { revenue: math::sum(total), orders: math::count(id) } by { region }
 sort {revenue: desc}`,
   },
 ];

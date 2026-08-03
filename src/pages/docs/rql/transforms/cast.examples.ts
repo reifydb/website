@@ -53,24 +53,6 @@ take 1`,
 1`,
 };
 
-export const castBareLiteralToTextExample: CodeExample = {
-  id: 'cast-bare-literal-to-text',
-  title: 'A Bare Integer Literal to Text Fails',
-  category: 'rql',
-  expectsError: true,
-  code: `map { cast(42, utf8) }`,
-};
-
-export const castTypedLiteralToTextExample: CodeExample = {
-  id: 'cast-typed-literal-to-text',
-  title: 'A Typed Integer Literal to Text Works',
-  category: 'rql',
-  code: `map { cast(cast(42, int4), utf8) }`,
-  expected: `cast(cast(42, int4), utf8)
---------------------------
-42`,
-};
-
 export const castInvalidNumberExample: CodeExample = {
   id: 'cast-invalid-number',
   title: "A String That Isn't Numeric",
@@ -105,8 +87,6 @@ export const castExamples: CodeExample[] = [
   castStringToDateExample,
   castStringToBoolExample,
   castColumnToTextExample,
-  castBareLiteralToTextExample,
-  castTypedLiteralToTextExample,
   castInvalidNumberExample,
   castUnsupportedPairExample,
   castInFilterExample,

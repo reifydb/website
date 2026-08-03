@@ -6,8 +6,6 @@ import {
   castStringToDateExample,
   castStringToBoolExample,
   castColumnToTextExample,
-  castBareLiteralToTextExample,
-  castTypedLiteralToTextExample,
   castInvalidNumberExample,
   castUnsupportedPairExample,
   castInFilterExample,
@@ -54,16 +52,6 @@ export function CastPage() {
             example: castColumnToTextExample,
             heading: 'A Typed Column to Text',
             note: 'A column that already has a concrete type like int4 casts to text cleanly.',
-          },
-          {
-            example: castBareLiteralToTextExample,
-            heading: 'A Bare Integer Literal to Text Fails',
-            note: 'A bare numeric literal like 42 is not typed as int4 until something forces it to be; casting it directly to text is an unsupported pair and errors with CAST_001.',
-          },
-          {
-            example: castTypedLiteralToTextExample,
-            heading: 'Casting the Literal to a Concrete Type First Works',
-            note: 'Casting to int4 before casting to utf8 gives the value a concrete type, and that conversion is supported.',
           },
           {
             example: castInvalidNumberExample,

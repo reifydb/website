@@ -25,8 +25,9 @@ extend { lower_email: text::lower(email) }`,
     id: 'expr-date-module',
     title: 'Date Module',
     category: 'rql',
-    code: `from app::records
-extend { processed_at: date::now() }`,
+    code: `from app::orders
+map { id, year: date::year(order_date), quarter: date::quarter(order_date) }
+sort { id: asc }`,
   },
 {
     id: 'expr-case',

@@ -7,7 +7,7 @@ export const rqlTransformsJoinExamples: CodeExample[] = [
     category: 'rql',
     code: `from app::employees
 inner join { from app::departments } as d using (dept_id, d.id)
-map { id, salary, department: d.name }`,
+map { id, salary, department: d_name }`,
   },
 {
     id: 'join-left',
@@ -15,6 +15,6 @@ map { id, salary, department: d.name }`,
     category: 'rql',
     code: `from app::employees
 left join { from app::departments } as d using (dept_id, d.id)
-map { id, salary, department: d.name }`,
+map { id, salary, department: d_name }`,
   },
 ];

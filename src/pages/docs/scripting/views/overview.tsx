@@ -41,9 +41,23 @@ export function ViewsOverviewPage() {
             initialCode={getExampleById('scripting-transactional-view')!.code}
           />
           <p className="text-text-secondary mt-4">
-            Transactional views update atomically with the source data.
-            When you insert a row, the view reflects it immediately.
+            Transactional views update atomically with the source data: the view
+            is rewritten as part of the same commit that writes the table.
           </p>
+          <ExecutableSnippet
+            title="Write to the Source Table"
+            initialCode={getExampleById('scripting-transactional-view-insert')!.code}
+          />
+          <p className="text-text-secondary mt-4">
+            A transaction that has written to a source table cannot read the view
+            it feeds - those changes land in the view only at commit, so a read
+            inside the same request would return stale rows. Query the view in a
+            separate request:
+          </p>
+          <ExecutableSnippet
+            title="Query the Transactional View"
+            initialCode={getExampleById('scripting-transactional-view-query')!.code}
+          />
         </section>
       </div>
     </Layout>

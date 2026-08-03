@@ -3,7 +3,6 @@ import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
 import {
   numericExample,
-  numericCastGotchaExample,
   textExample,
   booleanExample,
   noneExample,
@@ -32,16 +31,10 @@ export function LiteralsPage() {
             Integers and decimals are written directly, with no quotes or suffix.
           </p>
           <ExecutableSnippet title="Numeric Literals" initialCode={numericExample.code} />
-          <p className="text-text-secondary mt-4 mb-4">
-            A bare numeric literal has a generic numeric type until it lands in a column or gets
-            cast explicitly. That matters for <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">cast()</code>:
-            a literal can't jump straight to <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">utf8</code>,
-            it has to land on a sized type first.
-          </p>
-          <ExecutableSnippet title="Casting a Bare Literal" initialCode={numericCastGotchaExample.code} />
           <p className="text-text-secondary mt-4">
-            Cast through a sized type instead: <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">cast(cast(42, int4), utf8)</code>.
-            See{' '}
+            A bare numeric literal has a generic numeric type until it lands in a column or gets
+            cast explicitly. To pin it to a specific type, use{' '}
+            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">cast()</code>. See{' '}
             <Link to="/docs/rql/transforms/cast" className="text-primary-color hover:underline font-medium">
               cast
             </Link>.

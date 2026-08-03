@@ -53,12 +53,23 @@ CREATE VIEW vw_t::active_users {
   FROM vw_t::users
   FILTER active == true
   MAP { id: id, name: name }
-};
-INSERT vw_t::users [
+};`,
+  },
+{
+    id: 'scripting-transactional-view-insert',
+    title: 'Write to the Source Table',
+    category: 'scripting',
+    code: `INSERT vw_t::users [
   { id: 1, name: 'Alice', active: true },
   { id: 2, name: 'Bob', active: false }
-];
-FROM vw_t::active_users`,
+];`,
+  },
+{
+    id: 'scripting-transactional-view-query',
+    title: 'Query the Transactional View',
+    category: 'scripting',
+    code: `FROM vw_t::active_users
+sort { id: asc }`,
     expected: `id | name
 ---+------
 1  | Alice`,

@@ -13,7 +13,7 @@ aggregate { total_revenue: math::sum(total) }`,
     title: 'Aggregate Group By',
     category: 'rql',
     code: `from app::orders
-aggregate { revenue: math::sum(total), orders: math::sum(1) } by { region }`,
+aggregate { revenue: math::sum(total), orders: math::count(id) } by { region }`,
   },
 {
     id: 'aggregate-multi-group',
