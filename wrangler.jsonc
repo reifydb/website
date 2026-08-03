@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "reifydb-website",
+  "compatibility_date": "2026-04-07",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "not_found_handling": "404-page"
+  }
+}

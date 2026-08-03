@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { cloudflare } from '@cloudflare/vite-plugin'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import wasm from 'vite-plugin-wasm'
@@ -25,7 +26,7 @@ const ssrBuild = process.env.SSR_BUILD === '1'
 export default defineConfig({
   plugins: ssrBuild
     ? [react(), tailwindcss()]
-    : [react(), tailwindcss(), wasm(), topLevelAwait()],
+    : [react(), tailwindcss(), wasm(), topLevelAwait(), cloudflare()],
   build: ssrBuild
     ? {
         outDir: 'dist-ssr',
