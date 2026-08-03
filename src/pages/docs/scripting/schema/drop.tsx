@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingDropIfExists, scriptingDropTable } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function DropPage() {
   return (
@@ -19,7 +19,7 @@ export function DropPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Drop a Table</h2>
           <ExecutableSnippet
             title="Drop Table"
-            initialCode={getExampleById('scripting-drop-table')!.code}
+            initialCode={scriptingDropTable.code}
           />
           <p className="text-text-secondary mt-4">
             <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">DROP TABLE</code> removes
@@ -31,7 +31,7 @@ export function DropPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Conditional Drop</h2>
           <ExecutableSnippet
             title="Drop If Exists"
-            initialCode={getExampleById('scripting-drop-if-exists')!.code}
+            initialCode={scriptingDropIfExists.code}
           />
           <p className="text-text-secondary mt-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">IF EXISTS</code> to

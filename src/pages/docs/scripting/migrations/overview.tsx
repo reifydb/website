@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingCreateMigration, scriptingMigrationRollback } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function MigrationsOverviewPage() {
   return (
@@ -20,7 +20,7 @@ export function MigrationsOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Create a Migration</h2>
           <ExecutableSnippet
             title="Create Migration"
-            initialCode={getExampleById('scripting-create-migration')!.code}
+            initialCode={scriptingCreateMigration.code}
           />
           <p className="text-text-secondary mt-4">
             Define a migration with a name string and a body containing schema changes.
@@ -32,7 +32,7 @@ export function MigrationsOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Rollback Support</h2>
           <ExecutableSnippet
             title="Migration with Rollback"
-            initialCode={getExampleById('scripting-migration-rollback')!.code}
+            initialCode={scriptingMigrationRollback.code}
           />
           <p className="text-text-secondary mt-4">
             Add a <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">ROLLBACK</code> block to define

@@ -1,10 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-// Note: frame variables must be captured with a bare `from <source>` statement.
-// The current WASM build panics when the let statement itself contains
-// transforms (filter, sort, aggregate); apply transforms after `from $var`.
-export const rqlVariablesExamples: CodeExample[] = [
-{
+export const rqlVariablesLetExample: CodeExample = {
     id: 'rql-variables-let',
     title: 'Bind a Value Once, Use It in the Pipeline',
     category: 'rql',
@@ -24,8 +20,9 @@ sort { stock: desc }`,
 -------+------
 bolt   | 120
 washer | 45`,
-  },
-{
+  };
+
+export const rqlVariablesReassignExample: CodeExample = {
     id: 'rql-variables-reassign',
     title: 'Reassign After Declaring',
     category: 'rql',
@@ -36,16 +33,18 @@ map { restocked: $restocked }`,
     expected: `restocked
 ---------
 8`,
-  },
-{
+  };
+
+export const rqlVariablesUndeclaredExample: CodeExample = {
     id: 'rql-variables-undeclared',
     title: 'Assignment Without let Is an Error',
     description: 'A variable must be declared with let before it can be assigned to.',
     category: 'rql',
     code: `$tally = 1`,
     expectsError: true,
-  },
-{
+  };
+
+export const rqlVariablesFrameExample: CodeExample = {
     id: 'rql-variables-frame',
     title: 'Frame Variables Hold Whole Results',
     category: 'rql',
@@ -58,8 +57,9 @@ map { name, stock }`,
 -------+------
 nut    | 8
 washer | 45`,
-  },
-{
+  };
+
+export const rqlVariablesFrameFieldExample: CodeExample = {
     id: 'rql-variables-frame-field',
     title: 'Read a Field from a Single-Row Frame',
     category: 'rql',
@@ -75,8 +75,9 @@ map { name, stock }`,
 -------+------
 nut    | 8
 washer | 45`,
-  },
-{
+  };
+
+export const rqlVariablesScopeExample: CodeExample = {
     id: 'rql-variables-scope',
     title: 'Blocks Create Scopes',
     description: 'The inner let declares a new variable that shadows the outer one inside the block; the outer binding is unchanged afterwards.',
@@ -89,5 +90,13 @@ map { label: $label }`,
     expected: `label
 -----
 outer`,
-  },
+  };
+
+export const rqlVariablesExamples: CodeExample[] = [
+  rqlVariablesLetExample,
+  rqlVariablesReassignExample,
+  rqlVariablesUndeclaredExample,
+  rqlVariablesFrameExample,
+  rqlVariablesFrameFieldExample,
+  rqlVariablesScopeExample,
 ];

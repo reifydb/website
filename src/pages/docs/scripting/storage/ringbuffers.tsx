@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingCreateRingbuffer } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function RingbuffersPage() {
   return (
@@ -20,7 +20,7 @@ export function RingbuffersPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Create a Ringbuffer</h2>
           <ExecutableSnippet
             title="Create Ringbuffer"
-            initialCode={getExampleById('scripting-create-ringbuffer')!.code}
+            initialCode={scriptingCreateRingbuffer.code}
           />
           <p className="text-text-secondary mt-4">
             The <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">WITH {'{ capacity: N }'}</code> clause

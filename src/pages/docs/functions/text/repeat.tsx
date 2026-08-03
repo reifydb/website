@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { textRepeatInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function TextRepeatPage() {
   return (
@@ -29,7 +29,7 @@ export function TextRepeatPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Utf8 containing the original string repeated the specified number of times.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="text-repeat-inline" />
+          <ExecutableSnippet title={textRepeatInline.title} initialCode={textRepeatInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/text/concat" className="text-primary-color hover:underline">text::concat</Link><Link to="/docs/functions/text/length" className="text-primary-color hover:underline">text::length</Link></div></section>
       </div>

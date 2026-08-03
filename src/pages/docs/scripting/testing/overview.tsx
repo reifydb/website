@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingAssertLiteral, scriptingCreateTest } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function TestingOverviewPage() {
   return (
@@ -20,7 +20,7 @@ export function TestingOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Tests and Test Procedures</h2>
           <ExecutableSnippet
             title="Create and Run Tests"
-            initialCode={getExampleById('scripting-create-test')!.code}
+            initialCode={scriptingCreateTest.code}
           />
           <p className="text-text-secondary mt-4">
             <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">CREATE TEST PROCEDURE</code> defines
@@ -34,7 +34,7 @@ export function TestingOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Assert Expressions</h2>
           <ExecutableSnippet
             title="Assert Expressions"
-            initialCode={getExampleById('scripting-assert-literal')!.code}
+            initialCode={scriptingAssertLiteral.code}
           />
           <p className="text-text-secondary mt-4">
             <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">ASSERT</code> checks that a condition

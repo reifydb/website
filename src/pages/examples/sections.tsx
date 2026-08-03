@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
-import { heroExamples, type CodeExample } from '@/lib/examples';
+import { heroExamples } from '@/pages/landing/sections/hero.examples';
+import type { CodeExample } from '@/lib/examples/types';
 
 export interface ExampleSection {
   id: string;

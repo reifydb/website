@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingStorageRingbuffersExamples: CodeExample[] = [
-{
+export const scriptingCreateRingbufferExample: CodeExample = {
     id: 'scripting-create-ringbuffer',
     title: 'Create Ringbuffer',
     category: 'scripting',
@@ -20,5 +19,8 @@ FROM st_rb::events`,
 ---+---------+-------
 1  | first   | true
 2  | second  | true`,
-  },
+  };
+
+export const scriptingStorageRingbuffersExamples: CodeExample[] = [
+  scriptingCreateRingbufferExample,
 ];

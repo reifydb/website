@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
+import { mathAbsConvert, mathAbsFilter } from './examples.examples';
 
 export function MathAbsPage() {
   return (
@@ -67,14 +67,14 @@ export function MathAbsPage() {
 
           <h3 className="text-lg font-bold mb-3">Convert to absolute value</h3>
           <ExecutableSnippet
-            title={getExampleById('math-abs-convert')!.title}
-            initialCode={getExampleById('math-abs-convert')!.code}
+            title={mathAbsConvert.title}
+            initialCode={mathAbsConvert.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Filter by absolute magnitude</h3>
           <ExecutableSnippet
-            title={getExampleById('math-abs-filter')!.title}
-            initialCode={getExampleById('math-abs-filter')!.code}
+            title={mathAbsFilter.title}
+            initialCode={mathAbsFilter.code}
           />
         </section>
 

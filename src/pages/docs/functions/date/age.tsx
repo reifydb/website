@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dateAgeInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DateAgePage() {
   return (
@@ -29,7 +29,7 @@ export function DateAgePage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Duration representing the time between the two dates.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="date-age-inline" />
+          <ExecutableSnippet title={dateAgeInline.title} initialCode={dateAgeInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/date/diff" className="text-primary-color hover:underline">date::diff</Link><Link to="/docs/functions/date/now" className="text-primary-color hover:underline">date::now</Link></div></section>
       </div>

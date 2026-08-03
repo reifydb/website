@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { Callout, CodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
+import { dmPoliciesDisable, dmPoliciesDrop, dmPoliciesEnable, dmPoliciesInspect, dmPoliciesReadFilter, dmPoliciesReadMask, dmPoliciesWriteRequire } from './examples.examples';
+import { dmPoliciesDisable, dmPoliciesDrop, dmPoliciesEnable } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -30,13 +31,13 @@ export function DataModelPoliciesPage() {
             which rows non-root identities can see at all. Run the snippets on this
             page in order:
           </p>
-          <ExampleSnippet id="dm-policies-read-filter" />
+          <ExecutableSnippet title={dmPoliciesReadFilter.title} initialCode={dmPoliciesReadFilter.code} />
           <p className="text-text-secondary mt-4 mb-4">
             A <Code>map</Code> in the <Code>from</Code> pipeline reshapes what readers
             get: mask a column by overwriting it, or hide it by omitting it from the
             projection:
           </p>
-          <ExampleSnippet id="dm-policies-read-mask" />
+          <ExecutableSnippet title={dmPoliciesReadMask.title} initialCode={dmPoliciesReadMask.code} />
         </section>
 
         <section>
@@ -46,7 +47,7 @@ export function DataModelPoliciesPage() {
             operations take a <Code>require</Code> pipeline - a predicate every
             affected row must satisfy, or the mutation is rejected:
           </p>
-          <ExampleSnippet id="dm-policies-write-require" />
+          <ExecutableSnippet title={dmPoliciesWriteRequire.title} initialCode={dmPoliciesWriteRequire.code} />
           <p className="text-text-secondary mt-4 mb-4">
             For a non-root identity, a violating write fails with a policy error and
             the transaction does not commit:
@@ -115,10 +116,10 @@ HELP
             disable and re-enable them without losing their definition, and drop them
             when obsolete.
           </p>
-          <ExampleSnippet id="dm-policies-inspect" />
-          <ExampleSnippet id="dm-policies-disable" className="mt-4" />
-          <ExampleSnippet id="dm-policies-enable" className="mt-4" />
-          <ExampleSnippet id="dm-policies-drop" className="mt-4" />
+          <ExecutableSnippet title={dmPoliciesInspect.title} initialCode={dmPoliciesInspect.code} />
+          <ExecutableSnippet title={dmPoliciesDisable.title} initialCode={dmPoliciesDisable.code} className="mt-4"  />
+          <ExecutableSnippet title={dmPoliciesEnable.title} initialCode={dmPoliciesEnable.code} className="mt-4"  />
+          <ExecutableSnippet title={dmPoliciesDrop.title} initialCode={dmPoliciesDrop.code} className="mt-4"  />
           <p className="text-text-secondary mt-4">
             Disabling a policy does not open access up - with no active policy,
             non-root identities fall back to default deny.

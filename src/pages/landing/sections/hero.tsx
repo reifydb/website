@@ -1,7 +1,7 @@
 import { HaikuTypewriter } from '@/components/demo';
 import type { Haiku } from '@/components/demo';
 import { Button, ExecutableSnippet } from '@/components/ui';
-import { heroExamples } from '@/lib/examples';
+import { heroExamples } from './hero.examples';
 
 const heroExample = heroExamples.find((ex) => ex.id === 'guide-built-in-testing')!;
 

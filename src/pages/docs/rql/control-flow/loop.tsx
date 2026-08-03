@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { cfLoopBreak, cfLoopCap, cfLoopContinue, cfLoopInFor, cfLoopInWhile, cfLoopResult } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -34,7 +34,7 @@ export function RqlControlFlowLoopPage() {
             exit condition depends on the value being computed - exactly the case a
             condition-first loop states awkwardly:
           </p>
-          <ExampleSnippet id="cf-loop-break" />
+          <ExecutableSnippet title={cfLoopBreak.title} initialCode={cfLoopBreak.code} />
         </section>
 
         <section>
@@ -45,7 +45,7 @@ export function RqlControlFlowLoopPage() {
             do not run for that pass. Note the <Code>;</Code> after each{' '}
             <Code>if ... {'{'} ... {'}'}</Code> block before the next statement:
           </p>
-          <ExampleSnippet id="cf-loop-continue" />
+          <ExecutableSnippet title={cfLoopContinue.title} initialCode={cfLoopContinue.code} />
         </section>
 
         <section>
@@ -55,7 +55,7 @@ export function RqlControlFlowLoopPage() {
             <Code>let</Code> inside the block are scoped to one iteration. Accumulate
             into outer variables, use them after <Code>break</Code>:
           </p>
-          <ExampleSnippet id="cf-loop-result" />
+          <ExecutableSnippet title={cfLoopResult.title} initialCode={cfLoopResult.code} />
         </section>
 
         <section>
@@ -63,13 +63,13 @@ export function RqlControlFlowLoopPage() {
           <p className="text-text-secondary mb-4">
             A <Code>while</Code> loop can bail out before its condition turns false:
           </p>
-          <ExampleSnippet id="cf-loop-in-while" />
+          <ExecutableSnippet title={cfLoopInWhile.title} initialCode={cfLoopInWhile.code} />
           <p className="text-text-secondary mt-4 mb-4">
             And <Code>continue</Code> inside a{' '}
             <Link to="/docs/rql/control-flow/for" className="text-primary hover:text-primary-light font-medium transition-colors">for</Link>{' '}
             loop acts as a per-iteration filter:
           </p>
-          <ExampleSnippet id="cf-loop-in-for" />
+          <ExecutableSnippet title={cfLoopInFor.title} initialCode={cfLoopInFor.code} />
         </section>
 
         <section>
@@ -80,7 +80,7 @@ export function RqlControlFlowLoopPage() {
             with <Code>RUNTIME_006</Code>, and the failed request rolls back like any
             other error:
           </p>
-          <ExampleSnippet id="cf-loop-cap" />
+          <ExecutableSnippet title={cfLoopCap.title} initialCode={cfLoopCap.code} />
         </section>
 
         <Callout variant="note" title="Loops are statements, not transforms">

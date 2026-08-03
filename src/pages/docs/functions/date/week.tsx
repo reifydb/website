@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dateWeekInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DateWeekPage() {
   return (
@@ -26,7 +26,7 @@ export function DateWeekPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns an Integer representing the ISO week number (1-53).</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="date-week-inline" />
+          <ExecutableSnippet title={dateWeekInline.title} initialCode={dateWeekInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/date/quarter" className="text-primary-color hover:underline">date::quarter</Link><Link to="/docs/functions/date/day_of_week" className="text-primary-color hover:underline">date::day_of_week</Link></div></section>
       </div>

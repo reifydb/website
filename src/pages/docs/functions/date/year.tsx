@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dateYearInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DateYearPage() {
   return (
@@ -62,7 +62,7 @@ export function DateYearPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="date-year-inline" />
+          <ExecutableSnippet title={dateYearInline.title} initialCode={dateYearInline.code} />
         </section>
 
         {/* Related Functions */}

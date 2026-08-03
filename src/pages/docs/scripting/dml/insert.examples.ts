@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingDmlInsertExamples: CodeExample[] = [
-{
+export const scriptingInsertMultipleExample: CodeExample = {
     id: 'scripting-insert-multiple',
     title: 'Insert Multiple Batches',
     category: 'scripting',
@@ -16,5 +15,8 @@ sort { id: asc }`,
 1  | start
 2  | running
 3  | done`,
-  },
+  };
+
+export const scriptingDmlInsertExamples: CodeExample[] = [
+  scriptingInsertMultipleExample,
 ];

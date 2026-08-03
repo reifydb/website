@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingCreateProcedure, scriptingProcedureParams } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function ProceduresOverviewPage() {
   return (
@@ -20,7 +20,7 @@ export function ProceduresOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Create a Procedure</h2>
           <ExecutableSnippet
             title="Create Procedure"
-            initialCode={getExampleById('scripting-create-procedure')!.code}
+            initialCode={scriptingCreateProcedure.code}
           />
           <p className="text-text-secondary mt-4">
             A procedure has a name and a body. Call it with{' '}
@@ -32,7 +32,7 @@ export function ProceduresOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
           <ExecutableSnippet
             title="Procedure Parameters"
-            initialCode={getExampleById('scripting-procedure-params')!.code}
+            initialCode={scriptingProcedureParams.code}
           />
           <p className="text-text-secondary mt-4">
             Procedures can take typed parameters. Reference them with{' '}

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { isSome } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function IsSomePage() {
   return (
@@ -26,7 +26,7 @@ export function IsSomePage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Boolean indicating whether the value is not none.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="is-some" />
+          <ExecutableSnippet title={isSome.title} initialCode={isSome.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/is/none" className="text-primary-color hover:underline">is::none</Link><Link to="/docs/functions/is/type" className="text-primary-color hover:underline">is::type</Link></div></section>
       </div>

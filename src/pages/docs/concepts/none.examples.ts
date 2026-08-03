@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const conceptsNoneExamples: CodeExample[] = [
-{
+export const conceptsNoneOptionalColumnsExample: CodeExample = {
     id: 'concepts-none-optional-columns',
     title: 'Optional Columns Hold none',
     category: 'concept',
@@ -22,16 +21,18 @@ from cpt_none::people sort { id: asc }`,
 1  | Ada   | Al
 2  | Grace | ⟪none⟫
 3  | Alan  | ⟪none⟫`,
-  },
-{
+  };
+
+export const conceptsNoneRequiredRejectsExample: CodeExample = {
     id: 'concepts-none-required-rejects',
     title: 'Non-Optional Columns Reject none',
     description: 'name is utf8, not Option(utf8), so writing none to it fails with CONSTRAINT_007 and the request rolls back.',
     category: 'concept',
     code: `insert cpt_none::people [{ id: 4, name: none }]`,
     expectsError: true,
-  },
-{
+  };
+
+export const conceptsNonePropagatesExample: CodeExample = {
     id: 'concepts-none-propagates',
     title: 'none Propagates Through Expressions',
     category: 'concept',
@@ -45,8 +46,9 @@ sort { id: asc }`,
 ---+---------+--------+-------
 1  | 20      | true   | SALE
 2  | ⟪none⟫  | ⟪none⟫ | ⟪none⟫`,
-  },
-{
+  };
+
+export const conceptsNoneLogicExample: CodeExample = {
     id: 'concepts-none-logic',
     title: 'Logical Operators Recover When the Answer Is Certain',
     category: 'concept',
@@ -55,15 +57,17 @@ map { and_false: flag and false, or_true: flag or true, negated: not flag }`,
     expected: `and_false | or_true | negated
 ----------+---------+--------
 false     | true    | ⟪none⟫`,
-  },
-{
+  };
+
+export const conceptsNoneEqNeverMatchesExample: CodeExample = {
     id: 'concepts-none-eq-never-matches',
     title: 'Equality Against none Never Matches',
     category: 'concept',
     code: `from cpt_none::people filter { nickname == none }`,
     expected: `(empty)`,
-  },
-{
+  };
+
+export const conceptsNoneIsNoneExample: CodeExample = {
     id: 'concepts-none-is-none',
     title: 'Test for none with is::none',
     category: 'concept',
@@ -75,8 +79,9 @@ sort { name: asc }`,
 -----
 Alan
 Grace`,
-  },
-{
+  };
+
+export const conceptsNoneFilterDropsExample: CodeExample = {
     id: 'concepts-none-filter-drops',
     title: 'A none Predicate Drops the Row',
     category: 'concept',
@@ -88,8 +93,9 @@ filter { score > 50 }`,
     expected: `id | score
 ---+------
 1  | 80`,
-  },
-{
+  };
+
+export const conceptsNoneFilterComplementExample: CodeExample = {
     id: 'concepts-none-filter-complement',
     title: 'The Complement Drops It Too',
     description: 'not (none > 50) is still none, so the row with the missing score matches neither predicate.',
@@ -100,8 +106,9 @@ filter { score > 50 }`,
 ]
 filter { not (score > 50) }`,
     expected: `(empty)`,
-  },
-{
+  };
+
+export const conceptsNoneReplaceExample: CodeExample = {
     id: 'concepts-none-replace',
     title: 'Replace none with a Default',
     category: 'concept',
@@ -113,8 +120,9 @@ sort { name: asc }`,
 Ada   | Al
 Alan  | (no nickname)
 Grace | (no nickname)`,
-  },
-{
+  };
+
+export const conceptsNoneClearExample: CodeExample = {
     id: 'concepts-none-clear',
     title: 'Clear a Value by Writing none',
     category: 'concept',
@@ -125,8 +133,9 @@ from cpt_none::people map { name, nickname } sort { name: asc }`,
 Ada   | ⟪none⟫
 Alan  | ⟪none⟫
 Grace | ⟪none⟫`,
-  },
-{
+  };
+
+export const conceptsNoneLeftJoinExample: CodeExample = {
     id: 'concepts-none-left-join',
     title: 'Left Joins Introduce none',
     category: 'concept',
@@ -141,8 +150,9 @@ sort { name: asc }`,
 Ada   | 555-0100
 Alan  | ⟪none⟫
 Grace | ⟪none⟫`,
-  },
-{
+  };
+
+export const conceptsNoneJoinMissingExample: CodeExample = {
     id: 'concepts-none-join-missing',
     title: 'Find the Unmatched Rows',
     category: 'concept',
@@ -155,8 +165,9 @@ sort { name: asc }`,
 -----
 Alan
 Grace`,
-  },
-{
+  };
+
+export const conceptsNoneAggregatesExample: CodeExample = {
     id: 'concepts-none-aggregates',
     title: 'Aggregates Skip none Inputs',
     description: 'south has no defined readings at all, so its sum is none - there was nothing to add up.',
@@ -178,8 +189,9 @@ aggregate {
 -------+--------+----------+-----
 south  | ⟪none⟫ | 0        | 1
 north  | 30     | 2        | 3`,
-  },
-{
+  };
+
+export const conceptsNoneGroupKeyExample: CodeExample = {
     id: 'concepts-none-group-key',
     title: 'As a Group Key, none Is Its Own Group',
     category: 'concept',
@@ -193,8 +205,9 @@ aggregate { total: math::sum(sales) } by { region }`,
 -------+------
 ⟪none⟫ | 8
 east   | 2`,
-  },
-{
+  };
+
+export const conceptsNoneSortAscExample: CodeExample = {
     id: 'concepts-none-sort-asc',
     title: 'Ascending Sorts Put none Last',
     category: 'concept',
@@ -205,8 +218,9 @@ sort { v: asc }`,
 3  | 1
 1  | 5
 2  | ⟪none⟫`,
-  },
-{
+  };
+
+export const conceptsNoneSortDescExample: CodeExample = {
     id: 'concepts-none-sort-desc',
     title: 'Descending Sorts Put none First',
     category: 'concept',
@@ -217,5 +231,23 @@ sort { v: desc }`,
 2  | ⟪none⟫
 1  | 5
 3  | 1`,
-  },
+  };
+
+export const conceptsNoneExamples: CodeExample[] = [
+  conceptsNoneOptionalColumnsExample,
+  conceptsNoneRequiredRejectsExample,
+  conceptsNonePropagatesExample,
+  conceptsNoneLogicExample,
+  conceptsNoneEqNeverMatchesExample,
+  conceptsNoneIsNoneExample,
+  conceptsNoneFilterDropsExample,
+  conceptsNoneFilterComplementExample,
+  conceptsNoneReplaceExample,
+  conceptsNoneClearExample,
+  conceptsNoneLeftJoinExample,
+  conceptsNoneJoinMissingExample,
+  conceptsNoneAggregatesExample,
+  conceptsNoneGroupKeyExample,
+  conceptsNoneSortAscExample,
+  conceptsNoneSortDescExample,
 ];

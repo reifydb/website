@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { mathAcosInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function MathAcosPage() {
   return (
@@ -26,7 +26,7 @@ export function MathAcosPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Number representing the arccosine in radians.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="math-acos-inline" />
+          <ExecutableSnippet title={mathAcosInline.title} initialCode={mathAcosInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/math/cos" className="text-primary-color hover:underline">math::cos</Link><Link to="/docs/functions/math/asin" className="text-primary-color hover:underline">math::asin</Link><Link to="/docs/functions/math/atan" className="text-primary-color hover:underline">math::atan</Link></div></section>
       </div>

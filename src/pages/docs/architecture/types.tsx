@@ -1,6 +1,6 @@
 import { Layout } from '../layout.tsx';
+import { typesCastExample, typesFloatPromotion, typesIntegerWidening, typesNonePropagation, typesStringConcat } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function TypesPage() {
   return (
@@ -85,7 +85,7 @@ export function TypesPage() {
           </p>
           <ExecutableSnippet
             title="Integer Widening"
-            initialCode={getExampleById('types-integer-widening')!.code}
+            initialCode={typesIntegerWidening.code}
           />
           <p className="text-text-secondary mt-4 mb-4">
             Same-family widening: <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">int1 → int2 → int4 → int8</code>.
@@ -96,7 +96,7 @@ export function TypesPage() {
           </p>
           <ExecutableSnippet
             title="Float Promotion"
-            initialCode={getExampleById('types-float-promotion')!.code}
+            initialCode={typesFloatPromotion.code}
           />
         </section>
 
@@ -110,7 +110,7 @@ export function TypesPage() {
           </p>
           <ExecutableSnippet
             title="None Propagation"
-            initialCode={getExampleById('types-none-propagation')!.code}
+            initialCode={typesNonePropagation.code}
           />
           <p className="text-text-secondary mt-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">is::some()</code> and <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">is::none()</code> to
@@ -128,7 +128,7 @@ export function TypesPage() {
           </p>
           <ExecutableSnippet
             title="String Concatenation"
-            initialCode={getExampleById('types-string-concat')!.code}
+            initialCode={typesStringConcat.code}
           />
           <p className="text-text-secondary mt-4">
             Works with bool, int, float, date, datetime, uuid, and blob values.
@@ -144,7 +144,7 @@ export function TypesPage() {
           </p>
           <ExecutableSnippet
             title="Type Casting"
-            initialCode={getExampleById('types-cast-example')!.code}
+            initialCode={typesCastExample.code}
           />
         </section>
       </div>

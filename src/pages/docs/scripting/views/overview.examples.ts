@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingViewsOverviewExamples: CodeExample[] = [
-{
+export const scriptingDeferredViewExample: CodeExample = {
     id: 'scripting-deferred-view',
     title: 'Deferred View',
     category: 'scripting',
@@ -24,8 +23,9 @@ INSERT vw_d::employees [
   { id: 2, name: 'Bob', active: false },
   { id: 3, name: 'Carol', active: true }
 ];`,
-  },
-{
+  };
+
+export const scriptingDeferredViewQueryExample: CodeExample = {
     id: 'scripting-deferred-view-query',
     title: 'Query the Deferred View',
     category: 'scripting',
@@ -35,8 +35,9 @@ sort { id: asc }`,
 ---+------
 1  | Alice
 3  | Carol`,
-  },
-{
+  };
+
+export const scriptingTransactionalViewExample: CodeExample = {
     id: 'scripting-transactional-view',
     title: 'Transactional View',
     category: 'scripting',
@@ -54,8 +55,9 @@ CREATE VIEW vw_t::active_users {
   FILTER active == true
   MAP { id: id, name: name }
 };`,
-  },
-{
+  };
+
+export const scriptingTransactionalViewInsertExample: CodeExample = {
     id: 'scripting-transactional-view-insert',
     title: 'Write to the Source Table',
     category: 'scripting',
@@ -63,8 +65,9 @@ CREATE VIEW vw_t::active_users {
   { id: 1, name: 'Alice', active: true },
   { id: 2, name: 'Bob', active: false }
 ];`,
-  },
-{
+  };
+
+export const scriptingTransactionalViewQueryExample: CodeExample = {
     id: 'scripting-transactional-view-query',
     title: 'Query the Transactional View',
     category: 'scripting',
@@ -73,5 +76,12 @@ sort { id: asc }`,
     expected: `id | name
 ---+------
 1  | Alice`,
-  },
+  };
+
+export const scriptingViewsOverviewExamples: CodeExample[] = [
+  scriptingDeferredViewExample,
+  scriptingDeferredViewQueryExample,
+  scriptingTransactionalViewExample,
+  scriptingTransactionalViewInsertExample,
+  scriptingTransactionalViewQueryExample,
 ];

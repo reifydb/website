@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const functionsTextTrimExamples: CodeExample[] = [
-{
+export const textTrimInputExample: CodeExample = {
     id: 'text-trim-input',
     title: 'Clean user input',
     category: 'function',
@@ -13,8 +12,9 @@ extend { clean_value: text::trim(value) }`,
 3  | trimmed         | trimmed
 2  |   test input    | test input
 1  |   hello world   | hello world`,
-  },
-{
+  };
+
+export const textTrimFilterExample: CodeExample = {
     id: 'text-trim-filter',
     title: 'Filter non-empty strings',
     category: 'function',
@@ -26,5 +26,9 @@ filter { text::length(value) > 0 }`,
 3  | trimmed
 2  |   test input
 1  |   hello world`,
-  },
+  };
+
+export const functionsTextTrimExamples: CodeExample[] = [
+  textTrimInputExample,
+  textTrimFilterExample,
 ];

@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dataModelNamespacesExamples: CodeExample[] = [
-{
+export const dmNamespacesCreateExample: CodeExample = {
     id: 'dm-namespaces-create',
     title: 'Create a Namespace and Address Objects Inside It',
     category: 'concept',
@@ -12,8 +11,9 @@ from dm_ns::users`,
     expected: `id | name
 ---+-----
 1  | Ada`,
-  },
-{
+  };
+
+export const dmNamespacesSameNameExample: CodeExample = {
     id: 'dm-namespaces-same-name',
     title: 'The Same Object Name in Two Namespaces',
     category: 'concept',
@@ -27,14 +27,16 @@ from dm_ns_prod::orders`,
     expected: `id
 ----
 1001`,
-  },
-{
+  };
+
+export const dmNamespacesIfNotExistsExample: CodeExample = {
     id: 'dm-namespaces-if-not-exists',
     title: 'Idempotent Creation with IF NOT EXISTS',
     category: 'concept',
     code: `create namespace dm_ns if not exists`,
-  },
-{
+  };
+
+export const dmNamespacesNestedExample: CodeExample = {
     id: 'dm-namespaces-nested',
     title: 'Nested Namespaces',
     category: 'concept',
@@ -45,8 +47,9 @@ from dm_ns::internal::audit`,
     expected: `id | action
 ---+-------
 1  | login`,
-  },
-{
+  };
+
+export const dmNamespacesSystemExample: CodeExample = {
     id: 'dm-namespaces-system',
     title: 'Inspect Namespaces via the System Catalog',
     category: 'concept',
@@ -55,5 +58,12 @@ filter { local_name == "internal" }`,
     expected: `id    | name            | local_name | parent_id
 ------+-----------------+------------+----------
 16389 | dm_ns::internal | internal   | 16386`,
-  },
+  };
+
+export const dataModelNamespacesExamples: CodeExample[] = [
+  dmNamespacesCreateExample,
+  dmNamespacesSameNameExample,
+  dmNamespacesIfNotExistsExample,
+  dmNamespacesNestedExample,
+  dmNamespacesSystemExample,
 ];

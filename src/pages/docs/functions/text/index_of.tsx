@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { textIndexOfInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function TextIndexOfPage() {
   return (
@@ -29,7 +29,7 @@ export function TextIndexOfPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns an Integer representing the 0-based index of the first occurrence of the substring, or -1 if not found.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="text-index_of-inline" />
+          <ExecutableSnippet title={textIndexOfInline.title} initialCode={textIndexOfInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/text/contains" className="text-primary-color hover:underline">text::contains</Link><Link to="/docs/functions/text/substring" className="text-primary-color hover:underline">text::substring</Link></div></section>
       </div>

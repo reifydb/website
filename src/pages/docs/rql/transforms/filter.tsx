@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { filterBasic, filterMultipleConditions, filterNone } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function FilterPage() {
   return (
@@ -20,7 +20,7 @@ export function FilterPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Basic Syntax</h2>
           <ExecutableSnippet
             title="Basic Syntax"
-            initialCode={getExampleById('filter-basic')!.code}
+            initialCode={filterBasic.code}
           />
           <p className="text-text-secondary mt-4">
             This keeps users who are 18 or older.
@@ -34,7 +34,7 @@ export function FilterPage() {
           </p>
           <ExecutableSnippet
             title="Multiple Conditions"
-            initialCode={getExampleById('filter-multiple-conditions')!.code}
+            initialCode={filterMultipleConditions.code}
           />
         </section>
 
@@ -45,7 +45,7 @@ export function FilterPage() {
           </p>
           <ExecutableSnippet
             title="None Handling"
-            initialCode={getExampleById('filter-none')!.code}
+            initialCode={filterNone.code}
           />
         </section>
 

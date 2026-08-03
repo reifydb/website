@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const rqlControlFlowConditionalsExamples: CodeExample[] = [
-{
+export const cfIfExpressionExample: CodeExample = {
     id: 'cf-if-expression',
     title: 'if as an Expression',
     category: 'rql',
@@ -11,8 +10,9 @@ map { stock: $stock, status: $status }`,
     expected: `stock | status
 ------+---------
 4     | in stock`,
-  },
-{
+  };
+
+export const cfIfElseIfExample: CodeExample = {
     id: 'cf-if-else-if',
     title: 'Chain Conditions with else if',
     category: 'rql',
@@ -24,8 +24,9 @@ map { latency: $latency, rating: $rating }`,
     expected: `latency | rating
 --------+-----------
 250     | acceptable`,
-  },
-{
+  };
+
+export const cfIfNoElseExample: CodeExample = {
     id: 'cf-if-no-else',
     title: 'No else, No Match: the Result Is none',
     category: 'rql',
@@ -35,8 +36,9 @@ map { temp: $temp, warning: $warning }`,
     expected: `temp | warning
 -----+--------
 18   | ⟪none⟫`,
-  },
-{
+  };
+
+export const cfIfGuardWriteExample: CodeExample = {
     id: 'cf-if-guard-write',
     title: 'Guard a Write with if',
     category: 'rql',
@@ -50,34 +52,11 @@ from cf_if::audit`,
     expected: `event
 ------
 deploy`,
-  },
-{
-    id: 'cf-if-branch-shapes',
-    // Note: branches here emit map projections directly. In the current WASM
-    // build a `from ... map` pipeline inside an if branch drops the map's
-    // computed columns (engine limitation), so avoid that shape.
-    title: 'Branches Can Produce Different Results',
-    category: 'rql',
-    code: `let $verbose = true;
-if $verbose {
-  map { event: "deploy", detail: "full record" }
-} else {
-  map { event: "deploy" }
-}`,
-    expected: `event  | detail
--------+------------
-deploy | full record`,
-  },
-{
-    id: 'cf-if-reassign',
-    title: 'Reassign an Outer Variable from a Branch',
-    category: 'rql',
-    code: `let $queue = 12;
-let $action = "pending";
-if $queue > 10 { $action = "scale up" } else { $action = "hold" };
-map { queue: $queue, action: $action }`,
-    expected: `queue | action
-------+---------
-12    | scale up`,
-  },
+  };
+
+export const rqlControlFlowConditionalsExamples: CodeExample[] = [
+  cfIfExpressionExample,
+  cfIfElseIfExample,
+  cfIfNoElseExample,
+  cfIfGuardWriteExample,
 ];

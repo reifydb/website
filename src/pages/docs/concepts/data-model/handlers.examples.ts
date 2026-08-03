@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dataModelHandlersExamples: CodeExample[] = [
-{
+export const dmHandlersSetupExample: CodeExample = {
     id: 'dm-handlers-setup',
     title: 'An Event and the Tables Handlers Will Write',
     category: 'concept',
@@ -12,8 +11,9 @@ create event dm_h::order_event {
   OrderPlaced { id: int4, amount: int4 },
   OrderShipped { id: int4 }
 }`,
-  },
-{
+  };
+
+export const dmHandlersTwoExample: CodeExample = {
     id: 'dm-handlers-two',
     title: 'Several Handlers, One Variant',
     category: 'concept',
@@ -27,8 +27,9 @@ dispatch dm_h::order_event::OrderPlaced { id: 1, amount: 250 }`,
     expected: `handlers_fired
 --------------
 2`,
-  },
-{
+  };
+
+export const dmHandlersEffectsExample: CodeExample = {
     id: 'dm-handlers-effects',
     title: 'Each Handler Did Its Own Work',
     category: 'concept',
@@ -36,8 +37,9 @@ dispatch dm_h::order_event::OrderPlaced { id: 1, amount: 250 }`,
     expected: `total
 -----
 250`,
-  },
-{
+  };
+
+export const dmHandlersScriptedExample: CodeExample = {
     id: 'dm-handlers-scripted',
     title: 'Handler Bodies Are Scripts',
     category: 'concept',
@@ -52,8 +54,9 @@ dispatch dm_h::evt::Compute { }`,
     expected: `handlers_fired
 --------------
 1`,
-  },
-{
+  };
+
+export const dmHandlersScriptedEffectExample: CodeExample = {
     id: 'dm-handlers-scripted-effect',
     title: 'Read the Computed Result',
     category: 'concept',
@@ -61,8 +64,9 @@ dispatch dm_h::evt::Compute { }`,
     expected: `sum
 ---
 30`,
-  },
-{
+  };
+
+export const dmHandlersNestedExample: CodeExample = {
     id: 'dm-handlers-nested',
     title: 'Handlers Can Dispatch Further Events',
     category: 'concept',
@@ -76,8 +80,9 @@ dispatch dm_h::order_event::OrderPlaced { id: 2, amount: 99 }`,
     expected: `handlers_fired
 --------------
 3`,
-  },
-{
+  };
+
+export const dmHandlersNestedEffectsExample: CodeExample = {
     id: 'dm-handlers-nested-effects',
     title: 'The Whole Chain Committed Together',
     category: 'concept',
@@ -87,8 +92,9 @@ dispatch dm_h::order_event::OrderPlaced { id: 2, amount: 99 }`,
 shipped
 placed
 placed`,
-  },
-{
+  };
+
+export const dmHandlersDropExample: CodeExample = {
     id: 'dm-handlers-drop',
     title: 'Drop a Handler',
     category: 'concept',
@@ -96,8 +102,9 @@ placed`,
     expected: `namespace | handler   | dropped
 ----------+-----------+--------
 dm_h      | auto_ship | true`,
-  },
-{
+  };
+
+export const dmHandlersAfterDropExample: CodeExample = {
     id: 'dm-handlers-after-drop',
     title: 'Dispatch Reflects the Remaining Handlers',
     category: 'concept',
@@ -105,5 +112,16 @@ dm_h      | auto_ship | true`,
     expected: `handlers_fired
 --------------
 2`,
-  },
+  };
+
+export const dataModelHandlersExamples: CodeExample[] = [
+  dmHandlersSetupExample,
+  dmHandlersTwoExample,
+  dmHandlersEffectsExample,
+  dmHandlersScriptedExample,
+  dmHandlersScriptedEffectExample,
+  dmHandlersNestedExample,
+  dmHandlersNestedEffectsExample,
+  dmHandlersDropExample,
+  dmHandlersAfterDropExample,
 ];

@@ -1,11 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-// Note: closures and udfs are request-scoped, so every example defines the
-// functions it calls. In the current WASM build a closure variable cannot be
-// called inline inside a pipeline expression (map, filter); bind its result
-// with let first. Named udfs can be called inline.
-export const rqlControlFlowClosuresExamples: CodeExample[] = [
-{
+export const cfClosuresBasicExample: CodeExample = {
     id: 'cf-closures-basic',
     title: 'Define a Closure, Call It',
     category: 'rql',
@@ -14,8 +9,9 @@ $double(21)`,
     expected: `value
 -----
 42`,
-  },
-{
+  };
+
+export const cfClosuresCaptureExample: CodeExample = {
     id: 'cf-closures-capture',
     title: 'Closures Capture Their Scope',
     category: 'rql',
@@ -25,8 +21,9 @@ $adder(5)`,
     expected: `value
 -----
 15`,
-  },
-{
+  };
+
+export const cfClosuresShadowExample: CodeExample = {
     id: 'cf-closures-shadow',
     title: 'A Parameter Shadows a Captured Variable',
     category: 'rql',
@@ -36,8 +33,9 @@ $f(5)`,
     expected: `value
 -----
 6`,
-  },
-{
+  };
+
+export const cfClosuresBlockBodyExample: CodeExample = {
     id: 'cf-closures-block-body',
     title: 'Bodies Are Blocks',
     category: 'rql',
@@ -49,8 +47,9 @@ $f(3)`,
     expected: `value
 -----
 7`,
-  },
-{
+  };
+
+export const cfClosuresComposeExample: CodeExample = {
     id: 'cf-closures-compose',
     title: 'Closures Call Closures',
     category: 'rql',
@@ -60,8 +59,9 @@ $twice(5)`,
     expected: `value
 -----
 7`,
-  },
-{
+  };
+
+export const cfClosuresIntoQueryExample: CodeExample = {
     id: 'cf-closures-into-query',
     title: 'Bind the Result, Use It in a Query',
     category: 'rql',
@@ -71,8 +71,9 @@ map { doubled: $r }`,
     expected: `doubled
 -------
 8`,
-  },
-{
+  };
+
+export const cfClosuresInlineFailsExample: CodeExample = {
     id: 'cf-closures-inline-fails',
     title: 'Closure Variables Cannot Be Called Inline',
     description: 'Inside map and filter, $f(4) is not resolved as a callable in the current build; bind the result with let first.',
@@ -80,8 +81,9 @@ map { doubled: $r }`,
     code: `let $f = ($x) { $x * 2 };
 map { v: $f(4) }`,
     expectsError: true,
-  },
-{
+  };
+
+export const cfClosuresUdfExample: CodeExample = {
     id: 'cf-closures-udf',
     title: 'Named Functions Work Inline',
     category: 'rql',
@@ -90,8 +92,9 @@ map { v: triple(4) }`,
     expected: `v
 --
 12`,
-  },
-{
+  };
+
+export const cfClosuresUdfEarlyReturnExample: CodeExample = {
     id: 'cf-closures-udf-early-return',
     title: 'return Exits Early',
     category: 'rql',
@@ -103,8 +106,9 @@ map { a: check(150), b: check(3) }`,
     expected: `a     | b
 ------+------
 large | small`,
-  },
-{
+  };
+
+export const cfClosuresUdfFilterExample: CodeExample = {
     id: 'cf-closures-udf-filter',
     title: 'Use a udf as a Predicate',
     category: 'rql',
@@ -114,8 +118,9 @@ filter { big(a) }`,
     expected: `a
 -
 3`,
-  },
-{
+  };
+
+export const cfClosuresUdfDmlExample: CodeExample = {
     id: 'cf-closures-udf-dml',
     title: 'Wrap a Write in a udf',
     category: 'rql',
@@ -129,13 +134,28 @@ from cf_clo::counters`,
     expected: `name   | hits
 -------+-----
 visits | 2`,
-  },
-{
+  };
+
+export const cfClosuresRequestScopedExample: CodeExample = {
     id: 'cf-closures-request-scoped',
     title: 'Functions Live for One Request',
     description: 'bump was defined in the previous request, so calling it here fails - closures and udfs are not persisted.',
     category: 'rql',
     code: `bump("visits")`,
     expectsError: true,
-  },
+  };
+
+export const rqlControlFlowClosuresExamples: CodeExample[] = [
+  cfClosuresBasicExample,
+  cfClosuresCaptureExample,
+  cfClosuresShadowExample,
+  cfClosuresBlockBodyExample,
+  cfClosuresComposeExample,
+  cfClosuresIntoQueryExample,
+  cfClosuresInlineFailsExample,
+  cfClosuresUdfExample,
+  cfClosuresUdfEarlyReturnExample,
+  cfClosuresUdfFilterExample,
+  cfClosuresUdfDmlExample,
+  cfClosuresRequestScopedExample,
 ];

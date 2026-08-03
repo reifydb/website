@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const routinesOverviewExamples: CodeExample[] = [
-{
+export const routinesOverviewFunctionCallExample: CodeExample = {
     id: 'routines-overview-function-call',
     title: 'Functions Compute Values in Expressions',
     category: 'concept',
@@ -12,8 +11,9 @@ export const routinesOverviewExamples: CodeExample[] = [
     expected: `distance | label
 ---------+------
 42       | REIFY`,
-  },
-{
+  };
+
+export const routinesOverviewProcedureRoundtripExample: CodeExample = {
     id: 'routines-overview-procedure-roundtrip',
     title: 'Procedures Run Statements with CALL',
     category: 'concept',
@@ -30,5 +30,9 @@ SORT { note: asc }`,
 ------------
 first entry
 second entry`,
-  },
+  };
+
+export const routinesOverviewExamples: CodeExample[] = [
+  routinesOverviewFunctionCallExample,
+  routinesOverviewProcedureRoundtripExample,
 ];

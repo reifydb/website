@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dateIsLeapYearInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DateIsLeapYearPage() {
   return (
@@ -26,7 +26,7 @@ export function DateIsLeapYearPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Boolean indicating whether the date falls in a leap year.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="date-is_leap_year-inline" />
+          <ExecutableSnippet title={dateIsLeapYearInline.title} initialCode={dateIsLeapYearInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/date/year" className="text-primary-color hover:underline">date::year</Link><Link to="/docs/functions/date/days_in_month" className="text-primary-color hover:underline">date::days_in_month</Link></div></section>
       </div>

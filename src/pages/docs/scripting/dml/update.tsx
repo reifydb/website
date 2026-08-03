@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingUpdateBasic, scriptingUpdateExpression } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function DmlUpdatePage() {
   return (
@@ -20,7 +20,7 @@ export function DmlUpdatePage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Update Rows</h2>
           <ExecutableSnippet
             title="Update Rows"
-            initialCode={getExampleById('scripting-update-basic')!.code}
+            initialCode={scriptingUpdateBasic.code}
           />
           <p className="text-text-secondary mt-4">
             The update body specifies the new values for each column. The{' '}
@@ -33,7 +33,7 @@ export function DmlUpdatePage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Update with Expressions</h2>
           <ExecutableSnippet
             title="Update with Expression"
-            initialCode={getExampleById('scripting-update-expression')!.code}
+            initialCode={scriptingUpdateExpression.code}
           />
           <p className="text-text-secondary mt-4">
             Use expressions in the update body to compute new values from existing columns.

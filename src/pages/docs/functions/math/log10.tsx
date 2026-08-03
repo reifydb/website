@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { mathLog10Inline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function MathLog10Page() {
   return (
@@ -26,7 +26,7 @@ export function MathLog10Page() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Number representing the base-10 logarithm of the value.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="math-log10-inline" />
+          <ExecutableSnippet title={mathLog10Inline.title} initialCode={mathLog10Inline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/math/log" className="text-primary-color hover:underline">math::log</Link><Link to="/docs/functions/math/log2" className="text-primary-color hover:underline">math::log2</Link></div></section>
       </div>

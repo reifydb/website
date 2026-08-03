@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dataModelSequencesExamples: CodeExample[] = [
-{
+export const dmSequencesAutoIncrementExample: CodeExample = {
     id: 'dm-sequences-auto-increment',
     title: 'Auto-Increment Assigns IDs at Insert',
     category: 'concept',
@@ -16,8 +15,9 @@ from dm_seq::tickets`,
 ---+-------
 2  | Second
 1  | First`,
-  },
-{
+  };
+
+export const dmSequencesAlterExample: CodeExample = {
     id: 'dm-sequences-alter',
     title: 'Reposition a Sequence with ALTER SEQUENCE',
     category: 'concept',
@@ -29,8 +29,9 @@ from dm_seq::tickets`,
 1001 | After the jump
 2    | Second
 1    | First`,
-  },
-{
+  };
+
+export const dmSequencesReturningExample: CodeExample = {
     id: 'dm-sequences-returning',
     title: 'Read Generated IDs Back with RETURNING',
     category: 'concept',
@@ -38,5 +39,10 @@ from dm_seq::tickets`,
     expected: `id   | title
 -----+--------
 1002 | Another`,
-  },
+  };
+
+export const dataModelSequencesExamples: CodeExample[] = [
+  dmSequencesAutoIncrementExample,
+  dmSequencesAlterExample,
+  dmSequencesReturningExample,
 ];

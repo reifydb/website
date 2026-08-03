@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { scriptingCreateTable, scriptingCreateTest, scriptingInsertBasic } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function ScriptingOverviewPage() {
   return (
@@ -21,7 +21,7 @@ export function ScriptingOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Define Schema</h2>
           <ExecutableSnippet
             title="Create a Table"
-            initialCode={getExampleById('scripting-create-table')!.code}
+            initialCode={scriptingCreateTable.code}
           />
           <p className="text-text-secondary mt-4">
             Namespaces organize your tables. Every table lives inside a namespace.
@@ -32,7 +32,7 @@ export function ScriptingOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Insert and Query</h2>
           <ExecutableSnippet
             title="Insert and Query"
-            initialCode={getExampleById('scripting-insert-basic')!.code}
+            initialCode={scriptingInsertBasic.code}
           />
           <p className="text-text-secondary mt-4">
             Insert rows, then query them with <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">FROM</code>.
@@ -44,7 +44,7 @@ export function ScriptingOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Built-in Testing</h2>
           <ExecutableSnippet
             title="Testing"
-            initialCode={getExampleById('scripting-create-test')!.code}
+            initialCode={scriptingCreateTest.code}
           />
           <p className="text-text-secondary mt-4">
             Write tests alongside your schema. Seed data with test procedures, assert results inline.

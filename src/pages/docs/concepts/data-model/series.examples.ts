@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dataModelSeriesExamples: CodeExample[] = [
-{
+export const dmSeriesIntegerKeyExample: CodeExample = {
     id: 'dm-series-integer-key',
     title: 'A Series Ordered by an Integer Key',
     category: 'concept',
@@ -21,8 +20,9 @@ from dm_srs::readings`,
 3   | 21.8
 2   | 22
 1   | 21.5`,
-  },
-{
+  };
+
+export const dmSeriesDatetimeKeyExample: CodeExample = {
     id: 'dm-series-datetime-key',
     title: 'A Series Keyed by Time',
     category: 'concept',
@@ -39,8 +39,9 @@ from dm_srs::temps`,
 -------------------------------+--------
 2024-01-01T01:00:00.000000000Z | 6
 2024-01-01T00:00:00.000000000Z | 5.5`,
-  },
-{
+  };
+
+export const dmSeriesAutoKeyExample: CodeExample = {
     id: 'dm-series-auto-key',
     title: 'Omit the Key and the Engine Timestamps the Row',
     category: 'concept',
@@ -50,8 +51,9 @@ from dm_srs::pings map { note }`,
     expected: `note
 --------------
 deploy started`,
-  },
-{
+  };
+
+export const dmSeriesKeyRangeExample: CodeExample = {
     id: 'dm-series-key-range',
     title: 'Key Filters Use the Series Order',
     category: 'concept',
@@ -60,8 +62,9 @@ deploy started`,
 ----+--------
 3   | 21.8
 2   | 22`,
-  },
-{
+  };
+
+export const dmSeriesUpdateExample: CodeExample = {
     id: 'dm-series-update',
     title: 'Correct a Recorded Value',
     category: 'concept',
@@ -69,8 +72,9 @@ deploy started`,
     expected: `namespace | series   | updated
 ----------+----------+--------
 dm_srs    | readings | 1`,
-  },
-{
+  };
+
+export const dmSeriesTagExample: CodeExample = {
     id: 'dm-series-tag',
     title: 'Attach a Tag Type for Classification',
     category: 'concept',
@@ -79,5 +83,13 @@ create series dm_srs::tagged_readings {
   at: datetime,
   v: float8
 } with { key: at, tag: dm_srs::origin, precision: microsecond }`,
-  },
+  };
+
+export const dataModelSeriesExamples: CodeExample[] = [
+  dmSeriesIntegerKeyExample,
+  dmSeriesDatetimeKeyExample,
+  dmSeriesAutoKeyExample,
+  dmSeriesKeyRangeExample,
+  dmSeriesUpdateExample,
+  dmSeriesTagExample,
 ];

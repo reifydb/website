@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { mapAlias, mapBasic, mapConstants } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function MapPage() {
   return (
@@ -20,7 +20,7 @@ export function MapPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Select Columns</h2>
           <ExecutableSnippet
             title="Select Columns"
-            initialCode={getExampleById('map-basic')!.code}
+            initialCode={mapBasic.code}
           />
           <p className="text-text-secondary mt-4">
             Pick the columns you want. Everything else is gone.
@@ -31,7 +31,7 @@ export function MapPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Rename and Compute</h2>
           <ExecutableSnippet
             title="Rename and Compute"
-            initialCode={getExampleById('map-alias')!.code}
+            initialCode={mapAlias.code}
           />
           <p className="text-text-secondary mt-4">
             Alias columns or create new ones from expressions. The result only contains what you specify.
@@ -42,7 +42,7 @@ export function MapPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Constants</h2>
           <ExecutableSnippet
             title="Constants"
-            initialCode={getExampleById('map-constants')!.code}
+            initialCode={mapConstants.code}
           />
           <p className="text-text-secondary mt-4">
             Map can produce constant values across every row.

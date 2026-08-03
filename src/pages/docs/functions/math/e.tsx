@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { mathEInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function MathEPage() {
   return (
@@ -23,7 +23,7 @@ export function MathEPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Number representing Euler's number (approximately 2.71828).</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="math-e-inline" />
+          <ExecutableSnippet title={mathEInline.title} initialCode={mathEInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/math/pi" className="text-primary-color hover:underline">math::pi</Link><Link to="/docs/functions/math/exp" className="text-primary-color hover:underline">math::exp</Link></div></section>
       </div>

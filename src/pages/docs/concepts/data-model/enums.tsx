@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dmEnumsBasic, dmEnumsStruct } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -29,7 +29,7 @@ export function DataModelEnumsPage() {
             stored as a compact tag (its index), which is what a plain read shows. Run
             the snippets on this page in order:
           </p>
-          <ExampleSnippet id="dm-enums-basic" />
+          <ExecutableSnippet title={dmEnumsBasic.title} initialCode={dmEnumsBasic.code} />
         </section>
 
         <section>
@@ -41,7 +41,7 @@ export function DataModelEnumsPage() {
             variant's payload; reads flatten the variant tag and every possible field,
             with <Code>none</Code> for fields of the variants not present:
           </p>
-          <ExampleSnippet id="dm-enums-struct" />
+          <ExecutableSnippet title={dmEnumsStruct.title} initialCode={dmEnumsStruct.code} />
         </section>
 
         <section>

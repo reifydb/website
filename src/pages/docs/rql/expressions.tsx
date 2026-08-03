@@ -1,7 +1,7 @@
 import { Layout } from '../layout.tsx';
+import { exprCase, exprDateModule, exprMathModule, exprNamedArgs, exprTextModule } from './examples.examples';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function RqlExpressionsPage() {
   return (
@@ -185,21 +185,21 @@ export function RqlExpressionsPage() {
           <p className="text-text-secondary mb-3">Sums, averages, rounding, and more.</p>
           <ExecutableSnippet
             title="math module"
-            initialCode={getExampleById('expr-math-module')!.code}
+            initialCode={exprMathModule.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">text</h3>
           <p className="text-text-secondary mb-3">Lowercase, uppercase, trim, and more.</p>
           <ExecutableSnippet
             title="text module"
-            initialCode={getExampleById('expr-text-module')!.code}
+            initialCode={exprTextModule.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">date</h3>
           <p className="text-text-secondary mb-3">Extract, format, and calculate with dates.</p>
           <ExecutableSnippet
             title="date module"
-            initialCode={getExampleById('expr-date-module')!.code}
+            initialCode={exprDateModule.code}
           />
         </section>
 
@@ -211,7 +211,7 @@ export function RqlExpressionsPage() {
           </p>
           <ExecutableSnippet
             title="Case Expression"
-            initialCode={getExampleById('expr-case')!.code}
+            initialCode={exprCase.code}
           />
         </section>
 
@@ -223,7 +223,7 @@ export function RqlExpressionsPage() {
           </p>
           <ExecutableSnippet
             title="Named Arguments"
-            initialCode={getExampleById('expr-named-args')!.code}
+            initialCode={exprNamedArgs.code}
           />
         </section>
 

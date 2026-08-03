@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { sortBasic, sortDescending, sortMultiple, sortWithTake } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function SortPage() {
   return (
@@ -20,7 +20,7 @@ export function SortPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Basic Syntax</h2>
           <ExecutableSnippet
             title="Basic Syntax"
-            initialCode={getExampleById('sort-basic')!.code}
+            initialCode={sortBasic.code}
           />
           <p className="text-text-secondary mt-4">
             Sorting is ascending by default.
@@ -34,7 +34,7 @@ export function SortPage() {
           </p>
           <ExecutableSnippet
             title="Descending Order"
-            initialCode={getExampleById('sort-descending')!.code}
+            initialCode={sortDescending.code}
           />
         </section>
 
@@ -45,7 +45,7 @@ export function SortPage() {
           </p>
           <ExecutableSnippet
             title="Multiple Columns"
-            initialCode={getExampleById('sort-multiple')!.code}
+            initialCode={sortMultiple.code}
           />
           <p className="text-text-secondary mt-4">
             This sorts by total descending first, then by created_at ascending for ties.
@@ -60,7 +60,7 @@ export function SortPage() {
           </p>
           <ExecutableSnippet
             title="Combined with Take"
-            initialCode={getExampleById('sort-with-take')!.code}
+            initialCode={sortWithTake.code}
           />
         </section>
 

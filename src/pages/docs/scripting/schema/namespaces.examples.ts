@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingSchemaNamespacesExamples: CodeExample[] = [
-{
+export const scriptingCreateNamespaceExample: CodeExample = {
     id: 'scripting-create-namespace',
     title: 'Create Namespace',
     category: 'scripting',
@@ -9,5 +8,8 @@ export const scriptingSchemaNamespacesExamples: CodeExample[] = [
     expected: `id    | namespace | created
 ------+-----------+--------
 16386 | sc        | true`,
-  },
+  };
+
+export const scriptingSchemaNamespacesExamples: CodeExample[] = [
+  scriptingCreateNamespaceExample,
 ];

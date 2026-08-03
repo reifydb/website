@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { withColumnOptions, withDistinctTtl, withJoinOptions, withRowTtl, withStorageOptions, withUnknownKey } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -85,7 +85,7 @@ export function WithPage() {
             <Code>precision</Code>. Unknown keys are rejected, so a typo fails at parse
             time instead of being silently ignored:
           </p>
-          <ExampleSnippet id="with-storage-options" />
+          <ExecutableSnippet title={withStorageOptions.title} initialCode={withStorageOptions.code} />
           <p className="text-text-secondary mt-4">
             Here the clause is the whole reason the shape works: two rows of capacity,
             so the third insert evicts the first. See{' '}
@@ -105,7 +105,7 @@ export function WithPage() {
             A non-persistent shape must also declare a TTL - rows that never reach disk
             have to expire.
           </p>
-          <ExampleSnippet id="with-row-ttl" />
+          <ExecutableSnippet title={withRowTtl.title} initialCode={withRowTtl.code} />
           <p className="text-text-secondary mt-4">
             The full expiry semantics - what anchors the clock, what each mode means for
             views and subscriptions - are covered on the{' '}
@@ -123,7 +123,7 @@ export function WithPage() {
             dictionary-encoded through a{' '}
             <DocLink to="/docs/concepts/data-model/dictionaries">dictionary</DocLink>:
           </p>
-          <ExampleSnippet id="with-column-options" />
+          <ExecutableSnippet title={withColumnOptions.title} initialCode={withColumnOptions.code} />
         </section>
 
         <section>
@@ -139,13 +139,13 @@ export function WithPage() {
             <Code>right</Code>) evicts join state that has not been touched within the
             duration.
           </p>
-          <ExampleSnippet id="with-join-options" />
+          <ExecutableSnippet title={withJoinOptions.title} initialCode={withJoinOptions.code} />
           <p className="text-text-secondary mt-4 mb-4">
             <Code>distinct</Code> takes a <Code>ttl</Code> the same way: an entry the
             operator has not seen within the duration is evicted, so the value counts
             as new when it next appears.
           </p>
-          <ExampleSnippet id="with-distinct-ttl" />
+          <ExecutableSnippet title={withDistinctTtl.title} initialCode={withDistinctTtl.code} />
           <p className="text-text-secondary mt-4">
             These options exist for incremental view maintenance. An ad-hoc query like
             the ones above accepts them, but since it computes its result in one shot,
@@ -166,7 +166,7 @@ export function WithPage() {
             the keys it is given - a table accepts <Code>row</Code> and{' '}
             <Code>partition</Code> and nothing else:
           </p>
-          <ExampleSnippet id="with-unknown-key" />
+          <ExecutableSnippet title={withUnknownKey.title} initialCode={withUnknownKey.code} />
         </section>
       </div>
     </Layout>

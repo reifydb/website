@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { textPadLeftInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function TextPadLeftPage() {
   return (
@@ -30,7 +30,7 @@ export function TextPadLeftPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Utf8 padded on the left to the specified length.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="text-pad_left-inline" />
+          <ExecutableSnippet title={textPadLeftInline.title} initialCode={textPadLeftInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/text/pad_right" className="text-primary-color hover:underline">text::pad_right</Link><Link to="/docs/functions/text/length" className="text-primary-color hover:underline">text::length</Link></div></section>
       </div>

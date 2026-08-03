@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const rqlForSqlUsersExamples: CodeExample[] = [
-{
+export const rqlsqlSelectExample: CodeExample = {
     id: 'rqlsql-select',
     title: 'SELECT Becomes a Pipeline',
     category: 'rql',
@@ -13,8 +12,9 @@ sort { name: asc }`,
 ------+------------------
 Alice | alice@example.com
 David | david@example.com`,
-  },
-{
+  };
+
+export const rqlsqlGroupbyExample: CodeExample = {
     id: 'rqlsql-groupby',
     title: 'GROUP BY Becomes aggregate ... by',
     category: 'rql',
@@ -29,8 +29,9 @@ sort { category: asc }`,
 ---------+----------
 book     | 10.0
 game     | 60.0`,
-  },
-{
+  };
+
+export const rqlsqlEqNoneExample: CodeExample = {
     id: 'rqlsql-eq-none',
     title: 'Comparing to none Never Matches',
     category: 'rql',
@@ -40,8 +41,9 @@ game     | 60.0`,
 ]
 filter { nickname == none }`,
     expected: `(empty)`,
-  },
-{
+  };
+
+export const rqlsqlIsNoneExample: CodeExample = {
     id: 'rqlsql-is-none',
     title: 'Test for none with is::none',
     category: 'rql',
@@ -53,5 +55,11 @@ filter { is::none(nickname) }`,
     expected: `id | nickname
 ---+---------
 2  | ⟪none⟫`,
-  },
+  };
+
+export const rqlForSqlUsersExamples: CodeExample[] = [
+  rqlsqlSelectExample,
+  rqlsqlGroupbyExample,
+  rqlsqlEqNoneExample,
+  rqlsqlIsNoneExample,
 ];

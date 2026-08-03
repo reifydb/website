@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
-import { ExampleSnippet } from '@/components/ui';
+import { conceptsNoneAggregates, conceptsNoneClear, conceptsNoneEqNeverMatches, conceptsNoneFilterComplement, conceptsNoneFilterDrops, conceptsNoneGroupKey, conceptsNoneIsNone, conceptsNoneJoinMissing, conceptsNoneLeftJoin, conceptsNoneLogic, conceptsNoneOptionalColumns, conceptsNonePropagates, conceptsNoneReplace, conceptsNoneRequiredRejects, conceptsNoneSortAsc, conceptsNoneSortDesc } from './examples.examples';
+import { conceptsNoneSortDesc } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -30,14 +31,14 @@ export function WorkingWithNonePage() {
             the <Code>none</Code> literal explicitly - the two are equivalent. Run the
             snippets on this page in order:
           </p>
-          <ExampleSnippet id="concepts-none-optional-columns" />
+          <ExecutableSnippet title={conceptsNoneOptionalColumns.title} initialCode={conceptsNoneOptionalColumns.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Every non-<Code>Option</Code> column rejects <Code>none</Code> at write time.
             There is no "forgot the NOT NULL constraint" failure mode - required is the
             default, and a missing value in a required column is an error
             (<Code>CONSTRAINT_007</Code>) that rolls back the whole request:
           </p>
-          <ExampleSnippet id="concepts-none-required-rejects" />
+          <ExecutableSnippet title={conceptsNoneRequiredRejects.title} initialCode={conceptsNoneRequiredRejects.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Besides optional columns, <Code>none</Code> is produced by queries
             themselves: unmatched rows in a left join, aggregates over groups with
@@ -57,7 +58,7 @@ export function WorkingWithNonePage() {
             type-checks - <Code>price * 2</Code> on a missing price is a missing number,
             not an error:
           </p>
-          <ExampleSnippet id="concepts-none-propagates" />
+          <ExecutableSnippet title={conceptsNonePropagates.title} initialCode={conceptsNonePropagates.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Logical operators are the deliberate exception. When one side already decides
             the answer, the missing side cannot change it, so the result is definite:{' '}
@@ -65,7 +66,7 @@ export function WorkingWithNonePage() {
             is <Code>true</Code>. Only when the answer genuinely depends on the missing
             value does <Code>none</Code> come through:
           </p>
-          <ExampleSnippet id="concepts-none-logic" />
+          <ExecutableSnippet title={conceptsNoneLogic.title} initialCode={conceptsNoneLogic.code} />
         </section>
 
         <section>
@@ -75,7 +76,7 @@ export function WorkingWithNonePage() {
             including another <Code>none</Code> - never produces <Code>true</Code>. A
             filter on <Code>== none</Code> matches nothing:
           </p>
-          <ExampleSnippet id="concepts-none-eq-never-matches" />
+          <ExecutableSnippet title={conceptsNoneEqNeverMatches.title} initialCode={conceptsNoneEqNeverMatches.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The functions{' '}
             <Link to="/docs/functions/is/none" className="text-primary hover:text-primary-light font-medium transition-colors">is::none</Link>{' '}
@@ -86,7 +87,7 @@ export function WorkingWithNonePage() {
             SQL's <Code>IS NULL</Code> and <Code>IS NOT NULL</Code> (see{' '}
             <Link to="/docs/rql/for-sql-users" className="text-primary hover:text-primary-light font-medium transition-colors">RQL for SQL users</Link>):
           </p>
-          <ExampleSnippet id="concepts-none-is-none" />
+          <ExecutableSnippet title={conceptsNoneIsNone.title} initialCode={conceptsNoneIsNone.code} />
         </section>
 
         <section>
@@ -98,7 +99,7 @@ export function WorkingWithNonePage() {
             predicate that evaluates to <Code>none</Code> drops the row, the same as{' '}
             <Code>false</Code>:
           </p>
-          <ExampleSnippet id="concepts-none-filter-drops" />
+          <ExecutableSnippet title={conceptsNoneFilterDrops.title} initialCode={conceptsNoneFilterDrops.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The consequence worth internalizing: a predicate and its negation do not
             split the data into two halves. <Code>not (none &gt; 50)</Code> is still{' '}
@@ -106,7 +107,7 @@ export function WorkingWithNonePage() {
             If "the rows where the predicate did not hold" must include missing values,
             say so with <Code>is::none</Code>:
           </p>
-          <ExampleSnippet id="concepts-none-filter-complement" />
+          <ExecutableSnippet title={conceptsNoneFilterComplement.title} initialCode={conceptsNoneFilterComplement.code} />
         </section>
 
         <section>
@@ -118,12 +119,12 @@ export function WorkingWithNonePage() {
             (<Code>match nickname {'{'} ... {'}'}</Code>) cannot do this - its arms
             compare by equality, and equality never matches <Code>none</Code>:
           </p>
-          <ExampleSnippet id="concepts-none-replace" />
+          <ExecutableSnippet title={conceptsNoneReplace.title} initialCode={conceptsNoneReplace.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The write side mirrors it: assigning <Code>none</Code> to an optional column
             in an <Code>update</Code> clears the stored value:
           </p>
-          <ExampleSnippet id="concepts-none-clear" />
+          <ExecutableSnippet title={conceptsNoneClear.title} initialCode={conceptsNoneClear.code} />
         </section>
 
         <section>
@@ -135,12 +136,12 @@ export function WorkingWithNonePage() {
             are <Code>none</Code> - even columns whose source table declares them as
             required. Any column that arrives via a left join can therefore be missing:
           </p>
-          <ExampleSnippet id="concepts-none-left-join" />
+          <ExecutableSnippet title={conceptsNoneLeftJoin.title} initialCode={conceptsNoneLeftJoin.code} />
           <p className="text-text-secondary mt-4 mb-4">
             That makes <Code>is::none</Code> on a joined column the idiom for "rows
             without a match":
           </p>
-          <ExampleSnippet id="concepts-none-join-missing" />
+          <ExecutableSnippet title={conceptsNoneJoinMissing.title} initialCode={conceptsNoneJoinMissing.code} />
         </section>
 
         <section>
@@ -154,13 +155,13 @@ export function WorkingWithNonePage() {
             questions. A group whose inputs are all missing has nothing to aggregate,
             and its result is <Code>none</Code>:
           </p>
-          <ExampleSnippet id="concepts-none-aggregates" />
+          <ExecutableSnippet title={conceptsNoneAggregates.title} initialCode={conceptsNoneAggregates.code} />
           <p className="text-text-secondary mt-4 mb-4">
             As a group key, <Code>none</Code> behaves differently: all rows with a
             missing key land in one group of their own rather than being discarded.
             Grouping never loses rows:
           </p>
-          <ExampleSnippet id="concepts-none-group-key" />
+          <ExecutableSnippet title={conceptsNoneGroupKey.title} initialCode={conceptsNoneGroupKey.code} />
         </section>
 
         <section>
@@ -170,8 +171,8 @@ export function WorkingWithNonePage() {
             ranks <Code>none</Code> above every defined value: ascending order puts
             missing values last, descending order puts them first.
           </p>
-          <ExampleSnippet id="concepts-none-sort-asc" />
-          <ExampleSnippet id="concepts-none-sort-desc" className="mt-4" />
+          <ExecutableSnippet title={conceptsNoneSortAsc.title} initialCode={conceptsNoneSortAsc.code} />
+          <ExecutableSnippet title={conceptsNoneSortDesc.title} initialCode={conceptsNoneSortDesc.code} className="mt-4"  />
           <p className="text-text-secondary mt-4 mb-4">
             In rendered tables - the CLI, the docs snippets on this page - a missing
             value prints as <Code>⟪none⟫</Code>, deliberately unmistakable for a string.

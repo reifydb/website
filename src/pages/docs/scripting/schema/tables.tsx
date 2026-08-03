@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingCreateTable, scriptingCreateTableAutoIncrement } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function TablesPage() {
   return (
@@ -20,7 +20,7 @@ export function TablesPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Create a Table</h2>
           <ExecutableSnippet
             title="Create Table"
-            initialCode={getExampleById('scripting-create-table')!.code}
+            initialCode={scriptingCreateTable.code}
           />
           <p className="text-text-secondary mt-4">
             Each column has a name and a type. Supported types include{' '}
@@ -35,7 +35,7 @@ export function TablesPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Auto Increment</h2>
           <ExecutableSnippet
             title="Auto Increment"
-            initialCode={getExampleById('scripting-create-table-auto-increment')!.code}
+            initialCode={scriptingCreateTableAutoIncrement.code}
           />
           <p className="text-text-secondary mt-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">WITH {'{ auto_increment }'}</code> to

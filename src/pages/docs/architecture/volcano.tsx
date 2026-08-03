@@ -1,6 +1,6 @@
 import { Layout } from '../layout.tsx';
+import { volcanoAggregate, volcanoPipeline, volcanoScanFilter } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function VolcanoPage() {
   return (
@@ -26,7 +26,7 @@ export function VolcanoPage() {
           </p>
           <ExecutableSnippet
             title="Pipeline Model"
-            initialCode={getExampleById('volcano-pipeline')!.code}
+            initialCode={volcanoPipeline.code}
           />
           <p className="text-text-secondary mt-4">
             This query compiles to: <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">ScanOp → FilterOp → ExtendOp → SortOp → TakeOp</code>.
@@ -43,7 +43,7 @@ export function VolcanoPage() {
           </p>
           <ExecutableSnippet
             title="Top to Bottom"
-            initialCode={getExampleById('volcano-scan-filter')!.code}
+            initialCode={volcanoScanFilter.code}
           />
         </section>
 
@@ -93,7 +93,7 @@ export function VolcanoPage() {
           </p>
           <ExecutableSnippet
             title="Full Pipeline"
-            initialCode={getExampleById('volcano-aggregate')!.code}
+            initialCode={volcanoAggregate.code}
           />
         </section>
       </div>

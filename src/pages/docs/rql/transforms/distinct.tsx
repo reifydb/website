@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { distinctBasic, distinctMulti } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function DistinctPage() {
   return (
@@ -20,7 +20,7 @@ export function DistinctPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Basic Usage</h2>
           <ExecutableSnippet
             title="Basic Usage"
-            initialCode={getExampleById('distinct-basic')!.code}
+            initialCode={distinctBasic.code}
           />
           <p className="text-text-secondary mt-4">
             Keep only the first row for each unique value. The entire row is preserved; <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">distinct</code> just picks which rows survive.
@@ -31,7 +31,7 @@ export function DistinctPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Multiple Columns</h2>
           <ExecutableSnippet
             title="Multiple Columns"
-            initialCode={getExampleById('distinct-multi')!.code}
+            initialCode={distinctMulti.code}
           />
           <p className="text-text-secondary mt-4">
             Specify multiple columns to deduplicate on the combination.

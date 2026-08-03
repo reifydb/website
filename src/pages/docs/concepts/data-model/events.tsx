@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dmEventsCreate, dmEventsDispatch, dmEventsEffect } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -32,7 +32,7 @@ export function DataModelEventsPage() {
             covers them in depth: several handlers per variant, scripted bodies,
             chained dispatch, lifecycle. Run the snippets on this page in order:
           </p>
-          <ExampleSnippet id="dm-events-create" />
+          <ExecutableSnippet title={dmEventsCreate.title} initialCode={dmEventsCreate.code} />
         </section>
 
         <section>
@@ -42,13 +42,13 @@ export function DataModelEventsPage() {
             reports how many handlers ran; several handlers can subscribe to the same
             variant and each one runs:
           </p>
-          <ExampleSnippet id="dm-events-dispatch" />
+          <ExecutableSnippet title={dmEventsDispatch.title} initialCode={dmEventsDispatch.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Because handlers run in the same transaction, their writes are already
             visible - and if the transaction rolls back, the handler's effects roll
             back with it:
           </p>
-          <ExampleSnippet id="dm-events-effect" />
+          <ExecutableSnippet title={dmEventsEffect.title} initialCode={dmEventsEffect.code} />
         </section>
 
         <section>

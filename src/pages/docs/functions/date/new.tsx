@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dateNewInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DateNewPage() {
   return (
@@ -30,7 +30,7 @@ export function DateNewPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Date constructed from the given year, month, and day components.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="date-new-inline" />
+          <ExecutableSnippet title={dateNewInline.title} initialCode={dateNewInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/date/now" className="text-primary-color hover:underline">date::now</Link><Link to="/docs/functions/datetime/new" className="text-primary-color hover:underline">datetime::new</Link></div></section>
       </div>

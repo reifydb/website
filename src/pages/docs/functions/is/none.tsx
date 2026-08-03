@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { isNone } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function IsNonePage() {
   return (
@@ -26,7 +26,7 @@ export function IsNonePage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Boolean indicating whether the value is none.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="is-none" />
+          <ExecutableSnippet title={isNone.title} initialCode={isNone.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/is/some" className="text-primary-color hover:underline">is::some</Link><Link to="/docs/functions/is/type" className="text-primary-color hover:underline">is::type</Link></div></section>
       </div>

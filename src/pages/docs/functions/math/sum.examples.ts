@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const functionsMathSumExamples: CodeExample[] = [
-{
+export const mathSumByRegionExample: CodeExample = {
     id: 'math-sum-by-region',
     title: 'Calculate total revenue',
     category: 'function',
@@ -13,8 +12,9 @@ North  | 471.25
 West   | 55.25
 East   | 245
 South  | 89.99`,
-  },
-{
+  };
+
+export const mathSumMultipleExample: CodeExample = {
     id: 'math-sum-multiple',
     title: 'Multiple aggregations',
     category: 'function',
@@ -26,5 +26,9 @@ aggregate {
     expected: `total_revenue | avg_sale
 --------------+---------
 9651.5        | 1930.3`,
-  },
+  };
+
+export const functionsMathSumExamples: CodeExample[] = [
+  mathSumByRegionExample,
+  mathSumMultipleExample,
 ];

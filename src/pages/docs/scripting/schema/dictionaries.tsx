@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingCreateDictionary } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function DictionariesPage() {
   return (
@@ -19,7 +19,7 @@ export function DictionariesPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Create a Dictionary</h2>
           <ExecutableSnippet
             title="Create Dictionary"
-            initialCode={getExampleById('scripting-create-dictionary')!.code}
+            initialCode={scriptingCreateDictionary.code}
           />
           <p className="text-text-secondary mt-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">CREATE DICTIONARY</code> with

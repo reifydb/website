@@ -2,12 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
-
-function Snippet({ id }: { id: string }) {
-  const example = getExampleById(id)!;
-  return <ExecutableSnippet title={example.title} initialCode={example.code} />;
-}
+import { quickstartAggregate, quickstartCreateTable, quickstartCreateView, quickstartInsert, quickstartQueryTable, quickstartQueryView, quickstartShipOrder, quickstartViewUpdated } from './examples.examples';
 
 export function QuickStartPage() {
   return (
@@ -37,7 +32,7 @@ export function QuickStartPage() {
             Tables hold authoritative state. Every table lives in a namespace and is addressed
             as <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">namespace::table</code>:
           </p>
-          <Snippet id="quickstart-create-table" />
+          <ExecutableSnippet title={quickstartCreateTable.title} initialCode={quickstartCreateTable.code} />
         </section>
 
         <section>
@@ -47,7 +42,7 @@ export function QuickStartPage() {
             the result incrementally, inside the same transaction as every write that affects it.
             No polling, no cache invalidation, no batch refresh:
           </p>
-          <Snippet id="quickstart-create-view" />
+          <ExecutableSnippet title={quickstartCreateView.title} initialCode={quickstartCreateView.code} />
           <p className="text-text-muted text-sm mt-3">
             The view tracks changes from the moment it is created, so we define it before
             inserting data.
@@ -60,7 +55,7 @@ export function QuickStartPage() {
             <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">INSERT</code> takes
             an array of records:
           </p>
-          <Snippet id="quickstart-insert" />
+          <ExecutableSnippet title={quickstartInsert.title} initialCode={quickstartInsert.code} />
         </section>
 
         <section>
@@ -70,7 +65,7 @@ export function QuickStartPage() {
             <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">from</code>, then
             chain steps; each line transforms the output of the line above it:
           </p>
-          <Snippet id="quickstart-query-table" />
+          <ExecutableSnippet title={quickstartQueryTable.title} initialCode={quickstartQueryTable.code} />
         </section>
 
         <section>
@@ -79,7 +74,7 @@ export function QuickStartPage() {
             The view already contains the two open orders. Nothing recomputed the query;
             the inserts themselves maintained it:
           </p>
-          <Snippet id="quickstart-query-view" />
+          <ExecutableSnippet title={quickstartQueryView.title} initialCode={quickstartQueryView.code} />
         </section>
 
         <section>
@@ -87,13 +82,13 @@ export function QuickStartPage() {
           <p className="text-text-secondary mb-4">
             Ship the keyboard order:
           </p>
-          <Snippet id="quickstart-ship-order" />
+          <ExecutableSnippet title={quickstartShipOrder.title} initialCode={quickstartShipOrder.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Then query the view again. The shipped order is gone, because the view's{' '}
             <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">filter</code> no
             longer matches it:
           </p>
-          <Snippet id="quickstart-view-updated" />
+          <ExecutableSnippet title={quickstartViewUpdated.title} initialCode={quickstartViewUpdated.code} />
         </section>
 
         <section>
@@ -102,7 +97,7 @@ export function QuickStartPage() {
             Pipelines end wherever you need them to. Group and aggregate with{' '}
             <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">aggregate ... by</code>:
           </p>
-          <Snippet id="quickstart-aggregate" />
+          <ExecutableSnippet title={quickstartAggregate.title} initialCode={quickstartAggregate.code} />
         </section>
 
         <section>

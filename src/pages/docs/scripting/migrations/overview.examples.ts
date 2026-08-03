@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingMigrationsOverviewExamples: CodeExample[] = [
-{
+export const scriptingCreateMigrationExample: CodeExample = {
     id: 'scripting-create-migration',
     title: 'Create Migration',
     category: 'scripting',
@@ -10,8 +9,9 @@ export const scriptingMigrationsOverviewExamples: CodeExample[] = [
   CREATE TABLE mg::users { id: int4, name: utf8 }
 };
 MIGRATE`,
-  },
-{
+  };
+
+export const scriptingMigrationRollbackExample: CodeExample = {
     id: 'scripting-migration-rollback',
     title: 'Migration with Rollback',
     category: 'scripting',
@@ -23,5 +23,9 @@ MIGRATE`,
   DROP NAMESPACE mg_r
 };
 MIGRATE`,
-  },
+  };
+
+export const scriptingMigrationsOverviewExamples: CodeExample[] = [
+  scriptingCreateMigrationExample,
+  scriptingMigrationRollbackExample,
 ];

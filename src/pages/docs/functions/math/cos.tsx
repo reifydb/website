@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { mathCosInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function MathCosPage() {
   return (
@@ -26,7 +26,7 @@ export function MathCosPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Number representing the cosine of the angle.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="math-cos-inline" />
+          <ExecutableSnippet title={mathCosInline.title} initialCode={mathCosInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/math/sin" className="text-primary-color hover:underline">math::sin</Link><Link to="/docs/functions/math/tan" className="text-primary-color hover:underline">math::tan</Link><Link to="/docs/functions/math/acos" className="text-primary-color hover:underline">math::acos</Link></div></section>
       </div>

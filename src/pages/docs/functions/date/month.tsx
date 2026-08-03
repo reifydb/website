@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dateMonthInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DateMonthPage() {
   return (
@@ -62,7 +62,7 @@ export function DateMonthPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="date-month-inline" />
+          <ExecutableSnippet title={dateMonthInline.title} initialCode={dateMonthInline.code} />
         </section>
 
         {/* Related Functions */}

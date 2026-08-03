@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingCreateSeries } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function SeriesPage() {
   return (
@@ -29,7 +29,7 @@ export function SeriesPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Create a Series</h2>
           <ExecutableSnippet
             title="Create Series"
-            initialCode={getExampleById('scripting-create-series')!.code}
+            initialCode={scriptingCreateSeries.code}
           />
           <p className="text-text-secondary mt-4">
             The <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">WITH</code> clause

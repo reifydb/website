@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const functionsTextSubstringExamples: CodeExample[] = [
-{
+export const textSubstringPrefixExample: CodeExample = {
     id: 'text-substring-prefix',
     title: 'Extract prefix',
     category: 'function',
@@ -13,8 +12,9 @@ extend { prefix: text::substring(code, 0, 3) }`,
 3  | GHI789 | GHI
 2  | def456 | def
 1  | ABC123 | ABC`,
-  },
-{
+  };
+
+export const textSubstringFirstExample: CodeExample = {
     id: 'text-substring-first',
     title: 'Get first characters',
     category: 'function',
@@ -27,8 +27,9 @@ extend { initial: text::substring(name, 0, 1) }`,
 3  | Gizmo       | GZM-003 | 19.99 | Accessories | G
 2  | Gadget      | GDT-002 | 49.99 | Electronics | G
 1  | Widget      | WGT-001 | 29.99 | Electronics | W`,
-  },
-{
+  };
+
+export const textSubstringMiddleExample: CodeExample = {
     id: 'text-substring-middle',
     title: 'Extract middle portion',
     category: 'function',
@@ -40,5 +41,10 @@ extend { middle: text::substring(code, 3, 7) }`,
 3  | ID-003-C | 003-C
 2  | ID-002-B | 002-B
 1  | ID-001-A | 001-A`,
-  },
+  };
+
+export const functionsTextSubstringExamples: CodeExample[] = [
+  textSubstringPrefixExample,
+  textSubstringFirstExample,
+  textSubstringMiddleExample,
 ];

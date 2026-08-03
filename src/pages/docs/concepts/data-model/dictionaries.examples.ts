@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dataModelDictionariesExamples: CodeExample[] = [
-{
+export const dmDictionariesCreateExample: CodeExample = {
     id: 'dm-dictionaries-create',
     title: 'Create a Dictionary and Intern Values',
     category: 'concept',
@@ -17,8 +16,9 @@ insert dm_dict::symbols [
 dm_dict   | symbols    | 1  | AAPL
 dm_dict   | symbols    | 2  | MSFT
 dm_dict   | symbols    | 3  | TSLA`,
-  },
-{
+  };
+
+export const dmDictionariesDuplicateExample: CodeExample = {
     id: 'dm-dictionaries-duplicate',
     title: 'Inserting an Existing Value Returns Its ID',
     category: 'concept',
@@ -26,8 +26,9 @@ dm_dict   | symbols    | 3  | TSLA`,
     expected: `namespace | dictionary | id | value
 ----------+------------+----+------
 dm_dict   | symbols    | 1  | AAPL`,
-  },
-{
+  };
+
+export const dmDictionariesFromExample: CodeExample = {
     id: 'dm-dictionaries-from',
     title: 'Read the Mapping Back',
     category: 'concept',
@@ -37,8 +38,9 @@ dm_dict   | symbols    | 1  | AAPL`,
 3  | TSLA
 2  | MSFT
 1  | AAPL`,
-  },
-{
+  };
+
+export const dmDictionariesColumnExample: CodeExample = {
     id: 'dm-dictionaries-column',
     title: 'Dictionary-Encode a Table Column',
     category: 'concept',
@@ -55,8 +57,9 @@ from dm_dict::trades`,
 -------+----
 NVDA   | 50
 AAPL   | 100`,
-  },
-{
+  };
+
+export const dmDictionariesNewEntryExample: CodeExample = {
     id: 'dm-dictionaries-new-entry',
     title: 'Unknown Values Are Interned on Write',
     category: 'concept',
@@ -64,5 +67,12 @@ AAPL   | 100`,
     expected: `id | value
 ---+------
 4  | NVDA`,
-  },
+  };
+
+export const dataModelDictionariesExamples: CodeExample[] = [
+  dmDictionariesCreateExample,
+  dmDictionariesDuplicateExample,
+  dmDictionariesFromExample,
+  dmDictionariesColumnExample,
+  dmDictionariesNewEntryExample,
 ];

@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingStorageSeriesExamples: CodeExample[] = [
-{
+export const scriptingCreateSeriesExample: CodeExample = {
     id: 'scripting-create-series',
     title: 'Create Series',
     category: 'scripting',
@@ -13,5 +12,8 @@ CREATE SERIES st_sr::metrics {
   at: datetime,
   value: float8
 } WITH { key: at, tag: st_sr::source, precision: microsecond }`,
-  },
+  };
+
+export const scriptingStorageSeriesExamples: CodeExample[] = [
+  scriptingCreateSeriesExample,
 ];

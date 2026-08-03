@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { aggregateBasic, aggregateGroupBy, aggregateMultiGroup, aggregateMultipleFns } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function AggregatePage() {
   return (
@@ -20,7 +20,7 @@ export function AggregatePage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Whole-Table Aggregation</h2>
           <ExecutableSnippet
             title="Whole-Table Aggregation"
-            initialCode={getExampleById('aggregate-basic')!.code}
+            initialCode={aggregateBasic.code}
           />
           <p className="text-text-secondary mt-4">
             Without <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">by</code>, the entire table collapses to a single row.
@@ -31,7 +31,7 @@ export function AggregatePage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Group By</h2>
           <ExecutableSnippet
             title="Group By"
-            initialCode={getExampleById('aggregate-group-by')!.code}
+            initialCode={aggregateGroupBy.code}
           />
           <p className="text-text-secondary mt-4">
             Add <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">by {'{'} column {'}'}</code> to get one row per group.
@@ -42,7 +42,7 @@ export function AggregatePage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Multiple Groups</h2>
           <ExecutableSnippet
             title="Multiple Groups"
-            initialCode={getExampleById('aggregate-multi-group')!.code}
+            initialCode={aggregateMultiGroup.code}
           />
           <p className="text-text-secondary mt-4">
             Group by multiple columns to get finer-grained breakdowns.
@@ -53,7 +53,7 @@ export function AggregatePage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Multiple Aggregations</h2>
           <ExecutableSnippet
             title="Multiple Aggregations"
-            initialCode={getExampleById('aggregate-multiple-fns')!.code}
+            initialCode={aggregateMultipleFns.code}
           />
           <p className="text-text-secondary mt-4">
             Compute several aggregates in a single pass. Available aggregate functions include <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">math::sum</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">math::avg</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">math::min</code>, and <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">math::max</code>.

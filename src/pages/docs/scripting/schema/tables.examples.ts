@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingSchemaTablesExamples: CodeExample[] = [
-{
+export const scriptingCreateTableAutoIncrementExample: CodeExample = {
     id: 'scripting-create-table-auto-increment',
     title: 'Auto Increment',
     category: 'scripting',
@@ -17,5 +16,8 @@ sort { id: asc }`,
 ---+------
 1  | Alice
 2  | Bob`,
-  },
+  };
+
+export const scriptingSchemaTablesExamples: CodeExample[] = [
+  scriptingCreateTableAutoIncrementExample,
 ];

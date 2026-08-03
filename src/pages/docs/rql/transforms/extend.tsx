@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { extendBasic, extendChained, extendMultiple } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function ExtendPage() {
   return (
@@ -20,7 +20,7 @@ export function ExtendPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Basic Usage</h2>
           <ExecutableSnippet
             title="Basic Usage"
-            initialCode={getExampleById('extend-basic')!.code}
+            initialCode={extendBasic.code}
           />
           <p className="text-text-secondary mt-4">
             Add a new column based on existing data. All original columns stay.
@@ -31,7 +31,7 @@ export function ExtendPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Multiple Columns</h2>
           <ExecutableSnippet
             title="Multiple Columns"
-            initialCode={getExampleById('extend-multiple')!.code}
+            initialCode={extendMultiple.code}
           />
           <p className="text-text-secondary mt-4">
             Add several columns in one pass.
@@ -42,7 +42,7 @@ export function ExtendPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Chaining Extends</h2>
           <ExecutableSnippet
             title="Chaining Extends"
-            initialCode={getExampleById('extend-chained')!.code}
+            initialCode={extendChained.code}
           />
           <p className="text-text-secondary mt-4">
             Chain extends when later columns depend on earlier ones.

@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { patchAddColumn, patchBasic, patchChained, patchExpression } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function PatchPage() {
   return (
@@ -22,7 +22,7 @@ export function PatchPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Replace a Column</h2>
           <ExecutableSnippet
             title="Replace a Column"
-            initialCode={getExampleById('patch-basic')!.code}
+            initialCode={patchBasic.code}
           />
           <p className="text-text-secondary mt-4">
             Columns named in the patch are replaced. Everything else stays unchanged.
@@ -33,7 +33,7 @@ export function PatchPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Add New Columns</h2>
           <ExecutableSnippet
             title="Add New Columns"
-            initialCode={getExampleById('patch-add-column')!.code}
+            initialCode={patchAddColumn.code}
           />
           <p className="text-text-secondary mt-4">
             Columns that don't exist yet are appended at the end.
@@ -44,7 +44,7 @@ export function PatchPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Expressions</h2>
           <ExecutableSnippet
             title="Expressions"
-            initialCode={getExampleById('patch-expression')!.code}
+            initialCode={patchExpression.code}
           />
           <p className="text-text-secondary mt-4">
             Patch assignments can use expressions referencing existing columns.
@@ -55,7 +55,7 @@ export function PatchPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Chaining Patches</h2>
           <ExecutableSnippet
             title="Chaining Patches"
-            initialCode={getExampleById('patch-chained')!.code}
+            initialCode={patchChained.code}
           />
           <p className="text-text-secondary mt-4">
             Chain patches when later columns depend on earlier ones.

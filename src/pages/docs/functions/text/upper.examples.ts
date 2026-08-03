@@ -1,14 +1,14 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const functionsTextUpperExamples: CodeExample[] = [
-{
+export const textUpperNamesExample: CodeExample = {
     id: 'text-upper-names',
     title: 'Format display names',
     category: 'function',
     code: `from app::users
 extend { upper_name: text::upper(name) }`,
-  },
-{
+  };
+
+export const textUpperSkuExample: CodeExample = {
     id: 'text-upper-sku',
     title: 'Uppercase code identifiers',
     category: 'function',
@@ -21,5 +21,9 @@ extend { sku_upper: text::upper(sku) }`,
 3  | Gizmo       | GZM-003 | 19.99 | Accessories | GZM-003
 2  | Gadget      | GDT-002 | 49.99 | Electronics | GDT-002
 1  | Widget      | WGT-001 | 29.99 | Electronics | WGT-001`,
-  },
+  };
+
+export const functionsTextUpperExamples: CodeExample[] = [
+  textUpperNamesExample,
+  textUpperSkuExample,
 ];

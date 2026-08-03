@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
+import { jsonSerializeBasic } from './examples.examples';
 
 export function JsonSerializePage() {
   return (
@@ -67,8 +67,8 @@ export function JsonSerializePage() {
 
           <h3 className="text-lg font-bold mb-3">Serialize to string</h3>
           <ExecutableSnippet
-            title={getExampleById('json-serialize-basic')!.title}
-            initialCode={getExampleById('json-serialize-basic')!.code}
+            title={jsonSerializeBasic.title}
+            initialCode={jsonSerializeBasic.code}
           />
         </section>
 

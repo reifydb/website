@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { conceptsTtlDeclare, conceptsTtlMemoryOnly, conceptsTtlNoAnchor, conceptsTtlPersistentRequiresTtl, conceptsTtlRingbuffer, conceptsTtlTouchResets, conceptsTtlView } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -37,7 +37,7 @@ export function TtlPage() {
             mode the collector currently executes (more on <Code>delete</Code> below).
             Run the snippets on this page in order:
           </p>
-          <ExampleSnippet id="concepts-ttl-declare" />
+          <ExecutableSnippet title={conceptsTtlDeclare.title} initialCode={conceptsTtlDeclare.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The same <Code>row</Code> block is accepted wherever rows are stored: tables,{' '}
             <Link to="/docs/concepts/data-model/series" className="text-primary hover:text-primary-light font-medium transition-colors">series</Link>,{' '}
@@ -58,13 +58,13 @@ export function TtlPage() {
             its clock. A session stays alive as long as it is touched, and quietly ages
             out once it is not:
           </p>
-          <ExampleSnippet id="concepts-ttl-touch-resets" />
+          <ExecutableSnippet title={conceptsTtlTouchResets.title} initialCode={conceptsTtlTouchResets.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Because expiry is anchored to the write itself, there is no per-row expiry
             column to declare and nothing to keep in sync. The engine rejects any attempt
             to anchor the TTL elsewhere:
           </p>
-          <ExampleSnippet id="concepts-ttl-no-anchor" />
+          <ExecutableSnippet title={conceptsTtlNoAnchor.title} initialCode={conceptsTtlNoAnchor.code} />
         </section>
 
         <section>
@@ -102,7 +102,7 @@ export function TtlPage() {
             expressed. Views accept the same <Code>row</Code> settings, so derived state
             declares its own lifetime, independent of its sources:
           </p>
-          <ExampleSnippet id="concepts-ttl-view" />
+          <ExecutableSnippet title={conceptsTtlView.title} initialCode={conceptsTtlView.code} />
           <Callout variant="warning" title="mode: delete is accepted but not collected yet">
             The syntax reserves <Code>mode: delete</Code> for expiry that emits real
             deletes - removals that would flow through incremental view maintenance and
@@ -123,12 +123,12 @@ export function TtlPage() {
             stay transactional and queries work as usual; the rows just never cost any
             disk:
           </p>
-          <ExampleSnippet id="concepts-ttl-memory-only" />
+          <ExecutableSnippet title={conceptsTtlMemoryOnly.title} initialCode={conceptsTtlMemoryOnly.code} />
           <p className="text-text-secondary mt-4 mb-4">
             A non-persistent store must declare a TTL - rows that never reach disk and
             never expire would only ever grow. The engine enforces the pairing:
           </p>
-          <ExampleSnippet id="concepts-ttl-persistent-requires-ttl" />
+          <ExecutableSnippet title={conceptsTtlPersistentRequiresTtl.title} initialCode={conceptsTtlPersistentRequiresTtl.code} />
         </section>
 
         <section>
@@ -174,7 +174,7 @@ export function TtlPage() {
               </span>
             </li>
           </ul>
-          <ExampleSnippet id="concepts-ttl-ringbuffer" />
+          <ExecutableSnippet title={conceptsTtlRingbuffer.title} initialCode={conceptsTtlRingbuffer.code} />
         </section>
 
         <Callout variant="note" title="The engine eats its own cooking">

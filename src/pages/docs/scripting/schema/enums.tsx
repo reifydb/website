@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingCreateEnumStruct, scriptingCreateEnumUnit } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function EnumsPage() {
   return (
@@ -20,7 +20,7 @@ export function EnumsPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Unit Variants</h2>
           <ExecutableSnippet
             title="Unit Enum"
-            initialCode={getExampleById('scripting-create-enum-unit')!.code}
+            initialCode={scriptingCreateEnumUnit.code}
           />
           <p className="text-text-secondary mt-4">
             Simple enums with no associated data. Useful for status fields, categories, and flags.
@@ -31,7 +31,7 @@ export function EnumsPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Struct Variants</h2>
           <ExecutableSnippet
             title="Struct Enum"
-            initialCode={getExampleById('scripting-create-enum-struct')!.code}
+            initialCode={scriptingCreateEnumStruct.code}
           />
           <p className="text-text-secondary mt-4">
             Struct enums carry typed data with each variant. Each variant can have different fields.

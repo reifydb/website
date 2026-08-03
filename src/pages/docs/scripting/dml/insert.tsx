@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingInsertBasic, scriptingInsertMultiple } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function DmlInsertPage() {
   return (
@@ -20,7 +20,7 @@ export function DmlInsertPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Insert Rows</h2>
           <ExecutableSnippet
             title="Insert Rows"
-            initialCode={getExampleById('scripting-insert-basic')!.code}
+            initialCode={scriptingInsertBasic.code}
           />
           <p className="text-text-secondary mt-4">
             Pass an array of objects. Each object must match the table's schema.
@@ -31,7 +31,7 @@ export function DmlInsertPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Multiple Inserts</h2>
           <ExecutableSnippet
             title="Multiple Inserts"
-            initialCode={getExampleById('scripting-insert-multiple')!.code}
+            initialCode={scriptingInsertMultiple.code}
           />
           <p className="text-text-secondary mt-4">
             You can call INSERT multiple times. Each insert is part of the same transaction.

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { textLowerInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function TextLowerPage() {
   return (
@@ -62,7 +62,7 @@ export function TextLowerPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="text-lower-inline" />
+          <ExecutableSnippet title={textLowerInline.title} initialCode={textLowerInline.code} />
         </section>
 
         {/* Related Functions */}

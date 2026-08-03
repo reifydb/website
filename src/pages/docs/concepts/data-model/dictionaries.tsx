@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dmDictionariesColumn, dmDictionariesCreate, dmDictionariesDuplicate, dmDictionariesFrom, dmDictionariesNewEntry } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -30,12 +30,12 @@ export function DataModelDictionariesPage() {
             <Code>uint2</Code> allows 65,536. Inserting returns the assigned mapping.
             Run the snippets on this page in order:
           </p>
-          <ExampleSnippet id="dm-dictionaries-create" />
+          <ExecutableSnippet title={dmDictionariesCreate.title} initialCode={dmDictionariesCreate.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Inserting a value that is already interned is not an error - it returns the
             existing ID, so writers never need to check first:
           </p>
-          <ExampleSnippet id="dm-dictionaries-duplicate" />
+          <ExecutableSnippet title={dmDictionariesDuplicate.title} initialCode={dmDictionariesDuplicate.code} />
         </section>
 
         <section>
@@ -43,7 +43,7 @@ export function DataModelDictionariesPage() {
           <p className="text-text-secondary mb-4">
             A dictionary reads like any other source - each row is an ID/value pair:
           </p>
-          <ExampleSnippet id="dm-dictionaries-from" />
+          <ExecutableSnippet title={dmDictionariesFrom.title} initialCode={dmDictionariesFrom.code} />
         </section>
 
         <section>
@@ -54,12 +54,12 @@ export function DataModelDictionariesPage() {
             using plain strings; the engine stores and compares the compact IDs
             underneath:
           </p>
-          <ExampleSnippet id="dm-dictionaries-column" />
+          <ExecutableSnippet title={dmDictionariesColumn.title} initialCode={dmDictionariesColumn.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Note the insert above used <Code>"NVDA"</Code>, which was not in the
             dictionary. Unknown values are interned automatically on write:
           </p>
-          <ExampleSnippet id="dm-dictionaries-new-entry" />
+          <ExecutableSnippet title={dmDictionariesNewEntry.title} initialCode={dmDictionariesNewEntry.code} />
         </section>
 
         <section>

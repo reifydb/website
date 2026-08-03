@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { textStartsWithInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function TextStartsWithPage() {
   return (
@@ -29,7 +29,7 @@ export function TextStartsWithPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Boolean indicating whether the string starts with the specified prefix.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="text-starts_with-inline" />
+          <ExecutableSnippet title={textStartsWithInline.title} initialCode={textStartsWithInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/text/ends_with" className="text-primary-color hover:underline">text::ends_with</Link><Link to="/docs/functions/text/contains" className="text-primary-color hover:underline">text::contains</Link></div></section>
       </div>

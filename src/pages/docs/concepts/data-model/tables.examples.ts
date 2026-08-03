@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dataModelTablesExamples: CodeExample[] = [
-{
+export const dmTablesCreateExample: CodeExample = {
     id: 'dm-tables-create',
     title: 'Create a Table and Insert Rows',
     category: 'concept',
@@ -21,8 +20,9 @@ from dm_tbl::products`,
 ---+--------+-------+-------------
 2  | Gadget | 24.5  | false
 1  | Widget | 9.99  | false`,
-  },
-{
+  };
+
+export const dmTablesOptionExample: CodeExample = {
     id: 'dm-tables-option',
     title: 'Optional Columns Hold none',
     category: 'concept',
@@ -40,8 +40,9 @@ from dm_tbl::customers`,
 ---+-------+---------
 2  | Grace | ⟪none⟫
 1  | Ada   | friend`,
-  },
-{
+  };
+
+export const dmTablesAutoIncrementExample: CodeExample = {
     id: 'dm-tables-auto-increment',
     title: 'Auto-Increment Columns',
     category: 'concept',
@@ -55,8 +56,9 @@ from dm_tbl::tickets`,
 ---+-------
 2  | Second
 1  | First`,
-  },
-{
+  };
+
+export const dmTablesPrimaryKeyExample: CodeExample = {
     id: 'dm-tables-primary-key',
     title: 'Define a Primary Key',
     category: 'concept',
@@ -65,8 +67,9 @@ create primary key on dm_tbl::accounts { id }`,
     expected: `operation          | namespace | table
 -------------------+-----------+---------
 CREATE PRIMARY KEY | dm_tbl    | accounts`,
-  },
-{
+  };
+
+export const dmTablesUpdateReturningExample: CodeExample = {
     id: 'dm-tables-update-returning',
     title: 'Update Rows and Return the Result',
     category: 'concept',
@@ -76,8 +79,9 @@ returning { id, name, price }`,
     expected: `id | name   | price
 ---+--------+------
 2  | Gadget | 19.99`,
-  },
-{
+  };
+
+export const dmTablesDeleteExample: CodeExample = {
     id: 'dm-tables-delete',
     title: 'Delete Rows by Predicate',
     category: 'concept',
@@ -86,8 +90,9 @@ delete dm_tbl::products filter { discontinued == true }`,
     expected: `namespace | table    | deleted
 ----------+----------+--------
 dm_tbl    | products | 1`,
-  },
-{
+  };
+
+export const dmTablesRownumExample: CodeExample = {
     id: 'dm-tables-rownum',
     title: 'System Columns',
     category: 'concept',
@@ -96,8 +101,9 @@ dm_tbl    | products | 1`,
 ----+------
 2   | Grace
 1   | Ada`,
-  },
-{
+  };
+
+export const dmTablesAlterExample: CodeExample = {
     id: 'dm-tables-alter',
     title: 'Evolve the Schema with ALTER TABLE',
     category: 'concept',
@@ -105,5 +111,15 @@ dm_tbl    | products | 1`,
     expected: `operation  | namespace | table     | details
 -----------+-----------+-----------+--------
 ADD COLUMN | dm_tbl    | customers | email`,
-  },
+  };
+
+export const dataModelTablesExamples: CodeExample[] = [
+  dmTablesCreateExample,
+  dmTablesOptionExample,
+  dmTablesAutoIncrementExample,
+  dmTablesPrimaryKeyExample,
+  dmTablesUpdateReturningExample,
+  dmTablesDeleteExample,
+  dmTablesRownumExample,
+  dmTablesAlterExample,
 ];

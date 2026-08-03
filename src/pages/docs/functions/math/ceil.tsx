@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { mathCeilInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function MathCeilPage() {
   return (
@@ -62,7 +62,7 @@ export function MathCeilPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="math-ceil-inline" />
+          <ExecutableSnippet title={mathCeilInline.title} initialCode={mathCeilInline.code} />
         </section>
 
         {/* Related Functions */}

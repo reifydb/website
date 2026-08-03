@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dateQuarterInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DateQuarterPage() {
   return (
@@ -26,7 +26,7 @@ export function DateQuarterPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns an Integer representing the quarter (1-4).</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="date-quarter-inline" />
+          <ExecutableSnippet title={dateQuarterInline.title} initialCode={dateQuarterInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/date/month" className="text-primary-color hover:underline">date::month</Link><Link to="/docs/functions/date/week" className="text-primary-color hover:underline">date::week</Link></div></section>
       </div>

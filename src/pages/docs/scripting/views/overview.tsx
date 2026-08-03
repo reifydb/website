@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingDeferredView, scriptingDeferredViewQuery, scriptingTransactionalView, scriptingTransactionalViewInsert, scriptingTransactionalViewQuery } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function ViewsOverviewPage() {
   return (
@@ -21,7 +21,7 @@ export function ViewsOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Deferred View</h2>
           <ExecutableSnippet
             title="Deferred View"
-            initialCode={getExampleById('scripting-deferred-view')!.code}
+            initialCode={scriptingDeferredView.code}
           />
           <p className="text-text-secondary mt-4">
             Deferred views are incrementally maintained. They define their own schema
@@ -30,7 +30,7 @@ export function ViewsOverviewPage() {
           </p>
           <ExecutableSnippet
             title="Query the Deferred View"
-            initialCode={getExampleById('scripting-deferred-view-query')!.code}
+            initialCode={scriptingDeferredViewQuery.code}
           />
         </section>
 
@@ -38,7 +38,7 @@ export function ViewsOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Transactional View</h2>
           <ExecutableSnippet
             title="Transactional View"
-            initialCode={getExampleById('scripting-transactional-view')!.code}
+            initialCode={scriptingTransactionalView.code}
           />
           <p className="text-text-secondary mt-4">
             Transactional views update atomically with the source data: the view
@@ -46,7 +46,7 @@ export function ViewsOverviewPage() {
           </p>
           <ExecutableSnippet
             title="Write to the Source Table"
-            initialCode={getExampleById('scripting-transactional-view-insert')!.code}
+            initialCode={scriptingTransactionalViewInsert.code}
           />
           <p className="text-text-secondary mt-4">
             A transaction that has written to a source table cannot read the view
@@ -56,7 +56,7 @@ export function ViewsOverviewPage() {
           </p>
           <ExecutableSnippet
             title="Query the Transactional View"
-            initialCode={getExampleById('scripting-transactional-view-query')!.code}
+            initialCode={scriptingTransactionalViewQuery.code}
           />
         </section>
       </div>

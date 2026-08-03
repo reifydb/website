@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dataModelPoliciesExamples: CodeExample[] = [
-{
+export const dmPoliciesReadFilterExample: CodeExample = {
     id: 'dm-policies-read-filter',
     title: 'A Read Policy That Filters Rows',
     category: 'concept',
@@ -17,8 +16,9 @@ create table policy public_only on dm_pol::documents {
     expected: `policy      | created
 ------------+--------
 public_only | true`,
-  },
-{
+  };
+
+export const dmPoliciesReadMaskExample: CodeExample = {
     id: 'dm-policies-read-mask',
     title: 'A Read Policy That Masks Columns',
     category: 'concept',
@@ -29,8 +29,9 @@ create table policy mask_email on dm_pol::people {
     expected: `policy     | created
 -----------+--------
 mask_email | true`,
-  },
-{
+  };
+
+export const dmPoliciesWriteRequireExample: CodeExample = {
     id: 'dm-policies-write-require',
     title: 'A Write Policy That Rejects Invalid Mutations',
     category: 'concept',
@@ -40,8 +41,9 @@ mask_email | true`,
     expected: `policy             | created
 -------------------+--------
 no_private_inserts | true`,
-  },
-{
+  };
+
+export const dmPoliciesInspectExample: CodeExample = {
     id: 'dm-policies-inspect',
     title: 'Inspect Policies via the System Catalog',
     category: 'concept',
@@ -53,8 +55,9 @@ map { name, target_type, target_shape, enabled }`,
 no_private_inserts | table       | documents    | true
 mask_email         | table       | people       | true
 public_only        | table       | documents    | true`,
-  },
-{
+  };
+
+export const dmPoliciesDisableExample: CodeExample = {
     id: 'dm-policies-disable',
     title: 'Disable and Re-Enable a Policy',
     category: 'concept',
@@ -62,8 +65,9 @@ public_only        | table       | documents    | true`,
     expected: `policy      | altered
 ------------+--------
 public_only | true`,
-  },
-{
+  };
+
+export const dmPoliciesEnableExample: CodeExample = {
     id: 'dm-policies-enable',
     title: 'Re-Enable It',
     category: 'concept',
@@ -71,8 +75,9 @@ public_only | true`,
     expected: `policy      | altered
 ------------+--------
 public_only | true`,
-  },
-{
+  };
+
+export const dmPoliciesDropExample: CodeExample = {
     id: 'dm-policies-drop',
     title: 'Drop a Policy',
     category: 'concept',
@@ -80,5 +85,14 @@ public_only | true`,
     expected: `policy             | dropped
 -------------------+--------
 no_private_inserts | true`,
-  },
+  };
+
+export const dataModelPoliciesExamples: CodeExample[] = [
+  dmPoliciesReadFilterExample,
+  dmPoliciesReadMaskExample,
+  dmPoliciesWriteRequireExample,
+  dmPoliciesInspectExample,
+  dmPoliciesDisableExample,
+  dmPoliciesEnableExample,
+  dmPoliciesDropExample,
 ];

@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingDmlDeleteExamples: CodeExample[] = [
-{
+export const scriptingDeleteBasicExample: CodeExample = {
     id: 'scripting-delete-basic',
     title: 'Delete Rows',
     category: 'scripting',
@@ -19,8 +18,9 @@ sort { id: asc }`,
 ---+------
 1  | keep
 3  | keep`,
-  },
-{
+  };
+
+export const scriptingDeleteAllExample: CodeExample = {
     id: 'scripting-delete-all',
     title: 'Delete All Rows',
     category: 'scripting',
@@ -29,5 +29,9 @@ CREATE TABLE dm_da::temp { id: int4, val: utf8 };
 INSERT dm_da::temp [{ id: 1, val: 'a' }, { id: 2, val: 'b' }];
 DELETE dm_da::temp FILTER { true };
 FROM dm_da::temp`,
-  },
+  };
+
+export const scriptingDmlDeleteExamples: CodeExample[] = [
+  scriptingDeleteBasicExample,
+  scriptingDeleteAllExample,
 ];

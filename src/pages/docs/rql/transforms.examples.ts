@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const rqlTransformsExamples: CodeExample[] = [
-{
+export const transformPipelineExample: CodeExample = {
     id: 'transform-pipeline',
     title: 'Pipeline Processing',
     category: 'rql',
@@ -15,21 +14,24 @@ take 5`,
 East   | 245
 North  | 150.5
 West   | 55.25`,
-  },
-{
+  };
+
+export const transformFromExample: CodeExample = {
     id: 'transform-from',
     title: 'from',
     category: 'rql',
     code: `from app::users`,
-  },
-{
+  };
+
+export const transformFilterExample: CodeExample = {
     id: 'transform-filter',
     title: 'filter',
     category: 'rql',
     code: `from app::users
 filter { age >= 18 }`,
-  },
-{
+  };
+
+export const transformExtendExample: CodeExample = {
     id: 'transform-extend',
     title: 'extend',
     category: 'rql',
@@ -42,23 +44,26 @@ extend { bonus: salary * 0.1 }`,
 3  | 2       | 65000  | 6500.0
 2  | 1       | 82000  | 8200.0
 1  | 1       | 75000  | 7500.0`,
-  },
-{
+  };
+
+export const transformSortExample: CodeExample = {
     id: 'transform-sort',
     title: 'sort',
     category: 'rql',
     code: `from app::users
 sort {created_at}`,
-  },
-{
+  };
+
+export const transformTakeExample: CodeExample = {
     id: 'transform-take',
     title: 'take',
     category: 'rql',
     code: `from app::users
 sort {created_at}
 take 10`,
-  },
-{
+  };
+
+export const transformDistinctExample: CodeExample = {
     id: 'transform-distinct',
     title: 'distinct',
     category: 'rql',
@@ -69,8 +74,9 @@ distinct { category }`,
 5  | Thingamajig | TMJ-005 | 15.5  | Accessories
 4  | Doohickey   | DHK-004 | 99.99 | Hardware
 2  | Gadget      | GDT-002 | 49.99 | Electronics`,
-  },
-{
+  };
+
+export const transformAggregateExample: CodeExample = {
     id: 'transform-aggregate',
     title: 'aggregate',
     category: 'rql',
@@ -82,5 +88,15 @@ North  | 471.25
 West   | 55.25
 East   | 245
 South  | 89.99`,
-  },
+  };
+
+export const rqlTransformsExamples: CodeExample[] = [
+  transformPipelineExample,
+  transformFromExample,
+  transformFilterExample,
+  transformExtendExample,
+  transformSortExample,
+  transformTakeExample,
+  transformDistinctExample,
+  transformAggregateExample,
 ];

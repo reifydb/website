@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingDeferredView, scriptingQueryView, scriptingQueryViewResult } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function DeferredViewsPage() {
   return (
@@ -20,7 +20,7 @@ export function DeferredViewsPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Create a Deferred View</h2>
           <ExecutableSnippet
             title="Deferred View"
-            initialCode={getExampleById('scripting-deferred-view')!.code}
+            initialCode={scriptingDeferredView.code}
           />
           <p className="text-text-secondary mt-4">
             The view schema declares the output shape. The <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">AS</code> block
@@ -32,11 +32,11 @@ export function DeferredViewsPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Query a View</h2>
           <ExecutableSnippet
             title="Query a View"
-            initialCode={getExampleById('scripting-query-view')!.code}
+            initialCode={scriptingQueryView.code}
           />
           <ExecutableSnippet
             title="Query the View"
-            initialCode={getExampleById('scripting-query-view-result')!.code}
+            initialCode={scriptingQueryViewResult.code}
           />
           <p className="text-text-secondary mt-4">
             Query a view just like a table. You can chain transforms like{' '}

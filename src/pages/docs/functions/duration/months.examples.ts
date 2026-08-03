@@ -1,10 +1,12 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const functionsDurationMonthsExamples: CodeExample[] = [
-{
+export const durationMonthsExample: CodeExample = {
     id: 'duration-months',
     title: 'Create a duration of months',
     category: 'function',
     code: `map {duration::months(6)}`,
-  },
+  };
+
+export const functionsDurationMonthsExamples: CodeExample[] = [
+  durationMonthsExample,
 ];

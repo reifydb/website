@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { matchSearched, matchValue } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function MatchPage() {
   return (
@@ -20,7 +20,7 @@ export function MatchPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Value Match</h2>
           <ExecutableSnippet
             title="Value Match"
-            initialCode={getExampleById('match-value')!.code}
+            initialCode={matchValue.code}
           />
           <p className="text-text-secondary mt-4">
             Match a column against specific values. Each arm maps a value to a result. The <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">else</code> arm catches everything else.
@@ -31,7 +31,7 @@ export function MatchPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Searched Match</h2>
           <ExecutableSnippet
             title="Searched Match"
-            initialCode={getExampleById('match-searched')!.code}
+            initialCode={matchSearched.code}
           />
           <p className="text-text-secondary mt-4">
             Omit the scrutinee and write each arm as a full condition with <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">=&gt;</code>. Each condition is evaluated in order; the first match wins.

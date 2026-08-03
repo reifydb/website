@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
+import { textLengthCharcount, textLengthFilter, textLengthValidate } from './examples.examples';
 
 export function TextLengthPage() {
   return (
@@ -67,20 +67,20 @@ export function TextLengthPage() {
 
           <h3 className="text-lg font-bold mb-3">Filter by minimum length</h3>
           <ExecutableSnippet
-            title={getExampleById('text-length-filter')!.title}
-            initialCode={getExampleById('text-length-filter')!.code}
+            title={textLengthFilter.title}
+            initialCode={textLengthFilter.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Add character count field</h3>
           <ExecutableSnippet
-            title={getExampleById('text-length-charcount')!.title}
-            initialCode={getExampleById('text-length-charcount')!.code}
+            title={textLengthCharcount.title}
+            initialCode={textLengthCharcount.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Validate input length</h3>
           <ExecutableSnippet
-            title={getExampleById('text-length-validate')!.title}
-            initialCode={getExampleById('text-length-validate')!.code}
+            title={textLengthValidate.title}
+            initialCode={textLengthValidate.code}
           />
         </section>
 

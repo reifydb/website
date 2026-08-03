@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ExecutableSnippet, ScrollReveal } from '@/components/ui';
 import { ChipGroup } from '@reifydb/ui';
-import { landingExamples } from '@/lib/examples';
+import { landingExamples } from './code-example.examples';
 
 export function CodeExampleSection() {
   const [activeIndex, setActiveIndex] = useState(0);

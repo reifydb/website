@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { datetimeEpochMillis } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DatetimeEpochMillisPage() {
   return (
@@ -44,7 +44,7 @@ export function DatetimeEpochMillisPage() {
         </section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="datetime-epoch_millis" />
+          <ExecutableSnippet title={datetimeEpochMillis.title} initialCode={datetimeEpochMillis.code} />
         </section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>

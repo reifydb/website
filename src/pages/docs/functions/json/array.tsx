@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
+import { jsonArrayBasic, jsonArrayInline } from './examples.examples';
 
 export function JsonArrayPage() {
   return (
@@ -67,14 +67,14 @@ export function JsonArrayPage() {
 
           <h3 className="text-lg font-bold mb-3">Build a JSON array</h3>
           <ExecutableSnippet
-            title={getExampleById('json-array-basic')!.title}
-            initialCode={getExampleById('json-array-basic')!.code}
+            title={jsonArrayBasic.title}
+            initialCode={jsonArrayBasic.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Mixed types</h3>
           <ExecutableSnippet
-            title={getExampleById('json-array-inline')!.title}
-            initialCode={getExampleById('json-array-inline')!.code}
+            title={jsonArrayInline.title}
+            initialCode={jsonArrayInline.code}
           />
         </section>
 

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { cfIfBranchShapes, cfIfElseIf, cfIfExpression, cfIfGuardWrite, cfIfNoElse, cfIfReassign } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -29,12 +29,12 @@ export function RqlControlFlowConditionalsPage() {
             produces the value of the whole expression. Run the snippets on this page
             in order:
           </p>
-          <ExampleSnippet id="cf-if-expression" />
+          <ExecutableSnippet title={cfIfExpression.title} initialCode={cfIfExpression.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Chain any number of conditions with <Code>else if</Code>; the first one
             that holds wins:
           </p>
-          <ExampleSnippet id="cf-if-else-if" />
+          <ExecutableSnippet title={cfIfElseIf.title} initialCode={cfIfElseIf.code} />
         </section>
 
         <section>
@@ -46,7 +46,7 @@ export function RqlControlFlowConditionalsPage() {
             That is often exactly right - "a warning, or nothing" - but if a definite
             value is required downstream, write the <Code>else</Code>:
           </p>
-          <ExampleSnippet id="cf-if-no-else" />
+          <ExecutableSnippet title={cfIfNoElse.title} initialCode={cfIfNoElse.code} />
         </section>
 
         <section>
@@ -59,7 +59,7 @@ export function RqlControlFlowConditionalsPage() {
             whichever branches run. Note the <Code>;</Code> after the closing brace:
             a block is a statement, and the next statement needs the separator:
           </p>
-          <ExampleSnippet id="cf-if-guard-write" />
+          <ExecutableSnippet title={cfIfGuardWrite.title} initialCode={cfIfGuardWrite.code} />
         </section>
 
         <section>
@@ -69,7 +69,7 @@ export function RqlControlFlowConditionalsPage() {
             branch that ran determines the request's result - the branches do not have
             to produce the same shape:
           </p>
-          <ExampleSnippet id="cf-if-branch-shapes" />
+          <ExecutableSnippet title={cfIfBranchShapes.title} initialCode={cfIfBranchShapes.code} />
         </section>
 
         <section>
@@ -79,7 +79,7 @@ export function RqlControlFlowConditionalsPage() {
             imperative alternative to the expression form - useful when several
             statements in the branch contribute to the final value:
           </p>
-          <ExampleSnippet id="cf-if-reassign" />
+          <ExecutableSnippet title={cfIfReassign.title} initialCode={cfIfReassign.code} />
         </section>
 
         <Callout variant="note" title="Many arms? Use match">

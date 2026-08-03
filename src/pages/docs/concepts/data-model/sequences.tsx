@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dmSequencesAlter, dmSequencesAutoIncrement, dmSequencesReturning } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -28,7 +28,7 @@ export function DataModelSequencesPage() {
             each row receives the next value - no coordination, no SELECT MAX, no
             application-side counters. Run the snippets on this page in order:
           </p>
-          <ExampleSnippet id="dm-sequences-auto-increment" />
+          <ExecutableSnippet title={dmSequencesAutoIncrement.title} initialCode={dmSequencesAutoIncrement.code} />
         </section>
 
         <section>
@@ -39,7 +39,7 @@ export function DataModelSequencesPage() {
             value N</Code> repositions it; the next insert draws <Code>N + 1</Code>.
             This is how imports preserve existing IDs and how ID ranges are carved out:
           </p>
-          <ExampleSnippet id="dm-sequences-alter" />
+          <ExecutableSnippet title={dmSequencesAlter.title} initialCode={dmSequencesAlter.code} />
         </section>
 
         <section>
@@ -49,7 +49,7 @@ export function DataModelSequencesPage() {
             return it to a client. <Code>returning</Code> hands it back from the insert
             itself, in the same statement:
           </p>
-          <ExampleSnippet id="dm-sequences-returning" />
+          <ExecutableSnippet title={dmSequencesReturning.title} initialCode={dmSequencesReturning.code} />
         </section>
 
         <Callout variant="note" title="Where else sequences appear">

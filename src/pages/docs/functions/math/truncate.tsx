@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { mathTruncateInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function MathTruncatePage() {
   return (
@@ -28,7 +28,7 @@ export function MathTruncatePage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Number truncated toward zero.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="math-truncate-inline" />
+          <ExecutableSnippet title={mathTruncateInline.title} initialCode={mathTruncateInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/math/round" className="text-primary-color hover:underline">math::round</Link><Link to="/docs/functions/math/floor" className="text-primary-color hover:underline">math::floor</Link><Link to="/docs/functions/math/ceil" className="text-primary-color hover:underline">math::ceil</Link></div></section>
       </div>

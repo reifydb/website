@@ -1,14 +1,14 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const guidesQuickStartExamples: CodeExample[] = [
-{
+export const quickstartCreateTableExample: CodeExample = {
     id: 'quickstart-create-table',
     title: 'Create a Table',
     category: 'guide',
     code: `create namespace shop;
 create table shop::orders { id: int4, item: utf8, amount: float8, status: utf8 }`,
-  },
-{
+  };
+
+export const quickstartCreateViewExample: CodeExample = {
     id: 'quickstart-create-view',
     title: 'Create a Transactional View',
     category: 'guide',
@@ -17,8 +17,9 @@ create table shop::orders { id: int4, item: utf8, amount: float8, status: utf8 }
   filter { status == "open" }
   map { id, item, amount }
 }`,
-  },
-{
+  };
+
+export const quickstartInsertExample: CodeExample = {
     id: 'quickstart-insert',
     title: 'Insert Rows',
     category: 'guide',
@@ -31,8 +32,9 @@ create table shop::orders { id: int4, item: utf8, amount: float8, status: utf8 }
     expected: `namespace | table  | inserted
 ----------+--------+---------
 shop      | orders | 4`,
-  },
-{
+  };
+
+export const quickstartQueryTableExample: CodeExample = {
     id: 'quickstart-query-table',
     title: 'Query the Table',
     category: 'guide',
@@ -43,8 +45,9 @@ sort { id: asc }`,
 ---+----------+--------+-------
 1  | keyboard | 89     | open
 2  | monitor  | 349.5  | open`,
-  },
-{
+  };
+
+export const quickstartQueryViewExample: CodeExample = {
     id: 'quickstart-query-view',
     title: 'Query the View',
     category: 'guide',
@@ -54,8 +57,9 @@ sort { id: asc }`,
 ---+----------+-------
 1  | keyboard | 89
 2  | monitor  | 349.5`,
-  },
-{
+  };
+
+export const quickstartShipOrderExample: CodeExample = {
     id: 'quickstart-ship-order',
     title: 'Update a Row',
     category: 'guide',
@@ -63,8 +67,9 @@ sort { id: asc }`,
     expected: `namespace | table  | updated
 ----------+--------+--------
 shop      | orders | 1`,
-  },
-{
+  };
+
+export const quickstartViewUpdatedExample: CodeExample = {
     id: 'quickstart-view-updated',
     title: 'The View Maintained Itself',
     category: 'guide',
@@ -73,8 +78,9 @@ sort { id: asc }`,
     expected: `id | item    | amount
 ---+---------+-------
 2  | monitor | 349.5`,
-  },
-{
+  };
+
+export const quickstartAggregateExample: CodeExample = {
     id: 'quickstart-aggregate',
     title: 'Aggregate Revenue by Status',
     category: 'guide',
@@ -85,5 +91,15 @@ sort { status: asc }`,
 --------+---------+-------
 open    | 349.5   | 1
 shipped | 521.5   | 3`,
-  },
+  };
+
+export const guidesQuickStartExamples: CodeExample[] = [
+  quickstartCreateTableExample,
+  quickstartCreateViewExample,
+  quickstartInsertExample,
+  quickstartQueryTableExample,
+  quickstartQueryViewExample,
+  quickstartShipOrderExample,
+  quickstartViewUpdatedExample,
+  quickstartAggregateExample,
 ];

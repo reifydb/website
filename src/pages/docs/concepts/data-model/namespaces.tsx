@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dmNamespacesCreate, dmNamespacesIfNotExists, dmNamespacesNested, dmNamespacesSameName, dmNamespacesSystem } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -28,7 +28,7 @@ export function DataModelNamespacesPage() {
             reference to an object inside it uses the <Code>::</Code> separator. Run the
             snippets on this page in order:
           </p>
-          <ExampleSnippet id="dm-namespaces-create" />
+          <ExecutableSnippet title={dmNamespacesCreate.title} initialCode={dmNamespacesCreate.code} />
         </section>
 
         <section>
@@ -39,7 +39,7 @@ export function DataModelNamespacesPage() {
             database: <Code>prod::orders</Code> and <Code>staging::orders</Code> are
             entirely distinct tables.
           </p>
-          <ExampleSnippet id="dm-namespaces-same-name" />
+          <ExecutableSnippet title={dmNamespacesSameName.title} initialCode={dmNamespacesSameName.code} />
         </section>
 
         <section>
@@ -49,7 +49,7 @@ export function DataModelNamespacesPage() {
             setup scripts and migrations. The result reports <Code>created: false</Code>{' '}
             when the namespace was already there:
           </p>
-          <ExampleSnippet id="dm-namespaces-if-not-exists" />
+          <ExecutableSnippet title={dmNamespacesIfNotExists.title} initialCode={dmNamespacesIfNotExists.code} />
         </section>
 
         <section>
@@ -60,7 +60,7 @@ export function DataModelNamespacesPage() {
             the full path, for example <Code>dm_ns::internal::audit</Code>. Use nesting
             to group related state without inventing name prefixes:
           </p>
-          <ExampleSnippet id="dm-namespaces-nested" />
+          <ExecutableSnippet title={dmNamespacesNested.title} initialCode={dmNamespacesNested.code} />
         </section>
 
         <section>
@@ -71,7 +71,7 @@ export function DataModelNamespacesPage() {
             parent - nested namespaces show up as children of the namespace that
             contains them:
           </p>
-          <ExampleSnippet id="dm-namespaces-system" />
+          <ExecutableSnippet title={dmNamespacesSystem.title} initialCode={dmNamespacesSystem.code} />
           <p className="text-text-secondary mt-4">
             The <Code>system</Code> namespace also exposes <Code>system::tables</Code>,{' '}
             <Code>system::views</Code>, <Code>system::policies</Code>, and storage

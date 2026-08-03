@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { textCharInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function TextCharPage() {
   return (
@@ -26,7 +26,7 @@ export function TextCharPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Utf8 containing the single character corresponding to the given ASCII code.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="text-char-inline" />
+          <ExecutableSnippet title={textCharInline.title} initialCode={textCharInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/text/ascii" className="text-primary-color hover:underline">text::ascii</Link></div></section>
       </div>

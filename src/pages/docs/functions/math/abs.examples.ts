@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const functionsMathAbsExamples: CodeExample[] = [
-{
+export const mathAbsConvertExample: CodeExample = {
     id: 'math-abs-convert',
     title: 'Convert to absolute value',
     category: 'function',
@@ -14,8 +13,9 @@ extend { abs_amount: math::abs(amount) }`,
 3  | 200    | 200
 2  | -75.25 | 75.25
 1  | 150.5  | 150.5`,
-  },
-{
+  };
+
+export const mathAbsFilterExample: CodeExample = {
     id: 'math-abs-filter',
     title: 'Filter by absolute magnitude',
     category: 'function',
@@ -25,5 +25,9 @@ filter { math::abs(balance) > 1000 }`,
 ---+--------
 3  | 3200
 1  | 1250.5`,
-  },
+  };
+
+export const functionsMathAbsExamples: CodeExample[] = [
+  mathAbsConvertExample,
+  mathAbsFilterExample,
 ];

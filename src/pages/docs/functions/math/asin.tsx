@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { mathAsinInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function MathAsinPage() {
   return (
@@ -26,7 +26,7 @@ export function MathAsinPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Number representing the arcsine in radians.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="math-asin-inline" />
+          <ExecutableSnippet title={mathAsinInline.title} initialCode={mathAsinInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/math/sin" className="text-primary-color hover:underline">math::sin</Link><Link to="/docs/functions/math/acos" className="text-primary-color hover:underline">math::acos</Link><Link to="/docs/functions/math/atan" className="text-primary-color hover:underline">math::atan</Link></div></section>
       </div>

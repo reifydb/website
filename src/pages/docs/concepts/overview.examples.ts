@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const conceptsOverviewExamples: CodeExample[] = [
-{
+export const conceptsDerivedSchemaExample: CodeExample = {
     id: 'concepts-derived-schema',
     title: 'A Table and Two Views Derived From It',
     category: 'concept',
@@ -15,8 +14,9 @@ create deferred view cpt::order_count { orders: int8 } as {
   from cpt::orders
   aggregate { orders: math::count(id) } by {}
 }`,
-  },
-{
+  };
+
+export const conceptsDerivedInsertExample: CodeExample = {
     id: 'concepts-derived-insert',
     title: 'Write to the Table',
     category: 'concept',
@@ -28,8 +28,9 @@ create deferred view cpt::order_count { orders: int8 } as {
     expected: `namespace | table  | inserted
 ----------+--------+---------
 cpt       | orders | 3`,
-  },
-{
+  };
+
+export const conceptsDerivedQueryExample: CodeExample = {
     id: 'concepts-derived-query',
     title: 'The View Is Already Current',
     category: 'concept',
@@ -39,8 +40,9 @@ sort { region: asc }`,
 -------+--------
 North  | 165.5
 South  | 80`,
-  },
-{
+  };
+
+export const conceptsDeferredQueryExample: CodeExample = {
     id: 'concepts-deferred-query',
     title: 'The Deferred View Caught Up',
     category: 'concept',
@@ -48,8 +50,9 @@ South  | 80`,
     expected: `orders
 ------
 3`,
-  },
-{
+  };
+
+export const conceptsRingbufferExample: CodeExample = {
     id: 'concepts-ringbuffer',
     title: 'A Ring Buffer Keeps the Last N Rows',
     category: 'concept',
@@ -70,5 +73,12 @@ from cpt_rb::recent_logins`,
 2       | 09:05
 3       | 09:12
 4       | 09:20`,
-  },
+  };
+
+export const conceptsOverviewExamples: CodeExample[] = [
+  conceptsDerivedSchemaExample,
+  conceptsDerivedInsertExample,
+  conceptsDerivedQueryExample,
+  conceptsDeferredQueryExample,
+  conceptsRingbufferExample,
 ];

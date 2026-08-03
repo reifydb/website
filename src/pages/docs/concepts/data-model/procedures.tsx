@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dmProceduresCompose, dmProceduresCreate, dmProceduresLogic, dmProceduresParams, dmProceduresTest, dmProceduresTestIsolation } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -28,7 +28,7 @@ export function DataModelProceduresPage() {
             The body is a block of statements; calling the procedure returns the
             result of its last statement. Run the snippets on this page in order:
           </p>
-          <ExampleSnippet id="dm-procedures-create" />
+          <ExecutableSnippet title={dmProceduresCreate.title} initialCode={dmProceduresCreate.code} />
         </section>
 
         <section>
@@ -37,7 +37,7 @@ export function DataModelProceduresPage() {
             Parameters are declared as a typed record and referenced in the body with a{' '}
             <Code>$</Code> prefix. Calls pass arguments positionally:
           </p>
-          <ExampleSnippet id="dm-procedures-params" />
+          <ExecutableSnippet title={dmProceduresParams.title} initialCode={dmProceduresParams.code} />
         </section>
 
         <section>
@@ -49,11 +49,11 @@ export function DataModelProceduresPage() {
             <Link to="/docs/scripting/procedures/control-flow" className="text-primary hover:text-primary-light font-medium transition-colors">Parameters &amp; Control Flow</Link>{' '}
             for the scripting constructs in depth.
           </p>
-          <ExampleSnippet id="dm-procedures-logic" />
+          <ExecutableSnippet title={dmProceduresLogic.title} initialCode={dmProceduresLogic.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Procedures compose - a procedure can <Code>call</Code> another:
           </p>
-          <ExampleSnippet id="dm-procedures-compose" />
+          <ExecutableSnippet title={dmProceduresCompose.title} initialCode={dmProceduresCompose.code} />
         </section>
 
         <section>
@@ -65,12 +65,12 @@ export function DataModelProceduresPage() {
             <Code>create test</Code> plus <Code>run tests</Code> execute assertions
             against real data:
           </p>
-          <ExampleSnippet id="dm-procedures-test" />
+          <ExecutableSnippet title={dmProceduresTest.title} initialCode={dmProceduresTest.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Each test runs in a transaction that is rolled back, so tests never leak
             state into your data - the seeded row does not survive the run:
           </p>
-          <ExampleSnippet id="dm-procedures-test-isolation" />
+          <ExecutableSnippet title={dmProceduresTestIsolation.title} initialCode={dmProceduresTestIsolation.code} />
         </section>
 
         <section>

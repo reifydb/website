@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingProceduresControlFlowExamples: CodeExample[] = [
-{
+export const scriptingProcedureLetIfExample: CodeExample = {
     id: 'scripting-procedure-let-if',
     title: 'Control Flow in Procedures',
     category: 'scripting',
@@ -19,8 +18,9 @@ sort { id: asc }`,
 ---+------
 5  | low
 15 | high`,
-  },
-{
+  };
+
+export const scriptingProcedureWhileExample: CodeExample = {
     id: 'scripting-procedure-while',
     title: 'While Loop in Procedure',
     category: 'scripting',
@@ -41,5 +41,9 @@ sort { val: asc }`,
 1
 2
 3`,
-  },
+  };
+
+export const scriptingProceduresControlFlowExamples: CodeExample[] = [
+  scriptingProcedureLetIfExample,
+  scriptingProcedureWhileExample,
 ];

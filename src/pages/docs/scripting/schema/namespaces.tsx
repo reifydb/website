@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingCreateNamespace, scriptingCreateTable } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function NamespacesPage() {
   return (
@@ -20,7 +20,7 @@ export function NamespacesPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Create a Namespace</h2>
           <ExecutableSnippet
             title="Create Namespace"
-            initialCode={getExampleById('scripting-create-namespace')!.code}
+            initialCode={scriptingCreateNamespace.code}
           />
           <p className="text-text-secondary mt-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">CREATE NAMESPACE</code> to
@@ -33,7 +33,7 @@ export function NamespacesPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Using Namespaces</h2>
           <ExecutableSnippet
             title="Table in Namespace"
-            initialCode={getExampleById('scripting-create-table')!.code}
+            initialCode={scriptingCreateTable.code}
           />
           <p className="text-text-secondary mt-4">
             All tables, views, procedures, and events are scoped to a namespace.

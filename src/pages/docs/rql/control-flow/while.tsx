@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { cfWhileAccumulate, cfWhileCap, cfWhileWrite, cfWhileZeroIterations } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -34,12 +34,12 @@ export function RqlControlFlowWhilePage() {
             <Code>$name = ...</Code>; note the <Code>;</Code> after the closing brace
             before the next statement:
           </p>
-          <ExampleSnippet id="cf-while-accumulate" />
+          <ExecutableSnippet title={cfWhileAccumulate.title} initialCode={cfWhileAccumulate.code} />
           <p className="text-text-secondary mt-4 mb-4">
             <Code>while</Code> tests the condition <em>before</em> each iteration,
             including the first. If it is false at the start, the body never runs:
           </p>
-          <ExampleSnippet id="cf-while-zero-iterations" />
+          <ExecutableSnippet title={cfWhileZeroIterations.title} initialCode={cfWhileZeroIterations.code} />
         </section>
 
         <section>
@@ -50,7 +50,7 @@ export function RqlControlFlowWhilePage() {
             script still runs in one transaction, so every iteration's writes commit
             together or not at all:
           </p>
-          <ExampleSnippet id="cf-while-write" />
+          <ExecutableSnippet title={cfWhileWrite.title} initialCode={cfWhileWrite.code} />
         </section>
 
         <section>
@@ -60,7 +60,7 @@ export function RqlControlFlowWhilePage() {
             engine refuses: any loop that exceeds 10,000 iterations fails the request,
             and everything it did is rolled back:
           </p>
-          <ExampleSnippet id="cf-while-cap" />
+          <ExecutableSnippet title={cfWhileCap.title} initialCode={cfWhileCap.code} />
           <Callout variant="note" title="The cap is a circuit breaker, not a budget">
             Hitting the limit is always a bug in the script, not a tuning problem. If a
             job legitimately needs more than 10,000 steps, it almost certainly should be

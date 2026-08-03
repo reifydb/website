@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { datetimeMinute } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DatetimeMinutePage() {
   return (
@@ -44,7 +44,7 @@ export function DatetimeMinutePage() {
         </section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="datetime-minute" />
+          <ExecutableSnippet title={datetimeMinute.title} initialCode={datetimeMinute.code} />
         </section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>

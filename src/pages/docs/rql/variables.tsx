@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { rqlVariablesFrame, rqlVariablesFrameField, rqlVariablesLet, rqlVariablesReassign, rqlVariablesScope, rqlVariablesUndeclared } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -30,7 +30,7 @@ export function RqlVariablesPage() {
             request. Here the threshold is named once instead of being repeated through
             the pipeline. Run the snippets on this page in order:
           </p>
-          <ExampleSnippet id="rql-variables-let" />
+          <ExecutableSnippet title={rqlVariablesLet.title} initialCode={rqlVariablesLet.code} />
         </section>
 
         <section>
@@ -41,13 +41,13 @@ export function RqlVariablesPage() {
             <Link to="/docs/rql/control-flow/for" className="text-primary hover:text-primary-light font-medium transition-colors">for</Link>{' '}
             and its siblings:
           </p>
-          <ExampleSnippet id="rql-variables-reassign" />
+          <ExecutableSnippet title={rqlVariablesReassign.title} initialCode={rqlVariablesReassign.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Assignment does not declare. Writing to a name that was never bound with{' '}
             <Code>let</Code> is an error, so a typo in a variable name fails loudly
             instead of silently creating a second variable:
           </p>
-          <ExampleSnippet id="rql-variables-undeclared" />
+          <ExecutableSnippet title={rqlVariablesUndeclared.title} initialCode={rqlVariablesUndeclared.code} />
         </section>
 
         <section>
@@ -58,13 +58,13 @@ export function RqlVariablesPage() {
             <Code>from $items</Code> reads it like any other source, with the usual
             transforms applied after it:
           </p>
-          <ExampleSnippet id="rql-variables-frame" />
+          <ExecutableSnippet title={rqlVariablesFrame.title} initialCode={rqlVariablesFrame.code} />
           <p className="text-text-secondary mt-4 mb-4">
             When the frame has a single row, a field access reads one value out of it.
             This is the idiom for configuration tables - fetch the row once, then use
             its fields as scalars:
           </p>
-          <ExampleSnippet id="rql-variables-frame-field" />
+          <ExecutableSnippet title={rqlVariablesFrameField.title} initialCode={rqlVariablesFrameField.code} />
           <Callout variant="note" title="Capture with a bare from">
             Capture frame variables with a bare <Code>from source</Code> and apply
             transforms after <Code>from $var</Code>. In the current build, putting
@@ -83,7 +83,7 @@ export function RqlVariablesPage() {
             block ends - it does not overwrite it. To change an outer variable from
             inside a block, assign (<Code>$x = ...</Code>) instead of re-declaring:
           </p>
-          <ExampleSnippet id="rql-variables-scope" />
+          <ExecutableSnippet title={rqlVariablesScope.title} initialCode={rqlVariablesScope.code} />
           <p className="text-text-secondary mb-4">
             <Link to="/docs/rql/control-flow/closures" className="text-primary hover:text-primary-light font-medium transition-colors">Closures</Link>{' '}
             interact with scopes too: they capture the variables visible where they are

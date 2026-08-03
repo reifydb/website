@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const functionsMathAvgExamples: CodeExample[] = [
-{
+export const mathAvgByCategoryExample: CodeExample = {
     id: 'math-avg-by-category',
     title: 'Calculate average price',
     category: 'function',
@@ -12,8 +11,9 @@ aggregate {math::avg(price)} by {category}`,
 Accessories | 17.745
 Hardware    | 99.99
 Electronics | 39.99`,
-  },
-{
+  };
+
+export const mathAvgWithTotalExample: CodeExample = {
     id: 'math-avg-with-total',
     title: 'Average with total',
     category: 'function',
@@ -25,5 +25,9 @@ aggregate {
     expected: `avg_sale | total_sales
 ---------+------------
 1930.3   | 9651.5`,
-  },
+  };
+
+export const functionsMathAvgExamples: CodeExample[] = [
+  mathAvgByCategoryExample,
+  mathAvgWithTotalExample,
 ];

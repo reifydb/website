@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { mathLogInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function MathLogPage() {
   return (
@@ -26,7 +26,7 @@ export function MathLogPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Number representing the natural logarithm of the value.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="math-log-inline" />
+          <ExecutableSnippet title={mathLogInline.title} initialCode={mathLogInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/math/log2" className="text-primary-color hover:underline">math::log2</Link><Link to="/docs/functions/math/log10" className="text-primary-color hover:underline">math::log10</Link><Link to="/docs/functions/math/exp" className="text-primary-color hover:underline">math::exp</Link></div></section>
       </div>

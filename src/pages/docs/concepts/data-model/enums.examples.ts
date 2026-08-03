@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dataModelEnumsExamples: CodeExample[] = [
-{
+export const dmEnumsBasicExample: CodeExample = {
     id: 'dm-enums-basic',
     title: 'A Plain Enum as a Column Type',
     category: 'concept',
@@ -17,8 +16,9 @@ from dm_enum::tasks`,
 ---+-----------
 2  | 1
 1  | 0`,
-  },
-{
+  };
+
+export const dmEnumsStructExample: CodeExample = {
     id: 'dm-enums-struct',
     title: 'Enum Variants Can Carry Payloads',
     category: 'concept',
@@ -34,5 +34,9 @@ from dm_enum::drawings`,
     expected: `id | s_tag | s_circle_radius | s_rectangle_width | s_rectangle_height
 ---+-------+-----------------+-------------------+-------------------
 1  | 0     | 2.5             | ⟪none⟫            | ⟪none⟫`,
-  },
+  };
+
+export const dataModelEnumsExamples: CodeExample[] = [
+  dmEnumsBasicExample,
+  dmEnumsStructExample,
 ];

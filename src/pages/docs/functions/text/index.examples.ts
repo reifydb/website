@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const functionsTextExamples: CodeExample[] = [
-{
+export const textOverviewQuickExample: CodeExample = {
     id: 'text-overview-quick',
     title: 'Text Module Quick Example',
     category: 'function',
@@ -11,5 +10,8 @@ extend {
   email_lower: text::lower(email)
 }
 filter { text::length(full_name) > 0 }`,
-  },
+  };
+
+export const functionsTextExamples: CodeExample[] = [
+  textOverviewQuickExample,
 ];

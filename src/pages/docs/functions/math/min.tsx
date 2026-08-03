@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock, Callout } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
+import { mathMinByCategory, mathMinMaxTogether } from './examples.examples';
 
 export function MathMinPage() {
   return (
@@ -67,14 +67,14 @@ export function MathMinPage() {
 
           <h3 className="text-lg font-bold mb-3">Find lowest price</h3>
           <ExecutableSnippet
-            title={getExampleById('math-min-by-category')!.title}
-            initialCode={getExampleById('math-min-by-category')!.code}
+            title={mathMinByCategory.title}
+            initialCode={mathMinByCategory.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Min and max together</h3>
           <ExecutableSnippet
-            title={getExampleById('math-min-max-together')!.title}
-            initialCode={getExampleById('math-min-max-together')!.code}
+            title={mathMinMaxTogether.title}
+            initialCode={mathMinMaxTogether.code}
           />
         </section>
 

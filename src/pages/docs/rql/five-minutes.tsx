@@ -2,12 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
-
-function Snippet({ id }: { id: string }) {
-  const example = getExampleById(id)!;
-  return <ExecutableSnippet title={example.title} initialCode={example.code} />;
-}
+import { rql5Aggregate, rql5Inline, rql5Let, rql5MapComputed, rql5NoneFilter, rql5NonePropagates, rql5Pipeline } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -39,7 +34,7 @@ export function RqlFiveMinutesPage() {
             Each step consumes the previous step's rows, so you read a query the same way
             it executes:
           </p>
-          <Snippet id="rql5-pipeline" />
+          <ExecutableSnippet title={rql5Pipeline.title} initialCode={rql5Pipeline.code} />
           <p className="text-text-muted text-sm mt-3">
             There is no <Code>SELECT</Code> in RQL, and no inside-out reading order.
           </p>
@@ -51,7 +46,7 @@ export function RqlFiveMinutesPage() {
             A pipeline usually starts from a table or view, but it can start from inline
             records too. Handy for prototyping an expression before you have a schema:
           </p>
-          <Snippet id="rql5-inline" />
+          <ExecutableSnippet title={rql5Inline.title} initialCode={rql5Inline.code} />
         </section>
 
         <section>
@@ -61,7 +56,7 @@ export function RqlFiveMinutesPage() {
             result. Combined with <Code>sort</Code>, that is SQL's{' '}
             <Code>SELECT ... ORDER BY ... LIMIT</Code> in three readable lines:
           </p>
-          <Snippet id="rql5-map-computed" />
+          <ExecutableSnippet title={rql5MapComputed.title} initialCode={rql5MapComputed.code} />
         </section>
 
         <section>
@@ -71,7 +66,7 @@ export function RqlFiveMinutesPage() {
             functions are namespaced, like everything callable in RQL:{' '}
             <Code>math::sum</Code>, <Code>math::avg</Code>, <Code>math::count</Code>:
           </p>
-          <Snippet id="rql5-aggregate" />
+          <ExecutableSnippet title={rql5Aggregate.title} initialCode={rql5Aggregate.code} />
           <p className="text-text-muted text-sm mt-3">
             An empty <Code>by {'{}'}</Code> aggregates the whole input into a single row.
           </p>
@@ -84,11 +79,11 @@ export function RqlFiveMinutesPage() {
             a missing <Code>int4</Code> is still an <Code>int4</Code>. Arithmetic propagates
             it instead of failing:
           </p>
-          <Snippet id="rql5-none-propagates" />
+          <ExecutableSnippet title={rql5NonePropagates.title} initialCode={rql5NonePropagates.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Test for it explicitly with <Code>is::some</Code> and <Code>is::none</Code>:
           </p>
-          <Snippet id="rql5-none-filter" />
+          <ExecutableSnippet title={rql5NoneFilter.title} initialCode={rql5NoneFilter.code} />
         </section>
 
         <section>
@@ -98,7 +93,7 @@ export function RqlFiveMinutesPage() {
             control flow (<Code>if</Code>, <Code>loop</Code>, <Code>match</Code>) for scripting
             beyond single queries:
           </p>
-          <Snippet id="rql5-let" />
+          <ExecutableSnippet title={rql5Let.title} initialCode={rql5Let.code} />
         </section>
 
         <section>

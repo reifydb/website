@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { routinesOverviewFunctionCall, routinesOverviewProcedureRoundtrip } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -61,7 +61,7 @@ export function RoutinesOverviewPage() {
             documented in the{' '}
             <Link to="/docs/functions" className="text-primary hover:text-primary-light font-medium transition-colors">function reference</Link>.
           </p>
-          <ExampleSnippet id="routines-overview-function-call" />
+          <ExecutableSnippet title={routinesOverviewFunctionCall.title} initialCode={routinesOverviewFunctionCall.code} />
           <p className="text-text-secondary mt-4">
             Most functions are scalar: one output value per row. Some are aggregates
             - <Code>math::sum</Code>, <Code>math::avg</Code>,{' '}
@@ -81,7 +81,7 @@ export function RoutinesOverviewPage() {
             stored in the catalog next to your data, takes typed parameters, and
             references them as <Code>$param</Code> in the body.
           </p>
-          <ExampleSnippet id="routines-overview-procedure-roundtrip" />
+          <ExecutableSnippet title={routinesOverviewProcedureRoundtrip.title} initialCode={routinesOverviewProcedureRoundtrip.code} />
           <p className="text-text-secondary mt-4">
             Built-in procedures answer to the same naming scheme and call syntax:{' '}
             <Code>clock::set</Code> and <Code>clock::advance</Code> steer the engine

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dateSubtractInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DateSubtractPage() {
   return (
@@ -29,7 +29,7 @@ export function DateSubtractPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Date with the duration subtracted.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="date-subtract-inline" />
+          <ExecutableSnippet title={dateSubtractInline.title} initialCode={dateSubtractInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/date/add" className="text-primary-color hover:underline">date::add</Link><Link to="/docs/functions/date/diff" className="text-primary-color hover:underline">date::diff</Link></div></section>
       </div>

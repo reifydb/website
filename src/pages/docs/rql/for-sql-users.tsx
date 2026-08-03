@@ -2,12 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
-
-function Snippet({ id }: { id: string }) {
-  const example = getExampleById(id)!;
-  return <ExecutableSnippet title={example.title} initialCode={example.code} />;
-}
+import { rqlsqlEqNone, rqlsqlGroupby, rqlsqlIsNone, rqlsqlSelect } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -77,7 +72,7 @@ export function RqlForSqlUsersPage() {
             The equivalent RQL is flat; each line is one step, and intermediate results never
             need names:
           </p>
-          <Snippet id="rqlsql-select" />
+          <ExecutableSnippet title={rqlsqlSelect.title} initialCode={rqlsqlSelect.code} />
         </section>
 
         <section>
@@ -87,7 +82,7 @@ export function RqlForSqlUsersPage() {
             <Code>HAVING</Code> is needed; a <Code>filter</Code> after the aggregate does the
             same job:
           </p>
-          <Snippet id="rqlsql-groupby" />
+          <ExecutableSnippet title={rqlsqlGroupby.title} initialCode={rqlsqlGroupby.code} />
         </section>
 
         <section>
@@ -96,13 +91,13 @@ export function RqlForSqlUsersPage() {
             RQL's missing value is <Code>none</Code>. Like SQL's NULL, it never matches an
             equality comparison:
           </p>
-          <Snippet id="rqlsql-eq-none" />
+          <ExecutableSnippet title={rqlsqlEqNone.title} initialCode={rqlsqlEqNone.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Unlike SQL, the test for it is an ordinary function, not special syntax
             (<Code>IS NULL</Code>). And <Code>none</Code> is typed: a missing{' '}
             <Code>int4</Code> still participates in type checking as an <Code>int4</Code>:
           </p>
-          <Snippet id="rqlsql-is-none" />
+          <ExecutableSnippet title={rqlsqlIsNone.title} initialCode={rqlsqlIsNone.code} />
         </section>
 
         <section>

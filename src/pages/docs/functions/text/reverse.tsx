@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { textReverseInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function TextReversePage() {
   return (
@@ -26,7 +26,7 @@ export function TextReversePage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Utf8 with the characters in reverse order.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="text-reverse-inline" />
+          <ExecutableSnippet title={textReverseInline.title} initialCode={textReverseInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/text/lower" className="text-primary-color hover:underline">text::lower</Link><Link to="/docs/functions/text/upper" className="text-primary-color hover:underline">text::upper</Link></div></section>
       </div>

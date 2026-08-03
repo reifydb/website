@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { mathPiInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function MathPiPage() {
   return (
@@ -23,7 +23,7 @@ export function MathPiPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Number representing the mathematical constant pi (approximately 3.14159).</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="math-pi-inline" />
+          <ExecutableSnippet title={mathPiInline.title} initialCode={mathPiInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/math/e" className="text-primary-color hover:underline">math::e</Link><Link to="/docs/functions/math/cos" className="text-primary-color hover:underline">math::cos</Link><Link to="/docs/functions/math/sin" className="text-primary-color hover:underline">math::sin</Link></div></section>
       </div>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { txnAtomicScript, txnDeferredReadAfterWrite, txnDeferredSetup, txnRollbackError, txnRollbackVerify, txnViewRead, txnViewReadAfterWrite, txnViewSetup, txnViewUnchanged, txnViewWrite } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -77,16 +77,16 @@ export function TransactionsPage() {
             requests, which is why they can mix <Code>create</Code> statements with
             writes):
           </p>
-          <ExampleSnippet id="txn-atomic-script" />
+          <ExecutableSnippet title={txnAtomicScript.title} initialCode={txnAtomicScript.code} />
           <p className="text-text-secondary mt-4 mb-4">
             If any statement fails, the whole request rolls back. Here the{' '}
             <Code>update</Code> executes first and the <Code>cast</Code> fails afterwards:
           </p>
-          <ExampleSnippet id="txn-rollback-error" />
+          <ExecutableSnippet title={txnRollbackError.title} initialCode={txnRollbackError.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The update was rolled back with everything else - the balances are untouched:
           </p>
-          <ExampleSnippet id="txn-rollback-verify" />
+          <ExecutableSnippet title={txnRollbackVerify.title} initialCode={txnRollbackVerify.code} />
           <Callout variant="note" title="No BEGIN, no COMMIT - by design">
             ReifyDB has no statement to hold a transaction open across requests. Frontends
             talk to the database directly, and an open transaction owned by a browser tab
@@ -142,16 +142,16 @@ export function TransactionsPage() {
             are maintained inside the commit of the write that affects them - the table and
             the view change in the same atomic step:
           </p>
-          <ExampleSnippet id="txn-view-setup" />
+          <ExecutableSnippet title={txnViewSetup.title} initialCode={txnViewSetup.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Write to the source table:
           </p>
-          <ExampleSnippet id="txn-view-write" />
+          <ExecutableSnippet title={txnViewWrite.title} initialCode={txnViewWrite.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The view is already current - there is no window in which the table shows the
             new order but the view shows the old revenue:
           </p>
-          <ExampleSnippet id="txn-view-read" />
+          <ExecutableSnippet title={txnViewRead.title} initialCode={txnViewRead.code} />
           <p className="text-text-secondary mb-4">
             That timing has one consequence worth knowing: once a request writes to a
             view's source data, reading that view later in the same request is an error
@@ -159,12 +159,12 @@ export function TransactionsPage() {
             the view still holds its pre-request contents, and ReifyDB fails loudly rather
             than hand you stale data:
           </p>
-          <ExampleSnippet id="txn-view-read-after-write" />
+          <ExecutableSnippet title={txnViewReadAfterWrite.title} initialCode={txnViewReadAfterWrite.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The failed request committed nothing, and reading the view in its own request
             works as before:
           </p>
-          <ExampleSnippet id="txn-view-unchanged" />
+          <ExecutableSnippet title={txnViewUnchanged.title} initialCode={txnViewUnchanged.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The rule applies to transactional and deferred views alike, and it follows
             view chains - a view built on top of another view is protected too. Reading a
@@ -175,12 +175,12 @@ export function TransactionsPage() {
             source tables directly, or consume the view through a{' '}
             <Link to="/docs/concepts/data-model/subscriptions" className="text-primary hover:text-primary-light font-medium transition-colors">subscription</Link>:
           </p>
-          <ExampleSnippet id="txn-deferred-setup" />
+          <ExecutableSnippet title={txnDeferredSetup.title} initialCode={txnDeferredSetup.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Writing upstream of the deferred view and reading it in the same request fails
             the same way:
           </p>
-          <ExampleSnippet id="txn-deferred-read-after-write" />
+          <ExecutableSnippet title={txnDeferredReadAfterWrite.title} initialCode={txnDeferredReadAfterWrite.code} />
           <p className="text-text-secondary mt-4 mb-4">
             <Link to="/docs/concepts/data-model/handlers" className="text-primary hover:text-primary-light font-medium transition-colors">Handlers</Link>{' '}
             run synchronously inside the writing transaction too - if a handler fails, the

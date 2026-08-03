@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const functionsMathExamples: CodeExample[] = [
-{
+export const mathOverviewQuickExample: CodeExample = {
     id: 'math-overview-quick',
     title: 'Math Module Quick Example',
     category: 'function',
@@ -16,5 +15,8 @@ North  | 3450.75       | 1725.375
 West   | 2100          | 2100
 East   | 1800.25       | 1800.25
 South  | 2300.5        | 2300.5`,
-  },
+  };
+
+export const functionsMathExamples: CodeExample[] = [
+  mathOverviewQuickExample,
 ];

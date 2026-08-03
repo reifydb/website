@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { textTrimEndInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function TextTrimEndPage() {
   return (
@@ -26,7 +26,7 @@ export function TextTrimEndPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Utf8 with trailing whitespace removed.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="text-trim_end-inline" />
+          <ExecutableSnippet title={textTrimEndInline.title} initialCode={textTrimEndInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/text/trim" className="text-primary-color hover:underline">text::trim</Link><Link to="/docs/functions/text/trim_start" className="text-primary-color hover:underline">text::trim_start</Link></div></section>
       </div>

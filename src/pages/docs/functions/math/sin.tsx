@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { mathSinInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function MathSinPage() {
   return (
@@ -26,7 +26,7 @@ export function MathSinPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Number representing the sine of the angle.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="math-sin-inline" />
+          <ExecutableSnippet title={mathSinInline.title} initialCode={mathSinInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/math/cos" className="text-primary-color hover:underline">math::cos</Link><Link to="/docs/functions/math/tan" className="text-primary-color hover:underline">math::tan</Link><Link to="/docs/functions/math/asin" className="text-primary-color hover:underline">math::asin</Link></div></section>
       </div>

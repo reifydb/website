@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const rqlControlFlowWhileExamples: CodeExample[] = [
-{
+export const cfWhileAccumulateExample: CodeExample = {
     id: 'cf-while-accumulate',
     title: 'Repeat Until a Condition Flips',
     category: 'rql',
@@ -15,8 +14,9 @@ map { days: $days, cells: $cells }`,
     expected: `days | cells
 -----+------
 7    | 128`,
-  },
-{
+  };
+
+export const cfWhileZeroIterationsExample: CodeExample = {
     id: 'cf-while-zero-iterations',
     title: 'The Condition Is Checked Before the First Run',
     category: 'rql',
@@ -26,8 +26,9 @@ map { runs: $runs }`,
     expected: `runs
 ----
 0`,
-  },
-{
+  };
+
+export const cfWhileWriteExample: CodeExample = {
     id: 'cf-while-write',
     title: 'A while Loop That Writes Rows',
     category: 'rql',
@@ -45,8 +46,9 @@ from cf_while::backups sort { week: asc }`,
 2    | 14
 3    | 21
 4    | 28`,
-  },
-{
+  };
+
+export const cfWhileCapExample: CodeExample = {
     id: 'cf-while-cap',
     title: 'Runaway Loops Are Stopped',
     description: 'A loop that never terminates fails once it exceeds the 10,000-iteration limit, and the whole request rolls back.',
@@ -54,5 +56,11 @@ from cf_while::backups sort { week: asc }`,
     code: `let $spins = 0;
 while true { $spins = $spins + 1 }`,
     expectsError: true,
-  },
+  };
+
+export const rqlControlFlowWhileExamples: CodeExample[] = [
+  cfWhileAccumulateExample,
+  cfWhileZeroIterationsExample,
+  cfWhileWriteExample,
+  cfWhileCapExample,
 ];

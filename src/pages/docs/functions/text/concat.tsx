@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { textConcatInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function TextConcatPage() {
   return (
@@ -62,7 +62,7 @@ export function TextConcatPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="text-concat-inline" />
+          <ExecutableSnippet title={textConcatInline.title} initialCode={textConcatInline.code} />
         </section>
 
         {/* Related Functions */}

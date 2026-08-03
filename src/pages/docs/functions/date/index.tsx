@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dateOverviewQuick } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function DateModuleOverviewPage() {
   return (
@@ -22,7 +22,7 @@ export function DateModuleOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
           <ExecutableSnippet
             title="Quick Example"
-            initialCode={getExampleById('date-overview-quick')!.code}
+            initialCode={dateOverviewQuick.code}
           />
         </section>
 

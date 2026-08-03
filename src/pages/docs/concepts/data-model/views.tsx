@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
+import { dmViewsChain, dmViewsChainRead, dmViewsChainWrite, dmViewsDeferred, dmViewsDeferredRead, dmViewsDeferredWriteRead, dmViewsFilterInsert, dmViewsFilterLeave, dmViewsFilterLeaveRead, dmViewsFilterMembership, dmViewsFilterRead, dmViewsGate, dmViewsGateEnter, dmViewsGateRead, dmViewsRingbufferBacked, dmViewsRingbufferRead, dmViewsRingbufferWrite, dmViewsSeriesBacked, dmViewsSorted, dmViewsTransactional, dmViewsTransactionalRead, dmViewsTransactionalWrite } from './examples.examples';
+import { dmViewsChainRead, dmViewsChainWrite, dmViewsDeferredWriteRead, dmViewsFilterInsert, dmViewsFilterLeaveRead, dmViewsFilterRead, dmViewsGateRead, dmViewsRingbufferWrite, dmViewsTransactionalRead } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -32,13 +33,13 @@ export function DataModelViewsPage() {
             synonyms. Create the view before writing data, then run the snippets on
             this page in order:
           </p>
-          <ExampleSnippet id="dm-views-transactional" />
+          <ExecutableSnippet title={dmViewsTransactional.title} initialCode={dmViewsTransactional.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Write to the source table - there is nothing to refresh and no second
             system to notify:
           </p>
-          <ExampleSnippet id="dm-views-transactional-write" />
-          <ExampleSnippet id="dm-views-transactional-read" className="mt-4" />
+          <ExecutableSnippet title={dmViewsTransactionalWrite.title} initialCode={dmViewsTransactionalWrite.code} />
+          <ExecutableSnippet title={dmViewsTransactionalRead.title} initialCode={dmViewsTransactionalRead.code} className="mt-4"  />
         </section>
 
         <section>
@@ -48,15 +49,15 @@ export function DataModelViewsPage() {
             the predicate: a source row that matches appears in the view, and a row
             that stops matching disappears from it.
           </p>
-          <ExampleSnippet id="dm-views-filter-membership" />
-          <ExampleSnippet id="dm-views-filter-insert" className="mt-4" />
-          <ExampleSnippet id="dm-views-filter-read" className="mt-4" />
+          <ExecutableSnippet title={dmViewsFilterMembership.title} initialCode={dmViewsFilterMembership.code} />
+          <ExecutableSnippet title={dmViewsFilterInsert.title} initialCode={dmViewsFilterInsert.code} className="mt-4"  />
+          <ExecutableSnippet title={dmViewsFilterRead.title} initialCode={dmViewsFilterRead.code} className="mt-4"  />
           <p className="text-text-secondary mt-4 mb-4">
             Deactivate Alice and she leaves the view - no application code deletes
             anything from it:
           </p>
-          <ExampleSnippet id="dm-views-filter-leave" />
-          <ExampleSnippet id="dm-views-filter-leave-read" className="mt-4" />
+          <ExecutableSnippet title={dmViewsFilterLeave.title} initialCode={dmViewsFilterLeave.code} />
+          <ExecutableSnippet title={dmViewsFilterLeaveRead.title} initialCode={dmViewsFilterLeaveRead.code} className="mt-4"  />
         </section>
 
         <section>
@@ -69,13 +70,13 @@ export function DataModelViewsPage() {
             downstream consumers care about the transition itself, not just the current
             contents:
           </p>
-          <ExampleSnippet id="dm-views-gate" />
+          <ExecutableSnippet title={dmViewsGate.title} initialCode={dmViewsGate.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Bob's <Code>active</Code> flag is currently false. Flip it and he enters
             the gated view:
           </p>
-          <ExampleSnippet id="dm-views-gate-enter" />
-          <ExampleSnippet id="dm-views-gate-read" className="mt-4" />
+          <ExecutableSnippet title={dmViewsGateEnter.title} initialCode={dmViewsGateEnter.code} />
+          <ExecutableSnippet title={dmViewsGateRead.title} initialCode={dmViewsGateRead.code} className="mt-4"  />
         </section>
 
         <section>
@@ -86,14 +87,14 @@ export function DataModelViewsPage() {
             catches up moments later. Declare it with{' '}
             <Code>create deferred view</Code>:
           </p>
-          <ExampleSnippet id="dm-views-deferred" />
-          <ExampleSnippet id="dm-views-deferred-write-read" className="mt-4" />
+          <ExecutableSnippet title={dmViewsDeferred.title} initialCode={dmViewsDeferred.code} />
+          <ExecutableSnippet title={dmViewsDeferredWriteRead.title} initialCode={dmViewsDeferredWriteRead.code} className="mt-4"  />
           <p className="text-text-secondary mt-4 mb-4">
             By the time you read it, the deferred flow has processed the change log -
             here it counts all four orders written on this page, including those
             written before the view existed:
           </p>
-          <ExampleSnippet id="dm-views-deferred-read" />
+          <ExecutableSnippet title={dmViewsDeferredRead.title} initialCode={dmViewsDeferredRead.code} />
           <p className="text-text-secondary mt-4">
             Choose transactional views for derived state that reads must never see
             stale - balances, inventory, anything an invariant depends on. Choose
@@ -110,20 +111,20 @@ export function DataModelViewsPage() {
             <Link to="/docs/concepts/data-model/ring-buffers" className="text-primary hover:text-primary-light font-medium transition-colors">ring buffer</Link>{' '}
             - the derived rows themselves get "keep the last N" semantics:
           </p>
-          <ExampleSnippet id="dm-views-ringbuffer-backed" />
-          <ExampleSnippet id="dm-views-ringbuffer-write" className="mt-4" />
+          <ExecutableSnippet title={dmViewsRingbufferBacked.title} initialCode={dmViewsRingbufferBacked.code} />
+          <ExecutableSnippet title={dmViewsRingbufferWrite.title} initialCode={dmViewsRingbufferWrite.code} className="mt-4"  />
           <p className="text-text-secondary mt-4 mb-4">
             Three rows flowed into a capacity-2 buffer; the oldest derived row was
             evicted:
           </p>
-          <ExampleSnippet id="dm-views-ringbuffer-read" />
+          <ExecutableSnippet title={dmViewsRingbufferRead.title} initialCode={dmViewsRingbufferRead.code} />
           <p className="text-text-secondary mt-4 mb-4">
             A{' '}
             <Link to="/docs/concepts/data-model/series" className="text-primary hover:text-primary-light font-medium transition-colors">series</Link>-backed
             view records its output as a keyed, time-ordered history - derived data you
             can range-query like any other series:
           </p>
-          <ExampleSnippet id="dm-views-series-backed" />
+          <ExecutableSnippet title={dmViewsSeriesBacked.title} initialCode={dmViewsSeriesBacked.code} />
         </section>
 
         <section>
@@ -132,9 +133,9 @@ export function DataModelViewsPage() {
             A view can source from another view, and a single write propagates through
             the whole chain within the same maintenance model:
           </p>
-          <ExampleSnippet id="dm-views-chain" />
-          <ExampleSnippet id="dm-views-chain-write" className="mt-4" />
-          <ExampleSnippet id="dm-views-chain-read" className="mt-4" />
+          <ExecutableSnippet title={dmViewsChain.title} initialCode={dmViewsChain.code} />
+          <ExecutableSnippet title={dmViewsChainWrite.title} initialCode={dmViewsChainWrite.code} className="mt-4"  />
+          <ExecutableSnippet title={dmViewsChainRead.title} initialCode={dmViewsChainRead.code} className="mt-4"  />
         </section>
 
         <section>
@@ -143,7 +144,7 @@ export function DataModelViewsPage() {
             A <Code>sort</Code> inside the view definition materializes the rows in
             that order, so readers get sorted results without sorting at query time:
           </p>
-          <ExampleSnippet id="dm-views-sorted" />
+          <ExecutableSnippet title={dmViewsSorted.title} initialCode={dmViewsSorted.code} />
         </section>
 
         <Callout variant="note" title="Create views before writing data">

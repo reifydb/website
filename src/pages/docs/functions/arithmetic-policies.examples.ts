@@ -1,27 +1,26 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-// int16 is 128-bit; its maximum is the largest value arithmetic can produce,
-// so adding to it is the simplest way to trigger a genuine overflow.
 const INT16_MAX = '170141183460469231731687303715884105727';
 
-export const functionsArithmeticPoliciesExamples: CodeExample[] = [
-{
+export const fnArithOperatorOverflowExample: CodeExample = {
     id: 'fn-arith-operator-overflow',
     title: 'Overflow Is an Error by Default',
     description: 'Bare operators fail the statement with NUMBER_002 when the result does not fit the result type.',
     category: 'function',
     code: `map { total: cast(${INT16_MAX}, int16) + cast(1, int16) }`,
     expectsError: true,
-  },
-{
+  };
+
+export const fnArithFunctionDivzeroExample: CodeExample = {
     id: 'fn-arith-function-divzero',
     title: 'Division by Zero Is an Error by Default',
     description: 'The bare functions behave like the operators: math::div by zero fails with FUNCTION_007 wrapping NUMBER_007.',
     category: 'function',
     code: `map { rate: math::div(cast(10, int4), cast(0, int4)) }`,
     expectsError: true,
-  },
-{
+  };
+
+export const fnArithSaturateExample: CodeExample = {
     id: 'fn-arith-saturate',
     title: 'saturate Clamps to the Type Range',
     category: 'function',
@@ -34,8 +33,9 @@ map { label, total: math::add_saturate(cast(a, int16), cast(b, int16)) }`,
 ----------+----------------------------------------
 fits      | 42
 overflows | ${INT16_MAX}`,
-  },
-{
+  };
+
+export const fnArithSaturateFloorExample: CodeExample = {
     id: 'fn-arith-saturate-floor',
     title: 'saturate Stops Unsigned Subtraction at Zero',
     category: 'function',
@@ -43,8 +43,9 @@ overflows | ${INT16_MAX}`,
     expected: `remaining
 ---------
 0`,
-  },
-{
+  };
+
+export const fnArithWrapZeroExample: CodeExample = {
     id: 'fn-arith-wrap-zero',
     title: 'wrap and zero on the Same Overflow',
     category: 'function',
@@ -55,8 +56,9 @@ overflows | ${INT16_MAX}`,
     expected: `zero | wrap
 -----+-----------------------------------------
 0    | -170141183460469231731687303715884105728`,
-  },
-{
+  };
+
+export const fnArithNoneExample: CodeExample = {
     id: 'fn-arith-none',
     title: 'none Turns the Impossible Row Into a Missing Value',
     category: 'function',
@@ -69,8 +71,9 @@ map { order, per_box: math::div_none(items, boxes) }`,
 -------+--------
 A-1001 | 3
 A-1002 | ⟪none⟫`,
-  },
-{
+  };
+
+export const fnArithFallbackExample: CodeExample = {
     id: 'fn-arith-fallback',
     title: 'default Substitutes Your Fallback Value',
     category: 'function',
@@ -83,8 +86,9 @@ map { order, per_box: math::div_default(items, boxes, 0) }`,
 -------+--------
 A-1001 | 3
 A-1002 | 0`,
-  },
-{
+  };
+
+export const fnArithStrictExample: CodeExample = {
     id: 'fn-arith-strict',
     title: 'strict Fails With Your Own Message',
     description: 'The statement fails with FUNCTION_007 carrying the message from the third argument.',
@@ -93,8 +97,9 @@ A-1002 | 0`,
   total: math::add_strict(cast(${INT16_MAX}, int16), cast(1, int16), 'inventory total overflowed')
 }`,
     expectsError: true,
-  },
-{
+  };
+
+export const fnArithNonePropagatesExample: CodeExample = {
     id: 'fn-arith-none-propagates',
     title: 'Missing Input Propagates in Every Variant',
     description: 'A none input produces a none result before any policy applies - even strict does not fail.',
@@ -106,8 +111,9 @@ A-1002 | 0`,
     expected: `strict | zero
 -------+-------
 ⟪none⟫ | ⟪none⟫`,
-  },
-{
+  };
+
+export const fnArithPromotionExample: CodeExample = {
     id: 'fn-arith-promotion',
     title: 'Results Widen Before They Can Overflow',
     category: 'function',
@@ -115,5 +121,17 @@ A-1002 | 0`,
     expected: `result_type
 -----------
 Int8`,
-  },
+  };
+
+export const functionsArithmeticPoliciesExamples: CodeExample[] = [
+  fnArithOperatorOverflowExample,
+  fnArithFunctionDivzeroExample,
+  fnArithSaturateExample,
+  fnArithSaturateFloorExample,
+  fnArithWrapZeroExample,
+  fnArithNoneExample,
+  fnArithFallbackExample,
+  fnArithStrictExample,
+  fnArithNonePropagatesExample,
+  fnArithPromotionExample,
 ];

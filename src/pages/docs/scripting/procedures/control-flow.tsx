@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingProcedureLetIf, scriptingProcedureWhile } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function ControlFlowPage() {
   return (
@@ -19,7 +19,7 @@ export function ControlFlowPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">If/Else</h2>
           <ExecutableSnippet
             title="Control Flow"
-            initialCode={getExampleById('scripting-procedure-let-if')!.code}
+            initialCode={scriptingProcedureLetIf.code}
           />
           <p className="text-text-secondary mt-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">LET</code> to declare variables and{' '}
@@ -32,7 +32,7 @@ export function ControlFlowPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">While Loops</h2>
           <ExecutableSnippet
             title="While Loop"
-            initialCode={getExampleById('scripting-procedure-while')!.code}
+            initialCode={scriptingProcedureWhile.code}
           />
           <p className="text-text-secondary mt-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">LET</code> to reassign

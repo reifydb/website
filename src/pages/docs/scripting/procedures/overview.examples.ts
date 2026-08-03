@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingProceduresOverviewExamples: CodeExample[] = [
-{
+export const scriptingCreateProcedureExample: CodeExample = {
     id: 'scripting-create-procedure',
     title: 'Create Procedure',
     category: 'scripting',
@@ -13,8 +12,9 @@ CALL pr::hello()`,
     expected: `greeting
 -----------
 hello world`,
-  },
-{
+  };
+
+export const scriptingProcedureParamsExample: CodeExample = {
     id: 'scripting-procedure-params',
     title: 'Procedure Parameters',
     category: 'scripting',
@@ -31,5 +31,9 @@ sort { id: asc }`,
 ---+------
 1  | Alice
 2  | Bob`,
-  },
+  };
+
+export const scriptingProceduresOverviewExamples: CodeExample[] = [
+  scriptingCreateProcedureExample,
+  scriptingProcedureParamsExample,
 ];

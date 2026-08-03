@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { metaType } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function MetaTypePage() {
   return (
@@ -26,7 +26,7 @@ export function MetaTypePage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Utf8 containing the type name of the value.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="meta-type" />
+          <ExecutableSnippet title={metaType.title} initialCode={metaType.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/is/type" className="text-primary-color hover:underline">is::type</Link></div></section>
       </div>

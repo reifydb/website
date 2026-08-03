@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dmTagsCreate, dmTagsSeries } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -33,7 +33,7 @@ export function DataModelTagsPage() {
             <Code>Manual</Code> is a plain marker. Run the snippets on this page in
             order:
           </p>
-          <ExampleSnippet id="dm-tags-create" />
+          <ExecutableSnippet title={dmTagsCreate.title} initialCode={dmTagsCreate.code} />
         </section>
 
         <section>
@@ -44,7 +44,7 @@ export function DataModelTagsPage() {
             labeled with a variant - which sensor produced the value, whether a record
             was entered by hand - without adding columns to the series schema itself:
           </p>
-          <ExampleSnippet id="dm-tags-series" />
+          <ExecutableSnippet title={dmTagsSeries.title} initialCode={dmTagsSeries.code} />
         </section>
 
         <Callout variant="note" title="Classification, not dispatch">

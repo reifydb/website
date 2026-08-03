@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const conceptsTtlExamples: CodeExample[] = [
-{
+export const conceptsTtlDeclareExample: CodeExample = {
     id: 'concepts-ttl-declare',
     title: 'Declare a TTL at Creation',
     category: 'concept',
@@ -19,8 +18,9 @@ from cpt_ttl::sessions sort { user_id: asc }`,
 ------+--------
 a1    | 1
 b2    | 2`,
-  },
-{
+  };
+
+export const conceptsTtlTouchResetsExample: CodeExample = {
     id: 'concepts-ttl-touch-resets',
     title: 'Any Write Restarts the Row\'s Clock',
     category: 'concept',
@@ -28,8 +28,9 @@ b2    | 2`,
     expected: `namespace | table    | updated
 ----------+----------+--------
 cpt_ttl   | sessions | 1`,
-  },
-{
+  };
+
+export const conceptsTtlNoAnchorExample: CodeExample = {
     id: 'concepts-ttl-no-anchor',
     title: 'There Is No Per-Row Anchor Column',
     description: 'TTL is anchored to the last write, not to a column you pick; the engine rejects an on clause.',
@@ -38,8 +39,9 @@ cpt_ttl   | sessions | 1`,
   id: int4
 } with { row: { ttl: { duration: '1h', on: created_at } } }`,
     expectsError: true,
-  },
-{
+  };
+
+export const conceptsTtlViewExample: CodeExample = {
     id: 'concepts-ttl-view',
     title: 'A View Carries Its Own Row TTL',
     category: 'concept',
@@ -50,8 +52,9 @@ create transactional view cpt_ttl::revenue {
   from cpt_ttl::orders
   aggregate { total: math::sum(total) } by {}
 }`,
-  },
-{
+  };
+
+export const conceptsTtlMemoryOnlyExample: CodeExample = {
     id: 'concepts-ttl-memory-only',
     title: 'Memory-Only Rows with persistent: false',
     category: 'concept',
@@ -64,8 +67,9 @@ from cpt_ttl::rate_limits`,
     expected: `key         | count
 ------------+------
 ip:10.0.0.1 | 1`,
-  },
-{
+  };
+
+export const conceptsTtlPersistentRequiresTtlExample: CodeExample = {
     id: 'concepts-ttl-persistent-requires-ttl',
     title: 'Non-Persistent Rows Must Have a TTL',
     description: 'Rows that never reach disk have to expire; the engine refuses persistent: false without a ttl.',
@@ -74,8 +78,9 @@ ip:10.0.0.1 | 1`,
   id: int4
 } with { row: { persistent: false } }`,
     expectsError: true,
-  },
-{
+  };
+
+export const conceptsTtlRingbufferExample: CodeExample = {
     id: 'concepts-ttl-ringbuffer',
     title: 'Bound by Count and by Age at Once',
     category: 'concept',
@@ -88,5 +93,14 @@ from cpt_ttl::recent_errors`,
     expected: `id | message
 ---+--------
 1  | timeout`,
-  },
+  };
+
+export const conceptsTtlExamples: CodeExample[] = [
+  conceptsTtlDeclareExample,
+  conceptsTtlTouchResetsExample,
+  conceptsTtlNoAnchorExample,
+  conceptsTtlViewExample,
+  conceptsTtlMemoryOnlyExample,
+  conceptsTtlPersistentRequiresTtlExample,
+  conceptsTtlRingbufferExample,
 ];

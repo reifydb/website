@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock, Callout } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
+import { mathSumByRegion, mathSumMultiple } from './examples.examples';
 
 export function MathSumPage() {
   return (
@@ -67,14 +67,14 @@ export function MathSumPage() {
 
           <h3 className="text-lg font-bold mb-3">Calculate total revenue</h3>
           <ExecutableSnippet
-            title={getExampleById('math-sum-by-region')!.title}
-            initialCode={getExampleById('math-sum-by-region')!.code}
+            title={mathSumByRegion.title}
+            initialCode={mathSumByRegion.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Multiple aggregations</h3>
           <ExecutableSnippet
-            title={getExampleById('math-sum-multiple')!.title}
-            initialCode={getExampleById('math-sum-multiple')!.code}
+            title={mathSumMultiple.title}
+            initialCode={mathSumMultiple.code}
           />
         </section>
 

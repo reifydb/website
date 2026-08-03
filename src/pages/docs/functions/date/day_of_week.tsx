@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dateDayOfWeekInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DateDayOfWeekPage() {
   return (
@@ -26,7 +26,7 @@ export function DateDayOfWeekPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns an Integer representing the day of the week (1=Monday, 7=Sunday).</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="date-day_of_week-inline" />
+          <ExecutableSnippet title={dateDayOfWeekInline.title} initialCode={dateDayOfWeekInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/date/day" className="text-primary-color hover:underline">date::day</Link><Link to="/docs/functions/date/day_of_year" className="text-primary-color hover:underline">date::day_of_year</Link></div></section>
       </div>

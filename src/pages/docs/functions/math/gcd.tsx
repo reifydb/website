@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { mathGcdInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function MathGcdPage() {
   return (
@@ -29,7 +29,7 @@ export function MathGcdPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns an Integer representing the greatest common divisor.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="math-gcd-inline" />
+          <ExecutableSnippet title={mathGcdInline.title} initialCode={mathGcdInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/math/lcm" className="text-primary-color hover:underline">math::lcm</Link><Link to="/docs/functions/math/mod" className="text-primary-color hover:underline">math::mod</Link></div></section>
       </div>

@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
+import { dmRingBuffersCreate, dmRingBuffersDelete, dmRingBuffersEvict, dmRingBuffersPartition, dmRingBuffersUpdate } from './examples.examples';
+import { dmRingBuffersDelete } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -32,7 +33,7 @@ export function DataModelRingBuffersPage() {
             newest events: the third <Code>east</Code> insert evicts the first, while{' '}
             <Code>west</Code> is untouched. Run the snippets on this page in order:
           </p>
-          <ExampleSnippet id="dm-ring-buffers-partition" />
+          <ExecutableSnippet title={dmRingBuffersPartition.title} initialCode={dmRingBuffersPartition.code} />
         </section>
 
         <section>
@@ -41,12 +42,12 @@ export function DataModelRingBuffersPage() {
             An unpartitioned buffer is one queue. Filling it to capacity keeps
             everything:
           </p>
-          <ExampleSnippet id="dm-ring-buffers-create" />
+          <ExecutableSnippet title={dmRingBuffersCreate.title} initialCode={dmRingBuffersCreate.code} />
           <p className="text-text-secondary mt-4 mb-4">
             One insert past capacity and the oldest row is gone. The write succeeds
             normally; eviction is a property of the store, not an error:
           </p>
-          <ExampleSnippet id="dm-ring-buffers-evict" />
+          <ExecutableSnippet title={dmRingBuffersEvict.title} initialCode={dmRingBuffersEvict.code} />
         </section>
 
         <section>
@@ -56,8 +57,8 @@ export function DataModelRingBuffersPage() {
             place and delete them ahead of eviction, with the same{' '}
             <Code>filter</Code> semantics as tables:
           </p>
-          <ExampleSnippet id="dm-ring-buffers-update" />
-          <ExampleSnippet id="dm-ring-buffers-delete" className="mt-4" />
+          <ExecutableSnippet title={dmRingBuffersUpdate.title} initialCode={dmRingBuffersUpdate.code} />
+          <ExecutableSnippet title={dmRingBuffersDelete.title} initialCode={dmRingBuffersDelete.code} className="mt-4"  />
         </section>
 
         <section>

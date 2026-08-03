@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dateStartOfYearInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DateStartOfYearPage() {
   return (
@@ -26,7 +26,7 @@ export function DateStartOfYearPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Date representing the first day of the year.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="date-start_of_year-inline" />
+          <ExecutableSnippet title={dateStartOfYearInline.title} initialCode={dateStartOfYearInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/date/start_of_month" className="text-primary-color hover:underline">date::start_of_month</Link><Link to="/docs/functions/date/year" className="text-primary-color hover:underline">date::year</Link></div></section>
       </div>

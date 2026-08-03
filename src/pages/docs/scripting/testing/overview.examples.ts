@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingTestingOverviewExamples: CodeExample[] = [
-{
+export const scriptingCreateTestExample: CodeExample = {
     id: 'scripting-create-test',
     title: 'Create and Run Tests',
     category: 'scripting',
@@ -27,8 +26,9 @@ RUN TESTS tg | MAP { name, namespace, outcome }`,
 -----------+-----------+--------
 filter_one | tg        | pass
 query_all  | tg        | pass`,
-  },
-{
+  };
+
+export const scriptingAssertLiteralExample: CodeExample = {
     id: 'scripting-assert-literal',
     title: 'Assert Expressions',
     category: 'scripting',
@@ -47,5 +47,9 @@ RUN TESTS tg_a | MAP { name, outcome }`,
 ------------+--------
 assert_math | pass
 assert_true | pass`,
-  },
+  };
+
+export const scriptingTestingOverviewExamples: CodeExample[] = [
+  scriptingCreateTestExample,
+  scriptingAssertLiteralExample,
 ];

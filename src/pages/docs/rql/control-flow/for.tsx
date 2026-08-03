@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { cfForFrame, cfForRange, cfForWrites } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout, RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -31,7 +31,7 @@ export function RqlControlFlowForPage() {
             an ordinary variable inside the block; state accumulates through
             reassignment. Run the snippets on this page in order:
           </p>
-          <ExampleSnippet id="cf-for-range" />
+          <ExecutableSnippet title={cfForRange.title} initialCode={cfForRange.code} />
         </section>
 
         <section>
@@ -43,7 +43,7 @@ export function RqlControlFlowForPage() {
             columns are reachable as fields on the loop variable
             (<Code>$row.qty</Code>):
           </p>
-          <ExampleSnippet id="cf-for-frame" />
+          <ExecutableSnippet title={cfForFrame.title} initialCode={cfForFrame.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The binding step is optional - a query wrapped in curly braces can also
             sit directly in the loop header. This form needs a newer engine than the
@@ -64,7 +64,7 @@ map { count: $count }`} />
             inspect each row, act on the ones that qualify. Every write in the loop
             commits atomically with the rest of the request:
           </p>
-          <ExampleSnippet id="cf-for-writes" />
+          <ExecutableSnippet title={cfForWrites.title} initialCode={cfForWrites.code} />
         </section>
 
         <section>

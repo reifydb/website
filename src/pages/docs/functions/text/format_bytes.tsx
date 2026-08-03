@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { textFormatBytesInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function TextFormatBytesPage() {
   return (
@@ -26,7 +26,7 @@ export function TextFormatBytesPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Utf8 representing the byte count in human-readable binary units (KiB, MiB, GiB).</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="text-format_bytes-inline" />
+          <ExecutableSnippet title={textFormatBytesInline.title} initialCode={textFormatBytesInline.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/text/format_bytes_si" className="text-primary-color hover:underline">text::format_bytes_si</Link></div></section>
       </div>

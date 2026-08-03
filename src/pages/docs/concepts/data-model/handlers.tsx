@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
+import { dmHandlersAfterDrop, dmHandlersDrop, dmHandlersEffects, dmHandlersNested, dmHandlersNestedEffects, dmHandlersScripted, dmHandlersScriptedEffect, dmHandlersSetup, dmHandlersTwo } from './examples.examples';
+import { dmHandlersAfterDrop, dmHandlersScriptedEffect } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -29,19 +30,19 @@ export function DataModelHandlersPage() {
             Start with an event and the state the reactions will touch. Run the
             snippets on this page in order:
           </p>
-          <ExampleSnippet id="dm-handlers-setup" />
+          <ExecutableSnippet title={dmHandlersSetup.title} initialCode={dmHandlersSetup.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Each handler is an independent concern - here one records an audit entry
             while another tracks revenue. Payload fields are available in the body
             with an <Code>event_</Code> prefix (<Code>amount</Code> becomes{' '}
             <Code>event_amount</Code>). The dispatch reports how many handlers ran:
           </p>
-          <ExampleSnippet id="dm-handlers-two" />
+          <ExecutableSnippet title={dmHandlersTwo.title} initialCode={dmHandlersTwo.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Adding a third reaction later means adding a handler - the dispatching
             code does not change. Both effects are already committed:
           </p>
-          <ExampleSnippet id="dm-handlers-effects" />
+          <ExecutableSnippet title={dmHandlersEffects.title} initialCode={dmHandlersEffects.code} />
         </section>
 
         <section>
@@ -53,8 +54,8 @@ export function DataModelHandlersPage() {
             <Link to="/docs/concepts/data-model/procedures" className="text-primary hover:text-primary-light font-medium transition-colors">procedure</Link>{' '}
             body:
           </p>
-          <ExampleSnippet id="dm-handlers-scripted" />
-          <ExampleSnippet id="dm-handlers-scripted-effect" className="mt-4" />
+          <ExecutableSnippet title={dmHandlersScripted.title} initialCode={dmHandlersScripted.code} />
+          <ExecutableSnippet title={dmHandlersScriptedEffect.title} initialCode={dmHandlersScriptedEffect.code} className="mt-4"  />
         </section>
 
         <section>
@@ -66,13 +67,13 @@ export function DataModelHandlersPage() {
             that <Code>handlers_fired</Code> counts the handlers of the dispatched
             variant itself - three are now subscribed to <Code>OrderPlaced</Code>:
           </p>
-          <ExampleSnippet id="dm-handlers-nested" />
+          <ExecutableSnippet title={dmHandlersNested.title} initialCode={dmHandlersNested.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The audit trail shows the full story: this page dispatched{' '}
             <Code>OrderPlaced</Code> twice (two <Code>placed</Code> entries), and the
             chained <Code>OrderShipped</Code> handler wrote <Code>shipped</Code>:
           </p>
-          <ExampleSnippet id="dm-handlers-nested-effects" />
+          <ExecutableSnippet title={dmHandlersNestedEffects.title} initialCode={dmHandlersNestedEffects.code} />
         </section>
 
         <section>
@@ -82,8 +83,8 @@ export function DataModelHandlersPage() {
             without touching the event or the other handlers, and{' '}
             <Code>system::handlers</Code> lists what is currently bound:
           </p>
-          <ExampleSnippet id="dm-handlers-drop" />
-          <ExampleSnippet id="dm-handlers-after-drop" className="mt-4" />
+          <ExecutableSnippet title={dmHandlersDrop.title} initialCode={dmHandlersDrop.code} />
+          <ExecutableSnippet title={dmHandlersAfterDrop.title} initialCode={dmHandlersAfterDrop.code} className="mt-4"  />
         </section>
 
         <section>

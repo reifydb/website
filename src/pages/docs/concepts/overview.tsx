@@ -2,12 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
-
-function Snippet({ id }: { id: string }) {
-  const example = getExampleById(id)!;
-  return <ExecutableSnippet title={example.title} initialCode={example.code} />;
-}
+import { conceptsDeferredQuery, conceptsDerivedInsert, conceptsDerivedQuery, conceptsDerivedSchema, conceptsRingbuffer } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -43,17 +38,17 @@ export function ConceptsOverviewPage() {
             snippets on this page in order. First, a table and two views that aggregate
             it - one <Code>transactional</Code>, one <Code>deferred</Code>:
           </p>
-          <Snippet id="concepts-derived-schema" />
+          <ExecutableSnippet title={conceptsDerivedSchema.title} initialCode={conceptsDerivedSchema.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Now write to the table. There is no second system to notify and no refresh
             job to schedule:
           </p>
-          <Snippet id="concepts-derived-insert" />
+          <ExecutableSnippet title={conceptsDerivedInsert.title} initialCode={conceptsDerivedInsert.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The transactional view was maintained by the write itself. Reading it costs a
             lookup, not a recomputation:
           </p>
-          <Snippet id="concepts-derived-query" />
+          <ExecutableSnippet title={conceptsDerivedQuery.title} initialCode={conceptsDerivedQuery.code} />
         </section>
 
         <section>
@@ -67,7 +62,7 @@ export function ConceptsOverviewPage() {
             stream after the commit: writes stay cheap, and the view catches up moments
             later - it is eventually consistent.
           </p>
-          <Snippet id="concepts-deferred-query" />
+          <ExecutableSnippet title={conceptsDeferredQuery.title} initialCode={conceptsDeferredQuery.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Use transactional views for derived state that reads must never see stale -
             balances, inventory, anything an invariant depends on. Use deferred views
@@ -93,7 +88,7 @@ export function ConceptsOverviewPage() {
             a custom service participates in the same transactions. A ring buffer, for
             example, is bounded state with eviction built in:
           </p>
-          <Snippet id="concepts-ringbuffer" />
+          <ExecutableSnippet title={conceptsRingbuffer.title} initialCode={conceptsRingbuffer.code} />
           <p className="text-text-muted text-sm mt-3">
             Four rows were inserted into a buffer with capacity three; the oldest was
             evicted. No cleanup job required.

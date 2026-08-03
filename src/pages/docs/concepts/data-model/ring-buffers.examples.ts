@@ -1,10 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-// Note: the partition example must run before any other ring buffer holds
-// rows. The current WASM build duplicates rows when reading a partitioned
-// ring buffer after another ring buffer has been populated (engine bug).
-export const dataModelRingBuffersExamples: CodeExample[] = [
-{
+export const dmRingBuffersPartitionExample: CodeExample = {
     id: 'dm-ring-buffers-partition',
     title: 'One Buffer per Partition',
     category: 'concept',
@@ -25,8 +21,9 @@ from dm_rbp::region_events`,
 2  | east
 3  | east
 4  | west`,
-  },
-{
+  };
+
+export const dmRingBuffersCreateExample: CodeExample = {
     id: 'dm-ring-buffers-create',
     title: 'Create a Ring Buffer and Fill It to Capacity',
     category: 'concept',
@@ -46,8 +43,9 @@ from dm_rb::recent_logins`,
 1       | 09:00
 2       | 09:05
 3       | 09:12`,
-  },
-{
+  };
+
+export const dmRingBuffersEvictExample: CodeExample = {
     id: 'dm-ring-buffers-evict',
     title: 'One More Insert Evicts the Oldest Row',
     category: 'concept',
@@ -58,8 +56,9 @@ from dm_rb::recent_logins`,
 2       | 09:05
 3       | 09:12
 4       | 09:20`,
-  },
-{
+  };
+
+export const dmRingBuffersUpdateExample: CodeExample = {
     id: 'dm-ring-buffers-update',
     title: 'Ring Buffer Rows Are Mutable',
     category: 'concept',
@@ -67,8 +66,9 @@ from dm_rb::recent_logins`,
     expected: `namespace | ringbuffer    | updated
 ----------+---------------+--------
 dm_rb     | recent_logins | 1`,
-  },
-{
+  };
+
+export const dmRingBuffersDeleteExample: CodeExample = {
     id: 'dm-ring-buffers-delete',
     title: 'Delete Without Waiting for Eviction',
     category: 'concept',
@@ -78,5 +78,12 @@ from dm_rb::recent_logins`,
 --------+------
 3       | 09:12
 4       | 09:21`,
-  },
+  };
+
+export const dataModelRingBuffersExamples: CodeExample[] = [
+  dmRingBuffersPartitionExample,
+  dmRingBuffersCreateExample,
+  dmRingBuffersEvictExample,
+  dmRingBuffersUpdateExample,
+  dmRingBuffersDeleteExample,
 ];

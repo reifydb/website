@@ -1,9 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-// Note: gen::series is only safe as a for-loop source. Using it as a pipeline
-// source (`from gen::series(...)`) panics the current WASM build.
-export const rqlControlFlowForExamples: CodeExample[] = [
-{
+export const cfForRangeExample: CodeExample = {
     id: 'cf-for-range',
     title: 'Iterate a Numeric Range',
     category: 'rql',
@@ -15,8 +12,9 @@ map { factorial: $factorial }`,
     expected: `factorial
 ---------
 120`,
-  },
-{
+  };
+
+export const cfForFrameExample: CodeExample = {
     id: 'cf-for-frame',
     title: 'Iterate Query Results',
     category: 'rql',
@@ -36,8 +34,9 @@ map { revenue: $revenue }`,
     expected: `revenue
 -------
 65`,
-  },
-{
+  };
+
+export const cfForWritesExample: CodeExample = {
     id: 'cf-for-writes',
     title: 'A for Loop That Writes',
     category: 'rql',
@@ -53,5 +52,10 @@ from cf_for::restock sort { id: asc }`,
 ---+----
 1  | 2
 3  | 4`,
-  },
+  };
+
+export const rqlControlFlowForExamples: CodeExample[] = [
+  cfForRangeExample,
+  cfForFrameExample,
+  cfForWritesExample,
 ];

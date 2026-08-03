@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const functionsMathRoundExamples: CodeExample[] = [
-{
+export const mathRoundDecimalExample: CodeExample = {
     id: 'math-round-decimal',
     title: 'Round to 2 decimal places',
     category: 'function',
@@ -13,8 +12,9 @@ extend { rounded: math::round(price, 2) }`,
 3  | 99.95 | 99.95
 2  | 49.5  | 49.5
 1  | 19.99 | 19.99`,
-  },
-{
+  };
+
+export const mathRoundIntegerExample: CodeExample = {
     id: 'math-round-integer',
     title: 'Round to nearest integer',
     category: 'function',
@@ -26,5 +26,9 @@ extend { rounded_value: math::round(value) }`,
 3  | 89.25  | 89
 2  | 230.75 | 231
 1  | 125.5  | 126`,
-  },
+  };
+
+export const functionsMathRoundExamples: CodeExample[] = [
+  mathRoundDecimalExample,
+  mathRoundIntegerExample,
 ];

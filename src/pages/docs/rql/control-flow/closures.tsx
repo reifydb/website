@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { cfClosuresBasic, cfClosuresBlockBody, cfClosuresCapture, cfClosuresCompose, cfClosuresInlineFails, cfClosuresIntoQuery, cfClosuresRequestScoped, cfClosuresShadow, cfClosuresUdf, cfClosuresUdfDml, cfClosuresUdfEarlyReturn, cfClosuresUdfFilter } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -32,7 +32,7 @@ export function RqlControlFlowClosuresPage() {
             Calling the variable runs the body; when the call is the final statement of
             a request, its result comes back as a one-value frame:
           </p>
-          <ExampleSnippet id="cf-closures-basic" />
+          <ExecutableSnippet title={cfClosuresBasic.title} initialCode={cfClosuresBasic.code} />
         </section>
 
         <section>
@@ -42,12 +42,12 @@ export function RqlControlFlowClosuresPage() {
             makes it a closure rather than just a function. Here <Code>$base</Code> is
             not a parameter; it is captured:
           </p>
-          <ExampleSnippet id="cf-closures-capture" />
+          <ExecutableSnippet title={cfClosuresCapture.title} initialCode={cfClosuresCapture.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Parameters win over captures of the same name. Inside the body,{' '}
             <Code>$x</Code> is the argument, not the outer variable:
           </p>
-          <ExampleSnippet id="cf-closures-shadow" />
+          <ExecutableSnippet title={cfClosuresShadow.title} initialCode={cfClosuresShadow.code} />
         </section>
 
         <section>
@@ -56,11 +56,11 @@ export function RqlControlFlowClosuresPage() {
             A closure body is a full block: it can declare its own variables, and its
             last expression is the return value:
           </p>
-          <ExampleSnippet id="cf-closures-block-body" />
+          <ExecutableSnippet title={cfClosuresBlockBody.title} initialCode={cfClosuresBlockBody.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Closures compose - a closure can call another closure it captured:
           </p>
-          <ExampleSnippet id="cf-closures-compose" />
+          <ExecutableSnippet title={cfClosuresCompose.title} initialCode={cfClosuresCompose.code} />
         </section>
 
         <section>
@@ -69,13 +69,13 @@ export function RqlControlFlowClosuresPage() {
             To feed a closure's result into a pipeline, bind it with <Code>let</Code>{' '}
             and use the variable:
           </p>
-          <ExampleSnippet id="cf-closures-into-query" />
+          <ExecutableSnippet title={cfClosuresIntoQuery.title} initialCode={cfClosuresIntoQuery.code} />
           <p className="text-text-secondary mt-4 mb-4">
             What does <em>not</em> work is calling the closure variable inline inside a
             pipeline expression - <Code>map</Code> and <Code>filter</Code> do not
             resolve <Code>$f(4)</Code> as a callable:
           </p>
-          <ExampleSnippet id="cf-closures-inline-fails" />
+          <ExecutableSnippet title={cfClosuresInlineFails.title} initialCode={cfClosuresInlineFails.code} />
         </section>
 
         <section>
@@ -85,24 +85,24 @@ export function RqlControlFlowClosuresPage() {
             declare it with <Code>udf</Code> instead. A named udf is callable anywhere
             a built-in function is:
           </p>
-          <ExampleSnippet id="cf-closures-udf" />
+          <ExecutableSnippet title={cfClosuresUdf.title} initialCode={cfClosuresUdf.code} />
           <p className="text-text-secondary mt-4 mb-4">
             udf bodies use explicit <Code>return</Code>, and <Code>return</Code> exits
             immediately - combined with{' '}
             <Link to="/docs/rql/control-flow/conditionals" className="text-primary hover:text-primary-light font-medium transition-colors">if</Link>{' '}
             that gives guard-clause style logic:
           </p>
-          <ExampleSnippet id="cf-closures-udf-early-return" />
+          <ExecutableSnippet title={cfClosuresUdfEarlyReturn.title} initialCode={cfClosuresUdfEarlyReturn.code} />
           <p className="text-text-secondary mt-4 mb-4">
             A udf returning a boolean works as a reusable predicate:
           </p>
-          <ExampleSnippet id="cf-closures-udf-filter" />
+          <ExecutableSnippet title={cfClosuresUdfFilter.title} initialCode={cfClosuresUdfFilter.code} />
           <p className="text-text-secondary mt-4 mb-4">
             And a udf can wrap statements, not just expressions - including writes.
             This is the pattern for "do this parameterized thing N times" inside one
             request:
           </p>
-          <ExampleSnippet id="cf-closures-udf-dml" />
+          <ExecutableSnippet title={cfClosuresUdfDml.title} initialCode={cfClosuresUdfDml.code} />
         </section>
 
         <section>
@@ -112,7 +112,7 @@ export function RqlControlFlowClosuresPage() {
             from their definition to the end of the request - the next request starts
             clean:
           </p>
-          <ExampleSnippet id="cf-closures-request-scoped" />
+          <ExecutableSnippet title={cfClosuresRequestScoped.title} initialCode={cfClosuresRequestScoped.code} />
         </section>
 
         <Callout variant="note" title="Need a function that persists?">

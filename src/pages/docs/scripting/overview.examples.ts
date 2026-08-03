@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingOverviewExamples: CodeExample[] = [
-{
+export const scriptingInsertBasicExample: CodeExample = {
     id: 'scripting-insert-basic',
     title: 'Insert Rows',
     category: 'scripting',
@@ -19,8 +18,9 @@ sort { id: asc }`,
 1  | Alice | true
 2  | Bob   | false
 3  | Carol | true`,
-  },
-{
+  };
+
+export const scriptingCreateTableExample: CodeExample = {
     id: 'scripting-create-table',
     title: 'Create Table',
     category: 'scripting',
@@ -34,5 +34,9 @@ CREATE TABLE sc_t::users {
     expected: `id    | namespace | table | created
 ------+-----------+-------+--------
 16417 | sc_t      | users | true`,
-  },
+  };
+
+export const scriptingOverviewExamples: CodeExample[] = [
+  scriptingInsertBasicExample,
+  scriptingCreateTableExample,
 ];

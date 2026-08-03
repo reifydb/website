@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dataModelProceduresExamples: CodeExample[] = [
-{
+export const dmProceduresCreateExample: CodeExample = {
     id: 'dm-procedures-create',
     title: 'Create and Call a Procedure',
     category: 'concept',
@@ -13,8 +12,9 @@ call dm_proc::health()`,
     expected: `status
 ------
 ok`,
-  },
-{
+  };
+
+export const dmProceduresParamsExample: CodeExample = {
     id: 'dm-procedures-params',
     title: 'Typed Parameters',
     category: 'concept',
@@ -29,8 +29,9 @@ from dm_proc::users`,
 ---+------
 2  | Grace
 1  | Ada`,
-  },
-{
+  };
+
+export const dmProceduresLogicExample: CodeExample = {
     id: 'dm-procedures-logic',
     title: 'The Body Is a Full Script',
     category: 'concept',
@@ -43,8 +44,9 @@ call dm_proc::stats()`,
     expected: `total | active | ratio
 ------+--------+------
 10    | 7      | 70`,
-  },
-{
+  };
+
+export const dmProceduresComposeExample: CodeExample = {
     id: 'dm-procedures-compose',
     title: 'Procedures Call Procedures',
     category: 'concept',
@@ -55,8 +57,9 @@ call dm_proc::wrapper()`,
     expected: `status
 ------
 ok`,
-  },
-{
+  };
+
+export const dmProceduresTestExample: CodeExample = {
     id: 'dm-procedures-test',
     title: 'Test Procedures and In-Database Tests',
     category: 'concept',
@@ -71,12 +74,21 @@ run tests dm_proc`,
     expected: `name        | namespace | outcome | duration | message
 ------------+-----------+---------+----------+--------
 user_exists | dm_proc   | pass    | 0s       |`,
-  },
-{
+  };
+
+export const dmProceduresTestIsolationExample: CodeExample = {
     id: 'dm-procedures-test-isolation',
     title: 'Tests Roll Back - the Seed Row Is Gone',
     category: 'concept',
     code: `from dm_proc::users filter { id == 99 }`,
     expected: `(empty)`,
-  },
+  };
+
+export const dataModelProceduresExamples: CodeExample[] = [
+  dmProceduresCreateExample,
+  dmProceduresParamsExample,
+  dmProceduresLogicExample,
+  dmProceduresComposeExample,
+  dmProceduresTestExample,
+  dmProceduresTestIsolationExample,
 ];

@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingViewsDeferredExamples: CodeExample[] = [
-{
+export const scriptingQueryViewExample: CodeExample = {
     id: 'scripting-query-view',
     title: 'Query a View',
     category: 'scripting',
@@ -26,8 +25,9 @@ INSERT vw_q::products [
   { id: 2, name: 'Gadget', price: 24.99, in_stock: false },
   { id: 3, name: 'Gizmo', price: 14.99, in_stock: true }
 ];`,
-  },
-{
+  };
+
+export const scriptingQueryViewResultExample: CodeExample = {
     id: 'scripting-query-view-result',
     title: 'Query the View',
     category: 'scripting',
@@ -37,5 +37,9 @@ SORT { price: desc }`,
 ---+--------+------
 3  | Gizmo  | 14.99
 1  | Widget | 9.99`,
-  },
+  };
+
+export const scriptingViewsDeferredExamples: CodeExample[] = [
+  scriptingQueryViewExample,
+  scriptingQueryViewResultExample,
 ];

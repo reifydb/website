@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingSchemaEnumsExamples: CodeExample[] = [
-{
+export const scriptingCreateEnumUnitExample: CodeExample = {
     id: 'scripting-create-enum-unit',
     title: 'Unit Enum',
     category: 'scripting',
@@ -11,8 +10,9 @@ CREATE ENUM sc_eu::color {
   Green,
   Blue
 }`,
-  },
-{
+  };
+
+export const scriptingCreateEnumStructExample: CodeExample = {
     id: 'scripting-create-enum-struct',
     title: 'Struct Enum',
     category: 'scripting',
@@ -21,5 +21,9 @@ CREATE ENUM sc_es::shape {
   Circle { radius: float8 },
   Rectangle { width: float8, height: float8 }
 }`,
-  },
+  };
+
+export const scriptingSchemaEnumsExamples: CodeExample[] = [
+  scriptingCreateEnumUnitExample,
+  scriptingCreateEnumStructExample,
 ];

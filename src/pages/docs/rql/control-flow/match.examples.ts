@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const rqlControlFlowMatchExamples: CodeExample[] = [
-{
+export const cfMatchValueExample: CodeExample = {
     id: 'cf-match-value',
     title: 'Match a Value Against Literal Arms',
     category: 'rql',
@@ -15,8 +14,9 @@ map { plan: $plan, seats: $seats }`,
     expected: `plan | seats
 -----+------
 pro  | 10`,
-  },
-{
+  };
+
+export const cfMatchSearchedExample: CodeExample = {
     id: 'cf-match-searched',
     title: 'Match on Conditions',
     category: 'rql',
@@ -30,8 +30,9 @@ map { temp: $temp, status: $status }`,
     expected: `temp | status
 -----+--------
 78   | warning`,
-  },
-{
+  };
+
+export const cfMatchFirstWinsExample: CodeExample = {
     id: 'cf-match-first-wins',
     title: 'The First True Arm Wins',
     description: 'Arms are checked top to bottom. 120 satisfies both conditions, but the broader one is listed first and shadows the other - order arms from most to least specific.',
@@ -46,8 +47,9 @@ map { bucket: $bucket }`,
     expected: `bucket
 -------
 over 50`,
-  },
-{
+  };
+
+export const cfMatchRowsExample: CodeExample = {
     id: 'cf-match-rows',
     title: 'Classify Rows in a Pipeline',
     category: 'rql',
@@ -67,8 +69,9 @@ sort { id: asc }`,
 1  | gold
 2  | silver
 3  | bronze`,
-  },
-{
+  };
+
+export const cfMatchNoneArmExample: CodeExample = {
     id: 'cf-match-none-arm',
     title: 'A none Arm Never Matches',
     description: 'Value-match arms compare by equality, and equality against none never produces true - the "missing" arm is dead code, and the none row falls through to else.',
@@ -83,8 +86,9 @@ sort { id: asc }`,
 ---+-------
 1  | graded
 2  | graded`,
-  },
-{
+  };
+
+export const cfMatchNoneGuardExample: CodeExample = {
     id: 'cf-match-none-guard',
     title: 'Test for none with a Searched Arm',
     category: 'rql',
@@ -101,5 +105,13 @@ sort { id: asc }`,
 ---+--------
 1  | graded
 2  | missing`,
-  },
+  };
+
+export const rqlControlFlowMatchExamples: CodeExample[] = [
+  cfMatchValueExample,
+  cfMatchSearchedExample,
+  cfMatchFirstWinsExample,
+  cfMatchRowsExample,
+  cfMatchNoneArmExample,
+  cfMatchNoneGuardExample,
 ];

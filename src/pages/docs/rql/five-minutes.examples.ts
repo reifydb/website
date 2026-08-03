@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const rqlFiveMinutesExamples: CodeExample[] = [
-{
+export const rql5PipelineExample: CodeExample = {
     id: 'rql5-pipeline',
     title: 'A Complete Pipeline',
     category: 'rql',
@@ -15,8 +14,9 @@ Alice | alice@example.com
 Bob   | bob@example.com
 David | david@example.com
 Eve   | eve@example.com`,
-  },
-{
+  };
+
+export const rql5InlineExample: CodeExample = {
     id: 'rql5-inline',
     title: 'Query Inline Data',
     category: 'rql',
@@ -31,8 +31,9 @@ sort { born: asc }`,
 1815 | Ada
 1906 | Grace
 1930 | Edsger`,
-  },
-{
+  };
+
+export const rql5MapComputedExample: CodeExample = {
     id: 'rql5-map-computed',
     title: 'Shape Rows with map',
     category: 'rql',
@@ -48,8 +49,9 @@ take 2`,
 --------+--------+--------------
 desk    | 420.0  | 424.5
 monitor | 349.5  | 354.0`,
-  },
-{
+  };
+
+export const rql5AggregateExample: CodeExample = {
     id: 'rql5-aggregate',
     title: 'Aggregate by Group',
     category: 'rql',
@@ -64,8 +66,9 @@ sort { region: asc }`,
 -------+-------+------
 north  | 200.0 | 2
 south  | 200.5 | 1`,
-  },
-{
+  };
+
+export const rql5NonePropagatesExample: CodeExample = {
     id: 'rql5-none-propagates',
     title: 'none Propagates Through Arithmetic',
     category: 'rql',
@@ -79,8 +82,9 @@ sort { id: asc }`,
 ---+--------
 1  | 20
 2  | ⟪none⟫`,
-  },
-{
+  };
+
+export const rql5NoneFilterExample: CodeExample = {
     id: 'rql5-none-filter',
     title: 'Filter Out Missing Values',
     category: 'rql',
@@ -92,8 +96,9 @@ filter { is::some(score) }`,
     expected: `id | score
 ---+------
 1  | 10`,
-  },
-{
+  };
+
+export const rql5LetExample: CodeExample = {
     id: 'rql5-let',
     title: 'Variables with let',
     category: 'rql',
@@ -107,5 +112,14 @@ sort { age: desc }`,
 Carol | 35
 Eve   | 32
 Alice | 30`,
-  },
+  };
+
+export const rqlFiveMinutesExamples: CodeExample[] = [
+  rql5PipelineExample,
+  rql5InlineExample,
+  rql5MapComputedExample,
+  rql5AggregateExample,
+  rql5NonePropagatesExample,
+  rql5NoneFilterExample,
+  rql5LetExample,
 ];

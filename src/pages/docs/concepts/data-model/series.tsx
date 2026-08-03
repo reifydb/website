@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dmSeriesAutoKey, dmSeriesDatetimeKey, dmSeriesIntegerKey, dmSeriesKeyRange, dmSeriesTag, dmSeriesUpdate } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -29,7 +29,7 @@ export function DataModelSeriesPage() {
             useful for sequence numbers, block heights, or logical clocks. Reads return
             the newest entries first. Run the snippets on this page in order:
           </p>
-          <ExampleSnippet id="dm-series-integer-key" />
+          <ExecutableSnippet title={dmSeriesIntegerKey.title} initialCode={dmSeriesIntegerKey.code} />
         </section>
 
         <section>
@@ -40,12 +40,12 @@ export function DataModelSeriesPage() {
             <Code>millisecond</Code> (the default), <Code>microsecond</Code>, or{' '}
             <Code>nanosecond</Code>:
           </p>
-          <ExampleSnippet id="dm-series-datetime-key" />
+          <ExecutableSnippet title={dmSeriesDatetimeKey.title} initialCode={dmSeriesDatetimeKey.code} />
           <p className="text-text-secondary mt-4 mb-4">
             If a write omits the key, the engine assigns the current time - so an
             append-only event log needs nothing beyond the payload:
           </p>
-          <ExampleSnippet id="dm-series-auto-key" />
+          <ExecutableSnippet title={dmSeriesAutoKey.title} initialCode={dmSeriesAutoKey.code} />
         </section>
 
         <section>
@@ -54,7 +54,7 @@ export function DataModelSeriesPage() {
             Filters on the key column select by the series' native order, which is what
             time-window and "since X" queries compile to:
           </p>
-          <ExampleSnippet id="dm-series-key-range" />
+          <ExecutableSnippet title={dmSeriesKeyRange.title} initialCode={dmSeriesKeyRange.code} />
         </section>
 
         <section>
@@ -63,7 +63,7 @@ export function DataModelSeriesPage() {
             A series is ordered, not immutable. Late corrections - a recalibrated
             sensor, an amended audit record - are ordinary updates selected by key:
           </p>
-          <ExampleSnippet id="dm-series-update" />
+          <ExecutableSnippet title={dmSeriesUpdate.title} initialCode={dmSeriesUpdate.code} />
         </section>
 
         <section>
@@ -74,7 +74,7 @@ export function DataModelSeriesPage() {
             - a named set of variants, optionally with payload fields - to classify
             where each entry came from or what kind it is, without widening the schema:
           </p>
-          <ExampleSnippet id="dm-series-tag" />
+          <ExecutableSnippet title={dmSeriesTag.title} initialCode={dmSeriesTag.code} />
         </section>
 
         <section>

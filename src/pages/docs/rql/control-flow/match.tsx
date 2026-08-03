@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { cfMatchFirstWins, cfMatchNoneArm, cfMatchNoneGuard, cfMatchRows, cfMatchSearched, cfMatchValue } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -29,7 +29,7 @@ export function RqlControlFlowMatchPage() {
             The first form compares one value against literal arms. <Code>else</Code>{' '}
             is the catch-all; with it, the expression always produces a value:
           </p>
-          <ExampleSnippet id="cf-match-value" />
+          <ExecutableSnippet title={cfMatchValue.title} initialCode={cfMatchValue.code} />
         </section>
 
         <section>
@@ -39,13 +39,13 @@ export function RqlControlFlowMatchPage() {
             This is the shape for ranges and anything else that is not a simple
             equality:
           </p>
-          <ExampleSnippet id="cf-match-searched" />
+          <ExecutableSnippet title={cfMatchSearched.title} initialCode={cfMatchSearched.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Arms are checked top to bottom and the first true one wins, so order them
             from most specific to least. A broad condition listed first silently
             shadows everything below it:
           </p>
-          <ExampleSnippet id="cf-match-first-wins" />
+          <ExecutableSnippet title={cfMatchFirstWins.title} initialCode={cfMatchFirstWins.code} />
         </section>
 
         <section>
@@ -54,7 +54,7 @@ export function RqlControlFlowMatchPage() {
             Both forms work per row inside a pipeline - reference columns directly in
             the arms. This is the workhorse for bucketing and labeling:
           </p>
-          <ExampleSnippet id="cf-match-rows" />
+          <ExecutableSnippet title={cfMatchRows.title} initialCode={cfMatchRows.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Match inside <Code>map</Code> and <Code>extend</Code> is covered from the
             pipeline side in{' '}
@@ -71,14 +71,14 @@ export function RqlControlFlowMatchPage() {
             the row with the missing score falls through to <Code>else</Code> and you
             never see <Code>"missing"</Code>:
           </p>
-          <ExampleSnippet id="cf-match-none-arm" />
+          <ExecutableSnippet title={cfMatchNoneArm.title} initialCode={cfMatchNoneArm.code} />
           <p className="text-text-secondary mt-4 mb-4">
             To branch on missingness, use a searched match with an{' '}
             <Link to="/docs/functions/is/none" className="text-primary hover:text-primary-light font-medium transition-colors">is::none</Link>{' '}
             arm - it always returns a definite <Code>true</Code> or <Code>false</Code>,
             which also makes this the idiom for substituting defaults:
           </p>
-          <ExampleSnippet id="cf-match-none-guard" />
+          <ExecutableSnippet title={cfMatchNoneGuard.title} initialCode={cfMatchNoneGuard.code} />
         </section>
 
         <Callout variant="note" title="Two branches? Use if">

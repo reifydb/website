@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const rqlControlFlowLoopExamples: CodeExample[] = [
-{
+export const cfLoopBreakExample: CodeExample = {
     id: 'cf-loop-break',
     title: 'loop Runs Until break',
     category: 'rql',
@@ -14,8 +13,9 @@ map { first_power: $p }`,
     expected: `first_power
 -----------
 1024`,
-  },
-{
+  };
+
+export const cfLoopContinueExample: CodeExample = {
     id: 'cf-loop-continue',
     title: 'continue Skips to the Next Iteration',
     category: 'rql',
@@ -34,8 +34,9 @@ from cf_loop::odds sort { n: asc }`,
 1
 3
 5`,
-  },
-{
+  };
+
+export const cfLoopResultExample: CodeExample = {
     id: 'cf-loop-result',
     title: 'Carry a Result Out of the Loop',
     category: 'rql',
@@ -53,8 +54,9 @@ map { fib: $b, steps: $steps }`,
     expected: `fib | steps
 ----+------
 55  | 8`,
-  },
-{
+  };
+
+export const cfLoopInWhileExample: CodeExample = {
     id: 'cf-loop-in-while',
     title: 'break Exits a while Loop Early',
     category: 'rql',
@@ -67,8 +69,9 @@ map { stopped_at: $i }`,
     expected: `stopped_at
 ----------
 7`,
-  },
-{
+  };
+
+export const cfLoopInForExample: CodeExample = {
     id: 'cf-loop-in-for',
     title: 'continue Filters a for Loop',
     category: 'rql',
@@ -81,8 +84,9 @@ map { kept_sum: $sum }`,
     expected: `kept_sum
 --------
 13`,
-  },
-{
+  };
+
+export const cfLoopCapExample: CodeExample = {
     id: 'cf-loop-cap',
     title: 'A Loop That Never Breaks Is an Error',
     description: 'Iteration is capped at 10,000; exceeding it fails the request with RUNTIME_006 instead of hanging the engine.',
@@ -90,5 +94,13 @@ map { kept_sum: $sum }`,
     code: `let $x = 0;
 loop { $x = $x + 1 }`,
     expectsError: true,
-  },
+  };
+
+export const rqlControlFlowLoopExamples: CodeExample[] = [
+  cfLoopBreakExample,
+  cfLoopContinueExample,
+  cfLoopResultExample,
+  cfLoopInWhileExample,
+  cfLoopInForExample,
+  cfLoopCapExample,
 ];

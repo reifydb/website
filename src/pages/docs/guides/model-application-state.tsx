@@ -2,12 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
-
-function Snippet({ id }: { id: string }) {
-  const example = getExampleById(id)!;
-  return <ExecutableSnippet title={example.title} initialCode={example.code} />;
-}
+import { modelStateActivityEvict, modelStateAlterSequence, modelStateCompleteTask, modelStateDictionary, modelStateEnum, modelStateInsertProjects, modelStateInsertTasks, modelStateJoin, modelStateNamespace, modelStateReadDictionary, modelStateReadTasks, modelStateReadView, modelStateRingbuffer, modelStateTasksTable, modelStateView, modelStateViewAfter } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -57,12 +52,12 @@ export function ModelApplicationStatePage() {
             <Code>with {'{'} auto_increment {'}'}</Code>, so the database owns ID
             assignment - your application never coordinates counters:
           </p>
-          <Snippet id="model-state-namespace" />
+          <ExecutableSnippet title={modelStateNamespace.title} initialCode={modelStateNamespace.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Because the database assigns IDs, you read them back at insert time with{' '}
             <Code>returning</Code> instead of guessing:
           </p>
-          <Snippet id="model-state-insert-projects" />
+          <ExecutableSnippet title={modelStateInsertProjects.title} initialCode={modelStateInsertProjects.code} />
         </section>
 
         <section>
@@ -73,7 +68,7 @@ export function ModelApplicationStatePage() {
             schema enforces the set, so a typo like <Code>"hgih"</Code> is a schema
             error instead of silent bad data. Declare the variants once:
           </p>
-          <Snippet id="model-state-enum" />
+          <ExecutableSnippet title={modelStateEnum.title} initialCode={modelStateEnum.code} />
         </section>
 
         <section>
@@ -85,7 +80,7 @@ export function ModelApplicationStatePage() {
             it is used. You still read and write plain strings; the encoding is the
             engine's problem:
           </p>
-          <Snippet id="model-state-dictionary" />
+          <ExecutableSnippet title={modelStateDictionary.title} initialCode={modelStateDictionary.code} />
         </section>
 
         <section>
@@ -96,7 +91,7 @@ export function ModelApplicationStatePage() {
             <Code>projects</Code>, the enum for priority, and the dictionary-encoded
             assignee:
           </p>
-          <Snippet id="model-state-tasks-table" />
+          <ExecutableSnippet title={modelStateTasksTable.title} initialCode={modelStateTasksTable.code} />
         </section>
 
         <section>
@@ -109,7 +104,7 @@ export function ModelApplicationStatePage() {
             write that affects it. Define it before inserting data, so it tracks changes
             from the start:
           </p>
-          <Snippet id="model-state-view" />
+          <ExecutableSnippet title={modelStateView.title} initialCode={modelStateView.code} />
         </section>
 
         <section>
@@ -122,7 +117,7 @@ export function ModelApplicationStatePage() {
             is schema, not a cleanup job. The tiny capacity here is just to make
             eviction visible on this page:
           </p>
-          <Snippet id="model-state-ringbuffer" />
+          <ExecutableSnippet title={modelStateRingbuffer.title} initialCode={modelStateRingbuffer.code} />
         </section>
 
         <section>
@@ -132,7 +127,7 @@ export function ModelApplicationStatePage() {
             paths, and assignees are written as plain strings - the dictionary interns
             new names on the fly:
           </p>
-          <Snippet id="model-state-insert-tasks" />
+          <ExecutableSnippet title={modelStateInsertTasks.title} initialCode={modelStateInsertTasks.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Every auto-increment column is backed by a{' '}
             <DocLink to="/docs/concepts/data-model/sequences">sequence</DocLink> you can
@@ -140,7 +135,7 @@ export function ModelApplicationStatePage() {
             numbers used while prototyping. The next insert continues from the new
             value:
           </p>
-          <Snippet id="model-state-alter-sequence" />
+          <ExecutableSnippet title={modelStateAlterSequence.title} initialCode={modelStateAlterSequence.code} />
         </section>
 
         <section>
@@ -151,12 +146,12 @@ export function ModelApplicationStatePage() {
             <Code>Low</Code> is 0 and <Code>High</Code> is 2), while the
             dictionary-encoded assignee is decoded back to a string for you:
           </p>
-          <Snippet id="model-state-read-tasks" />
+          <ExecutableSnippet title={modelStateReadTasks.title} initialCode={modelStateReadTasks.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The dictionary itself is queryable, and it interned exactly the two distinct
             names it saw:
           </p>
-          <Snippet id="model-state-read-dictionary" />
+          <ExecutableSnippet title={modelStateReadDictionary.title} initialCode={modelStateReadDictionary.code} />
         </section>
 
         <section>
@@ -165,13 +160,13 @@ export function ModelApplicationStatePage() {
             The workload view is already populated. Nothing recomputed it - the task
             inserts maintained it as they committed:
           </p>
-          <Snippet id="model-state-read-view" />
+          <ExecutableSnippet title={modelStateReadView.title} initialCode={modelStateReadView.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Ad-hoc read shapes stay ordinary queries. Joined columns are prefixed with
             the join alias, so the project's <Code>name</Code> arrives as{' '}
             <Code>p_name</Code>:
           </p>
-          <Snippet id="model-state-join" />
+          <ExecutableSnippet title={modelStateJoin.title} initialCode={modelStateJoin.code} />
         </section>
 
         <section>
@@ -179,19 +174,19 @@ export function ModelApplicationStatePage() {
           <p className="text-text-secondary mb-4">
             Complete a task and record the action in the activity buffer:
           </p>
-          <Snippet id="model-state-complete-task" />
+          <ExecutableSnippet title={modelStateCompleteTask.title} initialCode={modelStateCompleteTask.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The completed task no longer matches the view's <Code>filter</Code>, so its
             assignee's count dropped by one. There is no cache to invalidate, because
             there is no cache:
           </p>
-          <Snippet id="model-state-view-after" />
+          <ExecutableSnippet title={modelStateViewAfter.title} initialCode={modelStateViewAfter.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Meanwhile the activity buffer enforces its own retention. It held one row;
             three more inserts push it past its capacity of 3, and the oldest entry is
             evicted:
           </p>
-          <Snippet id="model-state-activity-evict" />
+          <ExecutableSnippet title={modelStateActivityEvict.title} initialCode={modelStateActivityEvict.code} />
         </section>
 
         <section>

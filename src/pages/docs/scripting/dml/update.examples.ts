@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingDmlUpdateExamples: CodeExample[] = [
-{
+export const scriptingUpdateBasicExample: CodeExample = {
     id: 'scripting-update-basic',
     title: 'Update Rows',
     category: 'scripting',
@@ -18,8 +17,9 @@ sort { id: asc }`,
 ---+-------+-------
 1  | Alice | true
 2  | Bob   | false`,
-  },
-{
+  };
+
+export const scriptingUpdateExpressionExample: CodeExample = {
     id: 'scripting-update-expression',
     title: 'Update with Expression',
     category: 'scripting',
@@ -33,5 +33,9 @@ sort { id: asc }`,
 ---+-------
 1  | 15
 2  | 25`,
-  },
+  };
+
+export const scriptingDmlUpdateExamples: CodeExample[] = [
+  scriptingUpdateBasicExample,
+  scriptingUpdateExpressionExample,
 ];

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
+import { jsonObjectBasic, jsonObjectNested } from './examples.examples';
 
 export function JsonObjectPage() {
   return (
@@ -72,14 +72,14 @@ export function JsonObjectPage() {
 
           <h3 className="text-lg font-bold mb-3">Build a JSON object</h3>
           <ExecutableSnippet
-            title={getExampleById('json-object-basic')!.title}
-            initialCode={getExampleById('json-object-basic')!.code}
+            title={jsonObjectBasic.title}
+            initialCode={jsonObjectBasic.code}
           />
 
           <h3 className="text-lg font-bold mt-6 mb-3">Nested objects</h3>
           <ExecutableSnippet
-            title={getExampleById('json-object-nested')!.title}
-            initialCode={getExampleById('json-object-nested')!.code}
+            title={jsonObjectNested.title}
+            initialCode={jsonObjectNested.code}
           />
         </section>
 

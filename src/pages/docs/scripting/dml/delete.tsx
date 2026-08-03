@@ -1,6 +1,6 @@
 import { Layout } from '../../layout.tsx';
+import { scriptingDeleteAll, scriptingDeleteBasic } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function DmlDeletePage() {
   return (
@@ -20,7 +20,7 @@ export function DmlDeletePage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Delete with Filter</h2>
           <ExecutableSnippet
             title="Delete Rows"
-            initialCode={getExampleById('scripting-delete-basic')!.code}
+            initialCode={scriptingDeleteBasic.code}
           />
           <p className="text-text-secondary mt-4">
             The <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">FILTER</code> clause
@@ -32,7 +32,7 @@ export function DmlDeletePage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Delete All</h2>
           <ExecutableSnippet
             title="Delete All"
-            initialCode={getExampleById('scripting-delete-all')!.code}
+            initialCode={scriptingDeleteAll.code}
           />
           <p className="text-text-secondary mt-4">
             Use <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">FILTER {'{ true }'}</code> to

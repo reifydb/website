@@ -1,44 +1,44 @@
 import { Link } from 'react-router-dom';
+import { transformPipeline, transformFrom, transformFilter, transformExtend, transformSort, transformTake, transformDistinct, transformAggregate } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 const transforms = [
   {
     name: 'from',
     description: 'Start your query here. Point it at a table or use inline data.',
-    exampleId: 'transform-from',
+    example: transformFrom,
   },
   {
     name: 'filter',
     description: 'Keep only the rows you want.',
-    exampleId: 'transform-filter',
+    example: transformFilter,
   },
   {
     name: 'extend',
     description: 'Add computed columns to your results.',
-    exampleId: 'transform-extend',
+    example: transformExtend,
   },
   {
     name: 'sort',
     description: 'Order your results by any column.',
-    exampleId: 'transform-sort',
+    example: transformSort,
   },
   {
     name: 'take',
     description: 'Grab only the first N rows.',
-    exampleId: 'transform-take',
+    example: transformTake,
   },
   {
     name: 'distinct',
     description: 'Remove duplicate rows.',
-    exampleId: 'transform-distinct',
+    example: transformDistinct,
   },
   {
     name: 'aggregate',
     description: 'Summarize your data with counts, sums, averages, and more.',
-    exampleId: 'transform-aggregate',
+    example: transformAggregate,
   },
 ];
 
@@ -66,7 +66,7 @@ export function RqlTransformsPage() {
           </p>
           <ExecutableSnippet
             title="Pipeline Processing"
-            initialCode={getExampleById('transform-pipeline')!.code}
+            initialCode={transformPipeline.code}
           />
         </section>
 
@@ -84,7 +84,7 @@ export function RqlTransformsPage() {
                   {transform.name}
                 </h3>
                 <p className="text-text-secondary mb-4">{transform.description}</p>
-                <ExecutableSnippet title={transform.name} initialCode={getExampleById(transform.exampleId)!.code} />
+                <ExecutableSnippet title={transform.name} initialCode={transform.example.code} />
               </div>
             ))}
           </div>

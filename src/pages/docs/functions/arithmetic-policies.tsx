@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { fnArithFallback, fnArithFunctionDivzero, fnArithNone, fnArithNonePropagates, fnArithOperatorOverflow, fnArithPromotion, fnArithSaturate, fnArithSaturateFloor, fnArithStrict, fnArithWrapZero } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -82,13 +82,13 @@ export function ArithmeticPoliciesPage() {
             cannot be represented is an error, not a wrong answer. Overflow fails with{' '}
             <Code>NUMBER_002</Code> (number out of range):
           </p>
-          <ExampleSnippet id="fn-arith-operator-overflow" />
+          <ExecutableSnippet title={fnArithOperatorOverflow.title} initialCode={fnArithOperatorOverflow.code} />
           <p className="text-text-secondary mt-4 mb-4">
             and division or remainder by zero fails with <Code>NUMBER_007</Code>. The
             functions report it wrapped in a <Code>FUNCTION_007</Code> execution
             error; the cause is the same:
           </p>
-          <ExampleSnippet id="fn-arith-function-divzero" />
+          <ExecutableSnippet title={fnArithFunctionDivzero.title} initialCode={fnArithFunctionDivzero.code} />
           <p className="text-text-secondary mt-4">
             For floating-point inputs the same rule covers non-finite results: an
             operation that would produce infinity or NaN counts as overflow.
@@ -141,12 +141,12 @@ export function ArithmeticPoliciesPage() {
             minimum or maximum. Use it when "as large as representable" is a better
             answer than no answer - accumulating counters, scores with a cap:
           </p>
-          <ExampleSnippet id="fn-arith-saturate" />
+          <ExecutableSnippet title={fnArithSaturate.title} initialCode={fnArithSaturate.code} />
           <p className="text-text-secondary mt-4 mb-4">
             On unsigned types, subtracting below zero clamps to zero - a natural fit
             for "remaining quantity" arithmetic:
           </p>
-          <ExampleSnippet id="fn-arith-saturate-floor" />
+          <ExecutableSnippet title={fnArithSaturateFloor.title} initialCode={fnArithSaturateFloor.code} />
         </section>
 
         <section>
@@ -157,7 +157,7 @@ export function ArithmeticPoliciesPage() {
             wrapping is intended. <Code>_zero</Code> substitutes <Code>0</Code> for
             any result that does not exist:
           </p>
-          <ExampleSnippet id="fn-arith-wrap-zero" />
+          <ExecutableSnippet title={fnArithWrapZero.title} initialCode={fnArithWrapZero.code} />
         </section>
 
         <section>
@@ -170,7 +170,7 @@ export function ArithmeticPoliciesPage() {
             with an empty denominator - an average over nothing is not zero, it is
             unknown:
           </p>
-          <ExampleSnippet id="fn-arith-none" />
+          <ExecutableSnippet title={fnArithNone.title} initialCode={fnArithNone.code} />
         </section>
 
         <section>
@@ -180,7 +180,7 @@ export function ArithmeticPoliciesPage() {
             where the real result does not exist. The fallback is coerced to the
             result type; a <Code>none</Code> fallback yields <Code>none</Code>:
           </p>
-          <ExampleSnippet id="fn-arith-fallback" />
+          <ExecutableSnippet title={fnArithFallback.title} initialCode={fnArithFallback.code} />
         </section>
 
         <section>
@@ -190,7 +190,7 @@ export function ArithmeticPoliciesPage() {
             the third argument replaces the generic diagnostic with a message that
             says what actually went wrong in your domain:
           </p>
-          <ExampleSnippet id="fn-arith-strict" />
+          <ExecutableSnippet title={fnArithStrict.title} initialCode={fnArithStrict.code} />
         </section>
 
         <section>
@@ -201,7 +201,7 @@ export function ArithmeticPoliciesPage() {
             variant - even <Code>_strict</Code> does not fail on a <Code>none</Code>{' '}
             input, and <Code>_zero</Code> does not invent a zero for one:
           </p>
-          <ExampleSnippet id="fn-arith-none-propagates" />
+          <ExecutableSnippet title={fnArithNonePropagates.title} initialCode={fnArithNonePropagates.code} />
           <p className="text-text-secondary mt-4">
             To replace missing inputs, handle them explicitly before the arithmetic -
             see{' '}
@@ -221,7 +221,7 @@ export function ArithmeticPoliciesPage() {
             use them. Division by zero, not overflow, is the case these policies
             handle day to day:
           </p>
-          <ExampleSnippet id="fn-arith-promotion" />
+          <ExecutableSnippet title={fnArithPromotion.title} initialCode={fnArithPromotion.code} />
         </section>
 
         <Callout variant="note" title="Not related to table policies">

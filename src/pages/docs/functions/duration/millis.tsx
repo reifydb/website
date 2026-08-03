@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { durationMillis } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DurationMillisPage() {
   return (
@@ -27,7 +27,7 @@ export function DurationMillisPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Duration representing the specified number of milliseconds.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="duration-millis" />
+          <ExecutableSnippet title={durationMillis.title} initialCode={durationMillis.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
           <Link to="/docs/functions/duration/seconds" className="text-primary-color hover:underline">duration::seconds</Link>

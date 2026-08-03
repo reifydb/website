@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dateNowInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DateNowPage() {
   return (
@@ -47,7 +47,7 @@ export function DateNowPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="date-now-inline" />
+          <ExecutableSnippet title={dateNowInline.title} initialCode={dateNowInline.code} />
         </section>
 
         {/* Related Functions */}

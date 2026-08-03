@@ -1,7 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const rqlTransformsWithExamples: CodeExample[] = [
-{
+export const withStorageOptionsExample: CodeExample = {
     id: 'with-storage-options',
     title: 'Configure Storage at Creation',
     category: 'rql',
@@ -20,8 +19,9 @@ from rql_with::recent_errors sort { id: asc }`,
 ---+--------
 2  | refused
 3  | reset`,
-  },
-{
+  };
+
+export const withRowTtlExample: CodeExample = {
     id: 'with-row-ttl',
     title: 'Row Settings on a Table',
     category: 'rql',
@@ -34,8 +34,9 @@ from rql_with::sessions`,
     expected: `token | user_id
 ------+--------
 a1    | 1`,
-  },
-{
+  };
+
+export const withColumnOptionsExample: CodeExample = {
     id: 'with-column-options',
     title: 'Options on a Column',
     category: 'rql',
@@ -49,8 +50,9 @@ from rql_with::tickets sort { id: asc }`,
 ---+-------
 1  | first
 2  | second`,
-  },
-{
+  };
+
+export const withJoinOptionsExample: CodeExample = {
     id: 'with-join-options',
     title: 'Options on a Join',
     category: 'rql',
@@ -65,8 +67,9 @@ sort { id: asc }`,
 3  | Marketing
 4  | Marketing
 5  | Sales`,
-  },
-{
+  };
+
+export const withDistinctTtlExample: CodeExample = {
     id: 'with-distinct-ttl',
     title: 'Options on Distinct',
     category: 'rql',
@@ -79,8 +82,9 @@ sort { dept_id: asc }`,
 1
 2
 3`,
-  },
-{
+  };
+
+export const withUnknownKeyExample: CodeExample = {
     id: 'with-unknown-key',
     title: 'Unknown Keys Are Rejected',
     description: 'Each construct validates its with block; a key it does not know is a parse error.',
@@ -89,5 +93,13 @@ sort { dept_id: asc }`,
   id: int4
 } with { color: "red" }`,
     expectsError: true,
-  },
+  };
+
+export const rqlTransformsWithExamples: CodeExample[] = [
+  withStorageOptionsExample,
+  withRowTtlExample,
+  withColumnOptionsExample,
+  withJoinOptionsExample,
+  withDistinctTtlExample,
+  withUnknownKeyExample,
 ];

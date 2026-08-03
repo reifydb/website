@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { durationGetDays } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 export function DurationGetDaysPage() {
   return (
@@ -26,7 +26,7 @@ export function DurationGetDaysPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns an Integer representing the days component of the duration.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="duration-get_days" />
+          <ExecutableSnippet title={durationGetDays.title} initialCode={durationGetDays.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
           <Link to="/docs/functions/duration/get_months" className="text-primary-color hover:underline">duration::get_months</Link>

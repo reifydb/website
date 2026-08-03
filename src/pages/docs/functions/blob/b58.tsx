@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
+import { ExecutableSnippet } from '@/components/ui';
+import { functionsBlobB58Example } from './b58.examples';
 
 export function BlobB58Page() {
   return (
@@ -46,7 +47,7 @@ export function BlobB58Page() {
         </section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExampleSnippet id="blob-b58" />
+          <ExecutableSnippet title={functionsBlobB58Example.title} initialCode={functionsBlobB58Example.code} />
         </section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>

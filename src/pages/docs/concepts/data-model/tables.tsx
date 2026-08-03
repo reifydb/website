@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { dmTablesAlter, dmTablesAutoIncrement, dmTablesCreate, dmTablesDelete, dmTablesOption, dmTablesPrimaryKey, dmTablesRownum, dmTablesUpdateReturning } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { ExampleSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
@@ -36,7 +36,7 @@ export function DataModelTablesPage() {
             <Link to="/docs/concepts/data-types" className="text-primary hover:text-primary-light font-medium transition-colors">Data Types</Link>{' '}
             for the full list. Run the snippets on this page in order:
           </p>
-          <ExampleSnippet id="dm-tables-create" />
+          <ExecutableSnippet title={dmTablesCreate.title} initialCode={dmTablesCreate.code} />
           <p className="text-text-muted text-sm mt-3">
             Reads return the newest rows first by default; add <Code>sort</Code> for an
             explicit order.
@@ -52,7 +52,7 @@ export function DataModelTablesPage() {
             distinctly in results. See{' '}
             <Link to="/docs/concepts/none" className="text-primary hover:text-primary-light font-medium transition-colors">Working with none</Link>.
           </p>
-          <ExampleSnippet id="dm-tables-option" />
+          <ExecutableSnippet title={dmTablesOption.title} initialCode={dmTablesOption.code} />
         </section>
 
         <section>
@@ -64,7 +64,7 @@ export function DataModelTablesPage() {
             repositioned - see{' '}
             <Link to="/docs/concepts/data-model/sequences" className="text-primary hover:text-primary-light font-medium transition-colors">Sequences</Link>.
           </p>
-          <ExampleSnippet id="dm-tables-auto-increment" />
+          <ExecutableSnippet title={dmTablesAutoIncrement.title} initialCode={dmTablesAutoIncrement.code} />
         </section>
 
         <section>
@@ -74,7 +74,7 @@ export function DataModelTablesPage() {
             and can span multiple columns:{' '}
             <Code>create primary key on ns::table {'{'} col1, col2 {'}'}</Code>.
           </p>
-          <ExampleSnippet id="dm-tables-primary-key" />
+          <ExecutableSnippet title={dmTablesPrimaryKey.title} initialCode={dmTablesPrimaryKey.code} />
         </section>
 
         <section>
@@ -87,11 +87,11 @@ export function DataModelTablesPage() {
             statement - useful when the write itself computes something you need, like
             a generated ID or the post-update value:
           </p>
-          <ExampleSnippet id="dm-tables-update-returning" />
+          <ExecutableSnippet title={dmTablesUpdateReturning.title} initialCode={dmTablesUpdateReturning.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Without <Code>returning</Code>, mutations report what happened as a count:
           </p>
-          <ExampleSnippet id="dm-tables-delete" />
+          <ExecutableSnippet title={dmTablesDelete.title} initialCode={dmTablesDelete.code} />
         </section>
 
         <section>
@@ -102,7 +102,7 @@ export function DataModelTablesPage() {
             when you need them. <Code>#rownum</Code> is the row's stable number within
             its table:
           </p>
-          <ExampleSnippet id="dm-tables-rownum" />
+          <ExecutableSnippet title={dmTablesRownum.title} initialCode={dmTablesRownum.code} />
         </section>
 
         <section>
@@ -111,7 +111,7 @@ export function DataModelTablesPage() {
             <Code>alter table</Code> adds and drops columns in place. Add new columns as{' '}
             <Code>Option(type)</Code> when existing rows have no value for them:
           </p>
-          <ExampleSnippet id="dm-tables-alter" />
+          <ExecutableSnippet title={dmTablesAlter.title} initialCode={dmTablesAlter.code} />
         </section>
 
         <section>

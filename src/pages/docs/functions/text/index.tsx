@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { textOverviewQuick } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
 
 export function TextModuleOverviewPage() {
   return (
@@ -22,7 +22,7 @@ export function TextModuleOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
           <ExecutableSnippet
             title="Quick Example"
-            initialCode={getExampleById('text-overview-quick')!.code}
+            initialCode={textOverviewQuick.code}
           />
         </section>
 

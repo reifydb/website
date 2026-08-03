@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
+import { jsonPrettyBasic } from './examples.examples';
 
 export function JsonPrettyPage() {
   return (
@@ -67,8 +67,8 @@ export function JsonPrettyPage() {
 
           <h3 className="text-lg font-bold mb-3">Pretty-print JSON</h3>
           <ExecutableSnippet
-            title={getExampleById('json-pretty-basic')!.title}
-            initialCode={getExampleById('json-pretty-basic')!.code}
+            title={jsonPrettyBasic.title}
+            initialCode={jsonPrettyBasic.code}
           />
         </section>
 

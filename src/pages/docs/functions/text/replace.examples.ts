@@ -1,10 +1,12 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const functionsTextReplaceExamples: CodeExample[] = [
-{
+export const textReplaceInlineExample: CodeExample = {
     id: 'text-replace-inline',
     title: 'Replace substring',
     category: 'function',
     code: `map {text::replace('hello world', 'world', 'there')}`,
-  },
+  };
+
+export const functionsTextReplaceExamples: CodeExample[] = [
+  textReplaceInlineExample,
 ];
