@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { timeNowExample } from './now.examples';
 
 export function TimeNowPage() {
   return (
@@ -23,10 +24,7 @@ export function TimeNowPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Time value representing the current time of day.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExecutableSnippet
-            title="Get the current time"
-            initialCode={`map {time::now()}`}
-          />
+          <ExecutableSnippet title={timeNowExample.title} initialCode={timeNowExample.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
           <Link to="/docs/functions/time/new" className="text-primary-color hover:underline">time::new</Link>

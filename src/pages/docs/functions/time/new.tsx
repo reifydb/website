@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { timeNewExample } from './new.examples';
 
 export function TimeNewPage() {
   return (
@@ -30,10 +31,7 @@ export function TimeNewPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Time value constructed from the given hour, minute, and second components.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExecutableSnippet
-            title="Create a new time"
-            initialCode={`map {time::new(14, 30, 0)}`}
-          />
+          <ExecutableSnippet title={timeNewExample.title} initialCode={timeNewExample.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
           <Link to="/docs/functions/time/now" className="text-primary-color hover:underline">time::now</Link>

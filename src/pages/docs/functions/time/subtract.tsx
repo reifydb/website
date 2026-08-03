@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { timeSubtractExample } from './subtract.examples';
 
 export function TimeSubtractPage() {
   return (
@@ -29,10 +30,7 @@ export function TimeSubtractPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Time value representing the result of subtracting the duration from the time.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExecutableSnippet
-            title="Subtract a duration from a time"
-            initialCode={`map {time::subtract(cast('14:30:00', time), cast('PT1H', duration))}`}
-          />
+          <ExecutableSnippet title={timeSubtractExample.title} initialCode={timeSubtractExample.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
           <Link to="/docs/functions/time/add" className="text-primary-color hover:underline">time::add</Link>

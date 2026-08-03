@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { timeTruncExample } from './trunc.examples';
 
 export function TimeTruncPage() {
   return (
@@ -29,10 +30,7 @@ export function TimeTruncPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Time value truncated to the specified precision.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExecutableSnippet
-            title="Truncate to hour precision"
-            initialCode={`map {time::trunc(cast('14:30:45', time), 'hour')}`}
-          />
+          <ExecutableSnippet title={timeTruncExample.title} initialCode={timeTruncExample.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
           <Link to="/docs/functions/time/format" className="text-primary-color hover:underline">time::format</Link>

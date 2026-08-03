@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { timeNanosecondExample } from './nanosecond.examples';
 
 export function TimeNanosecondPage() {
   return (
@@ -26,10 +27,7 @@ export function TimeNanosecondPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns an Integer representing the nanosecond component of the given time value.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExecutableSnippet
-            title="Extract nanoseconds"
-            initialCode={`map {time::nanosecond(cast('14:30:45.123456789', time))}`}
-          />
+          <ExecutableSnippet title={timeNanosecondExample.title} initialCode={timeNanosecondExample.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
           <Link to="/docs/functions/time/second" className="text-primary-color hover:underline">time::second</Link>

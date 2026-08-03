@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { timeAgeExample } from './age.examples';
 
 export function TimeAgePage() {
   return (
@@ -29,10 +30,7 @@ export function TimeAgePage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Duration representing the time between the two time values.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExecutableSnippet
-            title="Calculate duration between two times"
-            initialCode={`map {time::age(cast('14:00:00', time), cast('10:00:00', time))}`}
-          />
+          <ExecutableSnippet title={timeAgeExample.title} initialCode={timeAgeExample.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
           <Link to="/docs/functions/time/diff" className="text-primary-color hover:underline">time::diff</Link>

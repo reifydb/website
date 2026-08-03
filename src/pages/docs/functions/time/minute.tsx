@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { timeMinuteExample } from './minute.examples';
 
 export function TimeMinutePage() {
   return (
@@ -26,10 +27,7 @@ export function TimeMinutePage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns an Integer representing the minute component (0-59) of the given time value.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExecutableSnippet
-            title="Extract the minute"
-            initialCode={`map {time::minute(cast('14:30:00', time))}`}
-          />
+          <ExecutableSnippet title={timeMinuteExample.title} initialCode={timeMinuteExample.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
           <Link to="/docs/functions/time/hour" className="text-primary-color hover:underline">time::hour</Link>

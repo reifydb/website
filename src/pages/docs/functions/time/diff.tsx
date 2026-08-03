@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
+import { timeDiffExample } from './diff.examples';
 
 export function TimeDiffPage() {
   return (
@@ -29,10 +30,7 @@ export function TimeDiffPage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Duration representing the difference between the two time values.</p></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          <ExecutableSnippet
-            title="Calculate difference between two times"
-            initialCode={`map {time::diff(cast('14:00:00', time), cast('10:00:00', time))}`}
-          />
+          <ExecutableSnippet title={timeDiffExample.title} initialCode={timeDiffExample.code} />
         </section>
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
           <Link to="/docs/functions/time/add" className="text-primary-color hover:underline">time::add</Link>

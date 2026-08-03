@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { Badge } from '@reifydb/ui';
+import { ExecutableSnippet } from '@/components/ui';
+import { clockLifecycleExample } from './index.examples';
 
 export function ClockModuleOverviewPage() {
   return (
@@ -12,9 +14,21 @@ export function ClockModuleOverviewPage() {
             clock Module
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
-            Functions for reading and controlling the system clock in RQL.
+            A mock, settable clock for writing deterministic tests against time-dependent logic, distinct
+            from the real wall clock behind <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">date::now()</code> and{' '}
+            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">datetime::now()</code>.
           </p>
         </div>
+
+        {/* Lifecycle example */}
+        <section>
+          <h2 className="text-2xl font-black tracking-tight mb-4">set, advance, and now Together</h2>
+          <ExecutableSnippet title={clockLifecycleExample.title} initialCode={clockLifecycleExample.code} />
+          <p className="text-text-secondary mt-4">
+            The clock starts at the Unix epoch and only moves when something explicitly sets or advances
+            it, so every read in between is stable and repeatable.
+          </p>
+        </section>
 
         {/* Clock Functions */}
         <section>
@@ -35,11 +49,13 @@ export function ClockModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Internal Functions */}
+        {/* Internal Procedures */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Internal Functions</h2>
+          <h2 className="text-2xl font-black tracking-tight mb-4">Internal Procedures</h2>
           <p className="text-text-secondary mb-4">
-            Control the system clock for testing and deterministic replay.
+            Control the mock clock for testing and deterministic replay. These are procedures, invoked
+            with <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">call</code>, not
+            functions you can use inside an expression.
           </p>
           <div className="grid gap-3">
             <Link
@@ -72,31 +88,31 @@ export function ClockModuleOverviewPage() {
 
         {/* Reference Table */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Function Reference</h2>
+          <h2 className="text-2xl font-black tracking-tight mb-4">Reference</h2>
           <div className="border-2 border-border-default overflow-x-auto">
             <table className="w-full">
               <thead className="bg-bg-tertiary">
                 <tr>
-                  <th className="text-left p-2 sm:p-3 font-bold">Function</th>
-                  <th className="text-left p-2 sm:p-3 font-bold">Type</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Invocation</th>
+                  <th className="text-left p-2 sm:p-3 font-bold">Kind</th>
                   <th className="text-left p-2 sm:p-3 font-bold">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-2 sm:p-3"><code>clock::now</code></td>
-                  <td className="p-2 sm:p-3">Clock</td>
-                  <td className="p-2 sm:p-3">Get the current clock timestamp</td>
+                  <td className="p-2 sm:p-3"><code>clock::now()</code></td>
+                  <td className="p-2 sm:p-3">Function</td>
+                  <td className="p-2 sm:p-3">Get the current mock clock value, in milliseconds</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-2 sm:p-3"><code>clock::set</code></td>
-                  <td className="p-2 sm:p-3">Internal</td>
-                  <td className="p-2 sm:p-3">Set the system clock to a specific timestamp</td>
+                  <td className="p-2 sm:p-3"><code>call clock::set(point)</code></td>
+                  <td className="p-2 sm:p-3">Procedure</td>
+                  <td className="p-2 sm:p-3">Jump the mock clock to an absolute point in time</td>
                 </tr>
                 <tr className="border-t-2 border-border-default">
-                  <td className="p-2 sm:p-3"><code>clock::advance</code></td>
-                  <td className="p-2 sm:p-3">Internal</td>
-                  <td className="p-2 sm:p-3">Advance the system clock by a specified duration</td>
+                  <td className="p-2 sm:p-3"><code>call clock::advance(amount)</code></td>
+                  <td className="p-2 sm:p-3">Procedure</td>
+                  <td className="p-2 sm:p-3">Move the mock clock forward by an amount</td>
                 </tr>
               </tbody>
             </table>

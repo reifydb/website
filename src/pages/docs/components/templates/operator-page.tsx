@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ExecutableSnippet } from '@/components/ui';
-import { getExampleById } from '@/lib/examples';
+import type { CodeExample } from '@/lib/examples/types';
 import { RqlCodeBlock } from '../rql-code-block';
 
 export interface OperatorExample {
-  exampleId: string;
+  example: CodeExample;
   heading?: string;
   note?: ReactNode;
 }
@@ -53,17 +53,13 @@ export function OperatorPage({
       {examples.length > 0 && (
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
-          {examples.map((example) => {
-            const entry = getExampleById(example.exampleId);
-            if (!entry) return null;
-            return (
-              <div key={example.exampleId} className="mb-6">
-                <h3 className="text-lg font-bold mb-3">{example.heading ?? entry.title}</h3>
-                <ExecutableSnippet title={entry.title} initialCode={entry.code} />
-                {example.note && <p className="text-text-muted text-sm mt-3">{example.note}</p>}
-              </div>
-            );
-          })}
+          {examples.map(({ example, heading, note }) => (
+            <div key={example.id} className="mb-6">
+              <h3 className="text-lg font-bold mb-3">{heading ?? example.title}</h3>
+              <ExecutableSnippet title={example.title} initialCode={example.code} />
+              {note && <p className="text-text-muted text-sm mt-3">{note}</p>}
+            </div>
+          ))}
         </section>
       )}
 
