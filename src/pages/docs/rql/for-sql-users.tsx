@@ -28,7 +28,10 @@ const translations: { sql: string; rql: string }[] = [
 
 export function RqlForSqlUsersPage() {
   return (
-    <Layout>
+    <Layout
+      title="RQL for SQL Users"
+      description="A side-by-side guide to RQL for people who already know SQL, covering the pipeline syntax, namespaces, and how none differs from null."
+    >
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">

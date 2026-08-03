@@ -1,4 +1,5 @@
 import { Navbar, Footer } from '@/components/layout';
+import { PageMeta } from '@/components/page-meta';
 import { Button, ScrollReveal } from '@/components/ui';
 import { Card, CardContent } from '@reifydb/ui';
 import { Mail, Github } from 'lucide-react';
@@ -6,6 +7,10 @@ import { Mail, Github } from 'lucide-react';
 export function ContactPage() {
   return (
     <>
+      <PageMeta
+        title="Contact | ReifyDB"
+        description="Get in touch with the ReifyDB team by email or on GitHub."
+      />
       <Navbar />
 
       <main className="py-16 sm:py-24">

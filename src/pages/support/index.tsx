@@ -1,4 +1,5 @@
 import { Navbar, Footer } from '@/components/layout';
+import { PageMeta } from '@/components/page-meta';
 import { ScrollReveal } from '@/components/ui';
 import { Card, CardContent } from '@reifydb/ui';
 import {
@@ -50,6 +51,10 @@ const supportOptions = [
 export function SupportPage() {
   return (
     <>
+      <PageMeta
+        title="Support | ReifyDB"
+        description="Support options for ReifyDB, from community help on GitHub to commercial engagements."
+      />
       <Navbar />
 
       <main className="py-16 sm:py-24">

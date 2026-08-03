@@ -1,9 +1,14 @@
 import { Navbar, Footer } from '@/components/layout';
+import { PageMeta } from '@/components/page-meta';
 import { ScrollReveal } from '@/components/ui';
 
 export function MissionPage() {
   return (
     <>
+      <PageMeta
+        title="Mission | ReifyDB"
+        description="Why ReifyDB exists: making live application state something you declare once instead of maintaining by hand."
+      />
       <Navbar />
 
       <main className="py-16 sm:py-24">

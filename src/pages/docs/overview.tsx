@@ -30,7 +30,10 @@ const quickLinks = [
 
 export function DocsOverview() {
   return (
-    <Layout>
+    <Layout
+      title="Documentation"
+      description="ReifyDB documentation: a database for live application state with transactional guarantees, incremental derived views, and programmable state transitions."
+    >
       <div className="space-y-8">
         {/* Header */}
         <ScrollReveal>

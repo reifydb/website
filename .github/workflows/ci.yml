@@ -59,7 +59,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build website
-        run: pnpm run build
+        run: pnpm run ci:build
 
   deploy:
     needs: test
@@ -82,14 +82,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build website
-        run: pnpm run build
-
-      - name: Install Playwright browsers
-        run: npx playwright install chromium
-
-      - name: Prerender & generate sitemaps
-        run: node scripts/prerender.js
+      - name: Build and prerender website
+        run: pnpm run ci:build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

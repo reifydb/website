@@ -1,21 +1,36 @@
+import { Suspense, lazy } from 'react';
 import { Navbar } from '@/components/layout/navbar';
-import { Console } from '@reifydb/console';
-import '@reifydb/console/styles.css';
-import { wasmExecutor } from '@/lib/wasm-executor-singleton';
-import { brutalist_light_theme } from '@reifydb/console';
+import { PageMeta } from '@/components/page-meta';
+import { useMounted } from '@/hooks';
+
+const PlaygroundConsole = lazy(() => import('./console'));
+
+function ConsolePlaceholder() {
+  return (
+    <div className="h-full flex items-center justify-center bg-code-bg">
+      <p className="text-sm text-code-text-muted">Loading the playground...</p>
+    </div>
+  );
+}
 
 export function PlaygroundPage() {
+  const mounted = useMounted();
+
   return (
     <div className="min-h-screen flex flex-col">
+      <PageMeta
+        title="Playground | ReifyDB"
+        description="Run RQL against a ReifyDB instance in your browser. No install, no signup - the database compiles to WebAssembly and executes locally."
+      />
       <Navbar />
       <div style={{ height: 'calc(100vh - 60px)' }}>
-        <Console
-          executor={wasmExecutor}
-          initial_code="FROM app::users"
-          history_key="playground"
-          theme="light"
-          monaco_theme={brutalist_light_theme}
-        />
+        {mounted ? (
+          <Suspense fallback={<ConsolePlaceholder />}>
+            <PlaygroundConsole />
+          </Suspense>
+        ) : (
+          <ConsolePlaceholder />
+        )}
       </div>
     </div>
   );

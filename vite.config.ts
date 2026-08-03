@@ -19,14 +19,25 @@ const localReifydbAliases = useLocalSdk
     ]
   : []
 
+const ssrBuild = process.env.SSR_BUILD === '1'
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-    wasm(),
-    topLevelAwait(),
-  ],
+  plugins: ssrBuild
+    ? [react(), tailwindcss()]
+    : [react(), tailwindcss(), wasm(), topLevelAwait()],
+  build: ssrBuild
+    ? {
+        outDir: 'dist-ssr',
+        emptyOutDir: true,
+        ssr: 'src/entry-server.tsx',
+        rollupOptions: { external: ['@reifydb/wasm', '@reifydb/console'] },
+      }
+    : {},
+  ssr: {
+    external: ['@reifydb/wasm', '@reifydb/console'],
+    noExternal: [/^@reifydb\/(core|ui)$/, /^react-router/],
+  },
   resolve: {
     alias: [
       ...localReifydbAliases,

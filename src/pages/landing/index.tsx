@@ -1,4 +1,5 @@
 import { Navbar, Footer } from '@/components/layout';
+import { PageMeta } from '@/components/page-meta';
 import { CtaSection } from '@/components/ui';
 import {
   HeroSection,
@@ -11,6 +12,10 @@ import {
 export function LandingPage() {
   return (
     <>
+      <PageMeta
+        title="ReifyDB | Application State Database"
+        description="A database designed to manage live application state with transactional guarantees, incremental derived state, and embedded state transitions."
+      />
       <Navbar />
 
       <main>

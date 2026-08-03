@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { cn } from '@/lib';
 import { Navbar, Footer } from '@/components/layout';
+import { PageMeta } from '@/components/page-meta';
 import { ScrollReveal } from '@/components/ui';
 import { faqs } from '@/data/faq-data';
 
@@ -36,6 +37,10 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 export function FaqPage() {
   return (
     <>
+      <PageMeta
+        title="FAQ | ReifyDB"
+        description="Answers to common questions about ReifyDB: what it is, how it differs from a traditional database, and when to use it."
+      />
       <Navbar />
 
       <main className="py-16 sm:py-24">

@@ -15,7 +15,10 @@ function Code({ children }: { children: React.ReactNode }) {
 
 export function RqlFiveMinutesPage() {
   return (
-    <Layout>
+    <Layout
+      title="RQL in Five Minutes"
+      description="Learn RQL, the ReifyDB query language, one runnable concept at a time: from, filter, map, aggregate, and live views."
+    >
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">

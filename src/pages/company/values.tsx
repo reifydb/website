@@ -1,4 +1,5 @@
 import { Navbar, Footer } from '@/components/layout';
+import { PageMeta } from '@/components/page-meta';
 import { ScrollReveal } from '@/components/ui';
 import { Card, CardContent } from '@reifydb/ui';
 
@@ -44,6 +45,10 @@ const values: Value[] = [
 export function ValuesPage() {
   return (
     <>
+      <PageMeta
+        title="Values | ReifyDB"
+        description="The engineering values behind ReifyDB and how they shape the way the database is built."
+      />
       <Navbar />
 
       <main className="py-16 sm:py-24">

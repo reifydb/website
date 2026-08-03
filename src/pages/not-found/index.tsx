@@ -1,10 +1,12 @@
 import { Navbar, Footer } from '@/components/layout';
+import { PageMeta } from '@/components/page-meta';
 import { Button } from '@/components/ui';
 import { EmptyState } from '@reifydb/ui';
 
 export function NotFoundPage() {
   return (
     <>
+      <PageMeta title="Page not found | ReifyDB" description="This page does not exist." />
       <Navbar />
 
       <main className="min-h-[calc(100vh-200px)] flex items-center justify-center px-6 py-24">

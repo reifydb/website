@@ -1,4 +1,5 @@
 import { Navbar, Footer } from '@/components/layout';
+import { PageMeta } from '@/components/page-meta';
 import { ScrollReveal } from '@/components/ui';
 import { blogPosts } from '@/data/blog-data';
 import { BlogCard } from './components/blog-card';
@@ -6,6 +7,10 @@ import { BlogCard } from './components/blog-card';
 export function BlogListingPage() {
   return (
     <>
+      <PageMeta
+        title="Blog | ReifyDB"
+        description="Writing from the ReifyDB team on incremental views, application state, and building a database."
+      />
       <Navbar />
 
       <main className="py-16 sm:py-24">

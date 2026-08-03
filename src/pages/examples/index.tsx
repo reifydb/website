@@ -3,6 +3,7 @@ import { Menu } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
+import { PageMeta } from '@/components/page-meta';
 import { exampleSections, getSectionById } from './sections';
 import { ExamplesSidebar, ExamplesSidebarMobile } from './examples-sidebar';
 import { ExampleRenderer } from './example-renderer';
@@ -30,6 +31,10 @@ export function ExamplesPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <PageMeta
+        title="Examples | ReifyDB"
+        description="Runnable RQL examples covering schemas, incremental views, procedures, and subscriptions."
+      />
       <Navbar />
       <div className="flex flex-1">
         <ExamplesSidebar

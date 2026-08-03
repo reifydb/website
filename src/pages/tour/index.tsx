@@ -1,6 +1,7 @@
 import { useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Navbar } from '@/components/layout/navbar';
+import { PageMeta } from '@/components/page-meta';
 import { Button } from '@/components/ui';
 import { tourSteps } from './tour-data';
 import { TourStepView } from './tour-step';
@@ -40,6 +41,10 @@ export function TourPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <PageMeta
+        title="Tour | ReifyDB"
+        description="A guided walkthrough of ReifyDB, from your first table to live incremental views, running entirely in the browser."
+      />
       <Navbar />
 
       {/* Progress header */}

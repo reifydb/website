@@ -2,11 +2,14 @@ import { useLocation } from 'react-router-dom';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { useIsDraft } from '@/components/docs-gate';
+import { PageMeta } from '@/components/page-meta';
 import { DocsSidebar, DocsNavTree } from './components';
 import { navSections } from './data/navigation';
 
 interface DocsLayoutProps {
   children: React.ReactNode;
+  title?: string;
+  description?: string;
 }
 
 function DraftBanner() {
@@ -20,12 +23,15 @@ function DraftBanner() {
   );
 }
 
-export function Layout({ children }: DocsLayoutProps) {
+export function Layout({ children, title, description }: DocsLayoutProps) {
   const location = useLocation();
   const isDraft = useIsDraft();
 
   return (
     <div className="min-h-screen flex flex-col relative z-10">
+      {title && description && (
+        <PageMeta title={`${title} | ReifyDB Docs`} description={description} />
+      )}
       <Navbar mobileExtra={<DocsNavTree sections={navSections} currentPath={location.pathname} />} />
       <div className="flex flex-1">
         <DocsSidebar sections={navSections} currentPath={location.pathname} />

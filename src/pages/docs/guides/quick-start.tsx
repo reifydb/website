@@ -11,7 +11,10 @@ function Snippet({ id }: { id: string }) {
 
 export function QuickStartPage() {
   return (
-    <Layout>
+    <Layout
+      title="Quickstart"
+      description="Build your first ReifyDB table and a live incremental view in the browser, with nothing to install."
+    >
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">

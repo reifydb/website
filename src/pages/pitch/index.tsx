@@ -1,6 +1,7 @@
 import { useEffect, useCallback, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Navbar } from '@/components/layout/navbar';
+import { PageMeta } from '@/components/page-meta';
 import { Button } from '@/components/ui';
 import { pitchSlides } from './pitch-data';
 
@@ -52,6 +53,10 @@ export function PitchPage() {
 
   return (
     <div ref={containerRef} className="min-h-screen flex flex-col bg-bg-primary">
+      <PageMeta
+        title="Pitch | ReifyDB"
+        description="The case for ReifyDB: why application state deserves a database that keeps derived data correct by construction."
+      />
       {!isFullscreen && <Navbar />}
 
       {/* Progress header */}

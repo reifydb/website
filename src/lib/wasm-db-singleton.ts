@@ -1,4 +1,4 @@
-import { create_wasm_db, type WasmDB } from '@reifydb/wasm';
+import type { WasmDB } from '@reifydb/wasm';
 import { seedCommand } from './seed-data';
 
 let dbInstance: WasmDB | null = null;
@@ -9,6 +9,7 @@ export async function getWasmDB(): Promise<WasmDB> {
   if (dbPromise) return dbPromise;
 
   dbPromise = (async () => {
+    const { create_wasm_db } = await import('@reifydb/wasm');
     const instance = await create_wasm_db();
     instance.admin(seedCommand);
     dbInstance = instance;

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Navbar, Footer } from '@/components/layout';
+import { PageMeta } from '@/components/page-meta';
 import { ScrollReveal } from '@/components/ui';
 import { getPostBySlug, getAdjacentPosts } from '@/data/blog-data';
 import { BlogMarkdownRenderer } from './components/blog-markdown-renderer';
@@ -25,6 +26,7 @@ export function BlogPostPage() {
 
   return (
     <>
+      <PageMeta title={`${post.title} | ReifyDB`} description={post.excerpt} />
       <Navbar />
 
       <main className="py-16 sm:py-24">
