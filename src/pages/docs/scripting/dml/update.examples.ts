@@ -1,41 +1,124 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingUpdateBasicExample: CodeExample = {
+export const updBasicExample: CodeExample = {
     id: 'scripting-update-basic',
-    title: 'Update Rows',
+    title: 'Update One Field on Matching Rows',
     category: 'scripting',
-    code: `CREATE NAMESPACE dm_u;
-CREATE TABLE dm_u::users { id: int4, name: utf8, active: bool };
-INSERT dm_u::users [
-  { id: 1, name: 'Alice', active: true },
-  { id: 2, name: 'Bob', active: true }
+    code: `create namespace upd;
+create table upd::products { id: int4, name: utf8, price: int8, stocked: bool };
+insert upd::products [
+  { id: 1, name: "widget", price: 25, stocked: true },
+  { id: 2, name: "gadget", price: 40, stocked: true },
+  { id: 3, name: "gizmo", price: 60, stocked: false }
 ];
-UPDATE dm_u::users { id: id, name: name, active: false } FILTER { id == 2 };
-FROM dm_u::users
-sort { id: asc }`,
-    expected: `id | name  | active
----+-------+-------
-1  | Alice | true
-2  | Bob   | false`,
+update upd::products { price: 45 } filter { name == "gadget" }`,
+    expected: `namespace | table    | updated
+----------+----------+--------
+upd       | products | 1`,
   };
 
-export const scriptingUpdateExpressionExample: CodeExample = {
-    id: 'scripting-update-expression',
-    title: 'Update with Expression',
+export const updScanExample: CodeExample = {
+    id: 'scripting-update-scan',
+    title: 'Unlisted Columns Are Untouched',
     category: 'scripting',
-    code: `CREATE NAMESPACE dm_ue;
-CREATE TABLE dm_ue::scores { id: int4, points: int4 };
-INSERT dm_ue::scores [{ id: 1, points: 10 }, { id: 2, points: 20 }];
-UPDATE dm_ue::scores { id: id, points: points + 5 } FILTER { true };
-FROM dm_ue::scores
-sort { id: asc }`,
-    expected: `id | points
----+-------
-1  | 15
-2  | 25`,
+    code: `from upd::products sort { id: asc }`,
+    expected: `id | name   | price | stocked
+---+--------+-------+--------
+1  | widget | 25    | true
+2  | gadget | 45    | true
+3  | gizmo  | 60    | false`,
+  };
+
+export const updMultiFieldExample: CodeExample = {
+    id: 'scripting-update-multi-field',
+    title: 'Multiple Fields, Computed from Existing Values',
+    category: 'scripting',
+    code: `update upd::products { price: price + 5, stocked: true }
+filter { id == 3 }
+returning { id, name, price, stocked }`,
+    expected: `id | name  | price | stocked
+---+-------+-------+--------
+3  | gizmo | 65    | true`,
+  };
+
+export const updNoFilterExample: CodeExample = {
+    id: 'scripting-update-no-filter',
+    title: 'The Filter Is Mandatory',
+    description: 'An update without a filter fails with UPDATE_003 instead of silently rewriting the whole table.',
+    category: 'scripting',
+    code: `update upd::products { price: 0 }`,
+    expectsError: true,
+  };
+
+export const updAllRowsExample: CodeExample = {
+    id: 'scripting-update-all-rows',
+    title: 'Updating Every Row Is an Explicit Choice',
+    category: 'scripting',
+    code: `update upd::products { price: price + 1 } filter { true }`,
+    expected: `namespace | table    | updated
+----------+----------+--------
+upd       | products | 3`,
+  };
+
+export const updViewSetupExample: CodeExample = {
+    id: 'scripting-update-view-setup',
+    title: 'A Transactional View over a Table',
+    category: 'scripting',
+    code: `create table upd::orders { id: int4, total: int8 };
+create transactional view upd::revenue { revenue: int8 } as {
+  from upd::orders
+  aggregate { revenue: math::sum(total) } by {}
+}`,
+  };
+
+export const updViewInsertExample: CodeExample = {
+    id: 'scripting-update-view-insert',
+    title: 'Seed the Source Table',
+    category: 'scripting',
+    code: `insert upd::orders [{ id: 1, total: 40 }, { id: 2, total: 25 }]`,
+    expected: `namespace | table  | inserted
+----------+--------+---------
+upd       | orders | 2`,
+  };
+
+export const updViewMaintainExample: CodeExample = {
+    id: 'scripting-update-view-maintain',
+    title: 'Update a Source Row',
+    category: 'scripting',
+    code: `update upd::orders { total: 100 } filter { id == 1 }`,
+    expected: `namespace | table  | updated
+----------+--------+--------
+upd       | orders | 1`,
+  };
+
+export const updViewReadExample: CodeExample = {
+    id: 'scripting-update-view-read',
+    title: 'The View Reflects the Update',
+    category: 'scripting',
+    code: `from upd::revenue`,
+    expected: `revenue
+-------
+125`,
+  };
+
+export const updViewErrorExample: CodeExample = {
+    id: 'scripting-update-view-error',
+    title: 'Views Cannot Be Updated Directly',
+    description: 'A view is derived state, not a table - update refuses it with CA_004.',
+    category: 'scripting',
+    code: `update upd::revenue { revenue: 0 } filter { true }`,
+    expectsError: true,
   };
 
 export const scriptingDmlUpdateExamples: CodeExample[] = [
-  scriptingUpdateBasicExample,
-  scriptingUpdateExpressionExample,
+  updBasicExample,
+  updScanExample,
+  updMultiFieldExample,
+  updNoFilterExample,
+  updAllRowsExample,
+  updViewSetupExample,
+  updViewInsertExample,
+  updViewMaintainExample,
+  updViewReadExample,
+  updViewErrorExample,
 ];

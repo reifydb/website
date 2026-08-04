@@ -23,10 +23,18 @@ const localReifydbAliases = useLocalSdk
 const ssrBuild = process.env.SSR_BUILD === '1'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: ssrBuild
     ? [react(), tailwindcss()]
-    : [react(), tailwindcss(), wasm(), topLevelAwait(), cloudflare()],
+    : [
+        react(),
+        tailwindcss(),
+        wasm(),
+        topLevelAwait(),
+        cloudflare(
+          command === 'serve' ? { configPath: './wrangler.dev.jsonc' } : undefined,
+        ),
+      ],
   build: ssrBuild
     ? {
         outDir: 'dist-ssr',
@@ -50,4 +58,4 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['@reifydb/wasm'],
   },
-})
+}))

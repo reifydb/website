@@ -137,7 +137,6 @@ export const navSections: NavSection[] = [
           { id: 'dml-insert', label: 'insert', href: '/docs/scripting/dml/insert' },
           { id: 'dml-update', label: 'update', href: '/docs/scripting/dml/update' },
           { id: 'dml-delete', label: 'delete', href: '/docs/scripting/dml/delete' },
-          { id: 'dml-patch', label: 'patch', href: '/docs/rql/transforms/patch' },
         ],
       },
       {

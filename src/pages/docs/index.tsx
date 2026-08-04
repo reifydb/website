@@ -61,7 +61,6 @@ export {
   CastPage,
   WithPage,
   MatchPage,
-  PatchPage,
 } from './rql/transforms/index';
 export { OperatorsPage, LiteralsPage } from './rql/expressions/index';
 export {

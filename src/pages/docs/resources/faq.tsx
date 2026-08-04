@@ -44,11 +44,9 @@ NOTES
           />
           <p className="text-text-secondary mt-4">
             <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">extend</code> only adds
-            columns; reusing an existing name is rejected rather than silently overwriting it. To update a
-            column in place, use{' '}
-            <Link to="/docs/rql/transforms/patch" className="text-primary-color hover:underline font-medium">
-              patch
-            </Link>{' '}
+            columns; reusing an existing name is rejected rather than silently overwriting it. To replace
+            an existing column, use{' '}
+            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">map</code>{' '}
             instead.
           </p>
           <p className="text-text-secondary mt-6 mb-4">

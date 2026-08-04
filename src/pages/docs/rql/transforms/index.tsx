@@ -12,4 +12,3 @@ export { ApplyPage } from './apply';
 export { CastPage } from './cast';
 export { WithPage } from './with';
 export { MatchPage } from './match';
-export { PatchPage } from './patch';
