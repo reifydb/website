@@ -20,7 +20,10 @@ function Item({ to, label, children }: { to: string; label: string; children: Re
 
 export function DataModelPage() {
   return (
-    <Layout>
+    <Layout
+      title="Data Model"
+      description="The storage primitives ReifyDB models application state with: namespaces, tables, views, ring buffers, series, dictionaries, events, handlers, and procedures."
+    >
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Data Model</h1>

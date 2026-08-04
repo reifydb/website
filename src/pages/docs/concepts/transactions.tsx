@@ -10,7 +10,10 @@ function Code({ children }: { children: React.ReactNode }) {
 
 export function TransactionsPage() {
   return (
-    <Layout>
+    <Layout
+      title="Transactions"
+      description="How ReifyDB's automatic transactions provide atomic writes, serializable snapshot isolation, and consistent reads with no BEGIN/COMMIT/ROLLBACK to manage."
+    >
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Transactions</h1>

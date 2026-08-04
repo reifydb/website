@@ -10,7 +10,10 @@ function Code({ children }: { children: React.ReactNode }) {
 
 export function DataModelNamespacesPage() {
   return (
-    <Layout>
+    <Layout
+      title="Namespaces"
+      description="How namespaces organize tables, views, and every other object in ReifyDB, addressed as namespace::object."
+    >
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Namespaces</h1>

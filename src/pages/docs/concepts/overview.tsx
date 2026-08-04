@@ -10,7 +10,10 @@ function Code({ children }: { children: React.ReactNode }) {
 
 export function ConceptsOverviewPage() {
   return (
-    <Layout>
+    <Layout
+      title="Concepts"
+      description="ReifyDB stores, mutates, and derives live application state under one transactional model, replacing the fragmented cache-plus-database-plus-worker stack."
+    >
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">

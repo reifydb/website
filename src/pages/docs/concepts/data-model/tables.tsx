@@ -10,7 +10,10 @@ function Code({ children }: { children: React.ReactNode }) {
 
 export function DataModelTablesPage() {
   return (
-    <Layout>
+    <Layout
+      title="Tables"
+      description="How ReifyDB tables hold authoritative, mutable state: typed columns, primary keys, auto-increment, and in-place schema evolution."
+    >
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Tables</h1>
