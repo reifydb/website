@@ -1,5 +1,6 @@
+import { mathEInlineExample as mathEInline } from './e.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { mathEInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

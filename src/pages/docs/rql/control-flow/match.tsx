@@ -1,5 +1,6 @@
+import { cfMatchFirstWinsExample as cfMatchFirstWins, cfMatchNoneArmExample as cfMatchNoneArm, cfMatchNoneGuardExample as cfMatchNoneGuard, cfMatchRowsExample as cfMatchRows, cfMatchSearchedExample as cfMatchSearched, cfMatchValueExample as cfMatchValue } from './match.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { cfMatchFirstWins, cfMatchNoneArm, cfMatchNoneGuard, cfMatchRows, cfMatchSearched, cfMatchValue } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

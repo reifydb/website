@@ -1,8 +1,8 @@
+import { rqlsqlEqNoneExample as rqlsqlEqNone, rqlsqlGroupbyExample as rqlsqlGroupby, rqlsqlIsNoneExample as rqlsqlIsNone, rqlsqlSelectExample as rqlsqlSelect } from './for-sql-users.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { rqlsqlEqNone, rqlsqlGroupby, rqlsqlIsNone, rqlsqlSelect } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;

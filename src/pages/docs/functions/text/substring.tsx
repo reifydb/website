@@ -1,8 +1,8 @@
+import { textSubstringFirstExample as textSubstringFirst, textSubstringMiddleExample as textSubstringMiddle, textSubstringPrefixExample as textSubstringPrefix } from './substring.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { textSubstringFirst, textSubstringMiddle, textSubstringPrefix } from './examples.examples';
 
 export function TextSubstringPage() {
   return (

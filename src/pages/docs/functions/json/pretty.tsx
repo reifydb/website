@@ -1,8 +1,8 @@
+import { jsonPrettyBasicExample as jsonPrettyBasic } from './pretty.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { jsonPrettyBasic } from './examples.examples';
 
 export function JsonPrettyPage() {
   return (

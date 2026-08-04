@@ -1,5 +1,5 @@
+import { sortBasicExample as sortBasic, sortDescendingExample as sortDescending, sortMultipleExample as sortMultiple, sortWithTakeExample as sortWithTake } from './sort.examples';
 import { Layout } from '../../layout.tsx';
-import { sortBasic, sortDescending, sortMultiple, sortWithTake } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function SortPage() {

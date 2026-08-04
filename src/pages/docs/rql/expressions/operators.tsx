@@ -1,12 +1,7 @@
+import { arithmeticExample, comparisonExample, logicalExample, textMatchExample } from './operators.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
-import {
-  arithmeticExample,
-  comparisonExample,
-  logicalExample,
-  textMatchExample,
-} from './operators.examples';
 
 export function OperatorsPage() {
   return (

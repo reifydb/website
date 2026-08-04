@@ -1,5 +1,5 @@
+import { mapAliasExample as mapAlias, mapBasicExample as mapBasic, mapConstantsExample as mapConstants } from './map.examples';
 import { Layout } from '../../layout.tsx';
-import { mapAlias, mapBasic, mapConstants } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function MapPage() {

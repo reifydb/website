@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const textPad_rightInlineExample: CodeExample = {
+export const textPadRightInlineExample: CodeExample = {
     id: 'text-pad_right-inline',
     title: 'Pad string on the right',
     category: 'function',
@@ -8,5 +8,5 @@ export const textPad_rightInlineExample: CodeExample = {
   };
 
 export const functionsTextPadRightExamples: CodeExample[] = [
-  textPad_rightInlineExample,
+  textPadRightInlineExample,
 ];

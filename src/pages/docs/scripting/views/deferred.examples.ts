@@ -1,5 +1,30 @@
 import type { CodeExample } from '@/lib/examples/types';
 
+export const scriptingDeferredViewExample: CodeExample = {
+    id: 'scripting-deferred-view',
+    title: 'Deferred View',
+    category: 'scripting',
+    code: `CREATE NAMESPACE vw_d;
+CREATE TABLE vw_d::employees {
+  id: int4,
+  name: utf8,
+  active: bool
+};
+CREATE DEFERRED VIEW vw_d::active_employees {
+  id: int4,
+  name: utf8
+} AS {
+  FROM vw_d::employees
+  FILTER active == true
+  MAP { id: id, name: name }
+};
+INSERT vw_d::employees [
+  { id: 1, name: 'Alice', active: true },
+  { id: 2, name: 'Bob', active: false },
+  { id: 3, name: 'Carol', active: true }
+];`,
+  };
+
 export const scriptingQueryViewExample: CodeExample = {
     id: 'scripting-query-view',
     title: 'Query a View',
@@ -40,6 +65,7 @@ SORT { price: desc }`,
   };
 
 export const scriptingViewsDeferredExamples: CodeExample[] = [
+  scriptingDeferredViewExample,
   scriptingQueryViewExample,
   scriptingQueryViewResultExample,
 ];

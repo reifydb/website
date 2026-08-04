@@ -1,8 +1,8 @@
+import { quickstartAggregateExample as quickstartAggregate, quickstartCreateTableExample as quickstartCreateTable, quickstartCreateViewExample as quickstartCreateView, quickstartInsertExample as quickstartInsert, quickstartQueryTableExample as quickstartQueryTable, quickstartQueryViewExample as quickstartQueryView, quickstartShipOrderExample as quickstartShipOrder, quickstartViewUpdatedExample as quickstartViewUpdated } from './quick-start.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { quickstartAggregate, quickstartCreateTable, quickstartCreateView, quickstartInsert, quickstartQueryTable, quickstartQueryView, quickstartShipOrder, quickstartViewUpdated } from './examples.examples';
 
 export function QuickStartPage() {
   return (

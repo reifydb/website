@@ -1,8 +1,8 @@
+import { mathMinByCategoryExample as mathMinByCategory, mathMinMaxTogetherExample as mathMinMaxTogether } from './min.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock, Callout } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { mathMinByCategory, mathMinMaxTogether } from './examples.examples';
 
 export function MathMinPage() {
   return (

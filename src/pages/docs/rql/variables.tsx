@@ -1,5 +1,6 @@
+import { rqlVariablesFrameExample as rqlVariablesFrame, rqlVariablesFrameFieldExample as rqlVariablesFrameField, rqlVariablesLetExample as rqlVariablesLet, rqlVariablesReassignExample as rqlVariablesReassign, rqlVariablesScopeExample as rqlVariablesScope, rqlVariablesUndeclaredExample as rqlVariablesUndeclared } from './variables.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { rqlVariablesFrame, rqlVariablesFrameField, rqlVariablesLet, rqlVariablesReassign, rqlVariablesScope, rqlVariablesUndeclared } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 

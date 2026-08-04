@@ -1,8 +1,8 @@
+import { mathAvgByCategoryExample as mathAvgByCategory, mathAvgWithTotalExample as mathAvgWithTotal } from './avg.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock, Callout } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { mathAvgByCategory, mathAvgWithTotal } from './examples.examples';
 
 export function MathAvgPage() {
   return (

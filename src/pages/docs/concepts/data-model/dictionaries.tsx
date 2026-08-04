@@ -1,5 +1,6 @@
+import { dmDictionariesColumnExample as dmDictionariesColumn, dmDictionariesCreateExample as dmDictionariesCreate, dmDictionariesDuplicateExample as dmDictionariesDuplicate, dmDictionariesFromExample as dmDictionariesFrom, dmDictionariesNewEntryExample as dmDictionariesNewEntry } from './dictionaries.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dmDictionariesColumn, dmDictionariesCreate, dmDictionariesDuplicate, dmDictionariesFrom, dmDictionariesNewEntry } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

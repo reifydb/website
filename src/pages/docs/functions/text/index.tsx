@@ -1,5 +1,5 @@
+import { textOverviewQuickExample as textOverviewQuick } from './index.examples';
 import { Link } from 'react-router-dom';
-import { textOverviewQuick } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
 

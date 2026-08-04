@@ -1,8 +1,8 @@
+import { mathRoundDecimalExample as mathRoundDecimal, mathRoundIntegerExample as mathRoundInteger } from './round.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { mathRoundDecimal, mathRoundInteger } from './examples.examples';
 
 export function MathRoundPage() {
   return (

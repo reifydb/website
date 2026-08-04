@@ -1,5 +1,6 @@
+import { dateEndOfMonthInlineExample as dateEndOfMonthInline } from './end_of_month.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dateEndOfMonthInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

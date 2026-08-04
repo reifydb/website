@@ -1,5 +1,5 @@
+import { scriptingCreateEnumStructExample as scriptingCreateEnumStruct, scriptingCreateEnumUnitExample as scriptingCreateEnumUnit } from './enums.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingCreateEnumStruct, scriptingCreateEnumUnit } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function EnumsPage() {

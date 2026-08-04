@@ -1,5 +1,6 @@
+import { datetimeNowExample as datetimeNow } from './now.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { datetimeNow } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

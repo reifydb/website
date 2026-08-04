@@ -1,14 +1,9 @@
+import { clockSetBasicExample, clockSetThenNowExample, clockSetJumpsBackwardExample, clockSetRejectsNegativeExample } from './set.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
 import { Badge } from '@reifydb/ui';
-import {
-  clockSetBasicExample,
-  clockSetThenNowExample,
-  clockSetJumpsBackwardExample,
-  clockSetRejectsNegativeExample,
-} from './set.examples';
 
 export function ClockSetPage() {
   return (

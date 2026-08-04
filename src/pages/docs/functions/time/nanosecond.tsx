@@ -1,8 +1,8 @@
+import { timeNanosecondExample } from './nanosecond.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { timeNanosecondExample } from './nanosecond.examples';
 
 export function TimeNanosecondPage() {
   return (

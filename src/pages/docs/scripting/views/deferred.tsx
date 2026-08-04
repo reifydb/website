@@ -1,5 +1,5 @@
+import { scriptingDeferredViewExample as scriptingDeferredView, scriptingQueryViewExample as scriptingQueryView, scriptingQueryViewResultExample as scriptingQueryViewResult } from './deferred.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingDeferredView, scriptingQueryView, scriptingQueryViewResult } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function DeferredViewsPage() {

@@ -1,5 +1,5 @@
+import { joinInnerExample as joinInner, joinLeftExample as joinLeft } from './join.examples';
 import { Layout } from '../../layout.tsx';
-import { joinInner, joinLeft } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function JoinPage() {

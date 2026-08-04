@@ -1,5 +1,5 @@
+import { scriptingProcedureLetIfExample as scriptingProcedureLetIf, scriptingProcedureWhileExample as scriptingProcedureWhile } from './control-flow.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingProcedureLetIf, scriptingProcedureWhile } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function ControlFlowPage() {

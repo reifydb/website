@@ -1,5 +1,6 @@
+import { dmNamespacesCreateExample as dmNamespacesCreate, dmNamespacesIfNotExistsExample as dmNamespacesIfNotExists, dmNamespacesNestedExample as dmNamespacesNested, dmNamespacesSameNameExample as dmNamespacesSameName, dmNamespacesSystemExample as dmNamespacesSystem } from './namespaces.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dmNamespacesCreate, dmNamespacesIfNotExists, dmNamespacesNested, dmNamespacesSameName, dmNamespacesSystem } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

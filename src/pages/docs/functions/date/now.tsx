@@ -1,5 +1,6 @@
+import { dateNowInlineExample as dateNowInline } from './now.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dateNowInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

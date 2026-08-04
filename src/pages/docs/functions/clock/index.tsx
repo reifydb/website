@@ -1,8 +1,8 @@
+import { clockLifecycleExample } from './index.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { Badge } from '@reifydb/ui';
 import { ExecutableSnippet } from '@/components/ui';
-import { clockLifecycleExample } from './index.examples';
 
 export function ClockModuleOverviewPage() {
   return (

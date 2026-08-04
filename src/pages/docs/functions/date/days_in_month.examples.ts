@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dateDays_in_monthInlineExample: CodeExample = {
+export const dateDaysInMonthInlineExample: CodeExample = {
     id: 'date-days_in_month-inline',
     title: 'Get days in month',
     category: 'function',
@@ -8,5 +8,5 @@ export const dateDays_in_monthInlineExample: CodeExample = {
   };
 
 export const functionsDateDaysInMonthExamples: CodeExample[] = [
-  dateDays_in_monthInlineExample,
+  dateDaysInMonthInlineExample,
 ];

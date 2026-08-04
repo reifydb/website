@@ -1,5 +1,5 @@
+import { dateOverviewQuickExample as dateOverviewQuick } from './index.examples';
 import { Link } from 'react-router-dom';
-import { dateOverviewQuick } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
 

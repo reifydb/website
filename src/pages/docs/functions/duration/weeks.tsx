@@ -1,5 +1,6 @@
+import { durationWeeksExample as durationWeeks } from './weeks.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { durationWeeks } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

@@ -1,5 +1,6 @@
+import { datetimeQuarterExample as datetimeQuarter } from './quarter.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { datetimeQuarter } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

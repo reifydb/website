@@ -1,8 +1,8 @@
+import { rql5AggregateExample as rql5Aggregate, rql5InlineExample as rql5Inline, rql5LetExample as rql5Let, rql5MapComputedExample as rql5MapComputed, rql5NoneFilterExample as rql5NoneFilter, rql5NonePropagatesExample as rql5NonePropagates, rql5PipelineExample as rql5Pipeline } from './five-minutes.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { rql5Aggregate, rql5Inline, rql5Let, rql5MapComputed, rql5NoneFilter, rql5NonePropagates, rql5Pipeline } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;

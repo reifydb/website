@@ -1,5 +1,6 @@
+import { durationGetMonthsExample as durationGetMonths } from './get_months.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { durationGetMonths } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

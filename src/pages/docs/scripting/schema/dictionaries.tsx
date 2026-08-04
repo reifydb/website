@@ -1,5 +1,5 @@
+import { scriptingCreateDictionaryExample as scriptingCreateDictionary } from './dictionaries.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingCreateDictionary } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function DictionariesPage() {

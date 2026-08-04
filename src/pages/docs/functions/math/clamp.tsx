@@ -1,5 +1,6 @@
+import { mathClampInlineExample as mathClampInline } from './clamp.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { mathClampInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

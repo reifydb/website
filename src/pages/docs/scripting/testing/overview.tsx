@@ -1,5 +1,5 @@
+import { scriptingAssertLiteralExample as scriptingAssertLiteral, scriptingCreateTestExample as scriptingCreateTest } from './overview.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingAssertLiteral, scriptingCreateTest } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function TestingOverviewPage() {

@@ -1,5 +1,6 @@
+import { dmSequencesAlterExample as dmSequencesAlter, dmSequencesAutoIncrementExample as dmSequencesAutoIncrement, dmSequencesReturningExample as dmSequencesReturning } from './sequences.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dmSequencesAlter, dmSequencesAutoIncrement, dmSequencesReturning } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

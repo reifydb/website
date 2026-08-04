@@ -1,5 +1,6 @@
+import { dmSeriesAutoKeyExample as dmSeriesAutoKey, dmSeriesDatetimeKeyExample as dmSeriesDatetimeKey, dmSeriesIntegerKeyExample as dmSeriesIntegerKey, dmSeriesKeyRangeExample as dmSeriesKeyRange, dmSeriesTagExample as dmSeriesTag, dmSeriesUpdateExample as dmSeriesUpdate } from './series.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dmSeriesAutoKey, dmSeriesDatetimeKey, dmSeriesIntegerKey, dmSeriesKeyRange, dmSeriesTag, dmSeriesUpdate } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

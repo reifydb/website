@@ -1,5 +1,6 @@
+import { dmTagsCreateExample as dmTagsCreate, dmTagsSeriesExample as dmTagsSeries } from './tags.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dmTagsCreate, dmTagsSeries } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

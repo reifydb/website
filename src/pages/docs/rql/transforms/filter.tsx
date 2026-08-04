@@ -1,5 +1,5 @@
+import { filterBasicExample as filterBasic, filterMultipleConditionsExample as filterMultipleConditions, filterNoneExample as filterNone } from './filter.examples';
 import { Layout } from '../../layout.tsx';
-import { filterBasic, filterMultipleConditions, filterNone } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function FilterPage() {

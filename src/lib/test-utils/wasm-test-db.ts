@@ -5,7 +5,7 @@
 import { create_wasm_db, type WasmDB } from '@reifydb/wasm';
 import { seedCommand } from '../seed-data';
 import { renderFrame } from './render-frame';
-import type { CodeExample } from '../examples';
+import type { CodeExample } from '../examples/types';
 
 export interface ExecutionResult {
   success: boolean;

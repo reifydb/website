@@ -1,5 +1,6 @@
+import { cfForFrameExample as cfForFrame, cfForRangeExample as cfForRange, cfForWritesExample as cfForWrites } from './for.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { cfForFrame, cfForRange, cfForWrites } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout, RqlCodeBlock } from '../../components';
 

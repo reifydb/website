@@ -1,5 +1,5 @@
+import { scriptingCreateNamespaceExample as scriptingCreateNamespace, scriptingCreateTableExample as scriptingCreateTable } from './namespaces.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingCreateNamespace, scriptingCreateTable } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function NamespacesPage() {

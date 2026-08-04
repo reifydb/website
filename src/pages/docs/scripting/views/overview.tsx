@@ -1,5 +1,5 @@
+import { scriptingDeferredViewExample as scriptingDeferredView, scriptingDeferredViewQueryExample as scriptingDeferredViewQuery, scriptingTransactionalViewExample as scriptingTransactionalView, scriptingTransactionalViewInsertExample as scriptingTransactionalViewInsert, scriptingTransactionalViewQueryExample as scriptingTransactionalViewQuery } from './overview.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingDeferredView, scriptingDeferredViewQuery, scriptingTransactionalView, scriptingTransactionalViewInsert, scriptingTransactionalViewQuery } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function ViewsOverviewPage() {

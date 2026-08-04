@@ -1,5 +1,6 @@
+import { dateDayOfWeekInlineExample as dateDayOfWeekInline } from './day_of_week.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dateDayOfWeekInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

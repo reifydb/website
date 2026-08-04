@@ -1,5 +1,6 @@
+import { textReplaceInlineExample as textReplaceInline } from './replace.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { textReplaceInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

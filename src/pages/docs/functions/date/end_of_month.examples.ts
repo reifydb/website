@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dateEnd_of_monthInlineExample: CodeExample = {
+export const dateEndOfMonthInlineExample: CodeExample = {
     id: 'date-end_of_month-inline',
     title: 'Get end of month',
     category: 'function',
@@ -8,5 +8,5 @@ export const dateEnd_of_monthInlineExample: CodeExample = {
   };
 
 export const functionsDateEndOfMonthExamples: CodeExample[] = [
-  dateEnd_of_monthInlineExample,
+  dateEndOfMonthInlineExample,
 ];

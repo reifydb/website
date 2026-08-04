@@ -1,15 +1,6 @@
+import { castStringToIntExample, castFloatTruncatesExample, castStringToDateExample, castStringToBoolExample, castColumnToTextExample, castInvalidNumberExample, castUnsupportedPairExample, castInFilterExample } from './cast.examples';
 import { Layout } from '../../layout.tsx';
 import { OperatorPage } from '../../components';
-import {
-  castStringToIntExample,
-  castFloatTruncatesExample,
-  castStringToDateExample,
-  castStringToBoolExample,
-  castColumnToTextExample,
-  castInvalidNumberExample,
-  castUnsupportedPairExample,
-  castInFilterExample,
-} from './cast.examples';
 
 export function CastPage() {
   return (

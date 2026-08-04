@@ -1,5 +1,6 @@
+import { textAsciiInlineExample as textAsciiInline } from './ascii.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { textAsciiInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

@@ -1,12 +1,8 @@
+import { faqExtendDuplicateColumnExample, faqCastUnsupportedPairExample, faqBareFromOrderExample } from './faq.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { CodeBlock, Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
-import {
-  faqExtendDuplicateColumnExample,
-  faqCastUnsupportedPairExample,
-  faqBareFromOrderExample,
-} from './faq.examples';
 
 export function TroubleshootingFaqPage() {
   return (

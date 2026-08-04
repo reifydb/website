@@ -1,5 +1,6 @@
+import { textTrimStartInlineExample as textTrimStartInline } from './trim_start.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { textTrimStartInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

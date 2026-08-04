@@ -1,8 +1,8 @@
+import { timeMinuteExample } from './minute.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { timeMinuteExample } from './minute.examples';
 
 export function TimeMinutePage() {
   return (

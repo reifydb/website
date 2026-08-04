@@ -1,5 +1,6 @@
+import { mathAtan2InlineExample as mathAtan2Inline } from './atan2.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { mathAtan2Inline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

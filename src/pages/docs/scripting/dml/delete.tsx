@@ -1,5 +1,5 @@
+import { scriptingDeleteAllExample as scriptingDeleteAll, scriptingDeleteBasicExample as scriptingDeleteBasic } from './delete.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingDeleteAll, scriptingDeleteBasic } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function DmlDeletePage() {

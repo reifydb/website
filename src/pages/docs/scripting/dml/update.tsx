@@ -1,5 +1,5 @@
+import { scriptingUpdateBasicExample as scriptingUpdateBasic, scriptingUpdateExpressionExample as scriptingUpdateExpression } from './update.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingUpdateBasic, scriptingUpdateExpression } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function DmlUpdatePage() {

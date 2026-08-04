@@ -1,5 +1,6 @@
+import { dmEnumsBasicExample as dmEnumsBasic, dmEnumsStructExample as dmEnumsStruct } from './enums.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dmEnumsBasic, dmEnumsStruct } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

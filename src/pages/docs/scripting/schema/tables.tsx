@@ -1,5 +1,5 @@
+import { scriptingCreateTableExample as scriptingCreateTable, scriptingCreateTableAutoIncrementExample as scriptingCreateTableAutoIncrement } from './tables.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingCreateTable, scriptingCreateTableAutoIncrement } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function TablesPage() {

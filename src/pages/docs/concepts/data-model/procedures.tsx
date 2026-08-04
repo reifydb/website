@@ -1,5 +1,6 @@
+import { dmProceduresComposeExample as dmProceduresCompose, dmProceduresCreateExample as dmProceduresCreate, dmProceduresLogicExample as dmProceduresLogic, dmProceduresParamsExample as dmProceduresParams, dmProceduresTestExample as dmProceduresTest, dmProceduresTestIsolationExample as dmProceduresTestIsolation } from './procedures.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dmProceduresCompose, dmProceduresCreate, dmProceduresLogic, dmProceduresParams, dmProceduresTest, dmProceduresTestIsolation } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

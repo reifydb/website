@@ -1,5 +1,5 @@
+import { exprCaseExample as exprCase, exprDateModuleExample as exprDateModule, exprMathModuleExample as exprMathModule, exprNamedArgsExample as exprNamedArgs, exprTextModuleExample as exprTextModule } from './expressions.examples';
 import { Layout } from '../layout.tsx';
-import { exprCase, exprDateModule, exprMathModule, exprNamedArgs, exprTextModule } from './examples.examples';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
 

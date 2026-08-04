@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const textFormat_bytes_siInlineExample: CodeExample = {
+export const textFormatBytesSiInlineExample: CodeExample = {
     id: 'text-format_bytes_si-inline',
     title: 'Format bytes (SI)',
     category: 'function',
@@ -8,5 +8,5 @@ export const textFormat_bytes_siInlineExample: CodeExample = {
   };
 
 export const functionsTextFormatBytesSiExamples: CodeExample[] = [
-  textFormat_bytes_siInlineExample,
+  textFormatBytesSiInlineExample,
 ];

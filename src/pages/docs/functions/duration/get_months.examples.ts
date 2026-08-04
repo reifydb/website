@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const durationGet_monthsExample: CodeExample = {
+export const durationGetMonthsExample: CodeExample = {
     id: 'duration-get_months',
     title: 'Get months from duration',
     category: 'function',
@@ -8,5 +8,5 @@ export const durationGet_monthsExample: CodeExample = {
   };
 
 export const functionsDurationGetMonthsExamples: CodeExample[] = [
-  durationGet_monthsExample,
+  durationGetMonthsExample,
 ];

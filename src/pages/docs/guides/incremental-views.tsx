@@ -1,18 +1,9 @@
+import { ivTransactionalSetupExample, ivComposedSetupExample, ivTransactionalInsertExample, ivTransactionalQueryExample, ivComposedQueryExample, ivDeferredSetupExample, ivDeferredInsertExample, ivDeferredQueryExample } from './incremental-views.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
 import type { CodeExample } from '@/lib/examples/types';
-import {
-  ivTransactionalSetupExample,
-  ivComposedSetupExample,
-  ivTransactionalInsertExample,
-  ivTransactionalQueryExample,
-  ivComposedQueryExample,
-  ivDeferredSetupExample,
-  ivDeferredInsertExample,
-  ivDeferredQueryExample,
-} from './incremental-views.examples';
 
 function Snippet({ example }: { example: CodeExample }) {
   return <ExecutableSnippet title={example.title} initialCode={example.code} />;

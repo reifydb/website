@@ -10,6 +10,23 @@ export const scriptingCreateNamespaceExample: CodeExample = {
 16386 | sc        | true`,
   };
 
+export const scriptingCreateTableExample: CodeExample = {
+    id: 'scripting-create-table',
+    title: 'Create Table',
+    category: 'scripting',
+    code: `CREATE NAMESPACE sc_t;
+CREATE TABLE sc_t::users {
+  id: int4,
+  name: utf8,
+  age: int2,
+  active: bool
+}`,
+    expected: `id    | namespace | table | created
+------+-----------+-------+--------
+16416 | sc_t      | users | true`,
+  };
+
 export const scriptingSchemaNamespacesExamples: CodeExample[] = [
   scriptingCreateNamespaceExample,
+  scriptingCreateTableExample,
 ];

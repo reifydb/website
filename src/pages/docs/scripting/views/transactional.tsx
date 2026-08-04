@@ -1,12 +1,8 @@
+import { createTransactionalViewExample, insertIntoTransactionalSourceExample, queryTransactionalViewExample } from './transactional.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
 import { Callout } from '../../components';
-import {
-  createTransactionalViewExample,
-  insertIntoTransactionalSourceExample,
-  queryTransactionalViewExample,
-} from './transactional.examples';
 
 export function TransactionalViewsPage() {
   return (

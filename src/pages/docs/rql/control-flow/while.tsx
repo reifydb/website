@@ -1,5 +1,6 @@
+import { cfWhileAccumulateExample as cfWhileAccumulate, cfWhileCapExample as cfWhileCap, cfWhileWriteExample as cfWhileWrite, cfWhileZeroIterationsExample as cfWhileZeroIterations } from './while.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { cfWhileAccumulate, cfWhileCap, cfWhileWrite, cfWhileZeroIterations } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

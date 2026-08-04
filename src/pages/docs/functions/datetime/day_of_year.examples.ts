@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const datetimeDay_of_yearExample: CodeExample = {
+export const datetimeDayOfYearExample: CodeExample = {
     id: 'datetime-day_of_year',
     title: 'Get day of year from datetime',
     category: 'function',
@@ -8,5 +8,5 @@ export const datetimeDay_of_yearExample: CodeExample = {
   };
 
 export const functionsDatetimeDayOfYearExamples: CodeExample[] = [
-  datetimeDay_of_yearExample,
+  datetimeDayOfYearExample,
 ];

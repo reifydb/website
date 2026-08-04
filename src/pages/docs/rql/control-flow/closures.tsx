@@ -1,5 +1,6 @@
+import { cfClosuresBasicExample as cfClosuresBasic, cfClosuresBlockBodyExample as cfClosuresBlockBody, cfClosuresCaptureExample as cfClosuresCapture, cfClosuresComposeExample as cfClosuresCompose, cfClosuresInlineFailsExample as cfClosuresInlineFails, cfClosuresIntoQueryExample as cfClosuresIntoQuery, cfClosuresRequestScopedExample as cfClosuresRequestScoped, cfClosuresShadowExample as cfClosuresShadow, cfClosuresUdfExample as cfClosuresUdf, cfClosuresUdfDmlExample as cfClosuresUdfDml, cfClosuresUdfEarlyReturnExample as cfClosuresUdfEarlyReturn, cfClosuresUdfFilterExample as cfClosuresUdfFilter } from './closures.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { cfClosuresBasic, cfClosuresBlockBody, cfClosuresCapture, cfClosuresCompose, cfClosuresInlineFails, cfClosuresIntoQuery, cfClosuresRequestScoped, cfClosuresShadow, cfClosuresUdf, cfClosuresUdfDml, cfClosuresUdfEarlyReturn, cfClosuresUdfFilter } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

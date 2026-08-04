@@ -1,5 +1,5 @@
+import { volcanoAggregateExample as volcanoAggregate, volcanoPipelineExample as volcanoPipeline, volcanoScanFilterExample as volcanoScanFilter } from './volcano.examples';
 import { Layout } from '../layout.tsx';
-import { volcanoAggregate, volcanoPipeline, volcanoScanFilter } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function VolcanoPage() {

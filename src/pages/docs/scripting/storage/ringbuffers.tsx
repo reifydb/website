@@ -1,5 +1,5 @@
+import { scriptingCreateRingbufferExample as scriptingCreateRingbuffer } from './ringbuffers.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingCreateRingbuffer } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function RingbuffersPage() {

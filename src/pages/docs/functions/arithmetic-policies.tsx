@@ -1,5 +1,6 @@
+import { fnArithFallbackExample as fnArithFallback, fnArithFunctionDivzeroExample as fnArithFunctionDivzero, fnArithNoneExample as fnArithNone, fnArithNonePropagatesExample as fnArithNonePropagates, fnArithOperatorOverflowExample as fnArithOperatorOverflow, fnArithPromotionExample as fnArithPromotion, fnArithSaturateExample as fnArithSaturate, fnArithSaturateFloorExample as fnArithSaturateFloor, fnArithStrictExample as fnArithStrict, fnArithWrapZeroExample as fnArithWrapZero } from './arithmetic-policies.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { fnArithFallback, fnArithFunctionDivzero, fnArithNone, fnArithNonePropagates, fnArithOperatorOverflow, fnArithPromotion, fnArithSaturate, fnArithSaturateFloor, fnArithStrict, fnArithWrapZero } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 

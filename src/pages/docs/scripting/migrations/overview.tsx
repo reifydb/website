@@ -1,5 +1,5 @@
+import { scriptingCreateMigrationExample as scriptingCreateMigration, scriptingMigrationRollbackExample as scriptingMigrationRollback } from './overview.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingCreateMigration, scriptingMigrationRollback } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function MigrationsOverviewPage() {

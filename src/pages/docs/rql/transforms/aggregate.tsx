@@ -1,5 +1,5 @@
+import { aggregateBasicExample as aggregateBasic, aggregateGroupByExample as aggregateGroupBy, aggregateMultiGroupExample as aggregateMultiGroup, aggregateMultipleFnsExample as aggregateMultipleFns } from './aggregate.examples';
 import { Layout } from '../../layout.tsx';
-import { aggregateBasic, aggregateGroupBy, aggregateMultiGroup, aggregateMultipleFns } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function AggregatePage() {

@@ -1,5 +1,6 @@
+import { textRepeatInlineExample as textRepeatInline } from './repeat.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { textRepeatInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

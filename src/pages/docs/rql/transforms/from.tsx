@@ -1,12 +1,6 @@
+import { fromTableExample, fromInlineSingleExample, fromInlineMultiExample, fromInlineTypesExample, fromEmptyExample } from './from.examples';
 import { Layout } from '../../layout.tsx';
 import { OperatorPage } from '../../components';
-import {
-  fromTableExample,
-  fromInlineSingleExample,
-  fromInlineMultiExample,
-  fromInlineTypesExample,
-  fromEmptyExample,
-} from './from.examples';
 
 export function FromPage() {
   return (

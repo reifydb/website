@@ -1,8 +1,8 @@
+import { timeTruncExample } from './trunc.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { timeTruncExample } from './trunc.examples';
 
 export function TimeTruncPage() {
   return (

@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const textFormat_bytesInlineExample: CodeExample = {
+export const textFormatBytesInlineExample: CodeExample = {
     id: 'text-format_bytes-inline',
     title: 'Format bytes (binary)',
     category: 'function',
@@ -8,5 +8,5 @@ export const textFormat_bytesInlineExample: CodeExample = {
   };
 
 export const functionsTextFormatBytesExamples: CodeExample[] = [
-  textFormat_bytesInlineExample,
+  textFormatBytesInlineExample,
 ];

@@ -1,5 +1,6 @@
+import { txnAtomicScriptExample as txnAtomicScript, txnDeferredReadAfterWriteExample as txnDeferredReadAfterWrite, txnDeferredSetupExample as txnDeferredSetup, txnRollbackErrorExample as txnRollbackError, txnRollbackVerifyExample as txnRollbackVerify, txnViewReadExample as txnViewRead, txnViewReadAfterWriteExample as txnViewReadAfterWrite, txnViewSetupExample as txnViewSetup, txnViewUnchangedExample as txnViewUnchanged, txnViewWriteExample as txnViewWrite } from './transactions.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { txnAtomicScript, txnDeferredReadAfterWrite, txnDeferredSetup, txnRollbackError, txnRollbackVerify, txnViewRead, txnViewReadAfterWrite, txnViewSetup, txnViewUnchanged, txnViewWrite } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 

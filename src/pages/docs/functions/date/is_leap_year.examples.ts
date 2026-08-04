@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dateIs_leap_yearInlineExample: CodeExample = {
+export const dateIsLeapYearInlineExample: CodeExample = {
     id: 'date-is_leap_year-inline',
     title: 'Check if leap year',
     category: 'function',
@@ -8,5 +8,5 @@ export const dateIs_leap_yearInlineExample: CodeExample = {
   };
 
 export const functionsDateIsLeapYearExamples: CodeExample[] = [
-  dateIs_leap_yearInlineExample,
+  dateIsLeapYearInlineExample,
 ];

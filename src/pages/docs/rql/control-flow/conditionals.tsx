@@ -1,5 +1,6 @@
+import { cfIfBranchShapesExample as cfIfBranchShapes, cfIfElseIfExample as cfIfElseIf, cfIfExpressionExample as cfIfExpression, cfIfGuardWriteExample as cfIfGuardWrite, cfIfNoElseExample as cfIfNoElse, cfIfReassignExample as cfIfReassign } from './conditionals.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { cfIfBranchShapes, cfIfElseIf, cfIfExpression, cfIfGuardWrite, cfIfNoElse, cfIfReassign } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

@@ -1,8 +1,8 @@
+import { timeNewExample } from './new.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { timeNewExample } from './new.examples';
 
 export function TimeNewPage() {
   return (

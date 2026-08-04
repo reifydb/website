@@ -1,5 +1,6 @@
+import { durationMinutesExample as durationMinutes } from './minutes.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { durationMinutes } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

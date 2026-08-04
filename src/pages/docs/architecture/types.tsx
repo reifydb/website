@@ -1,5 +1,5 @@
+import { typesCastExampleExample as typesCastExample, typesFloatPromotionExample as typesFloatPromotion, typesIntegerWideningExample as typesIntegerWidening, typesNonePropagationExample as typesNonePropagation, typesStringConcatExample as typesStringConcat } from './types.examples';
 import { Layout } from '../layout.tsx';
-import { typesCastExample, typesFloatPromotion, typesIntegerWidening, typesNonePropagation, typesStringConcat } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function TypesPage() {

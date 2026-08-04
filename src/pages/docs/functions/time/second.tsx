@@ -1,8 +1,8 @@
+import { timeSecondExample } from './second.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { timeSecondExample } from './second.examples';
 
 export function TimeSecondPage() {
   return (

@@ -1,8 +1,8 @@
+import { textTrimFilterExample as textTrimFilter, textTrimInputExample as textTrimInput } from './trim.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { textTrimFilter, textTrimInput } from './examples.examples';
 
 export function TextTrimPage() {
   return (

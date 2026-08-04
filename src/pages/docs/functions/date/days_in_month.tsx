@@ -1,5 +1,6 @@
+import { dateDaysInMonthInlineExample as dateDaysInMonthInline } from './days_in_month.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dateDaysInMonthInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

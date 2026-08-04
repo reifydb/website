@@ -1,8 +1,8 @@
+import { dmRingBuffersCreateExample as dmRingBuffersCreate, dmRingBuffersDeleteExample as dmRingBuffersDelete, dmRingBuffersEvictExample as dmRingBuffersEvict, dmRingBuffersPartitionExample as dmRingBuffersPartition, dmRingBuffersUpdateExample as dmRingBuffersUpdate } from './ring-buffers.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
-import { dmRingBuffersCreate, dmRingBuffersDelete, dmRingBuffersEvict, dmRingBuffersPartition, dmRingBuffersUpdate } from './examples.examples';
-import { dmRingBuffersDelete } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;

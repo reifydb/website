@@ -1,8 +1,8 @@
+import { conceptsDeferredQueryExample as conceptsDeferredQuery, conceptsDerivedInsertExample as conceptsDerivedInsert, conceptsDerivedQueryExample as conceptsDerivedQuery, conceptsDerivedSchemaExample as conceptsDerivedSchema, conceptsRingbufferExample as conceptsRingbuffer } from './overview.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { conceptsDeferredQuery, conceptsDerivedInsert, conceptsDerivedQuery, conceptsDerivedSchema, conceptsRingbuffer } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;

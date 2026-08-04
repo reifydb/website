@@ -1,5 +1,6 @@
+import { routinesOverviewFunctionCallExample as routinesOverviewFunctionCall, routinesOverviewProcedureRoundtripExample as routinesOverviewProcedureRoundtrip } from './overview.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { routinesOverviewFunctionCall, routinesOverviewProcedureRoundtrip } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 

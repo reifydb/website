@@ -1,5 +1,6 @@
+import { cfLoopBreakExample as cfLoopBreak, cfLoopCapExample as cfLoopCap, cfLoopContinueExample as cfLoopContinue, cfLoopInForExample as cfLoopInFor, cfLoopInWhileExample as cfLoopInWhile, cfLoopResultExample as cfLoopResult } from './loop.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { cfLoopBreak, cfLoopCap, cfLoopContinue, cfLoopInFor, cfLoopInWhile, cfLoopResult } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

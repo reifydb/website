@@ -1,5 +1,5 @@
+import { scriptingCreateTableExample as scriptingCreateTable, scriptingCreateTestExample as scriptingCreateTest, scriptingInsertBasicExample as scriptingInsertBasic } from './overview.examples';
 import { Link } from 'react-router-dom';
-import { scriptingCreateTable, scriptingCreateTest, scriptingInsertBasic } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
 

@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const dateDay_of_weekInlineExample: CodeExample = {
+export const dateDayOfWeekInlineExample: CodeExample = {
     id: 'date-day_of_week-inline',
     title: 'Get day of week',
     category: 'function',
@@ -8,5 +8,5 @@ export const dateDay_of_weekInlineExample: CodeExample = {
   };
 
 export const functionsDateDayOfWeekExamples: CodeExample[] = [
-  dateDay_of_weekInlineExample,
+  dateDayOfWeekInlineExample,
 ];

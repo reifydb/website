@@ -1,5 +1,6 @@
+import { dmEventsCreateExample as dmEventsCreate, dmEventsDispatchExample as dmEventsDispatch, dmEventsEffectExample as dmEventsEffect } from './events.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dmEventsCreate, dmEventsDispatch, dmEventsEffect } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

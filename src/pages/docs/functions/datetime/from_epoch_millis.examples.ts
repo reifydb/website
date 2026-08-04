@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const datetimeFrom_epoch_millisExample: CodeExample = {
+export const datetimeFromEpochMillisExample: CodeExample = {
     id: 'datetime-from_epoch_millis',
     title: 'Create datetime from epoch milliseconds',
     category: 'function',
@@ -8,5 +8,5 @@ export const datetimeFrom_epoch_millisExample: CodeExample = {
   };
 
 export const functionsDatetimeFromEpochMillisExamples: CodeExample[] = [
-  datetimeFrom_epoch_millisExample,
+  datetimeFromEpochMillisExample,
 ];

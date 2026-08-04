@@ -1,5 +1,5 @@
+import { matchSearchedExample as matchSearched, matchValueExample as matchValue } from './match.examples';
 import { Layout } from '../../layout.tsx';
-import { matchSearched, matchValue } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function MatchPage() {

@@ -1,14 +1,7 @@
+import { numericExample, textExample, booleanExample, noneExample, listExample, temporalExample } from './literals.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
-import {
-  numericExample,
-  textExample,
-  booleanExample,
-  noneExample,
-  listExample,
-  temporalExample,
-} from './literals.examples';
 
 export function LiteralsPage() {
   return (

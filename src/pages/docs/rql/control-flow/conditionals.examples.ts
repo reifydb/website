@@ -54,9 +54,43 @@ from cf_if::audit`,
 deploy`,
   };
 
+export const cfIfBranchShapesExample: CodeExample = {
+    id: 'cf-if-branch-shapes',
+    title: 'Branches Can Produce Different Shapes',
+    category: 'rql',
+    code: `let $currency = "USD";
+if $currency == "USD" {
+  map { amount: 100, currency: $currency }
+} else {
+  map { amount_local: 100, rate: 1.0 }
+}`,
+    expected: `amount | currency
+-------+---------
+100    | USD`,
+  };
+
+export const cfIfReassignExample: CodeExample = {
+    id: 'cf-if-reassign',
+    title: 'Reassign an Outer Variable in a Branch',
+    category: 'rql',
+    code: `let $total = 0;
+let $tier = "premium";
+if $tier == "premium" {
+  $total = 120;
+} else {
+  $total = 10;
+};
+map { tier: $tier, total: $total }`,
+    expected: `tier    | total
+--------+------
+premium | 120`,
+  };
+
 export const rqlControlFlowConditionalsExamples: CodeExample[] = [
   cfIfExpressionExample,
   cfIfElseIfExample,
   cfIfNoElseExample,
   cfIfGuardWriteExample,
+  cfIfBranchShapesExample,
+  cfIfReassignExample,
 ];

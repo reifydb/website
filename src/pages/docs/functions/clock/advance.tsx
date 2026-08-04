@@ -1,13 +1,9 @@
+import { clockAdvanceBasicExample, clockAdvanceAdditiveExample, clockAdvanceRejectsNegativeExample } from './advance.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
 import { Badge } from '@reifydb/ui';
-import {
-  clockAdvanceBasicExample,
-  clockAdvanceAdditiveExample,
-  clockAdvanceRejectsNegativeExample,
-} from './advance.examples';
 
 export function ClockAdvancePage() {
   return (

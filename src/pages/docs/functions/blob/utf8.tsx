@@ -1,5 +1,6 @@
+import { blobUtf8Example as blobUtf8 } from './utf8.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { blobUtf8 } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

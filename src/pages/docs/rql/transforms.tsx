@@ -1,5 +1,5 @@
+import { transformPipelineExample as transformPipeline, transformFromExample as transformFrom, transformFilterExample as transformFilter, transformExtendExample as transformExtend, transformSortExample as transformSort, transformTakeExample as transformTake, transformDistinctExample as transformDistinct, transformAggregateExample as transformAggregate } from './transforms.examples';
 import { Link } from 'react-router-dom';
-import { transformPipeline, transformFrom, transformFilter, transformExtend, transformSort, transformTake, transformDistinct, transformAggregate } from './examples.examples';
 import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';

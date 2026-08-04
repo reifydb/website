@@ -1,8 +1,8 @@
+import { textLengthCharcountExample as textLengthCharcount, textLengthFilterExample as textLengthFilter, textLengthValidateExample as textLengthValidate } from './length.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { textLengthCharcount, textLengthFilter, textLengthValidate } from './examples.examples';
 
 export function TextLengthPage() {
   return (

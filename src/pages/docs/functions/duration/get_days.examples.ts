@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const durationGet_daysExample: CodeExample = {
+export const durationGetDaysExample: CodeExample = {
     id: 'duration-get_days',
     title: 'Get days from duration',
     category: 'function',
@@ -8,5 +8,5 @@ export const durationGet_daysExample: CodeExample = {
   };
 
 export const functionsDurationGetDaysExamples: CodeExample[] = [
-  durationGet_daysExample,
+  durationGetDaysExample,
 ];

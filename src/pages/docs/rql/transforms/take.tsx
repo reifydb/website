@@ -1,5 +1,5 @@
+import { takeBasicExample as takeBasic, takeWithSortExample as takeWithSort } from './take.examples';
 import { Layout } from '../../layout.tsx';
-import { takeBasic, takeWithSort } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function TakePage() {

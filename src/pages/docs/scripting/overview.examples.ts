@@ -36,7 +36,36 @@ CREATE TABLE sc_t::users {
 16417 | sc_t      | users | true`,
   };
 
+export const scriptingCreateTestExample: CodeExample = {
+    id: 'scripting-create-test',
+    title: 'Create and Run Tests',
+    category: 'scripting',
+    code: `CREATE NAMESPACE tg;
+CREATE TABLE tg::items { id: int4, name: utf8 };
+
+CREATE TEST PROCEDURE tg::seed AS {
+  INSERT tg::items [{ id: 1, name: 'one' }, { id: 2, name: 'two' }]
+};
+
+CREATE TEST tg::query_all {
+  CALL tg::seed();
+  FROM tg::items | ASSERT { id > 0 }
+};
+
+CREATE TEST tg::filter_one {
+  CALL tg::seed();
+  FROM tg::items | FILTER name == 'one' | ASSERT { id == 1 }
+};
+
+RUN TESTS tg | MAP { name, namespace, outcome }`,
+    expected: `name       | namespace | outcome
+-----------+-----------+--------
+filter_one | tg        | pass
+query_all  | tg        | pass`,
+  };
+
 export const scriptingOverviewExamples: CodeExample[] = [
   scriptingInsertBasicExample,
   scriptingCreateTableExample,
+  scriptingCreateTestExample,
 ];

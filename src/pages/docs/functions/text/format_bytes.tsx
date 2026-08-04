@@ -1,5 +1,6 @@
+import { textFormatBytesInlineExample as textFormatBytesInline } from './format_bytes.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { textFormatBytesInline } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 

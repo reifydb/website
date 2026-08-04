@@ -1,8 +1,8 @@
+import { mathSumByRegionExample as mathSumByRegion, mathSumMultipleExample as mathSumMultiple } from './sum.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock, Callout } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { mathSumByRegion, mathSumMultiple } from './examples.examples';
 
 export function MathSumPage() {
   return (

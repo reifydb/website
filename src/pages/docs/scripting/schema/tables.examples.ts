@@ -1,5 +1,21 @@
 import type { CodeExample } from '@/lib/examples/types';
 
+export const scriptingCreateTableExample: CodeExample = {
+    id: 'scripting-create-table',
+    title: 'Create Table',
+    category: 'scripting',
+    code: `CREATE NAMESPACE sc_t;
+CREATE TABLE sc_t::users {
+  id: int4,
+  name: utf8,
+  age: int2,
+  active: bool
+}`,
+    expected: `id    | namespace | table | created
+------+-----------+-------+--------
+16416 | sc_t      | users | true`,
+  };
+
 export const scriptingCreateTableAutoIncrementExample: CodeExample = {
     id: 'scripting-create-table-auto-increment',
     title: 'Auto Increment',
@@ -19,5 +35,6 @@ sort { id: asc }`,
   };
 
 export const scriptingSchemaTablesExamples: CodeExample[] = [
+  scriptingCreateTableExample,
   scriptingCreateTableAutoIncrementExample,
 ];

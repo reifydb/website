@@ -1,8 +1,8 @@
+import { mathAbsConvertExample as mathAbsConvert, mathAbsFilterExample as mathAbsFilter } from './abs.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { mathAbsConvert, mathAbsFilter } from './examples.examples';
 
 export function MathAbsPage() {
   return (

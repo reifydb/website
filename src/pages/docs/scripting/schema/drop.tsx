@@ -1,5 +1,5 @@
+import { scriptingDropIfExistsExample as scriptingDropIfExists, scriptingDropTableExample as scriptingDropTable } from './drop.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingDropIfExists, scriptingDropTable } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function DropPage() {

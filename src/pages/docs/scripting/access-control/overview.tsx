@@ -1,11 +1,6 @@
+import { createUserExample, createRoleExample, createPolicyExample, grantRevokeExample } from './overview.examples';
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
-import {
-  createUserExample,
-  createRoleExample,
-  createPolicyExample,
-  grantRevokeExample,
-} from './overview.examples';
 
 export function AccessControlOverviewPage() {
   return (

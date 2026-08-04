@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const textTrim_endInlineExample: CodeExample = {
+export const textTrimEndInlineExample: CodeExample = {
     id: 'text-trim_end-inline',
     title: 'Trim trailing whitespace',
     category: 'function',
@@ -8,5 +8,5 @@ export const textTrim_endInlineExample: CodeExample = {
   };
 
 export const functionsTextTrimEndExamples: CodeExample[] = [
-  textTrim_endInlineExample,
+  textTrimEndInlineExample,
 ];

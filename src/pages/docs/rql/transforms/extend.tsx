@@ -1,5 +1,5 @@
+import { extendBasicExample as extendBasic, extendChainedExample as extendChained, extendMultipleExample as extendMultiple } from './extend.examples';
 import { Layout } from '../../layout.tsx';
-import { extendBasic, extendChained, extendMultiple } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function ExtendPage() {

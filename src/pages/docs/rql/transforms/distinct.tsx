@@ -1,5 +1,5 @@
+import { distinctBasicExample as distinctBasic, distinctMultiExample as distinctMulti } from './distinct.examples';
 import { Layout } from '../../layout.tsx';
-import { distinctBasic, distinctMulti } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function DistinctPage() {

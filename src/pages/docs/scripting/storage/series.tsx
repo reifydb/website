@@ -1,5 +1,5 @@
+import { scriptingCreateSeriesExample as scriptingCreateSeries } from './series.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingCreateSeries } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function SeriesPage() {

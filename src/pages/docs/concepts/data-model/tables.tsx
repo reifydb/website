@@ -1,5 +1,6 @@
+import { dmTablesAlterExample as dmTablesAlter, dmTablesAutoIncrementExample as dmTablesAutoIncrement, dmTablesCreateExample as dmTablesCreate, dmTablesDeleteExample as dmTablesDelete, dmTablesOptionExample as dmTablesOption, dmTablesPrimaryKeyExample as dmTablesPrimaryKey, dmTablesRownumExample as dmTablesRownum, dmTablesUpdateReturningExample as dmTablesUpdateReturning } from './tables.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
-import { dmTablesAlter, dmTablesAutoIncrement, dmTablesCreate, dmTablesDelete, dmTablesOption, dmTablesPrimaryKey, dmTablesRownum, dmTablesUpdateReturning } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 

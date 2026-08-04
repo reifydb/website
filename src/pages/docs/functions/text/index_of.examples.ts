@@ -1,6 +1,6 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const textIndex_ofInlineExample: CodeExample = {
+export const textIndexOfInlineExample: CodeExample = {
     id: 'text-index_of-inline',
     title: 'Find index of substring',
     category: 'function',
@@ -8,5 +8,5 @@ export const textIndex_ofInlineExample: CodeExample = {
   };
 
 export const functionsTextIndexOfExamples: CodeExample[] = [
-  textIndex_ofInlineExample,
+  textIndexOfInlineExample,
 ];

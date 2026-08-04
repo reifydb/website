@@ -1,5 +1,5 @@
+import { patchAddColumnExample as patchAddColumn, patchBasicExample as patchBasic, patchChainedExample as patchChained, patchExpressionExample as patchExpression } from './patch.examples';
 import { Layout } from '../../layout.tsx';
-import { patchAddColumn, patchBasic, patchChained, patchExpression } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function PatchPage() {

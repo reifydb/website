@@ -1,5 +1,5 @@
+import { scriptingCreateProcedureExample as scriptingCreateProcedure, scriptingProcedureParamsExample as scriptingProcedureParams } from './overview.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingCreateProcedure, scriptingProcedureParams } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function ProceduresOverviewPage() {

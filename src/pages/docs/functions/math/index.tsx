@@ -1,5 +1,5 @@
+import { mathOverviewQuickExample as mathOverviewQuick } from './index.examples';
 import { Link } from 'react-router-dom';
-import { mathOverviewQuick } from './examples.examples';
 import { Layout } from '../../layout.tsx';
 import { ExecutableSnippet } from '@/components/ui';
 

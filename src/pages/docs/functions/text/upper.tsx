@@ -1,8 +1,8 @@
+import { textUpperNamesExample as textUpperNames, textUpperSkuExample as textUpperSku } from './upper.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { RqlCodeBlock } from '../../components';
 import { ExecutableSnippet } from '@/components/ui';
-import { textUpperNames, textUpperSku } from './examples.examples';
 
 export function TextUpperPage() {
   return (

@@ -1,5 +1,5 @@
+import { scriptingInsertBasicExample as scriptingInsertBasic, scriptingInsertMultipleExample as scriptingInsertMultiple } from './insert.examples';
 import { Layout } from '../../layout.tsx';
-import { scriptingInsertBasic, scriptingInsertMultiple } from './examples.examples';
 import { ExecutableSnippet } from '@/components/ui';
 
 export function DmlInsertPage() {

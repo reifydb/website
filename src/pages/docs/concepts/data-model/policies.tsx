@@ -1,8 +1,8 @@
+import { dmPoliciesDisableExample as dmPoliciesDisable, dmPoliciesDropExample as dmPoliciesDrop, dmPoliciesEnableExample as dmPoliciesEnable, dmPoliciesInspectExample as dmPoliciesInspect, dmPoliciesReadFilterExample as dmPoliciesReadFilter, dmPoliciesReadMaskExample as dmPoliciesReadMask, dmPoliciesWriteRequireExample as dmPoliciesWriteRequire } from './policies.examples';
+import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { Callout, CodeBlock } from '../../components';
-import { dmPoliciesDisable, dmPoliciesDrop, dmPoliciesEnable, dmPoliciesInspect, dmPoliciesReadFilter, dmPoliciesReadMask, dmPoliciesWriteRequire } from './examples.examples';
-import { dmPoliciesDisable, dmPoliciesDrop, dmPoliciesEnable } from './examples.examples';
 
 function Code({ children }: { children: React.ReactNode }) {
   return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
