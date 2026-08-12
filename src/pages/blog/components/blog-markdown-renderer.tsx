@@ -4,7 +4,6 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import type { Components } from 'react-markdown';
 import { ExecutableSnippet } from '@/components/ui';
-import type { BlogPostHeading } from '@/data/blog-data';
 
 function getTextContent(node: React.ReactNode): string {
   if (typeof node === 'string') return node;
@@ -19,45 +18,20 @@ function getTextContent(node: React.ReactNode): string {
 const measure = 'max-w-[68ch]';
 const prose = 'text-[1.0625rem] leading-[1.75] text-text-primary';
 const shadowHard = 'shadow-[4px_4px_0_var(--color-border-default)]';
-const opener = [
-  '[&>p:first-child]:font-medium',
-  "[&>p:first-child]:before:content-['00']",
-  '[&>p:first-child]:before:block',
-  '[&>p:first-child]:before:font-mono',
-  '[&>p:first-child]:before:text-sm',
-  '[&>p:first-child]:before:font-semibold',
-  '[&>p:first-child]:before:tracking-[1.4px]',
-  '[&>p:first-child]:before:text-primary',
-  '[&>p:first-child]:before:mb-2',
-].join(' ');
+const opener = '[&>p:first-child]:font-medium';
 
-function createComponents(headings: BlogPostHeading[]): Components {
+function createComponents(): Components {
   return {
     h1: ({ children }) => (
       <h1 className="text-xl sm:text-2xl font-black tracking-tight mt-14 first:mt-0 mb-6 text-text-primary">
         {children}
       </h1>
     ),
-    h2: ({ children }) => {
-      const index = headings.find(
-        (heading) => heading.text === getTextContent(children)
-      )?.index;
-      return (
-        <h2 className="mt-14 first:mt-0 mb-5">
-          {index && (
-            <span
-              className="block font-mono text-sm label-uppercase text-primary mb-2"
-              data-numeric
-            >
-              {index}
-            </span>
-          )}
-          <span className="block text-lg sm:text-xl font-black text-text-primary">
-            {children}
-          </span>
-        </h2>
-      );
-    },
+    h2: ({ children }) => (
+      <h2 className="mt-14 first:mt-0 mb-5 text-lg sm:text-xl font-black text-text-primary">
+        {children}
+      </h2>
+    ),
     h3: ({ children }) => (
       <h3
         className={`${measure} font-mono text-sm sm:text-base label-uppercase text-text-primary mt-10 mb-3`}
@@ -129,7 +103,7 @@ function createComponents(headings: BlogPostHeading[]): Components {
         );
       }
       return (
-        <code className="bg-bg-tertiary border border-border-default px-1.5 py-0.5 font-mono text-[0.9em] text-primary-light">
+        <code className="bg-bg-tertiary px-1 py-px font-mono text-[0.9em] text-primary-light">
           {children}
         </code>
       );
@@ -160,16 +134,8 @@ function createComponents(headings: BlogPostHeading[]): Components {
   };
 }
 
-interface BlogMarkdownRendererProps {
-  content: string;
-  headings: BlogPostHeading[];
-}
-
-export function BlogMarkdownRenderer({
-  content,
-  headings,
-}: BlogMarkdownRendererProps) {
-  const components = useMemo(() => createComponents(headings), [headings]);
+export function BlogMarkdownRenderer({ content }: { content: string }) {
+  const components = useMemo(() => createComponents(), []);
 
   return (
     <div className={opener}>

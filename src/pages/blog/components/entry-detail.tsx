@@ -37,10 +37,7 @@ export function EntryDetail({ post }: { post: BlogPost }) {
         </p>
 
         <div className="mt-10 font-body">
-          <BlogMarkdownRenderer
-            content={post.content}
-            headings={post.headings}
-          />
+          <BlogMarkdownRenderer content={post.content} />
         </div>
 
         <div className="mt-12 pt-6 border-t-2 border-border-default flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs label-uppercase">
