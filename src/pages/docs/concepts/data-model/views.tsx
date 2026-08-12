@@ -39,7 +39,7 @@ export function DataModelViewsPage() {
             system to notify:
           </p>
           <ExecutableSnippet title={dmViewsTransactionalWrite.title} initialCode={dmViewsTransactionalWrite.code} />
-          <ExecutableSnippet title={dmViewsTransactionalRead.title} initialCode={dmViewsTransactionalRead.code} className="mt-4"  />
+          <ExecutableSnippet title={dmViewsTransactionalRead.title} initialCode={dmViewsTransactionalRead.code} />
         </section>
 
         <section>
@@ -50,14 +50,14 @@ export function DataModelViewsPage() {
             that stops matching disappears from it.
           </p>
           <ExecutableSnippet title={dmViewsFilterMembership.title} initialCode={dmViewsFilterMembership.code} />
-          <ExecutableSnippet title={dmViewsFilterInsert.title} initialCode={dmViewsFilterInsert.code} className="mt-4"  />
-          <ExecutableSnippet title={dmViewsFilterRead.title} initialCode={dmViewsFilterRead.code} className="mt-4"  />
+          <ExecutableSnippet title={dmViewsFilterInsert.title} initialCode={dmViewsFilterInsert.code} />
+          <ExecutableSnippet title={dmViewsFilterRead.title} initialCode={dmViewsFilterRead.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Deactivate Alice and she leaves the view - no application code deletes
             anything from it:
           </p>
           <ExecutableSnippet title={dmViewsFilterLeave.title} initialCode={dmViewsFilterLeave.code} />
-          <ExecutableSnippet title={dmViewsFilterLeaveRead.title} initialCode={dmViewsFilterLeaveRead.code} className="mt-4"  />
+          <ExecutableSnippet title={dmViewsFilterLeaveRead.title} initialCode={dmViewsFilterLeaveRead.code} />
         </section>
 
         <section>
@@ -76,7 +76,7 @@ export function DataModelViewsPage() {
             the gated view:
           </p>
           <ExecutableSnippet title={dmViewsGateEnter.title} initialCode={dmViewsGateEnter.code} />
-          <ExecutableSnippet title={dmViewsGateRead.title} initialCode={dmViewsGateRead.code} className="mt-4"  />
+          <ExecutableSnippet title={dmViewsGateRead.title} initialCode={dmViewsGateRead.code} />
         </section>
 
         <section>
@@ -88,7 +88,7 @@ export function DataModelViewsPage() {
             <Code>create deferred view</Code>:
           </p>
           <ExecutableSnippet title={dmViewsDeferred.title} initialCode={dmViewsDeferred.code} />
-          <ExecutableSnippet title={dmViewsDeferredWriteRead.title} initialCode={dmViewsDeferredWriteRead.code} className="mt-4"  />
+          <ExecutableSnippet title={dmViewsDeferredWriteRead.title} initialCode={dmViewsDeferredWriteRead.code} />
           <p className="text-text-secondary mt-4 mb-4">
             By the time you read it, the deferred flow has processed the change log -
             here it counts all four orders written on this page, including those
@@ -112,7 +112,7 @@ export function DataModelViewsPage() {
             - the derived rows themselves get "keep the last N" semantics:
           </p>
           <ExecutableSnippet title={dmViewsRingbufferBacked.title} initialCode={dmViewsRingbufferBacked.code} />
-          <ExecutableSnippet title={dmViewsRingbufferWrite.title} initialCode={dmViewsRingbufferWrite.code} className="mt-4"  />
+          <ExecutableSnippet title={dmViewsRingbufferWrite.title} initialCode={dmViewsRingbufferWrite.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Three rows flowed into a capacity-2 buffer; the oldest derived row was
             evicted:
@@ -134,8 +134,8 @@ export function DataModelViewsPage() {
             the whole chain within the same maintenance model:
           </p>
           <ExecutableSnippet title={dmViewsChain.title} initialCode={dmViewsChain.code} />
-          <ExecutableSnippet title={dmViewsChainWrite.title} initialCode={dmViewsChainWrite.code} className="mt-4"  />
-          <ExecutableSnippet title={dmViewsChainRead.title} initialCode={dmViewsChainRead.code} className="mt-4"  />
+          <ExecutableSnippet title={dmViewsChainWrite.title} initialCode={dmViewsChainWrite.code} />
+          <ExecutableSnippet title={dmViewsChainRead.title} initialCode={dmViewsChainRead.code} />
         </section>
 
         <section>

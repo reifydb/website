@@ -58,7 +58,7 @@ export function DataModelRingBuffersPage() {
             <Code>filter</Code> semantics as tables:
           </p>
           <ExecutableSnippet title={dmRingBuffersUpdate.title} initialCode={dmRingBuffersUpdate.code} />
-          <ExecutableSnippet title={dmRingBuffersDelete.title} initialCode={dmRingBuffersDelete.code} className="mt-4"  />
+          <ExecutableSnippet title={dmRingBuffersDelete.title} initialCode={dmRingBuffersDelete.code} />
         </section>
 
         <section>

@@ -117,9 +117,9 @@ HELP
             when obsolete.
           </p>
           <ExecutableSnippet title={dmPoliciesInspect.title} initialCode={dmPoliciesInspect.code} />
-          <ExecutableSnippet title={dmPoliciesDisable.title} initialCode={dmPoliciesDisable.code} className="mt-4"  />
-          <ExecutableSnippet title={dmPoliciesEnable.title} initialCode={dmPoliciesEnable.code} className="mt-4"  />
-          <ExecutableSnippet title={dmPoliciesDrop.title} initialCode={dmPoliciesDrop.code} className="mt-4"  />
+          <ExecutableSnippet title={dmPoliciesDisable.title} initialCode={dmPoliciesDisable.code} />
+          <ExecutableSnippet title={dmPoliciesEnable.title} initialCode={dmPoliciesEnable.code} />
+          <ExecutableSnippet title={dmPoliciesDrop.title} initialCode={dmPoliciesDrop.code} />
           <p className="text-text-secondary mt-4">
             Disabling a policy does not open access up - with no active policy,
             non-root identities fall back to default deny.

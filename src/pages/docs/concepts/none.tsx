@@ -172,7 +172,7 @@ export function WorkingWithNonePage() {
             missing values last, descending order puts them first.
           </p>
           <ExecutableSnippet title={conceptsNoneSortAsc.title} initialCode={conceptsNoneSortAsc.code} />
-          <ExecutableSnippet title={conceptsNoneSortDesc.title} initialCode={conceptsNoneSortDesc.code} className="mt-4"  />
+          <ExecutableSnippet title={conceptsNoneSortDesc.title} initialCode={conceptsNoneSortDesc.code} />
           <p className="text-text-secondary mt-4 mb-4">
             In rendered tables - the CLI, the docs snippets on this page - a missing
             value prints as <Code>⟪none⟫</Code>, deliberately unmistakable for a string.

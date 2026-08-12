@@ -40,7 +40,7 @@ export function ExecutableSnippet({ className, ...props }: ExecutableSnippetProp
   const staticSnippet = <StaticSnippet {...props} />;
 
   return (
-    <div className={className}>
+    <div className={className ? `my-10 ${className}` : 'my-10'}>
       {mounted ? (
         <Suspense fallback={staticSnippet}>
           <ExecutableSnippetLive {...props} />

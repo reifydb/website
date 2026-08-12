@@ -55,7 +55,7 @@ export function DataModelHandlersPage() {
             body:
           </p>
           <ExecutableSnippet title={dmHandlersScripted.title} initialCode={dmHandlersScripted.code} />
-          <ExecutableSnippet title={dmHandlersScriptedEffect.title} initialCode={dmHandlersScriptedEffect.code} className="mt-4"  />
+          <ExecutableSnippet title={dmHandlersScriptedEffect.title} initialCode={dmHandlersScriptedEffect.code} />
         </section>
 
         <section>
@@ -84,7 +84,7 @@ export function DataModelHandlersPage() {
             <Code>system::handlers</Code> lists what is currently bound:
           </p>
           <ExecutableSnippet title={dmHandlersDrop.title} initialCode={dmHandlersDrop.code} />
-          <ExecutableSnippet title={dmHandlersAfterDrop.title} initialCode={dmHandlersAfterDrop.code} className="mt-4"  />
+          <ExecutableSnippet title={dmHandlersAfterDrop.title} initialCode={dmHandlersAfterDrop.code} />
         </section>
 
         <section>
