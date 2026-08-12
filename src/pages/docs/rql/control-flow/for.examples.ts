@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const cfForRangeExample: CodeExample = {
     id: 'cf-for-range',
     title: 'Iterate a Numeric Range',
-    category: 'rql',
     code: `let $factorial = 1;
 for $i in gen::series(1, 5) {
   $factorial = $factorial * $i
@@ -17,7 +16,6 @@ map { factorial: $factorial }`,
 export const cfForFrameExample: CodeExample = {
     id: 'cf-for-frame',
     title: 'Iterate Query Results',
-    category: 'rql',
     code: `create namespace cf_for;
 create table cf_for::carts { id: int4, qty: int4, price: int4 };
 insert cf_for::carts [
@@ -39,7 +37,6 @@ map { revenue: $revenue }`,
 export const cfForWritesExample: CodeExample = {
     id: 'cf-for-writes',
     title: 'A for Loop That Writes',
-    category: 'rql',
     code: `create table cf_for::restock { id: int4, qty: int4 };
 let $items = from cf_for::carts;
 for $item in $items {

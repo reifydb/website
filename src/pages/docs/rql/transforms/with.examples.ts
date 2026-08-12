@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const withStorageOptionsExample: CodeExample = {
     id: 'with-storage-options',
     title: 'Configure Storage at Creation',
-    category: 'rql',
     code: `create namespace rql_with;
 create ringbuffer rql_with::recent_errors {
   id: int4,
@@ -24,7 +23,6 @@ from rql_with::recent_errors sort { id: asc }`,
 export const withRowTtlExample: CodeExample = {
     id: 'with-row-ttl',
     title: 'Row Settings on a Table',
-    category: 'rql',
     code: `create table rql_with::sessions {
   token: utf8,
   user_id: int4
@@ -39,7 +37,6 @@ a1    | 1`,
 export const withColumnOptionsExample: CodeExample = {
     id: 'with-column-options',
     title: 'Options on a Column',
-    category: 'rql',
     code: `create table rql_with::tickets {
   id: int8 with { auto_increment },
   title: utf8
@@ -55,7 +52,6 @@ from rql_with::tickets sort { id: asc }`,
 export const withJoinOptionsExample: CodeExample = {
     id: 'with-join-options',
     title: 'Options on a Join',
-    category: 'rql',
     code: `from app::employees
 inner join { from app::departments } as d using (dept_id, d.id) with { snapshot: true }
 map { id, department: d_name }
@@ -72,7 +68,6 @@ sort { id: asc }`,
 export const withDistinctTtlExample: CodeExample = {
     id: 'with-distinct-ttl',
     title: 'Options on Distinct',
-    category: 'rql',
     code: `from app::employees
 distinct { dept_id } with { ttl: { duration: '1h' } }
 map { dept_id }
@@ -88,7 +83,6 @@ export const withUnknownKeyExample: CodeExample = {
     id: 'with-unknown-key',
     title: 'Unknown Keys Are Rejected',
     description: 'Each construct validates its with block; a key it does not know is a parse error.',
-    category: 'rql',
     code: `create table rql_with::broken {
   id: int4
 } with { color: "red" }`,

@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const scriptingProcedureLetIfExample: CodeExample = {
     id: 'scripting-procedure-let-if',
     title: 'Control Flow in Procedures',
-    category: 'scripting',
     code: `CREATE NAMESPACE pr_cf;
 CREATE TABLE pr_cf::results { id: int4, label: utf8 };
 CREATE PROCEDURE pr_cf::classify { val: int4 } AS {
@@ -23,7 +22,6 @@ sort { id: asc }`,
 export const scriptingProcedureWhileExample: CodeExample = {
     id: 'scripting-procedure-while',
     title: 'While Loop in Procedure',
-    category: 'scripting',
     code: `CREATE NAMESPACE pr_w;
 CREATE TABLE pr_w::numbers { val: int4 };
 CREATE PROCEDURE pr_w::fill AS {

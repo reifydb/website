@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const scriptingCreateRingbufferExample: CodeExample = {
     id: 'scripting-rb-create',
     title: 'Create a Ringbuffer',
-    category: 'scripting',
     code: `create namespace st_rb;
 create ringbuffer st_rb::logs {
   id: int4,
@@ -19,7 +18,6 @@ export const scriptingRbCapacityRequiredExample: CodeExample = {
     id: 'scripting-rb-capacity-required',
     title: 'Capacity Is Required',
     description: 'A ringbuffer without a capacity is rejected at parse time.',
-    category: 'scripting',
     code: `create ringbuffer st_rb::nocap { id: int4 } with { }`,
     expectsError: true,
   };
@@ -27,7 +25,6 @@ export const scriptingRbCapacityRequiredExample: CodeExample = {
 export const scriptingRbFillExample: CodeExample = {
     id: 'scripting-rb-fill',
     title: 'Fill the Buffer to Capacity',
-    category: 'scripting',
     code: `insert st_rb::logs [
   { id: 1, level: "info", msg: "service started" },
   { id: 2, level: "info", msg: "listening on :8080" },
@@ -44,7 +41,6 @@ from st_rb::logs`,
 export const scriptingRbEvictExample: CodeExample = {
     id: 'scripting-rb-evict',
     title: 'One Insert Past Capacity Evicts the Oldest Row',
-    category: 'scripting',
     code: `insert st_rb::logs [{ id: 4, level: "error", msg: "upstream timeout" }];
 from st_rb::logs`,
     expected: `id | level | msg
@@ -57,7 +53,6 @@ from st_rb::logs`,
 export const scriptingRbTableOrderExample: CodeExample = {
     id: 'scripting-rb-table-order',
     title: 'Tables Scan Latest-First, Ringbuffers Do Not',
-    category: 'scripting',
     code: `create table st_rb::audit { id: int4, action: utf8 };
 insert st_rb::audit [
   { id: 1, action: "created" },
@@ -75,7 +70,6 @@ from st_rb::audit`,
 export const scriptingRbPartitionExample: CodeExample = {
     id: 'scripting-rb-partition',
     title: 'Partitioned Ringbuffer: Capacity per Partition',
-    category: 'scripting',
     code: `create ringbuffer st_rb::region_logs {
   region: utf8,
   msg: utf8
@@ -97,7 +91,6 @@ west   | backup complete`,
 export const scriptingRbUpdateExample: CodeExample = {
     id: 'scripting-rb-update',
     title: 'Update Rows in Place',
-    category: 'scripting',
     code: `update st_rb::logs { level: "fatal" } filter { id == 4 }`,
     expected: `namespace | ringbuffer | updated
 ----------+------------+--------
@@ -107,7 +100,6 @@ st_rb     | logs       | 1`,
 export const scriptingRbDeleteExample: CodeExample = {
     id: 'scripting-rb-delete',
     title: 'Delete Ahead of Eviction',
-    category: 'scripting',
     code: `delete st_rb::logs filter { id == 2 };
 from st_rb::logs`,
     expected: `id | level | msg
@@ -119,7 +111,6 @@ from st_rb::logs`,
 export const scriptingRbViewSetupExample: CodeExample = {
     id: 'scripting-rb-view-setup',
     title: 'A Deferred View Backed by a Ringbuffer',
-    category: 'scripting',
     code: `create table st_rb::events { id: int4, action: utf8 };
 create deferred ringbuffer view st_rb::recent_events {
   id: int4,
@@ -135,7 +126,6 @@ create deferred ringbuffer view st_rb::recent_events {
 export const scriptingRbViewInsertExample: CodeExample = {
     id: 'scripting-rb-view-insert',
     title: 'Write to the Source Table',
-    category: 'scripting',
     code: `insert st_rb::events [
   { id: 1, action: "login" },
   { id: 2, action: "logout" },
@@ -149,7 +139,6 @@ st_rb     | events | 3`,
 export const scriptingRbViewReadExample: CodeExample = {
     id: 'scripting-rb-view-read',
     title: 'The View Keeps Only Its Newest Rows',
-    category: 'scripting',
     code: `from st_rb::recent_events`,
     expected: `id | action
 ---+-------

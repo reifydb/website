@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const dmSeriesIntegerKeyExample: CodeExample = {
     id: 'dm-series-integer-key',
     title: 'A Series Ordered by an Integer Key',
-    category: 'concept',
     code: `create namespace dm_srs;
 create series dm_srs::readings {
   seq: int8,
@@ -25,7 +24,6 @@ from dm_srs::readings`,
 export const dmSeriesDatetimeKeyExample: CodeExample = {
     id: 'dm-series-datetime-key',
     title: 'A Series Keyed by Time',
-    category: 'concept',
     code: `create series dm_srs::temps {
   at: datetime,
   celsius: float8
@@ -44,7 +42,6 @@ from dm_srs::temps`,
 export const dmSeriesAutoKeyExample: CodeExample = {
     id: 'dm-series-auto-key',
     title: 'Omit the Key and the Engine Timestamps the Row',
-    category: 'concept',
     code: `create series dm_srs::pings { at: datetime, note: utf8 } with { key: at };
 insert dm_srs::pings [{ note: "deploy started" }];
 from dm_srs::pings map { note }`,
@@ -56,7 +53,6 @@ deploy started`,
 export const dmSeriesKeyRangeExample: CodeExample = {
     id: 'dm-series-key-range',
     title: 'Key Filters Use the Series Order',
-    category: 'concept',
     code: `from dm_srs::readings filter { seq >= 2 }`,
     expected: `seq | celsius
 ----+--------
@@ -67,7 +63,6 @@ export const dmSeriesKeyRangeExample: CodeExample = {
 export const dmSeriesUpdateExample: CodeExample = {
     id: 'dm-series-update',
     title: 'Correct a Recorded Value',
-    category: 'concept',
     code: `update dm_srs::readings { celsius: 22.4 } filter { seq == 2 }`,
     expected: `namespace | series   | updated
 ----------+----------+--------
@@ -77,7 +72,6 @@ dm_srs    | readings | 1`,
 export const dmSeriesTagExample: CodeExample = {
     id: 'dm-series-tag',
     title: 'Attach a Tag Type for Classification',
-    category: 'concept',
     code: `create tag dm_srs::origin { Sensor { location: utf8 }, Manual };
 create series dm_srs::tagged_readings {
   at: datetime,

@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const scriptingCreateProcedureExample: CodeExample = {
     id: 'scripting-create-procedure',
     title: 'Create Procedure',
-    category: 'scripting',
     code: `CREATE NAMESPACE pr;
 CREATE PROCEDURE pr::hello AS {
   MAP { greeting: 'hello world' }
@@ -17,7 +16,6 @@ hello world`,
 export const scriptingProcedureParamsExample: CodeExample = {
     id: 'scripting-procedure-params',
     title: 'Procedure Parameters',
-    category: 'scripting',
     code: `CREATE NAMESPACE pr_p;
 CREATE TABLE pr_p::users { id: int4, name: utf8 };
 CREATE PROCEDURE pr_p::add_user { id: int4, name: utf8 } AS {

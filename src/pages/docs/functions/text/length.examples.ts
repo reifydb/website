@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const textLengthFilterExample: CodeExample = {
     id: 'text-length-filter',
     title: 'Filter by minimum length',
-    category: 'function',
     code: `from app::posts
 filter { text::length(content) > 100 }`,
     expected: `(empty)`,
@@ -12,7 +11,6 @@ filter { text::length(content) > 100 }`,
 export const textLengthCharcountExample: CodeExample = {
     id: 'text-length-charcount',
     title: 'Add character count field',
-    category: 'function',
     code: `from app::articles
 extend { char_count: text::length(body) }`,
     expected: `id | body                                                                       | char_count
@@ -26,7 +24,6 @@ extend { char_count: text::length(body) }`,
 export const textLengthValidateExample: CodeExample = {
     id: 'text-length-validate',
     title: 'Validate input length',
-    category: 'function',
     code: `from app::usernames
 filter { text::length(username) >= 3 and text::length(username) <= 20 }`,
     expected: `id | username

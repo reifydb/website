@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const scriptingCreateSeriesExample: CodeExample = {
     id: 'scripting-series-create',
     title: 'Create a Series',
-    category: 'scripting',
     code: `create namespace st_sr;
 create series st_sr::metrics {
   ts: datetime,
@@ -18,7 +17,6 @@ export const scriptingSeriesKeyRequiredExample: CodeExample = {
     id: 'scripting-series-key-required',
     title: 'The Key Is Required',
     description: 'A series without a with block naming its key column is rejected at parse time.',
-    category: 'scripting',
     code: `create series st_sr::nokey { ts: datetime, value: float8 }`,
     expectsError: true,
   };
@@ -26,7 +24,6 @@ export const scriptingSeriesKeyRequiredExample: CodeExample = {
 export const scriptingSeriesInsertExample: CodeExample = {
     id: 'scripting-series-insert',
     title: 'Insert Time-Keyed Rows',
-    category: 'scripting',
     code: `insert st_sr::metrics [
   { ts: datetime::from_epoch_millis(1704067200000), value: 21.5 },
   { ts: datetime::from_epoch_millis(1704067260000), value: 21.9 },
@@ -43,7 +40,6 @@ from st_sr::metrics`,
 export const scriptingSeriesRangeExample: CodeExample = {
     id: 'scripting-series-range',
     title: 'Range Queries Filter on the Key',
-    category: 'scripting',
     code: `from st_sr::metrics filter { ts >= datetime::from_epoch_millis(1704067260000) }`,
     expected: `ts                             | value
 -------------------------------+------
@@ -54,7 +50,6 @@ export const scriptingSeriesRangeExample: CodeExample = {
 export const scriptingSeriesAutoKeyExample: CodeExample = {
     id: 'scripting-series-auto-key',
     title: 'Omit the Key and the Engine Assigns the Current Time',
-    category: 'scripting',
     code: `create series st_sr::deploys { ts: datetime, note: utf8 } with { key: ts };
 insert st_sr::deploys [{ note: "rollout finished" }];
 from st_sr::deploys map { note }`,
@@ -66,7 +61,6 @@ rollout finished`,
 export const scriptingSeriesPrecisionExample: CodeExample = {
     id: 'scripting-series-precision',
     title: 'Precision Truncates the Stored Key',
-    category: 'scripting',
     code: `create series st_sr::coarse {
   ts: datetime,
   hits: int4
@@ -81,7 +75,6 @@ from st_sr::coarse`,
 export const scriptingSeriesTagExample: CodeExample = {
     id: 'scripting-series-tag',
     title: 'Attach a Tag Type',
-    category: 'scripting',
     code: `create tag st_sr::origin { Sensor { location: utf8 }, Manual };
 create series st_sr::readings {
   ts: datetime,
@@ -95,7 +88,6 @@ create series st_sr::readings {
 export const scriptingSeriesPartitionExample: CodeExample = {
     id: 'scripting-series-partition',
     title: 'Partitioned Series: Independent Order per Partition',
-    category: 'scripting',
     code: `create series st_sr::per_sensor {
   ts: datetime,
   sensor: int4,
@@ -117,7 +109,6 @@ from st_sr::per_sensor`,
 export const scriptingSeriesUpdateExample: CodeExample = {
     id: 'scripting-series-update',
     title: 'Correct a Recorded Value by Key',
-    category: 'scripting',
     code: `update st_sr::metrics { value: 21.7 } filter { ts == datetime::from_epoch_millis(1704067260000) }`,
     expected: `namespace | series  | updated
 ----------+---------+--------
@@ -127,7 +118,6 @@ st_sr     | metrics | 1`,
 export const scriptingSeriesDeleteExample: CodeExample = {
     id: 'scripting-series-delete',
     title: 'Delete a Key Range',
-    category: 'scripting',
     code: `delete st_sr::metrics filter { ts < datetime::from_epoch_millis(1704067260000) };
 from st_sr::metrics`,
     expected: `ts                             | value

@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const rqlsqlSelectExample: CodeExample = {
     id: 'rqlsql-select',
     title: 'SELECT Becomes a Pipeline',
-    category: 'rql',
     code: `from app::users
 filter { role == "admin" }
 map { name, email }
@@ -17,7 +16,6 @@ David | david@example.com`,
 export const rqlsqlGroupbyExample: CodeExample = {
     id: 'rqlsql-groupby',
     title: 'GROUP BY Becomes aggregate ... by',
-    category: 'rql',
     code: `from [
   { category: "book", price: 12.0 },
   { category: "book", price: 8.0 },
@@ -34,7 +32,6 @@ game     | 60.0`,
 export const rqlsqlEqNoneExample: CodeExample = {
     id: 'rqlsql-eq-none',
     title: 'Comparing to none Never Matches',
-    category: 'rql',
     code: `from [
   { id: 1, nickname: "Al" },
   { id: 2, nickname: none }
@@ -46,7 +43,6 @@ filter { nickname == none }`,
 export const rqlsqlIsNoneExample: CodeExample = {
     id: 'rqlsql-is-none',
     title: 'Test for none with is::none',
-    category: 'rql',
     code: `from [
   { id: 1, nickname: "Al" },
   { id: 2, nickname: none }

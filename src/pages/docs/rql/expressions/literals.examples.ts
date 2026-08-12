@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const numericExample: CodeExample = {
   id: 'literals-numeric',
   title: 'Numeric Literals',
-  category: 'rql',
   code: `from [{ base: 10 }]
 extend { doubled: base * 2, ratio: 3.14159 }`,
   expected: `base | doubled | ratio
@@ -14,7 +13,6 @@ extend { doubled: base * 2, ratio: 3.14159 }`,
 export const textExample: CodeExample = {
   id: 'literals-text',
   title: 'Text Literals',
-  category: 'rql',
   code: `from [{ name: "Alice" }]
 extend { greeting: "Hello, " + name + "!" }`,
   expected: `name  | greeting
@@ -25,7 +23,6 @@ Alice | Hello, Alice!`,
 export const booleanExample: CodeExample = {
   id: 'literals-boolean',
   title: 'Boolean Literals',
-  category: 'rql',
   code: `from [{ id: 1 }]
 extend { enabled: true, archived: false }`,
   expected: `id | enabled | archived
@@ -36,7 +33,6 @@ extend { enabled: true, archived: false }`,
 export const noneExample: CodeExample = {
   id: 'literals-none',
   title: 'The none Literal',
-  category: 'rql',
   code: `from [{ id: 1, note: none }]
 extend { has_note: is::some(note) }`,
   expected: `id | note   | has_note
@@ -47,7 +43,6 @@ extend { has_note: is::some(note) }`,
 export const listExample: CodeExample = {
   id: 'literals-list',
   title: 'List Literals',
-  category: 'rql',
   code: `from [{ region: "North" }]
 extend { is_target: region in ["North", "East"] }`,
   expected: `region | is_target
@@ -58,7 +53,6 @@ North  | true`,
 export const temporalExample: CodeExample = {
   id: 'literals-temporal',
   title: 'Temporal Literals',
-  category: 'rql',
   code: `from [{ id: 1 }]
 extend { deadline: @2024-03-15, checkin: @14:30:00 }`,
   expected: `id | deadline   | checkin

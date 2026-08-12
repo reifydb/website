@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const cfIfExpressionExample: CodeExample = {
     id: 'cf-if-expression',
     title: 'if as an Expression',
-    category: 'rql',
     code: `let $stock = 4;
 let $status = if $stock == 0 { "out of stock" } else { "in stock" };
 map { stock: $stock, status: $status }`,
@@ -15,7 +14,6 @@ map { stock: $stock, status: $status }`,
 export const cfIfElseIfExample: CodeExample = {
     id: 'cf-if-else-if',
     title: 'Chain Conditions with else if',
-    category: 'rql',
     code: `let $latency = 250;
 let $rating = if $latency < 100 { "fast" }
   else if $latency < 500 { "acceptable" }
@@ -29,7 +27,6 @@ map { latency: $latency, rating: $rating }`,
 export const cfIfNoElseExample: CodeExample = {
     id: 'cf-if-no-else',
     title: 'No else, No Match: the Result Is none',
-    category: 'rql',
     code: `let $temp = 18;
 let $warning = if $temp > 30 { "overheating" };
 map { temp: $temp, warning: $warning }`,
@@ -41,7 +38,6 @@ map { temp: $temp, warning: $warning }`,
 export const cfIfGuardWriteExample: CodeExample = {
     id: 'cf-if-guard-write',
     title: 'Guard a Write with if',
-    category: 'rql',
     code: `create namespace cf_if;
 create table cf_if::audit { event: utf8 };
 let $dry_run = false;
@@ -57,7 +53,6 @@ deploy`,
 export const cfIfBranchShapesExample: CodeExample = {
     id: 'cf-if-branch-shapes',
     title: 'Branches Can Produce Different Shapes',
-    category: 'rql',
     code: `let $currency = "USD";
 if $currency == "USD" {
   map { amount: 100, currency: $currency }
@@ -72,7 +67,6 @@ if $currency == "USD" {
 export const cfIfReassignExample: CodeExample = {
     id: 'cf-if-reassign',
     title: 'Reassign an Outer Variable in a Branch',
-    category: 'rql',
     code: `let $total = 0;
 let $tier = "premium";
 if $tier == "premium" {

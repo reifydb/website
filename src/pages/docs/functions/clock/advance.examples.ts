@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const clockAdvanceBasicExample: CodeExample = {
   id: 'clock-advance-basic',
   title: 'Advance the Mock Clock',
-  category: 'function',
   code: `call clock::set(0);
 call clock::advance(duration::hours(2))`,
   expected: `clock
@@ -14,7 +13,6 @@ call clock::advance(duration::hours(2))`,
 export const clockAdvanceAdditiveExample: CodeExample = {
   id: 'clock-advance-additive',
   title: 'advance Is Relative, Not Absolute',
-  category: 'function',
   code: `call clock::set(0);
 call clock::advance(duration::minutes(30));
 call clock::advance(duration::minutes(45))`,
@@ -26,7 +24,6 @@ call clock::advance(duration::minutes(45))`,
 export const clockAdvanceRejectsNegativeExample: CodeExample = {
   id: 'clock-advance-rejects-negative',
   title: 'Cannot Advance Before the Unix Epoch',
-  category: 'function',
   expectsError: true,
   code: `call clock::set(0);
 call clock::advance(duration::seconds(-1))`,

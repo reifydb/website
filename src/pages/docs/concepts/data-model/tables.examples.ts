@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const dmTablesCreateExample: CodeExample = {
     id: 'dm-tables-create',
     title: 'Create a Table and Insert Rows',
-    category: 'concept',
     code: `create namespace dm_tbl;
 create table dm_tbl::products {
   id: int4,
@@ -25,7 +24,6 @@ from dm_tbl::products`,
 export const dmTablesOptionExample: CodeExample = {
     id: 'dm-tables-option',
     title: 'Optional Columns Hold none',
-    category: 'concept',
     code: `create table dm_tbl::customers {
   id: int4,
   name: utf8,
@@ -45,7 +43,6 @@ from dm_tbl::customers`,
 export const dmTablesAutoIncrementExample: CodeExample = {
     id: 'dm-tables-auto-increment',
     title: 'Auto-Increment Columns',
-    category: 'concept',
     code: `create table dm_tbl::tickets {
   id: int8 with { auto_increment },
   title: utf8
@@ -61,7 +58,6 @@ from dm_tbl::tickets`,
 export const dmTablesPrimaryKeyExample: CodeExample = {
     id: 'dm-tables-primary-key',
     title: 'Define a Primary Key',
-    category: 'concept',
     code: `create table dm_tbl::accounts { id: int4, owner: utf8 };
 create primary key on dm_tbl::accounts { id }`,
     expected: `operation          | namespace | table
@@ -72,7 +68,6 @@ CREATE PRIMARY KEY | dm_tbl    | accounts`,
 export const dmTablesUpdateReturningExample: CodeExample = {
     id: 'dm-tables-update-returning',
     title: 'Update Rows and Return the Result',
-    category: 'concept',
     code: `update dm_tbl::products { price: 19.99 }
 filter { name == "Gadget" }
 returning { id, name, price }`,
@@ -84,7 +79,6 @@ returning { id, name, price }`,
 export const dmTablesDeleteExample: CodeExample = {
     id: 'dm-tables-delete',
     title: 'Delete Rows by Predicate',
-    category: 'concept',
     code: `update dm_tbl::products { discontinued: true } filter { id == 1 };
 delete dm_tbl::products filter { discontinued == true }`,
     expected: `namespace | table    | deleted
@@ -95,7 +89,6 @@ dm_tbl    | products | 1`,
 export const dmTablesRownumExample: CodeExample = {
     id: 'dm-tables-rownum',
     title: 'System Columns',
-    category: 'concept',
     code: `from dm_tbl::customers map { row: #rownum, name }`,
     expected: `row | name
 ----+------
@@ -106,7 +99,6 @@ export const dmTablesRownumExample: CodeExample = {
 export const dmTablesAlterExample: CodeExample = {
     id: 'dm-tables-alter',
     title: 'Evolve the Schema with ALTER TABLE',
-    category: 'concept',
     code: `alter table dm_tbl::customers add column email: Option(utf8)`,
     expected: `operation  | namespace | table     | details
 -----------+-----------+-----------+--------

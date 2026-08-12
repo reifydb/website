@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const mathRoundDecimalExample: CodeExample = {
     id: 'math-round-decimal',
     title: 'Round to 2 decimal places',
-    category: 'function',
     code: `from app::prices
 extend { rounded: math::round(price, 2) }`,
     expected: `id | price | rounded
@@ -17,7 +16,6 @@ extend { rounded: math::round(price, 2) }`,
 export const mathRoundIntegerExample: CodeExample = {
     id: 'math-round-integer',
     title: 'Round to nearest integer',
-    category: 'function',
     code: `from app::metrics
 extend { rounded_value: math::round(value) }`,
     expected: `id | value  | rounded_value

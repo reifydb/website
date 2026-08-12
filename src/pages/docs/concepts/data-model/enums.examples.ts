@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const dmEnumsBasicExample: CodeExample = {
     id: 'dm-enums-basic',
     title: 'A Plain Enum as a Column Type',
-    category: 'concept',
     code: `create namespace dm_enum;
 create enum dm_enum::status { Active, Inactive, Pending };
 create table dm_enum::tasks { id: int4, status: dm_enum::status };
@@ -21,7 +20,6 @@ from dm_enum::tasks`,
 export const dmEnumsStructExample: CodeExample = {
     id: 'dm-enums-struct',
     title: 'Enum Variants Can Carry Payloads',
-    category: 'concept',
     code: `create enum dm_enum::shape {
   Circle { radius: float8 },
   Rectangle { width: float8, height: float8 }

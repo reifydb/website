@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const cfMatchValueExample: CodeExample = {
     id: 'cf-match-value',
     title: 'Match a Value Against Literal Arms',
-    category: 'rql',
     code: `let $plan = "pro";
 let $seats = match $plan {
   "free" => 1,
@@ -19,7 +18,6 @@ pro  | 10`,
 export const cfMatchSearchedExample: CodeExample = {
     id: 'cf-match-searched',
     title: 'Match on Conditions',
-    category: 'rql',
     code: `let $temp = 78;
 let $status = match {
   $temp > 90 => "critical",
@@ -36,7 +34,6 @@ export const cfMatchFirstWinsExample: CodeExample = {
     id: 'cf-match-first-wins',
     title: 'The First True Arm Wins',
     description: 'Arms are checked top to bottom. 120 satisfies both conditions, but the broader one is listed first and shadows the other - order arms from most to least specific.',
-    category: 'rql',
     code: `let $v = 120;
 let $bucket = match {
   $v > 50 => "over 50",
@@ -52,7 +49,6 @@ over 50`,
 export const cfMatchRowsExample: CodeExample = {
     id: 'cf-match-rows',
     title: 'Classify Rows in a Pipeline',
-    category: 'rql',
     code: `from [
   { id: 1, amount: 1200 },
   { id: 2, amount: 300 },
@@ -75,7 +71,6 @@ export const cfMatchNoneArmExample: CodeExample = {
     id: 'cf-match-none-arm',
     title: 'A none Arm Never Matches',
     description: 'Value-match arms compare by equality, and equality against none never produces true - the "missing" arm is dead code, and the none row falls through to else.',
-    category: 'rql',
     code: `from [
   { id: 1, score: 90 },
   { id: 2, score: none }
@@ -91,7 +86,6 @@ sort { id: asc }`,
 export const cfMatchNoneGuardExample: CodeExample = {
     id: 'cf-match-none-guard',
     title: 'Test for none with a Searched Arm',
-    category: 'rql',
     code: `from [
   { id: 1, score: 90 },
   { id: 2, score: none }

@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const scriptingCreateTestExample: CodeExample = {
     id: 'scripting-create-test',
     title: 'Create and Run Tests',
-    category: 'scripting',
     code: `CREATE NAMESPACE tg;
 CREATE TABLE tg::items { id: int4, name: utf8 };
 
@@ -31,7 +30,6 @@ query_all  | tg        | pass`,
 export const scriptingAssertLiteralExample: CodeExample = {
     id: 'scripting-assert-literal',
     title: 'Assert Expressions',
-    category: 'scripting',
     code: `CREATE NAMESPACE tg_a;
 
 CREATE TEST tg_a::assert_true {

@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const scriptingDeferredViewExample: CodeExample = {
     id: 'scripting-deferred-view',
     title: 'Deferred View',
-    category: 'scripting',
     code: `CREATE NAMESPACE vw_d;
 CREATE TABLE vw_d::employees {
   id: int4,
@@ -28,7 +27,6 @@ INSERT vw_d::employees [
 export const scriptingQueryViewExample: CodeExample = {
     id: 'scripting-query-view',
     title: 'Query a View',
-    category: 'scripting',
     code: `CREATE NAMESPACE vw_q;
 CREATE TABLE vw_q::products {
   id: int4,
@@ -55,7 +53,6 @@ INSERT vw_q::products [
 export const scriptingQueryViewResultExample: CodeExample = {
     id: 'scripting-query-view-result',
     title: 'Query the View',
-    category: 'scripting',
     code: `FROM vw_q::available
 SORT { price: desc }`,
     expected: `id | name   | price

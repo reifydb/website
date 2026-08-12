@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const textOverviewQuickExample: CodeExample = {
     id: 'text-overview-quick',
     title: 'Text Module Quick Example',
-    category: 'function',
     code: `from app::users
 extend {
   full_name: text::concat(first_name, " ", last_name),

@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const dmProceduresCreateExample: CodeExample = {
     id: 'dm-procedures-create',
     title: 'Create and Call a Procedure',
-    category: 'concept',
     code: `create namespace dm_proc;
 create procedure dm_proc::health as {
   map { status: "ok" }
@@ -17,7 +16,6 @@ ok`,
 export const dmProceduresParamsExample: CodeExample = {
     id: 'dm-procedures-params',
     title: 'Typed Parameters',
-    category: 'concept',
     code: `create table dm_proc::users { id: int4, name: utf8 };
 create procedure dm_proc::add_user { id: int4, name: utf8 } as {
   insert dm_proc::users [{ id: $id, name: $name }]
@@ -34,7 +32,6 @@ from dm_proc::users`,
 export const dmProceduresLogicExample: CodeExample = {
     id: 'dm-procedures-logic',
     title: 'The Body Is a Full Script',
-    category: 'concept',
     code: `create procedure dm_proc::stats as {
   let $total = 10;
   let $active = 7;
@@ -49,7 +46,6 @@ call dm_proc::stats()`,
 export const dmProceduresComposeExample: CodeExample = {
     id: 'dm-procedures-compose',
     title: 'Procedures Call Procedures',
-    category: 'concept',
     code: `create procedure dm_proc::wrapper as {
   call dm_proc::health()
 };
@@ -62,7 +58,6 @@ ok`,
 export const dmProceduresTestExample: CodeExample = {
     id: 'dm-procedures-test',
     title: 'Test Procedures and In-Database Tests',
-    category: 'concept',
     code: `create test procedure dm_proc::seed as {
   insert dm_proc::users [{ id: 99, name: "Test" }]
 };
@@ -79,7 +74,6 @@ user_exists | dm_proc   | pass    | 0s       |`,
 export const dmProceduresTestIsolationExample: CodeExample = {
     id: 'dm-procedures-test-isolation',
     title: 'Tests Roll Back - the Seed Row Is Gone',
-    category: 'concept',
     code: `from dm_proc::users filter { id == 99 }`,
     expected: `(empty)`,
   };

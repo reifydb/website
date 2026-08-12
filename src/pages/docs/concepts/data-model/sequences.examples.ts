@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const dmSequencesAutoIncrementExample: CodeExample = {
     id: 'dm-sequences-auto-increment',
     title: 'Auto-Increment Assigns IDs at Insert',
-    category: 'concept',
     code: `create namespace dm_seq;
 create table dm_seq::tickets {
   id: int8 with { auto_increment },
@@ -20,7 +19,6 @@ from dm_seq::tickets`,
 export const dmSequencesAlterExample: CodeExample = {
     id: 'dm-sequences-alter',
     title: 'Reposition a Sequence with ALTER SEQUENCE',
-    category: 'concept',
     code: `alter sequence dm_seq::tickets::id set value 1000;
 insert dm_seq::tickets [{ title: "After the jump" }];
 from dm_seq::tickets`,
@@ -34,7 +32,6 @@ from dm_seq::tickets`,
 export const dmSequencesReturningExample: CodeExample = {
     id: 'dm-sequences-returning',
     title: 'Read Generated IDs Back with RETURNING',
-    category: 'concept',
     code: `insert dm_seq::tickets [{ title: "Another" }] returning { id, title }`,
     expected: `id   | title
 -----+--------

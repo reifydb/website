@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const scriptingCreateTableExample: CodeExample = {
     id: 'scripting-create-table',
     title: 'Create Table',
-    category: 'scripting',
     code: `CREATE NAMESPACE sc_t;
 CREATE TABLE sc_t::users {
   id: int4,
@@ -19,7 +18,6 @@ CREATE TABLE sc_t::users {
 export const scriptingCreateTableAutoIncrementExample: CodeExample = {
     id: 'scripting-create-table-auto-increment',
     title: 'Auto Increment',
-    category: 'scripting',
     code: `CREATE NAMESPACE sc_ai;
 CREATE TABLE sc_ai::users {
   id: int4 WITH { auto_increment },

@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const scEnumsCreateExample: CodeExample = {
     id: 'sc-enums-create',
     title: 'Create an Enum',
-    category: 'scripting',
     code: `create namespace sc_enum;
 create enum sc_enum::status {
   Active,
@@ -19,7 +18,6 @@ export const scEnumsIfNotExistsExample: CodeExample = {
     id: 'sc-enums-if-not-exists',
     title: 'Idempotent Creation',
     description: 'The enum already exists, so nothing is created and the original catalog id is returned.',
-    category: 'scripting',
     code: `create enum if not exists sc_enum::status { Active }`,
     expected: `id    | namespace | sumtype | created
 ------+-----------+---------+--------
@@ -29,7 +27,6 @@ export const scEnumsIfNotExistsExample: CodeExample = {
 export const scEnumsColumnExample: CodeExample = {
     id: 'sc-enums-column',
     title: 'An Enum as a Column Type',
-    category: 'scripting',
     code: `create table sc_enum::tasks { id: int4, status: sc_enum::status };
 insert sc_enum::tasks [
   { id: 1, status: sc_enum::status::Active },
@@ -47,7 +44,6 @@ from sc_enum::tasks`,
 export const scEnumsPayloadExample: CodeExample = {
     id: 'sc-enums-payload',
     title: 'Variants That Carry Data',
-    category: 'scripting',
     code: `create enum sc_enum::shape {
   Circle { radius: float8 },
   Rectangle { width: float8, height: float8 }
@@ -68,7 +64,6 @@ export const scEnumsInsertStringExample: CodeExample = {
     id: 'sc-enums-insert-string',
     title: 'A Plain String Is Not a Variant',
     description: 'The string does not resolve to a variant, so the insert is rejected. The error speaks in terms of the underlying tag column.',
-    category: 'scripting',
     code: `insert sc_enum::tasks [{ id: 4, status: "Active" }]`,
     expectsError: true,
   };
@@ -76,7 +71,6 @@ export const scEnumsInsertStringExample: CodeExample = {
 export const scEnumsFilterExample: CodeExample = {
     id: 'sc-enums-filter',
     title: 'Filter on the Tag Column',
-    category: 'scripting',
     code: `from sc_enum::tasks filter { status_tag == 0 }`,
     expected: `id | status_tag
 ---+-----------
@@ -86,7 +80,6 @@ export const scEnumsFilterExample: CodeExample = {
 export const scEnumsSortExample: CodeExample = {
     id: 'sc-enums-sort',
     title: 'Sort in Declaration Order',
-    category: 'scripting',
     code: `from sc_enum::tasks sort { status_tag: asc }`,
     expected: `id | status_tag
 ---+-----------
@@ -98,7 +91,6 @@ export const scEnumsSortExample: CodeExample = {
 export const scEnumsCastExample: CodeExample = {
     id: 'sc-enums-cast',
     title: 'The Tag Casts Like Any Integer',
-    category: 'scripting',
     code: `from sc_enum::tasks map { id, tag_text: cast(status_tag, utf8) }`,
     expected: `id | tag_text
 ---+---------
@@ -111,7 +103,6 @@ export const scEnumsDropInUseExample: CodeExample = {
     id: 'sc-enums-drop-in-use',
     title: 'Dropping an Enum in Use Fails',
     description: 'The tasks table still has a column typed by the enum, so the drop is rejected with CA_033.',
-    category: 'scripting',
     code: `drop enum sc_enum::status`,
     expectsError: true,
   };
@@ -119,7 +110,6 @@ export const scEnumsDropInUseExample: CodeExample = {
 export const scEnumsDropExample: CodeExample = {
     id: 'sc-enums-drop',
     title: 'Drop the Dependents First',
-    category: 'scripting',
     code: `drop table sc_enum::tasks;
 drop enum sc_enum::status`,
     expected: `namespace | enum   | dropped

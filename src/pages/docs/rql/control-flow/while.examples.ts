@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const cfWhileAccumulateExample: CodeExample = {
     id: 'cf-while-accumulate',
     title: 'Repeat Until a Condition Flips',
-    category: 'rql',
     code: `let $cells = 1;
 let $days = 0;
 while $cells < 100 {
@@ -19,7 +18,6 @@ map { days: $days, cells: $cells }`,
 export const cfWhileZeroIterationsExample: CodeExample = {
     id: 'cf-while-zero-iterations',
     title: 'The Condition Is Checked Before the First Run',
-    category: 'rql',
     code: `let $runs = 0;
 while false { $runs = $runs + 1 };
 map { runs: $runs }`,
@@ -31,7 +29,6 @@ map { runs: $runs }`,
 export const cfWhileWriteExample: CodeExample = {
     id: 'cf-while-write',
     title: 'A while Loop That Writes Rows',
-    category: 'rql',
     code: `create namespace cf_while;
 create table cf_while::backups { week: int4, day: int4 };
 let $week = 1;
@@ -52,7 +49,6 @@ export const cfWhileCapExample: CodeExample = {
     id: 'cf-while-cap',
     title: 'Runaway Loops Are Stopped',
     description: 'A loop that never terminates fails once it exceeds the 10,000-iteration limit, and the whole request rolls back.',
-    category: 'rql',
     code: `let $spins = 0;
 while true { $spins = $spins + 1 }`,
     expectsError: true,

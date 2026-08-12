@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const dmPoliciesReadFilterExample: CodeExample = {
     id: 'dm-policies-read-filter',
     title: 'A Read Policy That Filters Rows',
-    category: 'concept',
     code: `create namespace dm_pol;
 create table dm_pol::documents { id: int4, title: utf8, public: bool };
 insert dm_pol::documents [
@@ -21,7 +20,6 @@ public_only | true`,
 export const dmPoliciesReadMaskExample: CodeExample = {
     id: 'dm-policies-read-mask',
     title: 'A Read Policy That Masks Columns',
-    category: 'concept',
     code: `create table dm_pol::people { name: utf8, email: utf8 };
 create table policy mask_email on dm_pol::people {
   from: { map { name, email: "REDACTED" } }
@@ -34,7 +32,6 @@ mask_email | true`,
 export const dmPoliciesWriteRequireExample: CodeExample = {
     id: 'dm-policies-write-require',
     title: 'A Write Policy That Rejects Invalid Mutations',
-    category: 'concept',
     code: `create table policy no_private_inserts on dm_pol::documents {
   insert: { require { public == true } }
 }`,
@@ -46,7 +43,6 @@ no_private_inserts | true`,
 export const dmPoliciesInspectExample: CodeExample = {
     id: 'dm-policies-inspect',
     title: 'Inspect Policies via the System Catalog',
-    category: 'concept',
     code: `from system::policies
 filter { target_namespace == "dm_pol" }
 map { name, target_type, target_shape, enabled }`,
@@ -60,7 +56,6 @@ public_only        | table       | documents    | true`,
 export const dmPoliciesDisableExample: CodeExample = {
     id: 'dm-policies-disable',
     title: 'Disable and Re-Enable a Policy',
-    category: 'concept',
     code: `alter table policy public_only disable`,
     expected: `policy      | altered
 ------------+--------
@@ -70,7 +65,6 @@ public_only | true`,
 export const dmPoliciesEnableExample: CodeExample = {
     id: 'dm-policies-enable',
     title: 'Re-Enable It',
-    category: 'concept',
     code: `alter table policy public_only enable`,
     expected: `policy      | altered
 ------------+--------
@@ -80,7 +74,6 @@ public_only | true`,
 export const dmPoliciesDropExample: CodeExample = {
     id: 'dm-policies-drop',
     title: 'Drop a Policy',
-    category: 'concept',
     code: `drop table policy no_private_inserts`,
     expected: `policy             | dropped
 -------------------+--------

@@ -4,7 +4,6 @@ export const heroExamples: CodeExample[] = [
 {
     id: 'guide-built-in-testing',
     title: 'Built-in Testing',
-    category: 'guide',
     code: `CREATE NAMESPACE IF NOT EXISTS tp;
 CREATE TABLE IF NOT EXISTS tp::users { id: int4, name: utf8 };
 

@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const snsCreateNamespaceExample: CodeExample = {
     id: 'sns-create-namespace',
     title: 'Create a Namespace',
-    category: 'scripting',
     code: `create namespace sns`,
     expected: `id    | namespace | created
 ------+-----------+--------
@@ -13,7 +12,6 @@ export const snsCreateNamespaceExample: CodeExample = {
 export const snsCreateTableExample: CodeExample = {
     id: 'sns-create-table',
     title: 'Create a Table Inside the Namespace',
-    category: 'scripting',
     code: `create table sns::users {
   id: int4,
   name: utf8,
@@ -27,7 +25,6 @@ export const snsCreateTableExample: CodeExample = {
 export const snsUseTableExample: CodeExample = {
     id: 'sns-use-table',
     title: 'Every Reference Uses the Qualified Name',
-    category: 'scripting',
     code: `insert sns::users [{ id: 1, name: "Ada", active: true }];
 from sns::users`,
     expected: `id | name | active
@@ -38,7 +35,6 @@ from sns::users`,
 export const snsEnumExample: CodeExample = {
     id: 'sns-enum',
     title: 'Other Object Kinds Live in Namespaces Too',
-    category: 'scripting',
     code: `create enum sns::priority { Low, Medium, High }`,
     expected: `id    | namespace | sumtype  | created
 ------+-----------+----------+--------
@@ -48,7 +44,6 @@ export const snsEnumExample: CodeExample = {
 export const snsNestedExample: CodeExample = {
     id: 'sns-nested',
     title: 'Namespaces Nest',
-    category: 'scripting',
     code: `create namespace sns::internal`,
     expected: `id    | namespace     | created
 ------+---------------+--------
@@ -58,7 +53,6 @@ export const snsNestedExample: CodeExample = {
 export const snsNestedTableExample: CodeExample = {
     id: 'sns-nested-table',
     title: 'Objects in a Nested Namespace Use the Full Path',
-    category: 'scripting',
     code: `create table sns::internal::audit { id: int4, action: utf8 };
 insert sns::internal::audit [{ id: 1, action: "login" }];
 from sns::internal::audit`,
@@ -71,7 +65,6 @@ export const snsIfNotExistsExample: CodeExample = {
     id: 'sns-if-not-exists',
     title: 'Idempotent Creation with if not exists',
     description: 'The namespace already exists, so the confirmation reports created: false and returns the existing catalog id.',
-    category: 'scripting',
     code: `create namespace sns if not exists`,
     expected: `id    | namespace | created
 ------+-----------+--------
@@ -82,7 +75,6 @@ export const snsMissingNamespaceExample: CodeExample = {
     id: 'sns-missing-namespace',
     title: 'The Namespace Must Exist First',
     description: 'Creating an object in a namespace that does not exist fails with CA_002.',
-    category: 'scripting',
     code: `create table sns_ghost::events { id: int4 }`,
     expectsError: true,
   };
@@ -90,7 +82,6 @@ export const snsMissingNamespaceExample: CodeExample = {
 export const snsSystemCatalogExample: CodeExample = {
     id: 'sns-system-catalog',
     title: 'Namespaces in the System Catalog',
-    category: 'scripting',
     code: `from system::namespaces
 filter { name == "sns::internal" }`,
     expected: `id    | name          | local_name | parent_id

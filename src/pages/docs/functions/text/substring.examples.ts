@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const textSubstringPrefixExample: CodeExample = {
     id: 'text-substring-prefix',
     title: 'Extract prefix',
-    category: 'function',
     code: `from app::codes
 extend { prefix: text::substring(code, 0, 3) }`,
     expected: `id | code   | prefix
@@ -17,7 +16,6 @@ extend { prefix: text::substring(code, 0, 3) }`,
 export const textSubstringFirstExample: CodeExample = {
     id: 'text-substring-first',
     title: 'Get first characters',
-    category: 'function',
     code: `from app::products
 extend { initial: text::substring(name, 0, 1) }`,
     expected: `id | name        | sku     | price | category    | initial
@@ -32,7 +30,6 @@ extend { initial: text::substring(name, 0, 1) }`,
 export const textSubstringMiddleExample: CodeExample = {
     id: 'text-substring-middle',
     title: 'Extract middle portion',
-    category: 'function',
     code: `from app::identifiers
 extend { middle: text::substring(code, 3, 7) }`,
     expected: `id | code     | middle

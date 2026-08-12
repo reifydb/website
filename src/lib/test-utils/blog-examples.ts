@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import type { WasmDB } from '@reifydb/wasm';
-import { createTestDB, executeExample } from './wasm-test-db';
+import { createTestDB, verifyExample } from './wasm-test-db';
+import type { CodeExample } from '../examples/types';
 import { blogPosts, type BlogPost } from '../../data/blog-data';
 
 export interface BlogExample {
@@ -52,7 +53,7 @@ export function extractRqlExamples(post: BlogPost): BlogExample[] {
 
 export function verifyBlogExamples(
   sequence: string,
-  expectedExampleCount: number
+  examples: CodeExample[]
 ): void {
   const post = blogPosts.find((candidate) => candidate.sequence === sequence);
 
@@ -62,7 +63,7 @@ export function verifyBlogExamples(
     );
   }
 
-  const examples = extractRqlExamples(post);
+  const fences = extractRqlExamples(post);
 
   describe(`blog ${post.sequence} ${post.slug}`, () => {
     let db: WasmDB;
@@ -71,16 +72,30 @@ export function verifyBlogExamples(
       db = await createTestDB();
     });
 
-    it(`extracts exactly ${expectedExampleCount} runnable examples`, () => {
-      expect(examples.length).toBe(expectedExampleCount);
+    it('has one examples.ts entry per content.md fence', () => {
+      expect(
+        examples.length,
+        `${post.slug}: content.md has ${fences.length} \`\`\`rql fences but examples.ts exports ${examples.length} entries`
+      ).toBe(fences.length);
     });
 
-    it.each(examples)('$id (body line $bodyLine)', (example) => {
-      const result = executeExample(db, example.code);
-      expect(
-        result.success,
-        `${post.slug} example ${example.ordinal} at body line ${example.bodyLine} failed:\n${result.error}\n\ncode:\n${example.code}`
-      ).toBe(true);
-    });
+    if (fences.length > 0) {
+      it.each(fences)('$id (body line $bodyLine) mirrors examples.ts', (fence) => {
+        expect(
+          fence.code,
+          `${post.slug}: fence ${fence.ordinal} at body line ${fence.bodyLine} drifted from examples.ts entry ${fence.ordinal}; content.md is the display source, examples.ts must mirror it verbatim`
+        ).toBe(examples[fence.ordinal - 1]?.code);
+      });
+    }
+
+    if (examples.length > 0) {
+      it.each(examples)('$id - $title', (example) => {
+        const result = verifyExample(db, example);
+        expect(
+          result.success,
+          `${post.slug} example ${example.id} failed:\n${result.error}`
+        ).toBe(true);
+      });
+    }
   });
 }

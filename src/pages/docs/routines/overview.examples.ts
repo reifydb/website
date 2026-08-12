@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const routinesOverviewFunctionCallExample: CodeExample = {
     id: 'routines-overview-function-call',
     title: 'Functions Compute Values in Expressions',
-    category: 'concept',
     code: `MAP {
   distance: math::abs(-42),
   label: text::upper('reify')
@@ -16,7 +15,6 @@ export const routinesOverviewFunctionCallExample: CodeExample = {
 export const routinesOverviewProcedureRoundtripExample: CodeExample = {
     id: 'routines-overview-procedure-roundtrip',
     title: 'Procedures Run Statements with CALL',
-    category: 'concept',
     code: `CREATE NAMESPACE rt_ov;
 CREATE TABLE rt_ov::audit { note: utf8 };
 CREATE PROCEDURE rt_ov::log { note: utf8 } AS {

@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const transformPipelineExample: CodeExample = {
     id: 'transform-pipeline',
     title: 'Pipeline Processing',
-    category: 'rql',
     code: `from app::orders
 filter { status == "completed" }
 aggregate {revenue: math::sum(total)} by {region}
@@ -19,14 +18,12 @@ West   | 55.25`,
 export const transformFromExample: CodeExample = {
     id: 'transform-from',
     title: 'from',
-    category: 'rql',
     code: `from app::users`,
   };
 
 export const transformFilterExample: CodeExample = {
     id: 'transform-filter',
     title: 'filter',
-    category: 'rql',
     code: `from app::users
 filter { age >= 18 }`,
   };
@@ -34,7 +31,6 @@ filter { age >= 18 }`,
 export const transformExtendExample: CodeExample = {
     id: 'transform-extend',
     title: 'extend',
-    category: 'rql',
     code: `from app::employees
 extend { bonus: salary * 0.1 }`,
     expected: `id | dept_id | salary | bonus
@@ -49,7 +45,6 @@ extend { bonus: salary * 0.1 }`,
 export const transformSortExample: CodeExample = {
     id: 'transform-sort',
     title: 'sort',
-    category: 'rql',
     code: `from app::users
 sort {created_at}`,
   };
@@ -57,7 +52,6 @@ sort {created_at}`,
 export const transformTakeExample: CodeExample = {
     id: 'transform-take',
     title: 'take',
-    category: 'rql',
     code: `from app::users
 sort {created_at}
 take 10`,
@@ -66,7 +60,6 @@ take 10`,
 export const transformDistinctExample: CodeExample = {
     id: 'transform-distinct',
     title: 'distinct',
-    category: 'rql',
     code: `from app::products
 distinct { category }`,
     expected: `id | name        | sku     | price | category
@@ -79,7 +72,6 @@ distinct { category }`,
 export const transformAggregateExample: CodeExample = {
     id: 'transform-aggregate',
     title: 'aggregate',
-    category: 'rql',
     code: `from app::orders
 aggregate {math::sum(total)} by {region}`,
     expected: `region | math::sum(total)

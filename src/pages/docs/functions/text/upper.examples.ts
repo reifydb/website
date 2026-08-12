@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const textUpperNamesExample: CodeExample = {
     id: 'text-upper-names',
     title: 'Format display names',
-    category: 'function',
     code: `from app::users
 extend { upper_name: text::upper(name) }`,
   };
@@ -11,7 +10,6 @@ extend { upper_name: text::upper(name) }`,
 export const textUpperSkuExample: CodeExample = {
     id: 'text-upper-sku',
     title: 'Uppercase code identifiers',
-    category: 'function',
     code: `from app::products
 extend { sku_upper: text::upper(sku) }`,
     expected: `id | name        | sku     | price | category    | sku_upper

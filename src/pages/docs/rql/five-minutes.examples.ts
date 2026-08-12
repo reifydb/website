@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const rql5PipelineExample: CodeExample = {
     id: 'rql5-pipeline',
     title: 'A Complete Pipeline',
-    category: 'rql',
     code: `from app::users
 filter { active == true }
 map { name, email }
@@ -19,7 +18,6 @@ Eve   | eve@example.com`,
 export const rql5InlineExample: CodeExample = {
     id: 'rql5-inline',
     title: 'Query Inline Data',
-    category: 'rql',
     code: `from [
   { name: "Ada", born: 1815 },
   { name: "Grace", born: 1906 },
@@ -36,7 +34,6 @@ sort { born: asc }`,
 export const rql5MapComputedExample: CodeExample = {
     id: 'rql5-map-computed',
     title: 'Shape Rows with map',
-    category: 'rql',
     code: `from [
   { item: "keyboard", amount: 89.0 },
   { item: "monitor", amount: 349.5 },
@@ -54,7 +51,6 @@ monitor | 349.5  | 354.0`,
 export const rql5AggregateExample: CodeExample = {
     id: 'rql5-aggregate',
     title: 'Aggregate by Group',
-    category: 'rql',
     code: `from [
   { region: "north", amount: 120.0 },
   { region: "north", amount: 80.0 },
@@ -71,7 +67,6 @@ south  | 200.5 | 1`,
 export const rql5NonePropagatesExample: CodeExample = {
     id: 'rql5-none-propagates',
     title: 'none Propagates Through Arithmetic',
-    category: 'rql',
     code: `from [
   { id: 1, score: 10 },
   { id: 2, score: none }
@@ -87,7 +82,6 @@ sort { id: asc }`,
 export const rql5NoneFilterExample: CodeExample = {
     id: 'rql5-none-filter',
     title: 'Filter Out Missing Values',
-    category: 'rql',
     code: `from [
   { id: 1, score: 10 },
   { id: 2, score: none }
@@ -101,7 +95,6 @@ filter { is::some(score) }`,
 export const rql5LetExample: CodeExample = {
     id: 'rql5-let',
     title: 'Variables with let',
-    category: 'rql',
     code: `let $threshold = 30;
 from app::users
 filter { age >= $threshold }

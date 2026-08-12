@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const dmRingBuffersPartitionExample: CodeExample = {
     id: 'dm-ring-buffers-partition',
     title: 'One Buffer per Partition',
-    category: 'concept',
     code: `create namespace dm_rbp;
 create ringbuffer dm_rbp::region_events {
   id: int4,
@@ -26,7 +25,6 @@ from dm_rbp::region_events`,
 export const dmRingBuffersCreateExample: CodeExample = {
     id: 'dm-ring-buffers-create',
     title: 'Create a Ring Buffer and Fill It to Capacity',
-    category: 'concept',
     code: `create namespace dm_rb;
 create ringbuffer dm_rb::recent_logins {
   user_id: int4,
@@ -48,7 +46,6 @@ from dm_rb::recent_logins`,
 export const dmRingBuffersEvictExample: CodeExample = {
     id: 'dm-ring-buffers-evict',
     title: 'One More Insert Evicts the Oldest Row',
-    category: 'concept',
     code: `insert dm_rb::recent_logins [{ user_id: 4, at: "09:20" }];
 from dm_rb::recent_logins`,
     expected: `user_id | at
@@ -61,7 +58,6 @@ from dm_rb::recent_logins`,
 export const dmRingBuffersUpdateExample: CodeExample = {
     id: 'dm-ring-buffers-update',
     title: 'Ring Buffer Rows Are Mutable',
-    category: 'concept',
     code: `update dm_rb::recent_logins { at: "09:21" } filter { user_id == 4 }`,
     expected: `namespace | ringbuffer    | updated
 ----------+---------------+--------
@@ -71,7 +67,6 @@ dm_rb     | recent_logins | 1`,
 export const dmRingBuffersDeleteExample: CodeExample = {
     id: 'dm-ring-buffers-delete',
     title: 'Delete Without Waiting for Eviction',
-    category: 'concept',
     code: `delete dm_rb::recent_logins filter { user_id == 2 };
 from dm_rb::recent_logins`,
     expected: `user_id | at

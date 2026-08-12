@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const faqExtendDuplicateColumnExample: CodeExample = {
   id: 'faq-extend-duplicate-column',
   title: 'extend on an Existing Column Name',
-  category: 'rql',
   expectsError: true,
   code: `from app::orders
 extend { total: total * 2 }`,
@@ -12,7 +11,6 @@ extend { total: total * 2 }`,
 export const faqCastUnsupportedPairExample: CodeExample = {
   id: 'faq-cast-unsupported-pair',
   title: 'Casting Between Incompatible Types',
-  category: 'rql',
   expectsError: true,
   code: `map { cast(true, date) }`,
 };
@@ -20,7 +18,6 @@ export const faqCastUnsupportedPairExample: CodeExample = {
 export const faqBareFromOrderExample: CodeExample = {
   id: 'faq-bare-from-order',
   title: 'Scanning a Table with No sort',
-  category: 'rql',
   code: `from app::orders`,
   expected: `id | total  | status    | region | created_at                     | order_date
 ---+--------+-----------+--------+--------------------------------+-----------

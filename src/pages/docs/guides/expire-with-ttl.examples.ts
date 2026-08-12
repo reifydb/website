@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const ttlCreateTableExample: CodeExample = {
   id: 'ttl-create-table',
   title: 'A Session Table That Cleans Itself Up',
-  category: 'guide',
   code: `create namespace ttlg;
 create table ttlg::sessions { id: int4, user_id: int4, token: utf8 } with {
   row: { ttl: { duration: "1h", mode: drop } }
@@ -16,7 +15,6 @@ create table ttlg::sessions { id: int4, user_id: int4, token: utf8 } with {
 export const ttlCreateViewExample: CodeExample = {
   id: 'ttl-create-view',
   title: 'A View That Sees Expiry Too',
-  category: 'guide',
   code: `create transactional view ttlg::active_sessions { id: int4, user_id: int4 } as {
   from ttlg::sessions
   map { id, user_id }
@@ -29,7 +27,6 @@ export const ttlCreateViewExample: CodeExample = {
 export const ttlInsertExample: CodeExample = {
   id: 'ttl-insert',
   title: 'Insert Sessions',
-  category: 'guide',
   code: `insert ttlg::sessions [
   { id: 1, user_id: 101, token: "tok_abc123" },
   { id: 2, user_id: 102, token: "tok_def456" },
@@ -43,7 +40,6 @@ ttlg      | sessions | 3`,
 export const ttlQueryTableExample: CodeExample = {
   id: 'ttl-query-table',
   title: 'Sessions Are There Until the TTL Elapses',
-  category: 'guide',
   code: `from ttlg::sessions
 sort { id: asc }`,
   expected: `id | user_id | token
@@ -56,7 +52,6 @@ sort { id: asc }`,
 export const ttlQueryViewExample: CodeExample = {
   id: 'ttl-query-view',
   title: 'The View Agrees',
-  category: 'guide',
   code: `from ttlg::active_sessions
 sort { id: asc }`,
   expected: `id | user_id

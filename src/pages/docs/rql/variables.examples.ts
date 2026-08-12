@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const rqlVariablesLetExample: CodeExample = {
     id: 'rql-variables-let',
     title: 'Bind a Value Once, Use It in the Pipeline',
-    category: 'rql',
     code: `create namespace cf_var;
 create table cf_var::items { id: int4, name: utf8, stock: int4 };
 insert cf_var::items [
@@ -25,7 +24,6 @@ washer | 45`,
 export const rqlVariablesReassignExample: CodeExample = {
     id: 'rql-variables-reassign',
     title: 'Reassign After Declaring',
-    category: 'rql',
     code: `let $restocked = 0;
 $restocked = $restocked + 5;
 $restocked = $restocked + 3;
@@ -39,7 +37,6 @@ export const rqlVariablesUndeclaredExample: CodeExample = {
     id: 'rql-variables-undeclared',
     title: 'Assignment Without let Is an Error',
     description: 'A variable must be declared with let before it can be assigned to.',
-    category: 'rql',
     code: `$tally = 1`,
     expectsError: true,
   };
@@ -47,7 +44,6 @@ export const rqlVariablesUndeclaredExample: CodeExample = {
 export const rqlVariablesFrameExample: CodeExample = {
     id: 'rql-variables-frame',
     title: 'Frame Variables Hold Whole Results',
-    category: 'rql',
     code: `let $items = from cf_var::items;
 from $items
 filter { stock < 50 }
@@ -62,7 +58,6 @@ washer | 45`,
 export const rqlVariablesFrameFieldExample: CodeExample = {
     id: 'rql-variables-frame-field',
     title: 'Read a Field from a Single-Row Frame',
-    category: 'rql',
     code: `create table cf_var::settings { low_stock: int4, audit: bool };
 insert cf_var::settings [{ low_stock: 50, audit: true }];
 let $cfg = from cf_var::settings;
@@ -81,7 +76,6 @@ export const rqlVariablesScopeExample: CodeExample = {
     id: 'rql-variables-scope',
     title: 'Blocks Create Scopes',
     description: 'The inner let declares a new variable that shadows the outer one inside the block; the outer binding is unchanged afterwards.',
-    category: 'rql',
     code: `let $label = "outer";
 if true {
   let $label = "inner"

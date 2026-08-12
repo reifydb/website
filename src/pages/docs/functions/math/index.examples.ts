@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const mathOverviewQuickExample: CodeExample = {
     id: 'math-overview-quick',
     title: 'Math Module Quick Example',
-    category: 'function',
     code: `from app::sales
 aggregate {
   total_revenue: math::sum(amount),

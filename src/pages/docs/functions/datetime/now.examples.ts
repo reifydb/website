@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const datetimeNowExample: CodeExample = {
     id: 'datetime-now',
     title: 'Get current datetime',
-    category: 'function',
     code: `map {datetime::now()}`,
   };
 

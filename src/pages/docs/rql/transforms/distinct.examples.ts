@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const distinctBasicExample: CodeExample = {
     id: 'distinct-basic',
     title: 'Distinct Basic',
-    category: 'rql',
     code: `from app::products
 distinct { category }`,
     expected: `id | name        | sku     | price | category
@@ -16,7 +15,6 @@ distinct { category }`,
 export const distinctMultiExample: CodeExample = {
     id: 'distinct-multi',
     title: 'Distinct Multiple Columns',
-    category: 'rql',
     code: `from app::orders
 distinct { region, status }`,
   };

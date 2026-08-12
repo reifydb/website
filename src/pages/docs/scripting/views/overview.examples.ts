@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const scriptingDeferredViewExample: CodeExample = {
     id: 'scripting-deferred-view',
     title: 'Deferred View',
-    category: 'scripting',
     code: `CREATE NAMESPACE vw_d;
 CREATE TABLE vw_d::employees {
   id: int4,
@@ -28,7 +27,6 @@ INSERT vw_d::employees [
 export const scriptingDeferredViewQueryExample: CodeExample = {
     id: 'scripting-deferred-view-query',
     title: 'Query the Deferred View',
-    category: 'scripting',
     code: `FROM vw_d::active_employees
 sort { id: asc }`,
     expected: `id | name
@@ -40,7 +38,6 @@ sort { id: asc }`,
 export const scriptingTransactionalViewExample: CodeExample = {
     id: 'scripting-transactional-view',
     title: 'Transactional View',
-    category: 'scripting',
     code: `CREATE NAMESPACE vw_t;
 CREATE TABLE vw_t::users {
   id: int4,
@@ -60,7 +57,6 @@ CREATE VIEW vw_t::active_users {
 export const scriptingTransactionalViewInsertExample: CodeExample = {
     id: 'scripting-transactional-view-insert',
     title: 'Write to the Source Table',
-    category: 'scripting',
     code: `INSERT vw_t::users [
   { id: 1, name: 'Alice', active: true },
   { id: 2, name: 'Bob', active: false }
@@ -70,7 +66,6 @@ export const scriptingTransactionalViewInsertExample: CodeExample = {
 export const scriptingTransactionalViewQueryExample: CodeExample = {
     id: 'scripting-transactional-view-query',
     title: 'Query the Transactional View',
-    category: 'scripting',
     code: `FROM vw_t::active_users
 sort { id: asc }`,
     expected: `id | name

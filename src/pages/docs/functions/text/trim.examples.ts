@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const textTrimInputExample: CodeExample = {
     id: 'text-trim-input',
     title: 'Clean user input',
-    category: 'function',
     code: `from app::inputs
 extend { clean_value: text::trim(value) }`,
     expected: `id | value           | clean_value
@@ -17,7 +16,6 @@ extend { clean_value: text::trim(value) }`,
 export const textTrimFilterExample: CodeExample = {
     id: 'text-trim-filter',
     title: 'Filter non-empty strings',
-    category: 'function',
     code: `from app::inputs
 filter { text::length(value) > 0 }`,
     expected: `id | value

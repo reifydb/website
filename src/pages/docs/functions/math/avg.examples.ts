@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const mathAvgByCategoryExample: CodeExample = {
     id: 'math-avg-by-category',
     title: 'Calculate average price',
-    category: 'function',
     code: `from app::products
 aggregate {math::avg(price)} by {category}`,
     expected: `category    | math::avg(price)
@@ -16,7 +15,6 @@ Electronics | 39.99`,
 export const mathAvgWithTotalExample: CodeExample = {
     id: 'math-avg-with-total',
     title: 'Average with total',
-    category: 'function',
     code: `from app::sales
 aggregate {
   avg_sale: math::avg(amount),

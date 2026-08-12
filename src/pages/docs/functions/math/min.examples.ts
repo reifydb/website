@@ -3,7 +3,6 @@ import type { CodeExample } from '@/lib/examples/types';
 export const mathMinByCategoryExample: CodeExample = {
     id: 'math-min-by-category',
     title: 'Find lowest price',
-    category: 'function',
     code: `from app::products
 aggregate {math::min(price)} by {category}`,
     expected: `category    | math::min(price)
@@ -16,7 +15,6 @@ Electronics | 29.99`,
 export const mathMinMaxTogetherExample: CodeExample = {
     id: 'math-min-max-together',
     title: 'Min and max together',
-    category: 'function',
     code: `from app::sales
 aggregate {
   lowest: math::min(amount),
