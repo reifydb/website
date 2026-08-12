@@ -29,7 +29,7 @@ export function WalEntry({ post, isOpen, onToggle }: WalEntryProps) {
     <div
       ref={rowRef}
       id={`entry-${post.slug}`}
-      className="border-2 border-border-default bg-bg-secondary shadow-[4px_4px_0_var(--color-border-default)] scroll-mt-24"
+      className={`border-2 border-l-[6px] border-border-default bg-bg-secondary shadow-[4px_4px_0_var(--color-border-default)] scroll-mt-24 transition-colors duration-200 ${isOpen ? 'border-l-primary' : ''}`}
     >
       <button
         type="button"
@@ -60,9 +60,7 @@ export function WalEntry({ post, isOpen, onToggle }: WalEntryProps) {
         </span>
       </button>
 
-      <div
-        className={`ml-3 sm:ml-4 border-l-[3px] pl-5 sm:pl-8 pr-3 sm:pr-4 pb-8 transition-colors duration-200 ${isOpen ? 'border-primary' : 'border-border-default'}`}
-      >
+      <div className="px-3 sm:px-4 pb-8">
         {isOpen ? (
           <div className="animate-fade-in">
             <div className="font-body">
