@@ -22,7 +22,7 @@ export interface BlogPost extends BlogPostMeta {
   headings: BlogPostHeading[];
 }
 
-const modules = import.meta.glob('../content/blog/*.md', {
+const modules = import.meta.glob('../pages/blog/*/content.md', {
   query: '?raw',
   import: 'default',
   eager: true,
@@ -52,10 +52,10 @@ function extractHeadings(content: string): BlogPostHeading[] {
 }
 
 function extractSequence(path: string): string {
-  const match = /\/(\d{3,})_[^/]+\.md$/.exec(path);
+  const match = /\/(\d{3,})\/content\.md$/.exec(path);
   if (!match) {
     throw new Error(
-      `blog post filename must start with a sequence number, e.g. 001_slug.md: ${path}`
+      `blog post must live in a sequence-numbered directory, e.g. 001/content.md: ${path}`
     );
   }
   return match[1];

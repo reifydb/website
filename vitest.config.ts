@@ -26,7 +26,7 @@ export default defineConfig({
     ],
   },
   test: {
-    include: ['src/**/*.test.ts'],
+    include: ['src/**/*.test.ts', 'src/**/test.ts'],
     testTimeout: 30000,
     browser: {
       enabled: true,
