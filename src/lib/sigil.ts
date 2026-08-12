@@ -2,13 +2,14 @@ const MASK = (1n << 64n) - 1n;
 const C1 = 0x87c37b91114253d5n;
 const C2 = 0x4cf5ad432745937fn;
 
-const BOARD_WIDTH = 17;
-const BOARD_HEIGHT = 9;
-const GLYPHS = ' .o+=*BOX@%&#/^';
+export const BITS_PER_ROW = 32;
+export const ROWS = 4;
+export const TOTAL_BITS = BITS_PER_ROW * ROWS;
 
 export interface Sigil {
-  rows: string[];
+  cells: number[][];
   fingerprint: string;
+  setBits: number;
 }
 
 function rotl(x: bigint, r: bigint): bigint {
@@ -108,54 +109,49 @@ function digest(seed: string): Uint8Array {
   return new Uint8Array([...writeLe64(h1), ...writeLe64(h2)]);
 }
 
-function clamp(value: number, max: number): number {
-  return value < 0 ? 0 : value > max ? max : value;
-}
-
 export function sigil(seed: string): Sigil {
   const bytes = digest(seed);
-  const counts = new Array<number>(BOARD_WIDTH * BOARD_HEIGHT).fill(0);
+  const bits: number[] = [];
+  let setBits = 0;
 
-  let x = (BOARD_WIDTH - 1) / 2;
-  let y = (BOARD_HEIGHT - 1) / 2;
-  const start = y * BOARD_WIDTH + x;
-
-  for (const byte of bytes) {
-    for (let step = 0; step < 4; step++) {
-      const bits = (byte >> (step * 2)) & 0b11;
-      x = clamp(x + (bits & 0b01 ? 1 : -1), BOARD_WIDTH - 1);
-      y = clamp(y + (bits & 0b10 ? 1 : -1), BOARD_HEIGHT - 1);
-      counts[y * BOARD_WIDTH + x]++;
-    }
+  for (let index = 0; index < TOTAL_BITS; index++) {
+    const bit = (bytes[index >> 3] >> (index & 7)) & 1;
+    bits.push(bit);
+    setBits += bit;
   }
 
-  const end = y * BOARD_WIDTH + x;
-  const cells = counts.map((count, index) => {
-    if (index === end) return 'E';
-    if (index === start) return 'S';
-    return GLYPHS[Math.min(count, GLYPHS.length - 1)];
-  });
+  const neighbours = (row: number, column: number): number => {
+    let count = 0;
+    for (let dy = -1; dy <= 1; dy++) {
+      for (let dx = -1; dx <= 1; dx++) {
+        const y = row + dy;
+        const x = column + dx;
+        if (y < 0 || y >= ROWS || x < 0 || x >= BITS_PER_ROW) continue;
+        count += bits[y * BITS_PER_ROW + x];
+      }
+    }
+    return count;
+  };
 
-  const rows: string[] = [];
-  for (let row = 0; row < BOARD_HEIGHT; row++) {
-    rows.push(cells.slice(row * BOARD_WIDTH, (row + 1) * BOARD_WIDTH).join(''));
+  const cells: number[][] = [];
+  for (let row = 0; row < ROWS; row++) {
+    const line: number[] = [];
+    for (let column = 0; column < BITS_PER_ROW; column++) {
+      if (!bits[row * BITS_PER_ROW + column]) {
+        line.push(0);
+        continue;
+      }
+      const density = neighbours(row, column);
+      line.push(density <= 2 ? 1 : density <= 4 ? 2 : 3);
+    }
+    cells.push(line);
   }
 
   const fingerprint = Array.from(bytes.slice(0, 3))
     .map((b) => b.toString(16).padStart(2, '0'))
     .join('');
 
-  return { rows, fingerprint };
-}
-
-function border(label: string): string {
-  const padded = ` ${label} `;
-  if (padded.length > BOARD_WIDTH) {
-    throw new Error(`sigil label does not fit in ${BOARD_WIDTH} columns: ${label}`);
-  }
-  const left = Math.floor((BOARD_WIDTH - padded.length) / 2);
-  const right = BOARD_WIDTH - padded.length - left;
-  return `+${'-'.repeat(left)}${padded}${'-'.repeat(right)}+`;
+  return { cells, fingerprint, setBits };
 }
 
 export function postSeed(title: string, slug: string, date: string): string {
@@ -163,17 +159,9 @@ export function postSeed(title: string, slug: string, date: string): string {
 }
 
 export function sigilLabel(sequence: string): string {
-  return `REIFYDB ${sequence}`;
+  return `BLOOM ${sequence}`;
 }
 
 export function ogImagePath(slug: string): string {
   return `/blog/og/${slug}.png`;
-}
-
-export function frameSigil(entry: Sigil, label: string): string[] {
-  return [
-    border(label),
-    ...entry.rows.map((row) => `|${row}|`),
-    border(entry.fingerprint),
-  ];
 }

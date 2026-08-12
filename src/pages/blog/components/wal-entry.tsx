@@ -84,12 +84,21 @@ export function WalEntry({ post, isOpen, onToggle }: WalEntryProps) {
             </div>
           </div>
         ) : (
-          <div className="animate-fade-in">
-            <div className="flex flex-col-reverse sm:flex-row sm:items-start gap-4 sm:gap-8">
-              <p className="text-text-secondary leading-relaxed max-w-2xl">
-                {post.excerpt}
-              </p>
-              <PostSigil lines={post.sigil} />
+          <div
+            onClick={handleToggle}
+            aria-hidden="true"
+            className="animate-fade-in cursor-pointer"
+          >
+            <p className="text-text-secondary leading-relaxed max-w-2xl">
+              {post.excerpt}
+            </p>
+
+            <div className="mt-8 flex justify-center">
+              <PostSigil
+                cells={post.sigilCells}
+                label={post.sigilLabel}
+                fingerprint={post.fingerprint}
+              />
             </div>
 
             {post.headings.length > 0 && (
@@ -112,7 +121,7 @@ export function WalEntry({ post, isOpen, onToggle }: WalEntryProps) {
               </div>
             )}
 
-            <div className="mt-6 flex flex-wrap gap-x-8 gap-y-2 font-mono text-xs text-text-muted">
+            <div className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-2 font-mono text-xs text-text-muted">
               <span>
                 <span className="label-uppercase">author</span>{' '}
                 <span className="text-text-secondary">{post.author}</span>
@@ -134,14 +143,6 @@ export function WalEntry({ post, isOpen, onToggle }: WalEntryProps) {
             <div className="mt-4">
               <TagChips tags={post.tags} />
             </div>
-
-            <button
-              type="button"
-              onClick={handleToggle}
-              className="inline-flex items-center gap-2 mt-6 px-5 py-3 font-mono text-sm label-uppercase border-2 border-border-default bg-bg-secondary text-text-primary shadow-[4px_4px_0_var(--color-border-default)] hover:border-primary hover:text-primary hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_var(--color-primary)] transition-all duration-150 cursor-pointer"
-            >
-              Read entry <span aria-hidden="true">&rarr;</span>
-            </button>
           </div>
         )}
       </div>

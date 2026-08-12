@@ -1,11 +1,5 @@
 import fm from 'front-matter';
-import {
-  sigil,
-  frameSigil,
-  postSeed,
-  sigilLabel,
-  ogImagePath,
-} from '@/lib/randomart';
+import { sigil, postSeed, sigilLabel, ogImagePath } from '@/lib/sigil';
 
 export const SITE_ORIGIN = 'https://reifydb.com';
 export const BRAND_TAG = 'reifydb';
@@ -31,7 +25,8 @@ export interface BlogPost extends BlogPostMeta {
   lsn: string;
   size: string;
   headings: BlogPostHeading[];
-  sigil: string[];
+  sigilCells: number[][];
+  sigilLabel: string;
   fingerprint: string;
   ogImage: string;
 }
@@ -114,7 +109,8 @@ export const blogPosts: BlogPost[] = Object.entries(modules)
       lsn: `#${sequence}`,
       size: formatSize(body),
       headings: extractHeadings(body),
-      sigil: frameSigil(art, sigilLabel(sequence)),
+      sigilCells: art.cells,
+      sigilLabel: sigilLabel(sequence),
       fingerprint: art.fingerprint,
       ogImage: ogImagePath(attributes.slug),
     };

@@ -3,13 +3,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import fm from 'front-matter';
 import { GlobalFonts, createCanvas } from '@napi-rs/canvas';
-import {
-  sigil,
-  frameSigil,
-  postSeed,
-  sigilLabel,
-  ogImagePath,
-} from '../src/lib/randomart.ts';
+import { sigil, postSeed, sigilLabel, ogImagePath } from '../src/lib/sigil.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const POSTS_DIR = join(ROOT, 'src', 'pages', 'blog');
@@ -19,6 +13,9 @@ const WIDTH = 1200;
 const HEIGHT = 630;
 const PAD = 64;
 const PANEL_OFFSET = 10;
+const TITLE_TOP = 150;
+const META_TOP = 262;
+const TAGS_TOP = 300;
 
 const BG = '#f7f7f8';
 const PANEL = '#ffffff';
@@ -26,6 +23,15 @@ const BORDER = '#18181b';
 const TEXT = '#18181b';
 const MUTED = '#71717a';
 const PRIMARY = '#7e85f2';
+const PRIMARY_LIGHT = '#6366f1';
+const PRIMARY_DARK = '#2e39df';
+const SUBTLE = '#d4d4d8';
+
+const SHADES = [SUBTLE, PRIMARY, PRIMARY_LIGHT, PRIMARY_DARK];
+
+const CELL = 22;
+const GAP = 8;
+const INSET = 34;
 
 const MONO = 'JetBrains Mono Variable';
 const DISPLAY = 'Archivo Black';
@@ -86,9 +92,16 @@ function hardPanel(ctx, x, y, w, h) {
   ctx.strokeRect(x + 2, y + 2, w - 4, h - 4);
 }
 
+function capsule(ctx, text, centerX, borderY) {
+  const width = ctx.measureText(text).width + 20;
+  ctx.fillStyle = PANEL;
+  ctx.fillRect(centerX - width / 2, borderY - 13, width, 26);
+  ctx.fillStyle = MUTED;
+  ctx.fillText(text, centerX, borderY + 7);
+}
+
 function renderCard(post) {
   const art = sigil(postSeed(post.title, post.slug, post.date));
-  const framed = frameSigil(art, sigilLabel(post.sequence));
 
   const canvas = createCanvas(WIDTH, HEIGHT);
   const ctx = canvas.getContext('2d');
@@ -104,58 +117,50 @@ function renderCard(post) {
   ctx.fillText(`#${post.sequence}`, WIDTH - PAD, PAD + 4);
   ctx.textAlign = 'left';
 
-  const glyphSize = 26;
-  ctx.font = `${glyphSize}px "${MONO}"`;
-  const artWidth = ctx.measureText(framed[0]).width;
-  const lineHeight = glyphSize * 1.18;
-  const panelW = artWidth + 56;
-  const panelH = framed.length * lineHeight + 48;
-  const panelX = PAD;
-  const panelY = Math.round((HEIGHT - panelH) / 2) + 10;
+  const textW = WIDTH - PAD * 2;
 
-  hardPanel(ctx, panelX, panelY, panelW, panelH);
-
-  const charWidth = artWidth / framed[0].length;
-  framed.forEach((line, index) => {
-    const x = panelX + 28;
-    const y = panelY + 34 + index * lineHeight;
-    if (index === 0 || index === framed.length - 1) {
-      ctx.fillStyle = MUTED;
-      ctx.fillText(line, x, y);
-      return;
-    }
-    ctx.fillStyle = MUTED;
-    ctx.fillText(line[0], x, y);
-    ctx.fillText(line.at(-1), x + charWidth * (line.length - 1), y);
-    ctx.fillStyle = PRIMARY;
-    ctx.fillText(line.slice(1, -1), x + charWidth, y);
+  ctx.font = `50px "${DISPLAY}"`;
+  const titleLines = wrap(ctx, post.title, textW).slice(0, 2);
+  ctx.fillStyle = TEXT;
+  titleLines.forEach((line, index) => {
+    ctx.fillText(line, PAD, TITLE_TOP + index * 58);
   });
 
-  const textX = panelX + panelW + 56;
-  const textW = WIDTH - PAD - textX;
-
-  ctx.font = `52px "${DISPLAY}"`;
-  const titleLines = wrap(ctx, post.title, textW).slice(0, 3);
-  let cursor = panelY + 46;
-  ctx.fillStyle = TEXT;
-  for (const line of titleLines) {
-    ctx.fillText(line, textX, cursor);
-    cursor += 62;
-  }
-
-  cursor += 12;
   ctx.font = `24px "${BODY}"`;
   ctx.fillStyle = MUTED;
-  ctx.fillText(`${post.date}   ${post.readTime}`, textX, cursor);
+  ctx.fillText(`${post.date}   ${post.readTime}`, PAD, META_TOP);
 
-  cursor += 46;
   ctx.font = `22px "${MONO}"`;
   ctx.fillStyle = PRIMARY;
   const tagLine = ['reifydb', ...post.tags].map((tag) => `#${tag}`).join('  ');
-  for (const line of wrap(ctx, tagLine, textW).slice(0, 2)) {
-    ctx.fillText(line, textX, cursor);
-    cursor += 30;
-  }
+  ctx.fillText(wrap(ctx, tagLine, textW)[0], PAD, TAGS_TOP);
+
+  const gridW = art.cells[0].length * (CELL + GAP) - GAP;
+  const gridH = art.cells.length * (CELL + GAP) - GAP;
+  const panelW = gridW + INSET * 2;
+  const panelH = gridH + INSET * 2;
+  const panelX = Math.round((WIDTH - panelW) / 2);
+  const panelY = HEIGHT - PAD - panelH;
+
+  hardPanel(ctx, panelX, panelY, panelW, panelH);
+
+  art.cells.forEach((row, y) => {
+    row.forEach((shade, x) => {
+      ctx.fillStyle = SHADES[shade];
+      ctx.fillRect(
+        panelX + INSET + x * (CELL + GAP),
+        panelY + INSET + y * (CELL + GAP),
+        CELL,
+        CELL
+      );
+    });
+  });
+
+  ctx.font = `20px "${MONO}"`;
+  ctx.textAlign = 'center';
+  capsule(ctx, sigilLabel(post.sequence), WIDTH / 2, panelY);
+  capsule(ctx, art.fingerprint, WIDTH / 2, panelY + panelH);
+  ctx.textAlign = 'left';
 
   return canvas.toBuffer('image/png');
 }

@@ -2,7 +2,7 @@ import { BRAND_TAG } from '@/data/blog-data';
 
 export function TagChips({ tags }: { tags: string[] }) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap justify-center gap-2">
       {[BRAND_TAG, ...tags].map((tag) => (
         <span
           key={tag}
