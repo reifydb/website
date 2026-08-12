@@ -28,10 +28,11 @@ export function MobileMenu({ open, onClose, extra }: MobileMenuProps) {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const location = useLocation();
 
-  useEffect(() => {
-    onClose();
+  const [lastPath, setLastPath] = useState(location.pathname);
+  if (lastPath !== location.pathname) {
+    setLastPath(location.pathname);
     setExpandedSection(null);
-  }, [location.pathname]);
+  }
 
   useEffect(() => {
     if (open) {

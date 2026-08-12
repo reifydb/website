@@ -15,13 +15,13 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const [isSwitching, setIsSwitching] = useState(false);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const prevOpenDropdownRef = useRef<string | null>(null);
 
-  // Close dropdown with delay (for better UX when moving between menu items)
   const handleMouseLeave = () => {
     closeTimeoutRef.current = setTimeout(() => {
       setOpenDropdown(null);
+      setIsSwitching(false);
     }, 150);
   };
 
@@ -30,10 +30,10 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
       clearTimeout(closeTimeoutRef.current);
       closeTimeoutRef.current = null;
     }
+    setIsSwitching(openDropdown !== null && openDropdown !== dropdownId);
     setOpenDropdown(dropdownId);
   };
 
-  // Clear timeout on unmount
   useEffect(() => {
     return () => {
       if (closeTimeoutRef.current) {
@@ -42,20 +42,11 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
     };
   }, []);
 
-  // Compute switching flag during render
-  const isSwitching = prevOpenDropdownRef.current !== null
-    && openDropdown !== null
-    && prevOpenDropdownRef.current !== openDropdown;
-
-  // Update previous dropdown ref after render
-  useEffect(() => {
-    prevOpenDropdownRef.current = openDropdown;
-  }, [openDropdown]);
-
-  // Close mobile menu on route change
-  useEffect(() => {
+  const [lastPath, setLastPath] = useState(location.pathname);
+  if (lastPath !== location.pathname) {
+    setLastPath(location.pathname);
     setMobileMenuOpen(false);
-  }, [location.pathname]);
+  }
 
   const isActive = (href: string) => {
     return location.pathname === href;

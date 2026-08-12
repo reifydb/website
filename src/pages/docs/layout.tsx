@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
-import { useIsDraft } from '@/components/docs-gate';
+import { useIsDraft } from '@/components/draft-context';
 import { PageMeta } from '@/components/page-meta';
 import { JsonLd } from '@/components/json-ld';
 import { canonicalUrl } from '@/lib/site';

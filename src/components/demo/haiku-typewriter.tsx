@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 export interface Haiku {
   lines: [string, string, string];
@@ -76,23 +76,22 @@ export function HaikuTypewriter({
   const [phase, setPhase] = useState<Phase>('typing');
   const [displayLengths, setDisplayLengths] = useState<number[]>([0, 0, 0]);
   const [cursorVisible, setCursorVisible] = useState(true);
-  const blinkRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
+  const [cursorPhase, setCursorPhase] = useState<Phase>('typing');
+
+  if (cursorPhase !== phase) {
+    setCursorPhase(phase);
+    setCursorVisible(true);
+  }
 
   const plainLines = useMemo(
     () => haikus.map((h) => h.lines.map(plainText)),
     [haikus],
   );
 
-  // Cursor blink: solid while typing, blinks during pauses
   useEffect(() => {
-    clearInterval(blinkRef.current);
-    if (phase === 'typing') {
-      setCursorVisible(true);
-    } else if (phase === 'line-pause' || phase === 'haiku-display') {
-      setCursorVisible(true);
-      blinkRef.current = setInterval(() => setCursorVisible((v) => !v), 750);
-    }
-    return () => clearInterval(blinkRef.current);
+    if (phase !== 'line-pause' && phase !== 'haiku-display') return;
+    const blink = setInterval(() => setCursorVisible((v) => !v), 750);
+    return () => clearInterval(blink);
   }, [phase]);
 
   useEffect(() => {
@@ -109,11 +108,10 @@ export function HaikuTypewriter({
         }, typingSpeed);
         return () => clearTimeout(timeout);
       } else {
-        if (lineIndex < 2) {
-          setPhase('line-pause');
-        } else {
-          setPhase('haiku-display');
-        }
+        const timeout = setTimeout(() => {
+          setPhase(lineIndex < 2 ? 'line-pause' : 'haiku-display');
+        }, 0);
+        return () => clearTimeout(timeout);
       }
     } else if (phase === 'line-pause') {
       const timeout = setTimeout(() => {
@@ -138,7 +136,7 @@ export function HaikuTypewriter({
       }, 600);
       return () => clearTimeout(timeout);
     }
-  }, [phase, charIndex, lineIndex, haikuIndex, haikus, typingSpeed, linePause, haikuPause]);
+  }, [phase, charIndex, lineIndex, haikuIndex, haikus, plainLines, typingSpeed, linePause, haikuPause]);
 
   const currentHaiku = haikus[haikuIndex];
 

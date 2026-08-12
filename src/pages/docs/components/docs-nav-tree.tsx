@@ -5,7 +5,7 @@ import { useIsLocalhost } from '@/hooks';
 import { filterPublished } from '../data/navigation';
 import type { NavSection, NavItem } from '../data/navigation';
 
-export function findAncestorIds(items: NavItem[], targetPath: string, ancestors: string[] = []): string[] | null {
+function findAncestorIds(items: NavItem[], targetPath: string, ancestors: string[] = []): string[] | null {
   for (const item of items) {
     if (item.href === targetPath) {
       return ancestors;
@@ -18,7 +18,7 @@ export function findAncestorIds(items: NavItem[], targetPath: string, ancestors:
   return null;
 }
 
-export function findAllAncestors(sections: NavSection[], targetPath: string): Set<string> {
+function findAllAncestors(sections: NavSection[], targetPath: string): Set<string> {
   const result = new Set<string>();
   for (const section of sections) {
     const ancestors = findAncestorIds(section.items, targetPath, [`section-${section.title}`]);
@@ -42,7 +42,7 @@ function findIdPathInItems(items: NavItem[], targetId: string, prefix: string[])
   return null;
 }
 
-export function findIdPath(sections: NavSection[], targetId: string): string[] | null {
+function findIdPath(sections: NavSection[], targetId: string): string[] | null {
   for (const section of sections) {
     const sectionId = `section-${section.title}`;
     if (sectionId === targetId) return [sectionId];

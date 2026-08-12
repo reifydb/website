@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { DraftContext } from '@/components/draft-context';
 import { useIsLocalhost } from '@/hooks';
 import { useLocation } from 'react-router-dom';
 import { DocsWipTerminal } from '@/components/demo/docs-wip-terminal';
@@ -19,12 +19,6 @@ interface DocsGateProps {
 const SHOW_DOCS_IN_PRODUCTION = true;
 
 const publishedPaths = getPublishedPaths(navSections);
-
-const DraftContext = createContext(false);
-
-export function useIsDraft(): boolean {
-  return useContext(DraftContext);
-}
 
 export function DocsGate({ children }: DocsGateProps) {
   const isLocalhost = useIsLocalhost();

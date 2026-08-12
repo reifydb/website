@@ -46,8 +46,11 @@ export function DocsWipTerminal() {
         }, 25);
         return () => clearTimeout(timeout);
       } else {
-        setMessageIndex((prev) => prev + 1);
-        setPhase('typing');
+        const timeout = setTimeout(() => {
+          setMessageIndex((prev) => prev + 1);
+          setPhase('typing');
+        }, 0);
+        return () => clearTimeout(timeout);
       }
     }
   }, [charIndex, phase, messageIndex]);

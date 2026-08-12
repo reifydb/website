@@ -38,11 +38,10 @@ export function AsciiBarChart({ query, labelKey, valueKey }: AsciiBarChartProps)
     }
   }, [query, labelKey, valueKey]);
 
-  // Auto-run if DB is already initialized (e.g. user ran the snippet above)
   useEffect(() => {
-    if (getWasmDBSync()) {
-      runQuery();
-    }
+    if (!getWasmDBSync()) return;
+    const timeout = setTimeout(runQuery, 0);
+    return () => clearTimeout(timeout);
   }, [runQuery]);
 
   const max = data.length > 0 ? Math.max(...data.map(d => d.value)) : 0;
