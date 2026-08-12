@@ -7,6 +7,7 @@ import { blogPosts, getPostBySlug, SITE_ORIGIN } from '@/data/blog-data';
 import { NotFoundPage } from '@/pages/not-found';
 import { WalEntry } from './components/wal-entry';
 import { FsyncBarrier } from './components/fsync-barrier';
+import { RqlCode } from './components/rql-code';
 
 export function BlogListingPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -42,20 +43,12 @@ export function BlogListingPage() {
       <main className="py-16 sm:py-24">
         <div className="mx-auto max-w-4xl px-6 md:px-8">
           <ScrollReveal>
-            <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">
-              Blog
-            </h1>
-            <p className="text-text-secondary text-lg max-w-2xl mb-10">
-              An append-only log of what is getting built, why it is built that
-              way, and what broke along the way.
-            </p>
-
             <div className="border-2 border-border-default bg-code-bg mb-12">
               <div className="px-4 py-2 border-b border-border-default bg-code-bg-elevated label-uppercase text-xs text-code-text-muted font-mono">
                 blog::posts
               </div>
-              <pre className="p-4 overflow-x-auto font-mono text-sm text-code-text">
-                <code>{'from blog::posts\n  sort { date desc }'}</code>
+              <pre className="p-4 overflow-x-auto">
+                <RqlCode query="from blog::posts sort { date: desc }" />
               </pre>
             </div>
           </ScrollReveal>
