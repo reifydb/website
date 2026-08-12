@@ -1,15 +1,11 @@
 ---
 title: "Introducing ReifyDB"
 slug: "introducing-reifydb"
-date: "2026-02-12"
+date: "2026-08-05"
 excerpt: "A programmable, incremental database built for live systems."
 readTime: "10 min read"
 author: "Dominique"
 ---
-
-# Introducing ReifyDB
-
-A programmable, incremental database built for live systems
 
 Most databases were designed for one of two worlds. **OLTP** gives you fast writes, simple queries, and transactional integrity. **OLAP** gives you large scans, analytics, and heavy aggregations. Modern applications, especially real-time systems, live in both worlds at once. ReifyDB was built for that intersection.
 
@@ -53,4 +49,8 @@ ReifyDB is built with a few strong principles: incremental by default, columnar 
 
 ## Closing
 
-We were told in CS 101 to never build our own database. But modern systems deserve something purpose-built for live computation. ReifyDB exists because incremental, programmable state should not require five separate systems glued together. If you're building something where data never sleeps, ReifyDB might be what you were missing.
+CS 101 says never build your own database. That is solid advice if your goal is a paper. It is worse advice if you've spent years wiring triggers into schedulers, standing up a service whose only job is cache invalidation, and refreshing a materialized view from a cron job nobody trusts.
+
+I did not build ReifyDB from a research problem. I built it from an application backlog. Every feature in it exists because the alternative was one more moving part to operate at 3am. Incremental, programmable state should not require five separate systems glued together.
+
+If you're building something where data never sleeps, ReifyDB is the thing you were already assembling by hand.

@@ -3,7 +3,11 @@ import { Link, useParams } from 'react-router-dom';
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { ScrollReveal } from '@/components/ui';
-import { getPostBySlug, getAdjacentPosts } from '@/data/blog-data';
+import {
+  getPostBySlug,
+  getAdjacentPosts,
+  formatReadTime,
+} from '@/data/blog-data';
 import { BlogMarkdownRenderer } from './components/blog-markdown-renderer';
 import { NotFoundPage } from '@/pages/not-found';
 
@@ -34,41 +38,56 @@ export function BlogPostPage() {
           <ScrollReveal>
             <Link
               to="/blog"
-              className="inline-flex items-center text-sm text-text-muted hover:text-primary transition-colors duration-200 mb-8"
+              className="inline-flex items-center gap-2 font-mono text-xs label-uppercase text-text-muted hover:text-primary transition-colors duration-200 mb-10"
             >
-              &larr; Back to blog
+              <span aria-hidden="true">&larr;</span> Back to blog
             </Link>
 
-            <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4 text-text-primary">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-text-muted mb-4">
+              <span className="text-primary" data-numeric>
+                {post.lsn}
+              </span>
+              <span aria-hidden="true">·</span>
+              <span className="label-uppercase">committed</span>
+              <span data-numeric>{post.date}</span>
+              <span aria-hidden="true">·</span>
+              <span>{formatReadTime(post.readTime)}</span>
+              <span aria-hidden="true">·</span>
+              <span className="label-uppercase">{post.author}</span>
+            </div>
+
+            <div className="h-[3px] bg-primary w-full mb-8" />
+
+            <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-6 text-text-primary">
               {post.title}
             </h1>
 
-            <div className="text-sm text-text-muted mb-4">
-              {post.date} · {post.readTime} · {post.author}
-            </div>
-
-            <p className="text-lg text-text-secondary leading-relaxed mb-10">
+            <p className="text-lg text-text-secondary leading-relaxed mb-12">
               {post.excerpt}
             </p>
-
-            <hr className="border border-border-default" />
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <div className="font-body glass-card p-6 sm:p-10 mt-10">
-              <BlogMarkdownRenderer content={post.content} />
+            <div className="font-body">
+              <BlogMarkdownRenderer
+                content={post.content}
+                headings={post.headings}
+              />
             </div>
           </ScrollReveal>
 
           {(adjacent.prev || adjacent.next) && (
             <ScrollReveal delay={200}>
-              <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="mt-16 pt-8 border-t-2 border-border-default grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {adjacent.prev && (
                   <Link
                     to={`/blog/${adjacent.prev.slug}`}
                     className="glass-card p-5 hover:border-primary/50 transition-all duration-300 group"
                   >
-                    <span className="text-sm text-text-muted">&larr; Previous</span>
+                    <span className="font-mono text-xs label-uppercase text-text-muted">
+                      <span aria-hidden="true">&larr;</span> Previous{' '}
+                      {adjacent.prev.lsn}
+                    </span>
                     <p className="font-bold text-text-primary group-hover:text-primary transition-colors duration-200 mt-1">
                       {adjacent.prev.title}
                     </p>
@@ -79,7 +98,10 @@ export function BlogPostPage() {
                     to={`/blog/${adjacent.next.slug}`}
                     className={`glass-card p-5 hover:border-primary/50 transition-all duration-300 group text-right${!adjacent.prev ? ' sm:col-start-2' : ''}`}
                   >
-                    <span className="text-sm text-text-muted">Next &rarr;</span>
+                    <span className="font-mono text-xs label-uppercase text-text-muted">
+                      Next {adjacent.next.lsn}{' '}
+                      <span aria-hidden="true">&rarr;</span>
+                    </span>
                     <p className="font-bold text-text-primary group-hover:text-primary transition-colors duration-200 mt-1">
                       {adjacent.next.title}
                     </p>
