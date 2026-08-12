@@ -16,6 +16,7 @@ export interface BlogPostHeading {
 
 export interface BlogPost extends BlogPostMeta {
   content: string;
+  sequence: string;
   lsn: string;
   size: string;
   headings: BlogPostHeading[];
@@ -50,24 +51,35 @@ function extractHeadings(content: string): BlogPostHeading[] {
   return headings;
 }
 
+function extractSequence(path: string): string {
+  const match = /\/(\d{3,})_[^/]+\.md$/.exec(path);
+  if (!match) {
+    throw new Error(
+      `blog post filename must start with a sequence number, e.g. 001_slug.md: ${path}`
+    );
+  }
+  return match[1];
+}
+
 function formatSize(content: string): string {
   const bytes = new TextEncoder().encode(content).length;
   return `${(bytes / 1024).toFixed(1)} KB`;
 }
 
-const ordered = Object.values(modules)
-  .map((raw) => {
+export const blogPosts: BlogPost[] = Object.entries(modules)
+  .map(([path, raw]) => {
     const { attributes, body } = fm<BlogPostMeta>(raw);
-    return { ...attributes, content: body };
+    const sequence = extractSequence(path);
+    return {
+      ...attributes,
+      content: body,
+      sequence,
+      lsn: `#${sequence}`,
+      size: formatSize(body),
+      headings: extractHeadings(body),
+    };
   })
-  .sort((a, b) => b.date.localeCompare(a.date));
-
-export const blogPosts: BlogPost[] = ordered.map((post, index) => ({
-  ...post,
-  lsn: `#${String(ordered.length - index).padStart(4, '0')}`,
-  size: formatSize(post.content),
-  headings: extractHeadings(post.content),
-}));
+  .sort((a, b) => b.sequence.localeCompare(a.sequence));
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((p) => p.slug === slug);
