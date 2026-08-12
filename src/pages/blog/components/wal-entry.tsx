@@ -27,7 +27,7 @@ export function WalEntry({ post, isOpen, onToggle }: WalEntryProps) {
     <div
       ref={rowRef}
       id={`entry-${post.slug}`}
-      className="border-b border-border-default last:border-b-0 scroll-mt-24"
+      className="border-2 border-border-default bg-bg-secondary shadow-[4px_4px_0_var(--color-border-default)] scroll-mt-24"
     >
       <button
         type="button"

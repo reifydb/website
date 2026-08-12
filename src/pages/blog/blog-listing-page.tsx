@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
@@ -6,6 +6,7 @@ import { ScrollReveal } from '@/components/ui';
 import { blogPosts, getPostBySlug } from '@/data/blog-data';
 import { NotFoundPage } from '@/pages/not-found';
 import { WalEntry } from './components/wal-entry';
+import { FsyncBarrier } from './components/fsync-barrier';
 
 export function BlogListingPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -59,20 +60,9 @@ export function BlogListingPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <div className="border-2 border-border-default bg-bg-secondary shadow-[4px_4px_0_var(--color-border-default)]">
-              <div className="flex items-baseline gap-3 sm:gap-4 px-3 sm:px-4 py-3 border-b-2 border-border-default bg-bg-tertiary font-mono text-xs label-uppercase text-text-muted">
-                <span aria-hidden="true" className="w-3 shrink-0" />
-                <span className="w-14 shrink-0">lsn</span>
-                <span className="hidden sm:block w-28 shrink-0">committed</span>
-                <span className="flex-1 min-w-0">entry</span>
-                <span className="hidden sm:block w-20 shrink-0 text-right">
-                  read
-                </span>
-              </div>
-
-              {blogPosts.map((post) => (
+            {blogPosts.map((post, index) => (
+              <Fragment key={post.slug}>
                 <WalEntry
-                  key={post.slug}
                   post={post}
                   isOpen={post.slug === slug}
                   onToggle={() =>
@@ -82,10 +72,11 @@ export function BlogListingPage() {
                     )
                   }
                 />
-              ))}
-            </div>
+                {index < blogPosts.length - 1 && <FsyncBarrier post={post} />}
+              </Fragment>
+            ))}
 
-            <div className="mt-4 px-1 font-mono text-xs text-text-muted flex flex-wrap gap-x-3">
+            <div className="mt-6 px-1 font-mono text-xs text-text-muted flex flex-wrap gap-x-3">
               <span>head @ {head}</span>
               <span aria-hidden="true">·</span>
               <span>

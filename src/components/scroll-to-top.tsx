@@ -1,15 +1,17 @@
 import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 
 export function ScrollToTop() {
   const { pathname, state } = useLocation();
+  const navigationType = useNavigationType();
   const preserveScroll =
     (state as { preserveScroll?: boolean } | null)?.preserveScroll === true;
+  const isUrlCorrection = navigationType === 'REPLACE';
 
   useEffect(() => {
-    if (preserveScroll) return;
+    if (preserveScroll || isUrlCorrection) return;
     window.scrollTo(0, 0);
-  }, [pathname, preserveScroll]);
+  }, [pathname, preserveScroll, isUrlCorrection]);
 
   return null;
 }
