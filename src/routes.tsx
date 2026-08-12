@@ -8,7 +8,7 @@ import { FaqPage } from '@/pages/faq';
 import { ValuesPage } from '@/pages/company/values';
 import { MissionPage } from '@/pages/company/mission';
 import { DocsGate } from '@/components/docs-gate';
-import { BlogListingPage, BlogPostPage } from '@/pages/blog';
+import { BlogListingPage } from '@/pages/blog';
 import { ExamplesPage } from '@/pages/examples';
 import { TourPage } from '@/pages/tour';
 import { PitchPage } from '@/pages/pitch';
@@ -571,12 +571,8 @@ export const routes: RouteObject[] = [
         element: <PitchPage />,
       },
       {
-        path: '/blog',
+        path: '/blog/:slug?',
         element: <BlogListingPage />,
-      },
-      {
-        path: '/blog/:slug',
-        element: <BlogPostPage />,
       },
       {
         path: '/playground',

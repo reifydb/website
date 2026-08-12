@@ -85,15 +85,6 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((p) => p.slug === slug);
 }
 
-export function getAdjacentPosts(slug: string): { prev?: BlogPost; next?: BlogPost } {
-  const index = blogPosts.findIndex((p) => p.slug === slug);
-  if (index === -1) return {};
-  return {
-    prev: index < blogPosts.length - 1 ? blogPosts[index + 1] : undefined,
-    next: index > 0 ? blogPosts[index - 1] : undefined,
-  };
-}
-
 export function formatReadTime(readTime: string): string {
   return readTime.replace(/\s*read\s*$/i, '').toUpperCase();
 }

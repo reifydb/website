@@ -1,7 +1,7 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { formatReadTime, type BlogPost } from '@/data/blog-data';
 import { BlogMarkdownRenderer } from './blog-markdown-renderer';
+import { ShareRow } from './share-row';
 
 interface WalEntryProps {
   post: BlogPost;
@@ -26,6 +26,7 @@ export function WalEntry({ post, isOpen, onToggle }: WalEntryProps) {
   return (
     <div
       ref={rowRef}
+      id={`entry-${post.slug}`}
       className="border-b border-border-default last:border-b-0 scroll-mt-24"
     >
       <button
@@ -77,12 +78,7 @@ export function WalEntry({ post, isOpen, onToggle }: WalEntryProps) {
               >
                 <span aria-hidden="true">&uarr;</span> Collapse entry
               </button>
-              <Link
-                to={`/blog/${post.slug}`}
-                className="text-text-muted hover:text-primary transition-colors duration-200"
-              >
-                Permalink <span aria-hidden="true">&rarr;</span>
-              </Link>
+              <ShareRow post={post} />
             </div>
           </div>
         ) : (

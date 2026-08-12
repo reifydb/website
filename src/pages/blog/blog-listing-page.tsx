@@ -1,21 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { ScrollReveal } from '@/components/ui';
-import { blogPosts } from '@/data/blog-data';
+import { blogPosts, getPostBySlug } from '@/data/blog-data';
+import { NotFoundPage } from '@/pages/not-found';
 import { WalEntry } from './components/wal-entry';
 
 export function BlogListingPage() {
-  const [openSlug, setOpenSlug] = useState<string | null>(null);
+  const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+  const arrivalSlug = useRef(slug);
+  const openPost = slug ? getPostBySlug(slug) : undefined;
+
+  useEffect(() => {
+    const target = arrivalSlug.current;
+    if (!target) return;
+    document
+      .getElementById(`entry-${target}`)
+      ?.scrollIntoView({ block: 'start' });
+  }, []);
+
+  if (slug && !openPost) return <NotFoundPage />;
 
   const head = blogPosts[0]?.lsn;
-  const openLsn = blogPosts.find((p) => p.slug === openSlug)?.lsn;
 
   return (
     <>
       <PageMeta
-        title="Blog | ReifyDB"
-        description="Writing from the ReifyDB team on incremental views, application state, and building a database."
+        title={openPost ? `${openPost.title} | ReifyDB` : 'Blog | ReifyDB'}
+        description={
+          openPost
+            ? openPost.excerpt
+            : 'Writing from the ReifyDB team on incremental views, application state, and building a database.'
+        }
       />
       <Navbar />
 
@@ -56,9 +74,12 @@ export function BlogListingPage() {
                 <WalEntry
                   key={post.slug}
                   post={post}
-                  isOpen={post.slug === openSlug}
+                  isOpen={post.slug === slug}
                   onToggle={() =>
-                    setOpenSlug(post.slug === openSlug ? null : post.slug)
+                    navigate(
+                      post.slug === slug ? '/blog' : `/blog/${post.slug}`,
+                      { state: { preserveScroll: true } }
+                    )
                   }
                 />
               ))}
@@ -71,10 +92,10 @@ export function BlogListingPage() {
                 {blogPosts.length}{' '}
                 {blogPosts.length === 1 ? 'entry' : 'entries'}
               </span>
-              {openLsn && (
+              {openPost && (
                 <>
                   <span aria-hidden="true">·</span>
-                  <span className="text-primary">reading {openLsn}</span>
+                  <span className="text-primary">reading {openPost.lsn}</span>
                 </>
               )}
             </div>

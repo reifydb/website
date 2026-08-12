@@ -23,7 +23,7 @@ export function paths(): string[] {
   const configured = collectPaths(routes).filter(
     (path) => !path.startsWith('/docs') || published.has(path),
   );
-  const blog = blogPosts.map((post) => `/blog/${post.slug}`);
+  const blog = ['/blog', ...blogPosts.map((post) => `/blog/${post.slug}`)];
   return [...configured, ...blog];
 }
 

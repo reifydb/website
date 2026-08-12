@@ -2,11 +2,14 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, state } = useLocation();
+  const preserveScroll =
+    (state as { preserveScroll?: boolean } | null)?.preserveScroll === true;
 
   useEffect(() => {
+    if (preserveScroll) return;
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, preserveScroll]);
 
   return null;
 }
