@@ -1,27 +1,27 @@
-import { Fragment, useEffect, useRef } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Fragment, useEffect } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { ScrollReveal } from '@/components/ui';
 import { blogPosts, getPostBySlug, SITE_ORIGIN } from '@/data/blog-data';
 import { NotFoundPage } from '@/pages/not-found';
 import { WalEntry } from './components/wal-entry';
+import { EntryDetail } from './components/entry-detail';
 import { FsyncBarrier } from './components/fsync-barrier';
 import { RqlCode } from './components/rql-code';
 
 export function BlogListingPage() {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
-  const arrivalSlug = useRef(slug);
+  const { state } = useLocation();
+  const fromSlug = (state as { fromSlug?: string } | null)?.fromSlug;
   const openPost = slug ? getPostBySlug(slug) : undefined;
 
   useEffect(() => {
-    const target = arrivalSlug.current;
-    if (!target) return;
+    if (slug || !fromSlug) return;
     document
-      .getElementById(`entry-${target}`)
+      .getElementById(`entry-${fromSlug}`)
       ?.scrollIntoView({ block: 'start' });
-  }, []);
+  }, [slug, fromSlug]);
 
   if (slug && !openPost) return <NotFoundPage />;
 
@@ -40,51 +40,56 @@ export function BlogListingPage() {
       />
       <Navbar />
 
-      <main className="py-16 sm:py-24">
+      <main className={openPost ? 'pb-16 sm:pb-24' : 'py-16 sm:py-24'}>
         <div className="mx-auto max-w-4xl px-6 md:px-8">
-          <ScrollReveal>
-            <div className="border-2 border-border-default bg-code-bg mb-12">
-              <div className="px-4 py-2 border-b border-border-default bg-code-bg-elevated label-uppercase text-xs text-code-text-muted font-mono">
-                blog::posts
+          {!openPost && (
+            <ScrollReveal>
+              <div className="border-2 border-border-default bg-code-bg mb-6">
+                <div className="px-4 py-2 border-b border-border-default bg-code-bg-elevated label-uppercase text-xs text-code-text-muted font-mono">
+                  blog::posts
+                </div>
+                <pre className="p-4 overflow-x-auto">
+                  <RqlCode query="from blog::posts sort { date: desc }" />
+                </pre>
               </div>
-              <pre className="p-4 overflow-x-auto">
-                <RqlCode query="from blog::posts sort { date: desc }" />
-              </pre>
+            </ScrollReveal>
+          )}
+
+          {openPost ? (
+            <div className="sticky top-[60px] z-30 -mx-6 md:-mx-8 mb-8 flex flex-wrap gap-x-3 border-b-2 border-border-default bg-bg-primary px-6 md:px-8 py-2 font-mono text-xs text-text-muted">
+              <Link
+                to="/blog"
+                state={{ preserveScroll: true, fromSlug: openPost.slug }}
+                className="label-uppercase hover:text-primary transition-colors duration-200"
+              >
+                <span aria-hidden="true">&larr;</span> Back to log
+              </Link>
+              <span aria-hidden="true">·</span>
+              <span className="truncate">{openPost.title}</span>
             </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={100}>
-            {blogPosts.map((post, index) => (
-              <Fragment key={post.slug}>
-                <WalEntry
-                  post={post}
-                  isOpen={post.slug === slug}
-                  onToggle={() =>
-                    navigate(
-                      post.slug === slug ? '/blog' : `/blog/${post.slug}`,
-                      { state: { preserveScroll: true } }
-                    )
-                  }
-                />
-                {index < blogPosts.length - 1 && <FsyncBarrier post={post} />}
-              </Fragment>
-            ))}
-
-            <div className="mt-6 px-1 font-mono text-xs text-text-muted flex flex-wrap gap-x-3">
+          ) : (
+            <div className="mb-6 flex flex-wrap gap-x-3 px-1 font-mono text-xs text-text-muted">
               <span>head @ {head}</span>
               <span aria-hidden="true">·</span>
               <span>
                 {blogPosts.length}{' '}
                 {blogPosts.length === 1 ? 'entry' : 'entries'}
               </span>
-              {openPost && (
-                <>
-                  <span aria-hidden="true">·</span>
-                  <span className="text-primary">reading {openPost.lsn}</span>
-                </>
-              )}
             </div>
-          </ScrollReveal>
+          )}
+
+          {openPost ? (
+            <EntryDetail post={openPost} />
+          ) : (
+            <ScrollReveal delay={100}>
+              {blogPosts.map((post, index) => (
+                <Fragment key={post.slug}>
+                  <WalEntry post={post} />
+                  {index < blogPosts.length - 1 && <FsyncBarrier post={post} />}
+                </Fragment>
+              ))}
+            </ScrollReveal>
+          )}
         </div>
       </main>
 
