@@ -1,3 +1,4 @@
+import '@/lib/monaco-setup';
 import { Console, brutalist_light_theme } from '@reifydb/console';
 import { wasmExecutor } from '@/lib/wasm-executor-singleton';
 

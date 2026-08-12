@@ -67,7 +67,9 @@ function writePage(routePath, html) {
   writeFileSync(join(outDir, 'index.html'), html);
 }
 
-const { paths, render, NOT_FOUND_PATH } = await import(pathToFileURL(ENTRY).href);
+const { paths, render, prepare, NOT_FOUND_PATH } = await import(pathToFileURL(ENTRY).href);
+
+await prepare();
 
 const template = readFileSync(join(DIST, 'index.html'), 'utf-8');
 if (!template.includes(HEAD_MARKER) || !OUTLET.test(template)) {

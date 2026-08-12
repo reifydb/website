@@ -1,7 +1,7 @@
 import { renderToString } from 'react-dom/server';
 import type { RouteObject } from 'react-router-dom';
 import { StaticRouter, useRoutes } from 'react-router-dom';
-import { routes } from './routes';
+import { routes, resolvedRoutes } from './routes';
 import { blogPosts } from './data/blog-data';
 import { navSections, getPublishedPaths } from './pages/docs/data/navigation';
 
@@ -27,8 +27,14 @@ export function paths(): string[] {
   return [...configured, ...blog];
 }
 
+let activeRoutes: RouteObject[] = routes;
+
+export async function prepare(): Promise<void> {
+  activeRoutes = await resolvedRoutes();
+}
+
 function StaticApp() {
-  return useRoutes(routes);
+  return useRoutes(activeRoutes);
 }
 
 const HOISTED_HEAD = /^(?:<title>[\s\S]*?<\/title>|<meta\b[^>]*\/>|<link\b[^>]*\/>)+/;

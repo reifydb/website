@@ -22,6 +22,9 @@ const localReifydbAliases = useLocalSdk
 
 const ssrBuild = process.env.SSR_BUILD === '1'
 
+const MONACO_VENDOR = /node_modules\/(@monaco-editor\/|monaco-editor\/)/
+const REACT_VENDOR = /node_modules\/(react|react-dom|react-router|react-router-dom|scheduler)\//
+
 // https://vite.dev/config/
 export default defineConfig(({ command }) => ({
   plugins: ssrBuild
@@ -42,7 +45,17 @@ export default defineConfig(({ command }) => ({
         ssr: 'src/entry-server.tsx',
         rollupOptions: { external: ['@reifydb/wasm', '@reifydb/console'] },
       }
-    : {},
+    : {
+        rollupOptions: {
+          output: {
+            manualChunks(id: string) {
+              if (!id.includes('node_modules')) return;
+              if (MONACO_VENDOR.test(id)) return 'monaco';
+              if (REACT_VENDOR.test(id)) return 'react-vendor';
+            },
+          },
+        },
+      },
   ssr: {
     external: ['@reifydb/wasm', '@reifydb/console'],
     noExternal: [/^@reifydb\/(core|ui)$/, /^react-router/],
