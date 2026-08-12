@@ -76,9 +76,9 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
       >
         <div
           className={cn(
-            "bg-bg-secondary border-2 border-border-default rounded-none shadow-[var(--shadow-hard)] transition-all",
+            "bg-bg-secondary border-2 border-border-default rounded-none shadow-[var(--shadow-hard)] transition-[opacity,translate,visibility]",
             instant ? "duration-0" : "duration-200",
-            isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+            isOpen ? "visible opacity-100 translate-y-0" : "invisible opacity-0 -translate-y-2"
           )}
         >
           <div className="p-3">
