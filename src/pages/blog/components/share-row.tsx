@@ -10,9 +10,10 @@ export function ShareRow({ post }: { post: BlogPost }) {
   const [copied, setCopied] = useState(false);
 
   const url = `${SITE_ORIGIN}/blog/${post.slug}`;
-  const title = encodeURIComponent(post.title);
   const target = encodeURIComponent(url);
-  const hashtags = encodeURIComponent([BRAND_TAG, ...post.tags].join(','));
+  const hashtags = [BRAND_TAG, ...post.tags].map((tag) => `#${tag}`).join(' ');
+  const body = `${post.title}\n\n${post.excerpt}\n\n${hashtags}`;
+  const tweet = encodeURIComponent(`${body}\n\n${url}`);
   const canOpenSheet =
     mounted && typeof navigator !== 'undefined' && 'share' in navigator;
 
@@ -28,7 +29,7 @@ export function ShareRow({ post }: { post: BlogPost }) {
 
   function openSheet() {
     navigator
-      .share({ title: post.title, text: post.excerpt, url })
+      .share({ title: post.title, text: body, url })
       .catch(() => undefined);
   }
 
@@ -36,7 +37,7 @@ export function ShareRow({ post }: { post: BlogPost }) {
     <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
       <span className="text-text-muted/60">share</span>
       <a
-        href={`https://x.com/intent/tweet?text=${title}&url=${target}&hashtags=${hashtags}&via=${BRAND_TAG}`}
+        href={`https://x.com/intent/tweet?text=${tweet}`}
         target="_blank"
         rel="noreferrer"
         className={actionClass}
@@ -44,7 +45,7 @@ export function ShareRow({ post }: { post: BlogPost }) {
         X
       </a>
       <a
-        href={`https://t.me/share/url?url=${target}&text=${title}`}
+        href={`https://t.me/share/url?url=${target}&text=${encodeURIComponent(body)}`}
         target="_blank"
         rel="noreferrer"
         className={actionClass}
