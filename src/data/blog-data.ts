@@ -1,7 +1,7 @@
 import fm from 'front-matter';
 import { sigil, postSeed, sigilLabel, ogImagePath } from '@/lib/sigil';
 
-export const SITE_ORIGIN = 'https://reifydb.com';
+export { SITE_ORIGIN } from '@/lib/site';
 export const BRAND_TAG = 'reifydb';
 
 export interface BlogPostMeta {

@@ -3,8 +3,10 @@ import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { useIsDraft } from '@/components/docs-gate';
 import { PageMeta } from '@/components/page-meta';
+import { JsonLd } from '@/components/json-ld';
+import { canonicalUrl } from '@/lib/site';
 import { DocsSidebar, DocsNavTree } from './components';
-import { navSections } from './data/navigation';
+import { navSections, getBreadcrumbs } from './data/navigation';
 
 interface DocsLayoutProps {
   children: React.ReactNode;
@@ -26,11 +28,42 @@ function DraftBanner() {
 export function Layout({ children, title, description }: DocsLayoutProps) {
   const location = useLocation();
   const isDraft = useIsDraft();
+  const trail = getBreadcrumbs(navSections, location.pathname).filter(
+    (crumb) => crumb.href !== '/docs',
+  );
 
   return (
     <div className="min-h-screen flex flex-col relative z-10">
       {title && description && (
         <PageMeta title={`${title} | ReifyDB Docs`} description={description} />
+      )}
+      {trail.length > 0 && (
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: canonicalUrl('/'),
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Docs',
+                item: canonicalUrl('/docs'),
+              },
+              ...trail.map((crumb, index) => ({
+                '@type': 'ListItem',
+                position: index + 3,
+                name: crumb.label,
+                ...(crumb.href ? { item: canonicalUrl(crumb.href) } : {}),
+              })),
+            ],
+          }}
+        />
       )}
       <Navbar mobileExtra={<DocsNavTree sections={navSections} currentPath={location.pathname} />} />
       <div className="flex flex-1">

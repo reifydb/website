@@ -14,6 +14,7 @@ const TEMPLATE_DEFAULTS = [
   /[ \t]*<title>[\s\S]*?<\/title>\n?/,
   /[ \t]*<meta name="title"[^>]*>\n?/,
   /[ \t]*<meta name="description"[^>]*>\n?/,
+  /[ \t]*<meta property="og:type"[^>]*>\n?/,
   /[ \t]*<meta property="og:title"[^>]*>\n?/,
   /[ \t]*<meta property="og:description"[^>]*>\n?/,
   /[ \t]*<meta name="twitter:title"[^>]*>\n?/,
@@ -67,7 +68,18 @@ function writePage(routePath, html) {
   writeFileSync(join(outDir, 'index.html'), html);
 }
 
-const { paths, render, prepare, NOT_FOUND_PATH } = await import(pathToFileURL(ENTRY).href);
+function escapeXml(value) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+const { paths, render, prepare, feed, NOT_FOUND_PATH } = await import(
+  pathToFileURL(ENTRY).href
+);
 
 await prepare();
 
@@ -93,17 +105,57 @@ for (const routePath of routes) {
 writeFileSync(join(DIST, '404.html'), buildPage(template, NOT_FOUND_PATH, render(NOT_FOUND_PATH)));
 console.log(`  404.html`);
 
+const posts = feed().slice().sort((a, b) => b.date.localeCompare(a.date));
+const newest = posts[0]?.date;
+
+const lastmods = new Map();
+for (const post of posts) {
+  lastmods.set(`/blog/${post.slug}`, post.date);
+}
+if (newest) lastmods.set('/blog', newest);
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes
   .map((routePath) => {
     const loc = routePath === '/' ? `${BASE_URL}/` : `${BASE_URL}${routePath}/`;
-    return `  <url>\n    <loc>${loc}</loc>\n  </url>`;
+    const lastmod = lastmods.get(routePath);
+    const lastmodTag = lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : '';
+    return `  <url>\n    <loc>${loc}</loc>${lastmodTag}\n  </url>`;
   })
   .join('\n')}
 </urlset>
 `;
 writeFileSync(join(DIST, 'sitemap.xml'), sitemap);
+
+const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ReifyDB Blog</title>
+    <link>${BASE_URL}/blog/</link>
+    <description>Writing from the ReifyDB team on incremental views, application state, and building a database.</description>
+    <language>en</language>
+    <atom:link href="${BASE_URL}/rss.xml" rel="self" type="application/rss+xml"/>${
+      newest ? `\n    <lastBuildDate>${new Date(newest).toUTCString()}</lastBuildDate>` : ''
+    }
+${posts
+  .map((post) => {
+    const link = `${BASE_URL}/blog/${post.slug}/`;
+    return [
+      '    <item>',
+      `      <title>${escapeXml(post.title)}</title>`,
+      `      <link>${link}</link>`,
+      `      <guid isPermaLink="true">${link}</guid>`,
+      `      <pubDate>${new Date(post.date).toUTCString()}</pubDate>`,
+      `      <description>${escapeXml(post.excerpt)}</description>`,
+      '    </item>',
+    ].join('\n');
+  })
+  .join('\n')}
+  </channel>
+</rss>
+`;
+writeFileSync(join(DIST, 'rss.xml'), rss);
 
 const llmsFull = pageTexts
   .sort((a, b) => a.routePath.localeCompare(b.routePath))
@@ -115,4 +167,6 @@ const llmsFull = pageTexts
   .join('\n\n');
 writeFileSync(join(DIST, 'llms-full.txt'), llmsFull);
 
-console.log(`prerendered ${routes.length} routes, sitemap.xml, llms-full.txt, 404.html`);
+console.log(
+  `prerendered ${routes.length} routes, sitemap.xml, rss.xml, llms-full.txt, 404.html`,
+);

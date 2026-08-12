@@ -27,6 +27,24 @@ export function paths(): string[] {
   return [...configured, ...blog];
 }
 
+export interface FeedItem {
+  title: string;
+  slug: string;
+  date: string;
+  excerpt: string;
+  author: string;
+}
+
+export function feed(): FeedItem[] {
+  return blogPosts.map(({ title, slug, date, excerpt, author }) => ({
+    title,
+    slug,
+    date,
+    excerpt,
+    author,
+  }));
+}
+
 let activeRoutes: RouteObject[] = routes;
 
 export async function prepare(): Promise<void> {

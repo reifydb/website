@@ -8,6 +8,12 @@ import { sigil, postSeed, sigilLabel, ogImagePath } from '../src/lib/sigil.ts';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const POSTS_DIR = join(ROOT, 'src', 'pages', 'blog');
 const OUT_DIR = join(ROOT, 'public', 'blog', 'og');
+const DEFAULT_OG_PATH = 'assets/img/og-default.png';
+
+const SITE_TITLE = 'ReifyDB';
+const SITE_SUBTITLE = 'Application State Database';
+const SITE_BLURB =
+  'Live application state with transactional guarantees, incrementally derived views, and embedded state transitions.';
 
 const WIDTH = 1200;
 const HEIGHT = 630;
@@ -100,6 +106,35 @@ function capsule(ctx, text, centerX, borderY) {
   ctx.fillText(text, centerX, borderY + 7);
 }
 
+function drawSigilPanel(ctx, art, label) {
+  const gridW = art.cells[0].length * (CELL + GAP) - GAP;
+  const gridH = art.cells.length * (CELL + GAP) - GAP;
+  const panelW = gridW + INSET * 2;
+  const panelH = gridH + INSET * 2;
+  const panelX = Math.round((WIDTH - panelW) / 2);
+  const panelY = HEIGHT - PAD - panelH;
+
+  hardPanel(ctx, panelX, panelY, panelW, panelH);
+
+  art.cells.forEach((row, y) => {
+    row.forEach((shade, x) => {
+      ctx.fillStyle = SHADES[shade];
+      ctx.fillRect(
+        panelX + INSET + x * (CELL + GAP),
+        panelY + INSET + y * (CELL + GAP),
+        CELL,
+        CELL
+      );
+    });
+  });
+
+  ctx.font = `20px "${MONO}"`;
+  ctx.textAlign = 'center';
+  capsule(ctx, label, WIDTH / 2, panelY);
+  capsule(ctx, art.fingerprint, WIDTH / 2, panelY + panelH);
+  ctx.textAlign = 'left';
+}
+
 function renderCard(post) {
   const art = sigil(postSeed(post.title, post.slug, post.date));
 
@@ -135,32 +170,40 @@ function renderCard(post) {
   const tagLine = ['reifydb', ...post.tags].map((tag) => `#${tag}`).join('  ');
   ctx.fillText(wrap(ctx, tagLine, textW)[0], PAD, TAGS_TOP);
 
-  const gridW = art.cells[0].length * (CELL + GAP) - GAP;
-  const gridH = art.cells.length * (CELL + GAP) - GAP;
-  const panelW = gridW + INSET * 2;
-  const panelH = gridH + INSET * 2;
-  const panelX = Math.round((WIDTH - panelW) / 2);
-  const panelY = HEIGHT - PAD - panelH;
+  drawSigilPanel(ctx, art, sigilLabel(post.sequence));
 
-  hardPanel(ctx, panelX, panelY, panelW, panelH);
+  return canvas.toBuffer('image/png');
+}
 
-  art.cells.forEach((row, y) => {
-    row.forEach((shade, x) => {
-      ctx.fillStyle = SHADES[shade];
-      ctx.fillRect(
-        panelX + INSET + x * (CELL + GAP),
-        panelY + INSET + y * (CELL + GAP),
-        CELL,
-        CELL
-      );
-    });
-  });
+function renderDefaultCard() {
+  const art = sigil(postSeed(SITE_TITLE, 'reifydb', SITE_SUBTITLE));
+
+  const canvas = createCanvas(WIDTH, HEIGHT);
+  const ctx = canvas.getContext('2d');
+
+  ctx.fillStyle = BG;
+  ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
   ctx.font = `20px "${MONO}"`;
-  ctx.textAlign = 'center';
-  capsule(ctx, sigilLabel(post.sequence), WIDTH / 2, panelY);
-  capsule(ctx, art.fingerprint, WIDTH / 2, panelY + panelH);
-  ctx.textAlign = 'left';
+  ctx.fillStyle = MUTED;
+  ctx.fillText('reifydb.com', PAD, PAD + 4);
+
+  ctx.font = `76px "${DISPLAY}"`;
+  ctx.fillStyle = TEXT;
+  ctx.fillText(SITE_TITLE, PAD, TITLE_TOP + 6);
+
+  ctx.font = `34px "${DISPLAY}"`;
+  ctx.fillStyle = PRIMARY_DARK;
+  ctx.fillText(SITE_SUBTITLE, PAD, TITLE_TOP + 58);
+
+  ctx.font = `24px "${BODY}"`;
+  ctx.fillStyle = MUTED;
+  const blurbLines = wrap(ctx, SITE_BLURB, WIDTH - PAD * 2).slice(0, 2);
+  blurbLines.forEach((line, index) => {
+    ctx.fillText(line, PAD, TITLE_TOP + 110 + index * 32);
+  });
+
+  drawSigilPanel(ctx, art, 'REIFYDB');
 
   return canvas.toBuffer('image/png');
 }
@@ -174,4 +217,8 @@ for (const post of posts) {
   console.log(`  ${ogImagePath(post.slug)}  ${(png.length / 1024).toFixed(1)} KB`);
 }
 
-console.log(`generated ${posts.length} og images`);
+const defaultPng = renderDefaultCard();
+writeFileSync(join(ROOT, 'public', DEFAULT_OG_PATH), defaultPng);
+console.log(`  ${DEFAULT_OG_PATH}  ${(defaultPng.length / 1024).toFixed(1)} KB`);
+
+console.log(`generated ${posts.length} post og images and 1 default`);

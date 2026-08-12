@@ -52,6 +52,33 @@ export function getOrderedPages(sections: NavSection[]): { label: string; href: 
   return pages;
 }
 
+export interface Breadcrumb {
+  label: string;
+  href?: string;
+}
+
+function findTrail(items: NavItem[], pathname: string): Breadcrumb[] | null {
+  for (const item of items) {
+    if (item.href === pathname) return [{ label: item.label, href: item.href }];
+    if (item.children) {
+      const nested = findTrail(item.children, pathname);
+      if (nested) return [{ label: item.label, href: item.href }, ...nested];
+    }
+  }
+  return null;
+}
+
+/**
+ * Returns the section-to-page trail for a docs path, for breadcrumb rendering.
+ */
+export function getBreadcrumbs(sections: NavSection[], pathname: string): Breadcrumb[] {
+  for (const section of sections) {
+    const trail = findTrail(section.items, pathname);
+    if (trail) return [{ label: section.title }, ...trail];
+  }
+  return [];
+}
+
 export const navSections: NavSection[] = [
   {
     title: 'Getting Started',

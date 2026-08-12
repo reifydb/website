@@ -36,7 +36,7 @@ export function ShareRow({ post }: { post: BlogPost }) {
     <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
       <span className="text-text-muted/60">share</span>
       <a
-        href={`https://x.com/intent/tweet?text=${title}&url=${target}&hashtags=${hashtags}`}
+        href={`https://x.com/intent/tweet?text=${title}&url=${target}&hashtags=${hashtags}&via=${BRAND_TAG}`}
         target="_blank"
         rel="noreferrer"
         className={actionClass}
