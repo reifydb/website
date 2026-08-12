@@ -8,7 +8,7 @@ author: "Dominique"
 tags: ["database", "realtime", "dataengineering"]
 ---
 
-You have written this cron job. Maybe not this exact one, but this shape: something that wakes up every five minutes, recomputes a number that was already correct four minutes ago, and hopes nobody looked in between.
+You have written this cron job. Maybe not this exact one, but this shape: something that wakes up every five minutes, recomputes a number that has been wrong for four of them, and hopes nobody looked.
 
 ## What Stale Actually Costs
 
