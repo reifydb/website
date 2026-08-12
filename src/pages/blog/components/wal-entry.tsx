@@ -2,6 +2,8 @@ import { useRef } from 'react';
 import { formatReadTime, type BlogPost } from '@/data/blog-data';
 import { BlogMarkdownRenderer } from './blog-markdown-renderer';
 import { ShareRow } from './share-row';
+import { PostSigil } from './post-sigil';
+import { TagChips } from './tag-chips';
 
 interface WalEntryProps {
   post: BlogPost;
@@ -83,9 +85,12 @@ export function WalEntry({ post, isOpen, onToggle }: WalEntryProps) {
           </div>
         ) : (
           <div className="animate-fade-in">
-            <p className="text-text-secondary leading-relaxed max-w-2xl">
-              {post.excerpt}
-            </p>
+            <div className="flex flex-col-reverse sm:flex-row sm:items-start gap-4 sm:gap-8">
+              <p className="text-text-secondary leading-relaxed max-w-2xl">
+                {post.excerpt}
+              </p>
+              <PostSigil lines={post.sigil} />
+            </div>
 
             {post.headings.length > 0 && (
               <div className="mt-6">
@@ -124,6 +129,10 @@ export function WalEntry({ post, isOpen, onToggle }: WalEntryProps) {
                   {formatReadTime(post.readTime)}
                 </span>
               </span>
+            </div>
+
+            <div className="mt-4">
+              <TagChips tags={post.tags} />
             </div>
 
             <button

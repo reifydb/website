@@ -1,4 +1,14 @@
 import fm from 'front-matter';
+import {
+  sigil,
+  frameSigil,
+  postSeed,
+  sigilLabel,
+  ogImagePath,
+} from '@/lib/randomart';
+
+export const SITE_ORIGIN = 'https://reifydb.com';
+export const BRAND_TAG = 'reifydb';
 
 export interface BlogPostMeta {
   title: string;
@@ -7,6 +17,7 @@ export interface BlogPostMeta {
   excerpt: string;
   readTime: string;
   author: string;
+  tags: string[];
 }
 
 export interface BlogPostHeading {
@@ -20,6 +31,9 @@ export interface BlogPost extends BlogPostMeta {
   lsn: string;
   size: string;
   headings: BlogPostHeading[];
+  sigil: string[];
+  fingerprint: string;
+  ogImage: string;
 }
 
 const modules = import.meta.glob('../pages/blog/*/content.md', {
@@ -66,17 +80,43 @@ function formatSize(content: string): string {
   return `${(bytes / 1024).toFixed(1)} KB`;
 }
 
+function validateTags(tags: unknown, path: string): string[] {
+  if (!Array.isArray(tags) || tags.length === 0) {
+    throw new Error(
+      `blog post must declare a non-empty "tags" array in its frontmatter: ${path}`
+    );
+  }
+  for (const tag of tags) {
+    if (typeof tag !== 'string' || !/^[a-z0-9]+$/.test(tag)) {
+      throw new Error(
+        `blog tag must be lowercase alphanumeric with no "#" or separators, got ${JSON.stringify(tag)}: ${path}`
+      );
+    }
+    if (tag === BRAND_TAG) {
+      throw new Error(
+        `blog tag "${BRAND_TAG}" is added automatically and must not be listed: ${path}`
+      );
+    }
+  }
+  return tags as string[];
+}
+
 export const blogPosts: BlogPost[] = Object.entries(modules)
   .map(([path, raw]) => {
     const { attributes, body } = fm<BlogPostMeta>(raw);
     const sequence = extractSequence(path);
+    const art = sigil(postSeed(attributes.title, attributes.slug, attributes.date));
     return {
       ...attributes,
+      tags: validateTags(attributes.tags, path),
       content: body,
       sequence,
       lsn: `#${sequence}`,
       size: formatSize(body),
       headings: extractHeadings(body),
+      sigil: frameSigil(art, sigilLabel(sequence)),
+      fingerprint: art.fingerprint,
+      ogImage: ogImagePath(attributes.slug),
     };
   })
   .sort((a, b) => b.sequence.localeCompare(a.sequence));

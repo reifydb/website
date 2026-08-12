@@ -5,6 +5,7 @@ date: "2026-08-05"
 excerpt: "A programmable, incremental database built for live systems."
 readTime: "10 min read"
 author: "Dominique"
+tags: ["database", "realtime", "dataengineering"]
 ---
 
 Most databases were designed for one of two worlds. **OLTP** gives you fast writes, simple queries, and transactional integrity. **OLAP** gives you large scans, analytics, and heavy aggregations. Modern applications, especially real-time systems, live in both worlds at once. ReifyDB was built for that intersection.

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { ScrollReveal } from '@/components/ui';
-import { blogPosts, getPostBySlug } from '@/data/blog-data';
+import { blogPosts, getPostBySlug, SITE_ORIGIN } from '@/data/blog-data';
 import { NotFoundPage } from '@/pages/not-found';
 import { WalEntry } from './components/wal-entry';
 import { FsyncBarrier } from './components/fsync-barrier';
@@ -35,6 +35,7 @@ export function BlogListingPage() {
             ? openPost.excerpt
             : 'Writing from the ReifyDB team on incremental views, application state, and building a database.'
         }
+        image={openPost ? `${SITE_ORIGIN}${openPost.ogImage}` : undefined}
       />
       <Navbar />
 

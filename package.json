@@ -8,7 +8,7 @@
     "dev:local": "VITE_LOCAL_SDK=1 vite",
     "build": "tsc -b && vite build",
     "build:ssr": "SSR_BUILD=1 vite build --ssr src/entry-server.tsx",
-    "build:static": "pnpm run build && pnpm run build:ssr && node scripts/prerender.mjs",
+    "build:static": "pnpm run og && pnpm run build && pnpm run build:ssr && node scripts/prerender.mjs",
     "ci:build": "node scripts/generate-llms.js && pnpm run build:static",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
@@ -16,7 +16,8 @@
     "deploy": "pnpm run build:static && wrangler deploy",
     "test": "vitest run",
     "test:watch": "vitest",
-    "llms": "node scripts/generate-llms.js"
+    "llms": "node scripts/generate-llms.js",
+    "og": "node scripts/generate-og.mjs"
   },
   "dependencies": {
     "@fontsource-variable/ibm-plex-sans": "^5.2.8",
@@ -43,6 +44,7 @@
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.50.0",
     "@eslint/js": "^9.39.1",
+    "@napi-rs/canvas": "^1.0.5",
     "@tailwindcss/vite": "^4.1.17",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
