@@ -2,7 +2,6 @@ import fm from 'front-matter';
 import { sigil, postSeed, sigilLabel, ogImagePath } from '@/lib/sigil';
 
 export { SITE_ORIGIN } from '@/lib/site';
-export const BRAND_TAG = 'reifydb';
 
 export interface BlogPostMeta {
   title: string;
@@ -85,11 +84,6 @@ function validateTags(tags: unknown, path: string): string[] {
     if (typeof tag !== 'string' || !/^[a-z0-9]+$/.test(tag)) {
       throw new Error(
         `blog tag must be lowercase alphanumeric with no "#" or separators, got ${JSON.stringify(tag)}: ${path}`
-      );
-    }
-    if (tag === BRAND_TAG) {
-      throw new Error(
-        `blog tag "${BRAND_TAG}" is added automatically and must not be listed: ${path}`
       );
     }
   }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMounted } from '@/hooks';
-import { BRAND_TAG, SITE_ORIGIN, type BlogPost } from '@/data/blog-data';
+import { SITE_ORIGIN, type BlogPost } from '@/data/blog-data';
 
 const actionClass =
   'text-text-muted hover:text-primary transition-colors duration-200 cursor-pointer';
@@ -11,7 +11,7 @@ export function ShareRow({ post }: { post: BlogPost }) {
 
   const url = `${SITE_ORIGIN}/blog/${post.slug}`;
   const target = encodeURIComponent(url);
-  const hashtags = [BRAND_TAG, ...post.tags].map((tag) => `#${tag}`).join(' ');
+  const hashtags = post.tags.map((tag) => `#${tag}`).join(' ');
   const body = `${post.title}\n\n${post.excerpt}\n\n${hashtags}`;
   const tweet = encodeURIComponent(`${body}\n\n${url}`);
   const canOpenSheet =
