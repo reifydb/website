@@ -5,7 +5,7 @@ date: "2026-08-12"
 excerpt: "Refresh jobs exist because the database could not keep a number current. Incremental views remove the job."
 readTime: "9 min read"
 author: "Dominique"
-tags: ["database", "realtime"]
+tags: ["buildinpublic"]
 ---
 
 You have written this cron job. Maybe not this exact one, but this shape: something that wakes up every five minutes, recomputes a number that has been wrong for four of them, and hopes nobody looked.
