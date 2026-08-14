@@ -33,7 +33,7 @@ export function JsonArrayPage() {
         {/* Parameters */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border-2 border-border-default overflow-x-auto">
+          <div className="border border-border-light overflow-x-auto rounded-md">
             <table className="w-full">
               <thead className="bg-bg-tertiary">
                 <tr>
@@ -43,7 +43,7 @@ export function JsonArrayPage() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3"><code>value1, value2, ...</code></td>
                   <td className="p-2 sm:p-3">Any</td>
                   <td className="p-2 sm:p-3">Values to include in the array</td>

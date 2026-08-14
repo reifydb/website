@@ -21,7 +21,7 @@ export function RoadmapPage() {
           {
             heading: 'Experimental features',
             body: (
-              <div className="border-2 border-border-default overflow-x-auto">
+              <div className="border border-border-light overflow-x-auto rounded-md">
                 <table className="w-full text-sm">
                   <thead className="bg-bg-tertiary">
                     <tr>
@@ -31,7 +31,7 @@ export function RoadmapPage() {
                   </thead>
                   <tbody>
                     {experimental.map((item) => (
-                      <tr key={item.name} className="border-t-2 border-border-default">
+                      <tr key={item.name} className="border-t border-border-light">
                         <td className="p-2 sm:p-3">{item.name}</td>
                         <td className="p-2 sm:p-3 text-text-secondary">{item.status}</td>
                       </tr>

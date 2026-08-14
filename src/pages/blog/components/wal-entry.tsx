@@ -8,7 +8,7 @@ export function WalEntry({ post }: { post: BlogPost }) {
     <Link
       to={`/blog/${post.slug}`}
       id={`entry-${post.slug}`}
-      className="group block border-2 border-l-[6px] border-border-default bg-bg-secondary shadow-[4px_4px_0_var(--color-border-default)] scroll-mt-24 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+      className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] scroll-mt-24 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
     >
       <div className="flex items-baseline gap-3 sm:gap-4 px-3 sm:px-4 py-4 font-mono text-sm">
         <span

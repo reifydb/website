@@ -17,7 +17,7 @@ function getTextContent(node: React.ReactNode): string {
 
 const measure = 'max-w-[68ch]';
 const prose = 'text-[1.0625rem] leading-[1.75] text-text-primary';
-const shadowHard = 'shadow-[4px_4px_0_var(--color-border-default)]';
+const shadowSoft = 'shadow-[var(--shadow-soft)]';
 const opener = '[&>p:first-child]:font-medium';
 
 function createComponents(): Components {
@@ -72,7 +72,7 @@ function createComponents(): Components {
     li: ({ children }) => <li>{children}</li>,
     blockquote: ({ children }) => (
       <blockquote
-        className={`${measure} ${prose} ${shadowHard} border-2 border-l-8 border-border-default border-l-primary bg-bg-secondary p-6 my-10 [&>p:last-child]:mb-0`}
+        className={`${measure} ${prose} ${shadowSoft} border border-l-8 border-border-light border-l-primary bg-bg-secondary rounded-md p-6 my-10 [&>p:last-child]:mb-0`}
       >
         {children}
       </blockquote>
@@ -87,10 +87,10 @@ function createComponents(): Components {
         const lang = className?.replace('language-', '') ?? '';
         return (
           <div
-            className={`my-10 border-2 border-border-default overflow-hidden bg-code-bg ${shadowHard}`}
+            className={`my-10 border border-border-light rounded-md overflow-hidden bg-code-bg ${shadowSoft}`}
           >
             {lang && (
-              <div className="px-4 py-2 text-xs font-mono label-uppercase text-code-text-muted border-b-2 border-border-default bg-code-bg-elevated">
+              <div className="px-4 py-2 text-xs font-mono label-uppercase text-code-text-muted border-b border-border-light bg-code-bg-elevated">
                 {lang}
               </div>
             )}
@@ -111,7 +111,7 @@ function createComponents(): Components {
     pre: ({ children }) => <>{children}</>,
     table: ({ children }) => (
       <div
-        className={`my-10 overflow-x-auto border-2 border-border-default ${shadowHard}`}
+        className={`my-10 overflow-x-auto border border-border-light rounded-md ${shadowSoft}`}
       >
         <table className="w-full text-sm text-text-secondary">{children}</table>
       </div>
@@ -120,14 +120,14 @@ function createComponents(): Components {
       <thead className="bg-bg-elevated text-text-primary">{children}</thead>
     ),
     th: ({ children }) => (
-      <th className="px-4 py-3 text-left font-mono text-xs label-uppercase border-b-2 border-border-default">
+      <th className="px-4 py-3 text-left font-mono text-xs label-uppercase border-b border-border-light">
         {children}
       </th>
     ),
     td: ({ children }) => (
-      <td className="px-4 py-3 border-b border-border-default">{children}</td>
+      <td className="px-4 py-3 border-b border-border-light">{children}</td>
     ),
-    hr: () => <hr className="my-12 border-0 border-t-2 border-border-default" />,
+    hr: () => <hr className="my-12 border-0 border-t border-border-light" />,
     strong: ({ children }) => (
       <strong className="font-bold text-primary">{children}</strong>
     ),

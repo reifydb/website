@@ -33,7 +33,7 @@ export function DateDiffPage() {
         {/* Parameters */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border-2 border-border-default overflow-x-auto">
+          <div className="border border-border-light overflow-x-auto rounded-md">
             <table className="w-full">
               <thead className="bg-bg-tertiary">
                 <tr>
@@ -43,17 +43,17 @@ export function DateDiffPage() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3"><code>date1</code></td>
                   <td className="p-2 sm:p-3">Date/Timestamp</td>
                   <td className="p-2 sm:p-3">The first (later) date</td>
                 </tr>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3"><code>date2</code></td>
                   <td className="p-2 sm:p-3">Date/Timestamp</td>
                   <td className="p-2 sm:p-3">The second (earlier) date</td>
                 </tr>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3"><code>unit</code></td>
                   <td className="p-2 sm:p-3">Utf8</td>
                   <td className="p-2 sm:p-3">The unit of time to return (e.g., "days", "hours")</td>

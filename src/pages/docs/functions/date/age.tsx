@@ -19,11 +19,11 @@ export function DateAgePage() {
         <section><h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2><RqlCodeBlock code={`date::age(date_a, date_b)`} /></section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border-2 border-border-default overflow-x-auto"><table className="w-full">
+          <div className="border border-border-light overflow-x-auto rounded-md"><table className="w-full">
             <thead className="bg-bg-tertiary"><tr><th className="text-left p-2 sm:p-3 font-bold">Name</th><th className="text-left p-2 sm:p-3 font-bold">Type</th><th className="text-left p-2 sm:p-3 font-bold">Description</th></tr></thead>
             <tbody>
-              <tr className="border-t-2 border-border-default"><td className="p-2 sm:p-3"><code>date_a</code></td><td className="p-2 sm:p-3">Date</td><td className="p-2 sm:p-3">The first date</td></tr>
-              <tr className="border-t-2 border-border-default"><td className="p-2 sm:p-3"><code>date_b</code></td><td className="p-2 sm:p-3">Date</td><td className="p-2 sm:p-3">The second date</td></tr>
+              <tr className="border-t border-border-light"><td className="p-2 sm:p-3"><code>date_a</code></td><td className="p-2 sm:p-3">Date</td><td className="p-2 sm:p-3">The first date</td></tr>
+              <tr className="border-t border-border-light"><td className="p-2 sm:p-3"><code>date_b</code></td><td className="p-2 sm:p-3">Date</td><td className="p-2 sm:p-3">The second date</td></tr>
             </tbody>
           </table></div>
         </section>

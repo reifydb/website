@@ -16,7 +16,7 @@ function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
 
 function Th({ children }: { children: React.ReactNode }) {
   return (
-    <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">{children}</th>
+    <th className="text-left px-4 py-2 border-b border-border-light font-bold">{children}</th>
   );
 }
 
@@ -53,7 +53,7 @@ export function WireFormatsPage() {
             output. What varies is only how those frames are encoded on the way back:
           </p>
           <div className="overflow-x-auto mb-4">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-border-light text-sm">
               <thead>
                 <tr className="bg-bg-tertiary">
                   <Th>Format</Th>
@@ -169,7 +169,7 @@ export function WireFormatsPage() {
             <Code>unwrap</Code> query parameters:
           </p>
           <div className="overflow-x-auto mb-4">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-border-light text-sm">
               <thead>
                 <tr className="bg-bg-tertiary">
                   <Th>Route</Th>

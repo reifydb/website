@@ -18,7 +18,7 @@ export function PostSigil({ cells, label, fingerprint }: PostSigilProps) {
   return (
     <div
       aria-hidden="true"
-      className="relative shrink-0 border-2 border-border-default bg-bg-secondary px-4 py-4 sm:px-6 sm:py-6"
+      className="relative shrink-0 border border-border-light rounded-md bg-bg-secondary px-4 py-4 sm:px-6 sm:py-6"
     >
       <span className={`${capsuleClass} -top-[7px]`}>{label}</span>
       <div className="flex flex-col gap-[2px] sm:gap-[3px]">

@@ -1,5 +1,5 @@
 import { ScrollReveal, Button } from '@/components/ui';
-import { Card, CardContent, Badge } from '@reifydb/ui';
+import { Badge } from '@reifydb/ui';
 
 const pipeline = [
   {
@@ -42,6 +42,22 @@ const capabilities = [
   },
 ];
 
+function CapabilityCell({ capability, index }: { capability: (typeof capabilities)[number]; index: number }) {
+  return (
+    <ScrollReveal delay={index * 75}>
+      <div className="p-6 sm:p-8">
+        <Badge variant="active" className={`justify-center w-10 h-10 rounded-none font-bold text-sm mb-4 ${capability.accent}`}>
+          {String(index + 1).padStart(2, '0')}
+        </Badge>
+        <h3 className="text-lg font-bold mb-2 text-text-primary">{capability.title}</h3>
+        <p className="text-text-muted text-sm leading-relaxed">
+          {capability.description}
+        </p>
+      </div>
+    </ScrollReveal>
+  );
+}
+
 export function CapabilitiesSection() {
   return (
     <section id="capabilities" className="relative z-10 py-24 sm:py-32">
@@ -49,8 +65,8 @@ export function CapabilitiesSection() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-16 sm:mb-20">
-            <Badge variant="active" className="text-xs mb-3 font-mono uppercase tracking-[0.2em]">How It Works</Badge>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
+            <Badge variant="active" className="text-xs mb-3 uppercase tracking-[0.2em]">How It Works</Badge>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
               Why ReifyDB
             </h2>
             <p className="max-w-3xl mx-auto text-text-secondary text-lg">
@@ -60,10 +76,10 @@ export function CapabilitiesSection() {
         </ScrollReveal>
 
         {/* Pipeline - 3 steps */}
-        <div className="grid gap-4 sm:gap-6 md:grid-cols-3 mb-16 sm:mb-20">
+        <div className="glass-card grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-light overflow-hidden mb-16 sm:mb-20">
           {pipeline.map((step, index) => (
             <ScrollReveal key={step.title} delay={index * 100}>
-              <div className="glass-card p-6 text-center h-full">
+              <div className="p-6 sm:p-8 text-center">
                 <Badge variant="active" className="justify-center w-10 h-10 rounded-none bg-primary/10 font-bold text-sm mb-4">{step.number}</Badge>
                 <h3 className="text-base font-bold mb-2">{step.title}</h3>
                 <p className="text-text-muted text-sm leading-relaxed">
@@ -75,22 +91,15 @@ export function CapabilitiesSection() {
         </div>
 
         {/* Capability Cards - 2x2 */}
-        <div className="grid gap-6 sm:grid-cols-2">
-          {capabilities.map((capability, index) => (
-            <ScrollReveal key={capability.title} delay={index * 75}>
-              <Card className="sm:p-8 h-full">
-                <CardContent>
-                  <Badge variant="active" className={`justify-center w-10 h-10 rounded-none font-bold text-sm mb-4 ${capability.accent}`}>
-                    {String(index + 1).padStart(2, '0')}
-                  </Badge>
-                  <h3 className="text-lg font-bold mb-2 text-text-primary">{capability.title}</h3>
-                  <p className="text-text-muted text-sm leading-relaxed">
-                    {capability.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </ScrollReveal>
-          ))}
+        <div className="glass-card overflow-hidden divide-y divide-border-light">
+          <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border-light">
+            <CapabilityCell capability={capabilities[0]} index={0} />
+            <CapabilityCell capability={capabilities[1]} index={1} />
+          </div>
+          <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border-light">
+            <CapabilityCell capability={capabilities[2]} index={2} />
+            <CapabilityCell capability={capabilities[3]} index={3} />
+          </div>
         </div>
 
         <ScrollReveal delay={200}>

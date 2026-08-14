@@ -83,8 +83,8 @@ export function BlogListingPage() {
         <div className="mx-auto max-w-4xl px-6 md:px-8">
           {!openPost && (
             <ScrollReveal>
-              <div className="border-2 border-border-default bg-code-bg mb-6">
-                <div className="px-4 py-2 border-b border-border-default bg-code-bg-elevated label-uppercase text-xs text-code-text-muted font-mono">
+              <div className="border border-border-light rounded-md overflow-hidden bg-code-bg mb-6">
+                <div className="px-4 py-2 border-b border-border-light bg-code-bg-elevated label-uppercase text-xs text-code-text-muted font-mono">
                   blog::posts
                 </div>
                 <pre className="p-4 overflow-x-auto">
@@ -95,7 +95,7 @@ export function BlogListingPage() {
           )}
 
           {openPost ? (
-            <div className="sticky top-[60px] z-30 -mx-6 md:-mx-8 mb-8 flex flex-wrap gap-x-3 border-b-2 border-border-default bg-bg-primary px-6 md:px-8 py-2 font-mono text-xs text-text-muted">
+            <div className="sticky top-[60px] z-30 -mx-6 md:-mx-8 mb-8 flex flex-wrap gap-x-3 border-b border-border-light bg-bg-primary px-6 md:px-8 py-2 font-mono text-xs text-text-muted">
               <Link
                 to="/blog"
                 state={{ preserveScroll: true, fromSlug: openPost.slug }}

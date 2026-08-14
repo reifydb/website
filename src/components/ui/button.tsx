@@ -9,18 +9,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
 }
 
-const brutalPress = 'shadow-[var(--shadow-hard-sm)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none'
-
 const variantStyles = {
   primary: cn(
-    'bg-primary text-white border-2 border-border-default font-bold',
-    'hover:brightness-90',
-    brutalPress
+    'bg-primary text-white border border-border-default font-bold',
+    'hover:brightness-90'
   ),
   secondary: cn(
-    'bg-bg-tertiary border-2 border-border-default text-text-primary',
-    'hover:bg-bg-elevated',
-    brutalPress
+    'bg-bg-tertiary border border-border-default text-text-primary',
+    'hover:bg-bg-elevated'
   ),
   ghost: cn(
     'text-text-secondary',
@@ -47,7 +43,7 @@ export function Button({
 }: ButtonProps) {
   const baseStyles = cn(
     'inline-flex items-center justify-center gap-2',
-    'font-mono font-semibold rounded-none transition-none',
+    'font-semibold rounded-md transition-colors duration-150',
     'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-bg-primary',
     'disabled:opacity-30 disabled:cursor-not-allowed',
     variantStyles[variant],

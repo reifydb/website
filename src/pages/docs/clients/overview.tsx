@@ -16,7 +16,7 @@ function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
 
 function Th({ children }: { children: React.ReactNode }) {
   return (
-    <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">{children}</th>
+    <th className="text-left px-4 py-2 border-b border-border-light font-bold">{children}</th>
   );
 }
 
@@ -73,7 +73,7 @@ export function ClientsOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">At a glance</h2>
           <div className="overflow-x-auto">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-border-light text-sm">
               <thead>
                 <tr className="bg-bg-tertiary">
                   <Th>Client</Th>

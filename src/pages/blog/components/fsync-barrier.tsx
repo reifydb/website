@@ -7,7 +7,7 @@ export function FsyncBarrier({ post }: { post: BlogPost }) {
       className="flex items-center gap-3 py-7 px-1 font-mono text-xs label-uppercase text-text-muted select-none"
     >
       <span className="text-primary shrink-0">fsync</span>
-      <span className="flex-1 border-t-2 border-dashed border-border-default" />
+      <span className="flex-1 border-t border-dashed border-border-light" />
       <span className="shrink-0" data-numeric>
         {post.lsn}
       </span>

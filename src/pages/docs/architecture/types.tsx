@@ -21,7 +21,7 @@ export function TypesPage() {
         {/* Type System */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Type System</h2>
-          <div className="border-2 border-border-default overflow-x-auto">
+          <div className="border border-border-light overflow-x-auto rounded-md">
             <table className="w-full">
               <thead className="bg-bg-tertiary">
                 <tr>
@@ -31,42 +31,42 @@ export function TypesPage() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3">Signed Integers</td>
                   <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">int1</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">int2</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">int4</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">int8</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">int16</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">int</code></td>
                   <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">int</code> is arbitrary precision</td>
                 </tr>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3">Unsigned Integers</td>
                   <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">uint1</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">uint2</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">uint4</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">uint8</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">uint16</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">uint</code></td>
                   <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">uint</code> is arbitrary precision</td>
                 </tr>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3">Floats</td>
                   <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">float4</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">float8</code></td>
                   <td className="p-2 sm:p-3">IEEE 754</td>
                 </tr>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3">Decimal</td>
                   <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">decimal</code></td>
                   <td className="p-2 sm:p-3">Arbitrary precision</td>
                 </tr>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3">Temporal</td>
                   <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">date</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">datetime</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">time</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">duration</code></td>
                   <td className="p-2 sm:p-3">Calendar and clock types</td>
                 </tr>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3">Text / Binary</td>
                   <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">utf8</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">blob</code></td>
                   <td className="p-2 sm:p-3">UTF-8 strings and raw bytes</td>
                 </tr>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3">Identifiers</td>
                   <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">uuid4</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">uuid7</code></td>
                   <td className="p-2 sm:p-3">Universally unique identifiers</td>
                 </tr>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3">Other</td>
                   <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">bool</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">Option(T)</code>, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">List(T)</code></td>
                   <td className="p-2 sm:p-3"><code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">Option</code> wraps optional values that can be none</td>

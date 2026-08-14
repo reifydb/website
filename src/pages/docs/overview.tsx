@@ -86,7 +86,7 @@ export function DocsOverview() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="group border-2 border-border-default p-5 transition-all duration-300 hover:border-primary/50"
+                  className="group border border-border-light rounded-md p-5 transition-all duration-300 hover:border-primary/50"
                   style={{ animationDelay: `${index * 75}ms` }}
                 >
                   <div className="flex items-start gap-4">

@@ -83,12 +83,12 @@ export function LiteralsPage() {
             followed by a recognized date, time, datetime, or duration pattern:
           </p>
           <div className="overflow-x-auto mb-4">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-border-light text-sm">
               <thead>
                 <tr className="bg-bg-tertiary">
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Kind</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Pattern</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Example</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Kind</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Pattern</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Example</th>
                 </tr>
               </thead>
               <tbody>

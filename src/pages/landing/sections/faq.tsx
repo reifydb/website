@@ -41,7 +41,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 
 export function FaqSection() {
   return (
-    <section id="faq" className="relative z-10 py-24 sm:py-32">
+    <section id="faq" className="relative z-10 bg-bg-secondary py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>
@@ -49,7 +49,7 @@ export function FaqSection() {
             <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-3">
               FAQ
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
               Frequently Asked Questions
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg">

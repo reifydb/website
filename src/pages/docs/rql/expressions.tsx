@@ -24,12 +24,12 @@ export function RqlExpressionsPage() {
 
           <h3 className="text-lg font-bold mt-6 mb-3">Arithmetic</h3>
           <div className="overflow-x-auto">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-border-light text-sm">
               <thead>
                 <tr className="bg-bg-tertiary">
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Operator</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Description</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Example</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Operator</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Description</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Example</th>
                 </tr>
               </thead>
               <tbody>
@@ -69,12 +69,12 @@ export function RqlExpressionsPage() {
 
           <h3 className="text-lg font-bold mt-6 mb-3">Comparison</h3>
           <div className="overflow-x-auto">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-border-light text-sm">
               <thead>
                 <tr className="bg-bg-tertiary">
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Operator</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Description</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Example</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Operator</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Description</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Example</th>
                 </tr>
               </thead>
               <tbody>
@@ -119,12 +119,12 @@ export function RqlExpressionsPage() {
 
           <h3 className="text-lg font-bold mt-6 mb-3">Logical</h3>
           <div className="overflow-x-auto">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-border-light text-sm">
               <thead>
                 <tr className="bg-bg-tertiary">
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Operator</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Description</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Example</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Operator</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Description</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Example</th>
                 </tr>
               </thead>
               <tbody>
@@ -149,12 +149,12 @@ export function RqlExpressionsPage() {
 
           <h3 className="text-lg font-bold mt-6 mb-3">Other</h3>
           <div className="overflow-x-auto">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-border-light text-sm">
               <thead>
                 <tr className="bg-bg-tertiary">
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Operator</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Description</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Example</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Operator</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Description</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Example</th>
                 </tr>
               </thead>
               <tbody>

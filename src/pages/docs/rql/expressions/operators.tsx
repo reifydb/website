@@ -19,12 +19,12 @@ export function OperatorsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Arithmetic Operators</h2>
           <div className="overflow-x-auto">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-border-light text-sm">
               <thead>
                 <tr className="bg-bg-tertiary">
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Operator</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Description</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Example</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Operator</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Description</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Example</th>
                 </tr>
               </thead>
               <tbody>
@@ -70,12 +70,12 @@ export function OperatorsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Comparison Operators</h2>
           <div className="overflow-x-auto">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-border-light text-sm">
               <thead>
                 <tr className="bg-bg-tertiary">
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Operator</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Description</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Example</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Operator</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Description</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Example</th>
                 </tr>
               </thead>
               <tbody>
@@ -127,12 +127,12 @@ export function OperatorsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Logical Operators</h2>
           <div className="overflow-x-auto">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-border-light text-sm">
               <thead>
                 <tr className="bg-bg-tertiary">
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Operator</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Description</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Example</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Operator</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Description</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Example</th>
                 </tr>
               </thead>
               <tbody>
@@ -166,12 +166,12 @@ export function OperatorsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Other Tokens</h2>
           <div className="overflow-x-auto">
-            <table className="w-full border-2 border-border-default text-sm">
+            <table className="w-full border border-border-light text-sm">
               <thead>
                 <tr className="bg-bg-tertiary">
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Token</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Description</th>
-                  <th className="text-left px-4 py-2 border-b-2 border-border-default font-bold">Example</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Token</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Description</th>
+                  <th className="text-left px-4 py-2 border-b border-border-light font-bold">Example</th>
                 </tr>
               </thead>
               <tbody>

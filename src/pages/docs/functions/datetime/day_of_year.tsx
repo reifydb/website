@@ -22,7 +22,7 @@ export function DatetimeDayOfYearPage() {
         </section>
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border-2 border-border-default overflow-x-auto">
+          <div className="border border-border-light overflow-x-auto rounded-md">
             <table className="w-full">
               <thead className="bg-bg-tertiary"><tr>
                 <th className="text-left p-2 sm:p-3 font-bold">Name</th>
@@ -30,7 +30,7 @@ export function DatetimeDayOfYearPage() {
                 <th className="text-left p-2 sm:p-3 font-bold">Description</th>
               </tr></thead>
               <tbody>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3"><code>datetime_value</code></td>
                   <td className="p-2 sm:p-3">Datetime</td>
                   <td className="p-2 sm:p-3">The datetime to get the day of the year from</td>

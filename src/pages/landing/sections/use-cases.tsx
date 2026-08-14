@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ScrollReveal } from '@/components/ui';
-import { Card, CardContent, Badge } from '@reifydb/ui';
+import { Badge } from '@reifydb/ui';
 
 const useCases: { title: string; description: string; href?: string }[] = [
   {
@@ -21,15 +21,45 @@ const useCases: { title: string; description: string; href?: string }[] = [
   },
 ];
 
+function UseCaseCell({ useCase, index }: { useCase: (typeof useCases)[number]; index: number }) {
+  const content = (
+    <div className="p-6 sm:p-8 group">
+      <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+        {useCase.title}
+      </h3>
+      <p className="text-text-muted text-sm leading-relaxed">
+        {useCase.description}
+      </p>
+      {useCase.href && (
+        <p className="text-primary text-sm mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+          Try Demo &rarr;
+        </p>
+      )}
+    </div>
+  );
+
+  return (
+    <ScrollReveal delay={index * 75}>
+      {useCase.href ? (
+        <Link to={useCase.href} className="block">
+          {content}
+        </Link>
+      ) : (
+        content
+      )}
+    </ScrollReveal>
+  );
+}
+
 export function UseCasesSection() {
   return (
-    <section id="use-cases" className="py-24 sm:py-32">
+    <section id="use-cases" className="bg-bg-secondary py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <Badge variant="active" className="text-xs mb-3 font-mono uppercase tracking-[0.2em]">Use Cases</Badge>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
+            <Badge variant="active" className="text-xs mb-3 uppercase tracking-[0.2em]">Use Cases</Badge>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
               Built for Live Application State
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg">
@@ -39,39 +69,15 @@ export function UseCasesSection() {
         </ScrollReveal>
 
         {/* Use Cases Grid - 2x2 */}
-        <div className="grid gap-6 sm:grid-cols-2">
-          {useCases.map((useCase, index) => (
-            <ScrollReveal key={useCase.title} delay={index * 75}>
-              {useCase.href ? (
-                <Link to={useCase.href} className="block h-full">
-                  <Card className="sm:p-8 h-full group hover:border-primary/20">
-                    <CardContent>
-                      <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
-                        {useCase.title}
-                      </h3>
-                      <p className="text-text-muted text-sm leading-relaxed">
-                        {useCase.description}
-                      </p>
-                      <p className="text-primary text-sm mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        Try Demo &rarr;
-                      </p>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ) : (
-                <Card className="sm:p-8 h-full">
-                  <CardContent>
-                    <h3 className="text-lg font-bold mb-2">
-                      {useCase.title}
-                    </h3>
-                    <p className="text-text-muted text-sm leading-relaxed">
-                      {useCase.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              )}
-            </ScrollReveal>
-          ))}
+        <div className="glass-card overflow-hidden divide-y divide-border-light">
+          <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border-light">
+            <UseCaseCell useCase={useCases[0]} index={0} />
+            <UseCaseCell useCase={useCases[1]} index={1} />
+          </div>
+          <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border-light">
+            <UseCaseCell useCase={useCases[2]} index={2} />
+            <UseCaseCell useCase={useCases[3]} index={3} />
+          </div>
         </div>
       </div>
     </section>

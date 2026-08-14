@@ -9,8 +9,8 @@ const backClass =
 
 export function EntryDetail({ post }: { post: BlogPost }) {
   return (
-    <article className="border-2 border-l-[6px] border-border-default border-l-primary bg-bg-secondary shadow-[4px_4px_0_var(--color-border-default)]">
-      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2 px-3 sm:px-4 py-4 border-b-2 border-border-default font-mono text-sm">
+    <article className="border border-l-[6px] border-border-light border-l-primary bg-bg-secondary rounded-md shadow-[var(--shadow-medium)]">
+      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2 px-3 sm:px-4 py-4 border-b border-border-light font-mono text-sm">
         <span className="text-primary" data-numeric>
           {post.lsn}
         </span>
@@ -40,7 +40,7 @@ export function EntryDetail({ post }: { post: BlogPost }) {
           <BlogMarkdownRenderer content={post.content} />
         </div>
 
-        <div className="mt-12 pt-6 border-t-2 border-border-default flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs label-uppercase">
+        <div className="mt-12 pt-6 border-t border-border-light flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs label-uppercase">
           <Link
             to="/blog"
             state={{ preserveScroll: true, fromSlug: post.slug }}

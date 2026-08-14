@@ -1,72 +1,58 @@
-import { HaikuTypewriter } from '@/components/demo';
-import type { Haiku } from '@/components/demo';
 import { Button, ExecutableSnippet } from '@/components/ui';
 import { heroExamples } from './hero.examples';
 
 const heroExample = heroExamples.find((ex) => ex.id === 'guide-built-in-testing')!;
 
-const heroHaikus: Haiku[] = [
-  { lines: ['No {cyan:cache}. No {cyan:cron job}.', 'Your {primary:state} stays {green:consistent} here', 'Nothing {cyan:drifts} apart'] },
-  { lines: ['{primary:Write state}. {cyan:Derive views}.', 'One {green:transactional} engine', 'Nothing left to {cyan:drift}'] },
-  { lines: ['Stop {cyan:duct-taping} state', '{primary:Transact}, {cyan:derive}, stay in {green:sync}', 'One {primary:database}. Done.'] },
-  { lines: ['No {cyan:polls}. No {cyan:stale reads}.', 'Your {primary:views} update when {primary:state} does', '{green:Fresh data}. Always.'] },
-  { lines: ['No {cyan:Redis}. No {cyan:cron}.', 'One {green:transaction} holds it all', '{primary:State} never goes {cyan:stale}'] },
-  { lines: ['No {cyan:sync bugs} to chase', 'Your {cyan:cache} and {primary:data} agree', "Because there's no {cyan:cache}"] },
-  { lines: ['One {primary:engine}, one {green:truth}', '{primary:State} derives the moment you', '{green:Commit}. No {cyan:drift} left.'] },
-];
-
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden">
-      {/* Above the fold — H1 + Editor, vertically centered */}
-      <div className="relative z-10 min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center mx-auto max-w-6xl px-6 md:px-8">
-        <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.25em] text-text-muted mb-6 text-center pt-12 sm:pt-0">
-          The reactive transactional database
-        </p>
+      <div className="hidden lg:block absolute inset-y-0 right-0 z-0 w-1/2 bg-primary" />
+      <div className="relative z-10 min-h-[calc(100vh-61px)] flex items-center mx-auto max-w-6xl px-6 md:px-8 py-16 lg:py-0">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center w-full">
+          {/* Left — pitch */}
+          <div className="text-center lg:text-left">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-6 whitespace-nowrap">
+              Live Application State
+            </h1>
 
-        <HaikuTypewriter
-          haikus={heroHaikus}
-          className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-16 sm:mb-10 leading-[1.3] text-center"
-        />
+            <p className="text-lg sm:text-xl text-text-secondary mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Your state, your logic, your derived views, all in one transactional flow. No caches to invalidate. No cron to babysit. No drift to debug.
+            </p>
 
-        <div className="w-full max-w-3xl mx-auto">
-          <ExecutableSnippet
-            initialCode={heroExample.code}
-            title={heroExample.title}
-            description={heroExample.description}
-          />
-        </div>
+            <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4">
+              <Button href="/docs" size="lg">
+                Read the Docs
+              </Button>
+              <Button
+                href="https://github.com/reifydb/reifydb"
+                variant="secondary"
+                size="lg"
+              >
+                View on GitHub
+              </Button>
+            </div>
+          </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-text-muted mt-8">
-          <a href="/examples" className="hover:text-primary transition-colors">
-            Explore all examples &rarr;
-          </a>
-          <a href="/tour" className="hover:text-primary transition-colors">
-            Take the tour &rarr;
-          </a>
-          <a href="/playground" className="hover:text-primary transition-colors">
-            Open playground &rarr;
-          </a>
-        </div>
-      </div>
+          {/* Right — proof */}
+          <div className="w-full bg-primary rounded-2xl p-6 sm:p-8 lg:bg-transparent lg:rounded-none lg:p-0">
+            <ExecutableSnippet
+              initialCode={heroExample.code}
+              title={heroExample.title}
+              description={heroExample.description}
+            />
 
-      {/* Below the fold — subtitle, CTAs */}
-      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 pb-20 sm:pb-28 text-center">
-        <p className="max-w-2xl mx-auto text-lg sm:text-xl text-text-secondary mb-8 leading-relaxed">
-          Your state, your logic, your derived views, all in one transactional flow. No caches to invalidate. No cron to babysit. No drift to debug.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button href="/docs" size="lg">
-            Read the Docs
-          </Button>
-          <Button
-            href="https://github.com/reifydb/reifydb"
-            variant="secondary"
-            size="lg"
-          >
-            View on GitHub
-          </Button>
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-white/70 mt-6">
+              <a href="/examples" className="hover:text-white transition-colors">
+                Explore all examples &rarr;
+              </a>
+              <a href="/tour" className="hover:text-white transition-colors">
+                Take the tour &rarr;
+              </a>
+              <a href="/playground" className="hover:text-white transition-colors">
+                Open playground &rarr;
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

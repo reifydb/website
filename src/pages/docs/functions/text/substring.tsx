@@ -33,7 +33,7 @@ export function TextSubstringPage() {
         {/* Parameters */}
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border-2 border-border-default overflow-x-auto">
+          <div className="border border-border-light overflow-x-auto rounded-md">
             <table className="w-full">
               <thead className="bg-bg-tertiary">
                 <tr>
@@ -43,17 +43,17 @@ export function TextSubstringPage() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3"><code>value</code></td>
                   <td className="p-2 sm:p-3">Utf8</td>
                   <td className="p-2 sm:p-3">The string to extract from</td>
                 </tr>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3"><code>start</code></td>
                   <td className="p-2 sm:p-3">Integer</td>
                   <td className="p-2 sm:p-3">The starting index (0-based)</td>
                 </tr>
-                <tr className="border-t-2 border-border-default">
+                <tr className="border-t border-border-light">
                   <td className="p-2 sm:p-3"><code>end</code></td>
                   <td className="p-2 sm:p-3">Integer</td>
                   <td className="p-2 sm:p-3">The ending index (exclusive)</td>

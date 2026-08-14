@@ -22,7 +22,7 @@ export function FunctionsOverviewPage() {
           <div className="space-y-4">
             <Link
               to="/docs/functions/blob"
-              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
             >
               <h3 className="font-bold text-primary-color mb-1">blob</h3>
               <p className="text-text-secondary text-sm">
@@ -32,7 +32,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/clock"
-              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
             >
               <h3 className="font-bold text-primary-color mb-1">clock</h3>
               <p className="text-text-secondary text-sm">
@@ -42,7 +42,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/date"
-              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
             >
               <h3 className="font-bold text-primary-color mb-1">date</h3>
               <p className="text-text-secondary text-sm">
@@ -52,7 +52,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/datetime"
-              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
             >
               <h3 className="font-bold text-primary-color mb-1">datetime</h3>
               <p className="text-text-secondary text-sm">
@@ -62,7 +62,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/duration"
-              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
             >
               <h3 className="font-bold text-primary-color mb-1">duration</h3>
               <p className="text-text-secondary text-sm">
@@ -72,7 +72,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/identity"
-              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
             >
               <h3 className="font-bold text-primary-color mb-1">identity</h3>
               <p className="text-text-secondary text-sm">
@@ -82,7 +82,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/is"
-              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
             >
               <h3 className="font-bold text-primary-color mb-1">is</h3>
               <p className="text-text-secondary text-sm">
@@ -92,7 +92,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/json"
-              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
             >
               <h3 className="font-bold text-primary-color mb-1">json</h3>
               <p className="text-text-secondary text-sm">
@@ -102,7 +102,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/math"
-              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
             >
               <h3 className="font-bold text-primary-color mb-1">math</h3>
               <p className="text-text-secondary text-sm">
@@ -112,7 +112,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/meta"
-              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
             >
               <h3 className="font-bold text-primary-color mb-1">meta</h3>
               <p className="text-text-secondary text-sm">
@@ -122,7 +122,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/text"
-              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
             >
               <h3 className="font-bold text-primary-color mb-1">text</h3>
               <p className="text-text-secondary text-sm">
@@ -132,7 +132,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/time"
-              className="block border-2 border-border-default p-4 hover:bg-bg-tertiary transition-colors"
+              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
             >
               <h3 className="font-bold text-primary-color mb-1">time</h3>
               <p className="text-text-secondary text-sm">
