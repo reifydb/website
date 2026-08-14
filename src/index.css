@@ -39,6 +39,12 @@ html {
   display: none;
 }
 
+/* Faint dot grid texture — used behind the landing page hero */
+.dot-grid {
+  background-image: radial-gradient(var(--color-border-subtle) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
 /* Range input — used by landing page proof section */
 .proof-slider {
   appearance: none;

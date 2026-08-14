@@ -73,21 +73,20 @@ export function CtaSection({
     );
   }
 
-  // Default: banner variant
   return (
     <section className="py-16 sm:py-24">
       <ScrollReveal>
         <div className="max-w-4xl mx-auto px-6">
-          <div className="card-brutal p-8 sm:p-12 text-center">
-            <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-3 sm:mb-4">{title}</h3>
-            <p className="text-sm sm:text-base text-text-secondary mb-6 sm:mb-8">{description}</p>
+          <div className="rounded-md border-2 border-border-default shadow-hard bg-gradient-to-br from-primary to-primary-dark p-8 sm:p-12 text-center">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">{title}</h3>
+            <p className="text-sm sm:text-base text-white/80 mb-6 sm:mb-8">{description}</p>
             {isExternal ? (
               <a href={buttonHref} target="_blank" rel="noopener noreferrer">
-                <Button size="lg">{buttonText}</Button>
+                <Button size="lg" variant="secondary">{buttonText}</Button>
               </a>
             ) : (
               <Link to={buttonHref}>
-                <Button size="lg">{buttonText}</Button>
+                <Button size="lg" variant="secondary">{buttonText}</Button>
               </Link>
             )}
           </div>

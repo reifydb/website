@@ -6,7 +6,8 @@ const heroExample = heroExamples.find((ex) => ex.id === 'guide-built-in-testing'
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden">
-      <div className="hidden lg:block absolute inset-y-0 right-0 z-0 w-1/2 bg-primary" />
+      <div className="absolute inset-0 z-0 dot-grid opacity-60" />
+      <div className="hidden lg:block absolute inset-y-0 right-0 z-0 w-1/2 bg-gradient-to-br from-primary to-primary-dark" />
       <div className="relative z-10 min-h-[calc(100vh-61px)] flex items-center mx-auto max-w-6xl px-6 md:px-8 py-16 lg:py-0">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center w-full">
           {/* Left — pitch */}
@@ -39,6 +40,7 @@ export function HeroSection() {
               initialCode={heroExample.code}
               title={heroExample.title}
               description={heroExample.description}
+              deferLoad
             />
 
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-white/70 mt-6">
