@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, memo } from 'react';
+import { useState, useCallback, useEffect, useRef, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib';
 import { useIsLocalhost } from '@/hooks';
@@ -75,6 +75,13 @@ export const AccordionItem = memo(function AccordionItem({ item, currentPath, de
   const isOpen = openItems.has(item.id);
   const isActive = item.href === currentPath;
   const published = isItemPublished(item);
+  const activeRef = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    if (isActive) {
+      activeRef.current?.scrollIntoView({ block: 'nearest' });
+    }
+  }, []);
 
   const handleClick = () => {
     if (hasChildren) {
@@ -88,13 +95,13 @@ export const AccordionItem = memo(function AccordionItem({ item, currentPath, de
     'w-full flex items-center py-1.5 text-sm text-left',
     'transition-colors duration-150',
     isActive
-      ? 'text-primary font-medium'
+      ? 'text-primary font-medium border-l-2 border-primary'
       : 'text-text-secondary hover:text-primary',
     devMode && !published && 'opacity-50 italic'
   );
 
   return (
-    <li>
+    <li ref={activeRef}>
       {item.href && !hasChildren ? (
         <Link
           to={item.href}

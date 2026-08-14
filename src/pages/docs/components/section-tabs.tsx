@@ -25,7 +25,7 @@ export function SectionTabs({ sections, activeTitle }: SectionTabsProps) {
               <Link
                 to={href}
                 className={cn(
-                  'tab-brutalist block text-sm font-semibold whitespace-nowrap',
+                  'tab-brutalist block text-xs font-semibold whitespace-nowrap',
                   isActive ? 'tab-brutalist-active text-primary' : 'text-text-muted hover:text-primary',
                 )}
               >

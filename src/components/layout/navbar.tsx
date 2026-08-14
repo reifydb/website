@@ -69,7 +69,7 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex gap-0 text-xs items-center flex-1 justify-center">
+          <nav className="hidden lg:flex gap-0 text-sm items-center flex-1 justify-center">
             {/* Dropdown Menus */}
             {navDropdowns.map((dropdown) => (
               <NavbarDropdown
