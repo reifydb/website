@@ -14,7 +14,7 @@ export function LandingPage() {
   return (
     <>
       <PageMeta
-        title="ReifyDB | Application State Database"
+        title="ReifyDB"
         description="A database designed to manage live application state with transactional guarantees, incremental derived state, and embedded state transitions."
       />
       <Navbar />
