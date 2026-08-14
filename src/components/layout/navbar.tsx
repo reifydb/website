@@ -124,6 +124,7 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
                 href="https://discord.gg/HPBwUSPuUS"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Discord"
                 className="flex items-center px-3 py-2 rounded-md hover:bg-bg-tertiary transition-all"
               >
                 <svg className="h-[18px] w-[18px] text-text-secondary" viewBox="0 0 24 24" fill="currentColor">

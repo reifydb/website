@@ -10,6 +10,7 @@ export function GitHubStars() {
       href="https://github.com/reifydb/reifydb"
       target="_blank"
       rel="noopener noreferrer"
+      aria-label="GitHub"
       className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-white/5 transition-all"
     >
       <Github size={18} className="text-text-secondary" />
