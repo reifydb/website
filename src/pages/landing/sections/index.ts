@@ -1,4 +1,5 @@
 export { HeroSection } from './hero'
+export { TrustBarSection } from './trust-bar'
 export { UseCasesSection } from './use-cases'
 export { CapabilitiesSection } from './capabilities'
 export { ReplacesSection } from './replaces'

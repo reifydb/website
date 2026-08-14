@@ -3,6 +3,7 @@ import { PageMeta } from '@/components/page-meta';
 import { CtaSection } from '@/components/ui';
 import {
   HeroSection,
+  TrustBarSection,
   CapabilitiesSection,
   UseCasesSection,
   ReplacesSection,
@@ -21,6 +22,8 @@ export function LandingPage() {
 
       <main>
         <HeroSection />
+
+        <TrustBarSection />
 
         <CapabilitiesSection />
 

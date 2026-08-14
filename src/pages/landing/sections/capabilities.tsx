@@ -22,21 +22,25 @@ const pipeline = [
 const capabilities = [
   {
     title: 'ACID core for live state',
+    stat: '0 partial writes',
     description: 'Your state stays consistent, even under contention. Serializable transactions with real rollback, not the best-effort scripts you are used to patching together.',
     accent: 'bg-primary/10 text-primary',
   },
   {
     title: 'Incremental derived views',
+    stat: '0 cron jobs',
     description: 'Your views update the moment your data changes. No cron job to schedule, no polling loop to tune, no dashboard that is quietly three minutes behind.',
     accent: 'bg-primary/10 text-primary',
   },
   {
     title: 'Programmable transitions',
+    stat: '100k TPS, 0 round trips',
     description: 'Your validation and business rules run inside the transaction, right next to the data. Fewer round trips, fewer places for things to go wrong.',
     accent: 'bg-primary/10 text-primary',
   },
   {
     title: 'Native state primitives',
+    stat: '5 built-in primitives',
     description: 'Tables, counters, ring buffers, histograms, and views all live in one transactional core. Embed it in your app or run it as a server.',
     accent: 'bg-primary/10 text-primary',
   },
@@ -49,7 +53,10 @@ function CapabilityCell({ capability, index }: { capability: (typeof capabilitie
         <Badge variant="active" className={`justify-center w-10 h-10 rounded-none font-bold text-sm mb-4 ${capability.accent}`}>
           {String(index + 1).padStart(2, '0')}
         </Badge>
-        <h3 className="text-lg font-bold mb-2 text-text-primary">{capability.title}</h3>
+        <h3 className="text-lg font-bold mb-1 text-text-primary">{capability.title}</h3>
+        <p className="text-xs font-mono uppercase tracking-wide text-primary mb-2">
+          {capability.stat}
+        </p>
         <p className="text-text-muted text-sm leading-relaxed">
           {capability.description}
         </p>
