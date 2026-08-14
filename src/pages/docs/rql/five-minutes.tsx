@@ -1,7 +1,7 @@
 import { rql5AggregateExample as rql5Aggregate, rql5InlineExample as rql5Inline, rql5LetExample as rql5Let, rql5MapComputedExample as rql5MapComputed, rql5NoneFilterExample as rql5NoneFilter, rql5NonePropagatesExample as rql5NonePropagates, rql5PipelineExample as rql5Pipeline } from './five-minutes.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
-import { Callout } from '../components';
+import { Callout, AsciiDiagram } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
@@ -34,6 +34,18 @@ export function RqlFiveMinutesPage() {
             Each step consumes the previous step's rows, so you read a query the same way
             it executes:
           </p>
+          <AsciiDiagram label="pipeline" className="mb-4">
+{`from app::users
+  |
+  v
+filter { active == true }
+  |
+  v
+map { name, email }
+  |
+  v
+sort { name: asc }`}
+          </AsciiDiagram>
           <ExecutableSnippet title={rql5Pipeline.title} initialCode={rql5Pipeline.code} />
           <p className="text-text-muted text-sm mt-3">
             There is no <Code>SELECT</Code> in RQL, and no inside-out reading order.

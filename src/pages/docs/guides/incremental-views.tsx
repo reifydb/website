@@ -1,7 +1,7 @@
 import { ivTransactionalSetupExample, ivComposedSetupExample, ivTransactionalInsertExample, ivTransactionalQueryExample, ivComposedQueryExample, ivDeferredSetupExample, ivDeferredInsertExample, ivDeferredQueryExample } from './incremental-views.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
-import { Callout } from '../components';
+import { Callout, AsciiDiagram } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
 import type { CodeExample } from '@/lib/examples/types';
 
@@ -23,6 +23,19 @@ export function IncrementalViewsGuidePage() {
             one of each kind, layers a second view on top, and covers how to pick between them.
           </p>
         </div>
+
+        <AsciiDiagram label="write path">
+{`  app
+   |
+   | insert
+   v
+ table  ------ derive ------>  view
+                                 |
+                                 | always current
+                                 v
+                               client
+                              (query)`}
+        </AsciiDiagram>
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Transactional views: read-your-writes</h2>

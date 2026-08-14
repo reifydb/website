@@ -79,6 +79,32 @@ export function getBreadcrumbs(sections: NavSection[], pathname: string): Breadc
   return [];
 }
 
+/**
+ * Returns the title of the section containing a docs path, for the section-tabs bar.
+ */
+export function getActiveSectionTitle(sections: NavSection[], pathname: string): string | null {
+  const trail = getBreadcrumbs(sections, pathname);
+  return trail.length > 0 ? trail[0].label : null;
+}
+
+function firstHref(items: NavItem[]): string | undefined {
+  for (const item of items) {
+    if (item.href) return item.href;
+    if (item.children) {
+      const found = firstHref(item.children);
+      if (found) return found;
+    }
+  }
+  return undefined;
+}
+
+/**
+ * Returns the href a section-tabs entry should link to: its first published leaf page.
+ */
+export function getSectionHref(section: NavSection): string | undefined {
+  return firstHref(section.items);
+}
+
 export const navSections: NavSection[] = [
   {
     title: 'Getting Started',

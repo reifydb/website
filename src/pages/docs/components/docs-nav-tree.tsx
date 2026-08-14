@@ -1,8 +1,8 @@
-import { useState, useCallback, useEffect, useMemo, memo } from 'react';
+import { useState, useCallback, useEffect, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib';
 import { useIsLocalhost } from '@/hooks';
-import { filterPublished } from '../data/navigation';
+import { useDisplaySections } from '../data/use-display-sections';
 import type { NavSection, NavItem } from '../data/navigation';
 
 function findAncestorIds(items: NavItem[], targetPath: string, ancestors: string[] = []): string[] | null {
@@ -119,7 +119,7 @@ export const AccordionItem = memo(function AccordionItem({ item, currentPath, de
           )}
         >
           <div className="overflow-hidden">
-            <ul className="space-y-0.5 border-l border-border-default ml-3">
+            <ul className="space-y-0.5 ml-3">
               {item.children!.map((child) => (
                 <AccordionItem
                   key={child.id}
@@ -150,22 +150,14 @@ const noop = () => {};
 
 export function DocsNavTree({ sections, currentPath, onNavigate = noop }: DocsNavTreeProps) {
   const isLocalhost = useIsLocalhost();
-
-  const displaySections = useMemo(() =>
-    isLocalhost
-      ? sections.filter((s) => s.items.length > 0)
-      : sections.map((s) => ({
-          ...s,
-          items: filterPublished(s.items),
-        })).filter((s) => s.items.length > 0),
-    [sections, isLocalhost]
-  );
+  const displaySections = useDisplaySections(sections);
 
   const [openItems, setOpenItems] = useState<Set<string>>(() => {
+    const ancestors = findAllAncestors(displaySections, currentPath);
     if (persistedOpenItems) {
-      return persistedOpenItems;
+      return new Set([...persistedOpenItems, ...ancestors]);
     }
-    return findAllAncestors(displaySections, currentPath);
+    return ancestors;
   });
 
   useEffect(() => {
@@ -183,20 +175,24 @@ export function DocsNavTree({ sections, currentPath, onNavigate = noop }: DocsNa
     });
   }, [displaySections]);
 
+  const singleSection = displaySections.length === 1;
+
   return (
     <>
       {displaySections.map((section) => {
         const sectionId = `section-${section.title}`;
-        const isSectionOpen = openItems.has(sectionId);
+        const isSectionOpen = singleSection || openItems.has(sectionId);
 
         return (
           <div key={section.title} className="mb-4">
-            <button
-              onClick={() => toggleItem(sectionId)}
-              className="w-full flex items-center text-xs font-semibold text-text-muted uppercase tracking-wider mb-2 px-3 py-1 hover:text-primary transition-colors"
-            >
-              {section.title}
-            </button>
+            {!singleSection && (
+              <button
+                onClick={() => toggleItem(sectionId)}
+                className="w-full flex items-center text-xs font-semibold text-text-muted uppercase tracking-wider mb-2 px-3 py-1 hover:text-primary transition-colors"
+              >
+                {section.title}
+              </button>
+            )}
             <div
               className={cn(
                 'grid transition-[grid-template-rows] duration-150',
@@ -204,7 +200,7 @@ export function DocsNavTree({ sections, currentPath, onNavigate = noop }: DocsNa
               )}
             >
               <div className="overflow-hidden">
-                <ul className="space-y-0.5 border-l border-border-default ml-3">
+                <ul className="space-y-0.5 ml-3">
                   {section.items.map((item) => (
                     <AccordionItem
                       key={item.id}

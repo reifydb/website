@@ -5,8 +5,8 @@ import { useIsDraft } from '@/components/draft-context';
 import { PageMeta } from '@/components/page-meta';
 import { JsonLd } from '@/components/json-ld';
 import { canonicalUrl } from '@/lib/site';
-import { DocsSidebar, DocsNavTree } from './components';
-import { navSections, getBreadcrumbs } from './data/navigation';
+import { DocsSidebar, DocsNavTree, SectionTabs, Breadcrumbs, PageNav } from './components';
+import { navSections, getBreadcrumbs, getActiveSectionTitle, getOrderedPages } from './data/navigation';
 
 interface DocsLayoutProps {
   children: React.ReactNode;
@@ -31,6 +31,15 @@ export function Layout({ children, title, description }: DocsLayoutProps) {
   const trail = getBreadcrumbs(navSections, location.pathname).filter(
     (crumb) => crumb.href !== '/docs',
   );
+  const activeSectionTitle = getActiveSectionTitle(navSections, location.pathname);
+  const activeSection = navSections.find((s) => s.title === activeSectionTitle);
+  const sidebarSections = activeSection ? [activeSection] : navSections;
+
+  const orderedPages = getOrderedPages(navSections);
+  const currentIndex = orderedPages.findIndex((p) => p.href === location.pathname);
+  const prevPage = currentIndex > 0 ? orderedPages[currentIndex - 1] : null;
+  const nextPage =
+    currentIndex >= 0 && currentIndex < orderedPages.length - 1 ? orderedPages[currentIndex + 1] : null;
 
   return (
     <div className="min-h-screen flex flex-col relative z-10">
@@ -66,12 +75,15 @@ export function Layout({ children, title, description }: DocsLayoutProps) {
         />
       )}
       <Navbar mobileExtra={<DocsNavTree sections={navSections} currentPath={location.pathname} />} />
+      <SectionTabs sections={navSections} activeTitle={activeSectionTitle} />
       <div className="flex flex-1">
-        <DocsSidebar sections={navSections} currentPath={location.pathname} />
+        <DocsSidebar sections={sidebarSections} currentPath={location.pathname} />
         <main className="flex-1 bg-bg-primary">
           <div className="font-body max-w-4xl mx-auto pl-4 pr-4 sm:px-6 py-6 sm:py-8 md:px-8 lg:pl-12">
             {isDraft && <DraftBanner />}
+            <Breadcrumbs trail={trail} />
             {children}
+            <PageNav prev={prevPage} next={nextPage} />
           </div>
         </main>
       </div>
