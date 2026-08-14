@@ -17,7 +17,11 @@ export function DocStub({ title, kicker, description, sections, children }: DocS
   return (
     <div className="space-y-8">
       <div>
-        {kicker && <div className="text-sm text-text-muted mb-2 font-bold">{kicker}</div>}
+        {kicker && (
+          <div className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-3">
+            {kicker}
+          </div>
+        )}
         <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">{title}</h1>
         <p className="text-lg text-text-secondary leading-relaxed">{description}</p>
       </div>

@@ -13,35 +13,35 @@ export function DurationModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Constructors</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Link to="/docs/functions/duration/years" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/years" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::years</h3>
               <p className="text-sm text-text-secondary">Create a duration of the specified number of years.</p>
             </Link>
-            <Link to="/docs/functions/duration/months" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/months" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::months</h3>
               <p className="text-sm text-text-secondary">Create a duration of the specified number of months.</p>
             </Link>
-            <Link to="/docs/functions/duration/weeks" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/weeks" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::weeks</h3>
               <p className="text-sm text-text-secondary">Create a duration of the specified number of weeks.</p>
             </Link>
-            <Link to="/docs/functions/duration/days" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/days" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::days</h3>
               <p className="text-sm text-text-secondary">Create a duration of the specified number of days.</p>
             </Link>
-            <Link to="/docs/functions/duration/hours" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/hours" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::hours</h3>
               <p className="text-sm text-text-secondary">Create a duration of the specified number of hours.</p>
             </Link>
-            <Link to="/docs/functions/duration/minutes" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/minutes" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::minutes</h3>
               <p className="text-sm text-text-secondary">Create a duration of the specified number of minutes.</p>
             </Link>
-            <Link to="/docs/functions/duration/seconds" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/seconds" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::seconds</h3>
               <p className="text-sm text-text-secondary">Create a duration of the specified number of seconds.</p>
             </Link>
-            <Link to="/docs/functions/duration/millis" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/millis" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::millis</h3>
               <p className="text-sm text-text-secondary">Create a duration of the specified number of milliseconds.</p>
             </Link>
@@ -51,15 +51,15 @@ export function DurationModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Component Extraction</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Link to="/docs/functions/duration/get_months" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/get_months" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::get_months</h3>
               <p className="text-sm text-text-secondary">Get the months component of a duration.</p>
             </Link>
-            <Link to="/docs/functions/duration/get_days" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/get_days" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::get_days</h3>
               <p className="text-sm text-text-secondary">Get the days component of a duration.</p>
             </Link>
-            <Link to="/docs/functions/duration/get_nanos" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/get_nanos" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::get_nanos</h3>
               <p className="text-sm text-text-secondary">Get the nanoseconds component of a duration.</p>
             </Link>
@@ -69,19 +69,19 @@ export function DurationModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Arithmetic</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Link to="/docs/functions/duration/add" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/add" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::add</h3>
               <p className="text-sm text-text-secondary">Add two durations together.</p>
             </Link>
-            <Link to="/docs/functions/duration/subtract" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/subtract" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::subtract</h3>
               <p className="text-sm text-text-secondary">Subtract one duration from another.</p>
             </Link>
-            <Link to="/docs/functions/duration/negate" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/negate" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::negate</h3>
               <p className="text-sm text-text-secondary">Negate a duration (flip its sign).</p>
             </Link>
-            <Link to="/docs/functions/duration/scale" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/scale" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::scale</h3>
               <p className="text-sm text-text-secondary">Scale a duration by a numeric factor.</p>
             </Link>
@@ -91,11 +91,11 @@ export function DurationModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Formatting</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Link to="/docs/functions/duration/trunc" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/trunc" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::trunc</h3>
               <p className="text-sm text-text-secondary">Truncate a duration to a specified precision.</p>
             </Link>
-            <Link to="/docs/functions/duration/format" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/duration/format" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold mb-1">duration::format</h3>
               <p className="text-sm text-text-secondary">Format a duration as a human-readable string.</p>
             </Link>

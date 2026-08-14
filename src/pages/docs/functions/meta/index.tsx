@@ -13,7 +13,7 @@ export function MetaModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Functions</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Link to="/docs/functions/meta/type" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
+            <Link to="/docs/functions/meta/type" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
               <h3 className="font-bold font-mono mb-1">meta::type</h3>
               <p className="text-sm text-text-secondary">Get the type name of a value as a string.</p>
             </Link>

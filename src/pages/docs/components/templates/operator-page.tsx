@@ -34,8 +34,8 @@ export function OperatorPage({
   return (
     <div className="space-y-8">
       <div>
-        <div className="text-sm text-text-muted mb-2">
-          <Link to="/docs/rql/transforms" className="font-bold hover:text-primary-color">
+        <div className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-3">
+          <Link to="/docs/rql/transforms" className="hover:text-primary-light transition-colors">
             RQL
           </Link>
           {' pipeline operator'}

@@ -13,48 +13,48 @@ export function DatetimeModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Extraction</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link to="/docs/functions/datetime/year" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::year</h3>
+            <Link to="/docs/functions/datetime/year" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::year</h3>
               <p className="text-text-secondary text-sm">Extract the year from a datetime</p>
             </Link>
-            <Link to="/docs/functions/datetime/month" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::month</h3>
+            <Link to="/docs/functions/datetime/month" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::month</h3>
               <p className="text-text-secondary text-sm">Extract the month (1-12)</p>
             </Link>
-            <Link to="/docs/functions/datetime/day" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::day</h3>
+            <Link to="/docs/functions/datetime/day" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::day</h3>
               <p className="text-text-secondary text-sm">Extract the day of the month</p>
             </Link>
-            <Link to="/docs/functions/datetime/hour" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::hour</h3>
+            <Link to="/docs/functions/datetime/hour" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::hour</h3>
               <p className="text-text-secondary text-sm">Extract the hour (0-23)</p>
             </Link>
-            <Link to="/docs/functions/datetime/minute" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::minute</h3>
+            <Link to="/docs/functions/datetime/minute" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::minute</h3>
               <p className="text-text-secondary text-sm">Extract the minute (0-59)</p>
             </Link>
-            <Link to="/docs/functions/datetime/second" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::second</h3>
+            <Link to="/docs/functions/datetime/second" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::second</h3>
               <p className="text-text-secondary text-sm">Extract the second (0-59)</p>
             </Link>
-            <Link to="/docs/functions/datetime/nanosecond" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::nanosecond</h3>
+            <Link to="/docs/functions/datetime/nanosecond" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::nanosecond</h3>
               <p className="text-text-secondary text-sm">Extract the nanosecond component</p>
             </Link>
-            <Link to="/docs/functions/datetime/day_of_year" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::day_of_year</h3>
+            <Link to="/docs/functions/datetime/day_of_year" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::day_of_year</h3>
               <p className="text-text-secondary text-sm">Get the day of the year (1-366)</p>
             </Link>
-            <Link to="/docs/functions/datetime/day_of_week" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::day_of_week</h3>
+            <Link to="/docs/functions/datetime/day_of_week" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::day_of_week</h3>
               <p className="text-text-secondary text-sm">Get the day of the week (1=Monday, 7=Sunday)</p>
             </Link>
-            <Link to="/docs/functions/datetime/quarter" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::quarter</h3>
+            <Link to="/docs/functions/datetime/quarter" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::quarter</h3>
               <p className="text-text-secondary text-sm">Get the quarter (1-4)</p>
             </Link>
-            <Link to="/docs/functions/datetime/week" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::week</h3>
+            <Link to="/docs/functions/datetime/week" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::week</h3>
               <p className="text-text-secondary text-sm">Get the ISO week number (1-53)</p>
             </Link>
           </div>
@@ -63,12 +63,12 @@ export function DatetimeModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Components</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link to="/docs/functions/datetime/date" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::date</h3>
+            <Link to="/docs/functions/datetime/date" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::date</h3>
               <p className="text-text-secondary text-sm">Extract the date component</p>
             </Link>
-            <Link to="/docs/functions/datetime/time" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::time</h3>
+            <Link to="/docs/functions/datetime/time" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::time</h3>
               <p className="text-text-secondary text-sm">Extract the time component</p>
             </Link>
           </div>
@@ -77,20 +77,20 @@ export function DatetimeModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Epoch</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link to="/docs/functions/datetime/epoch" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::epoch</h3>
+            <Link to="/docs/functions/datetime/epoch" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::epoch</h3>
               <p className="text-text-secondary text-sm">Get the Unix epoch timestamp in seconds</p>
             </Link>
-            <Link to="/docs/functions/datetime/epoch_millis" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::epoch_millis</h3>
+            <Link to="/docs/functions/datetime/epoch_millis" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::epoch_millis</h3>
               <p className="text-text-secondary text-sm">Get the Unix epoch timestamp in milliseconds</p>
             </Link>
-            <Link to="/docs/functions/datetime/from_epoch" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::from_epoch</h3>
+            <Link to="/docs/functions/datetime/from_epoch" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::from_epoch</h3>
               <p className="text-text-secondary text-sm">Create a datetime from epoch seconds</p>
             </Link>
-            <Link to="/docs/functions/datetime/from_epoch_millis" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::from_epoch_millis</h3>
+            <Link to="/docs/functions/datetime/from_epoch_millis" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::from_epoch_millis</h3>
               <p className="text-text-secondary text-sm">Create a datetime from epoch milliseconds</p>
             </Link>
           </div>
@@ -99,12 +99,12 @@ export function DatetimeModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Construction</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link to="/docs/functions/datetime/new" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::new</h3>
+            <Link to="/docs/functions/datetime/new" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::new</h3>
               <p className="text-text-secondary text-sm">Create a new datetime from a date and time</p>
             </Link>
-            <Link to="/docs/functions/datetime/now" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::now</h3>
+            <Link to="/docs/functions/datetime/now" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::now</h3>
               <p className="text-text-secondary text-sm">Get the current datetime</p>
             </Link>
           </div>
@@ -113,24 +113,24 @@ export function DatetimeModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Manipulation</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link to="/docs/functions/datetime/add" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::add</h3>
+            <Link to="/docs/functions/datetime/add" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::add</h3>
               <p className="text-text-secondary text-sm">Add a duration to a datetime</p>
             </Link>
-            <Link to="/docs/functions/datetime/subtract" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::subtract</h3>
+            <Link to="/docs/functions/datetime/subtract" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::subtract</h3>
               <p className="text-text-secondary text-sm">Subtract a duration from a datetime</p>
             </Link>
-            <Link to="/docs/functions/datetime/diff" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::diff</h3>
+            <Link to="/docs/functions/datetime/diff" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::diff</h3>
               <p className="text-text-secondary text-sm">Calculate the difference between two datetimes</p>
             </Link>
-            <Link to="/docs/functions/datetime/trunc" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::trunc</h3>
+            <Link to="/docs/functions/datetime/trunc" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::trunc</h3>
               <p className="text-text-secondary text-sm">Truncate a datetime to a specified precision</p>
             </Link>
-            <Link to="/docs/functions/datetime/age" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::age</h3>
+            <Link to="/docs/functions/datetime/age" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::age</h3>
               <p className="text-text-secondary text-sm">Calculate the duration between two datetimes</p>
             </Link>
           </div>
@@ -139,8 +139,8 @@ export function DatetimeModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Formatting</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link to="/docs/functions/datetime/format" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">datetime::format</h3>
+            <Link to="/docs/functions/datetime/format" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">datetime::format</h3>
               <p className="text-text-secondary text-sm">Format a datetime as a string</p>
             </Link>
           </div>

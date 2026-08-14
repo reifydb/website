@@ -10,26 +10,30 @@ interface CalloutProps {
   className?: string;
 }
 
-const variantStyles: Record<CalloutVariant, { border: string; bg: string; icon: string }> = {
+const variantStyles: Record<CalloutVariant, { border: string; bg: string; icon: string; shadow: string }> = {
   info: {
-    border: 'border-primary/50',
+    border: 'border-primary',
     bg: 'bg-primary/10',
     icon: 'text-primary',
+    shadow: 'shadow-hard-primary',
   },
   warning: {
-    border: 'border-status-warning/50',
+    border: 'border-status-warning',
     bg: 'bg-status-warning/10',
     icon: 'text-status-warning',
+    shadow: 'shadow-[4px_4px_0_var(--color-status-warning)]',
   },
   tip: {
-    border: 'border-status-success/50',
+    border: 'border-status-success',
     bg: 'bg-status-success/10',
     icon: 'text-status-success',
+    shadow: 'shadow-[4px_4px_0_var(--color-status-success)]',
   },
   note: {
     border: 'border-border-default',
     bg: 'bg-bg-tertiary',
     icon: 'text-text-muted',
+    shadow: 'shadow-hard-sm',
   },
 };
 
@@ -55,14 +59,15 @@ export function Callout({ variant = 'note', title, children, className }: Callou
   return (
     <div
       className={cn(
-        'mt-6 border rounded-md overflow-hidden',
+        'mt-6 border-2 rounded-md overflow-hidden',
         styles.border,
+        styles.shadow,
         className
       )}
     >
-      <div className={cn('flex items-center gap-2 px-4 py-2.5 border-b', styles.border, styles.bg)}>
+      <div className={cn('flex items-center gap-2 px-4 py-2.5 border-b-2', styles.border, styles.bg)}>
         <Icon className={cn('w-4 h-4 flex-shrink-0', styles.icon)} />
-        <strong className="text-text-primary font-semibold text-sm">
+        <strong className="text-text-primary font-semibold text-sm label-uppercase">
           {title || defaultTitle}
         </strong>
       </div>

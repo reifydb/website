@@ -30,20 +30,20 @@ export function JsonModuleOverviewPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Available Functions</h2>
           <div className="space-y-3">
-            <Link to="/docs/functions/json/array" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">json::array</h3>
+            <Link to="/docs/functions/json/array" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">json::array</h3>
               <p className="text-text-secondary text-sm">Build a JSON array from a list of values</p>
             </Link>
-            <Link to="/docs/functions/json/object" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">json::object</h3>
+            <Link to="/docs/functions/json/object" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">json::object</h3>
               <p className="text-text-secondary text-sm">Build a JSON object from key-value pairs</p>
             </Link>
-            <Link to="/docs/functions/json/serialize" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">json::serialize</h3>
+            <Link to="/docs/functions/json/serialize" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">json::serialize</h3>
               <p className="text-text-secondary text-sm">Serialize a JSON value to a compact string</p>
             </Link>
-            <Link to="/docs/functions/json/pretty" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">json::pretty</h3>
+            <Link to="/docs/functions/json/pretty" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">json::pretty</h3>
               <p className="text-text-secondary text-sm">Serialize a JSON value to a pretty-printed string</p>
             </Link>
           </div>

@@ -15,24 +15,24 @@ export function BlobModuleOverviewPage() {
           <h2 className="text-2xl font-black tracking-tight mb-4">Encoding Functions</h2>
           <p className="text-text-secondary mb-4">Convert between blobs and encoded string representations.</p>
           <div className="grid gap-3">
-            <Link to="/docs/functions/blob/b58" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">blob::b58</h3>
+            <Link to="/docs/functions/blob/b58" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">blob::b58</h3>
               <p className="text-text-secondary text-sm">Encode or decode using Base58</p>
             </Link>
-            <Link to="/docs/functions/blob/b64" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">blob::b64</h3>
+            <Link to="/docs/functions/blob/b64" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">blob::b64</h3>
               <p className="text-text-secondary text-sm">Encode or decode using Base64</p>
             </Link>
-            <Link to="/docs/functions/blob/b64url" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">blob::b64url</h3>
+            <Link to="/docs/functions/blob/b64url" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">blob::b64url</h3>
               <p className="text-text-secondary text-sm">Encode or decode using URL-safe Base64</p>
             </Link>
-            <Link to="/docs/functions/blob/hex" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">blob::hex</h3>
+            <Link to="/docs/functions/blob/hex" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">blob::hex</h3>
               <p className="text-text-secondary text-sm">Encode or decode using hexadecimal</p>
             </Link>
-            <Link to="/docs/functions/blob/utf8" className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors">
-              <h3 className="font-bold text-primary-color mb-1">blob::utf8</h3>
+            <Link to="/docs/functions/blob/utf8" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+              <h3 className="font-bold text-primary mb-1">blob::utf8</h3>
               <p className="text-text-secondary text-sm">Encode or decode as UTF-8 text</p>
             </Link>
           </div>

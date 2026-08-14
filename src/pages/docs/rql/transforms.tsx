@@ -77,10 +77,10 @@ export function RqlTransformsPage() {
             {transforms.map((transform) => (
               <div
                 key={transform.name}
-                className="border border-border-light rounded-md p-6"
+                className="border-2 border-border-default rounded-md shadow-hard-sm p-6"
                 id={transform.name}
               >
-                <h3 className="text-xl font-black tracking-tight mb-2 text-primary-color">
+                <h3 className="text-xl font-black tracking-tight mb-2 text-primary">
                   {transform.name}
                 </h3>
                 <p className="text-text-secondary mb-4">{transform.description}</p>

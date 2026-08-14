@@ -39,9 +39,9 @@ export function ClockModuleOverviewPage() {
           <div className="grid gap-3">
             <Link
               to="/docs/functions/clock/now"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">clock::now</h3>
+              <h3 className="font-bold text-primary mb-1">clock::now</h3>
               <p className="text-text-secondary text-sm">
                 Get the current clock timestamp
               </p>
@@ -60,9 +60,9 @@ export function ClockModuleOverviewPage() {
           <div className="grid gap-3">
             <Link
               to="/docs/functions/clock/set"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">
+              <h3 className="font-bold text-primary mb-1">
                 clock::set
                 <Badge variant="warning" className="ml-2">Internal</Badge>
               </h3>
@@ -73,9 +73,9 @@ export function ClockModuleOverviewPage() {
 
             <Link
               to="/docs/functions/clock/advance"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">
+              <h3 className="font-bold text-primary mb-1">
                 clock::advance
                 <Badge variant="warning" className="ml-2">Internal</Badge>
               </h3>

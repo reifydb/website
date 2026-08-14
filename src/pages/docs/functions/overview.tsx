@@ -22,9 +22,9 @@ export function FunctionsOverviewPage() {
           <div className="space-y-4">
             <Link
               to="/docs/functions/blob"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">blob</h3>
+              <h3 className="font-bold text-primary mb-1">blob</h3>
               <p className="text-text-secondary text-sm">
                 Binary encoding and decoding: b58, b64, b64url, hex, utf8.
               </p>
@@ -32,9 +32,9 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/clock"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">clock</h3>
+              <h3 className="font-bold text-primary mb-1">clock</h3>
               <p className="text-text-secondary text-sm">
                 System clock access: now, set, advance.
               </p>
@@ -42,9 +42,9 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/date"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date</h3>
+              <h3 className="font-bold text-primary mb-1">date</h3>
               <p className="text-text-secondary text-sm">
                 Work with dates: year, month, day, quarter, week, add, subtract, diff, format.
               </p>
@@ -52,9 +52,9 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/datetime"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">datetime</h3>
+              <h3 className="font-bold text-primary mb-1">datetime</h3>
               <p className="text-text-secondary text-sm">
                 Full datetime manipulation: extraction, construction, arithmetic, epoch conversion, formatting.
               </p>
@@ -62,9 +62,9 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/duration"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">duration</h3>
+              <h3 className="font-bold text-primary mb-1">duration</h3>
               <p className="text-text-secondary text-sm">
                 Create and manipulate durations: years, months, days, hours, minutes, seconds.
               </p>
@@ -72,9 +72,9 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/identity"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">identity</h3>
+              <h3 className="font-bold text-primary mb-1">identity</h3>
               <p className="text-text-secondary text-sm">
                 Record identifier functions: id.
               </p>
@@ -82,9 +82,9 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/is"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">is</h3>
+              <h3 className="font-bold text-primary mb-1">is</h3>
               <p className="text-text-secondary text-sm">
                 Type and value checking: some, none, type, root, anonymous.
               </p>
@@ -92,9 +92,9 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/json"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">json</h3>
+              <h3 className="font-bold text-primary mb-1">json</h3>
               <p className="text-text-secondary text-sm">
                 Build and serialize JSON: array, object, serialize, pretty.
               </p>
@@ -102,9 +102,9 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/math"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">math</h3>
+              <h3 className="font-bold text-primary mb-1">math</h3>
               <p className="text-text-secondary text-sm">
                 Numbers and aggregations: sum, avg, min, max, count, abs, round, trig, logarithms.
               </p>
@@ -112,9 +112,9 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/meta"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">meta</h3>
+              <h3 className="font-bold text-primary mb-1">meta</h3>
               <p className="text-text-secondary text-sm">
                 Value metadata inspection: type.
               </p>
@@ -122,9 +122,9 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/text"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">text</h3>
+              <h3 className="font-bold text-primary mb-1">text</h3>
               <p className="text-text-secondary text-sm">
                 String operations: lower, upper, trim, contains, replace, pad, format.
               </p>
@@ -132,9 +132,9 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/time"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">time</h3>
+              <h3 className="font-bold text-primary mb-1">time</h3>
               <p className="text-text-secondary text-sm">
                 Time-of-day functions: hour, minute, second, add, subtract, diff, format.
               </p>

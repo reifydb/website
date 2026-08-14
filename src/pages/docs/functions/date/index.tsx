@@ -35,9 +35,9 @@ export function DateModuleOverviewPage() {
           <div className="grid gap-3">
             <Link
               to="/docs/functions/date/year"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::year</h3>
+              <h3 className="font-bold text-primary mb-1">date::year</h3>
               <p className="text-text-secondary text-sm">
                 Extract the year from a date
               </p>
@@ -45,9 +45,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/month"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::month</h3>
+              <h3 className="font-bold text-primary mb-1">date::month</h3>
               <p className="text-text-secondary text-sm">
                 Extract the month (1-12) from a date
               </p>
@@ -55,9 +55,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/day"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::day</h3>
+              <h3 className="font-bold text-primary mb-1">date::day</h3>
               <p className="text-text-secondary text-sm">
                 Extract the day of the month from a date
               </p>
@@ -65,9 +65,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/day_of_year"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::day_of_year</h3>
+              <h3 className="font-bold text-primary mb-1">date::day_of_year</h3>
               <p className="text-text-secondary text-sm">
                 Get the day of the year (1-366)
               </p>
@@ -75,9 +75,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/day_of_week"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::day_of_week</h3>
+              <h3 className="font-bold text-primary mb-1">date::day_of_week</h3>
               <p className="text-text-secondary text-sm">
                 Get the day of the week (1=Monday, 7=Sunday)
               </p>
@@ -85,9 +85,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/quarter"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::quarter</h3>
+              <h3 className="font-bold text-primary mb-1">date::quarter</h3>
               <p className="text-text-secondary text-sm">
                 Get the quarter (1-4)
               </p>
@@ -95,9 +95,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/week"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::week</h3>
+              <h3 className="font-bold text-primary mb-1">date::week</h3>
               <p className="text-text-secondary text-sm">
                 Get the ISO week number (1-53)
               </p>
@@ -114,9 +114,9 @@ export function DateModuleOverviewPage() {
           <div className="grid gap-3">
             <Link
               to="/docs/functions/date/is_leap_year"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::is_leap_year</h3>
+              <h3 className="font-bold text-primary mb-1">date::is_leap_year</h3>
               <p className="text-text-secondary text-sm">
                 Check if a date falls in a leap year
               </p>
@@ -124,9 +124,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/days_in_month"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::days_in_month</h3>
+              <h3 className="font-bold text-primary mb-1">date::days_in_month</h3>
               <p className="text-text-secondary text-sm">
                 Get the number of days in the month
               </p>
@@ -134,9 +134,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/start_of_month"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::start_of_month</h3>
+              <h3 className="font-bold text-primary mb-1">date::start_of_month</h3>
               <p className="text-text-secondary text-sm">
                 Get the first day of the month
               </p>
@@ -144,9 +144,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/end_of_month"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::end_of_month</h3>
+              <h3 className="font-bold text-primary mb-1">date::end_of_month</h3>
               <p className="text-text-secondary text-sm">
                 Get the last day of the month
               </p>
@@ -154,9 +154,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/start_of_year"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::start_of_year</h3>
+              <h3 className="font-bold text-primary mb-1">date::start_of_year</h3>
               <p className="text-text-secondary text-sm">
                 Get the first day of the year
               </p>
@@ -173,9 +173,9 @@ export function DateModuleOverviewPage() {
           <div className="grid gap-3">
             <Link
               to="/docs/functions/date/new"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::new</h3>
+              <h3 className="font-bold text-primary mb-1">date::new</h3>
               <p className="text-text-secondary text-sm">
                 Create a new date from year, month, and day
               </p>
@@ -183,9 +183,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/now"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::now</h3>
+              <h3 className="font-bold text-primary mb-1">date::now</h3>
               <p className="text-text-secondary text-sm">
                 Get the current timestamp
               </p>
@@ -193,9 +193,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/add"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::add</h3>
+              <h3 className="font-bold text-primary mb-1">date::add</h3>
               <p className="text-text-secondary text-sm">
                 Add time to a date
               </p>
@@ -203,9 +203,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/subtract"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::subtract</h3>
+              <h3 className="font-bold text-primary mb-1">date::subtract</h3>
               <p className="text-text-secondary text-sm">
                 Subtract a duration from a date
               </p>
@@ -213,9 +213,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/diff"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::diff</h3>
+              <h3 className="font-bold text-primary mb-1">date::diff</h3>
               <p className="text-text-secondary text-sm">
                 Calculate the difference between two dates
               </p>
@@ -223,9 +223,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/trunc"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::trunc</h3>
+              <h3 className="font-bold text-primary mb-1">date::trunc</h3>
               <p className="text-text-secondary text-sm">
                 Truncate a date to a specified precision
               </p>
@@ -233,9 +233,9 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/age"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::age</h3>
+              <h3 className="font-bold text-primary mb-1">date::age</h3>
               <p className="text-text-secondary text-sm">
                 Calculate the duration between two dates
               </p>
@@ -252,9 +252,9 @@ export function DateModuleOverviewPage() {
           <div className="grid gap-3">
             <Link
               to="/docs/functions/date/format"
-              className="block border border-border-light rounded-md p-4 hover:bg-bg-tertiary transition-colors"
+              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
             >
-              <h3 className="font-bold text-primary-color mb-1">date::format</h3>
+              <h3 className="font-bold text-primary mb-1">date::format</h3>
               <p className="text-text-secondary text-sm">
                 Format a date as a string
               </p>
