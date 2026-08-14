@@ -6,6 +6,7 @@ import {
   CapabilitiesSection,
   UseCasesSection,
   ReplacesSection,
+  ProofSection,
   FaqSection,
 } from './sections';
 
@@ -28,6 +29,8 @@ export function LandingPage() {
         <ReplacesSection />
 
         <FaqSection />
+
+        <ProofSection />
 
         <CtaSection
           variant="banner"
