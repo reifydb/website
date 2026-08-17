@@ -21,17 +21,17 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/console':
-        specifier: ^0.8.1
-        version: 0.8.1(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^0.9.0
+        version: 0.9.0(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/core':
-        specifier: ^0.8.1
-        version: 0.8.1
+        specifier: ^0.9.0
+        version: 0.9.0
       '@reifydb/ui':
-        specifier: ^0.8.1
-        version: 0.8.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^0.9.0
+        version: 0.9.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/wasm':
-        specifier: ^0.8.1
-        version: 0.8.1
+        specifier: ^0.9.0
+        version: 0.9.0
       '@tsparticles/engine':
         specifier: ^3.9.1
         version: 3.9.1
@@ -977,12 +977,12 @@ packages:
   '@poppinss/exception@1.2.3':
     resolution: {integrity: sha512-dCED+QRChTVatE9ibtoaxc+WkdzOSjYTKi/+uacHWIsfodVfpsueo3+DKpgU5Px8qXjgmXkSvhXvSCz3fnP9lw==}
 
-  '@reifydb/client@0.8.1':
-    resolution: {integrity: sha512-v0Tgay8WQXyMPvEdXnCOEgrEvGsst3+saoeNK82RR7VXLIzL4MglnO4lC5byP/4Bv8rOTl4m05impMzR4BbGKQ==}
+  '@reifydb/client@0.9.0':
+    resolution: {integrity: sha512-KbfDH/3dNVUmFR9nUjUTzUUIFHVVEtHl9v0O9STKIe2/uziTWySMEKV7YtDWHfnLqvFwNlsIGhlZg0F1BEzoKA==}
     engines: {node: '>=16.0.0'}
 
-  '@reifydb/console@0.8.1':
-    resolution: {integrity: sha512-/Y9PjGQaceCZBiRG0yi1daJY8+TdMY+/s8hXyQsYhM6NprJOoakc12D3UqV5V+SH7R050ZR6L9j1sKz8R2IpIg==}
+  '@reifydb/console@0.9.0':
+    resolution: {integrity: sha512-9Is48U2pp9Ms94MyIWU3qqKff36qr2OUzpy0ffcQP9lsKh+zNyPb7fHCJvzQQZ4xroh7PaxV+bOVdQqlUFGOVQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@monaco-editor/react': '>=4.0.0'
@@ -990,19 +990,19 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@reifydb/core@0.8.1':
-    resolution: {integrity: sha512-12NjG50YPmRw3+1McPg82XdRFEeppc82WjAul70l1PyBQqLvwaRERExKKuq/FfhhraFc+ftJW7i1PqmVXYkuUA==}
+  '@reifydb/core@0.9.0':
+    resolution: {integrity: sha512-IDbBEVQAbwgbN2vFMnosTcyNQsXqauvlFdEFEBvLxYlxItXykMlPFR8ssGqs8CU6FC2YCzS9dlF0XVVdoZsNRA==}
     engines: {node: '>=16.0.0'}
 
-  '@reifydb/ui@0.8.1':
-    resolution: {integrity: sha512-7ZzYoBZ9AayA50VxBrMsr/kocnasl+2H+F5SQTQWJBQRoIYk1wCXkGTNPvr+7w8PdlSXjJVknCn19PmeFFh8Sg==}
+  '@reifydb/ui@0.9.0':
+    resolution: {integrity: sha512-ScEFQvbBSzn0pc5BSwIWpwx75eALlwuo5m3eMSUuNu09P9ifoqNn6OkTqy0FfjedxOGyTmysRrwQ3OfUjQVxcA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@reifydb/wasm@0.8.1':
-    resolution: {integrity: sha512-BCBLiFI11vcNfT+MrarpGNbsmRtP5kWT52f7IjAxdC1vlVpvqdIMuxTaqelPYGMc1Mpg7vgK2FbMKr4p77jPAg==}
+  '@reifydb/wasm@0.9.0':
+    resolution: {integrity: sha512-raEfRj5o2Lt2RqM9tRcEJp+R9olTEPlY8ie3d2XGKDIcUIDgEq1jkiNWRdI6DDSx4Haxlt5GyjneLtLd9S4nUA==}
     engines: {node: '>=16.0.0'}
 
   '@rolldown/pluginutils@1.0.0-beta.53':
@@ -3554,20 +3554,20 @@ snapshots:
 
   '@poppinss/exception@1.2.3': {}
 
-  '@reifydb/client@0.8.1':
+  '@reifydb/client@0.9.0':
     dependencies:
-      '@reifydb/core': 0.8.1
+      '@reifydb/core': 0.9.0
       uuid: 11.1.1
       ws: 8.21.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@reifydb/console@0.8.1(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@reifydb/console@0.9.0(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@monaco-editor/react': 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@reifydb/client': 0.8.1
-      '@reifydb/core': 0.8.1
+      '@reifydb/client': 0.9.0
+      '@reifydb/core': 0.9.0
       monaco-editor: 0.55.1
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -3575,19 +3575,19 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@reifydb/core@0.8.1':
+  '@reifydb/core@0.9.0':
     dependencies:
       uuid: 11.1.1
 
-  '@reifydb/ui@0.8.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@reifydb/ui@0.9.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       prismjs: 1.30.0
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
 
-  '@reifydb/wasm@0.8.1':
+  '@reifydb/wasm@0.9.0':
     dependencies:
-      '@reifydb/core': 0.8.1
+      '@reifydb/core': 0.9.0
 
   '@rolldown/pluginutils@1.0.0-beta.53': {}
 
