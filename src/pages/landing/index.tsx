@@ -1,14 +1,14 @@
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { CtaSection } from '@/components/ui';
 import {
   HeroSection,
-  TrustBarSection,
-  CapabilitiesSection,
-  UseCasesSection,
-  ReplacesSection,
+  BuiltThisSection,
+  ApologiesSection,
+  FeatureTwiceSection,
   ProofSection,
+  UseCasesSection,
   FaqSection,
+  CloserSection,
 } from './sections';
 
 export function LandingPage() {
@@ -23,23 +23,19 @@ export function LandingPage() {
       <main>
         <HeroSection />
 
-        <TrustBarSection />
+        <BuiltThisSection />
 
-        <CapabilitiesSection />
+        <ApologiesSection />
 
-        <UseCasesSection />
-
-        <ReplacesSection />
-
-        <FaqSection />
+        <FeatureTwiceSection />
 
         <ProofSection />
 
-        <CtaSection
-          variant="banner"
-          title="Want to see if ReifyDB fits your workload?"
-          description="Read the docs, try the examples, or book a call. We will be honest about whether ReifyDB is the right fit."
-        />
+        <UseCasesSection />
+
+        <FaqSection />
+
+        <CloserSection />
       </main>
 
       <Footer />

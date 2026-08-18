@@ -3,121 +3,7 @@ import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { Button, ScrollReveal } from '@/components/ui';
 import { Badge } from '@reifydb/ui';
-
-const HEADLINE = 'One database instead of Postgres + Redis + a queue + a cron job.';
-
-const apologies = [
-  {
-    box: 'REDIS',
-    role: 'The hot copy.',
-    text: 'The database could not serve these rows fast enough, so now there are two of them. One is right.',
-  },
-  {
-    box: 'CRON',
-    role: 'The refresh.',
-    text: 'The database could not keep a derived number current, so it is recomputed on a timer. Between runs it is wrong, and it looks fresh.',
-  },
-  {
-    box: 'QUEUE + WORKERS',
-    role: 'The rule, later.',
-    text: 'The database could not run your logic when the data changed, so the logic runs afterwards, elsewhere, and hopes the data has not moved.',
-  },
-  {
-    box: 'SERVICE ACCOUNT',
-    role: 'The one password.',
-    text: 'The database could not tell your users apart, so everything connects as one privileged account and the code in front of it decides who may do what. Every rule lives twice, one connection can do anything, and queries get built from user input on the way through.',
-  },
-  {
-    box: 'GLUE',
-    role: 'The code that knows.',
-    text: 'None of the above knows about the others, so you wrote the code that does. It is the most fragile code you own, and it ships no feature.',
-  },
-];
-
-const tenets = [
-  {
-    claim: "Derived state is the database's job.",
-    text: 'If a number can be computed from your data, you should never maintain it by hand. Not with a cron job, not with a cache key, not with a worker that hopes it ran in time. The write that changes the data is the thing that updates the number.',
-  },
-  {
-    claim: 'A rule enforced in a service is a rule enforced sometimes.',
-    text: 'Say a balance may never go below zero. If that check lives in a service, it holds only for writes that go through that service. The migration script, the support tool, the worker someone adds next quarter: none of them know the rule exists. Put the check on the data, inside the write that changes it, and there is no way around it.',
-  },
-  {
-    claim: 'One write, one truth.',
-    text: 'If a change and its consequences cannot commit together, you do not have a system. You have two systems and a race between them. Rollback has to mean everything rolls back.',
-  },
-  {
-    claim: 'Counters, queues, and buffers are state, not cache.',
-    text: 'They deserve the same transaction as the row next to them. Rebuilding them in a second store is how a balance and a rate limit end up disagreeing about the same second.',
-  },
-  {
-    claim: 'The network is the speed limit.',
-    text: 'Every round trip between your data and your logic is latency you paid for and correctness you gave up while waiting. The hot path should not have a network in it.',
-  },
-  {
-    claim: 'The application user is the database user.',
-    text: 'Every client authenticates to the database as itself, and policies decide, per user, what may be read and written. There is no shared service account and no privileged connection to hijack: a hostile query runs as the user, with the user\'s permissions, and can do nothing the user could not do anyway. Nothing to inject into, and no second copy of the rules in an API layer to drift.',
-  },
-];
-
-const stackToday = `+---------------+
-|   POSTGRES    |
-+---------------+
-    ~ glue ~
-+---------------+
-|     REDIS     |
-+---------------+
-    ~ glue ~
-+---------------+
-|     CRON      |
-+---------------+
-    ~ glue ~
-+---------------+
-|     QUEUE     |
-+---------------+
-    ~ glue ~
-+---------------+
-|    WORKERS    |
-+---------------+`;
-
-const stackReify = `+---------------+
-|    REIFYDB    |
-|               |
-|  tables       |
-|  views        |
-|  transitions  |
-|  primitives   |
-+---------------+`;
-
-const featureToday = `client
-  | POST /orders          as alice
-  v
-api server   check alice may,
-             build the query
-  v
-postgres     runs it as "app",
-             the one account
-  +-> redis   drop cached balance
-  +-> queue   worker: totals
-  +-> cron    revenue, later
-  v
-client polls balance, revenue
-             (stale in between)`;
-
-const featureReify = `client
-  | place_order(...)      as alice
-  v
-reifydb
-  policy     alice may place orders
-  procedure  check balance,
-             insert, debit:
-             one transaction
-  view       revenue updated by
-             that same write
-  v
-alice sees   balance, revenue
-             (current, pushed)`;
+import { HEADLINE, apologies, tenets, StackDiagram, FeatureDiagram } from '@/components/manifesto';
 
 function Prose({ children }: { children: ReactNode }) {
   return <p className="text-text-secondary text-lg leading-relaxed mb-6 last:mb-0">{children}</p>;
@@ -184,19 +70,7 @@ export function ManifestoPage() {
         <section className="py-8 sm:py-12">
           <div className="mx-auto max-w-5xl px-6 md:px-8">
             <ScrollReveal>
-              <div className="glass-card p-8 sm:p-12 flex justify-center">
-                <pre className="font-mono text-sm sm:text-base leading-relaxed text-left">
-                  <span className="block text-xs label-uppercase text-text-muted mb-4">Today</span>
-                  <span className="text-text-secondary">{stackToday}</span>
-                  {'\n\n'}
-                  <span className="text-text-muted">five systems, one state</span>
-                  {'\n\n        |\n        v\n\n'}
-                  <span className="block text-xs label-uppercase text-primary mb-4">With ReifyDB</span>
-                  <span className="text-text-primary">{stackReify}</span>
-                  {'\n\n'}
-                  <span className="text-primary">one system, one transaction</span>
-                </pre>
-              </div>
+              <StackDiagram />
             </ScrollReveal>
           </div>
         </section>
@@ -218,8 +92,8 @@ export function ManifestoPage() {
                   <div
                     className={`p-6 sm:p-8 h-full ${index === apologies.length - 1 && apologies.length % 2 === 1 ? 'md:col-span-2' : index % 2 === 0 ? 'md:border-r' : ''} ${index < Math.floor((apologies.length - 1) / 2) * 2 ? 'md:border-b' : ''} border-border-light`}
                   >
-                    <div className="flex items-baseline gap-3 mb-3">
-                      <span className="font-mono text-xs label-uppercase text-primary">[ {item.box} ]</span>
+                    <div className="flex items-baseline gap-3 mb-3 flex-wrap">
+                      <span className="font-mono text-xs label-uppercase text-primary whitespace-nowrap">[ {item.box} ]</span>
                       <span className="text-text-primary font-bold">{item.role}</span>
                     </div>
                     <p className="text-text-secondary leading-relaxed">{item.text}</p>
@@ -297,15 +171,9 @@ export function ManifestoPage() {
                 one password or re-checking permissions: clients talk to ReifyDB, and the rules about who may do what
                 live with the data, like every other rule.
               </Prose>
-              <Prose>Here is one feature, drawn twice.</Prose>
-              <div className="glass-card p-8 sm:p-12 mt-10 flex justify-center">
-                <pre className="font-mono text-sm sm:text-base leading-relaxed text-left overflow-x-auto">
-                  <span className="block text-xs label-uppercase text-text-muted mb-4">Today</span>
-                  <span className="text-text-secondary">{featureToday}</span>
-                  {'\n\n        |\n        v\n\n'}
-                  <span className="block text-xs label-uppercase text-primary mb-4">With ReifyDB</span>
-                  <span className="text-text-primary">{featureReify}</span>
-                </pre>
+              <Prose>Same feature, two stacks. Alice places an order. First on today's stack, then on ReifyDB.</Prose>
+              <div className="mt-10">
+                <FeatureDiagram />
               </div>
               <div className="glass-card p-6 sm:p-8 mt-10 border-l-4 border-l-primary">
                 <div className="text-xs font-mono label-uppercase text-primary mb-3">Status</div>
