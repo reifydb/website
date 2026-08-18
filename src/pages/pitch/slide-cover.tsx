@@ -17,7 +17,7 @@ export const slideCover: PitchSlide = {
         {'\n'}
         {'                                                                                              '}
         {'\n'}
-        <span className="text-text-secondary">{'                                   The Live State Database                                    '}</span>
+        <span className="text-text-secondary">{'               One database instead of Postgres + Redis + a queue + a cron job.               '}</span>
         {'\n'}
         {'                                                                                              '}
         {'\n'}

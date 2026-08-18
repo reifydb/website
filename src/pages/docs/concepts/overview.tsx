@@ -17,13 +17,13 @@ export function ConceptsOverviewPage() {
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
-            Application State Database
+            The database that runs your backend logic.
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             ReifyDB stores, mutates, and derives live application state under one
             transactional model. State lives in memory for low latency, is persisted
-            asynchronously for durability, and is queried directly by your frontends:
-            ReifyDB is built to replace the backend layer, not to sit behind one.
+            asynchronously for durability, and every query runs as the user who asked:
+            authentication and policies live in the database, next to the rules they protect.
           </p>
         </div>
 
@@ -168,11 +168,12 @@ export function ConceptsOverviewPage() {
           </ul>
         </section>
 
-        <Callout variant="note" title="Direct client access">
+        <Callout variant="note" title="The database knows who is asking">
           ReifyDB runs embedded in your application or as a server that clients connect
-          to directly over WebSocket or HTTP. Frontends send queries straight to the
-          database - authentication, roles, and policies decide what each identity may
-          read and write - so there is no backend API layer to build and maintain.
+          to over WebSocket or HTTP. Every connection authenticates as a named identity,
+          and roles and policies decide what that identity may read and write. Clients
+          talk to ReifyDB directly; there is no layer in front holding a shared password
+          or a second copy of the access rules.
         </Callout>
       </div>
     </Layout>

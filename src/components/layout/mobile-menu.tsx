@@ -19,6 +19,7 @@ const shortDescriptions: Record<string, string> = {
   Blog: 'updates',
   FAQ: 'answers',
   Support: 'help',
+  Manifesto: 'why',
   Mission: 'purpose',
   Values: 'principles',
   Contact: 'connect',

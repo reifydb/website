@@ -35,6 +35,13 @@ export function MissionPage() {
                 exists because we believe the way you think about your data is the right way to store it, query it, and
                 evolve it. No translation. No friction. Just building.
               </p>
+              <p className="text-text-secondary text-lg leading-relaxed mt-6">
+                The argument about the problem itself is written down in{' '}
+                <a href="/manifesto" className="text-primary hover:text-primary-light underline underline-offset-2">
+                  the manifesto
+                </a>
+                .
+              </p>
             </div>
           </ScrollReveal>
 

@@ -11,9 +11,9 @@ const OUT_DIR = join(ROOT, 'public', 'blog', 'og');
 const DEFAULT_OG_PATH = 'assets/img/og-default.png';
 
 const SITE_TITLE = 'ReifyDB';
-const SITE_SUBTITLE = 'Application State Database';
+const SITE_SUBTITLE = 'The database that runs your backend logic.';
 const SITE_BLURB =
-  'Live application state with transactional guarantees, incrementally derived views, and embedded state transitions.';
+  'One database instead of Postgres + Redis + a queue + a cron job. No caches to invalidate. No cron to babysit. No drift to debug.';
 
 const WIDTH = 1200;
 const HEIGHT = 630;

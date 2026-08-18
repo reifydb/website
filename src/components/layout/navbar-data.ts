@@ -56,6 +56,7 @@ export const navDropdowns: NavDropdown[] = [
             {
                 title: 'About',
                 items: [
+                    {label: 'Manifesto', href: '/manifesto', description: 'Why the Postgres + Redis + cron stack is a bug'},
                     {label: 'Mission', href: '/company/mission', description: 'Why we are building ReifyDB'},
                     {label: 'Values', href: '/company/values', description: 'The principles that guide our work'},
                     {label: 'Contact', href: '/contact', description: 'Reach out to the team'},

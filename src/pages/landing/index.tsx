@@ -16,7 +16,7 @@ export function LandingPage() {
     <>
       <PageMeta
         title="ReifyDB"
-        description="A database designed to manage live application state with transactional guarantees, incremental derived state, and embedded state transitions."
+        description="One database instead of Postgres + Redis + a queue + a cron job. Transactional live state, derived views that update themselves, logic next to the data."
       />
       <Navbar />
 

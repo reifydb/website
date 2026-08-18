@@ -22,6 +22,11 @@ const replacements = [
     after: 'Native State Primitives',
     description: 'Counters, queues, ring buffers, histograms. You do not need three systems and a pile of glue code. One engine, full transactional guarantees.',
   },
+  {
+    before: 'Shared Service Account',
+    after: 'Per-User Auth and Policies',
+    description: 'Everything used to connect as one privileged account, so the code in front had to decide who may see what, again. Now the user is the database user: policies decide per user, and a hostile query can do nothing that user could not do anyway.',
+  },
 ];
 
 function ReplacementCell({ item, index }: { item: (typeof replacements)[number]; index: number }) {
@@ -70,6 +75,7 @@ export function ReplacesSection() {
             <ReplacementCell item={replacements[2]} index={2} />
             <ReplacementCell item={replacements[3]} index={3} />
           </div>
+          <ReplacementCell item={replacements[4]} index={4} />
         </div>
       </div>
     </section>

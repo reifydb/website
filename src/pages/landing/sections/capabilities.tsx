@@ -44,6 +44,12 @@ const capabilities = [
     description: 'Tables, counters, ring buffers, histograms, and views all live in one transactional core. Embed it in your app or run it as a server.',
     accent: 'bg-primary/10 text-primary',
   },
+  {
+    title: 'Knows who is asking',
+    stat: '0 shared passwords',
+    description: 'Every client authenticates as itself, and policies decide, per user, what may be read and written. A hostile query runs as that user and can do nothing the user could not do anyway.',
+    accent: 'bg-primary/10 text-primary',
+  },
 ];
 
 function CapabilityCell({ capability, index }: { capability: (typeof capabilities)[number]; index: number }) {
@@ -77,7 +83,7 @@ export function CapabilitiesSection() {
               Why ReifyDB
             </h2>
             <p className="max-w-3xl mx-auto text-text-secondary text-lg">
-              You should not need four systems to manage state that lives in one place. ReifyDB gives you transactions, incremental views, and programmable logic in a single engine.
+              You should not need four systems to manage state that lives in one place. ReifyDB gives you transactions, incremental views, and programmable logic in a single engine that knows who is asking.
             </p>
           </div>
         </ScrollReveal>
@@ -107,6 +113,7 @@ export function CapabilitiesSection() {
             <CapabilityCell capability={capabilities[2]} index={2} />
             <CapabilityCell capability={capabilities[3]} index={3} />
           </div>
+          <CapabilityCell capability={capabilities[4]} index={4} />
         </div>
 
         <ScrollReveal delay={200}>

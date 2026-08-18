@@ -1,7 +1,7 @@
 {
   "name": "ReifyDB",
   "short_name": "ReifyDB",
-  "description": "Application State Database - manage live application state with transactional guarantees",
+  "description": "One database instead of Postgres + Redis + a queue + a cron job. Transactional live state, derived views that update themselves, logic next to the data.",
   "icons": [
     {
       "src": "/assets/img/favicon-16x16.png",

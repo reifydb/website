@@ -71,7 +71,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-text-secondary">
-              Application State Database
+              The database that runs your backend logic.
             </p>
             <div className="mt-5 flex items-center gap-1 -ml-2">
               {socialLinks.map((social) => (

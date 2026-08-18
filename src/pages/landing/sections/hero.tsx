@@ -10,14 +10,13 @@ export function HeroSection() {
       <div className="hidden lg:block absolute inset-y-0 right-0 z-0 w-1/2 bg-gradient-to-br from-primary to-primary-dark" />
       <div className="relative z-10 min-h-[calc(100vh-61px)] flex items-center mx-auto max-w-6xl px-6 md:px-8 py-16 lg:py-0">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center w-full">
-          {/* Left — pitch */}
           <div className="text-center lg:text-left">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-6 whitespace-nowrap">
-              Live Application State
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-6 text-balance">
+              One database instead of Postgres + Redis + a queue + a cron job.
             </h1>
 
             <p className="text-lg sm:text-xl text-text-secondary mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Your state, your logic, your derived views, all in one transactional flow. No caches to invalidate. No cron to babysit. No drift to debug.
+              Your writes, your rules, and your derived views run in one transaction, inside the database, as the user who asked. No caches to invalidate. No cron to babysit. No drift to debug.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4">
@@ -34,7 +33,6 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right — proof */}
           <div className="w-full bg-primary rounded-2xl p-6 sm:p-8 lg:bg-transparent lg:rounded-none lg:p-0">
             <ExecutableSnippet
               initialCode={heroExample.code}

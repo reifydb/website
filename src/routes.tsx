@@ -20,6 +20,7 @@ const sitePages: PageEntry[] = [
   { path: '/faq', name: 'FaqPage', load: () => import('@/pages/faq') },
   { path: '/company/values', name: 'ValuesPage', load: () => import('@/pages/company/values') },
   { path: '/company/mission', name: 'MissionPage', load: () => import('@/pages/company/mission') },
+  { path: '/manifesto', name: 'ManifestoPage', load: () => import('@/pages/manifesto') },
   { path: '/examples', name: 'ExamplesPage', load: () => import('@/pages/examples') },
   { path: '/tour', name: 'TourPage', load: () => import('@/pages/tour') },
   { path: '/pitch', name: 'PitchPage', load: () => import('@/pages/pitch') },

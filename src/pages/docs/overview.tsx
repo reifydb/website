@@ -46,7 +46,8 @@ export function DocsOverview() {
             </p>
             <p className="text-lg text-text-secondary leading-relaxed">
               ReifyDB is a database for live application state. You get transactional guarantees,
-              incremental derived views, and programmable state transitions in one coherent system.
+              incremental derived views, programmable state transitions, and per-user access rules
+              in one coherent system.
             </p>
           </div>
         </ScrollReveal>

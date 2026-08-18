@@ -6,7 +6,7 @@ export interface FaqItemData {
 export const faqs: FaqItemData[] = [
   {
     question: 'What is ReifyDB?',
-    answer: 'ReifyDB is a database for application state. It helps you understand, mutate, and derive live application state under a single transactional model. State is kept in memory for low latency, persisted asynchronously for durability, and extended with application-defined logic that runs next to the data.',
+    answer: 'ReifyDB is a database for application state. It helps you understand, mutate, and derive live application state under a single transactional model. State is kept in memory for low latency, persisted asynchronously for durability, and extended with application-defined logic that runs next to the data. Clients authenticate as themselves, and policies decide per user what may be read and written.',
   },
   {
     question: 'How is ReifyDB different from PostgreSQL or Redis?',

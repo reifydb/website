@@ -118,7 +118,7 @@ export const navSections: NavSection[] = [
   {
     title: 'Concepts',
     items: [
-      { id: 'concepts-overview', label: 'Application State Database', href: '/docs/concepts', published: true },
+      { id: 'concepts-overview', label: 'What ReifyDB Is', href: '/docs/concepts', published: true },
       {
         id: 'concepts-data-model',
         label: 'Data Model',
