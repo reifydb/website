@@ -27,7 +27,7 @@
     "@reifydb/console": "^0.9.0",
     "@reifydb/core": "^0.9.0",
     "@reifydb/ui": "^0.9.0",
-    "@reifydb/wasm": "^0.9.0",
+    "@reifydb/wasm": "^0.8.1",
     "@tsparticles/engine": "^3.9.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",
