@@ -3,12 +3,18 @@ import { createTestDB, verifyExample } from '@/lib/test-utils/wasm-test-db';
 import type { WasmDB } from '@/lib/wasm-db';
 import { operatorsExamples } from './operators.examples';
 
-describe('Operators Examples', () => {
+describe('rql/expressions/operators examples', () => {
   let db: WasmDB;
-  beforeAll(async () => { db = await createTestDB(); });
+
+  beforeAll(async () => {
+    db = await createTestDB();
+  });
+
   it.each(operatorsExamples)('$id - $title', (example) => {
     const result = verifyExample(db, example);
-    if (!result.success) console.error(`Example ${example.id} failed:`, result.error);
+    if (!result.success) {
+      console.error(`Example ${example.id} failed:`, result.error);
+    }
     expect(result.success, result.error).toBe(true);
   });
 });

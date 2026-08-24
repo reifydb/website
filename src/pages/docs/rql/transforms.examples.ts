@@ -2,93 +2,87 @@ import type { CodeExample } from '@/lib/examples/types';
 
 export const transformPipelineExample: CodeExample = {
     id: 'transform-pipeline',
-    title: 'Pipeline Processing',
-    code: `from app::orders
-filter { status == "completed" }
-aggregate {revenue: math::sum(total)} by {region}
-sort {revenue}
-take 5`,
-    expected: `region | revenue
--------+--------
-East   | 245
-North  | 150.5
-West   | 55.25`,
+    title: 'A Pipeline, Stage by Stage',
+    code: `from [
+  { name: "Ada", dept: "eng", salary: 120 },
+  { name: "Grace", dept: "eng", salary: 150 },
+  { name: "Linus", dept: "ops", salary: 90 },
+  { name: "Ken", dept: "ops", salary: 80 }
+]
+filter { salary > 85 }
+extend { bonus: salary / 10 }
+sort { salary: desc }
+take 2`,
+    expected: `dept | name  | salary | bonus
+-----+-------+--------+------
+eng  | Grace | 150    | 15
+eng  | Ada   | 120    | 12`,
   };
 
-export const transformFromExample: CodeExample = {
-    id: 'transform-from',
-    title: 'from',
-    code: `from app::users`,
-  };
-
-export const transformFilterExample: CodeExample = {
-    id: 'transform-filter',
-    title: 'filter',
-    code: `from app::users
-filter { age >= 18 }`,
-  };
-
-export const transformExtendExample: CodeExample = {
-    id: 'transform-extend',
-    title: 'extend',
-    code: `from app::employees
-extend { bonus: salary * 0.1 }`,
-    expected: `id | dept_id | salary | bonus
----+---------+--------+-------
-5  | 3       | 90000  | 9000.0
-4  | 2       | 71000  | 7100.0
-3  | 2       | 65000  | 6500.0
-2  | 1       | 82000  | 8200.0
-1  | 1       | 75000  | 7500.0`,
-  };
-
-export const transformSortExample: CodeExample = {
-    id: 'transform-sort',
-    title: 'sort',
-    code: `from app::users
-sort {created_at}`,
-  };
-
-export const transformTakeExample: CodeExample = {
-    id: 'transform-take',
-    title: 'take',
-    code: `from app::users
-sort {created_at}
-take 10`,
-  };
-
-export const transformDistinctExample: CodeExample = {
-    id: 'transform-distinct',
-    title: 'distinct',
-    code: `from app::products
-distinct { category }`,
-    expected: `id | name        | sku     | price | category
----+-------------+---------+-------+------------
-5  | Thingamajig | TMJ-005 | 15.5  | Accessories
-4  | Doohickey   | DHK-004 | 99.99 | Hardware
-2  | Gadget      | GDT-002 | 49.99 | Electronics`,
+export const transformShapeExample: CodeExample = {
+    id: 'transform-shape',
+    title: 'extend Adds Columns, map Replaces the Column Set',
+    code: `from [{ id: 1, name: "Ada", salary: 120 }]
+extend { bonus: salary / 10 }
+map { name, bonus }`,
+    expected: `name | bonus
+-----+------
+Ada  | 12`,
   };
 
 export const transformAggregateExample: CodeExample = {
     id: 'transform-aggregate',
-    title: 'aggregate',
-    code: `from app::orders
-aggregate {math::sum(total)} by {region}`,
-    expected: `region | math::sum(total)
--------+-----------------
-North  | 471.25
-West   | 55.25
-East   | 245
-South  | 89.99`,
+    title: 'Reduce with aggregate, Then Order',
+    code: `from [
+  { name: "Ada", dept: "eng", salary: 120.0 },
+  { name: "Grace", dept: "eng", salary: 150.0 },
+  { name: "Linus", dept: "ops", salary: 90.0 }
+]
+aggregate { payroll: math::sum(salary), headcount: math::count(name) } by { dept }
+sort { dept: asc }`,
+    expected: `dept | payroll | headcount
+-----+---------+----------
+eng  | 270.0   | 2
+ops  | 90.0    | 1`,
+  };
+
+export const transformTableExample: CodeExample = {
+    id: 'transform-table-scan',
+    title: 'The Same Operators over a Table',
+    code: `create namespace tf;
+create table tf::employees { id: int4, name: utf8, dept: utf8, salary: int4 };
+insert tf::employees [
+  { id: 1, name: "Ada", dept: "eng", salary: 120 },
+  { id: 2, name: "Grace", dept: "eng", salary: 150 },
+  { id: 3, name: "Linus", dept: "ops", salary: 90 }
+];
+from tf::employees
+filter { dept == "eng" }
+map { name, salary }
+sort { salary: asc }`,
+    expected: `name  | salary
+------+-------
+Ada   | 120
+Grace | 150`,
+  };
+
+export const transformOrderMattersExample: CodeExample = {
+    id: 'transform-order-matters',
+    title: 'Order Matters: take Before sort Is a Different Query',
+    code: `from tf::employees
+take 2
+sort { salary: desc }
+map { name, salary }`,
+    expected: `name  | salary
+------+-------
+Grace | 150
+Linus | 90`,
   };
 
 export const rqlTransformsExamples: CodeExample[] = [
   transformPipelineExample,
-  transformFromExample,
-  transformFilterExample,
-  transformExtendExample,
-  transformSortExample,
-  transformTakeExample,
-  transformDistinctExample,
+  transformShapeExample,
   transformAggregateExample,
+  transformTableExample,
+  transformOrderMattersExample,
 ];

@@ -1,16 +1,16 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { createTestDB, verifyExample } from '@/lib/test-utils/wasm-test-db';
 import type { WasmDB } from '@/lib/wasm-db';
-import { transactionalViewsExamples } from './transactional.examples';
+import { scriptingViewsTransactionalExamples } from './transactional.examples';
 
-describe('Transactional Views Examples', () => {
+describe('scripting/views/transactional examples', () => {
   let db: WasmDB;
 
   beforeAll(async () => {
     db = await createTestDB();
   });
 
-  it.each(transactionalViewsExamples)('$id - $title', (example) => {
+  it.each(scriptingViewsTransactionalExamples)('$id - $title', (example) => {
     const result = verifyExample(db, example);
     if (!result.success) {
       console.error(`Example ${example.id} failed:`, result.error);

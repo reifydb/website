@@ -3,7 +3,7 @@ import { createTestDB, verifyExample } from '@/lib/test-utils/wasm-test-db';
 import type { WasmDB } from '@/lib/wasm-db';
 import { fromExamples } from './from.examples';
 
-describe('From Examples', () => {
+describe('rql/transforms/from examples', () => {
   let db: WasmDB;
 
   beforeAll(async () => {

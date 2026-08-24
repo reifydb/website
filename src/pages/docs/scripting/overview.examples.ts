@@ -1,68 +1,81 @@
 import type { CodeExample } from '@/lib/examples/types';
 
-export const scriptingInsertBasicExample: CodeExample = {
-    id: 'scripting-insert-basic',
-    title: 'Insert Rows',
-    code: `CREATE NAMESPACE dm_i;
-CREATE TABLE dm_i::users { id: int4, name: utf8, active: bool };
-INSERT dm_i::users [
-  { id: 1, name: 'Alice', active: true },
-  { id: 2, name: 'Bob', active: false },
-  { id: 3, name: 'Carol', active: true }
+export const scriptingBindExample: CodeExample = {
+    id: 'scripting-bind',
+    title: 'Bind Values and Compute with Them',
+    code: `let $rate = 0.2;
+let $price = 50;
+let $total = $price * (1 + $rate);
+map { price: $price, total: $total }`,
+    expected: `price | total
+------+------
+50    | 60.0`,
+  };
+
+export const scriptingLoopWriteExample: CodeExample = {
+    id: 'scripting-loop-write',
+    title: 'Read, Decide, Write - in One Request',
+    code: `create namespace scr;
+create table scr::orders { id: int4, total: int4 };
+create table scr::flagged { id: int4, total: int4 };
+insert scr::orders [
+  { id: 1, total: 40 },
+  { id: 2, total: 250 },
+  { id: 3, total: 120 }
 ];
-FROM dm_i::users
-sort { id: asc }`,
-    expected: `id | name  | active
----+-------+-------
-1  | Alice | true
-2  | Bob   | false
-3  | Carol | true`,
+let $rows = from scr::orders;
+for $row in $rows {
+  if $row.total > 100 {
+    insert scr::flagged [{ id: $row.id, total: $row.total }]
+  }
+};
+from scr::flagged sort { id: asc }`,
+    expected: `id | total
+---+------
+2  | 250
+3  | 120`,
   };
 
-export const scriptingCreateTableExample: CodeExample = {
-    id: 'scripting-create-table',
-    title: 'Create Table',
-    code: `CREATE NAMESPACE sc_t;
-CREATE TABLE sc_t::users {
-  id: int4,
-  name: utf8,
-  age: int2,
-  active: bool
-}`,
-    expected: `id    | namespace | table | created
-------+-----------+-------+--------
-16417 | sc_t      | users | true`,
+export const scriptingAssertExample: CodeExample = {
+    id: 'scripting-assert',
+    title: 'Assert an Invariant',
+    code: `from scr::flagged
+| assert { total > 100 } "only large orders are flagged"
+| map { id, total }`,
+    expected: `id | total
+---+------
+2  | 250
+3  | 120`,
   };
 
-export const scriptingCreateTestExample: CodeExample = {
-    id: 'scripting-create-test',
-    title: 'Create and Run Tests',
-    code: `CREATE NAMESPACE tg;
-CREATE TABLE tg::items { id: int4, name: utf8 };
-
-CREATE TEST PROCEDURE tg::seed AS {
-  INSERT tg::items [{ id: 1, name: 'one' }, { id: 2, name: 'two' }]
+export const scriptingTestExample: CodeExample = {
+    id: 'scripting-test',
+    title: 'Keep the Check as a Test',
+    code: `create test scr::flags_only_large {
+  from scr::flagged | assert { total > 100 }
 };
+run tests scr | map { name, outcome }`,
+    expected: `name             | outcome
+-----------------+--------
+flags_only_large | pass`,
+  };
 
-CREATE TEST tg::query_all {
-  CALL tg::seed();
-  FROM tg::items | ASSERT { id > 0 }
+export const scriptingMigrationExample: CodeExample = {
+    id: 'scripting-migration',
+    title: 'Ship Schema Changes as a Migration',
+    code: `create migration '001_scr_archive' {
+  create table scr::archive { id: int4, total: int4 }
 };
-
-CREATE TEST tg::filter_one {
-  CALL tg::seed();
-  FROM tg::items | FILTER name == 'one' | ASSERT { id == 1 }
-};
-
-RUN TESTS tg | MAP { name, namespace, outcome }`,
-    expected: `name       | namespace | outcome
------------+-----------+--------
-filter_one | tg        | pass
-query_all  | tg        | pass`,
+migrate`,
+    expected: `migrations_applied
+------------------
+1`,
   };
 
 export const scriptingOverviewExamples: CodeExample[] = [
-  scriptingInsertBasicExample,
-  scriptingCreateTableExample,
-  scriptingCreateTestExample,
+  scriptingBindExample,
+  scriptingLoopWriteExample,
+  scriptingAssertExample,
+  scriptingTestExample,
+  scriptingMigrationExample,
 ];
