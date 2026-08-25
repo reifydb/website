@@ -7,6 +7,7 @@ import { PageMeta } from '@/components/page-meta';
 import { exampleSections, getSectionById } from './sections';
 import { ExamplesSidebar, ExamplesSidebarMobile } from './examples-sidebar';
 import { ExampleRenderer } from './example-renderer';
+import { SectionHeader } from './section-header';
 
 export function ExamplesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,6 +15,7 @@ export function ExamplesPage() {
 
   const activeId = searchParams.get('id') || exampleSections[0]?.id || '';
   const activeSection = getSectionById(activeId) || exampleSections[0];
+  const activeIndex = exampleSections.findIndex((s) => s.id === activeSection?.id);
 
   const handleSelect = useCallback((id: string) => {
     setSearchParams({ id }, { replace: true });
@@ -55,10 +57,11 @@ export function ExamplesPage() {
 
             {activeSection && (
               <>
-                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-1">
-                  {activeSection.title}
-                </h1>
-                <p className="text-text-muted text-sm mb-6">{activeSection.subtitle}</p>
+                <SectionHeader
+                  eyebrow={`Example ${activeIndex + 1} of ${exampleSections.length}`}
+                  title={activeSection.title}
+                  subtitle={activeSection.subtitle}
+                />
                 <ExampleRenderer key={activeSection.id} section={activeSection} />
               </>
             )}
