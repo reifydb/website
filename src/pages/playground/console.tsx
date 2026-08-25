@@ -1,15 +1,26 @@
 import '@/lib/monaco-setup';
-import { Console, brutalist_light_theme } from '@reifydb/console';
+import { Console, reifydb_light_theme } from '@reifydb/console';
 import { wasmExecutor } from '@/lib/wasm-executor-singleton';
 
-export default function PlaygroundConsole() {
+const CATALOG_EXPANDED = ['app.tables'];
+const CATALOG_NAMESPACES = ['app', 'system'];
+
+interface PlaygroundConsoleProps {
+  code: string;
+}
+
+export default function PlaygroundConsole({ code }: PlaygroundConsoleProps) {
   return (
     <Console
       executor={wasmExecutor}
-      initial_code="FROM app::users"
+      code={code}
+      auto_run
       history_key="playground"
-      theme="light"
-      monaco_theme={brutalist_light_theme}
+      theme="reifydb"
+      monaco_theme={reifydb_light_theme}
+      catalog_placement="sidebar"
+      catalog_expanded={CATALOG_EXPANDED}
+      catalog_namespaces={CATALOG_NAMESPACES}
     />
   );
 }
