@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { cn } from '@/lib';
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { ScrollReveal } from '@/components/ui';
+import { Button, PageCloser, PageHero, ScrollReveal } from '@/components/ui';
 import { faqs } from '@/data/faq-data';
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="glass-card overflow-hidden transition-all duration-300 hover:border-primary/50">
+    <div className="bento-tile lift-card overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-6 text-left"
@@ -18,7 +18,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
           <span className="text-primary mr-2">&gt;</span>
           {question}
         </span>
-        <span className="text-text-muted text-sm">[{isOpen ? '-' : '+'}]</span>
+        <span className="text-text-muted text-sm font-mono">[{isOpen ? '-' : '+'}]</span>
       </button>
       <div
         className={cn(
@@ -43,29 +43,36 @@ export function FaqPage() {
       />
       <Navbar />
 
-      <main className="py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl px-6 md:px-8">
-          {/* Page Header */}
-          <ScrollReveal>
-            <div className="text-center mb-12 sm:mb-16">
-              <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">
-                Frequently Asked Questions
-              </h1>
-              <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-                Common questions about ReifyDB
-              </p>
-            </div>
-          </ScrollReveal>
+      <main>
+        <PageHero
+          eyebrow="FAQ"
+          title="Frequently asked questions"
+          subtitle="What ReifyDB is, how it differs from the stack you have, and where it fits today."
+        />
 
-          {/* FAQ List */}
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <ScrollReveal key={faq.question} delay={index * 75}>
-                <FaqItem {...faq} />
-              </ScrollReveal>
-            ))}
+        <section className="section-elevated py-20 sm:py-28">
+          <div className="mx-auto max-w-3xl px-6 md:px-8">
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <ScrollReveal key={faq.question} delay={index * 60}>
+                  <FaqItem {...faq} />
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
+
+        <PageCloser
+          title="Still have a question?"
+          subtitle="Open a discussion on GitHub, or take thirty minutes and ask directly."
+        >
+          <Button href="https://cal.com/reifydb/30min" size="lg">
+            Book a call
+          </Button>
+          <Button href="https://github.com/orgs/reifydb/discussions" variant="secondary" size="lg">
+            Ask on GitHub
+          </Button>
+        </PageCloser>
       </main>
 
       <Footer />

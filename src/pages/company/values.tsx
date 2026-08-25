@@ -1,7 +1,6 @@
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { ScrollReveal } from '@/components/ui';
-import { Card, CardContent } from '@reifydb/ui';
+import { Button, PageCloser, PageHero, ScrollReveal } from '@/components/ui';
 
 interface Value {
   id: string;
@@ -42,6 +41,8 @@ const values: Value[] = [
   },
 ];
 
+const spans = ['md:col-span-3', 'md:col-span-3', 'md:col-span-2', 'md:col-span-2', 'md:col-span-2'];
+
 export function ValuesPage() {
   return (
     <>
@@ -51,57 +52,48 @@ export function ValuesPage() {
       />
       <Navbar />
 
-      <main className="py-16 sm:py-24">
-        <div className="mx-auto max-w-6xl px-6 md:px-8">
-          {/* Page Header */}
-          <ScrollReveal>
-            <div className="text-center mb-12 sm:mb-16">
-              <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">
-                Values
-              </h1>
-              <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-                The principles guiding ReifyDB
-              </p>
-            </div>
-          </ScrollReveal>
+      <main>
+        <PageHero
+          eyebrow="Values"
+          title="Five things we will not trade away"
+          subtitle="Every database makes choices. These are ours, written down so you can hold us to them."
+        />
 
-          {/* Values Zig-Zag Layout */}
-          <div className="flex flex-col gap-8 sm:gap-12">
-            {values.map((value, index) => {
-              const isEven = index % 2 === 1;
-              const number = String(index + 1).padStart(2, '0');
-
-              return (
-                <ScrollReveal key={value.id} delay={100 + index * 50}>
-                  <div
-                    className={`flex flex-col sm:flex-row items-center gap-6 sm:gap-8 ${
-                      isEven ? 'sm:flex-row-reverse' : ''
-                    }`}
-                  >
-                    {/* Number Badge */}
-                    <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 border border-border-default flex items-center justify-center">
-                      <span className="text-primary font-mono text-3xl sm:text-4xl font-bold">
-                        {number}
-                      </span>
-                    </div>
-
-                    {/* Content Card */}
-                    <Card className="flex-1 sm:p-8 transition-all duration-300 hover:border-primary/50">
-                      <CardContent>
-                      <h2 className="text-xl sm:text-2xl font-bold mb-3">
-                        {value.title}
-                      </h2>
-                      <p className="text-text-secondary leading-relaxed">
-                        {value.description}
-                      </p>
-                      </CardContent>
-                    </Card>
+        <section className="section-elevated py-20 sm:py-28">
+          <div className="mx-auto max-w-5xl px-6 md:px-8">
+            <div className="grid gap-5 md:grid-cols-6">
+              {values.map((value, index) => (
+                <ScrollReveal
+                  key={value.id}
+                  delay={index * 60}
+                  className={spans[index] ?? 'md:col-span-2'}
+                >
+                  <div className="bento-tile lift-card h-full p-6 sm:p-8 flex flex-col">
+                    <span className="font-mono text-3xl font-black text-primary/30 mb-5">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h2 className="text-xl font-bold mb-3 text-balance">{value.title}</h2>
+                    <p className="text-text-secondary text-sm leading-relaxed">
+                      {value.description}
+                    </p>
                   </div>
                 </ScrollReveal>
-              );
-            })}
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
+
+        <PageCloser
+          title="The argument behind the values"
+          subtitle="Why the Postgres + Redis + cron stack is a bug, not an architecture."
+        >
+          <Button href="/manifesto" size="lg">
+            Read the manifesto
+          </Button>
+          <Button href="/company/mission" variant="secondary" size="lg">
+            Our mission
+          </Button>
+        </PageCloser>
       </main>
 
       <Footer />

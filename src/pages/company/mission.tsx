@@ -1,6 +1,6 @@
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { ScrollReveal } from '@/components/ui';
+import { Button, PageCloser, PageHero, ScrollReveal } from '@/components/ui';
 
 export function MissionPage() {
   return (
@@ -11,87 +11,87 @@ export function MissionPage() {
       />
       <Navbar />
 
-      <main className="py-16 sm:py-24">
-        <div className="mx-auto max-w-4xl px-6 md:px-8">
-          {/* Page Header */}
-          <ScrollReveal>
-            <div className="text-center mb-12 sm:mb-16">
-              <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">
-                The Mission
-              </h1>
-              <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-                Why?
-              </p>
-            </div>
-          </ScrollReveal>
+      <main>
+        <PageHero
+          eyebrow="Mission"
+          title="The way you think about your data is the right way to store it"
+          subtitle="No translation layer. No accidental complexity. Infrastructure that gets out of the way."
+        />
 
-          {/* Mission Statement */}
-          <ScrollReveal delay={100}>
-            <div className="glass-card p-8 sm:p-12 mb-12 transition-all duration-300 hover:border-primary/50">
-              <h2 className="text-2xl font-bold mb-6">Mission Statement</h2>
-              <p className="text-text-secondary text-lg leading-relaxed">
-                Most engineers have felt it, that moment where you're fighting your own infrastructure instead of
-                building the thing you set out to build. Your database should work with you, not against you. ReifyDB
-                exists because we believe the way you think about your data is the right way to store it, query it, and
-                evolve it. No translation. No friction. Just building.
+        <section className="py-20 sm:py-28">
+          <div className="mx-auto max-w-3xl px-6 md:px-8">
+            <ScrollReveal>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-8 text-balance">
+                Most engineers have felt it.
+              </h2>
+              <p className="text-text-secondary text-lg leading-relaxed mb-6">
+                That moment where you are fighting your own infrastructure instead of building the thing
+                you set out to build. Your database should work with you, not against you.
               </p>
-              <p className="text-text-secondary text-lg leading-relaxed mt-6">
-                The argument about the problem itself is written down in{' '}
+              <p className="text-text-secondary text-lg leading-relaxed">
+                ReifyDB exists because we believe the way you think about your data is the right way to
+                store it, query it, and evolve it. The argument about the problem itself is written down
+                in{' '}
                 <a href="/manifesto" className="text-primary hover:text-primary-light underline underline-offset-2">
                   the manifesto
                 </a>
                 .
               </p>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
+        </section>
 
-          {/* Origin Story */}
-          <ScrollReveal delay={200}>
-            <div className="glass-card p-8 sm:p-12 transition-all duration-300 hover:border-primary/50">
-              <h2 className="text-2xl font-bold mb-6">The Origin Story</h2>
-
-              <div className="flex flex-col md:flex-row gap-8">
-                {/* Founder Photo */}
-                <div className="flex-shrink-0">
+        <section className="section-elevated py-20 sm:py-28">
+          <div className="mx-auto max-w-4xl px-6 md:px-8">
+            <ScrollReveal>
+              <div className="bento-tile p-8 sm:p-12">
+                <span className="inline-block rounded-pill border border-border-light bg-bg-primary px-3 py-1 text-xs label-uppercase text-text-muted mb-8">
+                  Origin story
+                </span>
+                <div className="grid gap-8 sm:grid-cols-[auto_1fr] sm:gap-10 items-start">
                   <img
                     src="/assets/img/me.jpeg"
-                    alt="Founder"
-                    className="w-32 h-32 object-cover border border-border-default rounded"
+                    alt="Dominique Chuo"
+                    className="w-32 h-32 object-cover rounded-lg border border-border-default shadow-hard"
                   />
-                </div>
-
-                {/* Story Content */}
-                <div className="flex-1">
-                  <p className="text-text-secondary mb-6 leading-relaxed">
-                    When Dominique's daughter was born, everything slowed down for a moment. For the
-                    first time in years, he stepped back and asked a simple question: what actually
-                    makes me happy? And maybe more importantly, what doesn't?
-                  </p>
-
-                  <p className="text-text-secondary mb-6 leading-relaxed">
-                    The answer was painfully clear. Throughout his career building software, the most
-                    frustrating part was always the same: working with data infrastructure. The endless
-                    translation between how you think about your domain and how the database forces you
-                    to store it. The layers of abstraction that nobody asked for. The friction that
-                    quietly drains your energy, sprint after sprint, year after year. Every engineer
-                    knows the feeling. You just learn to live with it.
-                  </p>
-
-                  <p className="text-text-secondary mb-6 leading-relaxed">
-                    Dominique decided to stop living with it. ReifyDB started as a question: what if
-                    the database actually worked the way engineers think? No translation layers, no
-                    accidental complexity, just infrastructure that gets out of your way and lets you
-                    build.
-                  </p>
-
-                  <p className="text-text-secondary font-bold leading-relaxed">
-                    That's what ReifyDB is for.
-                  </p>
+                  <div>
+                    <p className="text-text-secondary leading-relaxed mb-6">
+                      When Dominique's daughter was born, everything slowed down for a moment. For the first
+                      time in years, he stepped back and asked a simple question: what actually makes me
+                      happy? And maybe more importantly, what does not?
+                    </p>
+                    <p className="text-text-secondary leading-relaxed mb-6">
+                      The answer was painfully clear. Throughout his career building software, the most
+                      frustrating part was always the same: working with data infrastructure. The endless
+                      translation between how you think about your domain and how the database forces you to
+                      store it. The friction that quietly drains your energy, sprint after sprint. Every
+                      engineer knows the feeling. You just learn to live with it.
+                    </p>
+                    <p className="text-text-secondary leading-relaxed mb-6">
+                      Dominique decided to stop living with it. ReifyDB started as a question: what if the
+                      database actually worked the way engineers think?
+                    </p>
+                    <p className="text-text-primary text-lg font-bold leading-relaxed">
+                      That is what ReifyDB is for.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </ScrollReveal>
-        </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        <PageCloser
+          title="See what it looks like in practice"
+          subtitle="The database compiles to WebAssembly, so you can run it in this browser tab without installing anything."
+        >
+          <Button href="/playground" size="lg">
+            Open the playground
+          </Button>
+          <Button href="/company/values" variant="secondary" size="lg">
+            Our values
+          </Button>
+        </PageCloser>
       </main>
 
       <Footer />
