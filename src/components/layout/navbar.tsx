@@ -54,7 +54,7 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-bg-primary border-b border-border-default">
+      <header className="site-header sticky top-0 z-40 w-full bg-bg-primary border-b border-border-default">
         <div className="flex h-[60px] w-full items-center justify-between px-4 sm:px-6 md:pl-8 md:pr-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">

@@ -16,6 +16,8 @@ const localReifydbAliases = useLocalSdk
       { find: /^@reifydb\/ui\/styles\.css$/, replacement: join(SDK_ROOT, 'ui/src/styles/index.css') },
       { find: /^@reifydb\/console$/, replacement: join(SDK_ROOT, 'console/src/index.ts') },
       { find: /^@reifydb\/console\/styles\.css$/, replacement: join(SDK_ROOT, 'console/dist/styles.css') },
+      { find: /^@reifydb\/shell$/, replacement: join(SDK_ROOT, 'shell/src/index.ts') },
+      { find: /^@reifydb\/shell\/dist\/index\.css$/, replacement: join(SDK_ROOT, 'shell/dist/index.css') },
       { find: /^@reifydb\/wasm$/, replacement: join(SDK_ROOT, 'wasm/src/index.ts') },
     ]
   : []
@@ -43,7 +45,7 @@ export default defineConfig(({ command }) => ({
         outDir: 'dist-ssr',
         emptyOutDir: true,
         ssr: 'src/entry-server.tsx',
-        rollupOptions: { external: ['@reifydb/wasm', '@reifydb/console'] },
+        rollupOptions: { external: ['@reifydb/wasm', '@reifydb/console', '@reifydb/shell'] },
       }
     : {
         rollupOptions: {
@@ -57,7 +59,7 @@ export default defineConfig(({ command }) => ({
         },
       },
   ssr: {
-    external: ['@reifydb/wasm', '@reifydb/console'],
+    external: ['@reifydb/wasm', '@reifydb/console', '@reifydb/shell'],
     noExternal: [/^@reifydb\/(core|ui)$/, /^react-router/],
   },
   resolve: {

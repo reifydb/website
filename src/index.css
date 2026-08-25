@@ -75,6 +75,35 @@ html {
   cursor: pointer;
 }
 
+.shell-surface {
+  height: 420px;
+  background: var(--color-gray-900);
+}
+
+.panel-frame--fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+  background: var(--color-gray-900);
+}
+
+.panel-frame--fullscreen .panel-frame__body {
+  flex: 1;
+  min-height: 0;
+}
+
+.panel-frame--fullscreen .shell-frame,
+.panel-frame--fullscreen .shell-surface {
+  height: 100%;
+}
+
+body:has(.panel-frame--fullscreen) .site-header {
+  z-index: 0;
+}
+
 /* Fullscreen background — used by pitch page */
 div:fullscreen {
   background-color: var(--color-bg-primary);

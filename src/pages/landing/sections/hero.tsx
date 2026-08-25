@@ -1,9 +1,6 @@
 import { Star } from 'lucide-react';
-import { Button, ExecutableSnippet, InstallCommand, WindowFrame } from '@/components/ui';
+import { Button, ExecutableShell, InstallCommand, PanelFrame } from '@/components/ui';
 import { useGitHubStars } from '@/hooks';
-import { heroExamples } from './hero.examples';
-
-const heroExample = heroExamples.find((ex) => ex.id === 'guide-built-in-testing')!;
 
 const stats = [
   { value: '1 RTT', label: 'per transaction, not per statement' },
@@ -76,10 +73,10 @@ export function HeroSection() {
             <InstallCommand className="w-full sm:w-auto text-left" />
           </div>
 
-          <div className="w-full">
-            <WindowFrame label="playground.reifydb.com" className="window-shell">
-              <ExecutableSnippet initialCode={heroExample.code} deferLoad />
-            </WindowFrame>
+          <div className="w-full min-w-0">
+            <PanelFrame label="RQL SHELL (wasm)" fullscreen className="window-shell">
+              <ExecutableShell deferLoad />
+            </PanelFrame>
 
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-white/50 mt-5">
               <a href="/examples" className="hover:text-white transition-colors">
