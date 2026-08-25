@@ -23,7 +23,7 @@ const useCases: { title: string; description: string; href?: string }[] = [
 
 function UseCaseCell({ useCase, index }: { useCase: (typeof useCases)[number]; index: number }) {
   const content = (
-    <div className="p-6 sm:p-8 group">
+    <div className="bento-tile lift-card h-full p-6 sm:p-8 group">
       <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
         {useCase.title}
       </h3>
@@ -39,9 +39,9 @@ function UseCaseCell({ useCase, index }: { useCase: (typeof useCases)[number]; i
   );
 
   return (
-    <ScrollReveal delay={index * 75}>
+    <ScrollReveal className="h-full" delay={index * 75}>
       {useCase.href ? (
-        <Link to={useCase.href} className="block">
+        <Link to={useCase.href} className="block h-full">
           {content}
         </Link>
       ) : (
@@ -53,9 +53,8 @@ function UseCaseCell({ useCase, index }: { useCase: (typeof useCases)[number]; i
 
 export function UseCasesSection() {
   return (
-    <section id="use-cases" className="bg-bg-secondary py-24 sm:py-32">
+    <section id="use-cases" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
-        {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
             <Badge variant="active" className="text-xs mb-3 uppercase tracking-[0.2em]">Use Cases</Badge>
@@ -68,16 +67,10 @@ export function UseCasesSection() {
           </div>
         </ScrollReveal>
 
-        {/* Use Cases Grid - 2x2 */}
-        <div className="glass-card overflow-hidden divide-y divide-border-light">
-          <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border-light">
-            <UseCaseCell useCase={useCases[0]} index={0} />
-            <UseCaseCell useCase={useCases[1]} index={1} />
-          </div>
-          <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border-light">
-            <UseCaseCell useCase={useCases[2]} index={2} />
-            <UseCaseCell useCase={useCases[3]} index={3} />
-          </div>
+        <div className="grid gap-5 sm:grid-cols-2">
+          {useCases.map((useCase, index) => (
+            <UseCaseCell key={useCase.title} useCase={useCase} index={index} />
+          ))}
         </div>
       </div>
     </section>

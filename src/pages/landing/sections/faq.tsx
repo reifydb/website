@@ -41,7 +41,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 
 export function FaqSection() {
   return (
-    <section id="faq" className="relative z-10 bg-bg-secondary py-24 sm:py-32">
+    <section id="faq" className="section-elevated relative z-10 py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-6 md:px-8">
         {/* Section Header */}
         <ScrollReveal>

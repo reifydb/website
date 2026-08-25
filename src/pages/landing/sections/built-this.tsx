@@ -14,10 +14,9 @@ export function BuiltThisSection() {
             </h2>
             <div className="max-w-2xl mx-auto">
               <p className="text-text-secondary text-lg leading-relaxed mb-4">
-                You have a database. Then the product needed to be fast, so the hot rows got copied into Redis.
-                Then a dashboard needed a total, so a cron job started recomputing it. Then a rule had to run
-                when an order changed, so it moved into a worker behind a queue. And all of it connects to the
-                database as one account, with one password.
+                A database. Then Redis, because it was not fast enough. Then a cron job, because a dashboard
+                needed a total. Then a queue, because a rule had to run on write. All of it connecting as one
+                account, with one password.
               </p>
               <p className="text-text-primary text-lg font-bold">
                 You did not architect that. You accumulated it.
@@ -26,7 +25,7 @@ export function BuiltThisSection() {
           </div>
         </ScrollReveal>
         <ScrollReveal delay={100}>
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-5xl">
             <StackDiagram />
           </div>
         </ScrollReveal>

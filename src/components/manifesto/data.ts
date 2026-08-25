@@ -59,32 +59,3 @@ export const tenets = [
     text: 'Every client authenticates to the database as itself, and policies decide, per user, what may be read and written. There is no shared service account and no privileged connection to hijack: a hostile query runs as the user, with the user\'s permissions, and can do nothing the user could not do anyway. Nothing to inject into, and no second copy of the rules in an API layer to drift.',
   },
 ];
-
-export const stackToday = `+---------------+
-|   POSTGRES    |
-+---------------+
-    ~ glue ~
-+---------------+
-|     REDIS     |
-+---------------+
-    ~ glue ~
-+---------------+
-|     CRON      |
-+---------------+
-    ~ glue ~
-+---------------+
-|     QUEUE     |
-+---------------+
-    ~ glue ~
-+---------------+
-|    WORKERS    |
-+---------------+`;
-
-export const stackReify = `+---------------+
-|    REIFYDB    |
-|               |
-|  tables       |
-|  views        |
-|  transitions  |
-|  primitives   |
-+---------------+`;

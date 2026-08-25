@@ -83,3 +83,52 @@ div:fullscreen {
 div::backdrop {
   background-color: var(--color-bg-primary);
 }
+
+.dot-grid-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.hero-glow {
+  background:
+    radial-gradient(60rem 40rem at 78% 8%, rgba(126, 133, 242, 0.30), transparent 65%),
+    radial-gradient(45rem 32rem at 12% 88%, rgba(46, 57, 223, 0.22), transparent 70%);
+}
+
+.window-shell {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.10),
+    0 24px 60px -12px rgba(0, 0, 0, 0.65),
+    0 0 90px -20px rgba(126, 133, 242, 0.55);
+}
+
+.window-body-flush > * {
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+}
+
+.section-dark {
+  background: var(--color-gray-900);
+  color: #fafafa;
+}
+
+.lift-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.lift-card:hover {
+  transform: translate(-2px, -2px);
+  border-color: var(--color-border-default);
+  box-shadow: var(--shadow-hard);
+}
+
+.bento-tile {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+}
+
+.proof-slider-dark {
+  background: rgba(255, 255, 255, 0.15);
+}

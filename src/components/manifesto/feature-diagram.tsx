@@ -1,13 +1,22 @@
-import { Fragment, type ReactNode } from 'react';
-import { Badge } from '@reifydb/ui';
+const accent = 'var(--color-primary)';
+const label = 'var(--color-text-muted)';
+const body = 'var(--color-text-secondary)';
+const strong = 'var(--color-text-primary)';
+const hairline = 'var(--color-border-light)';
+const boxStroke = 'var(--color-border-subtle)';
+const flow = 'var(--color-gray-400)';
+const boxFill = 'var(--color-bg-tertiary)';
+const panelFill = 'var(--color-bg-secondary)';
+const mono = 'var(--font-mono)';
+const sans = 'var(--font-body)';
 
-type Tone = 'muted' | 'primary';
-
-const toneText: Record<Tone, string> = { muted: 'text-text-muted', primary: 'text-primary' };
+const PANEL_W = 460;
+const PANEL_H = 560;
+const RAIL_X = 42;
 
 const fanOut = [
-  ['redis', 'drop cached balance'],
-  ['queue', 'worker: totals'],
+  ['redis', 'drop the cached balance'],
+  ['queue', 'worker recomputes totals'],
   ['cron', 'revenue, later'],
 ];
 
@@ -17,101 +26,197 @@ const inside = [
   ['view', 'revenue, updated by the same write'],
 ];
 
-function Arrow({ note }: { note?: string }) {
+function Actor({ y, name, note }: { y: number; name: string; note: string }) {
   return (
-    <div className="flex items-center gap-3 pl-3 py-1">
-      <div className="flex flex-col items-center">
-        <span className="block w-px h-4 bg-border-light" />
-        <span className="block h-0 w-0 border-x-4 border-x-transparent border-t-[6px] border-t-border-light" />
-      </div>
-      {note && <span className="text-xs text-text-muted">{note}</span>}
-    </div>
+    <g>
+      <text x={24} y={y} fontFamily={mono} fontSize={14} fontWeight={700} fill={strong}>
+        {name}
+      </text>
+      <text x={24} y={y + 19} fontFamily={sans} fontSize={13} fill={body}>
+        {note}
+      </text>
+    </g>
   );
 }
 
-function Actor({ name, note }: { name: string; note: string }) {
+function Node({
+  y,
+  h,
+  name,
+  note,
+  highlight,
+}: {
+  y: number;
+  h: number;
+  name: string;
+  note: string;
+  highlight?: boolean;
+}) {
   return (
-    <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 px-1">
-      <span className="font-mono text-sm font-bold text-text-primary">{name}</span>
-      <span className="text-sm text-text-secondary">{note}</span>
-    </div>
+    <g>
+      <rect
+        x={24}
+        y={y}
+        width={PANEL_W - 48}
+        height={h}
+        rx={8}
+        fill={highlight ? panelFill : boxFill}
+        stroke={highlight ? accent : boxStroke}
+        strokeWidth={highlight ? 2 : 1}
+      />
+      {highlight && <rect x={24} y={y} width={PANEL_W - 48} height={h} rx={8} fill={accent} fillOpacity={0.05} />}
+      <text x={40} y={y + 24} fontFamily={mono} fontSize={14} fontWeight={700} fill={highlight ? accent : strong}>
+        {name}
+      </text>
+      <text x={40} y={y + 43} fontFamily={sans} fontSize={13} fill={body}>
+        {note}
+      </text>
+    </g>
   );
 }
 
-function Node({ name, note, children }: { name: string; note: string; children?: ReactNode }) {
+function Arrow({ y1, y2, note, tone }: { y1: number; y2: number; note?: string; tone: string }) {
   return (
-    <div className="rounded-md border border-border-light bg-bg-primary p-3">
-      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-        <span className="font-mono text-sm font-bold text-text-primary">{name}</span>
-        <span className="text-sm text-text-secondary">{note}</span>
-      </div>
-      {children}
-    </div>
+    <g>
+      <line x1={RAIL_X} y1={y1} x2={RAIL_X} y2={y2 - 8} stroke={tone} strokeWidth={2} />
+      <path d={`M ${RAIL_X - 5} ${y2 - 8} L ${RAIL_X + 5} ${y2 - 8} L ${RAIL_X} ${y2} Z`} fill={tone} />
+      {note && (
+        <text x={RAIL_X + 14} y={(y1 + y2) / 2 + 4} fontFamily={sans} fontSize={12} fill={label}>
+          {note}
+        </text>
+      )}
+    </g>
   );
 }
 
-function Stats({ items, tone }: { items: string[]; tone: Tone }) {
+function Footer({ items, tone }: { items: string[]; tone: string }) {
   return (
-    <div className={`mt-auto pt-4 flex flex-wrap gap-y-1 font-mono text-xs ${toneText[tone]}`}>
-      {items.map((item, index) => (
-        <span key={item} className={index === 0 ? '' : 'ml-3 pl-3 border-l border-border-light'}>
-          {item}
-        </span>
+    <g>
+      <line x1={24} y1={PANEL_H - 62} x2={PANEL_W - 24} y2={PANEL_H - 62} stroke={hairline} />
+      <text x={24} y={PANEL_H - 34} fontFamily={mono} fontSize={12} fill={tone}>
+        {items.join('   ·   ')}
+      </text>
+    </g>
+  );
+}
+
+function PanelFrame({ title, tone }: { title: string; tone: string }) {
+  return (
+    <g>
+      <rect x={0} y={0} width={PANEL_W} height={PANEL_H} rx={12} fill={panelFill} stroke={hairline} />
+      <text x={24} y={34} fontFamily={mono} fontSize={12} fontWeight={600} letterSpacing={1.4} fill={tone}>
+        {title}
+      </text>
+    </g>
+  );
+}
+
+function TodayPanel() {
+  const fanTop = 286;
+  const fanGap = 42;
+  const fanH = 32;
+  const fanBottom = fanTop + 2 * fanGap + fanH;
+
+  return (
+    <g>
+      <PanelFrame title="TODAY" tone={label} />
+      <Actor y={72} name="alice" note="POST /orders" />
+      <Arrow y1={100} y2={128} tone={flow} />
+      <Node y={128} h={56} name="api server" note="may alice? build the query" />
+      <Arrow y1={184} y2={222} note={'as "app", the one account'} tone={flow} />
+      <Node y={222} h={56} name="postgres" note="insert, debit" />
+
+      <line x1={RAIL_X} y1={278} x2={RAIL_X} y2={fanBottom - fanH / 2} stroke={flow} strokeWidth={2} />
+      {fanOut.map(([name, note], i) => {
+        const y = fanTop + i * fanGap;
+        return (
+          <g key={name}>
+            <line x1={RAIL_X} y1={y + fanH / 2} x2={72} y2={y + fanH / 2} stroke={flow} strokeWidth={2} />
+            <rect x={72} y={y} width={PANEL_W - 96} height={fanH} rx={6} fill={boxFill} stroke={boxStroke} />
+            <text x={86} y={y + 21} fontFamily={mono} fontSize={12} fontWeight={700} fill={body}>
+              {name}
+            </text>
+            <text x={148} y={y + 21} fontFamily={sans} fontSize={12} fill={label}>
+              {note}
+            </text>
+          </g>
+        );
+      })}
+
+      <Arrow y1={fanBottom + 6} y2={fanBottom + 44} tone={flow} />
+      <Actor y={fanBottom + 62} name="alice" note="polls balance, revenue: stale in between" />
+      <Footer items={['5 systems', 'runs as "app"', 'stale']} tone={label} />
+    </g>
+  );
+}
+
+function ReifyPanel() {
+  const blockY = 128;
+  const blockH = 226;
+
+  return (
+    <g>
+      <PanelFrame title="WITH REIFYDB" tone={accent} />
+      <Actor y={72} name="alice" note="place_order(...)" />
+      <Arrow y1={100} y2={blockY} tone={accent} />
+
+      <rect x={24} y={blockY} width={PANEL_W - 48} height={blockH} rx={10} fill={panelFill} stroke={accent} strokeWidth={2} />
+      <rect x={24} y={blockY} width={PANEL_W - 48} height={blockH} rx={10} fill={accent} fillOpacity={0.05} />
+      <text x={44} y={blockY + 28} fontFamily={mono} fontSize={13} fontWeight={700} letterSpacing={1.4} fill={accent}>
+        REIFYDB
+      </text>
+      <line x1={44} y1={blockY + 44} x2={PANEL_W - 44} y2={blockY + 44} stroke={accent} strokeOpacity={0.3} />
+      {inside.map(([keyword, note], i) => (
+        <g key={keyword}>
+          <text x={44} y={blockY + 74 + i * 34} fontFamily={mono} fontSize={13} fontWeight={700} fill={accent}>
+            {keyword}
+          </text>
+          <text x={148} y={blockY + 74 + i * 34} fontFamily={sans} fontSize={13} fill={body}>
+            {note}
+          </text>
+        </g>
       ))}
-    </div>
-  );
-}
+      <line x1={44} y1={blockY + 180} x2={PANEL_W - 44} y2={blockY + 180} stroke={accent} strokeOpacity={0.3} />
+      <text x={44} y={blockY + 206} fontFamily={sans} fontSize={14} fontWeight={700} fill={accent}>
+        one transaction
+      </text>
 
-function Column({ label, tone, children }: { label: string; tone: Tone; children: ReactNode }) {
-  return (
-    <div className="glass-card p-5 sm:p-6 flex flex-col">
-      <div className={`font-mono text-xs label-uppercase mb-4 ${toneText[tone]}`}>{label}</div>
-      {children}
-    </div>
+      <Arrow y1={blockY + blockH} y2={blockY + blockH + 54} tone={accent} />
+      <Actor y={blockY + blockH + 72} name="alice" note="sees balance, revenue: current, pushed" />
+      <Footer items={['1 system', 'runs as alice', 'current']} tone={accent} />
+    </g>
   );
 }
 
 export function FeatureDiagram() {
+  const gap = 40;
+  const wideW = PANEL_W * 2 + gap;
+
   return (
-    <div className="grid md:grid-cols-2 gap-6 text-left">
-      <Column label="Today" tone="muted">
-        <Actor name="alice" note="POST /orders" />
-        <Arrow />
-        <Node name="api server" note="may alice? build the query" />
-        <Arrow note='as "app", the one account' />
-        <Node name="postgres" note="insert, debit">
-          <ul className="mt-3 space-y-1.5 border-l-2 border-border-light pl-3">
-            {fanOut.map(([box, note]) => (
-              <li key={box} className="flex flex-wrap items-baseline gap-x-2 text-sm">
-                <Badge variant="outline">{box}</Badge>
-                <span className="text-text-secondary">{note}</span>
-              </li>
-            ))}
-          </ul>
-        </Node>
-        <Arrow />
-        <Actor name="alice" note="polls balance, revenue: stale in between" />
-        <Stats tone="muted" items={['5 systems', 'runs as "app"', 'stale']} />
-      </Column>
-      <Column label="With ReifyDB" tone="primary">
-        <Actor name="alice" note="place_order(...)" />
-        <Arrow />
-        <div className="glass-card-strong p-4">
-          <div className="font-mono text-xs label-uppercase text-primary mb-3">reifydb</div>
-          <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 text-sm">
-            {inside.map(([keyword, note]) => (
-              <Fragment key={keyword}>
-                <dt className="font-mono text-primary">{keyword}</dt>
-                <dd className="text-text-secondary">{note}</dd>
-              </Fragment>
-            ))}
-          </dl>
-          <div className="mt-3 pt-3 border-t border-border-light text-sm font-bold text-primary">one transaction</div>
-        </div>
-        <Arrow />
-        <Actor name="alice" note="sees balance, revenue: current, pushed" />
-        <Stats tone="primary" items={['1 system', 'runs as alice', 'current']} />
-      </Column>
-    </div>
+    <>
+      <svg
+        viewBox={`0 0 ${wideW} ${PANEL_H}`}
+        className="hidden md:block w-full h-auto"
+        role="img"
+        aria-label="Alice places an order on today's stack and on ReifyDB"
+      >
+        <TodayPanel />
+        <g transform={`translate(${PANEL_W + gap} 0)`}>
+          <ReifyPanel />
+        </g>
+      </svg>
+
+      <svg
+        viewBox={`0 0 ${PANEL_W} ${PANEL_H * 2 + gap}`}
+        className="md:hidden w-full h-auto"
+        role="img"
+        aria-label="Alice places an order on today's stack and on ReifyDB"
+      >
+        <TodayPanel />
+        <g transform={`translate(0 ${PANEL_H + gap})`}>
+          <ReifyPanel />
+        </g>
+      </svg>
+    </>
   );
 }

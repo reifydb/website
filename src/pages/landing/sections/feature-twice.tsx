@@ -13,11 +13,9 @@ export function FeatureTwiceSection() {
               Same feature. Two stacks.
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg leading-relaxed">
-              ReifyDB is one database for that state. Tables hold the rows. Views hold the derived numbers, and
-              the write keeps them current. Rules run inside the transaction, as procedures and handlers you
-              version and test. Counters, queues, ring buffers, and histograms are built in. And it knows who is
-              asking: clients authenticate as themselves, and policies decide, per user, what may be read and
-              written.
+              Tables hold the rows. Views hold the derived numbers, and the write keeps them current. Rules run
+              inside the transaction. Counters, queues and histograms are built in. And clients authenticate as
+              themselves, so policies decide per user what may be read and written.
             </p>
             <p className="max-w-2xl mx-auto text-text-primary text-lg font-bold mt-6">
               Alice places an order. First on today's stack, then on ReifyDB.
@@ -25,7 +23,7 @@ export function FeatureTwiceSection() {
           </div>
         </ScrollReveal>
         <ScrollReveal delay={100}>
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-5xl">
             <FeatureDiagram />
           </div>
         </ScrollReveal>
