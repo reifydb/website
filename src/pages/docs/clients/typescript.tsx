@@ -547,9 +547,9 @@ export function LiveUsers() {
           </p>
           <CodeBlock
             language="typescript"
-            code={`import { create_wasm_db } from '@reifydb/wasm';
+            code={`import { createWasmDb } from '@reifydb/wasm';
 
-const db = await create_wasm_db();
+const db = await createWasmDb();
 
 db.admin('CREATE NAMESPACE app');
 db.admin('CREATE TABLE app::users { id: Int4, name: Utf8 }');

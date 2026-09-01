@@ -79,6 +79,59 @@ create series dm_srs::tagged_readings {
 } with { key: at, tag: dm_srs::origin, precision: microsecond }`,
   };
 
+export const dmSeriesTagInsertExample: CodeExample = {
+    id: 'dm-series-tag-insert',
+    title: 'Tagged Entries Render the Tag as 0',
+    code: `insert dm_srs::tagged_readings [
+  { at: datetime::from_epoch_millis(1000), tag: Sensor { location: "roof" }, v: 21.5 },
+  { at: datetime::from_epoch_millis(2000), tag: Manual, v: 22.0 }
+];
+from dm_srs::tagged_readings`,
+    expected: `at                             | tag | v
+-------------------------------+-----+-----
+1970-01-01T00:00:02.000000000Z | 0   | 22
+1970-01-01T00:00:01.000000000Z | 0   | 21.5`,
+  };
+
+export const dmSeriesPrecisionExample: CodeExample = {
+    id: 'dm-series-precision',
+    title: 'Precision Truncates Keys on Write',
+    code: `create series dm_srs::coarse {
+  at: datetime,
+  hits: int4
+} with { key: at, precision: second };
+insert dm_srs::coarse [
+  { at: datetime::from_epoch_millis(1704067201500), hits: 12 },
+  { at: datetime::from_epoch_millis(1704067201900), hits: 7 }
+];
+from dm_srs::coarse`,
+    expected: `at                             | hits
+-------------------------------+-----
+2024-01-01T00:00:01.000000000Z | 7
+2024-01-01T00:00:01.000000000Z | 12`,
+  };
+
+export const dmSeriesPartitionExample: CodeExample = {
+    id: 'dm-series-partition',
+    title: 'One Ordered Timeline per Partition',
+    code: `create series dm_srs::per_sensor {
+  at: datetime,
+  sensor: int4,
+  celsius: float8
+} with { key: at, partition: { by: { sensor } } };
+insert dm_srs::per_sensor [
+  { at: datetime::from_epoch_millis(1000), sensor: 1, celsius: 10.5 },
+  { at: datetime::from_epoch_millis(3000), sensor: 2, celsius: 20.5 },
+  { at: datetime::from_epoch_millis(2000), sensor: 1, celsius: 11.5 }
+];
+from dm_srs::per_sensor sort { sensor: asc, at: desc }`,
+    expected: `at                             | sensor | celsius
+-------------------------------+--------+--------
+1970-01-01T00:00:02.000000000Z | 1      | 11.5
+1970-01-01T00:00:01.000000000Z | 1      | 10.5
+1970-01-01T00:00:03.000000000Z | 2      | 20.5`,
+  };
+
 export const dataModelSeriesExamples: CodeExample[] = [
   dmSeriesIntegerKeyExample,
   dmSeriesDatetimeKeyExample,
@@ -86,4 +139,7 @@ export const dataModelSeriesExamples: CodeExample[] = [
   dmSeriesKeyRangeExample,
   dmSeriesUpdateExample,
   dmSeriesTagExample,
+  dmSeriesTagInsertExample,
+  dmSeriesPrecisionExample,
+  dmSeriesPartitionExample,
 ];

@@ -101,11 +101,107 @@ sort { id: asc }`,
 2  | missing`,
   };
 
+export const cfMatchGuardExample: CodeExample = {
+    id: 'cf-match-guard',
+    title: 'Guard an Arm with if',
+    description: 'The guarded 500 arm is skipped because no retries are left, and the plain 500 arm below it wins.',
+    code: `let $code = 500;
+let $retries = 0;
+let $action = match $code {
+  404 => "give up",
+  500 if $retries > 0 => "retry",
+  500 => "fail",
+  else => "ok"
+};
+map { code: $code, action: $action }`,
+    expected: `code | action
+-----+-------
+500  | fail`,
+  };
+
+export const cfMatchExpressionsExample: CodeExample = {
+    id: 'cf-match-expressions',
+    title: 'Subjects and Patterns Are Expressions',
+    code: `let $total = 120;
+let $paid = 90;
+let $credit = 30;
+let $state = match $total - $paid {
+  0 => "settled",
+  $credit => "covered by credit",
+  else => "open"
+};
+map { due: $total - $paid, state: $state }`,
+    expected: `due | state
+----+------------------
+30  | covered by credit`,
+  };
+
+export const cfMatchNoElseExample: CodeExample = {
+    id: 'cf-match-no-else',
+    title: 'No else, No Match: the Result Is none',
+    code: `let $day = 6;
+let $name = match $day { 1 => "mon", 2 => "tue" };
+map { day: $day, name: $name }`,
+    expected: `day | name
+----+-------
+6   | ⟪none⟫`,
+  };
+
+export const cfMatchLazyArmsExample: CodeExample = {
+    id: 'cf-match-lazy-arms',
+    title: 'Only the Chosen Arm Is Evaluated',
+    description: 'The else arm would fail with CAST_002 if it ran. It never runs, because the first arm matched.',
+    code: `let $v = 1;
+let $r = match $v { 1 => "one", else => cast("x", int4) };
+map { r: $r }`,
+    expected: `r
+---
+one`,
+  };
+
+export const cfMatchAssignArmExample: CodeExample = {
+    id: 'cf-match-assign-arm',
+    title: 'An Arm Cannot Assign',
+    description: 'Arm results are expressions; an assignment in an arm fails with AST_006. Bind the match with let and assign the result instead.',
+    code: `let $label = "";
+let $v = 2;
+match $v { 1 => $label = "one", else => $label = "other" };
+map { label: $label }`,
+    expectsError: true,
+  };
+
+export const cfMatchTypeMismatchExample: CodeExample = {
+    id: 'cf-match-type-mismatch',
+    title: 'Arms Must Be Comparable with the Subject',
+    description: 'A text pattern against an integer subject fails with OPERATOR_022: arms are compared with ==, which is only defined between compatible types.',
+    code: `let $v = 2;
+let $r = match $v { "a" => 1, 2 => 2, else => 0 };
+map { r: $r }`,
+    expectsError: true,
+  };
+
+export const cfMatchResultExample: CodeExample = {
+    id: 'cf-match-result',
+    title: 'A match as the Request Result',
+    code: `let $plan = "team";
+match $plan { "free" => 1, "pro" => 10, else => 100 }`,
+    expected: `value
+-----
+100`,
+  };
+
 export const rqlControlFlowMatchExamples: CodeExample[] = [
   cfMatchValueExample,
   cfMatchSearchedExample,
   cfMatchFirstWinsExample,
+  cfMatchGuardExample,
+  cfMatchExpressionsExample,
   cfMatchRowsExample,
+  cfMatchNoElseExample,
+  cfMatchLazyArmsExample,
+  cfMatchAssignArmExample,
+  cfMatchTypeMismatchExample,
   cfMatchNoneArmExample,
   cfMatchNoneGuardExample,
+  cfMatchResultExample,
 ];

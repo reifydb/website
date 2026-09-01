@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Prose, Kw, Outcome } from './prose';
+import { Prose, Kw } from './prose';
 import { heroExamples } from '@/pages/landing/sections/hero.examples';
 import type { CodeExample } from '@/lib/examples/types';
 import {
@@ -22,8 +22,6 @@ export interface ExampleStep {
   /** Prose rendered above the snippet. */
   body: ReactNode;
   example: CodeExample;
-  /** Verified result shown under the snippet. Omit unless the suite asserts it. */
-  outcome?: ReactNode;
 }
 
 export interface ExampleSection {
@@ -33,6 +31,8 @@ export interface ExampleSection {
   /** What the database does, shown before the first step. */
   pipeline: PipelineStep[];
   steps: ExampleStep[];
+  /** Closing note that terminates the step rail. */
+  finish: ReactNode;
 }
 
 const builtInTesting = heroExamples.find((e) => e.id === 'guide-built-in-testing')!;
@@ -40,6 +40,13 @@ const builtInTesting = heroExamples.find((e) => e.id === 'guide-built-in-testing
 export const exampleSections: ExampleSection[] = [
   {
     id: 'incremental-views',
+    finish: (
+      <p>
+        A number that is always current, maintained by the database from the writes themselves.
+        There is no job to schedule, no cache to invalidate, and no window where the view disagrees
+        with the table it is derived from.
+      </p>
+    ),
     title: 'Incremental Views',
     subtitle: 'Derived numbers the database keeps current',
     pipeline: [
@@ -97,20 +104,19 @@ export const exampleSections: ExampleSection[] = [
             </p>
           </Prose>
         ),
-        outcome: (
-          <Outcome
-            rows={`region   revenue
-eu       165.5
-us       80`}
-            note="120.0 and 45.5 have been folded into the eu total. The only thing that ran between the write and this read was the write itself."
-          />
-        ),
       },
     ],
   },
 
   {
     id: 'policies',
+    finish: (
+      <p>
+        A rule that travels with the table. Every connection is subject to it - the migration
+        script, the support tool, and the service someone writes next quarter - because it is not
+        the application that enforces it.
+      </p>
+    ),
     title: 'Policies',
     subtitle: 'Rules that live on the data, not in a service',
     pipeline: [
@@ -156,20 +162,19 @@ us       80`}
             </p>
           </Prose>
         ),
-        outcome: (
-          <Outcome
-            rows={`name                 target_type  target_shape  enabled
-no_private_inserts   table        documents     true
-public_only          table        documents     true`}
-            note="Both rules are rows in system::policies, owned by the table. Nothing in an application layer has to be asked to apply them."
-          />
-        ),
       },
     ],
   },
 
   {
     id: 'procedures',
+    finish: (
+      <p>
+        Two writes that commit together or not at all, from a single round trip. No orchestration,
+        no compensating write, and no state where the money left one account without arriving in
+        the other.
+      </p>
+    ),
     title: 'Procedures',
     subtitle: 'Application logic inside the transaction that changed the data',
     pipeline: [
@@ -195,20 +200,19 @@ public_only          table        documents     true`}
             </p>
           </Prose>
         ),
-        outcome: (
-          <Outcome
-            rows={`owner   balance
-alice   425
-bob     195`}
-            note="620 in the accounts before the call and 620 after it. There is no ordering of a crash that leaves the pair disagreeing."
-          />
-        ),
       },
     ],
   },
 
   {
     id: 'ring-buffers',
+    finish: (
+      <p>
+        Bounded state that is a normal table: transactional, queryable, and committed alongside the
+        rows it belongs with. Nothing has to be trimmed on a schedule, and nothing lives in a second
+        store that can disagree.
+      </p>
+    ),
     title: 'Ring Buffers',
     subtitle: 'Bounded state that is still transactional',
     pipeline: [
@@ -235,21 +239,19 @@ bob     195`}
             </p>
           </Prose>
         ),
-        outcome: (
-          <Outcome
-            rows={`user_id  at
-2        09:05
-3        09:12
-4        09:20`}
-            note="Four writes, three rows. User 1 was evicted because it was oldest - the buffer did not grow, and it did not drop the newest write."
-          />
-        ),
       },
     ],
   },
 
   {
     id: builtInTesting.id,
+    finish: (
+      <p>
+        Tests that live next to the data they check and run inside the database. Each one is rolled
+        back when it finishes, so the suite leaves nothing behind and no fixture harness is needed
+        to keep them apart.
+      </p>
+    ),
     title: builtInTesting.title,
     subtitle: 'Define and run tests inside the database',
     pipeline: [

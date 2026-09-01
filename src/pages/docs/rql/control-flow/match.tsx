@@ -1,4 +1,4 @@
-import { cfMatchFirstWinsExample as cfMatchFirstWins, cfMatchNoneArmExample as cfMatchNoneArm, cfMatchNoneGuardExample as cfMatchNoneGuard, cfMatchRowsExample as cfMatchRows, cfMatchSearchedExample as cfMatchSearched, cfMatchValueExample as cfMatchValue } from './match.examples';
+import { cfMatchAssignArmExample as cfMatchAssignArm, cfMatchExpressionsExample as cfMatchExpressions, cfMatchFirstWinsExample as cfMatchFirstWins, cfMatchGuardExample as cfMatchGuard, cfMatchLazyArmsExample as cfMatchLazyArms, cfMatchNoElseExample as cfMatchNoElse, cfMatchNoneArmExample as cfMatchNoneArm, cfMatchNoneGuardExample as cfMatchNoneGuard, cfMatchResultExample as cfMatchResult, cfMatchRowsExample as cfMatchRows, cfMatchSearchedExample as cfMatchSearched, cfMatchTypeMismatchExample as cfMatchTypeMismatch, cfMatchValueExample as cfMatchValue } from './match.examples';
 import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
@@ -31,6 +31,12 @@ export function RqlControlFlowMatchPage() {
             is the catch-all; with it, the expression always produces a value:
           </p>
           <ExecutableSnippet title={cfMatchValue.title} initialCode={cfMatchValue.code} />
+          <p className="text-text-secondary mt-4 mb-4">
+            Arms are separated by commas; a trailing comma is fine, and a line break
+            separates arms just as well. <Code>else</Code> is the fallback wherever
+            it is written - the engine checks it only after every other arm has
+            failed - so put it last, where a reader expects it.
+          </p>
         </section>
 
         <section>
@@ -50,6 +56,30 @@ export function RqlControlFlowMatchPage() {
         </section>
 
         <section>
+          <h2 className="text-2xl font-black tracking-tight mb-4">Guards</h2>
+          <p className="text-text-secondary mb-4">
+            A value arm can carry a guard: <Code>pattern if condition =&gt; value</Code>.
+            The arm is taken only when the pattern matches <em>and</em> the guard
+            holds; otherwise checking moves on, including to a later arm with the
+            same pattern. That lets one subject value split on a second fact
+            without nesting an <Code>if</Code> inside the arm:
+          </p>
+          <ExecutableSnippet title={cfMatchGuard.title} initialCode={cfMatchGuard.code} />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-black tracking-tight mb-4">Subjects and patterns are expressions</h2>
+          <p className="text-text-secondary mb-4">
+            The subject need not be a bare variable, and a pattern need not be a
+            literal. Both are expressions: each arm is checked as{' '}
+            <Code>subject == pattern</Code>, top to bottom, and a pattern is
+            evaluated only when its arm is reached. A variable as a pattern compares
+            against its current value:
+          </p>
+          <ExecutableSnippet title={cfMatchExpressions.title} initialCode={cfMatchExpressions.code} />
+        </section>
+
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">Classifying rows</h2>
           <p className="text-text-secondary mb-4">
             Both forms work per row inside a pipeline - reference columns directly in
@@ -64,6 +94,47 @@ export function RqlControlFlowMatchPage() {
         </section>
 
         <section>
+          <h2 className="text-2xl font-black tracking-tight mb-4">What the expression produces</h2>
+          <p className="text-text-secondary mb-4">
+            Without an <Code>else</Code>, a subject that matches no arm has nothing
+            to produce, so the result is{' '}
+            <Link to="/docs/concepts/none" className="text-primary hover:text-primary-light font-medium transition-colors">none</Link>{' '}
+            - the same rule as an <Code>if</Code> without <Code>else</Code>. If a
+            definite value is required downstream, write the <Code>else</Code>:
+          </p>
+          <ExecutableSnippet title={cfMatchNoElse.title} initialCode={cfMatchNoElse.code} />
+          <p className="text-text-secondary mt-4 mb-4">
+            Only the arm that is taken is evaluated. The others are never touched, so
+            an arm that would fail is harmless as long as it is not chosen:
+          </p>
+          <ExecutableSnippet title={cfMatchLazyArms.title} initialCode={cfMatchLazyArms.code} />
+          <p className="text-text-secondary mt-4 mb-4">
+            Arms produce values and nothing else. An assignment as an arm result is
+            a parse error (<Code>AST_006</Code>), and the current build rejects a
+            block <Code>{'{'} ... {'}'}</Code> in that position too
+            (<Code>AST_005</Code>). Any other statement there - an{' '}
+            <Code>insert</Code>, a <Code>let</Code>, a <Code>from</Code> query -
+            traps the engine outright with no error message, so never write one.
+            To act on the outcome, bind the match with <Code>let</Code> and branch
+            on the variable, or assign the bound value afterwards:
+          </p>
+          <ExecutableSnippet title={cfMatchAssignArm.title} initialCode={cfMatchAssignArm.code} />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-black tracking-tight mb-4">Arms must be comparable with the subject</h2>
+          <p className="text-text-secondary mb-4">
+            Value arms compare with <Code>==</Code>, and <Code>==</Code> is only
+            defined between compatible types. A text pattern against an integer
+            subject is therefore an error (<Code>OPERATOR_022</Code>), not a
+            non-match that quietly falls through - even when a later arm would
+            have matched. Only an arm that is never reached is harmless: when an
+            earlier arm matches, checking stops there:
+          </p>
+          <ExecutableSnippet title={cfMatchTypeMismatch.title} initialCode={cfMatchTypeMismatch.code} />
+        </section>
+
+        <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">match and none</h2>
           <p className="text-text-secondary mb-4">
             Value-match arms compare by equality, and{' '}
@@ -74,12 +145,26 @@ export function RqlControlFlowMatchPage() {
           </p>
           <ExecutableSnippet title={cfMatchNoneArm.title} initialCode={cfMatchNoneArm.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            To branch on missingness, use a searched match with an{' '}
+            A subject that is itself none behaves the same way: no value arm
+            matches, and the <Code>else</Code> arm runs. To branch on missingness,
+            use a searched match with an{' '}
             <Link to="/docs/functions/is/none" className="text-primary hover:text-primary-light font-medium transition-colors">is::none</Link>{' '}
             arm - it always returns a definite <Code>true</Code> or <Code>false</Code>,
             which also makes this the idiom for substituting defaults:
           </p>
           <ExecutableSnippet title={cfMatchNoneGuard.title} initialCode={cfMatchNoneGuard.code} />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-black tracking-tight mb-4">match as the request result</h2>
+          <p className="text-text-secondary mb-4">
+            When a <Code>match</Code> is the last statement of a request, its value
+            is the request's result, returned as a one-value frame named{' '}
+            <Code>value</Code> - the same way a{' '}
+            <Link to="/docs/rql/control-flow/closures" className="text-primary hover:text-primary-light font-medium transition-colors">closure call</Link>{' '}
+            in final position comes back:
+          </p>
+          <ExecutableSnippet title={cfMatchResult.title} initialCode={cfMatchResult.code} />
         </section>
 
         <Callout variant="note" title="Two branches? Use if">

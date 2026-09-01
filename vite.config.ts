@@ -14,8 +14,6 @@ const localReifydbAliases = useLocalSdk
       { find: /^@reifydb\/core$/, replacement: join(SDK_ROOT, 'core/src/index.ts') },
       { find: /^@reifydb\/ui$/, replacement: join(SDK_ROOT, 'ui/src/index.ts') },
       { find: /^@reifydb\/ui\/styles\.css$/, replacement: join(SDK_ROOT, 'ui/src/styles/index.css') },
-      { find: /^@reifydb\/console$/, replacement: join(SDK_ROOT, 'console/src/index.ts') },
-      { find: /^@reifydb\/console\/styles\.css$/, replacement: join(SDK_ROOT, 'console/dist/styles.css') },
       { find: /^@reifydb\/shell$/, replacement: join(SDK_ROOT, 'shell/src/index.ts') },
       { find: /^@reifydb\/shell\/dist\/index\.css$/, replacement: join(SDK_ROOT, 'shell/dist/index.css') },
       { find: /^@reifydb\/wasm$/, replacement: join(SDK_ROOT, 'wasm/src/index.ts') },

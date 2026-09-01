@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import { useEffect, useRef } from 'react';
-import { COLORS, Shell, WasmExecutor, reifydb_dark_theme, rql_highlighter } from '@reifydb/shell';
+import { COLORS, Shell, WasmExecutor, reifydbDarkTheme, rqlHighlighter } from '@reifydb/shell';
 import '@reifydb/shell/dist/index.css';
 import { getWasmDB } from '@/lib/wasm-db-singleton';
 
@@ -20,7 +20,7 @@ const PROMPT_LENGTH = 9;
 
 const INITIAL_INPUT = 'from app::users map { name, role, age } take 3;';
 
-const HIGHLIGHT = rql_highlighter();
+const HIGHLIGHT = rqlHighlighter();
 
 const SHELL_VARS = {
   '--rdb-shell-bg': '#18181b',
@@ -43,11 +43,11 @@ export default function ExecutableShellLive() {
       if (cancelled) return;
       shell = new Shell(element, {
         executor: new WasmExecutor(db),
-        theme: reifydb_dark_theme,
+        theme: reifydbDarkTheme,
         welcomeMessage: WELCOME,
         prompt: PROMPT,
         promptLength: PROMPT_LENGTH,
-        history_key: 'reifydb-hero-shell',
+        historyKey: 'reifydb-hero-shell',
         initialInput: INITIAL_INPUT,
         highlight: HIGHLIGHT,
         displayMode: 'truncate',

@@ -64,10 +64,63 @@ export const dmDictionariesNewEntryExample: CodeExample = {
 4  | NVDA`,
   };
 
+export const dmDictionariesFilterEncodedExample: CodeExample = {
+    id: 'dm-dictionaries-filter-encoded',
+    title: 'Readers Filter with Plain Strings',
+    code: `from dm_dict::trades filter { symbol == "AAPL" }`,
+    expected: `symbol | qty
+-------+----
+AAPL   | 100`,
+  };
+
+export const dmDictionariesExplicitIdExample: CodeExample = {
+    id: 'dm-dictionaries-explicit-id',
+    title: 'IDs Are Always Engine-Assigned',
+    description: 'The explicit id field is ignored; the entry gets the next sequential id.',
+    code: `insert dm_dict::symbols [{ id: 42, value: "GOOG" }]`,
+    expected: `namespace | dictionary | id | value
+----------+------------+----+------
+dm_dict   | symbols    | 5  | GOOG`,
+  };
+
+export const dmDictionariesSharedExample: CodeExample = {
+    id: 'dm-dictionaries-shared',
+    title: 'One Dictionary Backs Many Columns',
+    code: `create table dm_dict::quotes {
+  symbol: utf8 with { dictionary: dm_dict::symbols },
+  px: float8
+};
+insert dm_dict::quotes [
+  { symbol: "AAPL", px: 189.5 },
+  { symbol: "AMZN", px: 178.25 }
+];
+from dm_dict::symbols`,
+    expected: `id | value
+---+------
+6  | AMZN
+5  | GOOG
+4  | NVDA
+3  | TSLA
+2  | MSFT
+1  | AAPL`,
+  };
+
+export const dmDictionariesDeleteExample: CodeExample = {
+    id: 'dm-dictionaries-delete',
+    title: 'Entries Cannot Be Deleted',
+    description: 'delete only targets tables; pointing it at a dictionary fails with CA_004.',
+    code: `delete dm_dict::symbols filter { id == 1 }`,
+    expectsError: true,
+  };
+
 export const dataModelDictionariesExamples: CodeExample[] = [
   dmDictionariesCreateExample,
   dmDictionariesDuplicateExample,
   dmDictionariesFromExample,
   dmDictionariesColumnExample,
   dmDictionariesNewEntryExample,
+  dmDictionariesFilterEncodedExample,
+  dmDictionariesExplicitIdExample,
+  dmDictionariesSharedExample,
+  dmDictionariesDeleteExample,
 ];
