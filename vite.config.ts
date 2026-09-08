@@ -43,7 +43,7 @@ export default defineConfig(({ command }) => ({
         outDir: 'dist-ssr',
         emptyOutDir: true,
         ssr: 'src/entry-server.tsx',
-        rollupOptions: { external: ['@reifydb/wasm', '@reifydb/console', '@reifydb/shell'] },
+        rollupOptions: { external: ['@reifydb/wasm', '@reifydb/editor', '@reifydb/shell'] },
       }
     : {
         rollupOptions: {
@@ -57,7 +57,7 @@ export default defineConfig(({ command }) => ({
         },
       },
   ssr: {
-    external: ['@reifydb/wasm', '@reifydb/console', '@reifydb/shell'],
+    external: ['@reifydb/wasm', '@reifydb/editor', '@reifydb/shell'],
     noExternal: [/^@reifydb\/(core|ui)$/, /^react-router/],
   },
   resolve: {

@@ -5,7 +5,7 @@ import '@fontsource/archivo-black/index.css';
 import '@fontsource-variable/ibm-plex-sans/index.css';
 import '@fontsource-variable/jetbrains-mono/index.css';
 import '@reifydb/ui/styles.css';
-import '@reifydb/console/styles.css';
+import '@reifydb/editor/styles.css';
 import './index.css';
 
 const root = document.getElementById('root')!;

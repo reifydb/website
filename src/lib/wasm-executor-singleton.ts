@@ -1,5 +1,5 @@
-import { WasmExecutor } from '@reifydb/console';
-import type { Executor, ExecutionResult } from '@reifydb/console';
+import { WasmExecutor } from '@reifydb/editor';
+import type { Executor, ExecutionResult } from '@reifydb/editor';
 import { getWasmDB, getWasmDBSync } from './wasm-db-singleton';
 
 /**

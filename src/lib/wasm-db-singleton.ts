@@ -9,8 +9,8 @@ export async function getWasmDB(): Promise<WasmDB> {
   if (dbPromise) return dbPromise;
 
   dbPromise = (async () => {
-    const { createWasmDb } = await import('@reifydb/wasm');
-    const instance = await createWasmDb();
+    const { create_wasm_db } = await import('@reifydb/wasm');
+    const instance = await create_wasm_db();
     instance.admin(seedCommand);
     dbInstance = instance;
     dbPromise = null;

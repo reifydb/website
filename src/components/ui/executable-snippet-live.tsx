@@ -1,5 +1,5 @@
 import '@/lib/monaco-setup';
-import { Snippet, reifydb_light_theme } from '@reifydb/console';
+import { Snippet, reifydbLightTheme } from '@reifydb/editor';
 import { wasmExecutor } from '@/lib/wasm-executor-singleton';
 
 interface ExecutableSnippetLiveProps {
@@ -18,11 +18,11 @@ export default function ExecutableSnippetLive({
   return (
     <Snippet
       executor={wasmExecutor}
-      initial_code={initialCode}
+      initialCode={initialCode}
       title={title}
       description={description}
       theme="reifydb"
-      monaco_theme={reifydb_light_theme}
+      monacoTheme={reifydbLightTheme}
       readonly={readonly}
     />
   );
