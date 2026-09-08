@@ -81,7 +81,7 @@ export const AccordionItem = memo(function AccordionItem({ item, currentPath, de
     if (isActive) {
       activeRef.current?.scrollIntoView({ block: 'nearest' });
     }
-  }, []);
+  }, [isActive]);
 
   const handleClick = () => {
     if (hasChildren) {

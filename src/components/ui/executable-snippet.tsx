@@ -1,5 +1,5 @@
 import { Loader2 } from 'lucide-react';
-import { Suspense, lazy, useEffect, useRef, useState } from 'react';
+import { Suspense, lazy, useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useMounted } from '@/hooks';
 
 /** Matches the live Monaco editor's rendered line-height at the console package's fixed 13px font size. */
@@ -94,26 +94,29 @@ function useIdleReady(enabled: boolean): boolean {
 }
 
 function useMonacoPainted(containerRef: React.RefObject<HTMLDivElement | null>, active: boolean): boolean {
-  const [painted, setPainted] = useState(false);
+  // Latched so the value only ever goes false -> true; the skeleton must not flash
+  // back in if the editor subtree is ever torn down.
+  const painted = useRef(false);
 
-  useEffect(() => {
-    if (!active) return;
+  const subscribe = useCallback((onStoreChange: () => void) => {
     const el = containerRef.current;
-    if (!el || el.querySelector('.monaco-editor')) {
-      setPainted(true);
-      return;
-    }
-    const observer = new MutationObserver(() => {
-      if (el.querySelector('.monaco-editor')) {
-        setPainted(true);
-        observer.disconnect();
-      }
-    });
+    if (!active || !el) return () => {};
+    const observer = new MutationObserver(onStoreChange);
     observer.observe(el, { childList: true, subtree: true });
     return () => observer.disconnect();
   }, [active, containerRef]);
 
-  return painted;
+  const getSnapshot = useCallback(() => {
+    if (painted.current) return true;
+    if (!active) return false;
+    const el = containerRef.current;
+    if (el?.querySelector('.monaco-editor')) {
+      painted.current = true;
+    }
+    return painted.current;
+  }, [active, containerRef]);
+
+  return useSyncExternalStore(subscribe, getSnapshot, () => false);
 }
 
 export function ExecutableSnippet({ className, deferLoad = false, ...props }: ExecutableSnippetProps) {
