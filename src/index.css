@@ -317,6 +317,75 @@ div::backdrop {
   transform: translateX(3px);
 }
 
+.trade__old {
+  position: relative;
+  padding: 16px 14px;
+  border: 2px solid var(--color-border-light);
+  font-family: 'Press Start 2P', ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  background: var(--color-bg-tertiary);
+}
+
+.trade__old::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(at 1px 1px, transparent 75%, var(--color-bg-tertiary) 0) 0 0 / 3px 3px;
+  pointer-events: none;
+}
+
+.trade:hover .trade__old::after {
+  background-size: 2px 2px;
+}
+
+.trade__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: #4b52d6;
+}
+
+.trade__dots {
+  width: 20px;
+  height: 4px;
+  background: linear-gradient(90deg, currentColor 4px, transparent 4px) 0 0 / 8px 4px repeat-x;
+  animation: trade-march 0.8s steps(2) infinite;
+}
+
+@keyframes trade-march {
+  to {
+    background-position: 8px 0;
+  }
+}
+
+.trade__new {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  border: 1px solid #4b52d6;
+  font-weight: 600;
+  color: #10123a;
+  background: linear-gradient(#a3a9ff, var(--color-primary) 55%, #6a71e6);
+  box-shadow: inset 0 1px #ffffff8c, inset 0 -2px #2e39df4d, 0 3px var(--color-primary-dark);
+  transition: filter 0.15s;
+}
+
+.trade:hover .trade__new {
+  filter: brightness(1.05);
+}
+
+.trade__new--empty {
+  border: 2px solid var(--color-border-light);
+  color: var(--color-text-muted);
+  background: none;
+  box-shadow: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .game-button,
   .game-button__arrow {
