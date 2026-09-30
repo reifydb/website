@@ -29,7 +29,7 @@ export const navDropdowns: NavDropdown[] = [
                 title: 'Build',
                 items: [
                     {label: 'Docs', href: '/docs', description: 'Guides, references, and API documentation'},
-                    {label: 'Tour', href: '/tour', description: 'Interactive walkthrough of core features'},
+                    {label: 'Examples', href: '/examples', description: 'Runnable RQL examples of core features'},
                     {label: 'Playground', href: '/playground', description: 'Try ReifyDB queries in the browser'},
                 ],
             },

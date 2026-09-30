@@ -22,7 +22,6 @@ const sitePages: PageEntry[] = [
   { path: '/company/mission', name: 'MissionPage', load: () => import('@/pages/company/mission') },
   { path: '/manifesto', name: 'ManifestoPage', load: () => import('@/pages/manifesto') },
   { path: '/examples', name: 'ExamplesPage', load: () => import('@/pages/examples') },
-  { path: '/tour', name: 'TourPage', load: () => import('@/pages/tour') },
   { path: '/pitch', name: 'PitchPage', load: () => import('@/pages/pitch') },
   { path: '/blog/:slug?', name: 'BlogListingPage', load: () => import('@/pages/blog') },
   { path: '/playground', name: 'PlaygroundPage', load: () => import('@/pages/playground') },
