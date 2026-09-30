@@ -22,12 +22,10 @@ export function BuiltThisSection() {
             </div>
           </div>
         </ScrollReveal>
-        <ScrollReveal delay={100}>
-          <div className="mx-auto max-w-5xl overflow-hidden rounded-[14px] border border-border-light bg-white">
-            <PixelScene kind="stack" className="bg-[linear-gradient(#f6f4fd,#fbf8f1)]" />
-          </div>
-        </ScrollReveal>
       </div>
+      <ScrollReveal delay={100}>
+        <PixelScene kind="stack" />
+      </ScrollReveal>
     </section>
   );
 }

@@ -45,33 +45,34 @@ html {
   background-size: 24px 24px;
 }
 
-/* Range input — used by landing page proof section */
 .proof-slider {
   appearance: none;
   -webkit-appearance: none;
   width: 100%;
-  height: 4px;
-  border-radius: 9999px;
-  background: var(--color-border-light);
+  height: 8px;
+  border: 2px solid #ffffff26;
+  background: linear-gradient(90deg, var(--color-primary) var(--fill), #ffffff14 var(--fill));
   outline: none;
   cursor: pointer;
 }
 
 .proof-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 9999px;
-  background: var(--color-primary);
+  width: 18px;
+  height: 18px;
+  border: 2px solid #10123a;
+  background: #e6e8fd;
+  box-shadow: 0 3px var(--color-primary-dark);
   cursor: pointer;
 }
 
 .proof-slider::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  border-radius: 9999px;
-  background: var(--color-primary);
-  border: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #10123a;
+  border-radius: 0;
+  background: #e6e8fd;
+  box-shadow: 0 3px var(--color-primary-dark);
   cursor: pointer;
 }
 
@@ -229,10 +230,6 @@ div::backdrop {
   border-radius: var(--radius-lg);
 }
 
-.proof-slider-dark {
-  background: rgba(255, 255, 255, 0.15);
-}
-
 .sky {
   background: linear-gradient(#efedfb 0%, #f6f1f4 60%, #faf3e8 100%);
 }
@@ -255,6 +252,46 @@ div::backdrop {
   font-family: 'VT323', ui-monospace, monospace;
   font-size: 28px;
   line-height: 1;
+}
+
+.pixel-score--lg {
+  font-size: 56px;
+}
+
+.night {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(#12103a, #1f1c5c);
+}
+
+.night::before,
+.night::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.night::before {
+  background:
+    conic-gradient(at 2px 2px, transparent 75%, #ffffff99 0) 13px 29px / 157px 131px,
+    conic-gradient(at 2px 2px, transparent 75%, #ffffff66 0) 71px 5px / 113px 97px,
+    conic-gradient(at 1px 1px, transparent 75%, #ffffff80 0) 37px 61px / 89px 73px;
+}
+
+.night::after {
+  background: conic-gradient(at 2px 2px, transparent 75%, #ffe08acc 0) 101px 47px / 211px 167px;
+  animation: twinkle 1.6s steps(2) infinite;
+}
+
+@keyframes twinkle {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.night .eyebrow-pixel {
+  color: #a3a9ff;
 }
 
 .flip-pop {

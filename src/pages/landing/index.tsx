@@ -6,7 +6,6 @@ import {
   TrustStrip,
   BuiltThisSection,
   ApologiesSection,
-  FeatureTwiceSection,
   ProofSection,
   UseCasesSection,
   FaqSection,
@@ -32,8 +31,6 @@ export function LandingPage() {
         <BuiltThisSection />
 
         <ApologiesSection />
-
-        <FeatureTwiceSection />
 
         <ProofSection />
 

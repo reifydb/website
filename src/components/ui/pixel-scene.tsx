@@ -1,4 +1,4 @@
-import { useEffect, useRef, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useRef, useSyncExternalStore } from 'react';
 import { cn } from '@/lib';
 import {
   MARKET_ROWS,
@@ -16,6 +16,13 @@ import {
 
 type Context = CanvasRenderingContext2D;
 type SceneKind = 'hall' | 'ground' | 'stack' | BoardMode;
+type Draw = (c: Context, width: number, height: number, time: number) => void;
+
+interface RaceState {
+  rtt: number;
+  statements: number;
+  start: number;
+}
 
 const PRIMARY = '#7e85f2';
 const PAPER = '#faf8f2';
@@ -37,6 +44,13 @@ const CALM_START = 10;
 const HUT_WIDTH = 16;
 const WIRE_WIDTH = 3;
 const WIRE = '#6a71e6';
+const RACE_LANE = 36;
+const RACE_HEIGHT = 2 * RACE_LANE;
+const DB_WIDTH = 20;
+const NIGHT_TEXT = '#e6e8fd';
+const BUCKET = ['.hh.', 'h..h', 'wwww', 'bbbb', '.bb.'];
+const BUCKET_COLORS: Record<string, string> = { h: '#c9c3dc', w: '#ffffff', b: '#4b52d6' };
+const PYRAMID = [4, 3, 2, 1];
 
 const GLYPHS: Record<string, string> = {
   '0': '111101101101111',
@@ -70,6 +84,8 @@ const GLYPHS: Record<string, string> = {
   W: '101101101111101',
   K: '101101110101101',
   '+': '000010111010000',
+  A: '010101111101101',
+  '/': '001001010100100',
 };
 
 const market = createMarket();
@@ -464,7 +480,77 @@ function stack(c: Context, width: number, height: number, time: number) {
   caption(c, label, left, 4, folded ? '#4b52d6' : INK);
 }
 
-const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: (c: Context, width: number, height: number, time: number) => void }> = {
+function database(c: Context, left: number, floor: number, flash: boolean) {
+  rect(c, left - 1, floor - 16, DB_WIDTH + 2, 2, '#ffffff');
+  rect(c, left, floor - 14, DB_WIDTH, 14, flash ? '#ffe08a' : '#c9ccfb');
+  rect(c, left, floor - 14, DB_WIDTH, 1, NIGHT_TEXT);
+  caption(c, 'DB', left + 7, floor - 11, INK);
+  rect(c, left + 8, floor - 5, 4, 5, '#4b52d6');
+}
+
+function bucket(c: Context, x: number, y: number) {
+  BUCKET.forEach((row, j) => {
+    [...row].forEach((cell, i) => {
+      if (cell !== '.') rect(c, x + i, y + j, 1, 1, BUCKET_COLORS[cell]);
+    });
+  });
+}
+
+function buckets(c: Context, botX: number, floor: number, count: number) {
+  let left = count;
+  PYRAMID.forEach((capacity, row) => {
+    const size = Math.min(capacity, left);
+    left -= size;
+    const rowLeft = Math.round(botX + 2.5 - (size * 5 - 1) / 2);
+    for (let k = 0; k < size; k++) bucket(c, rowLeft + k * 5, floor - 14 - row * 4);
+  });
+}
+
+function lane(
+  c: Context,
+  width: number,
+  top: number,
+  time: number,
+  t: number,
+  distance: number,
+  trip: number,
+  trips: number,
+  stack: number,
+  label: string,
+  index: number,
+) {
+  const floor = top + RACE_LANE - 3;
+  grass(c, width, floor, top + RACE_LANE, time);
+  const appLeft = Math.max(4, Math.round(width * 0.04));
+  const home = appLeft + 18;
+  const dbLeft = home + 6 + Math.round(distance * (width - appLeft - DB_WIDTH - home - 6));
+  const target = dbLeft - 6;
+  const done = Math.min(trips, Math.floor(t / trip));
+  const moving = done < trips;
+  const phase = (t % trip) / trip;
+  const outbound = moving && phase < 0.5;
+  const x = !moving ? home : outbound ? lerp(home, target, ease(phase * 2)) : lerp(target, home, ease((phase - 0.5) * 2));
+
+  stall(c, appLeft, floor, index, false, false);
+  database(c, dbLeft, floor, moving && phase >= 0.5 && phase < 0.62);
+  bot(c, x, floor, time, index, false);
+  if (outbound) buckets(c, x, floor, stack);
+
+  const count = `${done}/${trips}`;
+  caption(c, label, appLeft, top + 2, NIGHT_TEXT);
+  caption(c, count, width - appLeft - count.length * 4 + 1, top + 2, moving ? NIGHT_TEXT : '#ffe08a');
+}
+
+function race(c: Context, width: number, time: number, state: RaceState) {
+  const distance = 0.4 + (0.6 * (state.rtt - 1)) / 9;
+  const trip = 1.2 * distance;
+  if (time - state.start >= state.statements * trip + 1) state.start = time;
+  const t = time - state.start;
+  lane(c, width, 0, time, t, distance, trip, state.statements, 1, 'TRADITIONAL', 0);
+  lane(c, width, RACE_LANE, time, t, distance, trip, 1, state.statements, 'REIFYDB', 1);
+}
+
+const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
   incremental: {
@@ -481,14 +567,13 @@ interface PixelSceneProps {
   className?: string;
 }
 
-export function PixelScene({ kind, className }: PixelSceneProps) {
+function usePixelLoop(height: number, draw: Draw) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current!;
     const context = canvas.getContext('2d');
-    if (!context) throw new Error(`pixel scene ${kind} has no 2d canvas context`);
-    const { height, draw } = SCENES[kind];
+    if (!context) throw new Error('pixel canvas has no 2d context');
     let width = 0;
     let frame = 0;
     let lastPaint = 0;
@@ -523,11 +608,35 @@ export function PixelScene({ kind, className }: PixelSceneProps) {
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(frame);
     };
-  }, [kind]);
+  }, [height, draw]);
+
+  return canvasRef;
+}
+
+export function PixelScene({ kind, className }: PixelSceneProps) {
+  const canvasRef = usePixelLoop(SCENES[kind].height, SCENES[kind].draw);
 
   return (
     <canvas ref={canvasRef} aria-hidden="true" className={cn('pixel-canvas', SCENES[kind].heightClass, className)} />
   );
+}
+
+interface RaceSceneProps {
+  rtt: number;
+  statements: number;
+  className?: string;
+}
+
+export function RaceScene({ rtt, statements, className }: RaceSceneProps) {
+  const state = useRef<RaceState>({ rtt, statements, start: -Infinity });
+  useEffect(() => {
+    state.current.rtt = rtt;
+    state.current.statements = statements;
+  }, [rtt, statements]);
+  const draw = useCallback<Draw>((c, width, _height, time) => race(c, width, time, state.current), []);
+  const canvasRef = usePixelLoop(RACE_HEIGHT, draw);
+
+  return <canvas ref={canvasRef} aria-hidden="true" className={cn('pixel-canvas h-[288px] max-sm:h-[144px]', className)} />;
 }
 
 interface FlipCounterProps {
