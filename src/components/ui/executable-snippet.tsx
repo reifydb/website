@@ -60,9 +60,9 @@ function EditorSkeleton({
           {description && <p className="mt-1 text-xs text-code-text-muted">{description}</p>}
         </div>
         <div className="flex items-center gap-2">
-          <div className="h-5 w-12 rounded bg-code-text-muted/20 animate-pulse" />
-          <div className="h-5 w-12 rounded bg-code-text-muted/20 animate-pulse" />
-          <div className="h-5 w-12 rounded bg-code-text-muted/20 animate-pulse" />
+          <div className="h-5 w-12 bg-code-text-muted/20 animate-pulse" />
+          <div className="h-5 w-12 bg-code-text-muted/20 animate-pulse" />
+          <div className="h-5 w-12 bg-code-text-muted/20 animate-pulse" />
         </div>
       </div>
       <div
@@ -73,7 +73,7 @@ function EditorSkeleton({
       </div>
       <div className="flex items-center justify-between px-4 py-2 border-t border-border-default bg-code-bg-elevated">
         <span className="text-xs text-code-text-muted">ctrl+enter to run</span>
-        <div className="h-7 w-16 rounded bg-primary/30 animate-pulse" />
+        <div className="h-7 w-16 bg-primary/30 animate-pulse" />
       </div>
     </div>
   );

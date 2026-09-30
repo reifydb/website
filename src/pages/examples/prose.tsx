@@ -6,6 +6,6 @@ export function Prose({ children }: { children: ReactNode }) {
 
 export function Kw({ children }: { children: ReactNode }) {
   return (
-    <code className="text-xs bg-black/5 px-1.5 py-0.5 rounded font-mono text-primary">{children}</code>
+    <code className="text-xs bg-black/5 px-1.5 py-0.5 font-mono text-primary">{children}</code>
   );
 }
