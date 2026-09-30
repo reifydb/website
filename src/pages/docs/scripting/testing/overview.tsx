@@ -16,8 +16,8 @@ export function TestingOverviewPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Testing</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Testing</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Tests are catalog objects, written in RQL and stored next to the schema they
             check. A test is a block of statements that ends in assertions;{' '}
             <Code>run tests</Code> executes each one inside a transaction that is
@@ -28,7 +28,7 @@ export function TestingOverviewPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Assertions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Assertions</h2>
           <p className="text-text-secondary mb-4">
             <Code>assert {'{'} condition {'}'}</Code> is an ordinary pipeline operator.
             It evaluates the condition against every row that reaches it, passes the
@@ -52,7 +52,7 @@ export function TestingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Defining tests</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Defining tests</h2>
           <p className="text-text-secondary mb-4">
             <Code>create test ns::name {'{'} ... {'}'}</Code> stores a body of
             statements under a namespace. The body is not executed at creation; it is
@@ -69,7 +69,7 @@ export function TestingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Running tests</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Running tests</h2>
           <p className="text-text-secondary mb-4">
             <Code>run tests ns</Code> runs every test in a namespace, in name order, and
             returns one row per test with <Code>name</Code>, <Code>namespace</Code>,{' '}
@@ -87,7 +87,7 @@ export function TestingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Outcomes</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Outcomes</h2>
           <p className="text-text-secondary mb-4">
             There are three outcomes. <Code>pass</Code>: every statement ran and every
             assertion held. <Code>fail</Code>: an assertion did not hold; the message
@@ -106,7 +106,7 @@ export function TestingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Every test is isolated</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Every test is isolated</h2>
           <p className="text-text-secondary mb-4">
             Each test (and each parameterized case, below) runs in its own transaction
             that is rolled back when the test finishes, pass or fail. Inside the test,
@@ -121,7 +121,7 @@ export function TestingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Test procedures</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Test procedures</h2>
           <p className="text-text-secondary mb-4">
             Setup that several tests share goes in a{' '}
             <Code>create test procedure ns::name as {'{'} ... {'}'}</Code>. It is
@@ -140,7 +140,7 @@ export function TestingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameterized tests</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameterized tests</h2>
           <p className="text-text-secondary mb-4">
             A list of records between the name and the body turns one test into one
             case per record. Each record's fields are bound as <Code>$</Code>{' '}
@@ -151,7 +151,7 @@ export function TestingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Expecting errors</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Expecting errors</h2>
           <p className="text-text-secondary mb-4">
             <Code>assert error {'{'} ... {'}'}</Code> runs a block and passes only if
             the block fails. Use it to pin down that a constraint, a policy, or a
@@ -168,7 +168,7 @@ export function TestingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Inspecting what a test did</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Inspecting what a test did</h2>
           <p className="text-text-secondary mb-4">
             Inside a test body, the <Code>testing::</Code> functions expose a log of the
             test's own side effects as queryable frames.{' '}
@@ -192,7 +192,7 @@ export function TestingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Managing tests</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Managing tests</h2>
           <p className="text-text-secondary mb-4">
             <Code>drop test ns::name</Code> removes a test. There is no{' '}
             <Code>alter</Code>; to change a test, create it again under the same name -
@@ -208,7 +208,7 @@ export function TestingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where tests fit</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Where tests fit</h2>
           <p className="text-text-secondary mb-4">
             Tests are admin objects: creating and running them needs an admin request,
             the same as DDL. A typical setup registers tests in the same{' '}

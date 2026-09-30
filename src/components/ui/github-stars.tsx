@@ -11,7 +11,7 @@ export function GitHubStars() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="GitHub"
-      className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-white/5 transition-all"
+      className="flex items-center gap-2 px-3 py-2 hover:bg-white/5 transition-all"
     >
       <Github size={18} className="text-text-secondary" />
       {loading ? (

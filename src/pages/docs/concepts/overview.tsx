@@ -16,10 +16,10 @@ export function ConceptsOverviewPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             The database that runs your backend logic.
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             ReifyDB stores, mutates, and derives live application state under one
             transactional model. State lives in memory for low latency, is persisted
             asynchronously for durability, and every query runs as the user who asked:
@@ -28,7 +28,7 @@ export function ConceptsOverviewPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The problem it replaces</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The problem it replaces</h2>
           <p className="text-text-secondary mb-4">
             Most applications fragment their state across systems: a database for
             persistence, a cache for speed, and background workers that keep derived data
@@ -55,7 +55,7 @@ export function ConceptsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Transactional or deferred</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Transactional or deferred</h2>
           <p className="text-text-secondary mb-4">
             The two views above are kept fresh in different ways, and the difference is
             the main decision you make per view. A <Code>transactional</Code> view is
@@ -79,7 +79,7 @@ export function ConceptsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">State first, queries second</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">State first, queries second</h2>
           <p className="text-text-secondary mb-4">
             In ReifyDB, state is the primary concept and queries are secondary. Tables
             represent authoritative state; views represent derived state, not reports -
@@ -99,7 +99,7 @@ export function ConceptsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">In-memory, asynchronously durable</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">In-memory, asynchronously durable</h2>
           <p className="text-text-secondary mb-4">
             All state changes go through transactions, and a committed change is visible
             immediately - but the commit does not wait for disk. Persistence happens off
@@ -118,7 +118,7 @@ export function ConceptsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What ReifyDB is not</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What ReifyDB is not</h2>
           <p className="text-text-secondary mb-4">
             ReifyDB manages the live, mutable state your application reasons about on
             every request. It is not a BI warehouse and not an analytics engine for
@@ -128,7 +128,7 @@ export function ConceptsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where to go next</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Where to go next</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

@@ -13,8 +13,8 @@ export function RoutinesOverviewPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Routines</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Routines</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Everything callable in ReifyDB is a routine, and there are two kinds.{' '}
             <strong>Functions</strong> are pure computations used inside expressions;{' '}
             <strong>procedures</strong> run statements, may write, and are invoked
@@ -25,7 +25,7 @@ export function RoutinesOverviewPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One naming scheme</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">One naming scheme</h2>
           <p className="text-text-secondary mb-4">
             Every routine has a qualified name of the form{' '}
             <Code>namespace::name</Code> - <Code>math::abs</Code>,{' '}
@@ -50,7 +50,7 @@ export function RoutinesOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Functions: values in, values out</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Functions: values in, values out</h2>
           <p className="text-text-secondary mb-4">
             Functions are pure. They transform input values into output values and
             touch nothing else, which is what makes them safe anywhere an expression
@@ -74,7 +74,7 @@ export function RoutinesOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Procedures: statements with a name</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Procedures: statements with a name</h2>
           <p className="text-text-secondary mb-4">
             Procedures are imperative. A procedure body runs statements, can read and
             write data, and is invoked as a statement of its own with{' '}
@@ -95,7 +95,7 @@ export function RoutinesOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Request-scoped functions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Request-scoped functions</h2>
           <p className="text-text-secondary mb-4">
             RQL scripts can also define functions on the fly: anonymous closures bound
             to variables with <Code>let</Code>, and named functions declared with{' '}

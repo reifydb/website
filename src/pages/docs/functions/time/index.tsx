@@ -6,12 +6,12 @@ export function TimeModuleOverviewPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">time Module</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">Functions for working with time-of-day values, including extraction, construction, arithmetic, and formatting.</p>
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">time Module</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">Functions for working with time-of-day values, including extraction, construction, arithmetic, and formatting.</p>
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Extraction</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Extraction</h2>
           <div className="grid gap-4">
             <Link to="/docs/functions/time/hour" className="group block level-card p-4!">
               <h3 className="font-bold mb-1">time::hour</h3>
@@ -33,7 +33,7 @@ export function TimeModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Construction</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Construction</h2>
           <div className="grid gap-4">
             <Link to="/docs/functions/time/new" className="group block level-card p-4!">
               <h3 className="font-bold mb-1">time::new</h3>
@@ -47,7 +47,7 @@ export function TimeModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Manipulation</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Manipulation</h2>
           <div className="grid gap-4">
             <Link to="/docs/functions/time/add" className="group block level-card p-4!">
               <h3 className="font-bold mb-1">time::add</h3>
@@ -73,7 +73,7 @@ export function TimeModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Formatting</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Formatting</h2>
           <div className="grid gap-4">
             <Link to="/docs/functions/time/format" className="group block level-card p-4!">
               <h3 className="font-bold mb-1">time::format</h3>
@@ -83,7 +83,7 @@ export function TimeModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Function Reference</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Function Reference</h2>
           <div className="dialog overflow-x-auto"><table className="w-full">
             <thead className="bg-[#efedfb]"><tr><th className="text-left p-2 sm:p-3 font-bold">Function</th><th className="text-left p-2 sm:p-3 font-bold">Description</th></tr></thead>
             <tbody>

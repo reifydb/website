@@ -13,8 +13,8 @@ export function DataModelViewsPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Views</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Views</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A view is derived state the engine maintains for you. You declare a
             pipeline over source data; ReifyDB builds a dataflow behind it and keeps
             the result materialized as the sources change. Reading a view is a lookup,
@@ -25,7 +25,7 @@ export function DataModelViewsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Transactional views</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Transactional views</h2>
           <p className="text-text-secondary mb-4">
             A transactional view is maintained inside the writing transaction: when a
             commit returns, the view is already correct.{' '}
@@ -43,7 +43,7 @@ export function DataModelViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Rows enter and leave with FILTER</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Rows enter and leave with FILTER</h2>
           <p className="text-text-secondary mb-4">
             When a view's pipeline contains a <Code>filter</Code>, membership follows
             the predicate: a source row that matches appears in the view, and a row
@@ -61,7 +61,7 @@ export function DataModelViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">GATE: membership as an explicit signal</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">GATE: membership as an explicit signal</h2>
           <p className="text-text-secondary mb-4">
             <Code>gate</Code> also controls membership with a boolean expression, but it
             models membership as explicit transitions: a row whose gate flips from
@@ -80,7 +80,7 @@ export function DataModelViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Deferred views</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Deferred views</h2>
           <p className="text-text-secondary mb-4">
             A deferred view is maintained asynchronously, driven by the change stream
             after each commit. Writes stay cheap; the view is eventually consistent and
@@ -104,7 +104,7 @@ export function DataModelViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Backing storage: table, ring buffer, or series</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Backing storage: table, ring buffer, or series</h2>
           <p className="text-text-secondary mb-4">
             By default a view materializes into table storage. Deferred views can
             instead materialize into a{' '}
@@ -128,7 +128,7 @@ export function DataModelViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Views compose</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Views compose</h2>
           <p className="text-text-secondary mb-4">
             A view can source from another view, and a single write propagates through
             the whole chain within the same maintenance model:
@@ -139,7 +139,7 @@ export function DataModelViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Materialized sort order</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Materialized sort order</h2>
           <p className="text-text-secondary mb-4">
             A <Code>sort</Code> inside the view definition materializes the rows in
             that order, so readers get sorted results without sorting at query time:

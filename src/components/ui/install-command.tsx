@@ -36,7 +36,7 @@ export function InstallCommand({ className }: { className?: string }) {
           </button>
         ))}
       </div>
-      <div className="flex items-center gap-3 rounded-md border border-border-light bg-white shadow-soft px-4 py-3 font-mono text-sm">
+      <div className="flex items-center gap-3 border border-border-light bg-white shadow-soft px-4 py-3 font-mono text-sm">
         <span className="text-primary select-none">$</span>
         <code className="text-text-primary whitespace-nowrap">{command}</code>
         <button

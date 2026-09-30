@@ -40,8 +40,8 @@ export function RqlTransformsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Transforms</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Transforms</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             An RQL query is a pipeline. It starts with a source, and every operator after
             it takes the rows the previous stage produced, transforms them, and hands the
             result to the next stage. You read a query top to bottom in the order it runs.
@@ -51,7 +51,7 @@ export function RqlTransformsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">How a pipeline runs</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">How a pipeline runs</h2>
           <AsciiDiagram label="pipeline" className="mb-4">
 {`from [...]                    4 rows
   |
@@ -78,7 +78,7 @@ take 2                        Grace, Ada`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The operators</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The operators</h2>
           <div className="overflow-x-auto mb-4">
             <table className="w-full border border-border-light text-sm">
               <thead>
@@ -121,7 +121,7 @@ take 2                        Grace, Ada`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Shaping rows and reducing them</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Shaping rows and reducing them</h2>
           <p className="text-text-secondary mb-4">
             <Code>map</Code>, <Code>extend</Code>, and <Code>patch</Code> change columns
             without changing the row count. <Code>map</Code> starts from nothing and keeps
@@ -139,7 +139,7 @@ take 2                        Grace, Ada`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Tables and inline data</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Tables and inline data</h2>
           <p className="text-text-secondary mb-4">
             The operators do not care where rows come from. The same stages that ran over
             an inline frame above run over a{' '}
@@ -156,7 +156,7 @@ take 2                        Grace, Ada`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Order matters</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Order matters</h2>
           <p className="text-text-secondary mb-4">
             Because each stage consumes the previous stage's output, swapping two operators
             usually changes the result. <Code>take 2</Code> before <Code>sort</Code> keeps

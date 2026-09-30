@@ -6,13 +6,13 @@ export function BlobModuleOverviewPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">blob Module</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">blob Module</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Functions for encoding and decoding binary data (blobs) to and from various string formats.
           </p>
         </div>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Encoding Functions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Encoding Functions</h2>
           <p className="text-text-secondary mb-4">Convert between blobs and encoded string representations.</p>
           <div className="grid gap-3">
             <Link to="/docs/functions/blob/b58" className="group block level-card p-4!">
@@ -38,7 +38,7 @@ export function BlobModuleOverviewPage() {
           </div>
         </section>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Function Reference</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Function Reference</h2>
           <div className="dialog overflow-x-auto">
             <table className="w-full">
               <thead className="bg-[#efedfb]">

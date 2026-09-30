@@ -16,8 +16,8 @@ export function TakePage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">take</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">take</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>take N</Code> passes through the first N rows that reach it and stops.
             It is the row cap of a pipeline - what other query languages call{' '}
             <Code>limit</Code>. Which rows count as "first" is decided by everything
@@ -27,7 +27,7 @@ export function TakePage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The first N rows</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The first N rows</h2>
           <p className="text-text-secondary mb-4">
             On a bare table scan, "first" means newest, because scans deliver rows
             newest-first. Run the snippets on this page in order:
@@ -36,7 +36,7 @@ export function TakePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Top N: sort, then take</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Top N: sort, then take</h2>
           <p className="text-text-secondary mb-4">
             Put the order you care about in front of the cap. The largest three events
             by size:
@@ -56,7 +56,7 @@ export function TakePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Edge values</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Edge values</h2>
           <p className="text-text-secondary mb-4">
             <Code>take 0</Code> is legal and yields no rows:
           </p>
@@ -74,7 +74,7 @@ export function TakePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Bounding a mutation</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Bounding a mutation</h2>
           <p className="text-text-secondary mb-4">
             <Code>update</Code> and <Code>delete</Code> accept <Code>take</Code> after
             their <Code>filter</Code>, capping how many matching rows the statement
@@ -92,7 +92,7 @@ export function TakePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">take inside a view</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">take inside a view</h2>
           <p className="text-text-secondary mb-4">
             In a{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">deferred view</Link>,{' '}

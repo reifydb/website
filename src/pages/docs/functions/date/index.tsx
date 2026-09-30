@@ -9,17 +9,17 @@ export function DateModuleOverviewPage() {
       <div className="space-y-8">
         {/* Header */}
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             date Module
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Everything you need to work with dates and timestamps in RQL.
           </p>
         </div>
 
         {/* Quick Example */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Quick Example</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Quick Example</h2>
           <ExecutableSnippet
             title="Quick Example"
             initialCode={dateOverviewQuick.code}
@@ -28,7 +28,7 @@ export function DateModuleOverviewPage() {
 
         {/* Date Extraction Functions */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Date Extraction</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Date Extraction</h2>
           <p className="text-text-secondary mb-4">
             Pull out the parts you need from any date or timestamp.
           </p>
@@ -107,7 +107,7 @@ export function DateModuleOverviewPage() {
 
         {/* Date Properties */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Date Properties</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Date Properties</h2>
           <p className="text-text-secondary mb-4">
             Inspect properties and boundaries of dates.
           </p>
@@ -166,7 +166,7 @@ export function DateModuleOverviewPage() {
 
         {/* Date Manipulation Functions */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Date Manipulation</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Date Manipulation</h2>
           <p className="text-text-secondary mb-4">
             Add time, compute differences, or grab the current timestamp.
           </p>
@@ -245,7 +245,7 @@ export function DateModuleOverviewPage() {
 
         {/* Formatting Functions */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Formatting</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Formatting</h2>
           <p className="text-text-secondary mb-4">
             Turn dates into readable strings.
           </p>
@@ -264,7 +264,7 @@ export function DateModuleOverviewPage() {
 
         {/* Reference Table */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Function Reference</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Function Reference</h2>
           <div className="dialog overflow-x-auto">
             <table className="w-full">
               <thead className="bg-[#efedfb]">

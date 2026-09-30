@@ -55,13 +55,13 @@ export function DocsOverview() {
             <div className="sky">
               <div className="px-6 sm:px-10 pt-8 sm:pt-10 text-center">
                 <p className="eyebrow-pixel uppercase mb-3">Documentation</p>
-                <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4 text-balance">
+                <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4 text-balance">
                   ReifyDB Documentation
                 </h1>
                 <p className="text-base text-text-muted mb-3 italic">
                   Your database should work the way you think. ReifyDB does.
                 </p>
-                <p className="text-lg text-text-secondary leading-relaxed">
+                <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
                   ReifyDB is a database for live application state. You get transactional guarantees,
                   incremental derived views, programmable state transitions, and per-user access rules
                   in one coherent system.
@@ -80,7 +80,7 @@ export function DocsOverview() {
 
         <ScrollReveal delay={100}>
           <section>
-            <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What is ReifyDB?</h2>
+            <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What is ReifyDB?</h2>
             <p className="text-text-secondary mb-4">
               You have probably split your application state across a database, a cache, a queue, and maybe an in-memory store.
               ReifyDB brings all of that into one system.
@@ -98,7 +98,7 @@ export function DocsOverview() {
 
         <ScrollReveal delay={150}>
           <section>
-            <h2 className="text-2xl font-normal tracking-[-0.03em] mb-6">Get Started</h2>
+            <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-6">Get Started</h2>
             <div className="grid gap-4 sm:grid-cols-3">
               {quickLinks.map((link) => (
                 <Link key={link.href} to={link.href} className="level-card group flex flex-col">
@@ -115,7 +115,7 @@ export function DocsOverview() {
 
         <ScrollReveal delay={200}>
           <section>
-            <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Key Features</h2>
+            <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Key Features</h2>
             <ul className="space-y-3 text-text-secondary">
               {keyFeatures.map((feature, index) => (
                 <li key={feature.title} className="flex items-start gap-3">

@@ -13,8 +13,8 @@ export function RqlControlFlowMatchPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Match</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Match</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>match</Code> is RQL's multi-way branch. It is an expression: it
             selects one arm, evaluates it, and produces that value - in a{' '}
             <Code>let</Code> binding, in a <Code>map</Code> projection, anywhere an
@@ -25,7 +25,7 @@ export function RqlControlFlowMatchPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Value match</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Value match</h2>
           <p className="text-text-secondary mb-4">
             The first form compares one value against literal arms. <Code>else</Code>{' '}
             is the catch-all; with it, the expression always produces a value:
@@ -40,7 +40,7 @@ export function RqlControlFlowMatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Searched match</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Searched match</h2>
           <p className="text-text-secondary mb-4">
             The second form has no scrutinee - each arm is a full boolean condition.
             This is the shape for ranges and anything else that is not a simple
@@ -56,7 +56,7 @@ export function RqlControlFlowMatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Guards</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Guards</h2>
           <p className="text-text-secondary mb-4">
             A value arm can carry a guard: <Code>pattern if condition =&gt; value</Code>.
             The arm is taken only when the pattern matches <em>and</em> the guard
@@ -68,7 +68,7 @@ export function RqlControlFlowMatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Subjects and patterns are expressions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Subjects and patterns are expressions</h2>
           <p className="text-text-secondary mb-4">
             The subject need not be a bare variable, and a pattern need not be a
             literal. Both are expressions: each arm is checked as{' '}
@@ -80,7 +80,7 @@ export function RqlControlFlowMatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Classifying rows</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Classifying rows</h2>
           <p className="text-text-secondary mb-4">
             Both forms work per row inside a pipeline - reference columns directly in
             the arms. This is the workhorse for bucketing and labeling:
@@ -94,7 +94,7 @@ export function RqlControlFlowMatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What the expression produces</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What the expression produces</h2>
           <p className="text-text-secondary mb-4">
             Without an <Code>else</Code>, a subject that matches no arm has nothing
             to produce, so the result is{' '}
@@ -122,7 +122,7 @@ export function RqlControlFlowMatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Arms must be comparable with the subject</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Arms must be comparable with the subject</h2>
           <p className="text-text-secondary mb-4">
             Value arms compare with <Code>==</Code>, and <Code>==</Code> is only
             defined between compatible types. A text pattern against an integer
@@ -135,7 +135,7 @@ export function RqlControlFlowMatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">match and none</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">match and none</h2>
           <p className="text-text-secondary mb-4">
             Value-match arms compare by equality, and{' '}
             <Link to="/docs/concepts/none" className="text-primary hover:text-primary-light font-medium transition-colors">equality against none never matches</Link>{' '}
@@ -156,7 +156,7 @@ export function RqlControlFlowMatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">match as the request result</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">match as the request result</h2>
           <p className="text-text-secondary mb-4">
             When a <Code>match</Code> is the last statement of a request, its value
             is the request's result, returned as a one-value frame named{' '}

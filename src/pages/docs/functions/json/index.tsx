@@ -9,17 +9,17 @@ export function JsonModuleOverviewPage() {
       <div className="space-y-8">
         {/* Header */}
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             json Module
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Build and serialize JSON values directly in your queries.
           </p>
         </div>
 
         {/* Quick Example */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Quick Example</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Quick Example</h2>
           <ExecutableSnippet
             title="Quick Example"
             initialCode={jsonOverviewQuick.code}
@@ -28,7 +28,7 @@ export function JsonModuleOverviewPage() {
 
         {/* Available Functions */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Available Functions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Available Functions</h2>
           <div className="space-y-3">
             <Link to="/docs/functions/json/array" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">json::array</h3>
@@ -51,7 +51,7 @@ export function JsonModuleOverviewPage() {
 
         {/* Reference Table */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Function Reference</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Function Reference</h2>
           <div className="dialog overflow-x-auto">
             <table className="w-full">
               <thead className="bg-[#efedfb]">

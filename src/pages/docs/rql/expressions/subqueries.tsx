@@ -20,8 +20,8 @@ export function SubqueriesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Subqueries</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Subqueries</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A subquery is a query pipeline wrapped in braces and placed inside another
             query: <Code>{'{'} from ns::table | filter {'{'} ... {'}'} {'}'}</Code>. RQL
             has two positions for one: the right side of a{' '}
@@ -33,7 +33,7 @@ export function SubqueriesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where a subquery can appear</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Where a subquery can appear</h2>
           <div className="overflow-x-auto mb-4">
             <table className="w-full border border-border-light text-sm">
               <thead>
@@ -63,7 +63,7 @@ export function SubqueriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The shape of a subquery</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The shape of a subquery</h2>
           <p className="text-text-secondary mb-4">
             A subquery starts with <Code>from</Code> naming a table or a view. Stages
             after it are chained with <Code>|</Code>: inside the braces the pipe is
@@ -97,7 +97,7 @@ export function SubqueriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Shaping the right side</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Shaping the right side</h2>
           <p className="text-text-secondary mb-4">
             Any pipeline stage works inside the braces. A <Code>map</Code> decides which
             columns the join brings in and under which names; the alias prefix is added
@@ -122,7 +122,7 @@ export function SubqueriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Filter inside or after</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Filter inside or after</h2>
           <p className="text-text-secondary mb-4">
             With a <Code>left join</Code> the position of a <Code>filter</Code> changes
             the result. Inside the braces it limits which right rows are available to
@@ -146,7 +146,7 @@ export function SubqueriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Nesting</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Nesting</h2>
           <p className="text-text-secondary mb-4">
             A subquery can itself contain a join, with its own braces, alias, and{' '}
             <Code>using</Code>. Prefixes stack: a column named <Code>manager</Code> joined
@@ -161,7 +161,7 @@ export function SubqueriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Views as named subqueries</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Views as named subqueries</h2>
           <p className="text-text-secondary mb-4">
             A subquery that several queries need is a{' '}
             <Link to="/docs/scripting/views/deferred" className="text-primary hover:text-primary-light font-medium transition-colors">view</Link>.
@@ -183,7 +183,7 @@ export function SubqueriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">append</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">append</h2>
           <p className="text-text-secondary mb-4">
             <Code>append</Code> adds the rows of a subquery below the rows of the current
             pipeline, the way a union does. Columns line up by position, not by name: the
@@ -207,7 +207,7 @@ export function SubqueriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Frame variables</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Frame variables</h2>
           <p className="text-text-secondary mb-4">
             A{' '}
             <Link to="/docs/rql/variables" className="text-primary hover:text-primary-light font-medium transition-colors">frame variable</Link>{' '}
@@ -226,7 +226,7 @@ export function SubqueriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Forms that need a newer engine</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Forms that need a newer engine</h2>
           <p className="text-text-secondary mb-4">
             The current engine source accepts a braced query in three more places:
           </p>
@@ -243,7 +243,7 @@ for $row in { from expr_subq::customers } { insert expr_subq::log [{ name: $row.
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What is not a subquery position</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What is not a subquery position</h2>
           <p className="text-text-secondary mb-4">
             Braces are a record literal everywhere an expression is expected, so a query
             inside an expression is a parse error, not a feature that is switched off:

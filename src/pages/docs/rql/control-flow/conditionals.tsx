@@ -13,8 +13,8 @@ export function RqlControlFlowConditionalsPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Conditionals</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Conditionals</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>if</Code> branches a script on a condition. It is both a statement -
             run these statements only when the condition holds - and an expression that
             produces a value you can bind with <Code>let</Code>. Together with{' '}
@@ -24,7 +24,7 @@ export function RqlControlFlowConditionalsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">if is an expression</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">if is an expression</h2>
           <p className="text-text-secondary mb-4">
             Used on the right-hand side of a <Code>let</Code>, each branch's block
             produces the value of the whole expression. Run the snippets on this page
@@ -39,7 +39,7 @@ export function RqlControlFlowConditionalsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">No else means maybe none</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">No else means maybe none</h2>
           <p className="text-text-secondary mb-4">
             An <Code>if</Code> expression without an <Code>else</Code> has no value to
             produce when the condition fails, so it produces{' '}
@@ -51,7 +51,7 @@ export function RqlControlFlowConditionalsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Guarding writes</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Guarding writes</h2>
           <p className="text-text-secondary mb-4">
             As a statement, <Code>if</Code> runs a block of statements - including
             inserts, updates, and deletes - only when the condition holds. The whole
@@ -64,7 +64,7 @@ export function RqlControlFlowConditionalsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Branches choose the result</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Branches choose the result</h2>
           <p className="text-text-secondary mb-4">
             When the <Code>if</Code> statement is the last thing in a request, the
             branch that ran determines the request's result - the branches do not have
@@ -74,7 +74,7 @@ export function RqlControlFlowConditionalsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reassigning outer variables</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reassigning outer variables</h2>
           <p className="text-text-secondary mb-4">
             A branch can assign to a variable declared outside it, which is the
             imperative alternative to the expression form - useful when several

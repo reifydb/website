@@ -13,8 +13,8 @@ export function RqlControlFlowWhilePage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">While Loops</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">While Loops</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>while</Code> repeats a block as long as a condition holds. It is the
             loop for "until this becomes true" work - keep going until a threshold is
             crossed, a budget is spent, a queue is drained - where the number of
@@ -26,7 +26,7 @@ export function RqlControlFlowWhilePage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Check, run, repeat</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Check, run, repeat</h2>
           <p className="text-text-secondary mb-4">
             The condition is any boolean expression over{' '}
             <Link to="/docs/rql/variables" className="text-primary hover:text-primary-light font-medium transition-colors">variables</Link>.
@@ -44,7 +44,7 @@ export function RqlControlFlowWhilePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Flags and none</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Flags and none</h2>
           <p className="text-text-secondary mb-4">
             The condition is evaluated from scratch before every pass, so a boolean
             the body flips is a natural shape for "until done" - the exit decision
@@ -62,7 +62,7 @@ export function RqlControlFlowWhilePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Variables inside the body</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Variables inside the body</h2>
           <p className="text-text-secondary mb-4">
             The body is a block, and a block is a scope. A <Code>let</Code> inside it
             declares a fresh variable on every pass and drops it when the pass ends;
@@ -80,7 +80,7 @@ export function RqlControlFlowWhilePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Loops that write</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Loops that write</h2>
           <p className="text-text-secondary mb-4">
             The body is not limited to arithmetic - any statement works, including{' '}
             <Code>insert</Code>, <Code>update</Code>, and <Code>delete</Code>. The whole
@@ -96,7 +96,7 @@ export function RqlControlFlowWhilePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">An error anywhere undoes every iteration</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">An error anywhere undoes every iteration</h2>
           <p className="text-text-secondary mb-4">
             Because the request is{' '}
             <Link to="/docs/concepts/transactions" className="text-primary hover:text-primary-light font-medium transition-colors">one transaction</Link>,
@@ -116,7 +116,7 @@ export function RqlControlFlowWhilePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The iteration cap</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The iteration cap</h2>
           <p className="text-text-secondary mb-4">
             A condition that never flips would hold its transaction open forever, so the
             engine refuses: any loop that exceeds 10,000 iterations fails the request
@@ -148,7 +148,7 @@ export function RqlControlFlowWhilePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What not to put in the body</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What not to put in the body</h2>
           <p className="text-text-secondary mb-4">
             Two things go wrong inside a loop body in the engine build the playground
             runs. Neither is a design rule - both are limits of the current build - but
@@ -180,7 +180,7 @@ map { total: $total }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">while or something else?</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">while or something else?</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

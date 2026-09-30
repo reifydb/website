@@ -77,7 +77,7 @@ export function CtaSection({
     <section className="py-16 sm:py-24">
       <ScrollReveal>
         <div className="max-w-4xl mx-auto px-6">
-          <div className="rounded-md border-2 border-border-default shadow-hard bg-gradient-to-br from-primary to-primary-dark p-8 sm:p-12 text-center">
+          <div className="border-2 border-border-default shadow-hard bg-gradient-to-br from-primary to-primary-dark p-8 sm:p-12 text-center">
             <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">{title}</h3>
             <p className="text-sm sm:text-base text-white/80 mb-6 sm:mb-8">{description}</p>
             {isExternal ? (

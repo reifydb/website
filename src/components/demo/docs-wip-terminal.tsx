@@ -70,7 +70,7 @@ export function DocsWipTerminal() {
       <main className="flex-1 flex items-center justify-center px-6 py-16">
         <div className="w-full max-w-2xl">
           {/* Terminal Window */}
-          <div className="bg-code-bg border border-white/10 rounded-xl overflow-hidden">
+          <div className="bg-code-bg border border-white/10 overflow-hidden">
             {/* macOS Chrome Header */}
             <div className="h-10 sm:h-12 bg-code-bg-elevated border-b border-white/10 flex items-center px-3 sm:px-4 gap-2">
               <div className="flex gap-1.5">
@@ -120,7 +120,7 @@ export function DocsWipTerminal() {
                 href="https://github.com/reifydb/reifydb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold rounded-[4px] hover:brightness-110 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold hover:brightness-110 transition-all"
               >
                 View on GitHub
               </a>
@@ -128,13 +128,13 @@ export function DocsWipTerminal() {
                 href="https://discord.gg/HPBwUSPuUS"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-bg-tertiary text-text-primary font-semibold border border-black/20 rounded-lg hover:border-primary/50 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-bg-tertiary text-text-primary font-semibold border border-black/20 hover:border-primary/50 transition-all"
               >
                 Join Discord
               </a>
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-bg-tertiary text-text-primary font-semibold border border-black/20 rounded-lg hover:border-primary/50 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-bg-tertiary text-text-primary font-semibold border border-black/20 hover:border-primary/50 transition-all"
               >
                 Back to Home
               </Link>

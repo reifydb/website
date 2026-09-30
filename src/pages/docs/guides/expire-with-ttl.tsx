@@ -14,10 +14,10 @@ export function TtlGuidePage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             Expire Data with TTL
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Session tokens, rate-limit windows, one-time codes: plenty of application state is
             only valid for a while and should disappear on its own. Instead of a cron job that
             sweeps for stale rows, give the rows themselves a lifetime and let the engine drop
@@ -26,7 +26,7 @@ export function TtlGuidePage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">1. Declare a row lifetime</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">1. Declare a row lifetime</h2>
           <p className="text-text-secondary mb-4">
             Row lifetime is a table setting, declared in the same{' '}
             <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">with</code> block
@@ -45,7 +45,7 @@ export function TtlGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">2. TTL is just another row setting to downstream views</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">2. TTL is just another row setting to downstream views</h2>
           <p className="text-text-secondary mb-4">
             A view built on a TTL'd table does not need to know the table expires rows; it
             reads the table like any other:
@@ -54,7 +54,7 @@ export function TtlGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">3. Write normally</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">3. Write normally</h2>
           <p className="text-text-secondary mb-4">
             Inserting into a TTL'd table works exactly like inserting into any other table; the
             lifetime is enforced by the engine, not by anything you do at write time:
@@ -63,7 +63,7 @@ export function TtlGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">4. Rows are there until the clock runs out</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">4. Rows are there until the clock runs out</h2>
           <p className="text-text-secondary mb-4">
             Query the table right after inserting and every row is exactly where you left it.
             TTL does not make rows harder to work with while they are alive; it only changes
@@ -90,7 +90,7 @@ export function TtlGuidePage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Choosing a duration</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Choosing a duration</h2>
           <p className="text-text-secondary mb-4">
             Pick the duration for the thing that has to be true while the row is alive, not a
             round number:
@@ -121,7 +121,7 @@ export function TtlGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where next</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Where next</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

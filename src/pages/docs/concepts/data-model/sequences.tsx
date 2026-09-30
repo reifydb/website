@@ -16,8 +16,8 @@ export function DataModelSequencesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Sequences</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Sequences</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A sequence is the counter behind an <Code>auto_increment</Code> column. Every
             such column owns one; there is no standalone <Code>create sequence</Code>.
             Inserts that leave the column out draw the next value, and{' '}
@@ -27,7 +27,7 @@ export function DataModelSequencesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Auto-increment columns</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Auto-increment columns</h2>
           <p className="text-text-secondary mb-4">
             Declare an integer column <Code>with {'{'} auto_increment {'}'}</Code> on a{' '}
             <Link to="/docs/concepts/data-model/tables" className="text-primary hover:text-primary-light font-medium transition-colors">table</Link>.
@@ -43,7 +43,7 @@ export function DataModelSequencesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Explicit values do not move the sequence</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Explicit values do not move the sequence</h2>
           <p className="text-text-secondary mb-4">
             Supplying the column yourself writes that value and leaves the counter where
             it was. After inserting <Code>id: 100</Code>, the next generated id is still
@@ -55,7 +55,7 @@ export function DataModelSequencesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Repositioning with alter sequence</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Repositioning with alter sequence</h2>
           <p className="text-text-secondary mb-4">
             <Code>alter sequence namespace::table::column set value N</Code> sets the
             counter's current value. The confirmation echoes the new position:
@@ -69,7 +69,7 @@ export function DataModelSequencesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Gaps</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Gaps</h2>
           <p className="text-text-secondary mb-4">
             A value is drawn when the insert runs, not when the transaction commits. If
             the request fails afterwards, the row is rolled back but the value is not
@@ -89,7 +89,7 @@ export function DataModelSequencesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Moving backwards produces duplicates</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Moving backwards produces duplicates</h2>
           <p className="text-text-secondary mb-4">
             <Code>alter sequence</Code> accepts any value, including one below ids that
             already exist. Nothing checks the column for uniqueness on insert, so the
@@ -105,7 +105,7 @@ export function DataModelSequencesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What the engine rejects</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What the engine rejects</h2>
           <p className="text-text-secondary mb-4">
             Only auto-increment columns have a sequence to alter:
           </p>
@@ -125,7 +125,7 @@ export function DataModelSequencesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Catalog</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Catalog</h2>
           <p className="text-text-secondary mb-4">
             Sequences have no catalog table of their own. The <Code>auto_increment</Code>{' '}
             flag on <Code>system::columns</Code> tells you which columns have one; the

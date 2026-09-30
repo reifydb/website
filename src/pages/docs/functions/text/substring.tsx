@@ -16,23 +16,23 @@ export function TextSubstringPage() {
             </Link>
             {' module'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             text::substring
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Extract a portion of a string.
           </p>
         </div>
 
         {/* Syntax */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`text::substring(value, start, end)`} />
         </section>
 
         {/* Parameters */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameters</h2>
           <div className="dialog overflow-x-auto">
             <table className="w-full">
               <thead className="bg-[#efedfb]">
@@ -65,7 +65,7 @@ export function TextSubstringPage() {
 
         {/* Return Value */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Return Value</h2>
           <p className="text-text-secondary">
             Returns a new string containing the characters from the start index up to (but not including) the end index.
           </p>
@@ -73,7 +73,7 @@ export function TextSubstringPage() {
 
         {/* Examples */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Extract prefix</h3>
           <ExecutableSnippet
@@ -96,7 +96,7 @@ export function TextSubstringPage() {
 
         {/* Related Functions */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
             <Link to="/docs/functions/text/length" className="text-primary-color hover:underline">
               text::length

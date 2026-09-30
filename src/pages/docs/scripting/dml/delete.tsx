@@ -16,8 +16,8 @@ export function DmlDeletePage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Delete</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Delete</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>delete</Code> removes rows:{' '}
             <Code>{'delete ns::table filter { ... }'}</Code>. There is no field record -
             a row is either removed whole or kept whole - so the statement is just the
@@ -28,7 +28,7 @@ export function DmlDeletePage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Delete what matches</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Delete what matches</h2>
           <p className="text-text-secondary mb-4">
             Every row the filter matches is removed in one atomic step, and the
             confirmation frame reports the count:
@@ -44,7 +44,7 @@ export function DmlDeletePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The filter is mandatory</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The filter is mandatory</h2>
           <p className="text-text-secondary mb-4">
             A bare <Code>delete ns::table</Code> does not empty the table - it fails with{' '}
             <Code>DELETE_002</Code>. As with <Code>update</Code>, the destructive
@@ -65,7 +65,7 @@ export function DmlDeletePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Ring buffers and series</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Ring buffers and series</h2>
           <p className="text-text-secondary mb-4">
             <Code>delete</Code> works the same way on{' '}
             <Link to="/docs/scripting/storage/ringbuffers" className="text-primary hover:text-primary-light font-medium transition-colors">ring buffers</Link>{' '}
@@ -88,7 +88,7 @@ export function DmlDeletePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Deletes flow into views</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Deletes flow into views</h2>
           <p className="text-text-secondary mb-4">
             Removing a source row also removes its contribution to every{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">view</Link>{' '}
@@ -112,7 +112,7 @@ export function DmlDeletePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Atomicity</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Atomicity</h2>
           <p className="text-text-secondary mb-4">
             A delete commits atomically with every other statement in its request, under
             the same automatic transaction and conflict-retry behavior as all writes.

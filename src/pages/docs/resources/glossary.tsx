@@ -34,8 +34,8 @@ export function GlossaryPage() {
       <div className="space-y-8">
         <div>
           <div className="text-sm text-text-muted mb-2 font-bold">Resources</div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Glossary</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Glossary</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             The words the rest of these docs use, in one or two sentences each. Every
             term links to the page that explains it in full. Terms are grouped by what
             they belong to, not alphabetically, so related words sit together.
@@ -43,7 +43,7 @@ export function GlossaryPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Storage shapes</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Storage shapes</h2>
           <dl className="space-y-4">
             <Term name="Namespace" to="/docs/concepts/data-model/namespaces">
               The container every other object lives in. Tables, views, ring buffers,
@@ -94,7 +94,7 @@ export function GlossaryPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Derived state</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Derived state</h2>
           <dl className="space-y-4">
             <Term name="View" to="/docs/concepts/data-model/views">
               Derived state the engine maintains for you. You declare a pipeline over
@@ -147,7 +147,7 @@ export function GlossaryPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Types and values</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Types and values</h2>
           <dl className="space-y-4">
             <Term name="none" to="/docs/concepts/none">
               The missing value. ReifyDB has no NULL: <Code>none</Code> is typed (a
@@ -184,7 +184,7 @@ export function GlossaryPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Queries and scripts</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Queries and scripts</h2>
           <dl className="space-y-4">
             <Term name="RQL" to="/docs/rql">
               ReifyDB's query language. It is not a SQL dialect: a query is a
@@ -237,7 +237,7 @@ export function GlossaryPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Routines</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Routines</h2>
           <dl className="space-y-4">
             <Term name="Routine" to="/docs/routines">
               Everything callable. There are two kinds, functions and procedures, and
@@ -260,7 +260,7 @@ export function GlossaryPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Transactions and durability</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Transactions and durability</h2>
           <dl className="space-y-4">
             <Term name="Request" to="/docs/concepts/transactions">
               One round trip to the database, and exactly one transaction. A request
@@ -309,7 +309,7 @@ export function GlossaryPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Schema and operations</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Schema and operations</h2>
           <dl className="space-y-4">
             <Term name="DDL" to="/docs/scripting">
               The schema statements: <Code>create</Code>, <Code>alter</Code>,{' '}
@@ -334,7 +334,7 @@ export function GlossaryPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Access control</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Access control</h2>
           <dl className="space-y-4">
             <Term name="Identity" to="/docs/scripting/access-control">
               A person or service that connects. Non-root identities are denied by

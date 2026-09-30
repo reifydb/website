@@ -22,12 +22,12 @@ export function DocStub({ title, kicker, description, sections, children }: DocS
             {kicker}
           </div>
         )}
-        <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">{title}</h1>
-        <p className="text-lg text-text-secondary leading-relaxed">{description}</p>
+        <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">{title}</h1>
+        <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">{description}</p>
       </div>
       {sections.map((section) => (
         <section key={section.heading}>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">{section.heading}</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">{section.heading}</h2>
           <div className="text-text-secondary space-y-4">{section.body}</div>
         </section>
       ))}

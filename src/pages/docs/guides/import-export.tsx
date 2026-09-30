@@ -14,10 +14,10 @@ export function ImportExportGuidePage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             Import & Export Data
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Getting data into a running database and getting a whole database back out are two
             different problems. Loading rows your application already produces is ordinary
             RQL; moving an entire database between environments is a job for the CLI or the
@@ -26,7 +26,7 @@ export function ImportExportGuidePage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">1. Load rows with INSERT</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">1. Load rows with INSERT</h2>
           <p className="text-text-secondary mb-4">
             There is no separate "bulk load" statement in RQL. <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">insert</code>{' '}
             already takes an array, so loading many rows is the same statement as loading one,
@@ -55,7 +55,7 @@ export function ImportExportGuidePage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">2. Export a database to a script</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">2. Export a database to a script</h2>
           <p className="text-text-secondary mb-4">
             <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">reifydb-cli local export</code>{' '}
             reads a local embedded database file and writes a self-contained{' '}
@@ -72,7 +72,7 @@ export function ImportExportGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">3. Import it somewhere else</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">3. Import it somewhere else</h2>
           <p className="text-text-secondary mb-4">
             The exported script is just RQL, so loading it back is a straight replay against a
             target database:
@@ -84,7 +84,7 @@ export function ImportExportGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">4. Narrow what gets exported</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">4. Narrow what gets exported</h2>
           <p className="text-text-secondary mb-4">
             You rarely want the entire database. Filter by namespace, by specific object, or by
             kind; picking an object automatically pulls in the dictionaries and enums its
@@ -104,7 +104,7 @@ reifydb-cli local export --db ./app.db --kind dictionary --kind enum --out refer
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">5. Split schema from data</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">5. Split schema from data</h2>
           <p className="text-text-secondary mb-4">
             A two-phase migration, stand up the structure, review it, then load rows, is two
             exports instead of one:
@@ -130,7 +130,7 @@ reifydb-cli local import --db ./target.db --file data.rql`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Same thing, from Rust</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Same thing, from Rust</h2>
           <p className="text-text-secondary mb-4">
             Everything the CLI does is a thin wrapper over the embedded API. Reach for this
             directly when export or import is part of your application rather than a one-off
@@ -164,7 +164,7 @@ restored.import(&dump)?;`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where next</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Where next</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

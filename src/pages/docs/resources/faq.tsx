@@ -10,15 +10,15 @@ export function TroubleshootingFaqPage() {
       <div className="space-y-8">
         <div>
           <div className="text-sm text-text-muted mb-2 font-bold">Resources</div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Troubleshooting & FAQ</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Troubleshooting & FAQ</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             What common errors mean, the surprises that do not raise an error at all, and the questions
             everyone asks first.
           </p>
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Anatomy of a diagnostic error</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Anatomy of a diagnostic error</h2>
           <p className="text-text-secondary mb-4">
             Every RQL error carries a stable code and a message. Most add a{' '}
             <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">HELP</code> line, and many
@@ -121,7 +121,7 @@ NOTES
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reading an error code</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reading an error code</h2>
           <p className="text-text-secondary">
             Codes are grouped by the part of the engine that raised them rather than one flat taxonomy:{' '}
             <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">CAST_*</code> from the cast
@@ -142,7 +142,7 @@ NOTES
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Silent surprises</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Silent surprises</h2>
           <p className="text-text-secondary mb-4">
             Not everything unexpected is an error. A few things return a completely valid, successfully
             executed result that just is not the one you expected.
@@ -193,7 +193,7 @@ NOTES
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Frequently asked questions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Frequently asked questions</h2>
           <div className="space-y-5">
             <div>
               <h3 className="text-lg font-bold tracking-tight mb-1">Is RQL a SQL dialect?</h3>

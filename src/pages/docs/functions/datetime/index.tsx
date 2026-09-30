@@ -6,12 +6,12 @@ export function DatetimeModuleOverviewPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">datetime Module</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">Comprehensive datetime manipulation including extraction, construction, arithmetic, and formatting.</p>
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">datetime Module</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">Comprehensive datetime manipulation including extraction, construction, arithmetic, and formatting.</p>
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Extraction</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Extraction</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <Link to="/docs/functions/datetime/year" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">datetime::year</h3>
@@ -61,7 +61,7 @@ export function DatetimeModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Components</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Components</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <Link to="/docs/functions/datetime/date" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">datetime::date</h3>
@@ -75,7 +75,7 @@ export function DatetimeModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Epoch</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Epoch</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <Link to="/docs/functions/datetime/epoch" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">datetime::epoch</h3>
@@ -97,7 +97,7 @@ export function DatetimeModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Construction</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Construction</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <Link to="/docs/functions/datetime/new" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">datetime::new</h3>
@@ -111,7 +111,7 @@ export function DatetimeModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Manipulation</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Manipulation</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <Link to="/docs/functions/datetime/add" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">datetime::add</h3>
@@ -137,7 +137,7 @@ export function DatetimeModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Formatting</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Formatting</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <Link to="/docs/functions/datetime/format" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">datetime::format</h3>
@@ -147,7 +147,7 @@ export function DatetimeModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Function Reference</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Function Reference</h2>
           <div className="dialog overflow-x-auto">
             <table className="w-full">
               <thead className="bg-[#efedfb]"><tr>

@@ -7,10 +7,10 @@ export function FunctionsOverviewPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             Functions
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             RQL comes with built-in function modules for the operations you use most.
             Call them with the{' '}
             <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">::</code> syntax.
@@ -18,7 +18,7 @@ export function FunctionsOverviewPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Available Modules</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Available Modules</h2>
           <div className="space-y-4">
             <Link
               to="/docs/functions/blob"

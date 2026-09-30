@@ -16,8 +16,8 @@ export function CastPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">cast</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">cast</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>cast(value, type)</Code> converts a value to another type. It is an
             expression, so it works anywhere one is allowed - in{' '}
             <Link to="/docs/rql/transforms/map" className="text-primary hover:text-primary-light font-medium transition-colors">map</Link>,{' '}
@@ -29,7 +29,7 @@ export function CastPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The common conversions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The common conversions</h2>
           <p className="text-text-secondary mb-4">
             The second argument is a bare type name:{' '}
             <Code>int1</Code> through <Code>int16</Code>, <Code>uint1</Code> through{' '}
@@ -60,7 +60,7 @@ export function CastPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Casting columns</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Casting columns</h2>
           <p className="text-text-secondary mb-4">
             The usual job is fixing up a column that arrived as text. Surrounding
             whitespace is ignored, and text with a fractional part is truncated the
@@ -86,7 +86,7 @@ export function CastPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">none passes through</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">none passes through</h2>
           <p className="text-text-secondary mb-4">
             Casting <Code>none</Code> yields <Code>none</Code> of the target type; it is
             never an error. Optional columns therefore cast cleanly row by row. See{' '}
@@ -96,7 +96,7 @@ export function CastPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">When a cast fails</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">When a cast fails</h2>
           <p className="text-text-secondary mb-4">
             Failures fall into a small set of codes. <Code>CAST_002</Code> means the type
             pair is fine but the value does not parse as a number:
@@ -142,7 +142,7 @@ export function CastPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">float4 and precision</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">float4 and precision</h2>
           <p className="text-text-secondary mb-4">
             A <Code>float4</Code> column reads back clean (<Code>89.99</Code>), but the
             value it actually holds is the nearest 32-bit float. Casting it to{' '}

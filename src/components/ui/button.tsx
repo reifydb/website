@@ -43,7 +43,7 @@ export function Button({
 }: ButtonProps) {
   const baseStyles = cn(
     'inline-flex items-center justify-center gap-2',
-    'font-semibold rounded-md transition-colors duration-150',
+    'font-semibold transition-colors duration-150',
     'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-bg-primary',
     'disabled:opacity-30 disabled:cursor-not-allowed',
     variantStyles[variant],

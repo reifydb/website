@@ -21,10 +21,10 @@ export function WithPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             The with Clause
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>with {'{ ... }'}</Code> attaches an options block to the construct
             directly before it: a create statement, a column definition, or a pipeline
             operator. It is not an operator itself - it never stands alone as a pipeline
@@ -42,7 +42,7 @@ export function WithPage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where with appears</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Where with appears</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
@@ -76,7 +76,7 @@ export function WithPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Storage options at creation</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Storage options at creation</h2>
           <p className="text-text-secondary mb-4">
             Each storage shape has its own keys. A ring buffer declares its{' '}
             <Code>capacity</Code>; a series declares its <Code>key</Code> column and
@@ -96,7 +96,7 @@ export function WithPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Row settings</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Row settings</h2>
           <p className="text-text-secondary mb-4">
             Tables, ring buffers, series, and views all accept a <Code>row</Code> block
             that controls the lifetime of their rows: <Code>ttl</Code> with a{' '}
@@ -115,7 +115,7 @@ export function WithPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Column options</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Column options</h2>
           <p className="text-text-secondary mb-4">
             A with block after a column's type configures that column.{' '}
             <Code>auto_increment</Code> makes the engine fill the column from a{' '}
@@ -128,7 +128,7 @@ export function WithPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Operator options</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Operator options</h2>
           <p className="text-text-secondary mb-4">
             On pipeline operators, with configures the state the flow engine keeps when
             the pipeline runs inside a view. <Code>join</Code> accepts three keys:{' '}
@@ -161,7 +161,7 @@ export function WithPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Keys are validated</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Keys are validated</h2>
           <p className="text-text-secondary mb-4">
             The with block is not a free-form bag of settings. Every construct checks
             the keys it is given - a table accepts <Code>row</Code> and{' '}

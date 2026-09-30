@@ -29,10 +29,10 @@ export function RqlForSqlUsersPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             RQL for SQL Users
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Everything you know about querying still applies; the syntax reads in a different
             direction. SQL describes the result you want from the inside out. RQL describes the
             steps to get there, top to bottom.
@@ -40,7 +40,7 @@ export function RqlForSqlUsersPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Translation table</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Translation table</h2>
           <div className="dialog overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="bg-[#efedfb]">
@@ -66,7 +66,7 @@ export function RqlForSqlUsersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reading order</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reading order</h2>
           <p className="text-text-secondary mb-4">
             A SQL query nests: <Code>SELECT ... FROM (SELECT ... FROM t WHERE ...) WHERE ...</Code>.
             The equivalent RQL is flat; each line is one step, and intermediate results never
@@ -76,7 +76,7 @@ export function RqlForSqlUsersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">GROUP BY becomes aggregate ... by</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">GROUP BY becomes aggregate ... by</h2>
           <p className="text-text-secondary mb-4">
             The aggregation expressions and the grouping keys live in one step. Nothing like{' '}
             <Code>HAVING</Code> is needed; a <Code>filter</Code> after the aggregate does the
@@ -86,7 +86,7 @@ export function RqlForSqlUsersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">none is not NULL, mostly</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">none is not NULL, mostly</h2>
           <p className="text-text-secondary mb-4">
             RQL's missing value is <Code>none</Code>. Like SQL's NULL, it never matches an
             equality comparison:
@@ -101,7 +101,7 @@ export function RqlForSqlUsersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What has no SQL equivalent</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What has no SQL equivalent</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

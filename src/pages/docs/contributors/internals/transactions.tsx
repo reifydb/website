@@ -11,8 +11,8 @@ export function InternalsTransactionsPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Transaction Internals</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Transaction Internals</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             How the transaction subsystem actually works: the two concurrency-control
             layers, the life of a write from begin to commit, the oracle that validates
             commits, and the invariants that tie commits to change data capture. This page
@@ -30,7 +30,7 @@ export function InternalsTransactionsPage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Two transaction layers</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Two transaction layers</h2>
           <p className="text-text-secondary mb-4">
             The crate exposes two independent concurrency-control paths behind a uniform
             handle:
@@ -82,7 +82,7 @@ export function InternalsTransactionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Life of a command transaction</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Life of a command transaction</h2>
           <p className="text-text-secondary mb-4">
             A command begins by pinning a <strong>read snapshot version</strong> from the
             oracle. Every read it performs resolves against the multi-version store as of
@@ -114,7 +114,7 @@ export function InternalsTransactionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The commit pipeline</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The commit pipeline</h2>
           <p className="text-text-secondary mb-4">
             Commit is mediated by the <strong>oracle</strong> (<Code>src/multi/oracle</Code>),
             whose <Code>new_commit</Code> runs five phases:
@@ -173,7 +173,7 @@ export function InternalsTransactionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">After validation: storage, watermarks, CDC</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">After validation: storage, watermarks, CDC</h2>
           <p className="text-text-secondary mb-4">
             Once a commit version is allocated, <Code>finalize_commit</Code> applies the
             transaction in a carefully ordered sequence. The transaction registers with the
@@ -200,7 +200,7 @@ export function InternalsTransactionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Automatic retry</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Automatic retry</h2>
           <p className="text-text-secondary mb-4">
             Conflict aborts are not surfaced to clients immediately. The server wraps
             command and admin execution in a <Code>RetryStrategy</Code>{' '}
@@ -213,7 +213,7 @@ export function InternalsTransactionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Error codes</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Error codes</h2>
           <ul className="space-y-2 text-text-secondary mb-4">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
@@ -255,7 +255,7 @@ export function InternalsTransactionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Raft and replication</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Raft and replication</h2>
           <p className="text-text-secondary mb-4">
             ReifyDB has two distribution mechanisms, and they are different things that
             plug into the commit path at different points.

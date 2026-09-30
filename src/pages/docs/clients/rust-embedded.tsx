@@ -19,8 +19,8 @@ export function RustEmbeddedClientPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Rust (Embedded)</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Rust (Embedded)</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             The <Code>reifydb</Code> crate is the whole engine as a library. Add one
             dependency and your process owns a database: no server, no ports, no login,
             no serialization across a wire. This is the reference surface - every other
@@ -30,7 +30,7 @@ export function RustEmbeddedClientPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Installation</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Installation</h2>
           <p className="text-text-secondary mb-4">
             One line in <Code>Cargo.toml</Code>. The crate is versioned in lockstep with
             the engine, because it <em>is</em> the engine:
@@ -61,7 +61,7 @@ reifydb = { version = "0.8.1", features = ["sub_flow"] }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Building a database</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Building a database</h2>
           <p className="text-text-secondary mb-4">
             Everything starts in the <Code>embedded</Code> module. Three factories choose
             the storage backend, each returning an <Code>EmbeddedBuilder</Code> whose{' '}
@@ -97,7 +97,7 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Commands, queries, and admin</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Commands, queries, and admin</h2>
           <p className="text-text-secondary mb-4">
             Statements come in the same three kinds every ReifyDB surface uses: a{' '}
             <em>query</em> reads, a <em>command</em> writes data, and an <em>admin</em>{' '}
@@ -158,7 +158,7 @@ fn main() -> Result<(), reifydb::Error> {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameters</h2>
           <p className="text-text-secondary mb-4">
             Every execution method takes <Code>impl Into&lt;Params&gt;</Code>.{' '}
             <Code>Params::None</Code> means no parameters; positional parameters are
@@ -195,7 +195,7 @@ let frames = db.query_as_root(
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Sessions and conflict retries</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Sessions and conflict retries</h2>
           <p className="text-text-secondary mb-4">
             The direct <Code>command_as_root</Code> call executes exactly once: if two
             concurrent{' '}
@@ -244,7 +244,7 @@ let session = db.root_session().with_retry(RetryStrategy::no_retry());`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Mapping rows to structs</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Mapping rows to structs</h2>
           <p className="text-text-secondary mb-4">
             Results arrive as <Code>Frame</Code>s: columnar tables with named, typed
             columns. <Code>Display</Code> renders one as the ASCII table you see in every
@@ -286,7 +286,7 @@ for frame in &frames {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">In-process subscriptions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">In-process subscriptions</h2>
           <p className="text-text-secondary mb-4">
             With the <Code>sub_flow</Code> feature enabled, the embedded database
             delivers live changes without any socket.{' '}
@@ -331,7 +331,7 @@ for frame in sub.drain(usize::MAX) {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Builder options</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Builder options</h2>
           <p className="text-text-secondary mb-4">
             <Code>EmbeddedBuilder</Code> configures everything the engine loads before{' '}
             <Code>build()</Code>. The full surface today:
@@ -448,7 +448,7 @@ let db = embedded::sqlite(SqliteConfig::new("/var/lib/myapp/data"))
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Shutting down</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Shutting down</h2>
           <p className="text-text-secondary mb-4">
             <Code>db.stop()</Code> is the clean shutdown: it drains the change-log
             consumers, flushes every committed write to the persistent store, and stops

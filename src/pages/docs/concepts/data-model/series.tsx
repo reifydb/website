@@ -16,8 +16,8 @@ export function DataModelSeriesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Series</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Series</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A series stores rows ordered by a required key column - a timestamp or an
             integer. It is the shape for measurements, audit trails, and historical
             records: data that arrives in order, is queried by range, and grows without
@@ -31,7 +31,7 @@ export function DataModelSeriesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The key defines the order</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The key defines the order</h2>
           <p className="text-text-secondary mb-4">
             Every series declares its ordering column with{' '}
             <Code>with {'{'} key: column {'}'}</Code>; without it, <Code>create series</Code>{' '}
@@ -54,7 +54,7 @@ export function DataModelSeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Time-keyed series</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Time-keyed series</h2>
           <p className="text-text-secondary mb-4">
             A <Code>datetime</Code> key is the common case. Constructors such as{' '}
             <Code>datetime::from_epoch_millis</Code> turn raw epoch values into typed
@@ -86,7 +86,7 @@ export function DataModelSeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Range queries follow the key</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Range queries follow the key</h2>
           <p className="text-text-secondary mb-4">
             Filters on the key column select by the series' native order, which is what
             time-window and "since X" queries compile to. Results stay newest-first:
@@ -101,7 +101,7 @@ export function DataModelSeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">History can be corrected</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">History can be corrected</h2>
           <p className="text-text-secondary mb-4">
             A series is ordered, not immutable. Late corrections - a recalibrated
             sensor, an amended audit record - are ordinary updates selected by key, and
@@ -117,7 +117,7 @@ export function DataModelSeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Classifying entries with tags</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Classifying entries with tags</h2>
           <p className="text-text-secondary mb-4">
             A series can attach a{' '}
             <Link to="/docs/concepts/data-model/tags" className="text-primary hover:text-primary-light font-medium transition-colors">tag type</Link>{' '}
@@ -144,7 +144,7 @@ export function DataModelSeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Precision is a storage decision</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Precision is a storage decision</h2>
           <p className="text-text-secondary mb-4">
             A time-keyed series stores its key at a declared <Code>precision</Code>:{' '}
             <Code>second</Code>, <Code>millisecond</Code> (the default),{' '}
@@ -165,7 +165,7 @@ export function DataModelSeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One timeline per partition</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">One timeline per partition</h2>
           <p className="text-text-secondary mb-4">
             <Code>partition: {'{'} by: {'{'} col {'}'} {'}'}</Code> splits a series into
             one independently ordered sub-series per distinct partition value - a
@@ -182,7 +182,7 @@ export function DataModelSeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Series or something else?</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Series or something else?</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

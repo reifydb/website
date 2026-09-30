@@ -16,8 +16,8 @@ export function AggregatePage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">aggregate</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">aggregate</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>aggregate</Code> turns many rows into few. It groups the input by the
             columns in <Code>by</Code>, runs one or more aggregate functions over each
             group, and emits one row per group. The output shape is the group keys
@@ -26,7 +26,7 @@ export function AggregatePage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`aggregate { alias: math::fn(column), ... }
 aggregate { alias: math::fn(column), ... } by { key, ... }`} />
           <p className="text-text-secondary mt-4">
@@ -41,7 +41,7 @@ aggregate { alias: math::fn(column), ... } by { key, ... }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One row for everything</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">One row for everything</h2>
           <p className="text-text-secondary mb-4">
             Run the snippets on this page in order. Without <Code>by</Code>, the
             whole table collapses to a single row holding the totals:
@@ -54,7 +54,7 @@ aggregate { alias: math::fn(column), ... } by { key, ... }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One row per group</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">One row per group</h2>
           <p className="text-text-secondary mb-4">
             With <Code>by</Code>, each distinct value of the key becomes a group. The
             key columns come first in the output, then the aggregates in the order
@@ -76,7 +76,7 @@ aggregate { alias: math::fn(column), ... } by { key, ... }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">none in keys and values</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">none in keys and values</h2>
           <p className="text-text-secondary mb-4">
             A <Code>none</Code> key is a group like any other, collecting every row
             whose key is absent. It sorts after all present values in ascending order:
@@ -93,7 +93,7 @@ aggregate { alias: math::fn(column), ... } by { key, ... }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Edge cases</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Edge cases</h2>
           <p className="text-text-secondary mb-4">
             An aggregate over zero input rows produces zero output rows, not a row of
             zeros. A count of nothing is <Code>(empty)</Code>, not <Code>0</Code>:
@@ -119,7 +119,7 @@ aggregate { alias: math::fn(column), ... } by { key, ... }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Compared with SQL</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Compared with SQL</h2>
           <p className="text-text-secondary mb-4">
             <Code>aggregate ... by</Code> is <Code>GROUP BY</Code> plus the aggregate
             part of the select list, in one operator. The keys are listed once, in{' '}

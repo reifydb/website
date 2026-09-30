@@ -13,15 +13,15 @@ export function DatetimeFromEpochMillisPage() {
             <Link to="/docs/functions/datetime" className="font-bold hover:text-primary-color">datetime</Link>
             {' module'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">datetime::from_epoch_millis</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">Create a datetime from a Unix epoch timestamp in milliseconds.</p>
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">datetime::from_epoch_millis</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">Create a datetime from a Unix epoch timestamp in milliseconds.</p>
         </div>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`datetime::from_epoch_millis(milliseconds)`} />
         </section>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameters</h2>
           <div className="dialog overflow-x-auto">
             <table className="w-full">
               <thead className="bg-[#efedfb]"><tr>
@@ -40,15 +40,15 @@ export function DatetimeFromEpochMillisPage() {
           </div>
         </section>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Return Value</h2>
           <p className="text-text-secondary">Returns a Datetime corresponding to the given epoch timestamp in milliseconds.</p>
         </section>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Examples</h2>
           <ExecutableSnippet title={datetimeFromEpochMillis.title} initialCode={datetimeFromEpochMillis.code} />
         </section>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
             <Link to="/docs/functions/datetime/epoch_millis" className="text-primary-color hover:underline">datetime::epoch_millis</Link>
             <Link to="/docs/functions/datetime/from_epoch" className="text-primary-color hover:underline">datetime::from_epoch</Link>

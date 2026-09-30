@@ -16,10 +16,10 @@ export function DropPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             Drop &amp; Cleanup
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>drop</Code> removes a schema object from the catalog together with
             everything it stores. It is the inverse of <Code>create</Code>, it works on
             every object kind, and it is permanent - there is no undo, no recycle bin,
@@ -30,7 +30,7 @@ export function DropPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dropping a table</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Dropping a table</h2>
           <p className="text-text-secondary mb-4">
             Start with something to remove - a namespace, a table, and a couple of
             rows (the snippets on this page run in order):
@@ -52,7 +52,7 @@ export function DropPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dropped data is gone</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Dropped data is gone</h2>
           <p className="text-text-secondary mb-4">
             A drop deletes the object's contents, not just its catalog entry.
             Recreating the table under the same name produces a brand-new, empty object
@@ -70,7 +70,7 @@ export function DropPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Every object kind has a drop</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Every object kind has a drop</h2>
           <p className="text-text-secondary mb-4">
             Each <Code>create</Code> has a matching <Code>drop</Code> that takes the
             same qualified name. The confirmation always has the same shape - the
@@ -103,7 +103,7 @@ export function DropPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">if exists</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">if exists</h2>
           <p className="text-text-secondary mb-4">
             Cleanup scripts should not fail just because there was nothing to clean
             up. <Code>if exists</Code> turns a missing object from an error into a
@@ -128,7 +128,7 @@ export function DropPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dropping a namespace</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Dropping a namespace</h2>
           <p className="text-text-secondary mb-4">
             <Code>drop namespace</Code> removes the namespace and its entire contents
             recursively: every table with its data, every view, every other object,

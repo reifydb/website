@@ -83,7 +83,7 @@ export function HeroTerminal() {
   }, []);
 
   return (
-    <div className="group relative bg-code-bg border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-primary/30 hover:shadow-[0_0_50px_rgba(129,140,248,0.15)]">
+    <div className="group relative bg-code-bg border border-white/10 overflow-hidden transition-all duration-500 hover:border-primary/30 hover:shadow-[0_0_50px_rgba(129,140,248,0.15)]">
       {/* macOS Chrome Header */}
       <div className="h-8 sm:h-10 bg-code-bg-elevated border-b border-white/10 flex items-center px-3 sm:px-4 gap-2">
         <div className="flex gap-1.5">

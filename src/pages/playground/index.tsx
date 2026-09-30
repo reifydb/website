@@ -43,7 +43,7 @@ export function PlaygroundPage() {
               <button
                 key={example.id}
                 onClick={() => setActiveId(example.id)}
-                className={`font-mono text-xs px-3 py-1.5 rounded-md border transition-colors ${
+                className={`font-mono text-xs px-3 py-1.5 border transition-colors ${
                   example.id === activeId
                     ? 'border-primary bg-primary/10 text-primary'
                     : 'border-border-default text-text-secondary hover:border-primary/50 hover:text-text-primary'

@@ -62,8 +62,8 @@ export function ArithmeticPoliciesPage() {
             <Link to="/docs/functions/math" className="font-bold hover:text-primary-color">math</Link>
             {' module · Scalar Functions'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Arithmetic Policies</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Arithmetic Policies</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Sometimes an arithmetic result simply does not exist: the sum is too large
             for the result type, or the divisor is zero. By default ReifyDB fails the
             statement rather than silently producing a wrong number. When failing is
@@ -75,7 +75,7 @@ export function ArithmeticPoliciesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The default: fail loudly</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The default: fail loudly</h2>
           <p className="text-text-secondary mb-4">
             The bare operators (<Code>+</Code>, <Code>-</Code>, <Code>*</Code>,{' '}
             <Code>/</Code>, <Code>%</Code>) and the bare functions
@@ -97,7 +97,7 @@ export function ArithmeticPoliciesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One family, seven spellings</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">One family, seven spellings</h2>
           <p className="text-text-secondary mb-4">
             Each policy is a separate function named with a suffix:{' '}
             <Code>math::add_saturate</Code>, <Code>math::div_none</Code>,{' '}
@@ -136,7 +136,7 @@ export function ArithmeticPoliciesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">saturate: clamp to the type range</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">saturate: clamp to the type range</h2>
           <p className="text-text-secondary mb-4">
             <Code>_saturate</Code> pins an out-of-range result to the result type's
             minimum or maximum. Use it when "as large as representable" is a better
@@ -151,7 +151,7 @@ export function ArithmeticPoliciesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">wrap and zero</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">wrap and zero</h2>
           <p className="text-text-secondary mb-4">
             <Code>_wrap</Code> applies two's-complement wraparound, the behavior of
             unchecked machine arithmetic - useful for hash-style computations where
@@ -162,7 +162,7 @@ export function ArithmeticPoliciesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">none: make the result missing</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">none: make the result missing</h2>
           <p className="text-text-secondary mb-4">
             <Code>_none</Code> turns an impossible result into a missing value, which
             then flows through the rest of the query with the usual{' '}
@@ -175,7 +175,7 @@ export function ArithmeticPoliciesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">default: substitute your own value</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">default: substitute your own value</h2>
           <p className="text-text-secondary mb-4">
             <Code>_default</Code> takes a third argument and returns it for the rows
             where the real result does not exist. The fallback is coerced to the
@@ -185,7 +185,7 @@ export function ArithmeticPoliciesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">strict: fail with your own message</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">strict: fail with your own message</h2>
           <p className="text-text-secondary mb-4">
             <Code>_strict</Code> also fails the statement, like the bare function, but
             the third argument replaces the generic diagnostic with a message that
@@ -195,7 +195,7 @@ export function ArithmeticPoliciesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Missing input is not a policy decision</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Missing input is not a policy decision</h2>
           <p className="text-text-secondary mb-4">
             The policies decide what happens when a result <em>cannot exist</em>. A
             missing input is different: the result is simply missing too, in every
@@ -211,7 +211,7 @@ export function ArithmeticPoliciesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Types widen before they overflow</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Types widen before they overflow</h2>
           <p className="text-text-secondary mb-4">
             Arithmetic first promotes both operands to a wider result type: two{' '}
             <Code>int4</Code> values add as <Code>int8</Code>, two <Code>float4</Code>{' '}

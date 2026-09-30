@@ -16,10 +16,10 @@ export function RqlFiveMinutesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             RQL in Five Minutes
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             RQL is ReifyDB's query language. A query is a pipeline: it starts from data and
             flows top to bottom, one transformation per line. Every snippet on this page runs
             in your browser.
@@ -27,7 +27,7 @@ export function RqlFiveMinutesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The pipeline</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The pipeline</h2>
           <p className="text-text-secondary mb-4">
             <Code>from</Code> names the source. <Code>filter</Code> keeps matching rows.{' '}
             <Code>map</Code> picks the shape of the output. <Code>sort</Code> orders it.
@@ -53,7 +53,7 @@ sort { name: asc }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Start from any data</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Start from any data</h2>
           <p className="text-text-secondary mb-4">
             A pipeline usually starts from a table or view, but it can start from inline
             records too. Handy for prototyping an expression before you have a schema:
@@ -62,7 +62,7 @@ sort { name: asc }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Shape rows with map</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Shape rows with map</h2>
           <p className="text-text-secondary mb-4">
             <Code>map</Code> selects columns and computes new ones. <Code>take</Code> caps the
             result. Combined with <Code>sort</Code>, that is SQL's{' '}
@@ -72,7 +72,7 @@ sort { name: asc }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Aggregate by group</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Aggregate by group</h2>
           <p className="text-text-secondary mb-4">
             <Code>aggregate ... by</Code> groups rows and reduces each group. Aggregation
             functions are namespaced, like everything callable in RQL:{' '}
@@ -85,7 +85,7 @@ sort { name: asc }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Missing values are none</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Missing values are none</h2>
           <p className="text-text-secondary mb-4">
             RQL has no null. A missing value is written <Code>none</Code>, and it is typed:
             a missing <Code>int4</Code> is still an <Code>int4</Code>. Arithmetic propagates
@@ -99,7 +99,7 @@ sort { name: asc }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Variables</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Variables</h2>
           <p className="text-text-secondary mb-4">
             <Code>let</Code> binds a value you can reuse anywhere in the statement. RQL also has
             control flow (<Code>if</Code>, <Code>loop</Code>, <Code>match</Code>) for scripting
@@ -109,7 +109,7 @@ sort { name: asc }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where RQL goes further</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Where RQL goes further</h2>
           <p className="text-text-secondary mb-4">
             The same pipeline syntax defines derived state that ReifyDB maintains for you:
             transactional and deferred views, windowed aggregation over live data, and rows

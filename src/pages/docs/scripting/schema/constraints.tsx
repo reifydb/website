@@ -16,8 +16,8 @@ export function ConstraintsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Constraints</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Constraints</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A constraint is a rule the engine checks on every insert and update, and
             a write that breaks one fails as a whole. This page lists the rules the
             shipped engine enforces, the error each one raises, and the declarations
@@ -31,7 +31,7 @@ export function ConstraintsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Required columns</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Required columns</h2>
           <p className="text-text-secondary mb-4">
             A column is required unless its type is wrapped in <Code>Option(...)</Code>.
             An optional column accepts an explicit <Code>none</Code> and can be left
@@ -53,7 +53,7 @@ export function ConstraintsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Type and range</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Type and range</h2>
           <p className="text-text-secondary mb-4">
             Every value is converted to its column type at the write boundary. A value
             with no reading in that type fails with a cast error: <Code>CAST_002</Code>{' '}
@@ -91,7 +91,7 @@ export function ConstraintsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Byte-length limits</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Byte-length limits</h2>
           <p className="text-text-secondary mb-4">
             <Code>utf8(n)</Code> and <Code>blob(n)</Code> cap a column at{' '}
             <Code>n</Code> bytes. The limit counts bytes, not characters, so a
@@ -110,7 +110,7 @@ export function ConstraintsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Primary keys</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Primary keys</h2>
           <p className="text-text-secondary mb-4">
             <Code>create primary key on ns::table {'{'} col, ... {'}'}</Code> is the
             one uniqueness rule the engine maintains. Every insert checks the key, a
@@ -149,7 +149,7 @@ export function ConstraintsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Saturation policies</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Saturation policies</h2>
           <p className="text-text-secondary mb-4">
             The range check above has one configurable outcome. A column property
             declared with{' '}
@@ -182,7 +182,7 @@ export function ConstraintsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Declared but not enforced</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Declared but not enforced</h2>
           <p className="text-text-secondary mb-4">
             A column declaration accepts four property names after <Code>with</Code>:
           </p>
@@ -223,7 +223,7 @@ export function ConstraintsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Errors</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Errors</h2>
           <ul className="list-disc pl-6 space-y-2 text-text-secondary">
             <li>
               <Code>CONSTRAINT_007</Code> - <Code>none</Code> written to a required

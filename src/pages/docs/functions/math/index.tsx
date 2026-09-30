@@ -9,17 +9,17 @@ export function MathModuleOverviewPage() {
       <div className="space-y-8">
         {/* Header */}
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             math Module
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Number crunching and aggregations for your queries.
           </p>
         </div>
 
         {/* Quick Example */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Quick Example</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Quick Example</h2>
           <ExecutableSnippet
             title="Quick Example"
             initialCode={mathOverviewQuick.code}
@@ -28,7 +28,7 @@ export function MathModuleOverviewPage() {
 
         {/* Aggregation Functions */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Aggregation Functions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Aggregation Functions</h2>
           <p className="text-text-secondary mb-4">
             Use these with the <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm">aggregate</code> transform to summarize your data.
           </p>
@@ -54,7 +54,7 @@ export function MathModuleOverviewPage() {
 
         {/* Scalar Functions */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Scalar Functions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Scalar Functions</h2>
           <p className="text-text-secondary mb-4">
             Apply math to individual values, row by row.
           </p>
@@ -112,7 +112,7 @@ export function MathModuleOverviewPage() {
 
         {/* Trigonometric Functions */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Trigonometric Functions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Trigonometric Functions</h2>
           <p className="text-text-secondary mb-4">
             Standard trigonometric functions operating in radians.
           </p>
@@ -150,7 +150,7 @@ export function MathModuleOverviewPage() {
 
         {/* Logarithmic & Exponential */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Logarithmic & Exponential</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Logarithmic & Exponential</h2>
           <p className="text-text-secondary mb-4">
             Logarithms, exponentials, and mathematical constants.
           </p>
@@ -184,7 +184,7 @@ export function MathModuleOverviewPage() {
 
         {/* Reference Table */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Function Reference</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Function Reference</h2>
           <div className="dialog overflow-x-auto">
             <table className="w-full">
               <thead className="bg-[#efedfb]">

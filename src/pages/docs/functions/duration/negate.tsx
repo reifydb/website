@@ -13,23 +13,23 @@ export function DurationNegatePage() {
             <Link to="/docs/functions/duration" className="font-bold hover:text-primary-color">duration</Link>
             {' module'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">duration::negate</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">Negate a duration (flip its sign).</p>
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">duration::negate</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">Negate a duration (flip its sign).</p>
         </div>
-        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2><RqlCodeBlock code={`duration::negate(duration)`} /></section>
+        <section><h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Syntax</h2><RqlCodeBlock code={`duration::negate(duration)`} /></section>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameters</h2>
           <div className="dialog overflow-x-auto"><table className="w-full">
             <thead className="bg-[#efedfb]"><tr><th className="text-left p-2 sm:p-3 font-bold">Name</th><th className="text-left p-2 sm:p-3 font-bold">Type</th><th className="text-left p-2 sm:p-3 font-bold">Description</th></tr></thead>
             <tbody><tr className="border-t border-border-light"><td className="p-2 sm:p-3"><code>duration</code></td><td className="p-2 sm:p-3">Duration</td><td className="p-2 sm:p-3">The duration to negate.</td></tr></tbody>
           </table></div>
         </section>
-        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2><p className="text-text-secondary">Returns a Duration with its sign flipped.</p></section>
+        <section><h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Return Value</h2><p className="text-text-secondary">Returns a Duration with its sign flipped.</p></section>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Examples</h2>
           <ExecutableSnippet title={durationNegate.title} initialCode={durationNegate.code} />
         </section>
-        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
+        <section><h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
           <Link to="/docs/functions/duration/subtract" className="text-primary-color hover:underline">duration::subtract</Link>
           <Link to="/docs/functions/duration/scale" className="text-primary-color hover:underline">duration::scale</Link>
         </div></section>

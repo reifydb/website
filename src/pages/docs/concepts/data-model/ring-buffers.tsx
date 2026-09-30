@@ -16,8 +16,8 @@ export function DataModelRingBuffersPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Ring Buffers</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Ring Buffers</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A ring buffer is a fixed-capacity store: when it is full, inserting a new
             row evicts the oldest one. It is the shape for "keep the last N" state -
             recent activity, latest readings, bounded logs - without a cleanup job,
@@ -26,7 +26,7 @@ export function DataModelRingBuffersPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating a ring buffer</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Creating a ring buffer</h2>
           <p className="text-text-secondary mb-4">
             A ring buffer is declared like a{' '}
             <Link to="/docs/concepts/data-model/tables" className="text-primary hover:text-primary-light font-medium transition-colors">table</Link>{' '}
@@ -38,7 +38,7 @@ export function DataModelRingBuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Eviction, step by step</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Eviction, step by step</h2>
           <p className="text-text-secondary mb-4">
             Filling the buffer to capacity keeps everything. Note the read order: a bare
             scan of a ring buffer returns rows oldest first, which is the opposite of a
@@ -59,7 +59,7 @@ export function DataModelRingBuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One buffer per partition</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">One buffer per partition</h2>
           <p className="text-text-secondary mb-4">
             Adding <Code>partition: {'{'} by: {'{'} col {'}'} {'}'}</Code> to the{' '}
             <Code>with</Code> clause turns one buffer into an independent buffer per
@@ -78,7 +78,7 @@ export function DataModelRingBuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Rows stay mutable</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Rows stay mutable</h2>
           <p className="text-text-secondary mb-4">
             Unlike a log, a ring buffer's rows are ordinary rows. You can update them in
             place with the same <Code>filter</Code> and <Code>returning</Code> forms as
@@ -93,7 +93,7 @@ export function DataModelRingBuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Ring buffers and views</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Ring buffers and views</h2>
           <p className="text-text-secondary mb-4">
             A{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">view</Link>{' '}
@@ -122,7 +122,7 @@ export function DataModelRingBuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What the engine rejects</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What the engine rejects</h2>
           <p className="text-text-secondary mb-4">
             The capacity clause is not optional. Leaving it out is a parse error, not a
             buffer with a default size:
@@ -136,7 +136,7 @@ export function DataModelRingBuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Catalog and lifecycle</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Catalog and lifecycle</h2>
           <p className="text-text-secondary mb-4">
             Every ring buffer is listed in <Code>system::ringbuffers</Code> with its{' '}
             <Code>id</Code>, <Code>namespace_id</Code>, <Code>name</Code>,{' '}
@@ -153,7 +153,7 @@ export function DataModelRingBuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Ring buffer or something else?</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Ring buffer or something else?</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

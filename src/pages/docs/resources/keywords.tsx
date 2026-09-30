@@ -179,8 +179,8 @@ export function KeywordsPage() {
       <div className="space-y-8">
         <div>
           <div className="text-sm text-text-muted mb-2 font-bold">Resources</div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Keywords</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Keywords</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             RQL reserves 111 words. They are case-insensitive: <Code>from</Code>,{' '}
             <Code>FROM</Code>, and <Code>From</Code> are the same token, and these docs
             write every keyword in lowercase. A keyword is only a keyword as a whole
@@ -193,7 +193,7 @@ export function KeywordsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Using a keyword as a name</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Using a keyword as a name</h2>
           <p className="text-text-secondary mb-4">
             The rules are looser than in most databases. Every keyword can name a table
             or a column, and every keyword but <Code>if</Code> and <Code>policy</Code>{' '}
@@ -241,7 +241,7 @@ export function KeywordsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">All keywords</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">All keywords</h2>
           <p className="text-text-secondary mb-4">
             The last column answers one question: can this keyword be referenced bare
             as a column inside an expression? "Reserved" marks a keyword the tokenizer

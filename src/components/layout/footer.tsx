@@ -82,7 +82,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="flex items-center justify-center p-2 rounded-md text-text-secondary hover:text-primary hover:bg-bg-tertiary transition-colors"
+                  className="flex items-center justify-center p-2 text-text-secondary hover:text-primary hover:bg-bg-tertiary transition-colors"
                 >
                   {social.icon}
                 </a>

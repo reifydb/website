@@ -16,8 +16,8 @@ export function MigrationsOverviewPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Migrations</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Migrations</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A migration is a named block of RQL that the database records before it
             runs. Registering it is one step, applying it is another, and the engine
             keeps a ledger of which migrations have been applied so the same script can
@@ -28,7 +28,7 @@ export function MigrationsOverviewPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Register, then apply</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Register, then apply</h2>
           <p className="text-text-secondary mb-4">
             <Code>create migration 'name' {'{'} ... {'}'}</Code> registers a body under
             a quoted name. The body can hold any admin statements - DDL, inserts,
@@ -55,7 +55,7 @@ export function MigrationsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Names are the order</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Names are the order</h2>
           <p className="text-text-secondary mb-4">
             Pending migrations run sorted by name, as plain text - <Code>10_x</Code>{' '}
             sorts before <Code>2_x</Code>. Zero-padded numeric prefixes keep the order
@@ -76,7 +76,7 @@ export function MigrationsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Rolling back</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Rolling back</h2>
           <p className="text-text-secondary mb-4">
             A migration reverts only if it declared how:{' '}
             <Code>create migration 'name' {'{'} ... {'}'} rollback {'{'} ... {'}'}</Code>.
@@ -112,7 +112,7 @@ export function MigrationsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Bodies are immutable</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Bodies are immutable</h2>
           <p className="text-text-secondary mb-4">
             At registration the engine hashes the body together with the rollback body
             and stores the hash. Registering the same name with the same content again
@@ -131,7 +131,7 @@ export function MigrationsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Failure leaves the ledger honest</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Failure leaves the ledger honest</h2>
           <p className="text-text-secondary mb-4">
             Each migration's body runs inside the <Code>migrate</Code> request. If a
             body fails, the request fails, everything it did rolls back, and the
@@ -149,7 +149,7 @@ export function MigrationsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Migrations as files</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Migrations as files</h2>
           <p className="text-text-secondary mb-4">
             Embedded ReifyDB can load migrations at build time with{' '}
             <Code>with_migrations(...)</Code>. Pass a list of{' '}

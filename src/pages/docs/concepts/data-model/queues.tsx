@@ -15,8 +15,8 @@ export function DataModelQueuesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Queues</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Queues</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A queue holds work items that must be handled once. Producers put items in
             with <Code>insert</Code>. Workers take them out with{' '}
             <Code>queue::claim</Code>, which leases each item to exactly one worker for a
@@ -39,7 +39,7 @@ export function DataModelQueuesPage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating a queue</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Creating a queue</h2>
           <p className="text-text-secondary mb-4">
             A queue is declared like a{' '}
             <Link to="/docs/concepts/data-model/tables" className="text-primary hover:text-primary-light font-medium transition-colors">table</Link>:
@@ -62,7 +62,7 @@ export function DataModelQueuesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Items go in with insert</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Items go in with insert</h2>
           <p className="text-text-secondary mb-4">
             Enqueueing is an ordinary <Code>insert</Code>. The confirmation reports how
             many items were enqueued and how many were dropped as duplicates:
@@ -92,7 +92,7 @@ export function DataModelQueuesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Items come out with a claim</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Items come out with a claim</h2>
           <p className="text-text-secondary mb-4">
             <Code>queue::claim(worker, queue, max_n, lease_ttl)</Code> leases up to{' '}
             <Code>max_n</Code> due items to one named worker. Each lease has a deadline,{' '}
@@ -122,7 +122,7 @@ qt1:16385:0:1:1:w1 | 1    | 1       | 1970-01-01T00:00:31.000000000Z | 1  | alph
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Finishing an item</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Finishing an item</h2>
           <p className="text-text-secondary mb-4">
             Every outcome is reported by token. <Code>queue::ack(token)</Code> marks the
             attempt <Code>ok</Code>: the item is done for good and never comes back.{' '}
@@ -156,7 +156,7 @@ ok     | 1    | 1`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Retries, expired leases, and dead items</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Retries, expired leases, and dead items</h2>
           <p className="text-text-secondary mb-4">
             The retry budget is declared at creation:{' '}
             <Code>retry: {'{'} attempts: 5, backoff: 10s {'}'}</Code> are the defaults.
@@ -191,7 +191,7 @@ cpt_queue::jobs | 1    | ready`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Delivery and ordering guarantees</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Delivery and ordering guarantees</h2>
           <p className="text-text-secondary mb-4">
             Delivery is at-least-once. An item is never handed to two workers at the same
             time, but a lease that expires is delivered again as a new attempt, so a
@@ -232,7 +232,7 @@ qt1:16386:0:3:1:w1 | 3    | 1       | 1970-01-01T00:00:31.000000000Z | 3  | b`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Partitions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Partitions</h2>
           <p className="text-text-secondary mb-4">
             <Code>fifo: {'{'} partitions: N {'}'}</Code> sets how many independent lanes
             the queue has, between 1 and 1024, 16 by default. Partitions are not a
@@ -247,7 +247,7 @@ qt1:16386:0:3:1:w1 | 3    | 1       | 1970-01-01T00:00:31.000000000Z | 3  | b`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Scheduling and deduplication</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Scheduling and deduplication</h2>
           <p className="text-text-secondary mb-4">
             Two <Code>insert</Code> options shape when and whether an item is admitted.{' '}
             <Code>with {'{'} not_before: datetime {'}'}</Code> keeps the item out of every
@@ -267,7 +267,7 @@ qt1:16386:0:3:1:w1 | 3    | 1       | 1970-01-01T00:00:31.000000000Z | 3  | b`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Transactions and durability</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Transactions and durability</h2>
           <p className="text-text-secondary mb-4">
             An enqueue is a normal transactional write. It commits with the rest of the
             request and rolls back with it, so a statement that fails after inserting
@@ -292,7 +292,7 @@ qt1:16386:0:3:1:w1 | 3    | 1       | 1970-01-01T00:00:31.000000000Z | 3  | b`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Retention</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Retention</h2>
           <p className="text-text-secondary mb-4">
             Acknowledging an item does not delete it. Done and dead items stay stored,
             with their attempt records, until retention removes them. Declare{' '}
@@ -306,7 +306,7 @@ qt1:16386:0:3:1:w1 | 3    | 1       | 1970-01-01T00:00:31.000000000Z | 3  | b`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Observing a queue</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Observing a queue</h2>
           <p className="text-text-secondary mb-4">
             <Code>system::queues</Code> lists every queue with its declaration
             (<Code>partitions</Code>, <Code>ordered_by</Code>,{' '}
@@ -333,7 +333,7 @@ qt1:16386:0:3:1:w1 | 3    | 1       | 1970-01-01T00:00:31.000000000Z | 3  | b`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Queue or something else?</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Queue or something else?</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

@@ -29,8 +29,8 @@ export function ClientsOverviewPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Clients</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Clients</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             There is one engine and several ways in. A Rust process can embed it directly;
             everything else talks to the server over WebSocket or HTTP. This page is the
             map: which client fits your architecture, what each one supports today, and
@@ -41,7 +41,7 @@ export function ClientsOverviewPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Embedded or remote</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Embedded or remote</h2>
           <p className="text-text-secondary mb-4">
             The first decision is not which library but which shape. <strong>Embedded</strong>{' '}
             means the engine runs inside your process: no ports, no authentication surface,
@@ -71,7 +71,7 @@ export function ClientsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">At a glance</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">At a glance</h2>
           <div className="overflow-x-auto">
             <table className="w-full border border-border-light text-sm">
               <thead>
@@ -143,7 +143,7 @@ export function ClientsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Rust (Embedded)</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Rust (Embedded)</h2>
           <p className="text-text-secondary mb-4">
             The <Code>reifydb</Code> crate is not a client in the strict sense - it is the
             whole engine as a library, embedded the way you would embed SQLite. Build a
@@ -167,7 +167,7 @@ export function ClientsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Rust (Client)</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Rust (Client)</h2>
           <p className="text-text-secondary mb-4">
             The <Code>reifydb-client</Code> crate connects to a running server. Transports
             are opt-in Cargo features: <Code>ws</Code> gives you <Code>WsClient</Code> (one
@@ -190,7 +190,7 @@ export function ClientsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">TypeScript / JavaScript</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">TypeScript / JavaScript</h2>
           <p className="text-text-secondary mb-4">
             <Code>@reifydb/client</Code> runs in Node.js and the browser.{' '}
             <Code>Client.connect_ws(url)</Code> returns a WebSocket client with queries,
@@ -212,7 +212,7 @@ export function ClientsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Python</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Python</h2>
           <p className="text-text-secondary mb-4">
             The Python binding is an early prototype and currently stale. It is a PyO3
             module at version 0.0.1 that embeds the engine in the Python process - there is
@@ -230,7 +230,7 @@ export function ClientsOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Wire formats</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Wire formats</h2>
           <p className="text-text-secondary mb-4">
             Every remote client speaks the same protocol underneath: requests tagged as
             query, command, or admin, with parameters as typed{' '}

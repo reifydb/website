@@ -16,23 +16,23 @@ export function DateNowPage() {
             </Link>
             {' module'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             date::now
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Get the current timestamp.
           </p>
         </div>
 
         {/* Syntax */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`date::now()`} />
         </section>
 
         {/* Parameters */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameters</h2>
           <p className="text-text-secondary">
             This function takes no parameters.
           </p>
@@ -40,20 +40,20 @@ export function DateNowPage() {
 
         {/* Return Value */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Return Value</h2>
           <p className="text-text-secondary">
             Returns a timestamp representing the current date and time.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Examples</h2>
           <ExecutableSnippet title={dateNowInline.title} initialCode={dateNowInline.code} />
         </section>
 
         {/* Related Functions */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
             <Link to="/docs/functions/date/add" className="text-primary-color hover:underline">
               date::add

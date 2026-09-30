@@ -20,8 +20,8 @@ export function JoinPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">join</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">join</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>join</Code> pairs each row flowing through the pipeline with matching
             rows from a second source. The second source is written as a braced
             subquery, given an alias with <Code>as</Code>, and matched with{' '}
@@ -33,7 +33,7 @@ export function JoinPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Inner join</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Inner join</h2>
           <p className="text-text-secondary mb-4">
             In <Code>using (dept_id, d.id)</Code>, the first name is a column of the
             left side and the second is a column of the joined side, qualified by its
@@ -48,7 +48,7 @@ export function JoinPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Left join</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Left join</h2>
           <p className="text-text-secondary mb-4">
             A left join keeps every row from the left side. Where the joined side has
             no match, its columns are <Code>none</Code>:
@@ -60,7 +60,7 @@ export function JoinPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">How joined columns are named</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">How joined columns are named</h2>
           <p className="text-text-secondary mb-4">
             The joined side's columns are flattened into the row under{' '}
             <Code>alias_column</Code>: with <Code>as d</Code>, the department's{' '}
@@ -83,7 +83,7 @@ export function JoinPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Bare join</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Bare join</h2>
           <p className="text-text-secondary mb-4">
             <Code>join</Code> with no kind keyword is an inner join:
           </p>
@@ -91,7 +91,7 @@ export function JoinPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Joins compose with the rest of the pipeline</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Joins compose with the rest of the pipeline</h2>
           <p className="text-text-secondary mb-4">
             After the join, the row is an ordinary row. Aggregate it, sort it, filter
             it - using the flattened names:
@@ -111,7 +111,7 @@ export function JoinPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Composite keys</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Composite keys</h2>
           <p className="text-text-secondary mb-4">
             Chain several <Code>using</Code> pairs with <Code>and</Code> to require that
             all of them match:
@@ -126,7 +126,7 @@ export function JoinPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Natural join</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Natural join</h2>
           <p className="text-text-secondary mb-4">
             <Code>natural join</Code> needs no <Code>using</Code>. It matches on every
             column name both sides share and keeps a single copy of each shared column,
@@ -149,7 +149,7 @@ export function JoinPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Key types must agree</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Key types must agree</h2>
           <p className="text-text-secondary mb-4">
             Keys are compared by value <em>and</em> type. Both sides of a join in this
             build should be real stored sources - tables, views, ring buffers - whose
@@ -164,7 +164,7 @@ export function JoinPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Joins inside views</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Joins inside views</h2>
           <p className="text-text-secondary mb-4">
             Inside a{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">view</Link>,

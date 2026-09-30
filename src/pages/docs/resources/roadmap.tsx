@@ -77,8 +77,8 @@ export function RoadmapPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Roadmap &amp; Experimental</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Roadmap &amp; Experimental</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             ReifyDB is pre-1.0 (the source tree is at 0.9.0) and in active development.
             The documented pages describe what works today. This page lists what exists
             in the source but is not stable enough to get a page of its own, so you can
@@ -89,7 +89,7 @@ export function RoadmapPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">How to read the states</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">How to read the states</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
@@ -116,7 +116,7 @@ export function RoadmapPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Experimental and in-development features</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Experimental and in-development features</h2>
           <div className="dialog overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="bg-[#efedfb]">
@@ -145,7 +145,7 @@ export function RoadmapPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Engine work in progress</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Engine work in progress</h2>
           <p className="text-text-secondary mb-4">
             These are open engineering plans in the repository. They change behavior you
             can observe today, so they are worth knowing about even though none of them
@@ -220,7 +220,7 @@ export function RoadmapPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">How a feature graduates</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">How a feature graduates</h2>
           <p className="text-text-secondary mb-4">
             A feature gets a documentation page when it can be exercised end to end in a
             released build, is covered by golden test scripts, and its examples run in the

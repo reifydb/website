@@ -11,8 +11,8 @@ export function DurabilityPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Durability &amp; Storage</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Durability &amp; Storage</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             ReifyDB decouples commit from disk. A committed write is immediately visible to
             every subsequent transaction - it lives in an in-memory, multi-version store -
             and a background flusher migrates it to persistent storage afterwards. The
@@ -23,7 +23,7 @@ export function DurabilityPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Choosing a backend</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Choosing a backend</h2>
           <p className="text-text-secondary mb-4">
             The backend is fixed when the database is constructed. The embedded Rust API
             exposes three factories, and the server builder mirrors them
@@ -57,7 +57,7 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The write path: commit now, disk later</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The write path: commit now, disk later</h2>
           <p className="text-text-secondary mb-4">
             When a{' '}
             <Link to="/docs/concepts/transactions" className="text-primary hover:text-primary-light font-medium transition-colors">transaction</Link>{' '}
@@ -116,7 +116,7 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What "durable" means</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What "durable" means</h2>
           <p className="text-text-secondary mb-4">
             <strong>Memory backend:</strong> nothing is durable. Stop the process - cleanly
             or not - and all data is gone. That is its contract; use it for tests and for
@@ -152,7 +152,7 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">On disk: three SQLite files</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">On disk: three SQLite files</h2>
           <p className="text-text-secondary mb-4">
             Point <Code>SqliteConfig::new</Code> at a directory-style path and the engine
             lays out one directory with three databases (each with its own{' '}
@@ -186,7 +186,7 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What survives a restart</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What survives a restart</h2>
           <ul className="space-y-2 text-text-secondary mb-4">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
@@ -237,7 +237,7 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The change log is storage too</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The change log is storage too</h2>
           <p className="text-text-secondary mb-4">
             Alongside row data, ReifyDB keeps a change-data-capture log: every committed
             write, converted to change entries by a background producer after commit and
@@ -259,7 +259,7 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Scope: one node, local disk</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Scope: one node, local disk</h2>
           <p className="text-text-secondary mb-4">
             Everything above describes a single node: durability means the local SQLite
             files. A default deployment commits locally only. The engine does ship two

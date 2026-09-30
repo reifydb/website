@@ -25,7 +25,7 @@ function Details({ to, label }: { to: string; label: string }) {
 function Statement({ id, name, children }: { id: string; name: string; children: React.ReactNode }) {
   return (
     <section id={id}>
-      <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">{name}</h2>
+      <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">{name}</h2>
       {children}
     </section>
   );
@@ -99,8 +99,8 @@ export function RqlStatementsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Statement Reference</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Statement Reference</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Every statement the RQL parser accepts at the top level of a request, A to Z.
             Each entry gives the purpose in one line, a skeleton that parses as written,
             and a link to the page with runnable examples. This page is an index, not a
@@ -110,7 +110,7 @@ export function RqlStatementsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">How to read the skeletons</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">How to read the skeletons</h2>
           <p className="text-text-secondary mb-4">
             The skeletons share one setup: a namespace <Code>ns</Code> with tables{' '}
             <Code>orders</Code> (<Code>id</Code>, <Code>customer_id</Code>,{' '}
@@ -847,7 +847,7 @@ map { i: $i }`} />
         </Statement>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Not listed: experimental statements</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Not listed: experimental statements</h2>
           <p className="text-text-secondary mb-4">
             The parser also knows <Code>create remote namespace</Code> and{' '}
             <Code>alter remote namespace</Code>, <Code>create source</Code>,{' '}

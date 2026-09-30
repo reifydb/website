@@ -16,8 +16,8 @@ export function DmlUpdatePage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Update</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Update</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>update</Code> rewrites rows in place. It names a target, a record of
             fields to set, and a <Code>filter</Code> that selects which rows change:{' '}
             <Code>{'update ns::table { field: value } filter { ... }'}</Code>. Only the
@@ -27,7 +27,7 @@ export function DmlUpdatePage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Set a field on matching rows</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Set a field on matching rows</h2>
           <p className="text-text-secondary mb-4">
             The field record is a partial row, not a replacement row. Here only{' '}
             <Code>price</Code> is listed, so <Code>name</Code> and <Code>stocked</Code>{' '}
@@ -39,7 +39,7 @@ export function DmlUpdatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Multiple fields and expressions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Multiple fields and expressions</h2>
           <p className="text-text-secondary mb-4">
             Several fields can change in one statement, and a field's new value may be an
             expression over the row's current values - <Code>price: price + 5</Code>{' '}
@@ -50,7 +50,7 @@ export function DmlUpdatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The filter is mandatory</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The filter is mandatory</h2>
           <p className="text-text-secondary mb-4">
             An <Code>update</Code> without a <Code>filter</Code> does not quietly rewrite
             the whole table - it is rejected outright with <Code>UPDATE_003</Code>. A
@@ -66,7 +66,7 @@ export function DmlUpdatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Updates flow into views</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Updates flow into views</h2>
           <p className="text-text-secondary mb-4">
             An update to a table is also an update to everything derived from it.{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">Transactional views</Link>{' '}
@@ -96,7 +96,7 @@ export function DmlUpdatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Other shapes, same verb</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Other shapes, same verb</h2>
           <p className="text-text-secondary mb-4">
             <Code>update</Code> works identically on{' '}
             <Link to="/docs/scripting/storage/ringbuffers" className="text-primary hover:text-primary-light font-medium transition-colors">ring buffers</Link>{' '}
@@ -111,7 +111,7 @@ export function DmlUpdatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Concurrency</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Concurrency</h2>
           <p className="text-text-secondary mb-4">
             Updates run inside automatic transactions with serializable snapshot
             isolation. Two updates racing over the same rows cannot silently interleave:

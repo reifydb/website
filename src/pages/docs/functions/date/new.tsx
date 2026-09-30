@@ -13,12 +13,12 @@ export function DateNewPage() {
             <Link to="/docs/functions/date" className="font-bold hover:text-primary-color">date</Link>
             {' module'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">date::new</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">Create a new date from year, month, and day components.</p>
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">date::new</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">Create a new date from year, month, and day components.</p>
         </div>
-        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2><RqlCodeBlock code={`date::new(year, month, day)`} /></section>
+        <section><h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Syntax</h2><RqlCodeBlock code={`date::new(year, month, day)`} /></section>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameters</h2>
           <div className="dialog overflow-x-auto"><table className="w-full">
             <thead className="bg-[#efedfb]"><tr><th className="text-left p-2 sm:p-3 font-bold">Name</th><th className="text-left p-2 sm:p-3 font-bold">Type</th><th className="text-left p-2 sm:p-3 font-bold">Description</th></tr></thead>
             <tbody>
@@ -28,12 +28,12 @@ export function DateNewPage() {
             </tbody>
           </table></div>
         </section>
-        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2><p className="text-text-secondary">Returns a Date constructed from the given year, month, and day components.</p></section>
+        <section><h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Return Value</h2><p className="text-text-secondary">Returns a Date constructed from the given year, month, and day components.</p></section>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Examples</h2>
           <ExecutableSnippet title={dateNewInline.title} initialCode={dateNewInline.code} />
         </section>
-        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/date/now" className="text-primary-color hover:underline">date::now</Link><Link to="/docs/functions/datetime/new" className="text-primary-color hover:underline">datetime::new</Link></div></section>
+        <section><h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/date/now" className="text-primary-color hover:underline">date::now</Link><Link to="/docs/functions/datetime/new" className="text-primary-color hover:underline">datetime::new</Link></div></section>
       </div>
     </Layout>
   );

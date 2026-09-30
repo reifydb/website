@@ -16,23 +16,23 @@ export function JsonArrayPage() {
             </Link>
             {' module · Function'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             json::array
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             Build a JSON array from a list of values.
           </p>
         </div>
 
         {/* Syntax */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`json::array(value1, value2, ...)`} />
         </section>
 
         {/* Parameters */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameters</h2>
           <div className="dialog overflow-x-auto">
             <table className="w-full">
               <thead className="bg-[#efedfb]">
@@ -55,7 +55,7 @@ export function JsonArrayPage() {
 
         {/* Return Value */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Return Value</h2>
           <p className="text-text-secondary">
             Returns a JSON array containing the provided values.
           </p>
@@ -63,7 +63,7 @@ export function JsonArrayPage() {
 
         {/* Examples */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Build a JSON array</h3>
           <ExecutableSnippet
@@ -80,7 +80,7 @@ export function JsonArrayPage() {
 
         {/* Related Functions */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
             <Link to="/docs/functions/json/object" className="text-primary-color hover:underline">
               json::object

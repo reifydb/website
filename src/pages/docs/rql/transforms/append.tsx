@@ -31,8 +31,8 @@ export function AppendPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">append</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">append</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>append</Code> concatenates rows. The rows of the pipeline inside the
             braces are added under the rows already flowing, and everything downstream
             sees one stream. It is the operator for "these are the same kind of thing":
@@ -45,7 +45,7 @@ export function AppendPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Only inside a view</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Only inside a view</h2>
           <Callout variant="warning" title="Do not run append in an ad-hoc query">
             The playground engine executes <Code>append</Code> only as part of a view
             definition. In a plain query it does not return an error; it aborts the
@@ -59,7 +59,7 @@ export function AppendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={syntax} />
           <p className="text-text-secondary mt-4">
             The braces hold a complete pipeline that starts with its own{' '}
@@ -71,7 +71,7 @@ export function AppendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Concatenating two tables</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Concatenating two tables</h2>
           <p className="text-text-secondary mb-4">
             Run the snippets on this page in order. The first creates two order tables,
             a{' '}
@@ -105,7 +105,7 @@ export function AppendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">More than two sources</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">More than two sources</h2>
           <p className="text-text-secondary mb-4">
             Appends chain. Each one adds another pipeline under the stream so far:
           </p>
@@ -116,7 +116,7 @@ export function AppendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Each side is a pipeline</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Each side is a pipeline</h2>
           <p className="text-text-secondary mb-4">
             The braces take a full pipeline, with its operators chained by{' '}
             <Code>|</Code>. Writing them on separate lines inside the braces is a parse
@@ -137,7 +137,7 @@ export function AppendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Nothing is deduplicated</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Nothing is deduplicated</h2>
           <p className="text-text-secondary mb-4">
             <Code>append</Code> is a plain concatenation. A row present on both sides -
             here a table appended to itself - appears once per side. Put a{' '}
@@ -151,7 +151,7 @@ export function AppendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Transactional views</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Transactional views</h2>
           <p className="text-text-secondary mb-4">
             Despite the wording of the engine abort above, <Code>append</Code> is not
             limited to deferred views; a{' '}
@@ -172,7 +172,7 @@ export function AppendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The view's columns decide the shape</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The view's columns decide the shape</h2>
           <p className="text-text-secondary mb-4">
             <Code>append</Code> does not compare the two sides' columns. Rows are placed
             into the view's declared columns by name: a source column the view does not
@@ -221,7 +221,7 @@ export function AppendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Appending to a frame variable</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Appending to a frame variable</h2>
           <p className="text-text-secondary mb-4">
             The same keyword has a second form for scripts. As a statement,{' '}
             <Code>append $target from ...</Code> extends a frame bound with{' '}
@@ -265,7 +265,7 @@ export function AppendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Compared with SQL</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Compared with SQL</h2>
           <p className="text-text-secondary mb-4">
             <Code>append</Code> is <Code>UNION ALL</Code>: concatenation, duplicates kept,
             no attempt to reconcile the sides. Two differences. SQL matches the two{' '}

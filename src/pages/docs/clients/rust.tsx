@@ -19,8 +19,8 @@ export function RustClientPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Rust (Client)</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Rust (Client)</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             The <Code>reifydb-client</Code> crate talks to a running ReifyDB server. Where{' '}
             <DocLink to="/docs/clients/rust-embedded">Rust (Embedded)</DocLink> hands you
             the engine in-process, this crate speaks the wire protocol: WebSocket for
@@ -33,7 +33,7 @@ export function RustClientPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Installation</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Installation</h2>
           <p className="text-text-secondary mb-4">
             Transports are opt-in Cargo features and the default feature set is empty, so
             a bare <Code>reifydb-client = "0.8.1"</Code> compiles but exposes no client
@@ -63,7 +63,7 @@ tokio = { version = "1", features = ["full"] }
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Connecting</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Connecting</h2>
           <p className="text-text-secondary mb-4">
             Both clients connect with a URL and a{' '}
             <Code>WireFormat</Code> (<Code>Json</Code> is the readable default,{' '}
@@ -120,7 +120,7 @@ let frames = client.query("MAP { answer: 42 }", None).await?;`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Authentication</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Authentication</h2>
           <p className="text-text-secondary mb-4">
             A fresh connection runs as the anonymous identity; what that identity may do
             is decided by policies on the server. To act as a real user, log in with
@@ -157,7 +157,7 @@ client.logout().await?;`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Queries and commands</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Queries and commands</h2>
           <p className="text-text-secondary mb-4">
             <Code>query(rql, params)</Code> reads, <Code>command(rql, params)</Code>{' '}
             writes. Both take an <Code>Option&lt;Params&gt;</Code> and return{' '}
@@ -198,7 +198,7 @@ for frame in frames {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Admin statements</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Admin statements</h2>
           <p className="text-text-secondary mb-4">
             The application endpoints (8090/8091) accept queries and commands only;
             admin statements such as <Code>CREATE TABLE</Code> are rejected there. The
@@ -230,7 +230,7 @@ admin.close().await?;`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameters</h2>
           <p className="text-text-secondary mb-4">
             <Code>Params</Code> is the same type the embedded API uses, re-exported by
             this crate. The client methods take <Code>Option&lt;Params&gt;</Code>:{' '}
@@ -268,7 +268,7 @@ let frames = client.query(
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Mapping rows to structs</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Mapping rows to structs</h2>
           <p className="text-text-secondary mb-4">
             The crate re-exports the same <Code>FromFrame</Code> derive the embedded
             crate ships, so typed row extraction works identically on both sides of the
@@ -303,7 +303,7 @@ for frame in &frames {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Subscriptions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Subscriptions</h2>
           <p className="text-text-secondary mb-4">
             Subscriptions need the persistent connection, so they are{' '}
             <Code>WsClient</Code> only. <Code>subscribe(rql, config)</Code> registers a
@@ -381,7 +381,7 @@ let sub_id = client.subscribe("from app::users", config).await?;`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Batch subscriptions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Batch subscriptions</h2>
           <p className="text-text-secondary mb-4">
             A dashboard that watches ten queries does not want ten interleaved change
             streams. <Code>batch_subscribe</Code> registers several subscriptions as one
@@ -431,7 +431,7 @@ client.batch_unsubscribe(&batch_id).await?;`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Wire formats</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Wire formats</h2>
           <p className="text-text-secondary mb-4">
             The second argument to <Code>connect</Code> picks the result encoding for
             the whole connection. <Code>WireFormat::Json</Code> asks the server for
@@ -446,7 +446,7 @@ client.batch_unsubscribe(&batch_id).await?;`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Error handling</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Error handling</h2>
           <p className="text-text-secondary mb-4">
             Every method returns <Code>Result&lt;_, Error&gt;</Code> where{' '}
             <Code>Error</Code> is the same diagnostic wrapper the embedded API uses: a

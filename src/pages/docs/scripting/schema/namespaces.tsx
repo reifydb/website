@@ -16,8 +16,8 @@ export function NamespacesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Namespaces</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Namespaces</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A namespace is the container every other schema object lives in. Tables,
             views, dictionaries, series, ring buffers, and enums are all created inside
             a namespace and addressed as <Code>namespace::object</Code>. Nothing can be
@@ -29,7 +29,7 @@ export function NamespacesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating a namespace</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Creating a namespace</h2>
           <p className="text-text-secondary mb-4">
             <Code>create namespace</Code> takes a bare name - no <Code>::</Code>{' '}
             qualifier, because the namespace is the thing that provides qualification.
@@ -50,7 +50,7 @@ export function NamespacesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Qualified names with ::</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Qualified names with ::</h2>
           <p className="text-text-secondary mb-4">
             Once the namespace exists, every object inside it is created and referenced
             with the <Code>::</Code> separator. There is no notion of a current or
@@ -81,7 +81,7 @@ export function NamespacesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Nested namespaces</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Nested namespaces</h2>
           <p className="text-text-secondary mb-4">
             Namespaces nest. Creating <Code>sns::internal</Code> registers a child
             namespace under <Code>sns</Code>; the confirmation shows the full path as
@@ -101,7 +101,7 @@ export function NamespacesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Idempotent creation</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Idempotent creation</h2>
           <p className="text-text-secondary mb-4">
             Creating a namespace that already exists is an error (<Code>CA_001</Code>).
             For setup scripts and migrations that must be safe to re-run, append{' '}
@@ -118,7 +118,7 @@ export function NamespacesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The namespace must exist first</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The namespace must exist first</h2>
           <p className="text-text-secondary mb-4">
             Referencing a namespace that has not been created fails with{' '}
             <Code>CA_002</Code>, whether you are creating an object, querying, or
@@ -128,7 +128,7 @@ export function NamespacesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Namespaces in the catalog</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Namespaces in the catalog</h2>
           <p className="text-text-secondary mb-4">
             The catalog is itself queryable: <Code>system::namespaces</Code> lists
             every namespace with its full name, local name, and the id of its parent.
@@ -138,7 +138,7 @@ export function NamespacesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Removing a namespace</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Removing a namespace</h2>
           <p className="text-text-secondary mb-4">
             <Code>drop namespace</Code> removes the namespace and everything inside it -
             tables with their data, views, and nested child namespaces alike. Because

@@ -16,8 +16,8 @@ export function ViewsOverviewPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Views</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Views</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A view is derived state the engine maintains for you. You declare its
             columns and a pipeline over tables or other views; ReifyDB keeps the result
             materialized as the sources change, and reading it is a plain lookup. This
@@ -29,7 +29,7 @@ export function ViewsOverviewPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The statement</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The statement</h2>
           <p className="text-text-secondary mb-4">
             Every view statement has the same shape: an optional maintenance keyword,
             the qualified name, the column list, an optional <Code>with</Code> block
@@ -60,7 +60,7 @@ as { pipeline }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Deferred or transactional</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Deferred or transactional</h2>
           <p className="text-text-secondary mb-4">
             The keyword decides <em>when</em> the view is maintained. A transactional
             view is updated inside the transaction that writes its source: when the
@@ -89,7 +89,7 @@ as { pipeline }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Views are read-only</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Views are read-only</h2>
           <p className="text-text-secondary mb-4">
             A view's contents come from its pipeline and nowhere else.{' '}
             <Code>insert</Code>, <Code>update</Code>, and <Code>delete</Code> do not
@@ -100,7 +100,7 @@ as { pipeline }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Pipeline rules</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Pipeline rules</h2>
           <p className="text-text-secondary mb-4">
             The pipeline accepts the transform operators you use in queries:{' '}
             <Code>filter</Code> decides which source rows are members,{' '}
@@ -121,7 +121,7 @@ as { pipeline }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reading a view in the request that writes its source</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reading a view in the request that writes its source</h2>
           <p className="text-text-secondary mb-4">
             Once a request has written to a view's source, reading that view later in
             the same request is an error (<Code>TXN_015</Code>), and the whole request
@@ -137,7 +137,7 @@ as { pipeline }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dropping views</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Dropping views</h2>
           <p className="text-text-secondary mb-4">
             <Code>drop view</Code> removes the view and its materialized rows. The
             confirmation has no catalog id, only what was dropped:

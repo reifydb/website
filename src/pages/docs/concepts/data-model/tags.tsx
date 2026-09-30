@@ -16,8 +16,8 @@ export function DataModelTagsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Tags</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Tags</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A tag is a closed set of labels, declared once and attached to a{' '}
             <Link to="/docs/concepts/data-model/series" className="text-primary hover:text-primary-light font-medium transition-colors">series</Link>.
             Each entry in the series can then carry one label - where a reading came
@@ -30,7 +30,7 @@ export function DataModelTagsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Declaring a tag type</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Declaring a tag type</h2>
           <p className="text-text-secondary mb-4">
             <Code>create tag</Code> takes a namespaced name and a brace list of variants.
             A variant can carry typed fields (<Code>Sensor {'{'} location: utf8 {'}'}</Code>)
@@ -42,7 +42,7 @@ export function DataModelTagsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Attaching a tag to a series</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Attaching a tag to a series</h2>
           <p className="text-text-secondary mb-4">
             A series names its tag type in the <Code>with</Code> clause next to the
             required <Code>key</Code>. One series has at most one tag type; the tag type
@@ -52,7 +52,7 @@ export function DataModelTagsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Labelling entries on insert</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Labelling entries on insert</h2>
           <p className="text-text-secondary mb-4">
             Each inserted row may include a <Code>tag</Code> field holding a variant,
             written by its bare name rather than a full path. Payload variants take their
@@ -73,7 +73,7 @@ export function DataModelTagsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What the engine rejects</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What the engine rejects</h2>
           <p className="text-text-secondary mb-4">
             The tag type named by a series must already exist in the catalog:
           </p>
@@ -86,7 +86,7 @@ export function DataModelTagsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Catalog and lifecycle</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Catalog and lifecycle</h2>
           <p className="text-text-secondary mb-4">
             Tag types are listed in <Code>system::tags</Code> with their <Code>id</Code>,{' '}
             <Code>namespace_id</Code>, and <Code>name</Code>:
@@ -101,7 +101,7 @@ export function DataModelTagsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Tag, enum, or event?</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Tag, enum, or event?</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

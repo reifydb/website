@@ -31,8 +31,8 @@ export function CaveatsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Caveats &amp; Limitations</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Caveats &amp; Limitations</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             ReifyDB is in development and not yet recommended for production. This page
             is the consolidated list of things that will surprise you: deliberate
             tradeoffs, gaps that are known and accepted for now, and behavior that
@@ -44,7 +44,7 @@ export function CaveatsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Status</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Status</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item>Syntax, APIs, and guarantees can change between releases, and breaking changes are not yet gated by a deprecation cycle.</Item>
             <Item>The source tree is at 0.9.0 while the in-browser engine is 0.8.1, so some syntax shown in these docs is marked as needing a newer engine than the playground runs; see <L to="/docs/resources/roadmap">Roadmap &amp; Experimental</L>.</Item>
@@ -53,7 +53,7 @@ export function CaveatsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Durability</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Durability</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item>Commits reach disk on a background flush (5 seconds by default), so a hard crash loses up to roughly one flush interval of committed writes; a clean stop loses nothing. See <L to="/docs/concepts/durability">Durability &amp; Storage</L>.</Item>
             <Item>The change log is written synchronously at commit while the row store is not, so after a crash a deferred view, a replica, or a subscriber may have seen writes the tables no longer contain; replaying the log at boot is designed but not built.</Item>
@@ -63,7 +63,7 @@ export function CaveatsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Transactions and concurrency</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Transactions and concurrency</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item>One request is one transaction, so if the last statement in a request fails, every earlier statement in it rolls back, including <Code>create</Code> and <Code>drop</Code>. See <L to="/docs/concepts/transactions">Transactions</L>.</Item>
             <Item>Write conflicts are retried up to 10 times with jittered backoff, then surface as <Code>TXN_001</Code>.</Item>
@@ -73,7 +73,7 @@ export function CaveatsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Query semantics</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Query semantics</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item>A bare <Code>from table</Code> returns rows newest-first, while a bare scan of a ring buffer returns them oldest-first. See <L to="/docs/rql/transforms/from">from</L>.</Item>
             <Item><Code>sort {'{'} col {'}'}</Code> with no direction sorts descending; always write <Code>:asc</Code> or <Code>:desc</Code>. See <L to="/docs/rql/transforms/sort">sort</L>.</Item>
@@ -88,7 +88,7 @@ export function CaveatsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Scripting</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Scripting</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item>Variables must be <Code>$</Code>-prefixed (<Code>let $x = 1</Code>); <Code>let x</Code> is a parse error. See <L to="/docs/rql/variables">Variables</L>.</Item>
             <Item>An <Code>if</Code> branch used as a statement runs only its first statement and silently drops the rest, and a pipeline inside a branch ignores its <Code>filter</Code>; keep each branch to one statement. See <L to="/docs/rql/control-flow/conditionals">Conditionals</L>.</Item>
@@ -98,7 +98,7 @@ export function CaveatsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Schema and DDL</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Schema and DDL</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item><Code>drop namespace</Code> is implicitly recursive, and <Code>cascade</Code> and <Code>restrict</Code> both parse but <Code>restrict</Code> is not enforced. See <L to="/docs/scripting/schema/drop">Drop &amp; Cleanup</L>.</Item>
             <Item><Code>if exists</Code> guards the object, not its namespace: <Code>drop table if exists gone::t</Code> still fails with <Code>CA_002</Code>.</Item>
@@ -115,7 +115,7 @@ export function CaveatsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Types and functions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Types and functions</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item>A bare numeric literal is a generic <Code>Int</Code> distinct from every sized type, which is what makes the join-key case above silent; <Code>cast</Code> pins it. See <L to="/docs/rql/expressions/literals">Literals</L>.</Item>
             <Item>A <Code>float4</Code> column reads cleanly but shows float32 noise once it goes through arithmetic or a cast (<Code>19.99</Code> becomes <Code>19.9899997711182</Code>). See <L to="/docs/concepts/data-types">Data Types</L>.</Item>
@@ -127,7 +127,7 @@ export function CaveatsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Views, windows, and subscriptions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Views, windows, and subscriptions</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item>Deferred views are eventually consistent: they update on a tick after commit, not inside it. See <L to="/docs/scripting/views/deferred">Deferred Views</L>.</Item>
             <Item>A view over a TTL store keeps rows it already derived after the source rows expire, because expiry emits nothing.</Item>
@@ -137,7 +137,7 @@ export function CaveatsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Embedded Rust API</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Embedded Rust API</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item>Sixteen interceptor hooks (namespace, table, view, and ring buffer create/update/delete, the non-row chains) can be registered through the builder but never fire; only the row-level table and ring buffer hooks are wired end to end.</Item>
             <Item>A commit that is visible to the next transaction is not yet on disk; see the durability section above before treating a returned commit as safe.</Item>
@@ -145,7 +145,7 @@ export function CaveatsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The playground</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The playground</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item>Every runnable snippet on this site shares one WASM engine instance in your tab, so a statement that traps (the enum, dictionary, <Code>now()</Code>, and <Code>create queue</Code> cases above) surfaces as a bare <Code>unreachable</Code> and leaves that instance in an unverified state; reload the page if later snippets misbehave.</Item>
             <Item>Subscriptions and everything that needs a server (WebSocket, HTTP, metrics, remote clients) do not exist in the browser build.</Item>

@@ -16,8 +16,8 @@ export function EnumsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Enums</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Enums</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             An enum declares a closed set of variants as schema. Once a column is typed
             by an enum, only those variants can ever be stored in it - a typo becomes a
             schema error instead of silent bad data. This page covers the DDL surface:
@@ -28,7 +28,7 @@ export function EnumsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating an enum</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Creating an enum</h2>
           <p className="text-text-secondary mb-4">
             <Code>create enum ns::name {'{'} Variant, ... {'}'}</Code> declares the type.
             Variant names are identifiers, and their order matters: each variant is
@@ -54,7 +54,7 @@ export function EnumsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Typing a column with an enum</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Typing a column with an enum</h2>
           <p className="text-text-secondary mb-4">
             Use the qualified enum name anywhere a column type goes. Values are written
             as fully qualified variant paths - <Code>sc_enum::status::Active</Code>.
@@ -73,7 +73,7 @@ export function EnumsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Variants with payloads</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Variants with payloads</h2>
           <p className="text-text-secondary mb-4">
             Variants can carry typed fields, which makes an enum a full sum type. Each
             row stores exactly one variant and its payload; a read flattens the tag and
@@ -92,7 +92,7 @@ export function EnumsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What insert accepts</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What insert accepts</h2>
           <p className="text-text-secondary mb-4">
             The only accepted value form is the fully qualified variant path. A plain
             string that happens to spell a variant name is not resolved to one - the
@@ -116,7 +116,7 @@ export function EnumsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Filtering, sorting, and casting</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Filtering, sorting, and casting</h2>
           <p className="text-text-secondary mb-4">
             After flattening, queries work with the physical <Code>_tag</Code> column,
             and the tag behaves like the small unsigned integer it is. Filtering on a
@@ -157,7 +157,7 @@ export function EnumsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dropping an enum</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Dropping an enum</h2>
           <p className="text-text-secondary mb-4">
             An enum cannot be dropped while any column is typed by it. The dependency
             is tracked in the catalog, and the drop fails with <Code>CA_033</Code>{' '}

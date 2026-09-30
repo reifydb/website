@@ -75,7 +75,7 @@ export function Layout({ children, title, description }: DocsLayoutProps) {
       <div className="flex flex-1">
         <DocsSidebar sections={navSections} currentPath={location.pathname} />
         <main className="flex-1 bg-[#faf8f2]">
-          <div className="font-body max-w-4xl mx-auto pl-4 pr-4 sm:px-6 py-6 sm:py-8 md:px-8 lg:pl-12">
+          <div className="docs-boards font-body text-[16px] leading-[1.7] [--text-sm:14px] max-w-4xl mx-auto pl-4 pr-4 sm:px-6 py-6 sm:py-8 md:px-8 lg:pl-12">
             {isDraft && <DraftBanner />}
             <Breadcrumbs trail={trail} />
             {children}

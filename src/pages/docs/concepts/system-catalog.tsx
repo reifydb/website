@@ -104,8 +104,8 @@ export function SystemCatalogPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">The System Catalog</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">The System Catalog</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             ReifyDB keeps its own bookkeeping in a namespace called <Code>system</Code>.
             Every namespace, table, column, view, flow, role, setting, and version the
             engine knows about is exposed there as a virtual table: a table built from
@@ -117,7 +117,7 @@ export function SystemCatalogPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reading the catalog</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reading the catalog</h2>
           <p className="text-text-secondary mb-4">
             Every catalog table is addressed as <Code>system::name</Code>. A good first
             query asks the engine what it is:
@@ -147,7 +147,7 @@ export function SystemCatalogPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Objects link by id</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Objects link by id</h2>
           <p className="text-text-secondary mb-4">
             Catalog tables point at each other by numeric id, never by name.{' '}
             <Code>system::tables.namespace_id</Code> is a <Code>system::namespaces.id</Code>;{' '}
@@ -202,7 +202,7 @@ export function SystemCatalogPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The catalog describes itself</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The catalog describes itself</h2>
           <p className="text-text-secondary mb-4">
             <Code>system::virtual_table_columns</Code> holds the columns of every virtual
             table, keyed by <Code>vtable_id</Code>. <Code>system::tables</Code> is virtual
@@ -217,7 +217,7 @@ export function SystemCatalogPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Views and flows</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Views and flows</h2>
           <p className="text-text-secondary mb-4">
             A{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">view</Link>{' '}
@@ -237,7 +237,7 @@ export function SystemCatalogPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Security objects</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Security objects</h2>
           <p className="text-text-secondary mb-4">
             Identities, roles, grants, and policies are catalog objects like everything
             else. <Code>root</Code> is always present in <Code>system::identities</Code>;
@@ -255,7 +255,7 @@ export function SystemCatalogPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Runtime settings and metrics</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Runtime settings and metrics</h2>
           <p className="text-text-secondary mb-4">
             <Code>system::configs</Code> lists every runtime setting with its current
             value, its default, and whether changing it needs a restart:
@@ -276,7 +276,7 @@ export function SystemCatalogPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The catalog is read-only</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The catalog is read-only</h2>
           <p className="text-text-secondary mb-4">
             Virtual tables have no rows of their own to write. <Code>insert</Code>,{' '}
             <Code>update</Code>, <Code>delete</Code>, and <Code>drop table</Code> against a{' '}
@@ -302,7 +302,7 @@ export function SystemCatalogPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reference: every table in this build</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reference: every table in this build</h2>
           <p className="text-text-secondary mb-4">
             The groups below cover all 44 virtual tables in <Code>system</Code> plus the
             metrics tables, as listed by <Code>system::virtual_tables</Code> on the

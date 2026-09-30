@@ -16,8 +16,8 @@ export function DmlInsertPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Insert</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Insert</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>insert</Code> adds rows to a storage shape. It always takes an array of
             records - one record per row - and each record's fields are matched against
             the target's columns by name, converted to the declared column types, and
@@ -27,7 +27,7 @@ export function DmlInsertPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One statement, one or many rows</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">One statement, one or many rows</h2>
           <p className="text-text-secondary mb-4">
             The target is named as <Code>namespace::table</Code>, and the rows follow as
             an array of <Code>{'{ field: value }'}</Code> records. A single row is just
@@ -49,7 +49,7 @@ export function DmlInsertPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Getting the rows back with returning</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Getting the rows back with returning</h2>
           <p className="text-text-secondary mb-4">
             When the write itself produces something you need - most often a generated
             ID - append <Code>returning</Code> with the columns to project. The
@@ -59,7 +59,7 @@ export function DmlInsertPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Auto-increment columns</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Auto-increment columns</h2>
           <p className="text-text-secondary mb-4">
             A column declared <Code>with {'{'} auto_increment {'}'}</Code> is filled from
             a per-column sequence, so records simply leave it out. Combined with{' '}
@@ -74,7 +74,7 @@ export function DmlInsertPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Optional columns and none</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Optional columns and none</h2>
           <p className="text-text-secondary mb-4">
             A column declared <Code>Option(type)</Code> may be omitted from a record or
             set to <Code>none</Code> explicitly - both store the same absent value, which
@@ -90,7 +90,7 @@ export function DmlInsertPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Type checking happens on insert</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Type checking happens on insert</h2>
           <p className="text-text-secondary mb-4">
             Values are converted to the column's declared type as they are written, and a
             value that cannot be converted fails the whole statement. A non-numeric
@@ -108,7 +108,7 @@ export function DmlInsertPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Beyond tables</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Beyond tables</h2>
           <p className="text-text-secondary mb-4">
             The same statement writes to every insertable shape, and the confirmation
             frame names the kind of target. A{' '}
@@ -144,7 +144,7 @@ export function DmlInsertPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Atomicity</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Atomicity</h2>
           <p className="text-text-secondary mb-4">
             Every request runs as one transaction. A multi-row insert is atomic, and so
             is a request that combines several inserts with other statements - if any

@@ -6,12 +6,12 @@ export function DurationModuleOverviewPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">duration Module</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">Create, manipulate, and format durations representing spans of time.</p>
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">duration Module</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">Create, manipulate, and format durations representing spans of time.</p>
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Constructors</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Constructors</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Link to="/docs/functions/duration/years" className="group block level-card p-4!">
               <h3 className="font-bold mb-1">duration::years</h3>
@@ -49,7 +49,7 @@ export function DurationModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Component Extraction</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Component Extraction</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Link to="/docs/functions/duration/get_months" className="group block level-card p-4!">
               <h3 className="font-bold mb-1">duration::get_months</h3>
@@ -67,7 +67,7 @@ export function DurationModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Arithmetic</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Arithmetic</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Link to="/docs/functions/duration/add" className="group block level-card p-4!">
               <h3 className="font-bold mb-1">duration::add</h3>
@@ -89,7 +89,7 @@ export function DurationModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Formatting</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Formatting</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Link to="/docs/functions/duration/trunc" className="group block level-card p-4!">
               <h3 className="font-bold mb-1">duration::trunc</h3>
@@ -103,7 +103,7 @@ export function DurationModuleOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Function Reference</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Function Reference</h2>
           <div className="dialog overflow-x-auto"><table className="w-full">
             <thead className="bg-[#efedfb]"><tr><th className="text-left p-2 sm:p-3 font-bold">Function</th><th className="text-left p-2 sm:p-3 font-bold">Description</th></tr></thead>
             <tbody>

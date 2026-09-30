@@ -13,8 +13,8 @@ export function RqlControlFlowLoopPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Loop, Break &amp; Continue</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Loop, Break &amp; Continue</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>loop</Code> repeats its block with no condition of its own - it runs
             until a <Code>break</Code> ends it. That makes it the shape for "repeat
             until done", where the exit condition emerges mid-iteration rather than
@@ -28,7 +28,7 @@ export function RqlControlFlowLoopPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">loop runs until break</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">loop runs until break</h2>
           <p className="text-text-secondary mb-4">
             The block executes over and over; <Code>break</Code> exits immediately,
             and whatever the variables hold at that moment is what you keep. Here the
@@ -39,7 +39,7 @@ export function RqlControlFlowLoopPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">continue skips to the next iteration</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">continue skips to the next iteration</h2>
           <p className="text-text-secondary mb-4">
             <Code>continue</Code> abandons the rest of the current iteration and jumps
             straight back to the top. Statements after it - including writes -
@@ -50,7 +50,7 @@ export function RqlControlFlowLoopPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Carry a result out of the loop</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Carry a result out of the loop</h2>
           <p className="text-text-secondary mb-4">
             Variables declared before the loop survive it; variables declared with{' '}
             <Code>let</Code> inside the block are scoped to one iteration. Accumulate
@@ -77,7 +77,7 @@ map { last: $last }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Nested loops</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Nested loops</h2>
           <p className="text-text-secondary mb-4">
             Loops nest, and <Code>break</Code> and <Code>continue</Code> always act on
             the innermost loop that contains them. The inner <Code>break</Code> below
@@ -88,7 +88,7 @@ map { last: $last }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">break and continue work in every loop</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">break and continue work in every loop</h2>
           <p className="text-text-secondary mb-4">
             A <Code>while</Code> loop can bail out before its condition turns false:
           </p>
@@ -114,7 +114,7 @@ map { last: $last }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Outside a loop they are errors</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Outside a loop they are errors</h2>
           <p className="text-text-secondary mb-4">
             <Code>break</Code> and <Code>continue</Code> need an enclosing loop to act
             on. With none around them - an <Code>if</Code> does not count - the
@@ -125,7 +125,7 @@ map { last: $last }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">There is no infinite loop</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">There is no infinite loop</h2>
           <p className="text-text-secondary mb-4">
             A <Code>loop</Code> with no reachable <Code>break</Code> does not hang the
             engine. Iteration is capped at 10,000; exceeding the cap fails the request
@@ -149,7 +149,7 @@ map { last: $last }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Keep break on its own</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Keep break on its own</h2>
           <p className="text-text-secondary mb-4">
             In the engine build the playground runs, an <Code>if</Code> branch executes
             only its first statement and silently drops the rest. A <Code>break</Code>{' '}

@@ -10,10 +10,10 @@ export function ClockModuleOverviewPage() {
       <div className="space-y-8">
         {/* Header */}
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             clock Module
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A mock, settable clock for writing deterministic tests against time-dependent logic, distinct
             from the real wall clock behind <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">date::now()</code> and{' '}
             <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">datetime::now()</code>.
@@ -22,7 +22,7 @@ export function ClockModuleOverviewPage() {
 
         {/* Lifecycle example */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">set, advance, and now Together</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">set, advance, and now Together</h2>
           <ExecutableSnippet title={clockLifecycleExample.title} initialCode={clockLifecycleExample.code} />
           <p className="text-text-secondary mt-4">
             The clock starts at the Unix epoch and only moves when something explicitly sets or advances
@@ -32,7 +32,7 @@ export function ClockModuleOverviewPage() {
 
         {/* Clock Functions */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Clock Functions</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Clock Functions</h2>
           <p className="text-text-secondary mb-4">
             Read the current time from the system clock.
           </p>
@@ -51,7 +51,7 @@ export function ClockModuleOverviewPage() {
 
         {/* Internal Procedures */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Internal Procedures</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Internal Procedures</h2>
           <p className="text-text-secondary mb-4">
             Control the mock clock for testing and deterministic replay. These are procedures, invoked
             with <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">call</code>, not
@@ -88,7 +88,7 @@ export function ClockModuleOverviewPage() {
 
         {/* Reference Table */}
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reference</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reference</h2>
           <div className="dialog overflow-x-auto">
             <table className="w-full">
               <thead className="bg-[#efedfb]">

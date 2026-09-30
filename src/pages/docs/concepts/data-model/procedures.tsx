@@ -13,8 +13,8 @@ export function DataModelProceduresPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Procedures</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Procedures</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A procedure is named, callable logic stored in the catalog next to the data
             it operates on. In an architecture where frontends query the database
             directly, procedures are where multi-step business operations live -
@@ -24,7 +24,7 @@ export function DataModelProceduresPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating and calling</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Creating and calling</h2>
           <p className="text-text-secondary mb-4">
             The body is a block of statements; calling the procedure returns the
             result of its last statement. Run the snippets on this page in order:
@@ -33,7 +33,7 @@ export function DataModelProceduresPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameters</h2>
           <p className="text-text-secondary mb-4">
             Parameters are declared as a typed record and referenced in the body with a{' '}
             <Code>$</Code> prefix. Calls pass arguments positionally:
@@ -42,7 +42,7 @@ export function DataModelProceduresPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The body is a full script</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The body is a full script</h2>
           <p className="text-text-secondary mb-4">
             Procedure bodies are ReifyDB Scripting, not just single queries: variables
             with <Code>let</Code>, conditionals, loops, and any number of reads and
@@ -58,7 +58,7 @@ export function DataModelProceduresPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Test procedures</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Test procedures</h2>
           <p className="text-text-secondary mb-4">
             ReifyDB's testing framework runs inside the database.{' '}
             <Code>create test procedure</Code> declares a helper callable only from
@@ -75,7 +75,7 @@ export function DataModelProceduresPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Beyond RQL bodies</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Beyond RQL bodies</h2>
           <p className="text-text-secondary mb-4">
             RQL is one of several procedure kinds the catalog manages. Procedures can
             also be backed by built-in native implementations, by functions loaded from
@@ -89,7 +89,7 @@ export function DataModelProceduresPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Access control</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Access control</h2>
           <p className="text-text-secondary mb-4">
             Who may invoke a procedure is governed by a{' '}
             <Link to="/docs/concepts/data-model/policies" className="text-primary hover:text-primary-light font-medium transition-colors">policy</Link>{' '}

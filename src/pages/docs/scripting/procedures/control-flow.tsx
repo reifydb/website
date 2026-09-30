@@ -16,8 +16,8 @@ export function ControlFlowPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Parameters &amp; Control Flow</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Parameters &amp; Control Flow</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A procedure body is a script. Parameters arrive as <Code>$</Code>-prefixed
             variables, and the body can bind more with <Code>let</Code>, branch with{' '}
             <Code>if</Code> and <Code>match</Code>, loop with <Code>for</Code>,{' '}
@@ -31,7 +31,7 @@ export function ControlFlowPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">How arguments bind</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">How arguments bind</h2>
           <p className="text-text-secondary mb-4">
             Arguments bind to parameters by position - the first argument to the first
             parameter, and so on. Names play no part in the call. Run the snippets on
@@ -64,7 +64,7 @@ export function ControlFlowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Branching</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Branching</h2>
           <p className="text-text-secondary mb-4">
             <Code>if</Code> is an expression: bind its value with <Code>let</Code> and
             use it later in the body, in a write or in the result:
@@ -93,7 +93,7 @@ export function ControlFlowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Loops</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Loops</h2>
           <p className="text-text-secondary mb-4">
             <Code>while</Code> repeats while a condition holds. Reassign with plain{' '}
             <Code>=</Code>. A <Code>let</Code> inside the loop declares a new variable
@@ -126,7 +126,7 @@ export function ControlFlowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Leaving early with return</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Leaving early with return</h2>
           <p className="text-text-secondary mb-4">
             <Code>return</Code> ends the body immediately, from any depth of nesting, and
             makes its value the call's result. Return a variable and the result column
@@ -152,7 +152,7 @@ export function ControlFlowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Validating with assert</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Validating with assert</h2>
           <p className="text-text-secondary mb-4">
             <Code>assert</Code> fails the call when its condition is false for any row,
             and a failed call rolls back everything the body wrote. Put it before the
@@ -171,7 +171,7 @@ export function ControlFlowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Calling procedures from a script</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Calling procedures from a script</h2>
           <p className="text-text-secondary mb-4">
             The same control flow works around a call. A request can walk a result set
             and call a procedure once per row, passing row fields as arguments; each

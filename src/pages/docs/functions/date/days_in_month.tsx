@@ -13,23 +13,23 @@ export function DateDaysInMonthPage() {
             <Link to="/docs/functions/date" className="font-bold hover:text-primary-color">date</Link>
             {' module'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">date::days_in_month</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">Get the number of days in the month of the given date.</p>
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">date::days_in_month</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">Get the number of days in the month of the given date.</p>
         </div>
-        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2><RqlCodeBlock code={`date::days_in_month(date_value)`} /></section>
+        <section><h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Syntax</h2><RqlCodeBlock code={`date::days_in_month(date_value)`} /></section>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameters</h2>
           <div className="dialog overflow-x-auto"><table className="w-full">
             <thead className="bg-[#efedfb]"><tr><th className="text-left p-2 sm:p-3 font-bold">Name</th><th className="text-left p-2 sm:p-3 font-bold">Type</th><th className="text-left p-2 sm:p-3 font-bold">Description</th></tr></thead>
             <tbody><tr className="border-t border-border-light"><td className="p-2 sm:p-3"><code>date_value</code></td><td className="p-2 sm:p-3">Date</td><td className="p-2 sm:p-3">The date to get the number of days in the month for.</td></tr></tbody>
           </table></div>
         </section>
-        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2><p className="text-text-secondary">Returns an Integer representing the number of days in the month.</p></section>
+        <section><h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Return Value</h2><p className="text-text-secondary">Returns an Integer representing the number of days in the month.</p></section>
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Examples</h2>
           <ExecutableSnippet title={dateDaysInMonthInline.title} initialCode={dateDaysInMonthInline.code} />
         </section>
-        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/date/month" className="text-primary-color hover:underline">date::month</Link><Link to="/docs/functions/date/end_of_month" className="text-primary-color hover:underline">date::end_of_month</Link></div></section>
+        <section><h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/date/month" className="text-primary-color hover:underline">date::month</Link><Link to="/docs/functions/date/end_of_month" className="text-primary-color hover:underline">date::end_of_month</Link></div></section>
       </div>
     </Layout>
   );

@@ -16,8 +16,8 @@ export function FromPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">from</h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">from</h1>
+          <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             <Code>from</Code> starts a pipeline. It names where the rows come from and
             hands them, unchanged, to the next operator. Every query that reads stored
             data begins with it; the only pipelines that skip it are ones that build a
@@ -26,7 +26,7 @@ export function FromPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`from namespace::table
 from namespace::view
 from system::tables
@@ -42,7 +42,7 @@ from []`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reading a table</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reading a table</h2>
           <p className="text-text-secondary mb-4">
             A bare <Code>from</Code> over a table returns every row and every declared
             column, in the column order of the table definition. Run the snippets on
@@ -58,7 +58,7 @@ from []`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Feeding the pipeline</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Feeding the pipeline</h2>
           <p className="text-text-secondary mb-4">
             <Code>from</Code> produces a frame: a set of named, typed columns. Each
             operator after it takes that frame and produces a new one. Here{' '}
@@ -71,7 +71,7 @@ from []`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Inline records</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Inline records</h2>
           <p className="text-text-secondary mb-4">
             An array of records is a source too. Nothing has to exist in the catalog,
             which makes inline records the quickest way to try an expression or an
@@ -99,7 +99,7 @@ from []`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">An empty source</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">An empty source</h2>
           <p className="text-text-secondary mb-4">
             <Code>from []</Code> is a valid pipeline start with zero rows and zero
             columns. Operators after it still run, against nothing:
@@ -108,7 +108,7 @@ from []`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Views, variables, and system tables</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Views, variables, and system tables</h2>
           <p className="text-text-secondary mb-4">
             A{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">view</Link>{' '}
@@ -138,7 +138,7 @@ from []`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Unknown sources</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Unknown sources</h2>
           <p className="text-text-secondary mb-4">
             Naming an object that does not exist fails at plan time with{' '}
             <Code>CA_004</Code>, before any row is read. A missing namespace fails the
@@ -148,7 +148,7 @@ from []`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Compared with SQL</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Compared with SQL</h2>
           <p className="text-text-secondary mb-4">
             <Code>from</Code> is SQL's <Code>FROM</Code> clause, but it comes first
             instead of after the select list, and it is the only clause that names a
