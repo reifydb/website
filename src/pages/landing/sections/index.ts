@@ -1,4 +1,6 @@
 export { HeroSection } from './hero'
+export { OnlyChangesSection } from './only-changes'
+export { TrustStrip } from './trust-strip'
 export { BuiltThisSection } from './built-this'
 export { ApologiesSection } from './apologies'
 export { FeatureTwiceSection } from './feature-twice'

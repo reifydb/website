@@ -15,7 +15,7 @@ import {
 } from './pixel-market';
 
 type Context = CanvasRenderingContext2D;
-type SceneKind = 'hall' | 'ground' | BoardMode;
+type SceneKind = 'hall' | 'ground' | 'stack' | BoardMode;
 
 const PRIMARY = '#7e85f2';
 const PAPER = '#faf8f2';
@@ -29,6 +29,14 @@ const ROW_HEIGHT = 8;
 const BOARD_HEIGHT = 3 + MARKET_ROWS.length * ROW_HEIGHT + 2;
 const FRAME_INTERVAL = 83;
 const MIN_WIDTH = 90;
+const STACK_SYSTEMS = ['POSTGRES', 'REDIS', 'CRON', 'QUEUE', 'WORKERS'];
+const STACK_LOOP = 12;
+const ARRIVAL_GAP = 1.5;
+const FOLD_START = 9;
+const CALM_START = 10;
+const HUT_WIDTH = 16;
+const WIRE_WIDTH = 3;
+const WIRE = '#6a71e6';
 
 const GLYPHS: Record<string, string> = {
   '0': '111101101101111',
@@ -50,6 +58,18 @@ const GLYPHS: Record<string, string> = {
   O: '010101101101010',
   L: '100100100100111',
   N: '110101101101101',
+  P: '110101110100100',
+  G: '011100101101011',
+  R: '110101110101101',
+  D: '110101101101110',
+  I: '111010010010111',
+  Y: '101101010010010',
+  F: '111100110100100',
+  Q: '010101101110011',
+  U: '101101101101111',
+  W: '101101101111101',
+  K: '101101110101101',
+  '+': '000010111010000',
 };
 
 const market = createMarket();
@@ -328,6 +348,122 @@ function ground(c: Context, width: number, height: number, time: number) {
   dither(c, width, height - 7, height, PRIMARY, PAPER);
 }
 
+function caption(c: Context, text: string, x: number, y: number, color: string) {
+  [...text].forEach((char, i) => glyph(c, char, x + i * 4, y, color));
+}
+
+function wire(c: Context, from: number, to: number, y: number) {
+  for (let x = from; x < to; x++) rect(c, x, y + (x % 3 === 1 ? 1 : 0), 1, 1, WIRE);
+}
+
+function tangle(c: Context, from: number, to: number, top: number, rise: number) {
+  for (let x = from; x <= to; x++) {
+    rect(c, x, top - Math.round(Math.sin((Math.PI * (x - from)) / (to - from)) * rise), 1, 1, WIRE);
+  }
+}
+
+function shelterWall(grow: number) {
+  return Math.round(20 * Math.min(1, grow * 2));
+}
+
+function shelterRoof(left: number, right: number, grow: number) {
+  const peak = 8 * ease(grow * 2 - 1);
+  const middle = (left + right) / 2;
+  return (x: number) => Math.round(peak * (1 - Math.abs(x - middle) / ((right - left) / 2)));
+}
+
+function shelterBack(c: Context, left: number, right: number, floor: number, grow: number) {
+  if (grow <= 0) return;
+  const wall = shelterWall(grow);
+  const roof = shelterRoof(left, right, grow);
+  rect(c, left, floor - wall, right - left, wall, '#ffffff4d');
+  for (let x = left; x < right; x++) rect(c, x, floor - 20 - roof(x), 1, roof(x), '#ffffff80');
+  rect(c, left, floor - 1, right - left, 2, '#e0d2b3');
+}
+
+function shelterFront(c: Context, left: number, right: number, floor: number, grow: number) {
+  if (grow <= 0) return;
+  const wall = shelterWall(grow);
+  [left, right - 2].forEach((x) => {
+    rect(c, x, floor - wall, 2, Math.max(0, wall - 1), '#ffffff');
+    rect(c, x + 1, floor - wall, 1, Math.max(0, wall - 1), '#d9d5ec');
+  });
+  if (grow < 0.5) return;
+  const roof = shelterRoof(left, right, grow);
+  rect(c, left, floor - 20, right - left, 2, '#ffffff');
+  rect(c, left, floor - 18, right - left, 1, '#d9d5ec');
+  for (let x = left; x < right; x++) {
+    rect(c, x, floor - 20 - roof(x), 1, 1, '#ffffff');
+    rect(c, x, floor - 19 - roof(x), 1, 1, '#d9d5ec');
+  }
+}
+
+function stack(c: Context, width: number, height: number, time: number) {
+  const t = time % STACK_LOOP;
+  const groundY = height - 9;
+  const floor = groundY + 2;
+  grass(c, width, groundY, height, time);
+
+  const count = STACK_SYSTEMS.length;
+  const left = Math.round(width / 2 - (count * HUT_WIDTH + (count - 1) * WIRE_WIDTH) / 2);
+  const packedLeft = Math.round(width / 2 - (count * HUT_WIDTH) / 2);
+  const fold = ease(t - FOLD_START);
+  const huts = STACK_SYSTEMS.map((_, i) =>
+    Math.round(lerp(left + i * (HUT_WIDTH + WIRE_WIDTH), packedLeft + i * HUT_WIDTH, fold)),
+  );
+  const arrived = Math.min(count, Math.floor(t / ARRIVAL_GAP) + 1);
+  const botX = (i: number) => huts[i] + HUT_WIDTH / 2 - 2;
+  const hits = new Set<number>();
+  const bots: { x: number; carrying: boolean }[] = [];
+
+  if (t < (count - 1) * ARRIVAL_GAP) {
+    const hop = Math.floor(t / 0.75);
+    const u = (t % 0.75) / 0.75;
+    const from = hop % arrived;
+    if (u < 0.25) hits.add(from);
+    bots.push({ x: lerp(botX(from), botX((hop + 1) % arrived), ease(u)), carrying: true });
+  } else if (t < FOLD_START) {
+    for (let b = 0; b < 3; b++) {
+      const local = t + b * 0.13;
+      const hop = Math.floor(local / 0.4);
+      const u = (local % 0.4) / 0.4;
+      const target = (n: number) => Math.floor(hash(b * 97 + n * 7 + 3) * count);
+      if (u < 0.3) hits.add(target(hop));
+      bots.push({ x: lerp(botX(target(hop)), botX(target(hop + 1)), ease(u)), carrying: true });
+    }
+  } else if (t < CALM_START) {
+    bots.push({ x: botX(2), carrying: false });
+  } else {
+    const elapsed = t - CALM_START;
+    if (elapsed >= 1 && elapsed < 1.5) hits.add(2);
+    bots.push({ x: lerp(botX(0), botX(2), ease(elapsed)), carrying: elapsed < 1 });
+  }
+
+  const shelterLeft = packedLeft - 4;
+  const shelterRight = packedLeft + count * HUT_WIDTH + 4;
+  shelterBack(c, shelterLeft, shelterRight, floor, fold);
+
+  if (t < FOLD_START) {
+    for (let i = 1; i < arrived; i++) wire(c, huts[i - 1] + HUT_WIDTH, huts[i], floor - 11);
+    if (arrived === count) {
+      [[0, 2, 3], [1, 3, 4], [2, 4, 5], [0, 4, 7]].forEach(([a, b, rise]) =>
+        tangle(c, huts[a] + HUT_WIDTH / 2, huts[b] + HUT_WIDTH / 2, floor - 16, rise),
+      );
+    }
+  }
+
+  for (let i = 0; i < arrived; i++) {
+    const pop = Math.min(1, (t - i * ARRIVAL_GAP) / 0.3);
+    stall(c, huts[i], floor - Math.round((1 - ease(pop)) * 6), i, pop < 1 || hits.has(i), hits.has(i));
+  }
+  bots.forEach((b, index) => bot(c, b.x, floor, time, index, b.carrying));
+  shelterFront(c, shelterLeft, shelterRight, floor, fold);
+
+  const folded = t >= FOLD_START;
+  const label = folded ? 'REIFYDB' : arrived === 1 ? STACK_SYSTEMS[0] : `+ ${STACK_SYSTEMS[arrived - 1]}`;
+  caption(c, label, left, 4, folded ? '#4b52d6' : INK);
+}
+
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: (c: Context, width: number, height: number, time: number) => void }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
@@ -337,6 +473,7 @@ const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: (c:
     draw: (c, width, height, time) => compare(c, width, height, time, 'incremental'),
   },
   ground: { height: 17, heightClass: 'h-[68px]', draw: ground },
+  stack: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: stack },
 };
 
 interface PixelSceneProps {
@@ -403,5 +540,9 @@ export function FlipCounter({ mode }: FlipCounterProps) {
     () => (mode === 'full' ? market.fullRecomputeFlips : market.incrementalFlips),
     () => 0,
   );
-  return <>{count.toLocaleString()}</>;
+  return (
+    <span key={count} className="flip-pop">
+      {count.toLocaleString()}
+    </span>
+  );
 }

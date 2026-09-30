@@ -2,6 +2,8 @@ import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import {
   HeroSection,
+  OnlyChangesSection,
+  TrustStrip,
   BuiltThisSection,
   ApologiesSection,
   FeatureTwiceSection,
@@ -22,6 +24,10 @@ export function LandingPage() {
 
       <main>
         <HeroSection />
+
+        <OnlyChangesSection />
+
+        <TrustStrip />
 
         <BuiltThisSection />
 

@@ -245,14 +245,28 @@ div::backdrop {
   color: #4b52d6;
 }
 
-.pixel-tag {
+.pixel-label {
   font-family: 'Press Start 2P', ui-monospace, monospace;
   font-size: 8.5px;
   letter-spacing: 0.04em;
-  padding: 7px 9px;
-  border-radius: 6px;
-  border: 1px solid var(--color-border-light);
-  background: var(--color-bg-secondary);
+}
+
+.pixel-score {
+  font-family: 'VT323', ui-monospace, monospace;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.flip-pop {
+  display: inline-block;
+  animation: flip-pop 0.2s ease-out;
+}
+
+@keyframes flip-pop {
+  from {
+    color: var(--color-primary);
+    transform: translateY(-3px) scale(1.12);
+  }
 }
 
 .pixel-canvas {
@@ -307,5 +321,9 @@ div::backdrop {
   .game-button,
   .game-button__arrow {
     transition: none;
+  }
+
+  .flip-pop {
+    animation: none;
   }
 }

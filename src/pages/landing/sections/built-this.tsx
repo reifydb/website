@@ -1,6 +1,4 @@
-import { ScrollReveal } from '@/components/ui';
-import { Badge } from '@reifydb/ui';
-import { StackDiagram } from '@/components/manifesto';
+import { PixelScene, ScrollReveal } from '@/components/ui';
 
 export function BuiltThisSection() {
   return (
@@ -8,8 +6,8 @@ export function BuiltThisSection() {
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <Badge variant="active" className="text-xs mb-3 uppercase tracking-[0.2em]">The Stack</Badge>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-6 text-balance">
+            <p className="eyebrow-pixel mb-3">THE STACK</p>
+            <h2 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] text-text-primary mb-6 text-balance">
               You have built this.
             </h2>
             <div className="max-w-2xl mx-auto">
@@ -25,8 +23,8 @@ export function BuiltThisSection() {
           </div>
         </ScrollReveal>
         <ScrollReveal delay={100}>
-          <div className="mx-auto max-w-5xl">
-            <StackDiagram />
+          <div className="mx-auto max-w-5xl overflow-hidden rounded-[14px] border border-border-light bg-white">
+            <PixelScene kind="stack" className="bg-[linear-gradient(#f6f4fd,#fbf8f1)]" />
           </div>
         </ScrollReveal>
       </div>
