@@ -308,6 +308,58 @@ div::backdrop {
   box-shadow: 0 2px var(--color-primary-dark);
 }
 
+.dialog {
+  border: 2px solid #4b52d6;
+  background: #ffffff;
+  box-shadow: 0 4px var(--color-primary-dark);
+}
+
+.dialog__question {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 18px 20px;
+  font-weight: 700;
+  text-align: left;
+  color: var(--color-text-primary);
+}
+
+.dialog__answer {
+  display: flex;
+  gap: 16px;
+  padding: 18px 20px;
+  border-top: 2px solid #4b52d6;
+  cursor: pointer;
+}
+
+.dialog__portrait {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #4b52d6;
+  background: #e6e8fd;
+}
+
+.dialog__next {
+  margin-left: 6px;
+  font-size: 10px;
+  color: #4b52d6;
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.press-start {
+  animation: blink 1.2s steps(2) infinite;
+}
+
 .flip-pop {
   display: inline-block;
   animation: flip-pop 0.2s ease-out;
@@ -358,6 +410,16 @@ div::backdrop {
 .game-button:active {
   transform: translateY(2px);
   box-shadow: inset 0 1px #ffffff8c, inset 0 -1px #2e39df4d, 0 1px var(--color-primary-dark), 0 6px 14px -8px #2e39dfb3;
+}
+
+.game-button--secondary {
+  color: #2a2f8f;
+  background: linear-gradient(#ffffff, #eef0ff);
+  box-shadow: inset 0 1px #ffffff, inset 0 -2px #4b52d61a, 0 3px #4b52d6, 0 14px 28px -14px #2e39df59;
+}
+
+.game-button--secondary:active {
+  box-shadow: inset 0 1px #ffffff, inset 0 -1px #4b52d61a, 0 1px #4b52d6, 0 6px 14px -8px #2e39df59;
 }
 
 .game-button__arrow {

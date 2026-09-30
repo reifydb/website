@@ -5,11 +5,12 @@ import { cn } from '@/lib'
 interface GameButtonProps {
   href: string
   size: 'sm' | 'lg'
+  variant?: 'primary' | 'secondary'
   children: ReactNode
 }
 
-export function GameButton({ href, size, children }: GameButtonProps) {
-  const className = cn('game-button', size === 'sm' && 'game-button--sm')
+export function GameButton({ href, size, variant = 'primary', children }: GameButtonProps) {
+  const className = cn('game-button', size === 'sm' && 'game-button--sm', variant === 'secondary' && 'game-button--secondary')
 
   if (href.startsWith('/')) {
     return (

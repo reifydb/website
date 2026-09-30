@@ -1,4 +1,4 @@
-import { Button, GameButton, InstallCommand, PixelScene, PocketShell } from '@/components/ui';
+import { GameButton, InstallCommand, PixelScene, PocketShell } from '@/components/ui';
 
 export function HeroSection() {
   return (
@@ -21,9 +21,9 @@ export function HeroSection() {
               <GameButton href="/docs/quick-start" size="lg">
                 Get started <span className="game-button__arrow">→</span>
               </GameButton>
-              <Button href="/playground" variant="secondary" size="lg">
+              <GameButton href="/playground" size="lg" variant="secondary">
                 Open the playground
-              </Button>
+              </GameButton>
             </div>
 
             <InstallCommand className="w-full sm:w-auto text-left" />

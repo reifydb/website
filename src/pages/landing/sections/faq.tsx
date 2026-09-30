@@ -1,40 +1,83 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib';
-import { ScrollReveal } from '@/components/ui';
+import { PixelIcon, ScrollReveal } from '@/components/ui';
 import { faqs } from '@/data/faq-data';
-import { ChevronDown } from 'lucide-react';
+
+const ROBOT = [
+  '...a...',
+  '...l...',
+  '...l...',
+  'lwwwwwl',
+  'lwpwpwl',
+  'lwwwwwl',
+  'leeeeel',
+  '.kk.kk.',
+  '.kk.kk.',
+];
+
+const ROBOT_COLORS: Record<string, string> = {
+  a: '#ffe08a',
+  l: '#c9c3dc',
+  w: '#ffffff',
+  p: '#7e85f2',
+  e: '#e6e4f5',
+  k: '#3f3b99',
+};
+
+const CHARACTERS_PER_TICK = 2;
+const TICK_MS = 25;
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [shown, setShown] = useState(0);
+  const done = shown >= answer.length;
+
+  useEffect(() => {
+    if (!isOpen || done) return;
+    const timer = window.setTimeout(() => setShown((n) => Math.min(answer.length, n + CHARACTERS_PER_TICK)), TICK_MS);
+    return () => window.clearTimeout(timer);
+  }, [isOpen, done, shown, answer.length]);
 
   return (
-    <div className="glass-card overflow-hidden">
+    <div className="dialog">
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-6 text-left"
+        onClick={() => {
+          setIsOpen(!isOpen);
+          setShown(0);
+        }}
+        className="dialog__question"
+        aria-expanded={isOpen}
       >
-        <span className="font-bold text-text-primary pr-4">
-          {question}
-        </span>
-        <ChevronDown
-          size={16}
-          className={cn(
-            'text-text-muted flex-shrink-0 transition-transform duration-200',
-            isOpen && 'rotate-180'
-          )}
-        />
+        <svg
+          viewBox="0 0 4 7"
+          className={cn('h-3.5 w-2 shrink-0 text-[#4b52d6] transition-transform', isOpen && 'rotate-90')}
+          shapeRendering="crispEdges"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <rect x="0" y="0" width="1" height="7" />
+          <rect x="1" y="1" width="1" height="5" />
+          <rect x="2" y="2" width="1" height="3" />
+          <rect x="3" y="3" width="1" height="1" />
+        </svg>
+        <span>{question}</span>
       </button>
-      <div
-        className={cn(
-          'overflow-hidden transition-all duration-200',
-          isOpen ? 'max-h-96' : 'max-h-0'
-        )}
-      >
-        <div className="px-6 pb-6 text-text-secondary text-sm leading-relaxed border-t border-border-light pt-4">
-          {answer}
+      {isOpen && (
+        <div className="dialog__answer" onClick={() => setShown(answer.length)}>
+          <div className="dialog__portrait">
+            <PixelIcon rows={ROBOT} colors={ROBOT_COLORS} className="h-9 w-7" />
+          </div>
+          <p className="text-text-secondary text-sm leading-relaxed">
+            <span className="sr-only">{answer}</span>
+            <span aria-hidden="true">
+              {answer.slice(0, shown)}
+              <span className="invisible">{answer.slice(shown)}</span>
+              {done && <span className="dialog__next">▼</span>}
+            </span>
+          </p>
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -46,10 +89,8 @@ export function FaqSection() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-3">
-              FAQ
-            </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+            <p className="eyebrow-pixel mb-3">FAQ</p>
+            <h2 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] text-text-primary mb-4 text-balance">
               Frequently Asked Questions
             </h2>
             <p className="max-w-2xl mx-auto text-text-secondary text-lg">

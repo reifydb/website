@@ -1,4 +1,4 @@
-import { ScrollReveal } from '@/components/ui';
+import { PixelIcon, ScrollReveal } from '@/components/ui';
 
 const ICON_COLORS: Record<string, string> = {
   c: '#e0a83a',
@@ -69,18 +69,6 @@ const METER = [
   '..........',
 ];
 
-function PixelIcon({ rows }: { rows: string[] }) {
-  return (
-    <svg viewBox="0 0 10 10" className="h-10 w-10 shrink-0" shapeRendering="crispEdges" aria-hidden="true">
-      {rows.flatMap((row, y) =>
-        [...row].map((cell, x) =>
-          cell === '.' ? null : <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill={ICON_COLORS[cell]} />,
-        ),
-      )}
-    </svg>
-  );
-}
-
 const useCases: { title: string; description: string; icon: string[] }[] = [
   {
     title: 'Trading & Financial State',
@@ -109,7 +97,7 @@ function UseCaseCell({ useCase, index }: { useCase: (typeof useCases)[number]; i
     <ScrollReveal className="h-full" delay={index * 75}>
       <div className="level-card group">
         <div className="flex items-center gap-4 mb-4">
-          <PixelIcon rows={useCase.icon} />
+          <PixelIcon rows={useCase.icon} colors={ICON_COLORS} className="h-10 w-10 shrink-0" />
           <div>
             <p className="pixel-label text-[#4b52d6] mb-2">WORLD {index + 1}</p>
             <h3 className="text-lg font-bold group-hover:text-primary transition-colors">
