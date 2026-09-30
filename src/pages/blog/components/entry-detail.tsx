@@ -1,59 +1,45 @@
-import { Link } from 'react-router-dom';
-import { formatReadTime, type BlogPost } from '@/data/blog-data';
+import { formatPostDate, formatReadTime, type BlogPost } from '@/data/blog-data';
+import { BackLink } from './back-link';
 import { BlogMarkdownRenderer } from './blog-markdown-renderer';
+import { PostSigil } from './post-sigil';
 import { ShareRow } from './share-row';
 import { TagChips } from './tag-chips';
 
-const backClass =
-  'font-mono text-xs label-uppercase text-text-muted hover:text-primary transition-colors duration-200';
+const creditLabel = 'pixel-label text-[#4b52d6]';
 
 export function EntryDetail({ post }: { post: BlogPost }) {
   return (
-    <article className="border border-l-[6px] border-border-light border-l-primary bg-bg-secondary rounded-md shadow-[var(--shadow-medium)]">
-      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2 px-3 sm:px-4 py-4 border-b border-border-light font-mono text-sm">
-        <span className="text-primary" data-numeric>
-          {post.lsn}
-        </span>
-        <span className="text-text-muted" data-numeric>
-          {post.date}
-        </span>
-        <span className="text-xs text-text-muted label-uppercase">
-          {formatReadTime(post.readTime)}
-        </span>
-        <span className="text-xs text-text-muted label-uppercase">
-          {post.author}
-        </span>
-        <span className="text-xs text-text-muted label-uppercase" data-numeric>
-          {post.size}
-        </span>
-      </div>
+    <article>
+      <header className="sky">
+        <div className="mx-auto max-w-3xl px-6 md:px-8 pt-[clamp(28px,5vw,56px)] pb-10 sm:pb-12">
+          <BackLink label="SELECT ENTRY" className="mb-8" />
+          <p className="pixel-label text-[#4b52d6] mb-4">
+            ENTRY {post.sequence} · {formatPostDate(post.date)} · {formatReadTime(post.readTime)}
+          </p>
+          <h1 className="text-[clamp(28px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.03em] text-text-primary mb-4 text-balance">
+            {post.title}
+          </h1>
+          <p className="text-text-secondary text-lg leading-relaxed mb-8">{post.excerpt}</p>
+          <PostSigil cells={post.sigilCells} />
+        </div>
+      </header>
+      <div className="pixel-fade" aria-hidden="true" />
 
-      <div className="px-3 sm:px-4 pt-8 pb-8">
-        <h1 className="font-display text-2xl sm:text-3xl font-black tracking-tight text-text-primary">
-          {post.title}
-        </h1>
-        <p className="mt-4 max-w-2xl text-text-secondary leading-relaxed">
-          {post.excerpt}
-        </p>
-
-        <div className="mt-10 font-body">
+      <div className="mx-auto max-w-3xl px-6 md:px-8 pt-12 sm:pt-16 pb-24 sm:pb-32">
+        <div className="font-body">
           <BlogMarkdownRenderer content={post.content} />
         </div>
 
-        <div className="mt-12 pt-6 border-t border-border-light flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs label-uppercase">
-          <Link
-            to="/blog"
-            state={{ preserveScroll: true, fromSlug: post.slug }}
-            className={backClass}
-          >
-            <span aria-hidden="true">&larr;</span> Back to log
-          </Link>
+        <div className="dialog mt-16 p-6 sm:p-8 grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-6 gap-y-4 font-mono text-sm text-text-secondary">
+          <p className={creditLabel}>WRITTEN BY</p>
+          <p className="text-text-primary">{post.author}</p>
+          <p className={creditLabel}>TAGS</p>
+          <TagChips tags={post.tags} />
+          <p className={creditLabel}>SHARE</p>
           <ShareRow post={post} />
         </div>
 
-        <div className="mt-8">
-          <TagChips tags={post.tags} />
-        </div>
+        <BackLink label="BACK TO SELECT ENTRY" className="mt-10" />
       </div>
     </article>
   );

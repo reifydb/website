@@ -17,24 +17,24 @@ function getTextContent(node: React.ReactNode): string {
 
 const measure = 'max-w-[68ch]';
 const prose = 'text-[1.0625rem] leading-[1.75] text-text-primary';
-const shadowSoft = 'shadow-[var(--shadow-soft)]';
+const frame = 'border-2 border-[#4b52d6] shadow-[0_4px_var(--color-primary-dark)]';
 const opener = '[&>p:first-child]:font-medium';
 
 function createComponents(): Components {
   return {
     h1: ({ children }) => (
-      <h1 className="text-xl sm:text-2xl font-black tracking-tight mt-14 first:mt-0 mb-6 text-text-primary">
+      <h1 className="text-xl sm:text-2xl font-normal tracking-[-0.03em] mt-14 first:mt-0 mb-6 text-text-primary">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="mt-14 first:mt-0 mb-5 text-lg sm:text-xl font-black text-text-primary">
+      <h2 className="mt-14 first:mt-0 mb-5 text-lg sm:text-xl font-normal tracking-[-0.03em] text-text-primary">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
       <h3
-        className={`${measure} font-mono text-sm sm:text-base label-uppercase text-text-primary mt-10 mb-3`}
+        className={`${measure} pixel-label uppercase text-[#4b52d6] mt-10 mb-3`}
       >
         {children}
       </h3>
@@ -72,7 +72,7 @@ function createComponents(): Components {
     li: ({ children }) => <li>{children}</li>,
     blockquote: ({ children }) => (
       <blockquote
-        className={`${measure} ${prose} ${shadowSoft} border border-l-8 border-border-light border-l-primary bg-bg-secondary rounded-md p-6 my-10 [&>p:last-child]:mb-0`}
+        className={`${measure} ${prose} ${frame} border-l-8 bg-white p-6 my-10 [&>p:last-child]:mb-0`}
       >
         {children}
       </blockquote>
@@ -87,7 +87,7 @@ function createComponents(): Components {
         const lang = className?.replace('language-', '') ?? '';
         return (
           <div
-            className={`my-10 border border-border-light rounded-md overflow-hidden bg-code-bg ${shadowSoft}`}
+            className={`my-10 ${frame} overflow-hidden bg-code-bg`}
           >
             {lang && (
               <div className="px-4 py-2 text-xs font-mono label-uppercase text-code-text-muted border-b border-border-light bg-code-bg-elevated">
@@ -111,7 +111,7 @@ function createComponents(): Components {
     pre: ({ children }) => <>{children}</>,
     table: ({ children }) => (
       <div
-        className={`my-10 overflow-x-auto border border-border-light rounded-md ${shadowSoft}`}
+        className={`my-10 overflow-x-auto ${frame}`}
       >
         <table className="w-full text-sm text-text-secondary">{children}</table>
       </div>

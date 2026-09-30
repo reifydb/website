@@ -24,7 +24,7 @@ function StaticSnippet({
   description,
 }: Omit<ExecutableSnippetProps, 'className' | 'readonly' | 'deferLoad'>) {
   return (
-    <div className="border border-border-default rounded-lg bg-code-bg overflow-hidden">
+    <div className="border-2 border-[#4b52d6] bg-code-bg shadow-[0_4px_var(--color-primary-dark)] overflow-hidden">
       {(title || description) && (
         <div className="px-4 py-2 border-b border-border-default bg-code-bg-elevated">
           {title && (
@@ -49,7 +49,7 @@ function EditorSkeleton({
 }: Omit<ExecutableSnippetProps, 'className' | 'readonly' | 'deferLoad'>) {
   const lineCount = initialCode.split('\n').length;
   return (
-    <div className="border border-border-default rounded-lg bg-code-bg overflow-hidden">
+    <div className="border-2 border-[#4b52d6] bg-code-bg shadow-[0_4px_var(--color-primary-dark)] overflow-hidden">
       <div className="flex items-center justify-between px-4 py-2 border-b border-border-default bg-code-bg-elevated">
         <div>
           {title && (

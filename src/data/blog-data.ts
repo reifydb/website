@@ -1,5 +1,5 @@
 import fm from 'front-matter';
-import { sigil, postSeed, sigilLabel, ogImagePath } from '@/lib/sigil';
+import { sigil, postSeed, ogImagePath } from '@/lib/sigil';
 
 export { SITE_ORIGIN } from '@/lib/site';
 
@@ -13,20 +13,10 @@ export interface BlogPostMeta {
   tags: string[];
 }
 
-export interface BlogPostHeading {
-  index: string;
-  text: string;
-}
-
 export interface BlogPost extends BlogPostMeta {
   content: string;
   sequence: string;
-  lsn: string;
-  size: string;
-  headings: BlogPostHeading[];
   sigilCells: number[][];
-  sigilLabel: string;
-  fingerprint: string;
   ogImage: string;
 }
 
@@ -36,29 +26,6 @@ const modules = import.meta.glob('../pages/blog/*/content.md', {
   eager: true,
 }) as Record<string, string>;
 
-function extractHeadings(content: string): BlogPostHeading[] {
-  const headings: BlogPostHeading[] = [];
-  let inFence = false;
-
-  for (const line of content.split('\n')) {
-    if (line.trimStart().startsWith('```')) {
-      inFence = !inFence;
-      continue;
-    }
-    if (inFence) continue;
-
-    const match = /^##\s+(.+?)\s*$/.exec(line);
-    if (match) {
-      headings.push({
-        index: String(headings.length + 1).padStart(2, '0'),
-        text: match[1],
-      });
-    }
-  }
-
-  return headings;
-}
-
 function extractSequence(path: string): string {
   const match = /\/(\d{3,})\/content\.md$/.exec(path);
   if (!match) {
@@ -67,11 +34,6 @@ function extractSequence(path: string): string {
     );
   }
   return match[1];
-}
-
-function formatSize(content: string): string {
-  const bytes = new TextEncoder().encode(content).length;
-  return `${(bytes / 1024).toFixed(1)} KB`;
 }
 
 function validateTags(tags: unknown, path: string): string[] {
@@ -100,12 +62,7 @@ export const blogPosts: BlogPost[] = Object.entries(modules)
       tags: validateTags(attributes.tags, path),
       content: body,
       sequence,
-      lsn: `#${sequence}`,
-      size: formatSize(body),
-      headings: extractHeadings(body),
       sigilCells: art.cells,
-      sigilLabel: sigilLabel(sequence),
-      fingerprint: art.fingerprint,
       ogImage: ogImagePath(attributes.slug),
     };
   })
@@ -113,6 +70,16 @@ export const blogPosts: BlogPost[] = Object.entries(modules)
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((p) => p.slug === slug);
+}
+
+const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
+export function formatPostDate(date: string): string {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+  if (!match) {
+    throw new Error(`blog date must be YYYY-MM-DD, got ${JSON.stringify(date)}`);
+  }
+  return `${MONTHS[Number(match[2]) - 1]} ${Number(match[3])}, ${match[1]}`;
 }
 
 export function formatReadTime(readTime: string): string {

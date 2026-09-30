@@ -60,6 +60,14 @@ const KILL_GAP = 1.2;
 const SHOT_TIME = 0.35;
 const MARCH_STEP = 0.15;
 const BOX_GAP = 6;
+const NOTICE_HEIGHT = 54;
+const NOTICE_LOOP = 7;
+const NOTE_WIDTH = 15;
+const NOTE_HEIGHT = 14;
+const NOTE_GAP = 4;
+const MAX_NOTES = 5;
+const WOOD = '#b98b64';
+const SPARK = '#ffe08a';
 
 const GLYPHS: Record<string, string> = {
   '0': '111101101101111',
@@ -629,6 +637,86 @@ function invaders(c: Context, width: number, height: number, time: number) {
   }
 }
 
+function note(c: Context, x: number, y: number, label: string, pin: string, fresh: boolean) {
+  rect(c, x, y, NOTE_WIDTH, NOTE_HEIGHT, fresh ? '#fff4c2' : '#ffffff');
+  rect(c, x, y + NOTE_HEIGHT - 1, NOTE_WIDTH, 1, fresh ? '#f0dc8c' : '#e6e4f5');
+  rect(c, x + 6, y - 1, 3, 2, pin);
+  caption(c, label, x + 2, y + 3, INK);
+  rect(c, x + 2, y + 9, 11, 1, LINE);
+  rect(c, x + 2, y + 11, 7, 1, LINE);
+}
+
+function sparkle(c: Context, x: number, y: number, time: number) {
+  const arm = Math.floor(time * 4) % 2 ? 1 : 2;
+  rect(c, x, y, 1, 1, SPARK);
+  for (let d = 1; d <= arm; d++) {
+    rect(c, x - d, y, 1, 1, SPARK);
+    rect(c, x + d, y, 1, 1, SPARK);
+    rect(c, x, y - d, 1, 1, SPARK);
+    rect(c, x, y + d, 1, 1, SPARK);
+  }
+}
+
+function noticeBoard(c: Context, width: number, height: number, time: number, count: number) {
+  const groundY = height - 14;
+  const floor = groundY + 3;
+  clouds(c, width, time);
+  hills(c, width, groundY);
+  grass(c, width, groundY, height - 7, time);
+  dither(c, width, height - 7, height, PRIMARY, PAPER);
+
+  const slots = Math.max(1, Math.min(MAX_NOTES, count, Math.floor((width - 16) / (NOTE_WIDTH + NOTE_GAP))));
+  const boardWidth = slots * (NOTE_WIDTH + NOTE_GAP) - NOTE_GAP + 10;
+  const boardHeight = NOTE_HEIGHT + 10;
+  const boardLeft = Math.round(width / 2 - boardWidth / 2);
+  const boardTop = 6;
+  const boardBottom = boardTop + boardHeight;
+  const slotX = (i: number) => boardLeft + 5 + i * (NOTE_WIDTH + NOTE_GAP);
+  const slotY = boardTop + 5;
+
+  [boardLeft + 4, boardLeft + boardWidth - 6].forEach((x) => rect(c, x, boardBottom, 2, groundY - boardBottom + 1, WOOD));
+  rect(c, boardLeft, boardTop, boardWidth, boardHeight, WOOD);
+  rect(c, boardLeft, boardTop, boardWidth, 1, '#d4ad86');
+  rect(c, boardLeft + 2, boardTop + 2, boardWidth - 4, boardHeight - 4, '#ecdcc0');
+  for (let x = boardLeft + 2; x < boardLeft + boardWidth - 2; x++) {
+    for (let y = boardTop + 2; y < boardBottom - 2; y++) {
+      if (hash(x * 7 + y * 131) > 0.86) rect(c, x, y, 1, 1, '#dfc9a3');
+    }
+  }
+
+  const newest = slots - 1;
+  const first = count - newest;
+  const label = (i: number) => String(first + i).padStart(3, '0');
+  const pin = (i: number) => AWNING_COLORS[(first + i) % 4];
+  for (let i = 0; i < newest; i++) note(c, slotX(i), slotY, label(i), pin(i), false);
+
+  const t = time % NOTICE_LOOP;
+  const head = floor - 7;
+  const standX = slotX(newest) + 2;
+  const carryLift = head - 2;
+  const pinLift = slotY + NOTE_HEIGHT + 1;
+  const walkEnd = 2.2;
+  const liftEnd = 2.8;
+  const lowerEnd = 3.4;
+  const leaveEnd = 5.4;
+
+  if (t < liftEnd) {
+    const x = t < walkEnd ? lerp(-10, standX, ease(t / walkEnd)) : standX;
+    const lift = t < walkEnd ? carryLift : lerp(carryLift, pinLift, ease((t - walkEnd) / (liftEnd - walkEnd)));
+    bot(c, x, floor, time, 0, false, lift);
+    note(c, x - 2, lift - 1 - NOTE_HEIGHT, label(newest), pin(newest), true);
+    return;
+  }
+
+  note(c, slotX(newest), slotY, label(newest), pin(newest), true);
+  sparkle(c, slotX(newest) + NOTE_WIDTH, slotY - 1, time);
+  if (t < lowerEnd) {
+    bot(c, standX, floor, time, 0, false, lerp(pinLift, carryLift, ease((t - liftEnd) / (lowerEnd - liftEnd))));
+  } else if (t < leaveEnd) {
+    bot(c, lerp(standX, width + 10, ease((t - lowerEnd) / (leaveEnd - lowerEnd))), floor, time, 0, false);
+  }
+}
+
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
@@ -716,6 +804,18 @@ export function RaceScene({ rtt, statements, className }: RaceSceneProps) {
   const canvasRef = usePixelLoop(RACE_HEIGHT, draw);
 
   return <canvas ref={canvasRef} aria-hidden="true" className={cn('pixel-canvas h-[288px] max-sm:h-[144px]', className)} />;
+}
+
+interface NoticeBoardSceneProps {
+  count: number;
+  className?: string;
+}
+
+export function NoticeBoardScene({ count, className }: NoticeBoardSceneProps) {
+  const draw = useCallback<Draw>((c, width, height, time) => noticeBoard(c, width, height, time, count), [count]);
+  const canvasRef = usePixelLoop(NOTICE_HEIGHT, draw);
+
+  return <canvas ref={canvasRef} aria-hidden="true" className={cn('pixel-canvas h-[216px] max-sm:h-[108px]', className)} />;
 }
 
 interface FlipCounterProps {
