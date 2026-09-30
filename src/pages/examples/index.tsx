@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { PageMeta } from '@/components/page-meta';
+import { LevelMapScene } from '@/components/ui';
 import { exampleSections, getSectionById } from './sections';
 import { ExamplesSidebar, ExamplesSidebarMobile } from './examples-sidebar';
 import { ExampleRenderer } from './example-renderer';
@@ -44,7 +45,7 @@ export function ExamplesPage() {
           activeId={activeId}
           onSelect={handleSelect}
         />
-        <main className="flex-1 bg-bg-primary overflow-y-auto">
+        <main className="flex-1 bg-[#faf8f2] overflow-y-auto">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 lg:pl-12 py-6 sm:py-8">
             {/* Mobile sidebar toggle */}
             <button
@@ -57,6 +58,9 @@ export function ExamplesPage() {
 
             {activeSection && (
               <>
+                <div className="dialog mb-6">
+                  <LevelMapScene index={activeIndex} count={exampleSections.length} />
+                </div>
                 <SectionHeader
                   eyebrow={`Example ${activeIndex + 1} of ${exampleSections.length}`}
                   title={activeSection.title}

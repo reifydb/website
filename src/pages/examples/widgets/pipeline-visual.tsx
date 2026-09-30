@@ -19,9 +19,9 @@ export function PipelineVisual({ steps, className }: PipelineVisualProps) {
           <div className="flex flex-col items-center w-5 shrink-0">
             <div
               className={cn(
-                'w-2.5 h-2.5 rounded-full border-2 shrink-0 mt-3',
+                'w-2.5 h-2.5 border-2 shrink-0 mt-3',
                 i === 0
-                  ? 'border-primary bg-primary'
+                  ? 'border-[#4b52d6] bg-[#4b52d6]'
                   : 'border-primary/60 bg-primary/20'
               )}
             />

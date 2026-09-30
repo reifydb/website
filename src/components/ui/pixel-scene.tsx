@@ -24,6 +24,13 @@ interface RunnerBug {
   boxes: string[];
 }
 
+interface LevelWalk {
+  from: number;
+  to: number;
+  start: number;
+  at: number;
+}
+
 interface RaceState {
   rtt: number;
   statements: number;
@@ -104,6 +111,8 @@ const BOUNCE_TIME = 0.35;
 const MERGE_TIME = 0.6;
 const POOF_TIME = 0.6;
 const MERGED_WIDTH = 31;
+const LEVEL_HEIGHT = 27;
+const LEVEL_WALK_SPEED = 40;
 const RUNNER_BUGS: RunnerBug[] = [
   { shape: 'beetle', boxes: ['PG', 'REDIS'] },
   { shape: 'fly', boxes: ['CACHE'] },
@@ -1298,6 +1307,47 @@ function runner(c: Context, width: number, height: number, time: number) {
   }
 }
 
+function levelMap(
+  c: Context,
+  width: number,
+  height: number,
+  time: number,
+  count: number,
+  index: number,
+  walk: LevelWalk,
+) {
+  const groundY = height - 7;
+  const floor = groundY + 3;
+  clouds(c, width, time);
+  grass(c, width, groundY, height - 4, time);
+  dither(c, width, height - 4, height, PRIMARY, PAPER);
+
+  const margin = Math.max(12, Math.round(width * 0.1));
+  const span = count > 1 ? (width - 2 * margin - 16) / (count - 1) : 0;
+  const signX = (p: number) => Math.round(count > 1 ? margin + p * span : width / 2 - 8);
+  for (let i = 0; i < count; i++) {
+    const x = signX(i);
+    if (i < count - 1) {
+      for (let d = x + 9; d < signX(i + 1) - 1; d += 3) rect(c, d, groundY + 1, 1, 1, LINE);
+    }
+    rect(c, x + 3, floor - 8, 1, 6, WOOD);
+    rect(c, x, floor - 15, 7, 7, i === index ? SPARK : '#ffffff');
+    rect(c, x, floor - 9, 7, 1, LINE);
+    glyph(c, String(i + 1), x + 2, floor - 14, INK);
+  }
+
+  const distance = Math.abs(signX(walk.to) - signX(walk.from));
+  const u = distance > 0 ? Math.min(1, (time - walk.start) / (distance / LEVEL_WALK_SPEED)) : 1;
+  walk.at = lerp(walk.from, walk.to, ease(u));
+  const x = Math.round(lerp(signX(walk.from), signX(walk.to), ease(u))) + 9;
+  if (u < 1) {
+    bot(c, x, floor - 1, time, 0, false);
+    rect(c, x + (Math.floor(time * 8) % 2 ? 0 : 3), floor - 2, 2, 1, '#3f3b99');
+  } else {
+    bot(c, x, floor, time, 0, false);
+  }
+}
+
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
@@ -1403,6 +1453,28 @@ export function NoticeBoardScene({ count, className }: NoticeBoardSceneProps) {
   const canvasRef = usePixelLoop(NOTICE_HEIGHT, draw);
 
   return <canvas ref={canvasRef} aria-hidden="true" className={cn('pixel-canvas h-[216px] max-sm:h-[108px]', className)} />;
+}
+
+interface LevelMapSceneProps {
+  index: number;
+  count: number;
+  className?: string;
+}
+
+export function LevelMapScene({ index, count, className }: LevelMapSceneProps) {
+  const walk = useRef<LevelWalk>({ from: index, to: index, start: 0, at: index });
+  useEffect(() => {
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const from = still ? index : walk.current.at;
+    walk.current = { from, to: index, start: performance.now() / 1000, at: from };
+  }, [index]);
+  const draw = useCallback<Draw>(
+    (c, width, height, time) => levelMap(c, width, height, time, count, index, walk.current),
+    [count, index],
+  );
+  const canvasRef = usePixelLoop(LEVEL_HEIGHT, draw);
+
+  return <canvas ref={canvasRef} aria-hidden="true" className={cn('pixel-canvas h-[108px] max-sm:h-[54px]', className)} />;
 }
 
 interface FlipCounterProps {
