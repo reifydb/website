@@ -59,12 +59,11 @@ function Node({
         y={y}
         width={PANEL_W - 48}
         height={h}
-        rx={8}
         fill={highlight ? panelFill : boxFill}
-        stroke={highlight ? accent : boxStroke}
+        stroke={highlight ? '#4b52d6' : boxStroke}
         strokeWidth={highlight ? 2 : 1}
       />
-      {highlight && <rect x={24} y={y} width={PANEL_W - 48} height={h} rx={8} fill={accent} fillOpacity={0.05} />}
+      {highlight && <rect x={24} y={y} width={PANEL_W - 48} height={h} fill={accent} fillOpacity={0.05} />}
       <text x={40} y={y + 24} fontFamily={mono} fontSize={14} fontWeight={700} fill={highlight ? accent : strong}>
         {name}
       </text>
@@ -103,7 +102,8 @@ function Footer({ items, tone }: { items: string[]; tone: string }) {
 function PanelFrame({ title, tone }: { title: string; tone: string }) {
   return (
     <g>
-      <rect x={0} y={0} width={PANEL_W} height={PANEL_H} rx={12} fill={panelFill} stroke={hairline} />
+      <rect x={0} y={4} width={PANEL_W} height={PANEL_H} fill="var(--color-primary-dark)" />
+      <rect x={1} y={1} width={PANEL_W - 2} height={PANEL_H - 2} fill={panelFill} stroke="#4b52d6" strokeWidth={2} />
       <text x={24} y={34} fontFamily={mono} fontSize={12} fontWeight={600} letterSpacing={1.4} fill={tone}>
         {title}
       </text>
@@ -132,7 +132,7 @@ function TodayPanel() {
         return (
           <g key={name}>
             <line x1={RAIL_X} y1={y + fanH / 2} x2={72} y2={y + fanH / 2} stroke={flow} strokeWidth={2} />
-            <rect x={72} y={y} width={PANEL_W - 96} height={fanH} rx={6} fill={boxFill} stroke={boxStroke} />
+            <rect x={72} y={y} width={PANEL_W - 96} height={fanH} fill={boxFill} stroke={boxStroke} />
             <text x={86} y={y + 21} fontFamily={mono} fontSize={12} fontWeight={700} fill={body}>
               {name}
             </text>
@@ -160,8 +160,8 @@ function ReifyPanel() {
       <Actor y={72} name="alice" note="place_order(...)" />
       <Arrow y1={100} y2={blockY} tone={accent} />
 
-      <rect x={24} y={blockY} width={PANEL_W - 48} height={blockH} rx={10} fill={panelFill} stroke={accent} strokeWidth={2} />
-      <rect x={24} y={blockY} width={PANEL_W - 48} height={blockH} rx={10} fill={accent} fillOpacity={0.05} />
+      <rect x={24} y={blockY} width={PANEL_W - 48} height={blockH} fill={panelFill} stroke="#4b52d6" strokeWidth={2} />
+      <rect x={24} y={blockY} width={PANEL_W - 48} height={blockH} fill={accent} fillOpacity={0.05} />
       <text x={44} y={blockY + 28} fontFamily={mono} fontSize={13} fontWeight={700} letterSpacing={1.4} fill={accent}>
         REIFYDB
       </text>
@@ -195,7 +195,7 @@ export function FeatureDiagram() {
   return (
     <>
       <svg
-        viewBox={`0 0 ${wideW} ${PANEL_H}`}
+        viewBox={`0 0 ${wideW} ${PANEL_H + 4}`}
         className="hidden md:block w-full h-auto"
         role="img"
         aria-label="Alice places an order on today's stack and on ReifyDB"
@@ -207,7 +207,7 @@ export function FeatureDiagram() {
       </svg>
 
       <svg
-        viewBox={`0 0 ${PANEL_W} ${PANEL_H * 2 + gap}`}
+        viewBox={`0 0 ${PANEL_W} ${PANEL_H * 2 + gap + 4}`}
         className="md:hidden w-full h-auto"
         role="img"
         aria-label="Alice places an order on today's stack and on ReifyDB"

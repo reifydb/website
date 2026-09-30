@@ -20,7 +20,7 @@ const sans = 'var(--font-body)';
 function SystemBox({ x, y, w, h, name }: { x: number; y: number; w: number; h: number; name: string }) {
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} rx={6} fill={boxFill} stroke={boxStroke} />
+      <rect x={x} y={y} width={w} height={h} fill={boxFill} stroke={boxStroke} />
       <text
         x={x + w / 2}
         y={y + h / 2}
@@ -55,8 +55,8 @@ function ReifyBlock({
 }) {
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} rx={10} fill="var(--color-bg-secondary)" stroke={accent} strokeWidth={2} />
-      <rect x={x} y={y} width={w} height={h} rx={10} fill={accent} fillOpacity={0.05} />
+      <rect x={x} y={y} width={w} height={h} fill="var(--color-bg-secondary)" stroke="#4b52d6" strokeWidth={2} />
+      <rect x={x} y={y} width={w} height={h} fill={accent} fillOpacity={0.05} />
       <text x={x + 24} y={y + 34} fontFamily={mono} fontSize={15} fontWeight={700} letterSpacing={1.6} fill={accent}>
         REIFYDB
       </text>
@@ -228,7 +228,7 @@ function TallStack() {
 
 export function StackDiagram() {
   return (
-    <div className="glass-card p-6 sm:p-10">
+    <div className="dialog p-6 sm:p-10">
       <div className="hidden md:block">
         <WideStack />
       </div>

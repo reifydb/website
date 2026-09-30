@@ -187,9 +187,9 @@ export function ManifestoPage() {
         <PageCloser
           eyebrow="YOUR MOVE"
           title={HEADLINE}
-          subtitle="If you have written that cron job, shipped a service whose entire job is knowing which key to delete, or explained why the dashboard and the database disagree, then you already agree with this page. Agree, and come build it. Disagree, and say so."
+          subtitle="If you have written that cron job, shipped a service whose entire job is knowing which key to delete, or explained why the dashboard and the database disagree, then you already agree with this page. Agree, and build on it. Disagree, and say so."
         >
-          <GameButton href="mailto:dominique@reifydb.com?subject=Challenging%20the%20manifesto" size="lg">
+          <GameButton href="mailto:founder@reifydb.com?subject=Challenging%20the%20manifesto" size="lg">
             Challenge me with your opinion
           </GameButton>
           <GameButton href="/docs" variant="secondary" size="lg">
