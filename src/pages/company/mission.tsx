@@ -1,6 +1,6 @@
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { Button, PageCloser, PageHero, ScrollReveal } from '@/components/ui';
+import { GameButton, PageCloser, PageHero, PixelScene, ScrollReveal } from '@/components/ui';
 
 export function MissionPage() {
   return (
@@ -16,12 +16,13 @@ export function MissionPage() {
           eyebrow="Mission"
           title="The way you think about your data is the right way to store it"
           subtitle="No translation layer. No accidental complexity. Infrastructure that gets out of the way."
+          scene={<PixelScene kind="build" />}
         />
 
         <section className="py-20 sm:py-28">
           <div className="mx-auto max-w-3xl px-6 md:px-8">
             <ScrollReveal>
-              <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-8 text-balance">
+              <h2 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-8 text-balance">
                 Most engineers have felt it.
               </h2>
               <p className="text-text-secondary text-lg leading-relaxed mb-6">
@@ -32,7 +33,7 @@ export function MissionPage() {
                 ReifyDB exists because we believe the way you think about your data is the right way to
                 store it, query it, and evolve it. The argument about the problem itself is written down
                 in{' '}
-                <a href="/manifesto" className="text-primary hover:text-primary-light underline underline-offset-2">
+                <a href="/manifesto" className="text-[#4b52d6] hover:text-primary-dark underline underline-offset-2">
                   the manifesto
                 </a>
                 .
@@ -41,18 +42,16 @@ export function MissionPage() {
           </div>
         </section>
 
-        <section className="section-elevated py-20 sm:py-28">
+        <section className="pb-20 sm:pb-28">
           <div className="mx-auto max-w-4xl px-6 md:px-8">
             <ScrollReveal>
-              <div className="bento-tile p-8 sm:p-12">
-                <span className="inline-block rounded-pill border border-border-light bg-bg-primary px-3 py-1 text-xs label-uppercase text-text-muted mb-8">
-                  Origin story
-                </span>
+              <div className="dialog p-8 sm:p-12">
+                <p className="pixel-label uppercase text-[#4b52d6] mb-8">Origin story</p>
                 <div className="grid gap-8 sm:grid-cols-[auto_1fr] sm:gap-10 items-start">
                   <img
                     src="/assets/img/me.jpeg"
                     alt="Dominique Chuo"
-                    className="w-32 h-32 object-cover rounded-lg border border-border-default shadow-hard"
+                    className="w-32 h-32 object-cover border-2 border-[#4b52d6]"
                   />
                   <div>
                     <p className="text-text-secondary leading-relaxed mb-6">
@@ -82,15 +81,16 @@ export function MissionPage() {
         </section>
 
         <PageCloser
+          eyebrow="PLAY NOW"
           title="See what it looks like in practice"
           subtitle="The database compiles to WebAssembly, so you can run it in this browser tab without installing anything."
         >
-          <Button href="/playground" size="lg">
+          <GameButton href="/playground" size="lg">
             Open the playground
-          </Button>
-          <Button href="/company/values" variant="secondary" size="lg">
+          </GameButton>
+          <GameButton href="/company/values" variant="secondary" size="lg">
             Our values
-          </Button>
+          </GameButton>
         </PageCloser>
       </main>
 

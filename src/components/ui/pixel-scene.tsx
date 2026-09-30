@@ -15,7 +15,7 @@ import {
 } from './pixel-market';
 
 type Context = CanvasRenderingContext2D;
-type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | BoardMode;
+type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | 'build' | BoardMode;
 type Draw = (c: Context, width: number, height: number, time: number) => void;
 
 interface RaceState {
@@ -78,6 +78,13 @@ const PIT_LOOP = 5.5;
 const TAP_PERIOD = 0.4;
 const PLANE_LOOP = 6;
 const LOOP_RADIUS = 7;
+const SHAPES = [
+  ['x.', 'x.', 'xx'],
+  ['xxx', '.x.'],
+  ['.xx', 'xx.'],
+];
+const SHAPE_TIME = 4;
+const DROP_TIME = 0.5;
 
 const GLYPHS: Record<string, string> = {
   '0': '111101101101111',
@@ -925,6 +932,64 @@ function paperPlane(c: Context, width: number, height: number, time: number) {
   }
 }
 
+function block(c: Context, x: number, y: number, color: string) {
+  rect(c, x, y, 4, 4, color);
+  rect(c, x, y, 4, 1, '#6a71e6');
+}
+
+function thought(c: Context, x: number, y: number, shape: string[]) {
+  rect(c, x + 1, y, 13, 11, '#ffffff');
+  rect(c, x, y + 1, 15, 9, '#ffffff');
+  const left = x + Math.round((15 - 2 * shape[0].length) / 2);
+  const top = y + Math.round((11 - 2 * shape.length) / 2);
+  shape.forEach((row, r) =>
+    [...row].forEach((cell, col) => {
+      if (cell === 'x') rect(c, left + col * 2, top + r * 2, 2, 2, PRIMARY);
+    }),
+  );
+}
+
+function build(c: Context, width: number, height: number, time: number) {
+  const groundY = height - 14;
+  const floor = groundY + 3;
+  clouds(c, width, time);
+  hills(c, width, groundY);
+  grass(c, width, groundY, height - 7, time);
+  dither(c, width, height - 7, height, PRIMARY, PAPER);
+
+  const botX = Math.round(width / 2) - 14;
+  const buildLeft = botX + 10;
+  const t = time % SHAPE_TIME;
+  const shape = SHAPES[Math.floor(time / SHAPE_TIME) % SHAPES.length];
+  const cells = shape
+    .flatMap((row, r) => [...row].flatMap((cell, col) => (cell === 'x' ? [{ r, col }] : [])))
+    .sort((a, b) => b.r - a.r || a.col - b.col);
+  const popEnd = 0.6;
+  const buildEnd = popEnd + cells.length * DROP_TIME;
+  const clearStart = buildEnd + 0.6;
+  const raised = floor - 14;
+  bot(c, botX, floor, time, 0, false, t >= popEnd && t < buildEnd ? raised : undefined);
+
+  if (t < clearStart) {
+    rect(c, botX - 2, floor - 13, 1, 1, '#ffffff');
+    if (t >= 0.2) rect(c, botX - 5, floor - 17, 2, 2, '#ffffff');
+    if (t >= 0.4) thought(c, botX - 18, floor - 29, shape);
+  }
+
+  const blink = t >= clearStart && Math.floor(t * 8) % 2 === 0;
+  const handX = botX + 4;
+  const handY = raised - 5;
+  cells.forEach(({ r, col }, i) => {
+    const start = popEnd + i * DROP_TIME;
+    if (t < start) return;
+    const x = buildLeft + col * 4;
+    const y = floor - 4 * (shape.length - r);
+    const u = ease((t - start) / DROP_TIME);
+    block(c, lerp(handX, x, u), quad(handY, Math.min(handY, y) - 4, y, u), blink ? '#ffffff' : '#3f3b99');
+  });
+  if (t >= buildEnd && t < clearStart) sparkle(c, buildLeft + shape[0].length * 4 + 1, floor - 4 * shape.length - 1, time);
+}
+
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
@@ -938,6 +1003,7 @@ const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Dra
   booth: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: booth },
   pit: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: pitStop },
   plane: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: paperPlane },
+  build: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: build },
 };
 
 interface PixelSceneProps {
