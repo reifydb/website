@@ -16,8 +16,13 @@ import {
 import { GEM_COLORS } from './pixel-icons';
 
 type Context = CanvasRenderingContext2D;
-type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | 'build' | 'trade' | BoardMode;
+type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | 'build' | 'trade' | 'bug' | BoardMode;
 type Draw = (c: Context, width: number, height: number, time: number) => void;
+
+interface RunnerBug {
+  shape: 'beetle' | 'fly' | 'caterpillar' | 'spider';
+  boxes: string[];
+}
 
 interface RaceState {
   rtt: number;
@@ -90,6 +95,25 @@ const TRADE_LOOP = 8;
 const OFFER_TIME = 3;
 const VULTURE = '#6b4a35';
 const VULTURE_HEAD = '#e0a0a0';
+const RUN_SPEED = 40;
+const BUG_SPEED = 50;
+const BUG_GAP = 2.5;
+const JUMP_TIME = 0.5;
+const SQUASH_TIME = 0.15;
+const BOUNCE_TIME = 0.35;
+const MERGE_TIME = 0.6;
+const POOF_TIME = 0.6;
+const MERGED_WIDTH = 31;
+const RUNNER_BUGS: RunnerBug[] = [
+  { shape: 'beetle', boxes: ['PG', 'REDIS'] },
+  { shape: 'fly', boxes: ['CACHE'] },
+  { shape: 'caterpillar', boxes: ['QUEUE', 'WORKERS'] },
+  { shape: 'spider', boxes: ['CRON'] },
+  { shape: 'beetle', boxes: ['PG', 'REDIS', 'CRON'] },
+  { shape: 'fly', boxes: ['GLUE'] },
+  { shape: 'caterpillar', boxes: ['PG', 'CACHE'] },
+  { shape: 'spider', boxes: ['QUEUE'] },
+];
 
 const GLYPHS: Record<string, string> = {
   '0': '111101101101111',
@@ -170,20 +194,21 @@ function dither(c: Context, width: number, top: number, bottom: number, from: st
   }
 }
 
-function grass(c: Context, width: number, groundY: number, bottom: number, time: number) {
+function grass(c: Context, width: number, groundY: number, bottom: number, time: number, offset = 0) {
   rect(c, 0, groundY, width, bottom - groundY, PRIMARY);
   for (let x = 0; x < width; x++) {
-    if (hash(x * 3 + 1) > 0.5) rect(c, x, groundY, 1, 1, '#a3a9ff');
+    if (hash((x + offset) * 3 + 1) > 0.5) rect(c, x, groundY, 1, 1, '#a3a9ff');
   }
   for (let x = 0; x < width; x++) {
-    const blade = hash(x * 13 + 1);
+    const blade = hash((x + offset) * 13 + 1);
     if (blade < 0.55) continue;
-    const bladeHeight = 1 + (blade > 0.85 ? 1 : 0) + (hash(x + Math.floor(time * 1.5) * 131) > 0.85 ? 1 : 0);
+    const bladeHeight = 1 + (blade > 0.85 ? 1 : 0) + (hash(x + offset + Math.floor(time * 1.5) * 131) > 0.85 ? 1 : 0);
     rect(c, x, groundY - bladeHeight, 1, bladeHeight, blade > 0.75 ? '#6a71e6' : PRIMARY);
   }
   for (let y = groundY + 2; y < Math.min(bottom, groundY + 6); y++) {
-    for (let x = (y % 2) * 3; x < width; x += 7) {
-      if (hash(x * 5 + y) > 0.5) rect(c, x, y, 2, 1, '#6a71e6');
+    for (let x = 0; x < width; x++) {
+      const world = x + offset;
+      if ((world - (y % 2) * 3) % 7 === 0 && hash(world * 5 + y) > 0.5) rect(c, x, y, 2, 1, '#6a71e6');
     }
   }
 }
@@ -199,13 +224,15 @@ function clouds(c: Context, width: number, time: number) {
   }
 }
 
-function hills(c: Context, width: number, groundY: number) {
+function hills(c: Context, width: number, groundY: number, offset = 0) {
   for (let x = 0; x < width; x++) {
-    const top = groundY - 10 - (8 + Math.sin(x * 0.05) * 4 + Math.sin(x * 0.013 + 1) * 6);
+    const world = x + offset;
+    const top = groundY - 10 - (8 + Math.sin(world * 0.05) * 4 + Math.sin(world * 0.013 + 1) * 6);
     rect(c, x, top, 1, groundY - top, '#e0daf6');
   }
   for (let x = 0; x < width; x++) {
-    const top = groundY - 3 - (4 + Math.sin(x * 0.08 + 2) * 3 + Math.sin(x * 0.021) * 4);
+    const world = x + offset;
+    const top = groundY - 3 - (4 + Math.sin(world * 0.08 + 2) * 3 + Math.sin(world * 0.021) * 4);
     rect(c, x, top, 1, groundY - top, '#c3c6fb');
   }
 }
@@ -1085,6 +1112,192 @@ function trade(c: Context, width: number, height: number, time: number) {
   });
 }
 
+function boxWidth(text: string) {
+  return text.length * 4 + 3;
+}
+
+function labelBox(c: Context, text: string, left: number, top: number, color: string) {
+  const width = boxWidth(text);
+  rect(c, left, top, width, 7, '#ffffff');
+  rect(c, left, top + 7, width, 1, LINE);
+  caption(c, text, left + 2, top + 1, color);
+}
+
+function beetle(c: Context, x: number, floor: number, time: number) {
+  const step = Math.floor(time * 8) % 2;
+  [8, 13, 18].forEach((legX, i) => rect(c, x + legX + (i % 2 ? -step : step), floor - 3, 1, 2, INK));
+  rect(c, x + 5, floor - 9, 16, 1, '#6a71e6');
+  rect(c, x + 4, floor - 8, 18, 5, '#3f3b99');
+  rect(c, x + 9, floor - 8, 1, 5, '#6a71e6');
+  rect(c, x + 15, floor - 8, 1, 5, '#6a71e6');
+  rect(c, x, floor - 7, 4, 4, '#3f3b99');
+  rect(c, x + 1, floor - 6, 1, 1, '#ffffff');
+  rect(c, x, floor - 9, 1, 2, INK);
+  rect(c, x - 1, floor - 10, 1, 1, INK);
+}
+
+function caterpillar(c: Context, x: number, floor: number, time: number, segments: number) {
+  for (let j = segments; j >= 1; j--) {
+    const bump = (Math.floor(time * 6) + j) % 2 ? -1 : 0;
+    rect(c, x + j * 4, floor - 6 + bump, 4, 4, j % 2 ? '#6a71e6' : '#3f3b99');
+    rect(c, x + j * 4 + 1, floor - 2, 1, 1, INK);
+  }
+  rect(c, x, floor - 6, 4, 4, '#3f3b99');
+  rect(c, x + 1, floor - 5, 1, 1, '#ffffff');
+  rect(c, x + 1, floor - 8, 1, 2, INK);
+}
+
+function spider(c: Context, x: number, floor: number, time: number) {
+  const step = Math.floor(time * 8) % 2;
+  [3, 6, 9, 12].forEach((legX, i) => {
+    rect(c, x + legX, floor - 14, 1, 7, INK);
+    rect(c, x + legX + (i % 2 ? step : -step), floor - 7, 1, 6, INK);
+  });
+  rect(c, x + 3, floor - 13, 9, 1, '#6a71e6');
+  rect(c, x + 3, floor - 12, 9, 4, '#3f3b99');
+  rect(c, x, floor - 11, 3, 3, '#3f3b99');
+  rect(c, x, floor - 10, 1, 1, '#ffffff');
+}
+
+function fly(c: Context, x: number, y: number, time: number) {
+  const flap = Math.floor(time * 12) % 2;
+  [8, 14].forEach((wingX) => {
+    rect(c, x + wingX, y - 11 - flap, 5, 2, '#ffffff');
+    rect(c, x + wingX, y - 9 - flap, 5, 1, LINE);
+  });
+  rect(c, x + 4, y + 1, 10, 3, '#3f3b99');
+  rect(c, x + 4, y + 1, 10, 1, '#6a71e6');
+  rect(c, x, y, 4, 4, '#3f3b99');
+  rect(c, x + 1, y + 1, 2, 2, '#ffffff');
+  rect(c, x + 6, y + 4, 1, 2, INK);
+  rect(c, x + 10, y + 4, 1, 2, INK);
+}
+
+function flattened(c: Context, x: number, y: number, length: number) {
+  rect(c, x, y, length, 3, '#3f3b99');
+  rect(c, x, y, length, 1, '#6a71e6');
+}
+
+function poof(c: Context, x: number, y: number, u: number) {
+  for (let k = 0; k < 6; k++) {
+    const angle = (k / 6) * Math.PI * 2;
+    const radius = 3 + u * 8;
+    const size = u < 0.5 ? 3 : 2;
+    rect(
+      c,
+      x + Math.cos(angle) * radius * 1.5 - 1,
+      y + Math.sin(angle) * radius * 0.6 - 1,
+      size,
+      size,
+      k % 2 ? '#ffffff' : '#b8b3d6',
+    );
+  }
+}
+
+function caterpillarSegments(boxes: string[]) {
+  const row = boxes.reduce((sum, text) => sum + boxWidth(text) + 1, -1);
+  return Math.ceil((row + 2) / 4);
+}
+
+function bugLength(bug: RunnerBug) {
+  if (bug.shape === 'caterpillar') return 4 + caterpillarSegments(bug.boxes) * 4;
+  return bug.shape === 'beetle' ? 22 : bug.shape === 'spider' ? 13 : 14;
+}
+
+function flyY(floor: number, time: number) {
+  return floor - 16 + Math.round(Math.sin(time * 6));
+}
+
+function headTop(bug: RunnerBug, floor: number, flyTop: number) {
+  if (bug.shape === 'beetle') return floor - 7;
+  if (bug.shape === 'caterpillar') return floor - 6;
+  return bug.shape === 'spider' ? floor - 11 : flyTop;
+}
+
+function ridingBoxes(bug: RunnerBug, x: number, floor: number, flyTop: number) {
+  if (bug.shape === 'caterpillar') {
+    const lefts = bug.boxes.map((_, i) =>
+      bug.boxes.slice(0, i).reduce((left, text) => left + boxWidth(text) + 1, x + 6),
+    );
+    return bug.boxes.map((text, i) => ({ text, left: lefts[i], top: floor - 15 }));
+  }
+  if (bug.shape === 'beetle') {
+    return bug.boxes.map((text, i) => ({
+      text,
+      left: Math.round(x + 13 - boxWidth(text) / 2),
+      top: floor - 17 - 8 * i,
+    }));
+  }
+  const base = bug.shape === 'spider' ? floor - 21 : flyTop - 8;
+  return bug.boxes.map((text, i) => ({ text, left: x + 6, top: base - 8 * i }));
+}
+
+function drawBug(c: Context, bug: RunnerBug, x: number, floor: number, flyTop: number, time: number) {
+  if (bug.shape === 'beetle') beetle(c, x, floor, time);
+  else if (bug.shape === 'caterpillar') caterpillar(c, x, floor, time, caterpillarSegments(bug.boxes));
+  else if (bug.shape === 'spider') spider(c, x, floor, time);
+  else fly(c, x, flyTop, time);
+}
+
+function runner(c: Context, width: number, height: number, time: number) {
+  const groundY = height - 14;
+  const floor = groundY + 3;
+  const scroll = Math.floor(time * RUN_SPEED);
+  clouds(c, width, time);
+  hills(c, width, groundY, Math.floor(scroll / 4));
+  grass(c, width, groundY, height - 7, time, scroll);
+  dither(c, width, height - 7, height, PRIMARY, PAPER);
+
+  const botX = Math.round(width * 0.3);
+  const spawnX = width + 4;
+  const newest = Math.floor(time / BUG_GAP);
+  const oldest = Math.max(0, Math.floor((time - (spawnX + 80) / RUN_SPEED) / BUG_GAP));
+  let botFloor = floor;
+
+  for (let n = oldest; n <= newest; n++) {
+    const bug = RUNNER_BUGS[Math.floor(hash(n * 7 + 3) * RUNNER_BUGS.length)];
+    const length = bugLength(bug);
+    const hitX = botX + (bug.shape === 'spider' ? 1 : 0);
+    const spawn = n * BUG_GAP;
+    const hit = spawn + (spawnX - hitX) / BUG_SPEED;
+    const since = time - hit;
+    const x =
+      since < 0 ? Math.round(spawnX - (time - spawn) * BUG_SPEED) : Math.round(hitX + hit * RUN_SPEED) - scroll;
+    const flyTop = flyY(floor, Math.min(time, hit));
+    const squashTop = bug.shape === 'fly' ? flyTop + 1 : floor - 4;
+    const settle = since - SQUASH_TIME;
+
+    if (since < 0) drawBug(c, bug, x, floor, flyTop, time);
+    else if (since < SQUASH_TIME) flattened(c, x, squashTop, length);
+    if (settle >= 0 && settle < POOF_TIME) poof(c, x + length / 2, squashTop + 1, settle / POOF_TIME);
+
+    const center = x + length / 2;
+    if (settle < MERGE_TIME) {
+      const u = ease(Math.max(0, settle) / MERGE_TIME);
+      ridingBoxes(bug, x, floor, flyTop).forEach((box) => {
+        const left = Math.round(lerp(box.left, center - boxWidth(box.text) / 2, u));
+        labelBox(c, box.text, left, Math.round(lerp(box.top, floor - 9, u)), INK);
+      });
+    } else {
+      labelBox(c, 'REIFYDB', Math.round(center - MERGED_WIDTH / 2), floor - 9, '#4b52d6');
+    }
+
+    if (since >= -JUMP_TIME && since < SQUASH_TIME + BOUNCE_TIME) {
+      const land = headTop(bug, floor, flyTop) + 1;
+      if (since < 0) botFloor = quad(floor, land - 14, land, 1 + since / JUMP_TIME);
+      else if (since < SQUASH_TIME) botFloor = squashTop + 1;
+      else botFloor = quad(squashTop + 1, squashTop - 7, floor, (since - SQUASH_TIME) / BOUNCE_TIME);
+    }
+  }
+
+  if (botFloor === floor) {
+    bot(c, botX, floor - 1, time, 0, false);
+    rect(c, botX + (Math.floor(time * 8) % 2 ? 0 : 3), floor - 2, 2, 1, '#3f3b99');
+  } else {
+    bot(c, botX, Math.round(botFloor), time, 0, false);
+  }
+}
+
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
@@ -1100,6 +1313,7 @@ const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Dra
   plane: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: paperPlane },
   build: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: build },
   trade: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: trade },
+  bug: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: runner },
 };
 
 interface PixelSceneProps {
