@@ -1,52 +1,19 @@
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { ARROW_COLORS, PageCloser, PageHero, PixelIcon, PixelScene, RIGHT_ARROW, ScrollReveal } from '@/components/ui';
-
-const ICON_COLORS = { x: 'currentColor' };
-
-const BRIEFCASE = [
-  '...xxx...',
-  '...x.x...',
-  'xxxxxxxxx',
-  'x.......x',
-  'xxxxxxxxx',
-  'x...x...x',
-  'x.......x',
-  'xxxxxxxxx',
-];
-
-const ISSUE = [
-  '..xxxxx..',
-  '.x.....x.',
-  'x.......x',
-  'x...x...x',
-  'x...x...x',
-  'x.......x',
-  '.x.....x.',
-  '..xxxxx..',
-];
-
-const CALENDAR = [
-  '.x.....x.',
-  'xxxxxxxxx',
-  'xxxxxxxxx',
-  'x.......x',
-  'x.x.x.x.x',
-  'x.......x',
-  'x.x.x.x.x',
-  'xxxxxxxxx',
-];
-
-const BUBBLE = [
-  'xxxxxxxxx',
-  'x.......x',
-  'x.xxxxx.x',
-  'x.......x',
-  'x.xxx...x',
-  'x.......x',
-  'xxxxxxxxx',
-  '.x.......',
-];
+import {
+  ARROW_COLORS,
+  BRIEFCASE,
+  BUBBLE,
+  CALENDAR,
+  ICON_COLORS,
+  ISSUE,
+  PageCloser,
+  PageHero,
+  PixelIcon,
+  PixelScene,
+  RIGHT_ARROW,
+  ScrollReveal,
+} from '@/components/ui';
 
 const supportOptions = [
   {

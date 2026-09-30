@@ -15,7 +15,7 @@ import {
 } from './pixel-market';
 
 type Context = CanvasRenderingContext2D;
-type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | BoardMode;
+type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | BoardMode;
 type Draw = (c: Context, width: number, height: number, time: number) => void;
 
 interface RaceState {
@@ -76,6 +76,8 @@ const STEP_START = 1;
 const EXIT_END = 1.8;
 const PIT_LOOP = 5.5;
 const TAP_PERIOD = 0.4;
+const PLANE_LOOP = 6;
+const LOOP_RADIUS = 7;
 
 const GLYPHS: Record<string, string> = {
   '0': '111101101101111',
@@ -847,6 +849,82 @@ function pitStop(c: Context, width: number, height: number, time: number) {
   }
 }
 
+function plane(c: Context, x: number, y: number) {
+  rect(c, x, y, 2, 1, PRIMARY);
+  rect(c, x, y + 1, 5, 1, PRIMARY);
+  rect(c, x + 1, y + 2, 2, 1, PRIMARY);
+}
+
+function house(c: Context, left: number, floor: number, lit: boolean) {
+  for (let r = 0; r < 10; r++) rect(c, left - 1 + r, floor - 13 - r, 20 - 2 * r, 1, PRIMARY);
+  rect(c, left, floor - 12, 18, 12, '#ffffff');
+  rect(c, left + 17, floor - 12, 1, 12, '#e6e4f5');
+  rect(c, left + 3, floor - 7, 4, 7, WOOD);
+  rect(c, left + 10, floor - 10, 5, 4, lit ? SPARK : INK);
+  rect(c, left + 12, floor - 10, 1, 4, '#ffffff');
+}
+
+function quad(from: number, via: number, to: number, u: number) {
+  return lerp(lerp(from, via, u), lerp(via, to, u), u);
+}
+
+function paperPlane(c: Context, width: number, height: number, time: number) {
+  const groundY = height - 14;
+  const floor = groundY + 3;
+  clouds(c, width, time);
+  hills(c, width, groundY);
+  grass(c, width, groundY, height - 7, time);
+  dither(c, width, height - 7, height, PRIMARY, PAPER);
+
+  const botX = Math.round(width * 0.25) - 2;
+  const houseLeft = Math.round(width * 0.75) - 9;
+  const t = time % PLANE_LOOP;
+  const throwEnd = 0.5;
+  const landEnd = 3.5;
+  const glowEnd = 5;
+  const lit = t >= landEnd && t < glowEnd;
+  house(c, houseLeft, floor, lit);
+  if (lit) sparkle(c, houseLeft + 16, floor - 12, time);
+
+  const raised = floor - 13;
+  const rest = floor - 6;
+  const held = lerp(rest, raised, ease(t / throwEnd));
+  const lift =
+    t < throwEnd
+      ? held
+      : t < landEnd
+        ? raised
+        : t < glowEnd
+          ? lerp(raised, rest, ease((t - landEnd) / (glowEnd - landEnd)))
+          : undefined;
+  bot(c, botX, floor, time, 0, false, lift);
+
+  if (t < throwEnd) {
+    plane(c, botX + 3, held - 4);
+    return;
+  }
+  if (t >= landEnd) return;
+
+  const startX = botX + 3;
+  const startY = raised - 4;
+  const endX = houseLeft + 10;
+  const endY = floor - 10;
+  const centerX = Math.round((startX + endX) / 2);
+  const centerY = floor - 30;
+  const bottomY = centerY + LOOP_RADIUS;
+  const u = (t - throwEnd) / (landEnd - throwEnd);
+  if (u < 0.35) {
+    const v = u / 0.35;
+    plane(c, quad(startX, (startX + centerX) / 2, centerX, v), quad(startY, bottomY, bottomY, v));
+  } else if (u < 0.65) {
+    const angle = Math.PI / 2 - 2 * Math.PI * ((u - 0.35) / 0.3);
+    plane(c, centerX + LOOP_RADIUS * Math.cos(angle), centerY + LOOP_RADIUS * Math.sin(angle));
+  } else {
+    const v = (u - 0.65) / 0.35;
+    plane(c, quad(centerX, lerp(centerX, endX, 0.6), endX, v), quad(bottomY, bottomY, endY, v));
+  }
+}
+
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
@@ -859,6 +937,7 @@ const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Dra
   invaders: { height: 48, heightClass: 'h-[192px] max-sm:h-[96px]', draw: invaders },
   booth: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: booth },
   pit: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: pitStop },
+  plane: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: paperPlane },
 };
 
 interface PixelSceneProps {
