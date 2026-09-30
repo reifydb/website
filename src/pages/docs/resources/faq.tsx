@@ -10,7 +10,7 @@ export function TroubleshootingFaqPage() {
       <div className="space-y-8">
         <div>
           <div className="text-sm text-text-muted mb-2 font-bold">Resources</div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Troubleshooting & FAQ</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Troubleshooting & FAQ</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             What common errors mean, the surprises that do not raise an error at all, and the questions
             everyone asks first.
@@ -18,10 +18,10 @@ export function TroubleshootingFaqPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Anatomy of a diagnostic error</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Anatomy of a diagnostic error</h2>
           <p className="text-text-secondary mb-4">
             Every RQL error carries a stable code and a message. Most add a{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">HELP</code> line, and many
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">HELP</code> line, and many
             add a source location with a caret pointing at the exact span that failed. Run this one:
           </p>
           <ExecutableSnippet
@@ -43,10 +43,10 @@ NOTES
   • Consider using MAP if you want to replace existing columns`}
           />
           <p className="text-text-secondary mt-4">
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">extend</code> only adds
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">extend</code> only adds
             columns; reusing an existing name is rejected rather than silently overwriting it. To replace
             an existing column, use{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">map</code>{' '}
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">map</code>{' '}
             instead.
           </p>
           <p className="text-text-secondary mt-6 mb-4">
@@ -79,8 +79,8 @@ NOTES
   • supported casts include: numeric to numeric, string to temporal, boolean to numeric`}
           />
           <p className="text-text-secondary mt-4">
-            The <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">LOCATION</code> /{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">RQL</code> block is not
+            The <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">LOCATION</code> /{' '}
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">RQL</code> block is not
             guaranteed on every error, the first example above did not have one, but when present the
             line under the caret names the exact value and type that failed. See{' '}
             <Link to="/docs/rql/transforms/cast" className="text-primary-color hover:underline font-medium">
@@ -90,9 +90,9 @@ NOTES
           </p>
           <p className="text-text-secondary mt-6">
             An error raised inside a procedure call nests the underlying cause under a{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">↳</code> marker, with its own
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">↳</code> marker, with its own
             code, location, and help. Calling{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">
               system::config::set(...)
             </code>{' '}
             with a key that does not exist looks like this:
@@ -121,13 +121,13 @@ NOTES
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Reading an error code</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reading an error code</h2>
           <p className="text-text-secondary">
             Codes are grouped by the part of the engine that raised them rather than one flat taxonomy:{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">CAST_*</code> from the cast
-            system, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">EXTEND_*</code> from
-            the extend operator, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">CA_*</code>{' '}
-            from the catalog, <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">PROCEDURE_*</code>{' '}
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">CAST_*</code> from the cast
+            system, <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">EXTEND_*</code> from
+            the extend operator, <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">CA_*</code>{' '}
+            from the catalog, <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">PROCEDURE_*</code>{' '}
             from procedure invocation, and so on for every other operator and subsystem. The prefix tells
             you where to start reading; the operator and function pages under{' '}
             <Link to="/docs/rql/transforms" className="text-primary-color hover:underline font-medium">
@@ -142,13 +142,13 @@ NOTES
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Silent surprises</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Silent surprises</h2>
           <p className="text-text-secondary mb-4">
             Not everything unexpected is an error. A few things return a completely valid, successfully
             executed result that just is not the one you expected.
           </p>
           <p className="text-text-secondary mb-2">
-            A table scan with no <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">sort</code>{' '}
+            A table scan with no <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">sort</code>{' '}
             is not returned in insertion order, it comes back latest-inserted-first:
           </p>
           <ExecutableSnippet
@@ -161,10 +161,10 @@ NOTES
               sort
             </Link>
             . While you are there: a bare{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">sort {'{'} col {'}'}</code>{' '}
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">sort {'{'} col {'}'}</code>{' '}
             with no direction sorts descending, not ascending, so write{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">:asc</code> or{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">:desc</code> explicitly.
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">:asc</code> or{' '}
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">:desc</code> explicitly.
           </p>
           <p className="text-text-secondary mt-4">
             A join or comparison against a bare, untyped literal can also match nothing with no error at
@@ -181,7 +181,7 @@ NOTES
           </p>
           <p className="text-text-secondary mt-4">
             An anonymous or low-privilege query against{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">system::*</code> that comes
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">system::*</code> that comes
             back with zero rows and no error is very often a missing read policy, not missing data: system
             catalog reads are policy-gated the same as any other object, and a denied read looks exactly
             like an empty table. See{' '}
@@ -193,13 +193,13 @@ NOTES
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Frequently asked questions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Frequently asked questions</h2>
           <div className="space-y-5">
             <div>
               <h3 className="text-lg font-bold tracking-tight mb-1">Is RQL a SQL dialect?</h3>
               <p className="text-text-secondary">
                 No. It shares the general idea of a declarative query language, but the grammar is its
-                own: no <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">SELECT</code>, a
+                own: no <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">SELECT</code>, a
                 top-to-bottom pipeline of operators instead of clauses, and its own literal and type
                 system. See{' '}
                 <Link to="/docs/rql/for-sql-users" className="text-primary-color hover:underline font-medium">
@@ -241,7 +241,7 @@ NOTES
               </h3>
               <p className="text-text-secondary">
                 The outer error is where the failure surfaced, commonly a procedure call, and the nested
-                one under <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">↳</code> is the
+                one under <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">↳</code> is the
                 actual root cause. Read the nested error first; the outer one usually just says which call
                 failed.
               </p>

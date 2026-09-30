@@ -1,6 +1,5 @@
 export { DocsSidebar } from './docs-sidebar';
 export { DocsNavTree } from './docs-nav-tree';
-export { SectionTabs } from './section-tabs';
 export { Breadcrumbs } from './breadcrumbs';
 export { PageNav } from './page-nav';
 export { AsciiDiagram } from './ascii-diagram';

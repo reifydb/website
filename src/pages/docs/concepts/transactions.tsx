@@ -5,7 +5,7 @@ import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function TransactionsPage() {
@@ -16,7 +16,7 @@ export function TransactionsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Transactions</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Transactions</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             Every request you send to ReifyDB runs inside a transaction, automatically.
             Writes commit atomically with serializable snapshot isolation, reads see a consistent
@@ -27,7 +27,7 @@ export function TransactionsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Queries, commands, and admin</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Queries, commands, and admin</h2>
           <p className="text-text-secondary mb-4">
             ReifyDB splits work into three kinds of transactions, and the clients expose
             them as three entry points:
@@ -72,7 +72,7 @@ export function TransactionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">One request, one transaction</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One request, one transaction</h2>
           <p className="text-text-secondary mb-4">
             Each request is exactly one transaction. A request may contain many statements -
             they all commit together, or none of them do. This transfer touches two rows in
@@ -106,7 +106,7 @@ export function TransactionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Readers never block writers</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Readers never block writers</h2>
           <p className="text-text-secondary mb-4">
             ReifyDB uses multi-version concurrency control (MVCC). Every commit produces a
             new version of the rows it touched instead of overwriting them in place, and
@@ -119,7 +119,7 @@ export function TransactionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Conflicts and automatic retries</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Conflicts and automatic retries</h2>
           <p className="text-text-secondary mb-4">
             Commands are optimistic: they do not lock rows up front. Instead, each command
             works against its own snapshot, and at commit the engine validates that no
@@ -139,7 +139,7 @@ export function TransactionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Views, handlers, and transactions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Views, handlers, and transactions</h2>
           <p className="text-text-secondary mb-4">
             Derived state participates in the same guarantees.{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">Transactional views</Link>{' '}
@@ -196,7 +196,7 @@ export function TransactionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Under the hood</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Under the hood</h2>
           <p className="text-text-secondary mb-4">
             A command buffers its writes locally and records the keys and ranges it reads.
             At commit, a central coordinator checks that read/write set against every

@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function TransactionalViewsPage() {
@@ -16,7 +16,7 @@ export function TransactionalViewsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Transactional Views</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Transactional Views</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A transactional view is maintained inside the transaction that writes its
             source. The table and the view change in one atomic step, so no reader can
@@ -28,7 +28,7 @@ export function TransactionalViewsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Create the view with the table</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Create the view with the table</h2>
           <p className="text-text-secondary mb-4">
             <Code>create transactional view</Code> (or just <Code>create view</Code>)
             declares the columns and the pipeline. Because the view tracks writes from
@@ -51,7 +51,7 @@ export function TransactionalViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Membership follows the predicate</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Membership follows the predicate</h2>
           <p className="text-text-secondary mb-4">
             A <Code>filter</Code> in the pipeline decides which source rows are in the
             view, and the engine tracks each row across updates. When a row starts
@@ -72,7 +72,7 @@ export function TransactionalViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Reading in the request that wrote the source</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reading in the request that wrote the source</h2>
           <p className="text-text-secondary mb-4">
             The view is updated at commit, not statement by statement. So inside a
             request that has already written to the source, the view still holds its
@@ -93,7 +93,7 @@ export function TransactionalViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">No backfill</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">No backfill</h2>
           <p className="text-text-secondary mb-4">
             A transactional view is fed by the commits that happen after it is created.
             It does not scan its source on creation. Ada's balance has been at least 100
@@ -115,7 +115,7 @@ export function TransactionalViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Chains</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Chains</h2>
           <p className="text-text-secondary mb-4">
             A transactional view can read another transactional view. The chain is
             maintained in dependency order inside the one commit, so a single insert

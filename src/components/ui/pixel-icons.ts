@@ -66,6 +66,28 @@ export const CODE = [
   '...x.....',
 ];
 
+export const BOLT = [
+  '.....xxx.',
+  '....xxx..',
+  '...xxx...',
+  '..xxxxxx.',
+  '....xxx..',
+  '...xxx...',
+  '..xx.....',
+  '.x.......',
+];
+
+export const BOOK = [
+  'xxxxxxxxx',
+  'x.x.....x',
+  'x.x.xxx.x',
+  'x.x.....x',
+  'x.x.xxx.x',
+  'x.x.....x',
+  'x.x.....x',
+  'xxxxxxxxx',
+];
+
 export const CHECK = ['......x', '.....xx', 'x...xx.', 'xx.xx..', '.xxx...', '..x....'];
 
 export const GEM = ['.x.', 'xxx', '.x.'];

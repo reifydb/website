@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, RqlCodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function MapPage() {
@@ -16,7 +16,7 @@ export function MapPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">map</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">map</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             <Code>map</Code> defines the output shape of a pipeline. Each entry in its
             block becomes one column, in the order written, and every column that is
@@ -28,7 +28,7 @@ export function MapPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`map { column, alias: expression, expression, ... }`} />
           <p className="text-text-secondary mt-4">
             A bare column name keeps that column under its own name. <Code>alias:
@@ -39,7 +39,7 @@ export function MapPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Picking columns</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Picking columns</h2>
           <p className="text-text-secondary mb-4">
             Run the snippets on this page in order. The first creates a table and keeps
             two of its four columns. Output columns follow the order in the{' '}
@@ -67,7 +67,7 @@ export function MapPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">none in expressions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">none in expressions</h2>
           <p className="text-text-secondary mb-4">
             Arithmetic and comparisons propagate <Code>none</Code>: if any input is
             absent, the result is absent. The row itself is kept, so a computed column
@@ -84,7 +84,7 @@ export function MapPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">System columns</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">System columns</h2>
           <p className="text-text-secondary mb-4">
             Stored rows carry engine-maintained columns prefixed with <Code>#</Code>.
             They are hidden from a bare scan and appear only when projected explicitly.{' '}
@@ -94,7 +94,7 @@ export function MapPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Sharp edges</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Sharp edges</h2>
           <p className="text-text-secondary mb-4">
             Whatever <Code>map</Code> leaves out is gone for the rest of the pipeline.
             A later <Code>sort</Code> on a dropped column fails with{' '}
@@ -113,7 +113,7 @@ export function MapPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Compared with SQL</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Compared with SQL</h2>
           <p className="text-text-secondary mb-4">
             <Code>map</Code> is the <Code>SELECT</Code> list, moved to wherever in the
             pipeline you need it. <Code>alias: expression</Code> is{' '}

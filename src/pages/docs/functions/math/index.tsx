@@ -9,7 +9,7 @@ export function MathModuleOverviewPage() {
       <div className="space-y-8">
         {/* Header */}
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             math Module
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -19,7 +19,7 @@ export function MathModuleOverviewPage() {
 
         {/* Quick Example */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Quick Example</h2>
           <ExecutableSnippet
             title="Quick Example"
             initialCode={mathOverviewQuick.code}
@@ -28,24 +28,24 @@ export function MathModuleOverviewPage() {
 
         {/* Aggregation Functions */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Aggregation Functions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Aggregation Functions</h2>
           <p className="text-text-secondary mb-4">
             Use these with the <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm">aggregate</code> transform to summarize your data.
           </p>
           <div className="grid gap-3">
-            <Link to="/docs/functions/math/sum" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/sum" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::sum</h3>
               <p className="text-text-secondary text-sm">Calculate the sum of numeric values</p>
             </Link>
-            <Link to="/docs/functions/math/avg" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/avg" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::avg</h3>
               <p className="text-text-secondary text-sm">Calculate the average of numeric values</p>
             </Link>
-            <Link to="/docs/functions/math/min" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/min" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::min</h3>
               <p className="text-text-secondary text-sm">Find the minimum value</p>
             </Link>
-            <Link to="/docs/functions/math/max" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/max" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::max</h3>
               <p className="text-text-secondary text-sm">Find the maximum value</p>
             </Link>
@@ -54,56 +54,56 @@ export function MathModuleOverviewPage() {
 
         {/* Scalar Functions */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Scalar Functions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Scalar Functions</h2>
           <p className="text-text-secondary mb-4">
             Apply math to individual values, row by row.
           </p>
           <div className="grid gap-3">
-            <Link to="/docs/functions/math/abs" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/abs" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::abs</h3>
               <p className="text-text-secondary text-sm">Get the absolute value of a number</p>
             </Link>
-            <Link to="/docs/functions/math/round" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/round" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::round</h3>
               <p className="text-text-secondary text-sm">Round to the nearest integer or decimal place</p>
             </Link>
-            <Link to="/docs/functions/math/floor" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/floor" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::floor</h3>
               <p className="text-text-secondary text-sm">Round down to the nearest integer</p>
             </Link>
-            <Link to="/docs/functions/math/ceil" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/ceil" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::ceil</h3>
               <p className="text-text-secondary text-sm">Round up to the nearest integer</p>
             </Link>
-            <Link to="/docs/functions/math/power" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/power" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::power</h3>
               <p className="text-text-secondary text-sm">Raise a number to a power</p>
             </Link>
-            <Link to="/docs/functions/math/sqrt" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/sqrt" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::sqrt</h3>
               <p className="text-text-secondary text-sm">Compute the square root</p>
             </Link>
-            <Link to="/docs/functions/math/sign" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/sign" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::sign</h3>
               <p className="text-text-secondary text-sm">Return the sign of a number (-1, 0, or 1)</p>
             </Link>
-            <Link to="/docs/functions/math/clamp" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/clamp" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::clamp</h3>
               <p className="text-text-secondary text-sm">Clamp a value within a range</p>
             </Link>
-            <Link to="/docs/functions/math/mod" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/mod" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::mod</h3>
               <p className="text-text-secondary text-sm">Compute the modulo (remainder)</p>
             </Link>
-            <Link to="/docs/functions/math/truncate" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/truncate" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::truncate</h3>
               <p className="text-text-secondary text-sm">Truncate a number toward zero</p>
             </Link>
-            <Link to="/docs/functions/math/gcd" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/gcd" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::gcd</h3>
               <p className="text-text-secondary text-sm">Greatest common divisor</p>
             </Link>
-            <Link to="/docs/functions/math/lcm" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/lcm" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::lcm</h3>
               <p className="text-text-secondary text-sm">Least common multiple</p>
             </Link>
@@ -112,36 +112,36 @@ export function MathModuleOverviewPage() {
 
         {/* Trigonometric Functions */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Trigonometric Functions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Trigonometric Functions</h2>
           <p className="text-text-secondary mb-4">
             Standard trigonometric functions operating in radians.
           </p>
           <div className="grid gap-3">
-            <Link to="/docs/functions/math/sin" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/sin" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::sin</h3>
               <p className="text-text-secondary text-sm">Compute the sine</p>
             </Link>
-            <Link to="/docs/functions/math/cos" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/cos" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::cos</h3>
               <p className="text-text-secondary text-sm">Compute the cosine</p>
             </Link>
-            <Link to="/docs/functions/math/tan" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/tan" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::tan</h3>
               <p className="text-text-secondary text-sm">Compute the tangent</p>
             </Link>
-            <Link to="/docs/functions/math/asin" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/asin" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::asin</h3>
               <p className="text-text-secondary text-sm">Compute the arcsine</p>
             </Link>
-            <Link to="/docs/functions/math/acos" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/acos" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::acos</h3>
               <p className="text-text-secondary text-sm">Compute the arccosine</p>
             </Link>
-            <Link to="/docs/functions/math/atan" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/atan" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::atan</h3>
               <p className="text-text-secondary text-sm">Compute the arctangent</p>
             </Link>
-            <Link to="/docs/functions/math/atan2" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/atan2" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::atan2</h3>
               <p className="text-text-secondary text-sm">Two-argument arctangent</p>
             </Link>
@@ -150,32 +150,32 @@ export function MathModuleOverviewPage() {
 
         {/* Logarithmic & Exponential */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Logarithmic & Exponential</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Logarithmic & Exponential</h2>
           <p className="text-text-secondary mb-4">
             Logarithms, exponentials, and mathematical constants.
           </p>
           <div className="grid gap-3">
-            <Link to="/docs/functions/math/exp" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/exp" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::exp</h3>
               <p className="text-text-secondary text-sm">Compute e raised to a power</p>
             </Link>
-            <Link to="/docs/functions/math/log" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/log" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::log</h3>
               <p className="text-text-secondary text-sm">Natural logarithm (base e)</p>
             </Link>
-            <Link to="/docs/functions/math/log2" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/log2" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::log2</h3>
               <p className="text-text-secondary text-sm">Base-2 logarithm</p>
             </Link>
-            <Link to="/docs/functions/math/log10" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/log10" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::log10</h3>
               <p className="text-text-secondary text-sm">Base-10 logarithm</p>
             </Link>
-            <Link to="/docs/functions/math/e" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/e" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::e</h3>
               <p className="text-text-secondary text-sm">Euler's number (~2.71828)</p>
             </Link>
-            <Link to="/docs/functions/math/pi" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/math/pi" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">math::pi</h3>
               <p className="text-text-secondary text-sm">Pi (~3.14159)</p>
             </Link>
@@ -184,10 +184,10 @@ export function MathModuleOverviewPage() {
 
         {/* Reference Table */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Function Reference</h2>
-          <div className="border border-border-light overflow-x-auto rounded-md">
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Function Reference</h2>
+          <div className="dialog overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-bg-tertiary">
+              <thead className="bg-[#efedfb]">
                 <tr>
                   <th className="text-left p-2 sm:p-3 font-bold">Function</th>
                   <th className="text-left p-2 sm:p-3 font-bold">Type</th>

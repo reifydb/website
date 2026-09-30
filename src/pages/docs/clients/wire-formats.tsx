@@ -3,7 +3,7 @@ import { Layout } from '../layout.tsx';
 import { CodeBlock, Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -29,7 +29,7 @@ export function WireFormatsPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Wire Formats</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Wire Formats</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             Every remote client speaks the same protocol: a statement request over HTTP
             or WebSocket, a result encoded as <Code>frames</Code>, <Code>json</Code>, or{' '}
@@ -44,7 +44,7 @@ export function WireFormatsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">One protocol, three encodings</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One protocol, three encodings</h2>
           <p className="text-text-secondary mb-4">
             A request carries RQL plus optional parameters and is tagged as a{' '}
             <em>query</em> (read), a <em>command</em> (write), or an <em>admin</em>{' '}
@@ -55,7 +55,7 @@ export function WireFormatsPage() {
           <div className="overflow-x-auto mb-4">
             <table className="w-full border border-border-light text-sm">
               <thead>
-                <tr className="bg-bg-tertiary">
+                <tr className="bg-[#efedfb]">
                   <Th>Format</Th>
                   <Th>Content type</Th>
                   <Th>Shape</Th>
@@ -117,7 +117,7 @@ export function WireFormatsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Statements and parameters</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Statements and parameters</h2>
           <p className="text-text-secondary mb-4">
             A statement request has two fields: <Code>rql</Code> (the statement text,
             possibly several statements separated by <Code>;</Code> - each result
@@ -162,7 +162,7 @@ export function WireFormatsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">HTTP endpoints</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">HTTP endpoints</h2>
           <p className="text-text-secondary mb-4">
             The HTTP listener exposes a small, fixed surface. All statement endpoints
             take a JSON body and the optional <Code>format</Code> and{' '}
@@ -171,7 +171,7 @@ export function WireFormatsPage() {
           <div className="overflow-x-auto mb-4">
             <table className="w-full border border-border-light text-sm">
               <thead>
-                <tr className="bg-bg-tertiary">
+                <tr className="bg-[#efedfb]">
                   <Th>Route</Th>
                   <Th>Purpose</Th>
                 </tr>
@@ -311,7 +311,7 @@ curl -s 'http://localhost:8090/v1/query?format=json' \\
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The frames encoding</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The frames encoding</h2>
           <p className="text-text-secondary mb-4">
             <Code>frames</Code> is the columnar result as JSON, and the shape the
             official clients decode. Each frame has three optional metadata arrays and
@@ -386,7 +386,7 @@ curl -s 'http://localhost:8090/v1/query?format=json' \\
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The json encoding</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The json encoding</h2>
           <p className="text-text-secondary mb-4">
             <Code>json</Code> trades type fidelity for readability: the result is an
             array of frames, each frame an array of row objects. It is the format to
@@ -436,7 +436,7 @@ curl -s 'http://localhost:8090/v1/query?format=json' \\
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">RBCF, the binary encoding</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">RBCF, the binary encoding</h2>
           <p className="text-text-secondary mb-4">
             RBCF ("ReifyDB binary columnar format",{' '}
             <Code>application/vnd.reifydb.rbcf</Code>) carries the same frames as
@@ -511,7 +511,7 @@ followed by:
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The WebSocket protocol</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The WebSocket protocol</h2>
           <p className="text-text-secondary mb-4">
             WebSocket wraps the same requests in a persistent, multiplexed connection
             and adds subscriptions. Every client-to-server message is a text frame
@@ -594,7 +594,7 @@ followed by:
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Subscriptions on the wire</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Subscriptions on the wire</h2>
           <p className="text-text-secondary mb-4">
             <Code>Subscribe</Code> registers a live query; the server acknowledges
             with an id and then pushes changes as they happen. Pushed messages carry
@@ -644,7 +644,7 @@ followed by:
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What about gRPC?</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What about gRPC?</h2>
           <p className="text-text-secondary">
             A gRPC subsystem (protobuf-encoded frames,{' '}
             <Code>application/vnd.reifydb.proto</Code>) exists behind feature flags in

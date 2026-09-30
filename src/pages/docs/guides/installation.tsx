@@ -3,7 +3,7 @@ import { Layout } from '../layout.tsx';
 import { Callout, CodeBlock } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -53,7 +53,7 @@ export function InstallationPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Installation</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Installation</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             ReifyDB is a library first and a server second. Most programs embed the engine
             directly and never run a separate process; the server exists for the cases where
@@ -70,14 +70,14 @@ export function InstallationPage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Pick your package</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Pick your package</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left py-2 pr-4 font-black">You want to</th>
-                  <th className="text-left py-2 pr-4 font-black">Install</th>
-                  <th className="text-left py-2 font-black">Version</th>
+                  <th className="text-left py-2 pr-4 font-bold">You want to</th>
+                  <th className="text-left py-2 pr-4 font-bold">Install</th>
+                  <th className="text-left py-2 font-bold">Version</th>
                 </tr>
               </thead>
               <tbody>
@@ -94,7 +94,7 @@ export function InstallationPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Rust, embedded</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Rust, embedded</h2>
           <p className="text-text-secondary mb-4">
             Add the <Code>reifydb</Code> crate. The workspace pins Rust 1.92.0 and edition
             2024, so you need a toolchain at least that new.
@@ -111,8 +111,8 @@ reifydb = "0.9"`} />
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left py-2 pr-4 font-black">Feature</th>
-                  <th className="text-left py-2 font-black">Enables</th>
+                  <th className="text-left py-2 pr-4 font-bold">Feature</th>
+                  <th className="text-left py-2 font-bold">Enables</th>
                 </tr>
               </thead>
               <tbody>
@@ -138,7 +138,7 @@ reifydb = { version = "0.9", features = ["sub_flow", "sub_server_ws"] }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Rust, client</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Rust, client</h2>
           <p className="text-text-secondary mb-4">
             To talk to a running server without linking the engine, use{' '}
             <Code>reifydb-client</Code>. It ships with no transport enabled; turn on the
@@ -153,7 +153,7 @@ reifydb-client = { version = "0.9", features = ["ws"] }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">TypeScript and the browser</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">TypeScript and the browser</h2>
           <p className="text-text-secondary mb-4">
             The npm packages live under the <Code>@reifydb</Code> scope and share one version
             number. <Code>@reifydb/client</Code> connects to a server over WebSocket or HTTP
@@ -176,7 +176,7 @@ pnpm add @reifydb/wasm`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Python</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Python</h2>
           <p className="text-text-secondary mb-4">
             The Python package embeds the engine as a native extension and requires Python
             3.10 or newer. It is the youngest binding and is published at 0.0.1.
@@ -189,7 +189,7 @@ pnpm add @reifydb/wasm`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Server from source</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Server from source</h2>
           <p className="text-text-secondary mb-4">
             The server binary is the <Code>server</Code> package in the main repository. The
             tree is self-contained: every dependency is vendored, and the checked-in{' '}
@@ -215,9 +215,9 @@ RUSTC_WRAPPER="" cargo build --release --package server
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left py-2 pr-4 font-black">Listener</th>
-                  <th className="text-left py-2 pr-4 font-black">Public</th>
-                  <th className="text-left py-2 font-black">Admin</th>
+                  <th className="text-left py-2 pr-4 font-bold">Listener</th>
+                  <th className="text-left py-2 pr-4 font-bold">Public</th>
+                  <th className="text-left py-2 font-bold">Admin</th>
                 </tr>
               </thead>
               <tbody>
@@ -239,7 +239,7 @@ RUSTC_WRAPPER="" cargo build --release --package server
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The CLI</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The CLI</h2>
           <p className="text-text-secondary mb-4">
             <Code>reifydb-cli</Code> is the <Code>cli</Code> package from the same tree. It
             speaks to a server over WebSocket, either as a REPL or one request at a time, and
@@ -264,9 +264,9 @@ RUSTC_WRAPPER="" cargo build --release --package server
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left py-2 pr-4 font-black">Variable</th>
-                  <th className="text-left py-2 pr-4 font-black">Flag</th>
-                  <th className="text-left py-2 font-black">Default</th>
+                  <th className="text-left py-2 pr-4 font-bold">Variable</th>
+                  <th className="text-left py-2 pr-4 font-bold">Flag</th>
+                  <th className="text-left py-2 font-bold">Default</th>
                 </tr>
               </thead>
               <tbody>
@@ -288,7 +288,7 @@ RUSTC_WRAPPER="" cargo build --release --package server
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Check that it works</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Check that it works</h2>
           <p className="text-text-secondary mb-4">
             With the server running in one terminal, ask it for something in another. A
             frame with one row and one column named <Code>hello</Code> means the whole chain
@@ -298,7 +298,7 @@ RUSTC_WRAPPER="" cargo build --release --package server
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Next steps</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Next steps</h2>
           <p className="text-text-secondary">
             The <DocLink to="/docs/quick-start">quick start</DocLink> creates a namespace,
             a table, and a view in a few requests, and the{' '}

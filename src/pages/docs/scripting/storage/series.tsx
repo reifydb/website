@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function SeriesPage() {
@@ -16,7 +16,7 @@ export function SeriesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             Series
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -31,7 +31,7 @@ export function SeriesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Creating a series</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating a series</h2>
           <p className="text-text-secondary mb-4">
             <Code>create series</Code> takes a column list like a table, plus a{' '}
             <Code>with</Code> block that names the ordering column via{' '}
@@ -56,7 +56,7 @@ export function SeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Inserting time-keyed data</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Inserting time-keyed data</h2>
           <p className="text-text-secondary mb-4">
             Rows are written with a plain <Code>insert</Code>. For a{' '}
             <Code>datetime</Code> key, constructors like{' '}
@@ -87,7 +87,7 @@ export function SeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Precision</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Precision</h2>
           <p className="text-text-secondary mb-4">
             A time-keyed series stores its key at a declared <Code>precision</Code>:{' '}
             <Code>second</Code>, <Code>millisecond</Code> (the default),{' '}
@@ -106,7 +106,7 @@ export function SeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Tags</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Tags</h2>
           <p className="text-text-secondary mb-4">
             A series can attach a{' '}
             <Link to="/docs/concepts/data-model/tags" className="text-primary hover:text-primary-light font-medium transition-colors">tag type</Link>{' '}
@@ -125,7 +125,7 @@ export function SeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Partitioning</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Partitioning</h2>
           <p className="text-text-secondary mb-4">
             <Code>partition: {'{'} by: {'{'} col {'}'} {'}'}</Code> splits the series
             into an independently ordered sub-series per distinct value of the
@@ -143,7 +143,7 @@ export function SeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Updates and deletes by key</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Updates and deletes by key</h2>
           <p className="text-text-secondary mb-4">
             A series is ordered, not immutable. A late correction - a recalibrated
             sensor, an amended audit entry - is an ordinary <Code>update</Code>{' '}
@@ -167,7 +167,7 @@ export function SeriesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Why not a table with a datetime column?</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Why not a table with a datetime column?</h2>
           <p className="text-text-secondary mb-4">
             A table with a <Code>datetime</Code> column stores the same values, but the
             timestamp is just another column: the table is organized around row

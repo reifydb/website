@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function DeferredViewsPage() {
@@ -16,7 +16,7 @@ export function DeferredViewsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Deferred Views</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Deferred Views</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A deferred view is maintained after the fact. Writes to its sources commit
             on their own; the view consumes those changes from the change log and
@@ -28,7 +28,7 @@ export function DeferredViewsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Creating a deferred view</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating a deferred view</h2>
           <p className="text-text-secondary mb-4">
             <Code>create deferred view</Code> takes the qualified name, the column
             list, and the pipeline. The source table here already holds rows when the
@@ -44,7 +44,7 @@ export function DeferredViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Propagation</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Propagation</h2>
           <p className="text-text-secondary mb-4">
             From then on every committed change to the source is applied to the view in
             commit order. An insert that matches the filter appears:
@@ -61,7 +61,7 @@ export function DeferredViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Aggregations</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Aggregations</h2>
           <p className="text-text-secondary mb-4">
             An <Code>aggregate</Code> in the pipeline is maintained incrementally: the
             view holds one row per group and adjusts it as source rows come and go,
@@ -73,7 +73,7 @@ export function DeferredViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Joins</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Joins</h2>
           <p className="text-text-secondary mb-4">
             A join inside a view is the way to keep a denormalized read model without
             application code. The joined side's columns flatten to{' '}
@@ -92,7 +92,7 @@ export function DeferredViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Chains</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Chains</h2>
           <p className="text-text-secondary mb-4">
             A deferred view can read another deferred view. Each level is fed by the
             change log of the level below it, and a new level backfills from the
@@ -109,7 +109,7 @@ export function DeferredViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Reading in the request that wrote the source</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reading in the request that wrote the source</h2>
           <p className="text-text-secondary mb-4">
             A deferred view only changes after commit, so inside a request that has
             written to its source the view still holds the old contents. Rather than
@@ -126,7 +126,7 @@ export function DeferredViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Where the rows live</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where the rows live</h2>
           <p className="text-text-secondary mb-4">
             By default a deferred view materializes into table storage. It can instead
             keep only the newest N derived rows (<Code>create deferred ringbuffer view

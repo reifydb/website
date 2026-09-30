@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function DataModelNamespacesPage() {
@@ -16,7 +16,7 @@ export function DataModelNamespacesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Namespaces</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Namespaces</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             Namespaces organize every other object in ReifyDB. Tables, views, ring
             buffers, series, dictionaries, and types all live inside a namespace and are
@@ -26,7 +26,7 @@ export function DataModelNamespacesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Creating a namespace</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating a namespace</h2>
           <p className="text-text-secondary mb-4">
             <Code>create namespace</Code> registers the container; from then on, every
             reference to an object inside it uses the <Code>::</Code> separator. Run the
@@ -36,7 +36,7 @@ export function DataModelNamespacesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Names are scoped, not global</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Names are scoped, not global</h2>
           <p className="text-text-secondary mb-4">
             Two namespaces can hold objects with the same name without conflict. This is
             the natural way to separate environments, tenants, or subsystems inside one
@@ -47,7 +47,7 @@ export function DataModelNamespacesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Idempotent creation</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Idempotent creation</h2>
           <p className="text-text-secondary mb-4">
             <Code>if not exists</Code> makes creation safe to re-run, which matters for
             setup scripts and migrations. The result reports <Code>created: false</Code>{' '}
@@ -57,7 +57,7 @@ export function DataModelNamespacesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Nested namespaces</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Nested namespaces</h2>
           <p className="text-text-secondary mb-4">
             Namespaces nest. Creating <Code>dm_ns::internal</Code> places a child
             namespace under <Code>dm_ns</Code>, and objects inside it are addressed with
@@ -68,7 +68,7 @@ export function DataModelNamespacesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Inspecting namespaces</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Inspecting namespaces</h2>
           <p className="text-text-secondary mb-4">
             The system catalog is itself queryable. <Code>system::namespaces</Code>{' '}
             lists every namespace with its full name, its local name, and the id of its
@@ -85,7 +85,7 @@ export function DataModelNamespacesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Where to go next</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where to go next</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

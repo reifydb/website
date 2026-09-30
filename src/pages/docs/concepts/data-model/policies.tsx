@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, CodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function DataModelPoliciesPage() {
@@ -13,7 +13,7 @@ export function DataModelPoliciesPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Policies</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Policies</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             Policies are row-level security declared in the database. Because frontends
             query ReifyDB directly, there is no backend API layer to enforce access
@@ -24,7 +24,7 @@ export function DataModelPoliciesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Read policies: filter and mask</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Read policies: filter and mask</h2>
           <p className="text-text-secondary mb-4">
             A policy attaches to an object and defines a pipeline per operation. The{' '}
             <Code>from</Code> pipeline runs on reads - a <Code>filter</Code> restricts
@@ -41,7 +41,7 @@ export function DataModelPoliciesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Write policies: require</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Write policies: require</h2>
           <p className="text-text-secondary mb-4">
             The <Code>insert</Code>, <Code>update</Code>, and <Code>delete</Code>{' '}
             operations take a <Code>require</Code> pipeline - a predicate every
@@ -65,7 +65,7 @@ HELP
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Policies attach to more than tables</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Policies attach to more than tables</h2>
           <p className="text-text-secondary mb-4">
             The same mechanism covers every primitive an identity can touch. Each
             target has its own statement form and its own set of valid operations:
@@ -110,7 +110,7 @@ HELP
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Lifecycle and inspection</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Lifecycle and inspection</h2>
           <p className="text-text-secondary mb-4">
             Policies are catalog objects: list them through the system catalog,
             disable and re-enable them without losing their definition, and drop them

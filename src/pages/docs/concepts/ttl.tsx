@@ -5,7 +5,7 @@ import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function TtlPage() {
@@ -13,7 +13,7 @@ export function TtlPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">TTL &amp; Row Settings</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">TTL &amp; Row Settings</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A TTL (time-to-live) puts an age bound on rows: declare it once when a store
             is created, and the engine removes rows that have not been written to for the
@@ -27,7 +27,7 @@ export function TtlPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Declaring a TTL</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Declaring a TTL</h2>
           <p className="text-text-secondary mb-4">
             Row settings are part of the <Code>with</Code> block at creation:{' '}
             <Code>with {'{'} row: {'{'} ttl: {'{'} duration: '30m', mode: drop {'}'} {'}'} {'}'}</Code>.
@@ -49,7 +49,7 @@ export function TtlPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The clock starts at the last write</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The clock starts at the last write</h2>
           <p className="text-text-secondary mb-4">
             A row's age is measured from its last committed write, not from a timestamp
             column you maintain. Every commit is stamped with a version, and the engine
@@ -69,7 +69,7 @@ export function TtlPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Expiry is a background sweep</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Expiry is a background sweep</h2>
           <p className="text-text-secondary mb-4">
             Expired rows are collected by a background scan, not at read time. The
             collector wakes on an interval (60 seconds by default, the{' '}
@@ -87,7 +87,7 @@ export function TtlPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What expiry means for views</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What expiry means for views</h2>
           <p className="text-text-secondary mb-4">
             <Code>drop</Code> mode is silent by design. Expired rows are removed from
             storage directly - no delete events are emitted, nothing flows through CDC,
@@ -114,7 +114,7 @@ export function TtlPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Memory-only rows</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Memory-only rows</h2>
           <p className="text-text-secondary mb-4">
             The second row setting is <Code>persistent</Code>. It defaults to{' '}
             <Code>true</Code>; set it to <Code>false</Code> and the store's rows are
@@ -133,7 +133,7 @@ export function TtlPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">TTL for operator state</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">TTL for operator state</h2>
           <p className="text-text-secondary mb-4">
             Stateful operators inside a view query accept a TTL of their own:{' '}
             <Code>apply</Code>, <Code>distinct</Code>, and <Code>append</Code> take{' '}
@@ -149,7 +149,7 @@ export function TtlPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">TTL or something else?</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">TTL or something else?</h2>
           <ul className="space-y-2 text-text-secondary mb-4">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

@@ -5,7 +5,7 @@ import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function RqlVariablesPage() {
@@ -13,7 +13,7 @@ export function RqlVariablesPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Variables</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Variables</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A variable binds a value to a name with <Code>let</Code> and is referenced
             as <Code>$name</Code> anywhere in the request - in expressions, in
@@ -24,7 +24,7 @@ export function RqlVariablesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Bind once, use anywhere</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Bind once, use anywhere</h2>
           <p className="text-text-secondary mb-4">
             A <Code>let</Code> statement ends with a semicolon like any other
             statement, and the binding is visible to everything after it in the same
@@ -35,7 +35,7 @@ export function RqlVariablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Reassignment</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reassignment</h2>
           <p className="text-text-secondary mb-4">
             After a <Code>let</Code>, plain assignment (<Code>$x = ...</Code>) replaces
             the value. This is what loop bodies use to accumulate - see{' '}
@@ -52,7 +52,7 @@ export function RqlVariablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Frame variables</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Frame variables</h2>
           <p className="text-text-secondary mb-4">
             A variable can hold a whole query result, not just a scalar. Binding{' '}
             <Code>let $items = from cf_var::items;</Code> captures the frame; a later{' '}
@@ -75,7 +75,7 @@ export function RqlVariablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Scoping</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Scoping</h2>
           <p className="text-text-secondary mb-4">
             Every block (<Code>{'{ ... }'}</Code>) is a scope. A <Code>let</Code>{' '}
             inside an{' '}

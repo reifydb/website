@@ -3,7 +3,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, RqlCodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function Item({ to, label, children }: { to: string; label: string; children: React.ReactNode }) {
@@ -26,7 +26,7 @@ export function RqlControlFlowPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Control Flow</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Control Flow</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             RQL statements can bind variables, branch, loop, and define functions, so a
             request becomes a script without leaving the language or the transaction.
@@ -37,7 +37,7 @@ export function RqlControlFlowPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The constructs</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The constructs</h2>
           <p className="text-text-secondary mb-4">
             Everything here builds on{' '}
             <Link to="/docs/rql/variables" className="text-primary hover:text-primary-light font-medium transition-colors">variables</Link>:{' '}
@@ -77,7 +77,7 @@ export function RqlControlFlowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The shape of a script</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The shape of a script</h2>
           <p className="text-text-secondary mb-4">
             The constructs compose in the obvious way: bind a result set, walk it, test
             each row, act on the ones that qualify, then finish with a query that returns
@@ -98,7 +98,7 @@ from shop::restock sort { id: asc }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">One request, one transaction</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One request, one transaction</h2>
           <p className="text-text-secondary mb-4">
             A script is still a single request: every statement it contains - loops that
             insert, branches that update - commits atomically or not at all, with the
@@ -111,7 +111,7 @@ from shop::restock sort { id: asc }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Sharp edges</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Sharp edges</h2>
           <p className="text-text-secondary mb-4">
             Two behaviors of the current engine are easy to trip over. Both are covered
             on the construct pages; they are collected here because they cut across

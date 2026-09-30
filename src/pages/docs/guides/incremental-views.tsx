@@ -14,7 +14,7 @@ export function IncrementalViewsGuidePage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             Build Incremental Views
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -38,7 +38,7 @@ export function IncrementalViewsGuidePage() {
         </AsciiDiagram>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Transactional views: read-your-writes</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Transactional views: read-your-writes</h2>
           <p className="text-text-secondary mb-4">
             A transactional view updates inside the same transaction as any write that affects
             it, so a reader can never observe it lagging behind the table. Reach for this when
@@ -50,7 +50,7 @@ export function IncrementalViewsGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Composing: a view over a view</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Composing: a view over a view</h2>
           <p className="text-text-secondary mb-4">
             Views can read from other views, not just tables. Here is a second transactional
             view that counts rows in the first one. It has to be created now, before any data
@@ -62,7 +62,7 @@ export function IncrementalViewsGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Insert, then read both views</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Insert, then read both views</h2>
           <p className="text-text-secondary mb-4">
             Now that both views exist, insert into the table:
           </p>
@@ -79,7 +79,7 @@ export function IncrementalViewsGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Deferred views: cheaper writes</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Deferred views: cheaper writes</h2>
           <p className="text-text-secondary mb-4">
             A deferred view updates asynchronously through the same flow engine, off the write
             path. Writes to the source table do not wait on it, so it is the better fit for
@@ -103,7 +103,7 @@ export function IncrementalViewsGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Picking one</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Picking one</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
@@ -133,7 +133,7 @@ export function IncrementalViewsGuidePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Where next</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where next</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

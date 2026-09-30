@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function DataModelHandlersPage() {
@@ -13,7 +13,7 @@ export function DataModelHandlersPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Handlers</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Handlers</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A handler binds a block of statements to one variant of an{' '}
             <Link to="/docs/concepts/data-model/events" className="text-primary hover:text-primary-light font-medium transition-colors">event</Link>.
@@ -25,7 +25,7 @@ export function DataModelHandlersPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Several handlers, one event</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Several handlers, one event</h2>
           <p className="text-text-secondary mb-4">
             Start with an event and the state the reactions will touch. Run the
             snippets on this page in order:
@@ -46,7 +46,7 @@ export function DataModelHandlersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Bodies are scripts</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Bodies are scripts</h2>
           <p className="text-text-secondary mb-4">
             A handler body is not limited to a single statement - it is ReifyDB
             Scripting, with variables, control flow, and any number of reads and
@@ -59,7 +59,7 @@ export function DataModelHandlersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Chained dispatch</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Chained dispatch</h2>
           <p className="text-text-secondary mb-4">
             A handler can itself <Code>dispatch</Code>, so one domain event can
             trigger the next stage of a process. The whole chain executes in the
@@ -77,7 +77,7 @@ export function DataModelHandlersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Lifecycle</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Lifecycle</h2>
           <p className="text-text-secondary mb-4">
             Handlers are catalog objects: <Code>drop handler</Code> unsubscribes one
             without touching the event or the other handlers, and{' '}
@@ -88,7 +88,7 @@ export function DataModelHandlersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Handler, view, or subscription?</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Handler, view, or subscription?</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

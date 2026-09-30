@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, RqlCodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function ProceduresOverviewPage() {
@@ -16,7 +16,7 @@ export function ProceduresOverviewPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Procedures</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Procedures</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A procedure is a named block of RQL statements stored in the catalog and run
             with <Code>call</Code>. Define it once, next to the data it touches; call it
@@ -31,7 +31,7 @@ export function ProceduresOverviewPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Defining a procedure</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Defining a procedure</h2>
           <p className="text-text-secondary mb-4">
             The name is namespace-qualified, the parameters are an optional typed record,
             and the body is a list of statements separated by semicolons:
@@ -54,7 +54,7 @@ export function ProceduresOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
           <p className="text-text-secondary mb-4">
             Parameters are declared as a typed record, <Code>{'{'} id: int4, name: utf8 {'}'}</Code>,
             and the body reads each one as a <Code>$</Code>-prefixed variable. A call
@@ -80,7 +80,7 @@ export function ProceduresOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What a call returns</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What a call returns</h2>
           <p className="text-text-secondary mb-4">
             A call returns the result of the last statement in the body that produced
             one. A <Code>let</Code> or an assignment produces nothing and never replaces
@@ -111,7 +111,7 @@ export function ProceduresOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What a body may contain</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What a body may contain</h2>
           <p className="text-text-secondary mb-4">
             Any statement a request may run: reads with <Code>filter</Code>,{' '}
             <Code>map</Code>, <Code>sort</Code>, and <Code>aggregate</Code>; writes with{' '}
@@ -135,7 +135,7 @@ export function ProceduresOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Failures roll back the call</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Failures roll back the call</h2>
           <p className="text-text-secondary mb-4">
             The body is parsed when the procedure is created, so a syntax error fails
             the <Code>create</Code>. Everything else - a missing table, a type mismatch,
@@ -166,7 +166,7 @@ export function ProceduresOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Redefining and dropping</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Redefining and dropping</h2>
           <p className="text-text-secondary mb-4">
             A name can be defined once per namespace. Creating it again fails with{' '}
             <Code>CA_080</Code>, and there is no <Code>if not exists</Code> form for
@@ -193,7 +193,7 @@ export function ProceduresOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">A procedure is not a function</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">A procedure is not a function</h2>
           <p className="text-text-secondary mb-4">
             <Code>call</Code> is a statement. A procedure cannot be used where a value is
             expected - inside <Code>map</Code>, <Code>filter</Code>, or any expression -
@@ -213,7 +213,7 @@ export function ProceduresOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Test procedures</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Test procedures</h2>
           <p className="text-text-secondary mb-4">
             <Code>create test procedure</Code> defines a procedure that only a test may
             call - a fixture that seeds rows, for example. Calling one from an ordinary

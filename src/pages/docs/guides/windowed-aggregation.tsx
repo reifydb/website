@@ -3,7 +3,7 @@ import { Layout } from '../layout.tsx';
 import { AsciiDiagram, Callout, RqlCodeBlock } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function WindowedAggregationGuidePage() {
@@ -14,7 +14,7 @@ export function WindowedAggregationGuidePage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Windowed Aggregation</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Windowed Aggregation</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A windowed aggregation cuts a stream of timestamped rows into buckets of time
             and keeps one aggregate per bucket, updated as rows arrive. In ReifyDB it is a{' '}
@@ -34,7 +34,7 @@ export function WindowedAggregationGuidePage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Goal</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Goal</h2>
           <p className="text-text-secondary mb-4">
             Events land in a table with a timestamp, a category, and a value. We want a
             table of totals: one row per category per five-second window, current as soon
@@ -53,7 +53,7 @@ id | category | ts     | value          category | total
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">1. Declare where time comes from</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">1. Declare where time comes from</h2>
           <p className="text-text-secondary mb-4">
             A window needs a clock. The table declares it with a <Code>time</Code> setting:{' '}
             <Code>event(ts)</Code> says that the <Code>ts</Code> column is the event's
@@ -77,7 +77,7 @@ create table shop::events {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">2. The view</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">2. The view</h2>
           <RqlCodeBlock code={`create deferred view shop::totals { category: utf8, total: int8 } as {
   from shop::events
   window tumbling { total: math::sum(value) } with { duration: 5s } by { category }
@@ -101,7 +101,7 @@ create table shop::events {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">3. Feed it</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">3. Feed it</h2>
           <p className="text-text-secondary mb-4">
             Insert events with explicit timestamps. <Code>datetime::from_epoch_millis</Code>{' '}
             keeps the example readable; in an application the timestamp comes from the
@@ -133,7 +133,7 @@ A        | 30`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">4. Reading results across windows</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">4. Reading results across windows</h2>
           <p className="text-text-secondary mb-4">
             When events cross a boundary, the view grows a row per window. With a plain
             count and no grouping, three events at 1 s, 3 s, and 6 s give two rows: two
@@ -158,7 +158,7 @@ A        | 30`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">5. Corrections: deletes and late events</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">5. Corrections: deletes and late events</h2>
           <p className="text-text-secondary mb-4">
             The aggregates are maintained incrementally, so a delete on the source table
             retracts the event from its window. A window summing 10, 20, and 30 shows 60;
@@ -195,7 +195,7 @@ A        | 30`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Other window kinds</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Other window kinds</h2>
           <div className="overflow-x-auto mb-4">
             <table className="w-full text-sm text-left">
               <thead>
@@ -223,7 +223,7 @@ A        | 30`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Pitfalls</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Pitfalls</h2>
           <ul className="space-y-2 text-text-secondary mb-4">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

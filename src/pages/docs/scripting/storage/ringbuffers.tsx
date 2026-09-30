@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function RingbuffersPage() {
@@ -16,7 +16,7 @@ export function RingbuffersPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             Ringbuffers
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -32,7 +32,7 @@ export function RingbuffersPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Creating a ringbuffer</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating a ringbuffer</h2>
           <p className="text-text-secondary mb-4">
             <Code>create ringbuffer</Code> takes the same column list as a table, plus a{' '}
             <Code>with</Code> block that declares the capacity. Like all DDL, it returns
@@ -49,7 +49,7 @@ export function RingbuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Eviction</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Eviction</h2>
           <p className="text-text-secondary mb-4">
             Up to capacity, a ringbuffer behaves like any other store - inserts
             accumulate and every row stays put:
@@ -71,7 +71,7 @@ export function RingbuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Scans run in insertion order</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Scans run in insertion order</h2>
           <p className="text-text-secondary mb-4">
             Both snippets above came back oldest-first. That is the ringbuffer's native
             order: a bare <Code>from</Code> walks the buffer from the oldest surviving
@@ -89,7 +89,7 @@ export function RingbuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Partitioned ringbuffers</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Partitioned ringbuffers</h2>
           <p className="text-text-secondary mb-4">
             Adding <Code>partition: {'{'} by: {'{'} col {'}'} {'}'}</Code> to the{' '}
             <Code>with</Code> block splits one ringbuffer into an independent buffer per
@@ -109,7 +109,7 @@ export function RingbuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Updates and deletes</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Updates and deletes</h2>
           <p className="text-text-secondary mb-4">
             A ringbuffer's rows are ordinary rows until eviction takes them. They can be
             updated in place with the same <Code>filter</Code> semantics as tables, and
@@ -124,7 +124,7 @@ export function RingbuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Ringbuffer or a table with TTL?</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Ringbuffer or a table with TTL?</h2>
           <p className="text-text-secondary mb-4">
             Both bound growth; they bound different things. A ringbuffer bounds{' '}
             <em>count</em>: it always holds the newest N rows, whether those arrived in
@@ -141,7 +141,7 @@ export function RingbuffersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Ringbuffer-backed views</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Ringbuffer-backed views</h2>
           <p className="text-text-secondary mb-4">
             Eviction semantics extend to derived data:{' '}
             <Link to="/docs/scripting/views" className="text-primary hover:text-primary-light font-medium transition-colors">views</Link>{' '}

@@ -14,9 +14,10 @@ function subscribeToScroll(onChange: () => void) {
 
 interface NavbarProps {
   mobileExtra?: ReactNode;
+  framed?: boolean;
 }
 
-export function Navbar({ mobileExtra }: NavbarProps = {}) {
+export function Navbar({ mobileExtra, framed }: NavbarProps = {}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
@@ -63,12 +64,14 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
     <>
       <header
         className={cn(
-          'site-header sticky top-0 z-40 w-full border-b transition-colors duration-150',
-          scrolled
-            ? 'bg-bg-primary border-border-light'
-            : isLanding
-              ? 'bg-[#efedfb] border-transparent'
-              : 'bg-bg-primary border-transparent'
+          'site-header sticky top-0 z-40 w-full transition-colors duration-150',
+          framed
+            ? 'bg-bg-primary border-b-2 border-[#4b52d6]'
+            : scrolled
+              ? 'bg-bg-primary border-b border-border-light'
+              : isLanding
+                ? 'bg-[#efedfb] border-b border-transparent'
+                : 'bg-bg-primary border-b border-transparent'
         )}
       >
         <div className="flex h-[60px] w-full items-center justify-between px-4 sm:px-6 md:pl-8 md:pr-16">

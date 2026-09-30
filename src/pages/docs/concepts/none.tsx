@@ -5,7 +5,7 @@ import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function WorkingWithNonePage() {
@@ -13,7 +13,7 @@ export function WorkingWithNonePage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Working with none</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Working with none</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             ReifyDB has no NULL. The missing value is <Code>none</Code>, it is typed - a
             missing <Code>int4</Code> is still an <Code>int4</Code> - and it only exists
@@ -25,7 +25,7 @@ export function WorkingWithNonePage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Where none comes from</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where none comes from</h2>
           <p className="text-text-secondary mb-4">
             An optional column holds <Code>none</Code> when an insert omits it or writes
             the <Code>none</Code> literal explicitly - the two are equivalent. Run the
@@ -50,7 +50,7 @@ export function WorkingWithNonePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Propagation through expressions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Propagation through expressions</h2>
           <p className="text-text-secondary mb-4">
             Arithmetic, comparisons, and scalar functions propagate <Code>none</Code>{' '}
             instead of failing or inventing a value: if an input is missing, the result
@@ -70,7 +70,7 @@ export function WorkingWithNonePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Testing for none</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Testing for none</h2>
           <p className="text-text-secondary mb-4">
             <Code>none</Code> is the absence of a value, so comparing anything to it -
             including another <Code>none</Code> - never produces <Code>true</Code>. A
@@ -91,7 +91,7 @@ export function WorkingWithNonePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Filters keep only definite matches</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Filters keep only definite matches</h2>
           <p className="text-text-secondary mb-4">
             A{' '}
             <Link to="/docs/rql/transforms/filter" className="text-primary hover:text-primary-light font-medium transition-colors">filter</Link>{' '}
@@ -111,7 +111,7 @@ export function WorkingWithNonePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Replacing none</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Replacing none</h2>
           <p className="text-text-secondary mb-4">
             To substitute a default, use a{' '}
             <Link to="/docs/rql/transforms/match" className="text-primary hover:text-primary-light font-medium transition-colors">match</Link>{' '}
@@ -128,7 +128,7 @@ export function WorkingWithNonePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Joins introduce none</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Joins introduce none</h2>
           <p className="text-text-secondary mb-4">
             A{' '}
             <Link to="/docs/rql/transforms/join" className="text-primary hover:text-primary-light font-medium transition-colors">left join</Link>{' '}
@@ -145,7 +145,7 @@ export function WorkingWithNonePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Aggregates skip it, group keys keep it</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Aggregates skip it, group keys keep it</h2>
           <p className="text-text-secondary mb-4">
             Aggregate functions (<Code>math::sum</Code>, <Code>math::avg</Code>,{' '}
             <Code>math::min</Code>, <Code>math::max</Code>, <Code>math::count</Code>)
@@ -165,7 +165,7 @@ export function WorkingWithNonePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Sorting and output</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Sorting and output</h2>
           <p className="text-text-secondary mb-4">
             <Link to="/docs/rql/transforms/sort" className="text-primary hover:text-primary-light font-medium transition-colors">Sorting</Link>{' '}
             ranks <Code>none</Code> above every defined value: ascending order puts

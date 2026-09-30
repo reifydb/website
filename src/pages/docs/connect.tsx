@@ -3,7 +3,7 @@ import { Layout } from './layout.tsx';
 import { CodeBlock, Callout } from './components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -19,7 +19,7 @@ export function ConnectPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             Connect
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -32,7 +32,7 @@ export function ConnectPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">No server yet? Use the browser</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">No server yet? Use the browser</h2>
           <p className="text-text-secondary mb-4">
             The fastest connection is no connection. The{' '}
             <DocLink to="/playground">playground</DocLink> and every runnable snippet in
@@ -45,7 +45,7 @@ export function ConnectPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Endpoints and ports</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Endpoints and ports</h2>
           <p className="text-text-secondary mb-4">
             The <Code>reifydb</Code> server binary (see{' '}
             <DocLink to="/docs/installation">Installation</DocLink>) listens on two
@@ -89,7 +89,7 @@ export function ConnectPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">TypeScript / JavaScript</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">TypeScript / JavaScript</h2>
           <p className="text-text-secondary mb-4">
             <Code>@reifydb/client</Code> works in Node.js and the browser:
           </p>
@@ -128,7 +128,7 @@ client.disconnect();`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Rust client</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Rust client</h2>
           <p className="text-text-secondary mb-4">
             The <Code>reifydb-client</Code> crate talks to a server over WebSocket or
             HTTP:
@@ -159,7 +159,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Rust embedded</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Rust embedded</h2>
           <p className="text-text-secondary mb-4">
             If your application is Rust, you can skip the network entirely. The{' '}
             <Code>reifydb</Code> crate runs the whole engine in-process, the way you would
@@ -189,7 +189,7 @@ fn main() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Python</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Python</h2>
           <p className="text-text-secondary mb-4">
             A Python binding exists as an early-stage, embedded-only package: it runs the
             engine inside the Python process rather than connecting to a server. Expect
@@ -200,7 +200,7 @@ fn main() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Authentication</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Authentication</h2>
           <p className="text-text-secondary mb-4">
             A fresh connection to the server runs as the <em>anonymous</em> identity.
             What anonymous is allowed to do is decided by policies, not by the transport,
@@ -248,7 +248,7 @@ await client.logout();`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Choosing a connection</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Choosing a connection</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

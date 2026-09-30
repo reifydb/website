@@ -12,7 +12,7 @@ export function QuickStartPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             Quickstart
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -27,16 +27,16 @@ export function QuickStartPage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">1. Create a table</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">1. Create a table</h2>
           <p className="text-text-secondary mb-4">
             Tables hold authoritative state. Every table lives in a namespace and is addressed
-            as <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">namespace::table</code>:
+            as <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">namespace::table</code>:
           </p>
           <ExecutableSnippet title={quickstartCreateTable.title} initialCode={quickstartCreateTable.code} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">2. Define a live view</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">2. Define a live view</h2>
           <p className="text-text-secondary mb-4">
             A transactional view is derived state. You declare the query once; ReifyDB maintains
             the result incrementally, inside the same transaction as every write that affects it.
@@ -50,26 +50,26 @@ export function QuickStartPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">3. Insert rows</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">3. Insert rows</h2>
           <p className="text-text-secondary mb-4">
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">INSERT</code> takes
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">INSERT</code> takes
             an array of records:
           </p>
           <ExecutableSnippet title={quickstartInsert.title} initialCode={quickstartInsert.code} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">4. Query the table</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">4. Query the table</h2>
           <p className="text-text-secondary mb-4">
             RQL queries are pipelines. Start with{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">from</code>, then
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">from</code>, then
             chain steps; each line transforms the output of the line above it:
           </p>
           <ExecutableSnippet title={quickstartQueryTable.title} initialCode={quickstartQueryTable.code} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">5. Query the view</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">5. Query the view</h2>
           <p className="text-text-secondary mb-4">
             The view already contains the two open orders. Nothing recomputed the query;
             the inserts themselves maintained it:
@@ -78,30 +78,30 @@ export function QuickStartPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">6. Change the data</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">6. Change the data</h2>
           <p className="text-text-secondary mb-4">
             Ship the keyboard order:
           </p>
           <ExecutableSnippet title={quickstartShipOrder.title} initialCode={quickstartShipOrder.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Then query the view again. The shipped order is gone, because the view's{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">filter</code> no
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">filter</code> no
             longer matches it:
           </p>
           <ExecutableSnippet title={quickstartViewUpdated.title} initialCode={quickstartViewUpdated.code} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">7. Aggregate</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">7. Aggregate</h2>
           <p className="text-text-secondary mb-4">
             Pipelines end wherever you need them to. Group and aggregate with{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">aggregate ... by</code>:
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">aggregate ... by</code>:
           </p>
           <ExecutableSnippet title={quickstartAggregate.title} initialCode={quickstartAggregate.code} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Where next</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where next</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

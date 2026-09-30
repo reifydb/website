@@ -5,7 +5,7 @@ import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 const translations: { sql: string; rql: string }[] = [
@@ -29,7 +29,7 @@ export function RqlForSqlUsersPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             RQL for SQL Users
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -40,10 +40,10 @@ export function RqlForSqlUsersPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Translation table</h2>
-          <div className="border border-border-light overflow-x-auto rounded-md">
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Translation table</h2>
+          <div className="dialog overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="bg-bg-tertiary">
+              <thead className="bg-[#efedfb]">
                 <tr>
                   <th className="text-left p-2 sm:p-3 font-bold">SQL</th>
                   <th className="text-left p-2 sm:p-3 font-bold">RQL</th>
@@ -66,7 +66,7 @@ export function RqlForSqlUsersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Reading order</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reading order</h2>
           <p className="text-text-secondary mb-4">
             A SQL query nests: <Code>SELECT ... FROM (SELECT ... FROM t WHERE ...) WHERE ...</Code>.
             The equivalent RQL is flat; each line is one step, and intermediate results never
@@ -76,7 +76,7 @@ export function RqlForSqlUsersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">GROUP BY becomes aggregate ... by</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">GROUP BY becomes aggregate ... by</h2>
           <p className="text-text-secondary mb-4">
             The aggregation expressions and the grouping keys live in one step. Nothing like{' '}
             <Code>HAVING</Code> is needed; a <Code>filter</Code> after the aggregate does the
@@ -86,7 +86,7 @@ export function RqlForSqlUsersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">none is not NULL, mostly</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">none is not NULL, mostly</h2>
           <p className="text-text-secondary mb-4">
             RQL's missing value is <Code>none</Code>. Like SQL's NULL, it never matches an
             equality comparison:
@@ -101,7 +101,7 @@ export function RqlForSqlUsersPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What has no SQL equivalent</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What has no SQL equivalent</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

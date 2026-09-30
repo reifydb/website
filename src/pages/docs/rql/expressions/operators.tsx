@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 const th = 'text-left px-4 py-2 border-b border-border-light font-bold';
@@ -17,7 +17,7 @@ function OpTable({ rows }: { rows: Array<[string, string, string]> }) {
     <div className="overflow-x-auto mb-4">
       <table className="w-full border border-border-light text-sm">
         <thead>
-          <tr className="bg-bg-tertiary">
+          <tr className="bg-[#efedfb]">
             <th className={th}>Operator</th>
             <th className={th}>Meaning</th>
             <th className={th}>Example</th>
@@ -45,7 +45,7 @@ export function OperatorsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Operators</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Operators</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             Operators combine literals, column references, and function results into a
             new value per row. RQL has four groups: arithmetic, comparison, membership,
@@ -57,7 +57,7 @@ export function OperatorsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Arithmetic</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Arithmetic</h2>
           <OpTable rows={[
             ['+', 'Addition, or text concatenation', 'price + tax'],
             ['-', 'Subtraction, or prefix negation', 'total - discount, -total'],
@@ -80,7 +80,7 @@ export function OperatorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Plus on text</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Plus on text</h2>
           <p className="text-text-secondary mb-4">
             When either operand of <Code>+</Code> is text, the result is text and the
             other side is rendered into it. Evaluation is left to right, so{' '}
@@ -94,7 +94,7 @@ export function OperatorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Result types widen</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Result types widen</h2>
           <p className="text-text-secondary mb-4">
             Integer arithmetic never overflows silently. The result type is wider than the
             inputs (<Code>int1 + int1</Code> is <Code>int2</Code>, <Code>int4 + int4</Code>{' '}
@@ -107,7 +107,7 @@ export function OperatorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Comparison</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Comparison</h2>
           <OpTable rows={[
             ['==', 'Equal', 'status == "active"'],
             ['!=', 'Not equal', 'role != "guest"'],
@@ -140,7 +140,7 @@ export function OperatorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Membership</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Membership</h2>
           <OpTable rows={[
             ['in', 'Value is one of the listed values', 'region in ["North", "East"]'],
             ['not in', 'Value is none of the listed values', 'status not in ["closed"]'],
@@ -157,7 +157,7 @@ export function OperatorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Logical</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Logical</h2>
           <OpTable rows={[
             ['and', 'Both sides true', 'active and verified'],
             ['or', 'Either side true', 'admin or moderator'],
@@ -183,7 +183,7 @@ export function OperatorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Operators and none</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Operators and none</h2>
           <p className="text-text-secondary mb-4">
             Logic is three-valued. <Code>and</Code> and <Code>or</Code> short-circuit on
             the value that decides the result (<Code>none and false</Code> is{' '}
@@ -206,7 +206,7 @@ export function OperatorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Precedence</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Precedence</h2>
           <p className="text-text-secondary mb-4">
             From tightest to loosest. Operators on one level associate left to right.
             Parentheses override everything:
@@ -214,7 +214,7 @@ export function OperatorsPage() {
           <div className="overflow-x-auto mb-4">
             <table className="w-full border border-border-light text-sm">
               <thead>
-                <tr className="bg-bg-tertiary">
+                <tr className="bg-[#efedfb]">
                   <th className={th}>Level</th>
                   <th className={th}>Operators</th>
                 </tr>
@@ -235,7 +235,7 @@ export function OperatorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What is not an operator</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What is not an operator</h2>
           <p className="text-text-secondary mb-4">
             Symbols borrowed from other languages are rejected at parse time with{' '}
             <Code>AST_006</Code> (or <Code>AST_001</Code> for characters the tokenizer
@@ -244,7 +244,7 @@ export function OperatorsPage() {
           <div className="overflow-x-auto mb-4">
             <table className="w-full border border-border-light text-sm">
               <thead>
-                <tr className="bg-bg-tertiary">
+                <tr className="bg-[#efedfb]">
                   <th className={th}>Not RQL</th>
                   <th className={th}>Write instead</th>
                 </tr>

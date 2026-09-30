@@ -1,4 +1,3 @@
-import { Info, AlertTriangle, Lightbulb, FileText } from 'lucide-react';
 import { cn } from '@/lib';
 
 type CalloutVariant = 'info' | 'warning' | 'tip' | 'note';
@@ -10,38 +9,11 @@ interface CalloutProps {
   className?: string;
 }
 
-const variantStyles: Record<CalloutVariant, { border: string; bg: string; icon: string; shadow: string }> = {
-  info: {
-    border: 'border-primary',
-    bg: 'bg-primary/10',
-    icon: 'text-primary',
-    shadow: 'shadow-hard-primary',
-  },
-  warning: {
-    border: 'border-status-warning',
-    bg: 'bg-status-warning/10',
-    icon: 'text-status-warning',
-    shadow: 'shadow-[4px_4px_0_var(--color-status-warning)]',
-  },
-  tip: {
-    border: 'border-status-success',
-    bg: 'bg-status-success/10',
-    icon: 'text-status-success',
-    shadow: 'shadow-[4px_4px_0_var(--color-status-success)]',
-  },
-  note: {
-    border: 'border-border-default',
-    bg: 'bg-bg-tertiary',
-    icon: 'text-text-muted',
-    shadow: 'shadow-hard-sm',
-  },
-};
-
-const variantIcons: Record<CalloutVariant, React.ElementType> = {
-  info: Info,
-  warning: AlertTriangle,
-  tip: Lightbulb,
-  note: FileText,
+const variantColors: Record<CalloutVariant, { frame: string; label: string }> = {
+  info: { frame: '#4b52d6', label: '#4b52d6' },
+  warning: { frame: '#e0a040', label: '#a8660f' },
+  tip: { frame: '#2f9e6b', label: '#237a52' },
+  note: { frame: '#c9c3dc', label: '#6b6785' },
 };
 
 const variantTitles: Record<CalloutVariant, string> = {
@@ -52,26 +24,17 @@ const variantTitles: Record<CalloutVariant, string> = {
 };
 
 export function Callout({ variant = 'note', title, children, className }: CalloutProps) {
-  const styles = variantStyles[variant];
-  const Icon = variantIcons[variant];
-  const defaultTitle = variantTitles[variant];
+  const colors = variantColors[variant];
 
   return (
     <div
-      className={cn(
-        'mt-6 border-2 rounded-md overflow-hidden',
-        styles.border,
-        styles.shadow,
-        className
-      )}
+      className={cn('mt-6 border-2 px-5 py-4', className)}
+      style={{ borderColor: colors.frame, backgroundColor: `${colors.frame}1f` }}
     >
-      <div className={cn('flex items-center gap-2 px-4 py-2.5 border-b-2', styles.border, styles.bg)}>
-        <Icon className={cn('w-4 h-4 flex-shrink-0', styles.icon)} />
-        <strong className="text-text-primary font-semibold text-sm label-uppercase">
-          {title || defaultTitle}
-        </strong>
+      <div className="pixel-label uppercase mb-3" style={{ color: colors.label }}>
+        {title || variantTitles[variant]}
       </div>
-      <div className="px-4 py-3 text-text-secondary text-sm">{children}</div>
+      <div className="text-text-secondary text-sm">{children}</div>
     </div>
   );
 }

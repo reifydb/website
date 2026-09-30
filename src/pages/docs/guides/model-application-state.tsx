@@ -5,7 +5,7 @@ import { Callout } from '../components';
 import { ExecutableSnippet } from '@/components/ui';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -21,7 +21,7 @@ export function ModelApplicationStatePage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             Model Application State
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -42,7 +42,7 @@ export function ModelApplicationStatePage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">1. A namespace and the first table</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">1. A namespace and the first table</h2>
           <p className="text-text-secondary mb-4">
             Everything the tracker owns lives in one{' '}
             <DocLink to="/docs/concepts/data-model/namespaces">namespace</DocLink>.
@@ -61,7 +61,7 @@ export function ModelApplicationStatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">2. A closed value set: enum</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">2. A closed value set: enum</h2>
           <p className="text-text-secondary mb-4">
             Task priority is a fixed set known at design time. That is exactly what an{' '}
             <DocLink to="/docs/concepts/data-model/enums">enum</DocLink> is for: the
@@ -72,7 +72,7 @@ export function ModelApplicationStatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">3. An open value set: dictionary</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">3. An open value set: dictionary</h2>
           <p className="text-text-secondary mb-4">
             Assignee names are the opposite case: an open set you discover at runtime.
             A <DocLink to="/docs/concepts/data-model/dictionaries">dictionary</DocLink>{' '}
@@ -84,7 +84,7 @@ export function ModelApplicationStatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">4. The tasks table ties it together</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">4. The tasks table ties it together</h2>
           <p className="text-text-secondary mb-4">
             Now the central entity. Each column type is a decision you just made:
             an auto-increment ID, a plain <Code>int8</Code> foreign reference to{' '}
@@ -95,7 +95,7 @@ export function ModelApplicationStatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">5. Derived state is a view, not a cache</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">5. Derived state is a view, not a cache</h2>
           <p className="text-text-secondary mb-4">
             "How many open tasks does each person have?" is the kind of read shape that
             usually ends up in a cache with invalidation bugs. Here it is a{' '}
@@ -108,7 +108,7 @@ export function ModelApplicationStatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">6. Recent activity is a ring buffer</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">6. Recent activity is a ring buffer</h2>
           <p className="text-text-secondary mb-4">
             An activity feed only ever shows the last few entries, so storing unbounded
             history is waste. A{' '}
@@ -121,7 +121,7 @@ export function ModelApplicationStatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">7. Load the data</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">7. Load the data</h2>
           <p className="text-text-secondary mb-4">
             The schema is complete; now exercise it. Enum values are written as variant
             paths, and assignees are written as plain strings - the dictionary interns
@@ -139,7 +139,7 @@ export function ModelApplicationStatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">8. Read it back</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">8. Read it back</h2>
           <p className="text-text-secondary mb-4">
             A plain read shows how each choice is stored. The enum column comes back as
             its compact tag (<Code>priority_tag</Code>: declaration order, so{' '}
@@ -155,7 +155,7 @@ export function ModelApplicationStatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">9. Query the derived state</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">9. Query the derived state</h2>
           <p className="text-text-secondary mb-4">
             The workload view is already populated. Nothing recomputed it - the task
             inserts maintained it as they committed:
@@ -170,7 +170,7 @@ export function ModelApplicationStatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">10. Change the data</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">10. Change the data</h2>
           <p className="text-text-secondary mb-4">
             Complete a task and record the action in the activity buffer:
           </p>
@@ -190,7 +190,7 @@ export function ModelApplicationStatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What you modeled</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What you modeled</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
@@ -221,7 +221,7 @@ export function ModelApplicationStatePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Where next</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where next</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

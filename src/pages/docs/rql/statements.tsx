@@ -3,7 +3,7 @@ import { Layout } from '../layout.tsx';
 import { Callout, CodeBlock, RqlCodeBlock } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function L({ to, children }: { to: string; children: React.ReactNode }) {
@@ -25,7 +25,7 @@ function Details({ to, label }: { to: string; label: string }) {
 function Statement({ id, name, children }: { id: string; name: string; children: React.ReactNode }) {
   return (
     <section id={id}>
-      <h2 className="text-2xl font-black tracking-tight mb-4">{name}</h2>
+      <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">{name}</h2>
       {children}
     </section>
   );
@@ -99,7 +99,7 @@ export function RqlStatementsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Statement Reference</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Statement Reference</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             Every statement the RQL parser accepts at the top level of a request, A to Z.
             Each entry gives the purpose in one line, a skeleton that parses as written,
@@ -110,7 +110,7 @@ export function RqlStatementsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">How to read the skeletons</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">How to read the skeletons</h2>
           <p className="text-text-secondary mb-4">
             The skeletons share one setup: a namespace <Code>ns</Code> with tables{' '}
             <Code>orders</Code> (<Code>id</Code>, <Code>customer_id</Code>,{' '}
@@ -847,7 +847,7 @@ map { i: $i }`} />
         </Statement>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Not listed: experimental statements</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Not listed: experimental statements</h2>
           <p className="text-text-secondary mb-4">
             The parser also knows <Code>create remote namespace</Code> and{' '}
             <Code>alter remote namespace</Code>, <Code>create source</Code>,{' '}

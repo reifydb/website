@@ -13,18 +13,18 @@ export function DatetimeDayOfYearPage() {
             <Link to="/docs/functions/datetime" className="font-bold hover:text-primary-color">datetime</Link>
             {' module'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">datetime::day_of_year</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">datetime::day_of_year</h1>
           <p className="text-lg text-text-secondary leading-relaxed">Get the day of the year (1-366) from a datetime.</p>
         </div>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`datetime::day_of_year(datetime_value)`} />
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border border-border-light overflow-x-auto rounded-md">
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <div className="dialog overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-bg-tertiary"><tr>
+              <thead className="bg-[#efedfb]"><tr>
                 <th className="text-left p-2 sm:p-3 font-bold">Name</th>
                 <th className="text-left p-2 sm:p-3 font-bold">Type</th>
                 <th className="text-left p-2 sm:p-3 font-bold">Description</th>
@@ -40,15 +40,15 @@ export function DatetimeDayOfYearPage() {
           </div>
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2>
           <p className="text-text-secondary">Returns an integer representing the day of the year (1-366).</p>
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
           <ExecutableSnippet title={datetimeDayOfYear.title} initialCode={datetimeDayOfYear.code} />
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
             <Link to="/docs/functions/datetime/day" className="text-primary-color hover:underline">datetime::day</Link>
             <Link to="/docs/functions/datetime/day_of_week" className="text-primary-color hover:underline">datetime::day_of_week</Link>

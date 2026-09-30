@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { AsciiDiagram, Callout, RqlCodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function AccessControlOverviewPage() {
@@ -16,7 +16,7 @@ export function AccessControlOverviewPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Access Control</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Access Control</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             ReifyDB is built to be reached from frontends directly, so access control lives
             inside the database rather than in an API layer in front of it. You create{' '}
@@ -29,7 +29,7 @@ export function AccessControlOverviewPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The model in one picture</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The model in one picture</h2>
           <AsciiDiagram label="who can do what">
 {`identity (alice)  --grant-->  role (editors)
       |
@@ -51,7 +51,7 @@ export function AccessControlOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Identities</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Identities</h2>
           <p className="text-text-secondary mb-4">
             An identity is a name the database knows. <Code>create user</Code> registers
             one; it has no credentials yet and cannot log in until you attach some.
@@ -72,7 +72,7 @@ export function AccessControlOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Roles</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Roles</h2>
           <p className="text-text-secondary mb-4">
             A role is a named group. Roles carry no permissions of their own; they exist
             so that a policy can ask "does the caller hold <Code>editors</Code>?" instead
@@ -101,7 +101,7 @@ export function AccessControlOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Credentials</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Credentials</h2>
           <p className="text-text-secondary mb-4">
             An identity logs in through an authentication method attached with{' '}
             <Code>create authentication for</Code>. The built-in methods are{' '}
@@ -134,7 +134,7 @@ export function AccessControlOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Table policies</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Table policies</h2>
           <p className="text-text-secondary mb-4">
             A table policy is a small RQL block that the engine splices into every request a
             non-root identity makes against a table. It has up to four parts, one per
@@ -206,7 +206,7 @@ HELP
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Policies that look at the caller</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Policies that look at the caller</h2>
           <p className="text-text-secondary mb-4">
             Inside a policy body, <Code>$identity</Code> refers to the identity making the
             request. <Code>$identity.id</Code> is its id, <Code>$identity.name</Code> its
@@ -256,7 +256,7 @@ HELP
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Managing policies</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Managing policies</h2>
           <p className="text-text-secondary mb-4">
             Every policy is listed in <Code>system::policies</Code> with its scope and
             whether it is enabled. The namespace-wide policy has no <Code>target_shape</Code>:
@@ -283,7 +283,7 @@ HELP
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Checking your work as root</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Checking your work as root</h2>
           <p className="text-text-secondary mb-4">
             Because the playground runs as root, every policy created above is bypassed and
             a scan returns all three documents. On a server, log in as one of the identities

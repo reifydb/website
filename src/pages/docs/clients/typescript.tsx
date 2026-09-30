@@ -3,7 +3,7 @@ import { Layout } from '../layout.tsx';
 import { CodeBlock, Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -19,7 +19,7 @@ export function TypeScriptClientPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             TypeScript / JavaScript
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -36,7 +36,7 @@ export function TypeScriptClientPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Installation</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Installation</h2>
           <CodeBlock
             language="bash"
             code={`npm install @reifydb/client @reifydb/core
@@ -57,7 +57,7 @@ npm install @reifydb/wasm`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Connecting</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Connecting</h2>
           <p className="text-text-secondary mb-4">
             <Code>Client.connect_ws(url, options?)</Code> opens one persistent
             WebSocket that carries everything: queries, commands, logins, and
@@ -132,7 +132,7 @@ const frames = await http.query(
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Authentication</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Authentication</h2>
           <p className="text-text-secondary mb-4">
             A fresh connection runs as the anonymous identity; what that identity may
             do is decided by policies on the server. To act as a real user, log in
@@ -168,7 +168,7 @@ const resumed = await Client.connect_ws('ws://localhost:8091', { token });`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Queries and commands</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Queries and commands</h2>
           <p className="text-text-secondary mb-4">
             <Code>query(rql, params, shapes)</Code> reads,{' '}
             <Code>command(rql, params, shapes)</Code> writes. The third argument is an
@@ -213,7 +213,7 @@ console.log(meta?.fingerprint, meta?.duration);`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Admin statements</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Admin statements</h2>
           <p className="text-text-secondary mb-4">
             The application endpoints (8090/8091) accept queries and commands only;
             admin statements such as <Code>CREATE TABLE</Code> are rejected there. The
@@ -242,7 +242,7 @@ await admin.disconnect();`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
           <p className="text-text-secondary mb-4">
             The second argument carries parameters. An array binds positional
             parameters <Code>$1</Code>, <Code>$2</Code>, ...; a plain object binds
@@ -293,7 +293,7 @@ await client.query(
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Shapes and typed results</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Shapes and typed results</h2>
           <p className="text-text-secondary mb-4">
             A <Code>Shape</Code> describes the result you expect, and TypeScript
             infers the row type from it - <Code>Shape.object({'{ ... }'})</Code>{' '}
@@ -343,7 +343,7 @@ const first = frames[0][0];
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Subscriptions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Subscriptions</h2>
           <p className="text-text-secondary mb-4">
             Subscriptions need the persistent connection, so they are WebSocket only.{' '}
             <Code>subscribe(rql, params, shape, callbacks, config?)</Code> registers a
@@ -424,7 +424,7 @@ await client.batch_unsubscribe(batch_id);`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">React hooks</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">React hooks</h2>
           <p className="text-text-secondary mb-4">
             <Code>@reifydb/react</Code> wraps the client in hooks and re-exports both{' '}
             <Code>@reifydb/client</Code> and <Code>@reifydb/core</Code>, so it is the
@@ -536,7 +536,7 @@ export function LiveUsers() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">In-browser WASM</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">In-browser WASM</h2>
           <p className="text-text-secondary mb-4">
             <Code>@reifydb/wasm</Code> is not a client - it is the whole engine
             compiled to WebAssembly, running in the page with no server and no
@@ -573,7 +573,7 @@ db.free();`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Wire formats</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Wire formats</h2>
           <p className="text-text-secondary mb-4">
             The <Code>format</Code> option picks the result encoding for the whole
             connection, on both the WebSocket and the HTTP client:{' '}
@@ -595,7 +595,7 @@ db.free();`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Error handling</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Error handling</h2>
           <p className="text-text-secondary mb-4">
             Server-side failures - bad RQL, policy denials, transaction conflicts -
             reject the promise with a <Code>ReifyError</Code>, the same diagnostic

@@ -15,7 +15,7 @@ export function ClockNowPage() {
             </Link>
             {' module'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             clock::now
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -24,22 +24,22 @@ export function ClockNowPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`clock::now()`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
           <p className="text-text-secondary">
             This function takes no parameters.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2>
           <p className="text-text-secondary">
             An integer: milliseconds since the Unix epoch, according to the mock clock, not the real
-            system clock. It starts at <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">0</code>{' '}
+            system clock. It starts at <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">0</code>{' '}
             and only moves when something calls{' '}
             <Link to="/docs/functions/clock/set" className="text-primary-color hover:underline">
               clock::set
@@ -53,7 +53,7 @@ export function ClockNowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-bold mb-3">{clockNowDefaultExample.title}</h3>
@@ -69,8 +69,8 @@ export function ClockNowPage() {
               <p className="text-text-muted text-sm mt-3">
                 Every row sees the same value in the same statement, because the mock clock only changes
                 when you explicitly move it.{' '}
-                <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">date::now()</code> and{' '}
-                <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">datetime::now()</code> read
+                <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">date::now()</code> and{' '}
+                <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">datetime::now()</code> read
                 the real wall clock instead, which is not safe to call across multiple rows in this build.
               </p>
             </div>
@@ -78,7 +78,7 @@ export function ClockNowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
             <Link to="/docs/functions/clock/set" className="text-primary-color hover:underline">
               clock::set

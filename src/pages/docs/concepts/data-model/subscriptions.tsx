@@ -3,7 +3,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, CodeBlock, RqlCodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function DataModelSubscriptionsPage() {
@@ -14,7 +14,7 @@ export function DataModelSubscriptionsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Subscriptions</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Subscriptions</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A subscription is a live query. A client registers a pipeline, receives the
             rows that match right now, and from then on receives every change to that
@@ -32,7 +32,7 @@ export function DataModelSubscriptionsPage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Declaring a subscription</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Declaring a subscription</h2>
           <p className="text-text-secondary mb-4">
             <Code>create subscription</Code> takes an optional output shape, an optional{' '}
             <Code>with</Code> block, and a required <Code>as</Code> block holding the
@@ -54,7 +54,7 @@ export function DataModelSubscriptionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What arrives: the _op column</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What arrives: the _op column</h2>
           <p className="text-text-secondary mb-4">
             Every delivered row carries one implicit column, <Code>_op</Code>, a{' '}
             <Code>uint1</Code> that says what happened to the row:
@@ -82,7 +82,7 @@ export function DataModelSubscriptionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Hydration</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Hydration</h2>
           <p className="text-text-secondary mb-4">
             Hydration is the initial snapshot. It is on by default: before any live
             change is sent, every row currently matching the pipeline is delivered as an
@@ -105,7 +105,7 @@ create subscription with { hydration: { max_rows: 1000 } } as {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Throttle and linger</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Throttle and linger</h2>
           <p className="text-text-secondary mb-4">
             Two duration settings shape how changes are batched on the way out. Both
             take a bare duration literal such as <Code>250ms</Code> or <Code>1s</Code>:
@@ -140,7 +140,7 @@ create subscription with { hydration: { max_rows: 1000 } } as {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Dropping a subscription</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dropping a subscription</h2>
           <p className="text-text-secondary mb-4">
             A subscription lives until it is dropped or the client unsubscribes.{' '}
             <Code>drop subscription</Code> names it as <Code>subscription_</Code>{' '}
@@ -155,7 +155,7 @@ drop subscription if exists subscription_7`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Consistency</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Consistency</h2>
           <p className="text-text-secondary mb-4">
             Changes are produced from the commit log after a transaction commits, never
             from uncommitted writes, and a subscription observes each transaction's
@@ -169,7 +169,7 @@ drop subscription if exists subscription_7`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Consuming from a client</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Consuming from a client</h2>
           <p className="text-text-secondary mb-4">
             You rarely write <Code>create subscription</Code> by hand. The client
             libraries take the pipeline body and the settings, wrap them in the statement
@@ -186,7 +186,7 @@ drop subscription if exists subscription_7`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Subscription, view, or event?</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Subscription, view, or event?</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

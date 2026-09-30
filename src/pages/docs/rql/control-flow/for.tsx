@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, RqlCodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function RqlControlFlowForPage() {
@@ -13,7 +13,7 @@ export function RqlControlFlowForPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">For Loops</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">For Loops</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A <Code>for</Code> loop runs its block once per element of a source: a
             numeric range, or the rows of a query result. It is the construct for
@@ -25,7 +25,7 @@ export function RqlControlFlowForPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Over a numeric range</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Over a numeric range</h2>
           <p className="text-text-secondary mb-4">
             <Code>gen::series(from, to)</Code> yields the integers <Code>from</Code>{' '}
             through <Code>to</Code>, inclusive, as a loop source. The loop variable is
@@ -36,7 +36,7 @@ export function RqlControlFlowForPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Over query results</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Over query results</h2>
           <p className="text-text-secondary mb-4">
             To iterate rows, bind the query to a{' '}
             <Link to="/docs/rql/variables" className="text-primary hover:text-primary-light font-medium transition-colors">frame variable</Link>{' '}
@@ -58,7 +58,7 @@ map { count: $count }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Loops that write</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Loops that write</h2>
           <p className="text-text-secondary mb-4">
             The block can contain any statement, including writes. Combined with an{' '}
             <Code>if</Code> guard, a <Code>for</Code> loop becomes a per-row dispatch:
@@ -69,7 +69,7 @@ map { count: $count }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">for or something else?</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">for or something else?</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

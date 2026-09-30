@@ -3,7 +3,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function Item({ to, label, children }: { to: string; label: string; children: React.ReactNode }) {
@@ -26,7 +26,7 @@ export function DataModelPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Data Model</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Data Model</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             ReifyDB models application state with a small set of purpose-built
             primitives instead of tables-for-everything. Each storage shape has
@@ -37,7 +37,7 @@ export function DataModelPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Namespaces organize everything</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Namespaces organize everything</h2>
           <p className="text-text-secondary mb-4">
             Every object lives in a{' '}
             <Link to="/docs/concepts/data-model/namespaces" className="text-primary hover:text-primary-light font-medium transition-colors">namespace</Link>{' '}
@@ -49,7 +49,7 @@ export function DataModelPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The storage shapes</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The storage shapes</h2>
           <p className="text-text-secondary mb-4">
             Six shapes hold rows. Two store what your application asserts, three
             specialize how state is kept, and one derives state from the others:
@@ -81,7 +81,7 @@ export function DataModelPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Reacting to change</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reacting to change</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item to="/docs/concepts/data-model/subscriptions" label="Subscriptions">
               - an append-only change stream over a source, tagged insert / update /
@@ -103,7 +103,7 @@ export function DataModelPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Types and identity</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Types and identity</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item to="/docs/concepts/data-model/enums" label="Enums">
               - closed variant sets as column types, with optional payload fields.
@@ -119,7 +119,7 @@ export function DataModelPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Access control</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Access control</h2>
           <p className="text-text-secondary mb-4">
             Because clients query the database directly,{' '}
             <Link to="/docs/concepts/data-model/policies" className="text-primary hover:text-primary-light font-medium transition-colors">policies</Link>{' '}

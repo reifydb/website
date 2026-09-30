@@ -3,7 +3,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, RqlCodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 const tumblingDuration = `create deferred view shop::sales_per_5s { total: int8 } as {
@@ -57,7 +57,7 @@ export function WindowPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">window</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">window</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             <Code>window</Code> is{' '}
             <Link to="/docs/rql/transforms/aggregate" className="text-primary hover:text-primary-light font-medium transition-colors">aggregate</Link>{' '}
@@ -80,7 +80,7 @@ export function WindowPage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Shape</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Shape</h2>
           <p className="text-text-secondary mb-4">
             The operator names a window kind, lists the aggregates to compute per
             bucket, and configures the kind in a <Code>with</Code> block:
@@ -98,7 +98,7 @@ export function WindowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Window kinds</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Window kinds</h2>
           <p className="text-text-secondary mb-4">
             Four kinds exist. <Code>tumbling</Code>, <Code>sliding</Code>, and{' '}
             <Code>rolling</Code> are sized by either a <Code>duration</Code> or a{' '}
@@ -160,7 +160,7 @@ export function WindowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Grouping</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Grouping</h2>
           <p className="text-text-secondary mb-4">
             A trailing <Code>by {'{'} ... {'}'}</Code> partitions the stream first, so
             each group gets its own set of buckets. The grouping columns appear in the
@@ -170,7 +170,7 @@ export function WindowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Event time and processing time</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Event time and processing time</h2>
           <p className="text-text-secondary mb-4">
             Which clock places a row in a bucket is a property of the source table, not
             of the window. A table declared <Code>with {'{'} time: processing {'}'}</Code>{' '}
@@ -195,7 +195,7 @@ export function WindowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Configuration keys</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Configuration keys</h2>
           <p className="text-text-secondary mb-4">
             The <Code>with</Code> block accepts exactly these keys; any other key is a
             parse error naming the valid list.
@@ -256,7 +256,7 @@ export function WindowPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What the view holds</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What the view holds</h2>
           <p className="text-text-secondary mb-4">
             The view's rows are the buckets. A tumbling window over three rows with{' '}
             <Code>count: 3</Code> holds one row; five rows hold one closed bucket and one

@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function DataModelDictionariesPage() {
@@ -16,7 +16,7 @@ export function DataModelDictionariesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Dictionaries</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Dictionaries</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A dictionary maps values of one type to compact IDs of another - classic
             interning. Store a currency code, a stock symbol, or a country name once,
@@ -28,7 +28,7 @@ export function DataModelDictionariesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Creating a dictionary</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating a dictionary</h2>
           <p className="text-text-secondary mb-4">
             The declaration names the value type and the ID type:{' '}
             <Code>create dictionary ns::name for value_type as id_type</Code>. The ID
@@ -57,7 +57,7 @@ export function DataModelDictionariesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The mapping is queryable</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The mapping is queryable</h2>
           <p className="text-text-secondary mb-4">
             A dictionary reads like any other source - each row is an ID/value pair,
             newest entry first. <Code>filter</Code>, <Code>map</Code>, and{' '}
@@ -69,7 +69,7 @@ export function DataModelDictionariesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Dictionary-encoded columns</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dictionary-encoded columns</h2>
           <p className="text-text-secondary mb-4">
             The real payoff is wiring a dictionary to a table column with{' '}
             <Code>with {'{'} dictionary: ns::dict {'}'}</Code>. Writers and readers keep
@@ -95,7 +95,7 @@ export function DataModelDictionariesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">IDs belong to the engine</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">IDs belong to the engine</h2>
           <p className="text-text-secondary mb-4">
             IDs are sequential and never reused. There is no way to choose one: an{' '}
             <Code>id</Code> field in the record is silently ignored and the entry gets
@@ -106,7 +106,7 @@ export function DataModelDictionariesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">One dictionary, many columns</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One dictionary, many columns</h2>
           <p className="text-text-secondary mb-4">
             A dictionary is not tied to the table that first used it. Any number of
             columns, across any number of tables, can name the same dictionary, and
@@ -122,7 +122,7 @@ export function DataModelDictionariesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Append-only by design</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Append-only by design</h2>
           <p className="text-text-secondary mb-4">
             Once <Code>"AAPL"</Code> is entry 1, every row that stores a 1 depends on
             that meaning. Rewriting or deleting the entry would silently repoint
@@ -146,7 +146,7 @@ export function DataModelDictionariesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">When to use one</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">When to use one</h2>
           <p className="text-text-secondary mb-4">
             Dictionaries pay off when a string column has low cardinality relative to
             its row count - status names, symbols, categories, country codes. They are

@@ -5,7 +5,7 @@ import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function Item({ to, label, children }: { to: string; label: string; children: React.ReactNode }) {
@@ -28,7 +28,7 @@ export function ScriptingOverviewPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Scripting</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Scripting</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             RQL is not only a query language. A request can bind variables, branch,
             loop, assert invariants, define tests, and register migrations - and all of
@@ -39,7 +39,7 @@ export function ScriptingOverviewPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What a script is</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What a script is</h2>
           <p className="text-text-secondary mb-4">
             A script is a sequence of statements separated by semicolons. Variables are{' '}
             <Code>$</Code>-prefixed, bound once with <Code>let</Code> and reassigned
@@ -57,7 +57,7 @@ export function ScriptingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Checks that live in the database</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Checks that live in the database</h2>
           <p className="text-text-secondary mb-4">
             <Code>assert</Code> is a pipeline operator that fails the request when a
             condition does not hold for every row. On its own it turns any query into
@@ -80,7 +80,7 @@ export function ScriptingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">When to script</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">When to script</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
@@ -117,7 +117,7 @@ export function ScriptingOverviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The pages in this section</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The pages in this section</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item to="/docs/rql/variables" label="Variables">
               - <Code>let</Code>, reassignment, frame variables that capture a query

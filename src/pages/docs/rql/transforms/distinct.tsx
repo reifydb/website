@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function DistinctPage() {
@@ -16,7 +16,7 @@ export function DistinctPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">distinct</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">distinct</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             <Code>distinct</Code> keeps one row per unique value of the columns you name
             and drops the rest. It does not reshape the row - every column comes through -
@@ -26,7 +26,7 @@ export function DistinctPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">One row per key</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One row per key</h2>
           <p className="text-text-secondary mb-4">
             Name the key columns in braces. The first row the operator sees for each key
             survives; later rows with the same key are dropped. A bare table scan
@@ -41,7 +41,7 @@ export function DistinctPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Multiple columns</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Multiple columns</h2>
           <p className="text-text-secondary mb-4">
             With several columns, the key is the combination. Two rows are duplicates
             only if they agree on every named column:
@@ -54,7 +54,7 @@ export function DistinctPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Choosing which row survives</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Choosing which row survives</h2>
           <p className="text-text-secondary mb-4">
             "First seen" is whatever order the pipeline delivers - there is no separate
             first-inserted or last-inserted rule. To pick the survivor deliberately,{' '}
@@ -71,7 +71,7 @@ export function DistinctPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Just the values</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Just the values</h2>
           <p className="text-text-secondary mb-4">
             <Code>distinct</Code> keeps whole rows. When you only want the list of
             values, follow it with a{' '}
@@ -82,7 +82,7 @@ export function DistinctPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">none is a key value</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">none is a key value</h2>
           <p className="text-text-secondary mb-4">
             Rows whose key column is <Code>none</Code> are grouped together like any
             other value: all of them collapse to one surviving row. See{' '}
@@ -92,7 +92,7 @@ export function DistinctPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Empty braces are not "all columns"</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Empty braces are not "all columns"</h2>
           <p className="text-text-secondary mb-4">
             <Code>distinct {'{}'}</Code> (and a bare <Code>distinct</Code> with no braces)
             parses, but it deduplicates on zero columns - every row has the same empty
@@ -108,7 +108,7 @@ export function DistinctPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">distinct or aggregate?</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">distinct or aggregate?</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

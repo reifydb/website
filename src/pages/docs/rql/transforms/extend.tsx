@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, RqlCodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function ExtendPage() {
@@ -16,7 +16,7 @@ export function ExtendPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">extend</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">extend</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             <Code>extend</Code> adds columns. Every column that enters it leaves it
             unchanged, and the new columns are appended on the right, in the order
@@ -27,7 +27,7 @@ export function ExtendPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`extend { alias: expression, expression, ... }`} />
           <p className="text-text-secondary mt-4">
             Each entry is an expression over the current row. <Code>alias:</Code> names
@@ -38,7 +38,7 @@ export function ExtendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Adding columns</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Adding columns</h2>
           <p className="text-text-secondary mb-4">
             Run the snippets on this page in order. The first creates a table of line
             items with an optional quantity and computes each line's cost. The
@@ -59,7 +59,7 @@ export function ExtendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Using the new column downstream</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Using the new column downstream</h2>
           <p className="text-text-secondary mb-4">
             Anything <Code>extend</Code> adds is a normal column for the operators that
             follow. A bool column can be the whole condition of a{' '}
@@ -76,7 +76,7 @@ export function ExtendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Name collisions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Name collisions</h2>
           <p className="text-text-secondary mb-4">
             <Code>extend</Code> only ever adds. Giving a new column the name of a column
             that already exists is an error (<Code>EXTEND_002</Code>), including a name
@@ -94,7 +94,7 @@ export function ExtendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Sharp edges</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Sharp edges</h2>
           <p className="text-text-secondary mb-4">
             A column name that does not exist in the incoming frame is not an error
             inside an expression; it reads as <Code>none</Code> on every row. That is
@@ -116,7 +116,7 @@ export function ExtendPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Compared with SQL</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Compared with SQL</h2>
           <p className="text-text-secondary mb-4">
             <Code>extend</Code> is <Code>SELECT *, expression AS alias</Code>, but it can
             sit anywhere in the pipeline and its columns can be used by the very next

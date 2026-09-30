@@ -5,7 +5,7 @@ import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function L({ to, children }: { to: string; children: React.ReactNode }) {
@@ -179,7 +179,7 @@ export function KeywordsPage() {
       <div className="space-y-8">
         <div>
           <div className="text-sm text-text-muted mb-2 font-bold">Resources</div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Keywords</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Keywords</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             RQL reserves 111 words. They are case-insensitive: <Code>from</Code>,{' '}
             <Code>FROM</Code>, and <Code>From</Code> are the same token, and these docs
@@ -193,7 +193,7 @@ export function KeywordsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Using a keyword as a name</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Using a keyword as a name</h2>
           <p className="text-text-secondary mb-4">
             The rules are looser than in most databases. Every keyword can name a table
             or a column, and every keyword but <Code>if</Code> and <Code>policy</Code>{' '}
@@ -241,7 +241,7 @@ export function KeywordsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">All keywords</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">All keywords</h2>
           <p className="text-text-secondary mb-4">
             The last column answers one question: can this keyword be referenced bare
             as a column inside an expression? "Reserved" marks a keyword the tokenizer
@@ -251,9 +251,9 @@ export function KeywordsPage() {
             {groups.map((group) => (
               <div key={group.title}>
                 <h3 className="text-lg font-bold tracking-tight mb-2">{group.title}</h3>
-                <div className="overflow-x-auto border border-border-default rounded-lg">
+                <div className="dialog overflow-x-auto">
                   <table className="w-full text-sm">
-                    <thead className="bg-bg-tertiary">
+                    <thead className="bg-[#efedfb]">
                       <tr>
                         <th className="text-left p-2 sm:p-3 font-bold">Keyword</th>
                         <th className="text-left p-2 sm:p-3 font-bold">Where it appears</th>

@@ -5,7 +5,7 @@ import { Layout } from '../layout.tsx';
 import { AsciiDiagram, Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -20,7 +20,7 @@ export function VolcanoPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Query Execution</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Query Execution</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             An RQL query is a pipeline you read top to bottom, and the engine runs it the
             same way: each operator in your text becomes one node in a tree, and rows are
@@ -31,7 +31,7 @@ export function VolcanoPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">From text to plan</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">From text to plan</h2>
           <p className="text-text-secondary mb-4">
             Every request goes through the same stages before a single row is read:
           </p>
@@ -70,7 +70,7 @@ export function VolcanoPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Reading a plan with rql::explain</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reading a plan with rql::explain</h2>
           <p className="text-text-secondary mb-4">
             <Code>call rql::explain('...')</Code> plans the quoted query and returns the
             physical operator tree as rows: <Code>idx</Code> numbers the nodes,{' '}
@@ -90,7 +90,7 @@ export function VolcanoPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What the planner rewrites</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What the planner rewrites</h2>
           <p className="text-text-secondary mb-4">
             The rewrites the planner does perform are expression-level. Sub-expressions
             that involve only constants are folded at plan time, and a predicate that
@@ -112,7 +112,7 @@ export function VolcanoPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Pull-based execution</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Pull-based execution</h2>
           <p className="text-text-secondary mb-4">
             Every node in the tree implements the same small interface:{' '}
             <Code>initialize</Code> once, then <Code>next</Code> until it returns nothing.
@@ -143,7 +143,7 @@ export function VolcanoPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Sources and joins</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Sources and joins</h2>
           <p className="text-text-secondary mb-4">
             Leaf nodes produce batches from somewhere: a <Code>TableScan</Code> reads a
             table, a view, or another store; <Code>InlineData</Code> serves the records
@@ -161,7 +161,7 @@ export function VolcanoPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The result</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The result</h2>
           <p className="text-text-secondary mb-4">
             The VM drains the root node and appends every batch into one frame, which is
             what the client receives. A query result is therefore fully materialized

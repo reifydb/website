@@ -38,7 +38,7 @@ export function ExamplesPage() {
         title="Examples | ReifyDB"
         description="Runnable RQL examples covering schemas, incremental views, procedures, and subscriptions."
       />
-      <Navbar />
+      <Navbar framed />
       <div className="flex flex-1">
         <ExamplesSidebar
           sections={exampleSections}

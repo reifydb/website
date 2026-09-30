@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, CodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function TablesPage() {
@@ -16,7 +16,7 @@ export function TablesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Tables</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Tables</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             <Code>create table</Code> declares a table: its qualified name, its columns,
             and any per-row settings. This page is the reference for that statement
@@ -28,7 +28,7 @@ export function TablesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The statement</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The statement</h2>
           <p className="text-text-secondary mb-4">
             A table lives in a namespace, so the name is always{' '}
             <Code>namespace::table</Code> and the namespace must exist first. The
@@ -51,7 +51,7 @@ export function TablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Column types</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Column types</h2>
           <p className="text-text-secondary mb-4">
             Every scalar type can be a column: signed and unsigned integers from 1 to
             16 bytes, both floats, booleans, strings (<Code>utf8</Code>, or{' '}
@@ -67,7 +67,7 @@ export function TablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Optional columns</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Optional columns</h2>
           <p className="text-text-secondary mb-4">
             A column is required unless its type is wrapped in <Code>Option(...)</Code>.
             An insert may leave an optional column out, and the row then holds{' '}
@@ -84,7 +84,7 @@ export function TablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Auto-increment</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Auto-increment</h2>
           <p className="text-text-secondary mb-4">
             <Code>with {'{'} auto_increment {'}'}</Code> on an integer column makes the
             engine fill it from a per-column{' '}
@@ -101,7 +101,7 @@ export function TablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Primary keys</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Primary keys</h2>
           <p className="text-text-secondary mb-4">
             A primary key is declared with its own statement after the table exists,
             over one or more columns. From then on every insert checks the key:
@@ -124,7 +124,7 @@ export function TablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Row settings</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Row settings</h2>
           <p className="text-text-secondary mb-4">
             The <Code>with</Code> block after the columns configures the rows
             themselves. A TTL makes every row expire a fixed time after it was written:
@@ -137,7 +137,7 @@ export function TablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Idempotent creation</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Idempotent creation</h2>
           <p className="text-text-secondary mb-4">
             <Code>if not exists</Code> goes between <Code>table</Code> and the name.
             When the table is already there the statement succeeds, reports the existing
@@ -152,7 +152,7 @@ export function TablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Altering a table</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Altering a table</h2>
           <p className="text-text-secondary mb-4">
             <Code>alter table</Code> adds, drops, or renames one column per statement.
             A column added to an empty table behaves exactly as if it had been declared
@@ -183,7 +183,7 @@ export function TablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Dropping a table</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dropping a table</h2>
           <p className="text-text-secondary mb-4">
             <Code>drop table</Code> removes the table and every row in it. The
             confirmation has no catalog id, only what was dropped:

@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, CodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function AlterPage() {
@@ -16,7 +16,7 @@ export function AlterPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Alter</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Alter</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             <Code>alter</Code> changes an object that already exists. Two forms are
             covered here: <Code>alter table</Code>, which changes one column or one
@@ -32,7 +32,7 @@ export function AlterPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The statement</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The statement</h2>
           <p className="text-text-secondary mb-4">
             Every <Code>alter table</Code> names the table and then exactly one action.
             The table name must be qualified with its namespace; a bare name is looked
@@ -57,7 +57,7 @@ alter sequence ns::table::column set value N`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Adding a column</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Adding a column</h2>
           <p className="text-text-secondary mb-4">
             <Code>add column</Code> takes one column declaration in the same syntax as{' '}
             <Code>create table</Code>. The new column goes at the end of the row:
@@ -84,7 +84,7 @@ alter sequence ns::table::column set value N`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Renaming a column</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Renaming a column</h2>
           <p className="text-text-secondary mb-4">
             <Code>rename column old to new</Code> changes the name only. Stored values
             are untouched, and the rows read back under the new name straight away:
@@ -98,7 +98,7 @@ alter sequence ns::table::column set value N`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Dropping a column</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dropping a column</h2>
           <p className="text-text-secondary mb-4">
             <Code>drop column</Code> removes the column and, on an empty table, leaves
             nothing behind:
@@ -112,7 +112,7 @@ alter sequence ns::table::column set value N`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">One action, one table</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One action, one table</h2>
           <p className="text-text-secondary mb-4">
             A statement carries a single action. To change several columns, write
             several statements; they can share one request and commit together:
@@ -128,7 +128,7 @@ alter sequence ns::table::column set value N`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Partitions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Partitions</h2>
           <p className="text-text-secondary mb-4">
             A table created <Code>with {'{'} partition: {'{'} by: {'{'} col {'}'} {'}'} {'}'}</Code>{' '}
             keeps its rows grouped by that column's value. Two <Code>alter</Code>{' '}
@@ -175,7 +175,7 @@ alter sequence ns::table::column set value N`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Altering a sequence</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Altering a sequence</h2>
           <p className="text-text-secondary mb-4">
             Every <Code>auto_increment</Code> column has a{' '}
             <Link to="/docs/concepts/data-model/sequences" className="text-primary hover:text-primary-light font-medium transition-colors">sequence</Link>.{' '}
@@ -200,7 +200,7 @@ alter sequence ns::table::column set value N`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What alter does not cover</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What alter does not cover</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

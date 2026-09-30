@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function DataModelEnumsPage() {
@@ -16,7 +16,7 @@ export function DataModelEnumsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Enums</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Enums</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             An enum is a closed set of named variants, declared once and used as a
             column type. A column typed with an enum can only hold one of those
@@ -27,7 +27,7 @@ export function DataModelEnumsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Declaring an enum</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Declaring an enum</h2>
           <p className="text-text-secondary mb-4">
             <Code>create enum</Code> takes a namespaced name and a brace list of
             variants. The confirmation calls the new object a <Code>sumtype</Code>:
@@ -41,7 +41,7 @@ export function DataModelEnumsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Enums as column types</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Enums as column types</h2>
           <p className="text-text-secondary mb-4">
             Name the enum as a column type and write variants with their full path,{' '}
             <Code>namespace::enum::Variant</Code>. Storage is a small integer: the
@@ -54,7 +54,7 @@ export function DataModelEnumsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Filtering, updating, aggregating</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Filtering, updating, aggregating</h2>
           <p className="text-text-secondary mb-4">
             To test a row's variant, use <Code>is</Code> with the variant path. This is
             the one form the engine understands for variant comparison in a filter:
@@ -73,7 +73,7 @@ export function DataModelEnumsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Variants with payload fields</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Variants with payload fields</h2>
           <p className="text-text-secondary mb-4">
             A variant can declare fields in braces. Each field becomes its own stored
             column, named <Code>{'<'}column{'>'}_{'<'}variant{'>'}_{'<'}field{'>'}</Code>{' '}
@@ -89,7 +89,7 @@ export function DataModelEnumsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Enums in views</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Enums in views</h2>
           <p className="text-text-secondary mb-4">
             A{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">view</Link>{' '}
@@ -107,7 +107,7 @@ export function DataModelEnumsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What the engine rejects</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What the engine rejects</h2>
           <p className="text-text-secondary mb-4">
             An enum column accepts a variant path and nothing else. A string with the
             variant's name is refused with a constraint error (its message talks about
@@ -133,7 +133,7 @@ export function DataModelEnumsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Sharp edges</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Sharp edges</h2>
           <p className="text-text-secondary mb-4">
             After flattening, the declared column name no longer names anything.
             Projecting it does not fail; it silently yields <Code>none</Code>. Always
@@ -156,7 +156,7 @@ export function DataModelEnumsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Enum, dictionary, or plain string?</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Enum, dictionary, or plain string?</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

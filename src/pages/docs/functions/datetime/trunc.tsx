@@ -13,18 +13,18 @@ export function DatetimeTruncPage() {
             <Link to="/docs/functions/datetime" className="font-bold hover:text-primary-color">datetime</Link>
             {' module'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">datetime::trunc</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">datetime::trunc</h1>
           <p className="text-lg text-text-secondary leading-relaxed">Truncate a datetime to a specified precision.</p>
         </div>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`datetime::trunc(datetime_value, precision)`} />
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border border-border-light overflow-x-auto rounded-md">
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <div className="dialog overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-bg-tertiary"><tr>
+              <thead className="bg-[#efedfb]"><tr>
                 <th className="text-left p-2 sm:p-3 font-bold">Name</th>
                 <th className="text-left p-2 sm:p-3 font-bold">Type</th>
                 <th className="text-left p-2 sm:p-3 font-bold">Description</th>
@@ -45,15 +45,15 @@ export function DatetimeTruncPage() {
           </div>
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2>
           <p className="text-text-secondary">Returns a Datetime truncated to the specified precision.</p>
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
           <ExecutableSnippet title={datetimeTrunc.title} initialCode={datetimeTrunc.code} />
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
             <Link to="/docs/functions/datetime/date" className="text-primary-color hover:underline">datetime::date</Link>
             <Link to="/docs/functions/datetime/time" className="text-primary-color hover:underline">datetime::time</Link>

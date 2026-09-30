@@ -5,8 +5,8 @@ import { useIsDraft } from '@/components/draft-context';
 import { PageMeta } from '@/components/page-meta';
 import { JsonLd } from '@/components/json-ld';
 import { canonicalUrl } from '@/lib/site';
-import { DocsSidebar, DocsNavTree, SectionTabs, Breadcrumbs, PageNav } from './components';
-import { navSections, getBreadcrumbs, getActiveSectionTitle, getOrderedPages } from './data/navigation';
+import { DocsSidebar, DocsNavTree, Breadcrumbs, PageNav } from './components';
+import { navSections, getBreadcrumbs, getOrderedPages } from './data/navigation';
 
 interface DocsLayoutProps {
   children: React.ReactNode;
@@ -16,9 +16,9 @@ interface DocsLayoutProps {
 
 function DraftBanner() {
   return (
-    <div className="sticky top-[60px] z-30 -mx-4 sm:-mx-6 md:-mx-8 lg:-ml-12 -mt-6 sm:-mt-8 mb-6 bg-amber-900/30 border-b border-amber-500/30 px-4 py-2">
-      <div className="flex items-center gap-2 text-amber-300 text-sm">
-        <span className="font-bold">DRAFT</span>
+    <div className="sticky top-[60px] z-30 -mx-4 sm:-mx-6 md:-mx-8 lg:-ml-12 -mt-6 sm:-mt-8 mb-6 bg-[#f7eddd] border-b-2 border-[#e0a040] px-4 py-2">
+      <div className="flex items-center gap-3 text-text-primary text-sm">
+        <span className="pixel-label uppercase">Draft</span>
         <span>This page is not published. Only visible in development mode.</span>
       </div>
     </div>
@@ -31,9 +31,6 @@ export function Layout({ children, title, description }: DocsLayoutProps) {
   const trail = getBreadcrumbs(navSections, location.pathname).filter(
     (crumb) => crumb.href !== '/docs',
   );
-  const activeSectionTitle = getActiveSectionTitle(navSections, location.pathname);
-  const activeSection = navSections.find((s) => s.title === activeSectionTitle);
-  const sidebarSections = activeSection ? [activeSection] : navSections;
 
   const orderedPages = getOrderedPages(navSections);
   const currentIndex = orderedPages.findIndex((p) => p.href === location.pathname);
@@ -74,11 +71,10 @@ export function Layout({ children, title, description }: DocsLayoutProps) {
           }}
         />
       )}
-      <Navbar mobileExtra={<DocsNavTree sections={navSections} currentPath={location.pathname} />} />
-      <SectionTabs sections={navSections} activeTitle={activeSectionTitle} />
+      <Navbar framed mobileExtra={<DocsNavTree sections={navSections} currentPath={location.pathname} />} />
       <div className="flex flex-1">
-        <DocsSidebar sections={sidebarSections} currentPath={location.pathname} />
-        <main className="flex-1 bg-bg-primary">
+        <DocsSidebar sections={navSections} currentPath={location.pathname} />
+        <main className="flex-1 bg-[#faf8f2]">
           <div className="font-body max-w-4xl mx-auto pl-4 pr-4 sm:px-6 py-6 sm:py-8 md:px-8 lg:pl-12">
             {isDraft && <DraftBanner />}
             <Breadcrumbs trail={trail} />

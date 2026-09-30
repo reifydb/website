@@ -1,30 +1,45 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, Zap, Code } from 'lucide-react';
 import { Layout } from './layout.tsx';
 import { Callout } from './components';
-import { ScrollReveal } from '@/components/ui';
+import { BOLT, BOOK, CODE, GEM, GEM_COLORS, ICON_COLORS, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
 
 const quickLinks = [
   {
     title: 'Quickstart',
     description: 'Build a live view in your browser, nothing to install.',
     href: '/docs/quick-start',
-    icon: Zap,
-    color: 'text-primary',
+    icon: BOLT,
   },
   {
     title: 'RQL in Five Minutes',
     description: 'Learn the query language, one runnable concept at a time.',
     href: '/docs/rql',
-    icon: Code,
-    color: 'text-primary',
+    icon: CODE,
   },
   {
     title: 'Installation',
     description: 'Get ReifyDB running for real, embedded or as a server.',
     href: '/docs/installation',
-    icon: BookOpen,
-    color: 'text-primary',
+    icon: BOOK,
+  },
+];
+
+const keyFeatures = [
+  {
+    title: 'Transactional',
+    body: 'Your application state stays consistent. Full ACID guarantees, real rollback.',
+  },
+  {
+    title: 'Incremental',
+    body: 'Your views update the moment your data changes. No cron, no polling.',
+  },
+  {
+    title: 'Embeddable',
+    body: 'Embed it in your app or run it as a standalone server. Your call.',
+  },
+  {
+    title: 'RQL',
+    body: 'A query language that fits how you think about your data, not how a database thinks about tables.',
   },
 ];
 
@@ -35,34 +50,37 @@ export function DocsOverview() {
       description="ReifyDB documentation: a database for live application state with transactional guarantees, incremental derived views, and programmable state transitions."
     >
       <div className="space-y-8">
-        {/* Header */}
         <ScrollReveal>
-          <div>
-            <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
-              ReifyDB Documentation
-            </h1>
-            <p className="text-base text-text-muted mb-3 italic">
-              Your database should work the way you think. ReifyDB does.
-            </p>
-            <p className="text-lg text-text-secondary leading-relaxed">
-              ReifyDB is a database for live application state. You get transactional guarantees,
-              incremental derived views, programmable state transitions, and per-user access rules
-              in one coherent system.
-            </p>
+          <div className="dialog overflow-hidden">
+            <div className="sky">
+              <div className="px-6 sm:px-10 pt-8 sm:pt-10 text-center">
+                <p className="eyebrow-pixel uppercase mb-3">Documentation</p>
+                <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4 text-balance">
+                  ReifyDB Documentation
+                </h1>
+                <p className="text-base text-text-muted mb-3 italic">
+                  Your database should work the way you think. ReifyDB does.
+                </p>
+                <p className="text-lg text-text-secondary leading-relaxed">
+                  ReifyDB is a database for live application state. You get transactional guarantees,
+                  incremental derived views, programmable state transitions, and per-user access rules
+                  in one coherent system.
+                </p>
+              </div>
+              <PixelScene kind="library" className="mt-8" />
+            </div>
           </div>
         </ScrollReveal>
 
-        {/* Warning */}
         <ScrollReveal delay={50}>
           <Callout variant="warning" title="In Development">
             ReifyDB is under active development. Do not use in production yet. APIs and guarantees may change.
           </Callout>
         </ScrollReveal>
 
-        {/* What is ReifyDB */}
         <ScrollReveal delay={100}>
           <section>
-            <h2 className="text-2xl font-black tracking-tight mb-4">What is ReifyDB?</h2>
+            <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What is ReifyDB?</h2>
             <p className="text-text-secondary mb-4">
               You have probably split your application state across a database, a cache, a queue, and maybe an in-memory store.
               ReifyDB brings all of that into one system.
@@ -78,70 +96,49 @@ export function DocsOverview() {
           </section>
         </ScrollReveal>
 
-        {/* Quick Links */}
         <ScrollReveal delay={150}>
           <section>
-            <h2 className="text-2xl font-black tracking-tight mb-6">Get Started</h2>
+            <h2 className="text-2xl font-normal tracking-[-0.03em] mb-6">Get Started</h2>
             <div className="grid gap-4 sm:grid-cols-3">
-              {quickLinks.map((link, index) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className="group card-brutal p-5"
-                  style={{ animationDelay: `${index * 75}ms` }}
-                >
-                  <div className="flex items-start gap-4">
-                    <link.icon className={`flex-shrink-0 h-5 w-5 ${link.color}`} strokeWidth={2} />
-                    <div className="flex-1">
-                      <h3 className="font-bold text-text-primary mb-1 group-hover:text-primary transition-colors">
-                        {link.title}
-                      </h3>
-                      <p className="text-sm text-text-muted">{link.description}</p>
-                    </div>
-                    <span className="text-sm text-text-muted group-hover:text-primary transition-colors">&rarr;</span>
-                  </div>
+              {quickLinks.map((link) => (
+                <Link key={link.href} to={link.href} className="level-card group flex flex-col">
+                  <PixelIcon rows={link.icon} colors={ICON_COLORS} className="h-8 w-9 text-[#4b52d6] mb-5" />
+                  <h3 className="font-bold text-text-primary mb-1 group-hover:text-[#4b52d6] transition-colors">
+                    {link.title}
+                  </h3>
+                  <p className="text-sm text-text-muted">{link.description}</p>
                 </Link>
               ))}
             </div>
           </section>
         </ScrollReveal>
 
-        {/* Key Features */}
         <ScrollReveal delay={200}>
           <section>
-            <h2 className="text-2xl font-black tracking-tight mb-4">Key Features</h2>
+            <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Key Features</h2>
             <ul className="space-y-3 text-text-secondary">
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-mono">--</span>
-                <span><strong className="text-text-primary">Transactional</strong> - Your application state stays consistent. Full ACID guarantees, real rollback.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-mono">--</span>
-                <span><strong className="text-text-primary">Incremental</strong> - Your views update the moment your data changes. No cron, no polling.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-mono">--</span>
-                <span><strong className="text-text-primary">Embeddable</strong> - Embed it in your app or run it as a standalone server. Your call.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-mono">--</span>
-                <span><strong className="text-text-primary">RQL</strong> - A query language that fits how you think about your data, not how a database thinks about tables.</span>
-              </li>
+              {keyFeatures.map((feature, index) => (
+                <li key={feature.title} className="flex items-start gap-3">
+                  <PixelIcon rows={GEM} colors={{ x: GEM_COLORS[index] }} className="mt-1.5 h-3 w-3 shrink-0" />
+                  <span>
+                    <strong className="text-text-primary">{feature.title}</strong> - {feature.body}
+                  </span>
+                </li>
+              ))}
             </ul>
           </section>
         </ScrollReveal>
 
-        {/* Links */}
         <ScrollReveal delay={250}>
-          <section className="pt-4 border-t border-border-default">
-            <h2 className="text-lg font-black tracking-tight mb-4">Resources</h2>
+          <section className="pt-4 border-t border-[#c9c3dc]">
+            <h2 className="text-lg font-normal tracking-[-0.03em] mb-4">Resources</h2>
             <ul className="space-y-2 text-text-secondary">
               <li>
                 <a
                   href="https://github.com/reifydb/reifydb"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:text-primary-light font-medium transition-colors link-underline"
+                  className="text-[#4b52d6] hover:text-primary-dark font-medium transition-colors link-underline"
                 >
                   GitHub Repository &rarr;
                 </a>
@@ -151,13 +148,13 @@ export function DocsOverview() {
                   href="https://discord.gg/HPBwUSPuUS"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:text-primary-light font-medium transition-colors link-underline"
+                  className="text-[#4b52d6] hover:text-primary-dark font-medium transition-colors link-underline"
                 >
                   Discord Community &rarr;
                 </a>
               </li>
               <li>
-                <Link to="/contact" className="text-primary hover:text-primary-light font-medium transition-colors link-underline">
+                <Link to="/contact" className="text-[#4b52d6] hover:text-primary-dark font-medium transition-colors link-underline">
                   Contact Me &rarr;
                 </Link>
               </li>

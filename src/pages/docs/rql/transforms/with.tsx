@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -21,7 +21,7 @@ export function WithPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             The with Clause
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -42,7 +42,7 @@ export function WithPage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Where with appears</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where with appears</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
@@ -76,7 +76,7 @@ export function WithPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Storage options at creation</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Storage options at creation</h2>
           <p className="text-text-secondary mb-4">
             Each storage shape has its own keys. A ring buffer declares its{' '}
             <Code>capacity</Code>; a series declares its <Code>key</Code> column and
@@ -96,7 +96,7 @@ export function WithPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Row settings</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Row settings</h2>
           <p className="text-text-secondary mb-4">
             Tables, ring buffers, series, and views all accept a <Code>row</Code> block
             that controls the lifetime of their rows: <Code>ttl</Code> with a{' '}
@@ -115,7 +115,7 @@ export function WithPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Column options</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Column options</h2>
           <p className="text-text-secondary mb-4">
             A with block after a column's type configures that column.{' '}
             <Code>auto_increment</Code> makes the engine fill the column from a{' '}
@@ -128,7 +128,7 @@ export function WithPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Operator options</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Operator options</h2>
           <p className="text-text-secondary mb-4">
             On pipeline operators, with configures the state the flow engine keeps when
             the pipeline runs inside a view. <Code>join</Code> accepts three keys:{' '}
@@ -161,7 +161,7 @@ export function WithPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Keys are validated</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Keys are validated</h2>
           <p className="text-text-secondary mb-4">
             The with block is not a free-form bag of settings. Every construct checks
             the keys it is given - a table accepts <Code>row</Code> and{' '}

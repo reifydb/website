@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function RqlControlFlowClosuresPage() {
@@ -13,7 +13,7 @@ export function RqlControlFlowClosuresPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Closures &amp; Functions</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Closures &amp; Functions</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             RQL scripts can define functions two ways: anonymous <strong>closures</strong>{' '}
             bound to variables (<Code>let $double = ($x) {'{'} $x * 2 {'}'}</Code>) and
@@ -25,7 +25,7 @@ export function RqlControlFlowClosuresPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Define a closure, call it</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Define a closure, call it</h2>
           <p className="text-text-secondary mb-4">
             A closure is a parenthesized parameter list followed by a block, assigned
             to a variable with{' '}
@@ -37,7 +37,7 @@ export function RqlControlFlowClosuresPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Closures capture their scope</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Closures capture their scope</h2>
           <p className="text-text-secondary mb-4">
             The body can reference variables from the enclosing scope - that is what
             makes it a closure rather than just a function. Here <Code>$base</Code> is
@@ -52,7 +52,7 @@ export function RqlControlFlowClosuresPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Bodies are blocks</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Bodies are blocks</h2>
           <p className="text-text-secondary mb-4">
             A closure body is a full block: it can declare its own variables, and its
             last expression is the return value:
@@ -65,7 +65,7 @@ export function RqlControlFlowClosuresPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Using closures in queries</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Using closures in queries</h2>
           <p className="text-text-secondary mb-4">
             To feed a closure's result into a pipeline, bind it with <Code>let</Code>{' '}
             and use the variable:
@@ -80,7 +80,7 @@ export function RqlControlFlowClosuresPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Named functions with udf</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Named functions with udf</h2>
           <p className="text-text-secondary mb-4">
             When the whole point is to call the function from inside a pipeline,
             declare it with <Code>udf</Code> instead. A named udf is callable anywhere
@@ -107,7 +107,7 @@ export function RqlControlFlowClosuresPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">One request, then gone</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">One request, then gone</h2>
           <p className="text-text-secondary mb-4">
             Closures and udfs are script constructs, not schema objects. They exist
             from their definition to the end of the request - the next request starts

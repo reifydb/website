@@ -3,7 +3,7 @@ import { Layout } from '../layout.tsx';
 import { CodeBlock, Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -19,7 +19,7 @@ export function PythonClientPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Python</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Python</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             The Python binding is an early prototype, version 0.0.1. It is a PyO3 module
             that embeds the engine inside the Python process - the same shape as{' '}
@@ -32,7 +32,7 @@ export function PythonClientPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What exists today</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What exists today</h2>
           <p className="text-text-secondary mb-4">
             The package lives at <Code>pkg/python/reifydb</Code> in the engine repository
             and is built with maturin (PyO3, abi3, Python 3.10+). It exposes exactly one
@@ -62,7 +62,7 @@ results = db.tx('FROM app::users')`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">How it was meant to be used</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">How it was meant to be used</h2>
           <p className="text-text-secondary mb-4">
             The repository ships one example, a hello world that pretty-prints a query
             result with <Code>tabulate</Code>. It is reproduced here as a record of
@@ -88,7 +88,7 @@ print(tabulate(r[0]['rows'], headers=r[0]['headers']))`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Current status</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Current status</h2>
           <Callout variant="warning" title="Stale prototype - do not build on it">
             The binding was written against engine APIs that no longer exist. Its Rust
             source calls <Code>ReifyDB::embedded_blocking()</Code> and{' '}
@@ -112,7 +112,7 @@ print(tabulate(r[0]['rows'], headers=r[0]['headers']))`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Using ReifyDB from Python today</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Using ReifyDB from Python today</h2>
           <p className="text-text-secondary mb-4">
             Until the binding is rewritten, the practical route is to run the server and
             speak the HTTP wire protocol directly - it is plain JSON over POST, so the

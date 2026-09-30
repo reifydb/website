@@ -5,7 +5,7 @@ import { Layout } from '../layout.tsx';
 import { AsciiDiagram, Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -40,7 +40,7 @@ export function RqlTransformsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Transforms</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Transforms</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             An RQL query is a pipeline. It starts with a source, and every operator after
             it takes the rows the previous stage produced, transforms them, and hands the
@@ -51,7 +51,7 @@ export function RqlTransformsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">How a pipeline runs</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">How a pipeline runs</h2>
           <AsciiDiagram label="pipeline" className="mb-4">
 {`from [...]                    4 rows
   |
@@ -78,11 +78,11 @@ take 2                        Grace, Ada`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The operators</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The operators</h2>
           <div className="overflow-x-auto mb-4">
             <table className="w-full border border-border-light text-sm">
               <thead>
-                <tr className="bg-bg-tertiary">
+                <tr className="bg-[#efedfb]">
                   <th className={th}>Operator</th>
                   <th className={th}>Purpose</th>
                 </tr>
@@ -106,7 +106,7 @@ take 2                        Grace, Ada`}
           <div className="overflow-x-auto mb-4">
             <table className="w-full border border-border-light text-sm">
               <thead>
-                <tr className="bg-bg-tertiary">
+                <tr className="bg-[#efedfb]">
                   <th className={th}>Page</th>
                   <th className={th}>What it is</th>
                 </tr>
@@ -121,7 +121,7 @@ take 2                        Grace, Ada`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Shaping rows and reducing them</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Shaping rows and reducing them</h2>
           <p className="text-text-secondary mb-4">
             <Code>map</Code>, <Code>extend</Code>, and <Code>patch</Code> change columns
             without changing the row count. <Code>map</Code> starts from nothing and keeps
@@ -139,7 +139,7 @@ take 2                        Grace, Ada`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Tables and inline data</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Tables and inline data</h2>
           <p className="text-text-secondary mb-4">
             The operators do not care where rows come from. The same stages that ran over
             an inline frame above run over a{' '}
@@ -156,7 +156,7 @@ take 2                        Grace, Ada`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Order matters</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Order matters</h2>
           <p className="text-text-secondary mb-4">
             Because each stage consumes the previous stage's output, swapping two operators
             usually changes the result. <Code>take 2</Code> before <Code>sort</Code> keeps

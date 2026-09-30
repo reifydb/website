@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, RqlCodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 const th = 'text-left px-4 py-2 border-b border-border-light font-bold';
@@ -20,7 +20,7 @@ export function LiteralsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Literals</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Literals</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A literal is a constant written directly into an expression: <Code>42</Code>,{' '}
             <Code>"Ada"</Code>, <Code>true</Code>, <Code>none</Code>,{' '}
@@ -31,7 +31,7 @@ export function LiteralsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Numbers</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Numbers</h2>
           <p className="text-text-secondary mb-4">
             Integers and decimals are written bare, with no quotes and no suffix. A leading{' '}
             <Code>-</Code> makes a negative literal, underscores may group digits, and
@@ -72,7 +72,7 @@ export function LiteralsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Text</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Text</h2>
           <p className="text-text-secondary mb-4">
             Text goes in double or single quotes; the two are equivalent. There are no
             escape sequences: a backslash is an ordinary character, and{' '}
@@ -91,7 +91,7 @@ export function LiteralsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Booleans</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Booleans</h2>
           <p className="text-text-secondary mb-4">
             <Code>true</Code> and <Code>false</Code>, unquoted. Comparisons and logical
             operators produce the same type, so a literal and a computed boolean are
@@ -101,7 +101,7 @@ export function LiteralsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">none</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">none</h2>
           <p className="text-text-secondary mb-4">
             <Code>none</Code> is the absent value. It can be written wherever a value can:
             in an inline row, in an <Code>insert</Code> into an <Code>Option</Code> column,
@@ -117,7 +117,7 @@ export function LiteralsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Lists</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Lists</h2>
           <p className="text-text-secondary mb-4">
             Square brackets with comma-separated values. A list is a value in its own
             right, but its main job is the right-hand side of <Code>in</Code>,{' '}
@@ -127,7 +127,7 @@ export function LiteralsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Temporal literals</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Temporal literals</h2>
           <p className="text-text-secondary mb-4">
             An <Code>@</Code> prefix followed by an ISO 8601 form. The shape of what
             follows decides the type:
@@ -135,7 +135,7 @@ export function LiteralsPage() {
           <div className="overflow-x-auto mb-4">
             <table className="w-full border border-border-light text-sm">
               <thead>
-                <tr className="bg-bg-tertiary">
+                <tr className="bg-[#efedfb]">
                   <th className={th}>Type</th>
                   <th className={th}>Form</th>
                   <th className={th}>Examples</th>
@@ -194,7 +194,7 @@ export function LiteralsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Pinning a literal's type</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Pinning a literal's type</h2>
           <p className="text-text-secondary mb-4">
             When the inferred type is not the one you need - an <Code>int1</Code> where a
             join key is <Code>int4</Code>, a <Code>Decimal</Code> where a column is{' '}

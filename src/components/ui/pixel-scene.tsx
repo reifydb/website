@@ -16,7 +16,7 @@ import {
 import { GEM_COLORS } from './pixel-icons';
 
 type Context = CanvasRenderingContext2D;
-type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | 'build' | 'trade' | 'bug' | BoardMode;
+type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | 'build' | 'trade' | 'bug' | 'library' | BoardMode;
 type Draw = (c: Context, width: number, height: number, time: number) => void;
 
 interface RunnerBug {
@@ -113,6 +113,16 @@ const POOF_TIME = 0.6;
 const MERGED_WIDTH = 31;
 const LEVEL_HEIGHT = 27;
 const LEVEL_WALK_SPEED = 40;
+const LIBRARY_LOOP = 7;
+const SHELF_WIDTH = 36;
+const SHELF_BACK = '#8a6446';
+const BOOK_SLOTS = 8;
+const PULL_TIME = 0.4;
+const FLY_TIME = 0.8;
+const OPEN_TIME = 0.3;
+const READ_TIME = 3;
+const PAGE_TIME = 1;
+const TURN_TIME = 0.3;
 const RUNNER_BUGS: RunnerBug[] = [
   { shape: 'beetle', boxes: ['PG', 'REDIS'] },
   { shape: 'fly', boxes: ['CACHE'] },
@@ -1348,6 +1358,97 @@ function levelMap(
   }
 }
 
+function bookHeight(shelf: number, slot: number) {
+  return 8 + Math.floor(hash(shelf * 17 + slot * 5 + 2) * 3);
+}
+
+function bookColor(shelf: number, slot: number) {
+  return GEM_COLORS[(slot + shelf * 3) % GEM_COLORS.length];
+}
+
+function closedBook(c: Context, x: number, y: number, height: number, color: string) {
+  rect(c, x, y, 3, height, color);
+  rect(c, x, y + 2, 3, 1, '#ffffff');
+}
+
+function bookshelf(c: Context, left: number, floor: number, gapShelf: number, gapSlot: number) {
+  const top = floor - 29;
+  rect(c, left, top, SHELF_WIDTH, 28, WOOD);
+  rect(c, left, top, SHELF_WIDTH, 1, '#d8b08a');
+  for (let shelf = 0; shelf < 2; shelf++) {
+    const back = top + 2 + shelf * 13;
+    rect(c, left + 2, back, SHELF_WIDTH - 4, 11, SHELF_BACK);
+    for (let slot = 0; slot < BOOK_SLOTS; slot++) {
+      if (shelf === gapShelf && slot === gapSlot) continue;
+      const height = bookHeight(shelf, slot);
+      closedBook(c, left + 2 + slot * 4, back + 11 - height, height, bookColor(shelf, slot));
+    }
+  }
+}
+
+function openBook(c: Context, middle: number, top: number, color: string, open: number, page: number, turn: number) {
+  const half = Math.round(lerp(1, 7, open));
+  rect(c, middle - half, top, half * 2 + 1, 9, color);
+  if (open < 1) return;
+  rect(c, middle - 6, top, 6, 8, '#ffffff');
+  rect(c, middle + 1, top, 6, 8, '#ffffff');
+  for (let row = 0; row < 3; row++) {
+    rect(c, middle - 5, top + 2 + row * 2, 1 + Math.floor(hash(page * 11 + row) * 4), 1, LINE);
+    rect(c, middle + 2, top + 2 + row * 2, 1 + Math.floor(hash(page * 13 + row + 5) * 4), 1, row === 0 ? PRIMARY : LINE);
+  }
+  if (turn < 0 || turn >= 1) return;
+  const width = Math.round(6 * Math.abs(1 - 2 * turn));
+  rect(c, turn < 0.5 ? middle + 1 : middle - width, top - 1, width, 8, '#f3f2fb');
+}
+
+function library(c: Context, width: number, height: number, time: number) {
+  const groundY = height - 14;
+  const floor = groundY + 3;
+  clouds(c, width, time);
+  hills(c, width, groundY);
+  grass(c, width, groundY, height - 7, time);
+  dither(c, width, height - 7, height, PRIMARY, PAPER);
+
+  const center = Math.round(width / 2);
+  const shelfLeft = center + 2;
+  const botX = center - 16;
+  const round = Math.floor(time / LIBRARY_LOOP);
+  const t = time % LIBRARY_LOOP;
+  const shelf = round % 2;
+  const slot = Math.floor(hash(round * 7 + 1) * BOOK_SLOTS);
+  const bookH = bookHeight(shelf, slot);
+  const color = bookColor(shelf, slot);
+  const slotX = shelfLeft + 2 + slot * 4;
+  const slotY = floor - 16 + shelf * 13 - bookH;
+  const liftedY = slotY - 4;
+  const bookTop = floor - 22;
+  const pullEnd = PULL_TIME;
+  const flyEnd = pullEnd + FLY_TIME;
+  const openEnd = flyEnd + OPEN_TIME;
+  const readEnd = openEnd + READ_TIME;
+  const closeEnd = readEnd + OPEN_TIME;
+  const backEnd = closeEnd + FLY_TIME;
+  const pushEnd = backEnd + PULL_TIME;
+
+  bookshelf(c, shelfLeft, floor, t < pushEnd ? shelf : -1, slot);
+  bot(c, botX, floor, time, 0, false);
+
+  if (t < pullEnd || (t >= backEnd && t < pushEnd)) {
+    const u = t < pullEnd ? t / PULL_TIME : 1 - (t - backEnd) / PULL_TIME;
+    closedBook(c, slotX, lerp(slotY, liftedY, ease(u)), bookH, color);
+  } else if (t < flyEnd || (t >= closeEnd && t < backEnd)) {
+    const u = ease(t < flyEnd ? (t - pullEnd) / FLY_TIME : 1 - (t - closeEnd) / FLY_TIME);
+    closedBook(c, lerp(slotX, botX + 1, u), quad(liftedY, Math.min(liftedY, bookTop) - 6, bookTop, u), bookH, color);
+  } else if (t < closeEnd) {
+    const reading = t - openEnd;
+    const open = t < openEnd ? ease((t - flyEnd) / OPEN_TIME) : t < readEnd ? 1 : 1 - ease((t - readEnd) / OPEN_TIME);
+    const turn = reading >= 0 && t < readEnd ? ((reading % PAGE_TIME) - PAGE_TIME + TURN_TIME) / TURN_TIME : -1;
+    openBook(c, botX + 2, bookTop, color, open, round * 7 + Math.floor(Math.max(0, reading) / PAGE_TIME), turn);
+  } else {
+    sparkle(c, slotX + 1, slotY - 3, time);
+  }
+}
+
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
@@ -1364,6 +1465,7 @@ const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Dra
   build: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: build },
   trade: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: trade },
   bug: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: runner },
+  library: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: library },
 };
 
 interface PixelSceneProps {

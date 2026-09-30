@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function DataModelTablesPage() {
@@ -16,7 +16,7 @@ export function DataModelTablesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Tables</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Tables</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             Tables hold authoritative, mutable state - the facts your application
             asserts directly. They are the primary storage shape: rows are inserted,
@@ -27,7 +27,7 @@ export function DataModelTablesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Creating a table</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating a table</h2>
           <p className="text-text-secondary mb-4">
             A table is a named set of typed columns inside a{' '}
             <Link to="/docs/concepts/data-model/namespaces" className="text-primary hover:text-primary-light font-medium transition-colors">namespace</Link>.
@@ -48,7 +48,7 @@ export function DataModelTablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Optional columns</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Optional columns</h2>
           <p className="text-text-secondary mb-4">
             Columns are non-nullable unless declared <Code>Option(type)</Code>. An
             optional column that was never set holds <Code>none</Code> - ReifyDB's
@@ -60,7 +60,7 @@ export function DataModelTablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Auto-increment columns</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Auto-increment columns</h2>
           <p className="text-text-secondary mb-4">
             An integer column declared <Code>with {'{'} auto_increment {'}'}</Code> is
             assigned the next value of a per-column sequence on insert, so writers never
@@ -72,7 +72,7 @@ export function DataModelTablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Primary keys</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Primary keys</h2>
           <p className="text-text-secondary mb-4">
             A primary key is declared as a separate statement after the table exists,
             and can span multiple columns:{' '}
@@ -82,7 +82,7 @@ export function DataModelTablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Updating and deleting</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Updating and deleting</h2>
           <p className="text-text-secondary mb-4">
             <Code>update</Code> sets the listed fields and leaves every other column
             untouched; <Code>delete</Code> removes whatever matches the filter. Both
@@ -99,7 +99,7 @@ export function DataModelTablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">System columns</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">System columns</h2>
           <p className="text-text-secondary mb-4">
             Every stored row carries engine-maintained columns prefixed with{' '}
             <Code>#</Code>. They are not returned by default; project them explicitly
@@ -110,7 +110,7 @@ export function DataModelTablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Evolving the schema</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Evolving the schema</h2>
           <p className="text-text-secondary mb-4">
             <Code>alter table</Code> adds and drops columns in place. Add new columns as{' '}
             <Code>Option(type)</Code> when existing rows have no value for them:
@@ -119,7 +119,7 @@ export function DataModelTablesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">When a table is not the right shape</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">When a table is not the right shape</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

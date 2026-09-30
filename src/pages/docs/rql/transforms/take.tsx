@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function TakePage() {
@@ -16,7 +16,7 @@ export function TakePage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">take</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">take</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             <Code>take N</Code> passes through the first N rows that reach it and stops.
             It is the row cap of a pipeline - what other query languages call{' '}
@@ -27,7 +27,7 @@ export function TakePage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The first N rows</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The first N rows</h2>
           <p className="text-text-secondary mb-4">
             On a bare table scan, "first" means newest, because scans deliver rows
             newest-first. Run the snippets on this page in order:
@@ -36,7 +36,7 @@ export function TakePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Top N: sort, then take</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Top N: sort, then take</h2>
           <p className="text-text-secondary mb-4">
             Put the order you care about in front of the cap. The largest three events
             by size:
@@ -56,7 +56,7 @@ export function TakePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Edge values</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Edge values</h2>
           <p className="text-text-secondary mb-4">
             <Code>take 0</Code> is legal and yields no rows:
           </p>
@@ -74,7 +74,7 @@ export function TakePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Bounding a mutation</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Bounding a mutation</h2>
           <p className="text-text-secondary mb-4">
             <Code>update</Code> and <Code>delete</Code> accept <Code>take</Code> after
             their <Code>filter</Code>, capping how many matching rows the statement
@@ -92,7 +92,7 @@ export function TakePage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">take inside a view</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">take inside a view</h2>
           <p className="text-text-secondary mb-4">
             In a{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">deferred view</Link>,{' '}

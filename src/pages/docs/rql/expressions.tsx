@@ -5,7 +5,7 @@ import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -24,7 +24,7 @@ export function RqlExpressionsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Expressions</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Expressions</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             An expression computes one value per row. It is what goes inside the braces
             of <Code>filter</Code>, <Code>map</Code>, <Code>extend</Code>, and{' '}
@@ -36,11 +36,11 @@ export function RqlExpressionsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Where expressions appear</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Where expressions appear</h2>
           <div className="overflow-x-auto mb-4">
             <table className="w-full border border-border-light text-sm">
               <thead>
-                <tr className="bg-bg-tertiary">
+                <tr className="bg-[#efedfb]">
                   <th className={th}>Clause</th>
                   <th className={th}>The expression must yield</th>
                   <th className={th}>Example</th>
@@ -65,7 +65,7 @@ export function RqlExpressionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Column references</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Column references</h2>
           <p className="text-text-secondary mb-4">
             A bare identifier names a column of the current row. Columns come from the
             source (<Code>from</Code>), from earlier <Code>extend</Code>, <Code>map</Code>,
@@ -87,7 +87,7 @@ export function RqlExpressionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Literals and operators</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Literals and operators</h2>
           <p className="text-text-secondary mb-4">
             Constants are written as{' '}
             <DocLink to="/docs/rql/expressions/literals">literals</DocLink>: numbers
@@ -108,7 +108,7 @@ export function RqlExpressionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Function calls</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Function calls</h2>
           <p className="text-text-secondary mb-4">
             Functions live in modules and are called as{' '}
             <Code>module::function(arg, ...)</Code> with positional arguments. Calls nest,
@@ -144,7 +144,7 @@ export function RqlExpressionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Conditional values</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Conditional values</h2>
           <p className="text-text-secondary mb-4">
             <Code>match</Code> is an expression: each arm pairs a condition with a value
             using <Code>=&gt;</Code>, arms are tried top to bottom, and <Code>else</Code>{' '}
@@ -157,7 +157,7 @@ export function RqlExpressionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Aggregates</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Aggregates</h2>
           <p className="text-text-secondary mb-4">
             Inside <Code>aggregate {'{ ... }'}</Code> each entry must be exactly one
             aggregate function call - <Code>math::sum(amount)</Code>,{' '}
@@ -169,7 +169,7 @@ export function RqlExpressionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Variables</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Variables</h2>
           <p className="text-text-secondary mb-4">
             A <Code>$</Code>-prefixed name bound with <Code>let</Code> can stand in for a
             value anywhere in an expression. The binding is typed like a literal and lives
@@ -181,7 +181,7 @@ export function RqlExpressionsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Result types</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Result types</h2>
           <p className="text-text-secondary mb-4">
             Every expression has a static type. Integer arithmetic widens (an{' '}
             <Code>int4</Code> sum is an <Code>int8</Code>), integer division stays integer,

@@ -34,25 +34,25 @@ export function OperatorPage({
   return (
     <div className="space-y-8">
       <div>
-        <div className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-3">
+        <div className="pixel-label uppercase text-[#4b52d6] mb-3">
           <Link to="/docs/rql/transforms" className="hover:text-primary-light transition-colors">
             RQL
           </Link>
           {' pipeline operator'}
         </div>
-        <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">{name}</h1>
+        <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">{name}</h1>
         <p className="text-lg text-text-secondary leading-relaxed">{summary}</p>
       </div>
 
       <section>
-        <h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2>
+        <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
         <RqlCodeBlock code={syntax} />
         {description && <div className="text-text-secondary mt-4 space-y-4">{description}</div>}
       </section>
 
       {examples.length > 0 && (
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
           {examples.map(({ example, heading, note }) => (
             <div key={example.id} className="mb-6">
               <h3 className="text-lg font-bold mb-3">{heading ?? example.title}</h3>
@@ -65,21 +65,21 @@ export function OperatorPage({
 
       {noneBehavior && (
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Behavior with none</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Behavior with none</h2>
           <div className="text-text-secondary space-y-4">{noneBehavior}</div>
         </section>
       )}
 
       {notes && (
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Notes</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Notes</h2>
           <div className="text-text-secondary space-y-4">{notes}</div>
         </section>
       )}
 
       {related.length > 0 && (
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Related</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related</h2>
           <div className="flex gap-3 flex-wrap">
             {related.map((item) => (
               <Link key={item.href} to={item.href} className="text-primary-color hover:underline">

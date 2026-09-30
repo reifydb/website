@@ -3,7 +3,7 @@ import { Layout } from '../layout.tsx';
 import { AsciiDiagram, Callout, CodeBlock } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 const buildAndRun = `git clone <your fork or checkout of reifydb>
@@ -64,7 +64,7 @@ export function RunServerPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Running the Server</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Running the Server</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             ReifyDB runs as one process: the engine, its storage, and the network listeners
             all live in a single binary. <Code>reifydb-server</Code> is the reference binary
@@ -76,7 +76,7 @@ export function RunServerPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Build and start</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Build and start</h2>
           <p className="text-text-secondary mb-4">
             The server is built from a checkout of the repository with a stable Rust
             toolchain. <Code>cargo install reifydb</Code> installs the command-line client,
@@ -94,7 +94,7 @@ export function RunServerPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What it listens on</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What it listens on</h2>
           <p className="text-text-secondary mb-4">
             The reference binary binds five ports. Two are <strong>application</strong>{' '}
             listeners on all interfaces; three are <strong>admin</strong> listeners bound to
@@ -132,7 +132,7 @@ export function RunServerPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">First contact</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">First contact</h2>
           <p className="text-text-secondary mb-4">
             Every HTTP listener answers <Code>GET /health</Code> as soon as it is bound.
             Use it for liveness probes and load-balancer checks:
@@ -166,7 +166,7 @@ export function RunServerPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Logs</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Logs</h2>
           <p className="text-text-secondary mb-4">
             The server logs through the tracing subsystem to the console: normal lines go
             to stdout, errors to stderr, with ANSI colour on. The reference binary pins the
@@ -181,7 +181,7 @@ export function RunServerPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Stopping</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Stopping</h2>
           <p className="text-text-secondary mb-4">
             The process handles <Code>SIGINT</Code>, <Code>SIGTERM</Code>,{' '}
             <Code>SIGQUIT</Code>, and <Code>SIGHUP</Code> the same way: it stops accepting
@@ -216,7 +216,7 @@ exit 0`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Storage</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Storage</h2>
           <Callout variant="warning" title="The reference binary stores nothing on disk">
             <Code>reifydb-server</Code> opens the engine with <Code>server::memory()</Code>.
             Everything you write lives in RAM and is gone when the process stops. That is
@@ -226,7 +226,7 @@ exit 0`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">A binary of your own</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">A binary of your own</h2>
           <p className="text-text-secondary mb-4">
             The server is a builder: <Code>server::memory()</Code> or{' '}
             <Code>server::sqlite(config)</Code> picks the store, and each{' '}
@@ -266,7 +266,7 @@ exit 0`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Supervisors and containers</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Supervisors and containers</h2>
           <p className="text-text-secondary mb-4">
             A systemd unit needs nothing special beyond a stop timeout long enough for the
             drain and a generous file-descriptor limit:

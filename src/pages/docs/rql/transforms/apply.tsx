@@ -30,9 +30,9 @@ apply kind_counter {}`}
               The braces after the operator name are required, even when there are no
               arguments: apply kind_counter without braces is rejected at parse time
               (error APPLY_002). Inside the braces you pass comma-separated{' '}
-              <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">name: value</code>{' '}
+              <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">name: value</code>{' '}
               options, for example{' '}
-              <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">
+              <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">
                 apply running_sum {'{ value: 10 }'}
               </code>
               . In a view, the options are evaluated once when the view is registered and

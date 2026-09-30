@@ -9,7 +9,7 @@ export function JsonModuleOverviewPage() {
       <div className="space-y-8">
         {/* Header */}
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             json Module
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -19,7 +19,7 @@ export function JsonModuleOverviewPage() {
 
         {/* Quick Example */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Quick Example</h2>
           <ExecutableSnippet
             title="Quick Example"
             initialCode={jsonOverviewQuick.code}
@@ -28,21 +28,21 @@ export function JsonModuleOverviewPage() {
 
         {/* Available Functions */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Available Functions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Available Functions</h2>
           <div className="space-y-3">
-            <Link to="/docs/functions/json/array" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/json/array" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">json::array</h3>
               <p className="text-text-secondary text-sm">Build a JSON array from a list of values</p>
             </Link>
-            <Link to="/docs/functions/json/object" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/json/object" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">json::object</h3>
               <p className="text-text-secondary text-sm">Build a JSON object from key-value pairs</p>
             </Link>
-            <Link to="/docs/functions/json/serialize" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/json/serialize" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">json::serialize</h3>
               <p className="text-text-secondary text-sm">Serialize a JSON value to a compact string</p>
             </Link>
-            <Link to="/docs/functions/json/pretty" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/json/pretty" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">json::pretty</h3>
               <p className="text-text-secondary text-sm">Serialize a JSON value to a pretty-printed string</p>
             </Link>
@@ -51,10 +51,10 @@ export function JsonModuleOverviewPage() {
 
         {/* Reference Table */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Function Reference</h2>
-          <div className="border border-border-light overflow-x-auto rounded-md">
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Function Reference</h2>
+          <div className="dialog overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-bg-tertiary">
+              <thead className="bg-[#efedfb]">
                 <tr>
                   <th className="text-left p-2 sm:p-3 font-bold">Function</th>
                   <th className="text-left p-2 sm:p-3 font-bold">Description</th>

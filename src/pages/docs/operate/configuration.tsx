@@ -3,7 +3,7 @@ import { Layout } from '../layout.tsx';
 import { AsciiDiagram, Callout, CodeBlock, RqlCodeBlock } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function Row({ cells }: { cells: React.ReactNode[] }) {
@@ -72,7 +72,7 @@ export function ConfigurationPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Configuration</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Configuration</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             ReifyDB has no configuration file and no command-line flags. Settings live in
             two places. <strong>Build-time choices</strong> - which store to open, which
@@ -85,7 +85,7 @@ export function ConfigurationPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Storage backend</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Storage backend</h2>
           <p className="text-text-secondary mb-4">
             The first builder call picks the store. <Code>server::memory()</Code> keeps
             everything in RAM and forgets it on exit. <Code>server::sqlite(config)</Code>{' '}
@@ -125,7 +125,7 @@ export function ConfigurationPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Listeners and authentication</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Listeners and authentication</h2>
           <p className="text-text-secondary mb-4">
             Each listener is added with a closure over its configurator. A listener with no{' '}
             <Code>bind_addr</Code> is not started; setting only{' '}
@@ -165,7 +165,7 @@ export function ConfigurationPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Runtime settings</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Runtime settings</h2>
           <p className="text-text-secondary mb-4">
             Runtime settings are catalog rows with a default, a current value, and a flag
             that says whether a change needs a restart. Read them like any table:
@@ -204,7 +204,7 @@ ORACLE_WINDOW_SIZE | 1000`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The keys that matter most</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The keys that matter most</h2>
           <p className="text-text-secondary mb-4">
             The full list, with descriptions, is <Code>from system::configs</Code>. These
             are the ones operators reach for. Sizes are bytes unless a unit is shown; the
@@ -249,7 +249,7 @@ ORACLE_WINDOW_SIZE | 1000`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Environment</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Environment</h2>
           <p className="text-text-secondary mb-4">
             The server itself reads one environment variable: <Code>RUST_LOG</Code>, and
             only when the binary sets no explicit log filter. The command-line client reads{' '}

@@ -3,7 +3,7 @@ import { Layout } from '../layout.tsx';
 import { AsciiDiagram, Callout, CodeBlock, RqlCodeBlock } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function Table({ headers, rows }: { headers: string[]; rows: React.ReactNode[][] }) {
@@ -60,7 +60,7 @@ export function ObservabilityPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Observability</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Observability</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             ReifyDB gives you three views into a running server. <strong>Logs</strong> go
             to the console through a filterable tracing subscriber.{' '}
@@ -73,7 +73,7 @@ export function ObservabilityPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Is it up?</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Is it up?</h2>
           <p className="text-text-secondary mb-4">
             Every HTTP listener answers <Code>GET /health</Code> with{' '}
             <Code>{'{"status":"ok"}'}</Code> once it is bound. It reports that the listener
@@ -84,7 +84,7 @@ export function ObservabilityPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Logs</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Logs</h2>
           <p className="text-text-secondary mb-4">
             Logging is the tracing subsystem, added to the builder with{' '}
             <Code>with_tracing</Code>. By default it prints to the console with colour,
@@ -112,7 +112,7 @@ export function ObservabilityPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Traces</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Traces</h2>
           <p className="text-text-secondary mb-4">
             Request handlers and engine stages are instrumented with tracing spans. To ship
             them, add the OpenTelemetry subsystem. Use <Code>with_tracing_otel</Code> rather
@@ -142,7 +142,7 @@ export function ObservabilityPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Metrics are tables</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Metrics are tables</h2>
           <p className="text-text-secondary mb-4">
             The metrics subsystem samples the engine every 10 seconds
             (<Code>METRICS_SAMPLE_INTERVAL</Code>) and keeps the latest sample in a{' '}
@@ -208,7 +208,7 @@ map { normalized_rql, calls, mean_duration, max_duration, errors }`} />
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">History and retention</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">History and retention</h2>
           <p className="text-text-secondary mb-4">
             <Code>current</Code> holds only the latest sample. To keep history, set{' '}
             <Code>METRICS_SNAPSHOT_INTERVAL</Code> (a restart-time key, at least the sample
@@ -236,7 +236,7 @@ engine ---- sampler every 10s --------> system::metrics::*::current
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Catalog views for operators</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Catalog views for operators</h2>
           <p className="text-text-secondary mb-4">
             Beyond metrics, the catalog exposes the engine's moving parts as virtual
             tables: <Code>system::flow_watermarks</Code> and{' '}

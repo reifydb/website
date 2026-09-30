@@ -6,42 +6,42 @@ export function BlobModuleOverviewPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">blob Module</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">blob Module</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             Functions for encoding and decoding binary data (blobs) to and from various string formats.
           </p>
         </div>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Encoding Functions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Encoding Functions</h2>
           <p className="text-text-secondary mb-4">Convert between blobs and encoded string representations.</p>
           <div className="grid gap-3">
-            <Link to="/docs/functions/blob/b58" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/blob/b58" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">blob::b58</h3>
               <p className="text-text-secondary text-sm">Encode or decode using Base58</p>
             </Link>
-            <Link to="/docs/functions/blob/b64" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/blob/b64" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">blob::b64</h3>
               <p className="text-text-secondary text-sm">Encode or decode using Base64</p>
             </Link>
-            <Link to="/docs/functions/blob/b64url" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/blob/b64url" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">blob::b64url</h3>
               <p className="text-text-secondary text-sm">Encode or decode using URL-safe Base64</p>
             </Link>
-            <Link to="/docs/functions/blob/hex" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/blob/hex" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">blob::hex</h3>
               <p className="text-text-secondary text-sm">Encode or decode using hexadecimal</p>
             </Link>
-            <Link to="/docs/functions/blob/utf8" className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary">
+            <Link to="/docs/functions/blob/utf8" className="group block level-card p-4!">
               <h3 className="font-bold text-primary mb-1">blob::utf8</h3>
               <p className="text-text-secondary text-sm">Encode or decode as UTF-8 text</p>
             </Link>
           </div>
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Function Reference</h2>
-          <div className="border border-border-light overflow-x-auto rounded-md">
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Function Reference</h2>
+          <div className="dialog overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-bg-tertiary">
+              <thead className="bg-[#efedfb]">
                 <tr>
                   <th className="text-left p-2 sm:p-3 font-bold">Function</th>
                   <th className="text-left p-2 sm:p-3 font-bold">Description</th>

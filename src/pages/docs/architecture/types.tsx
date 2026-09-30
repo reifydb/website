@@ -5,7 +5,7 @@ import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function DocLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -47,7 +47,7 @@ export function TypesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Data Types</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Data Types</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             Every column and every expression in RQL has a type, and the engine checks it
             at plan time rather than at read time. The type system is small and explicit:
@@ -59,15 +59,15 @@ export function TypesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The type families</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The type families</h2>
           <p className="text-text-secondary mb-4">
             Column types are written in lowercase in <Code>create table</Code>;{' '}
             <Code>meta::type()</Code> reports the same types in CamelCase (<Code>Int4</Code>,{' '}
             <Code>Utf8</Code>, <Code>Option(Utf8)</Code>).
           </p>
-          <div className="border border-border-light overflow-x-auto rounded-md">
+          <div className="dialog overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="bg-bg-tertiary">
+              <thead className="bg-[#efedfb]">
                 <tr>
                   <th className="text-left p-2 sm:p-3 font-bold">Type</th>
                   <th className="text-left p-2 sm:p-3 font-bold">Kind</th>
@@ -95,7 +95,7 @@ export function TypesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Temporal types</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Temporal types</h2>
           <p className="text-text-secondary mb-4">
             There are four temporal types, and they do not convert into one another
             implicitly: <Code>date</Code> is a calendar day, <Code>datetime</Code> is an
@@ -120,7 +120,7 @@ export function TypesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Identifiers and bytes</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Identifiers and bytes</h2>
           <p className="text-text-secondary mb-4">
             <Code>uuid4</Code> and <Code>uuid7</Code> are distinct types; parse one from
             text with <Code>cast</Code>, or generate one with <Code>uuid::v4()</Code> and{' '}
@@ -132,7 +132,7 @@ export function TypesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What type a literal gets</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What type a literal gets</h2>
           <p className="text-text-secondary mb-4">
             An integer literal is typed as the <em>smallest</em> signed integer that holds
             it: <Code>42</Code> is an <Code>Int1</Code>, <Code>1_000_000</Code> an{' '}
@@ -151,7 +151,7 @@ export function TypesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Ranges are enforced</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Ranges are enforced</h2>
           <p className="text-text-secondary mb-4">
             A fixed-width column rejects any value outside its range with{' '}
             <Code>NUMBER_002</Code>; nothing is silently wrapped or clamped. Because a
@@ -167,7 +167,7 @@ export function TypesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Arithmetic widens the result</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Arithmetic widens the result</h2>
           <p className="text-text-secondary mb-4">
             An operator's result type is one step wider than its widest operand, so an
             addition of two <Code>int1</Code> values cannot overflow - it yields an{' '}
@@ -188,7 +188,7 @@ export function TypesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Floats and decimals</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Floats and decimals</h2>
           <p className="text-text-secondary mb-4">
             <Code>float4</Code> and <Code>float8</Code> are IEEE binary floats;{' '}
             <Code>decimal</Code> is an exact, arbitrary-precision number. Literal
@@ -207,7 +207,7 @@ export function TypesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Inserts convert to the column type</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Inserts convert to the column type</h2>
           <p className="text-text-secondary mb-4">
             An <Code>insert</Code> applies the same rules as <Code>cast</Code> to every
             field: text that parses as a number goes into an integer column, a number
@@ -225,7 +225,7 @@ export function TypesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Explicit conversion with cast</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Explicit conversion with cast</h2>
           <p className="text-text-secondary mb-4">
             <Code>cast(value, type)</Code> is the one explicit conversion. Text parses into
             every numeric, temporal, boolean, and UUID type; numbers convert between
@@ -250,7 +250,7 @@ export function TypesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Option(T) and none</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Option(T) and none</h2>
           <p className="text-text-secondary mb-4">
             A column is required unless declared <Code>Option(type)</Code>. An optional
             column with no value holds <Code>none</Code>, which is a value of type{' '}
@@ -266,7 +266,7 @@ export function TypesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Text</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Text</h2>
           <p className="text-text-secondary mb-4">
             <Code>utf8</Code> (or <Code>text</Code>) is the only string type; there is no
             fixed-length or byte-string variant. <Code>+</Code> between a string and any

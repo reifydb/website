@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, RqlCodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function PatchPage() {
@@ -16,7 +16,7 @@ export function PatchPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">patch</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">patch</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             <Code>patch</Code> sets columns. Name a column that already exists and its
             values are replaced, in the same position; name one that does not and it is
@@ -32,7 +32,7 @@ export function PatchPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`patch { alias: expression, expression, ... }`} />
           <p className="text-text-secondary mt-4">
             Each entry is an expression over the incoming row. <Code>alias:</Code> names
@@ -45,7 +45,7 @@ export function PatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Replacing and adding</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Replacing and adding</h2>
           <p className="text-text-secondary mb-4">
             Run the snippets on this page in order. The first creates a table of line
             items and doubles every price. <Code>price</Code> keeps its place between{' '}
@@ -65,7 +65,7 @@ export function PatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">patch versus extend</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">patch versus extend</h2>
           <p className="text-text-secondary mb-4">
             The two operators share their syntax and differ on exactly one thing: what
             happens when the name already exists. <Code>extend</Code> treats it as an
@@ -97,7 +97,7 @@ export function PatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Every entry reads the incoming row</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Every entry reads the incoming row</h2>
           <p className="text-text-secondary mb-4">
             All entries in one block are evaluated against the row as it enters the
             operator, not against each other. Replacing <Code>price</Code> and copying{' '}
@@ -119,7 +119,7 @@ export function PatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The column takes the expression's type</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The column takes the expression's type</h2>
           <p className="text-text-secondary mb-4">
             <Code>patch</Code> does not convert the new value to the column's declared
             type. The output column has whatever type the expression produced, even when
@@ -151,7 +151,7 @@ export function PatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Using patched columns downstream</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Using patched columns downstream</h2>
           <p className="text-text-secondary mb-4">
             Anything <Code>patch</Code> produces is a normal column for the operators
             that follow. A bool column can be the whole condition of a{' '}
@@ -169,7 +169,7 @@ export function PatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Sharp edges</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Sharp edges</h2>
           <p className="text-text-secondary mb-4">
             Without an alias the new column takes the expression's text as its name,
             which is fine for a quick look and awkward to reference afterwards:
@@ -209,7 +209,7 @@ export function PatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Compared with SQL</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Compared with SQL</h2>
           <p className="text-text-secondary mb-4">
             <Code>patch</Code> is a <Code>SELECT</Code> with one column expression
             swapped out - <Code>SELECT id, price * 2 AS price, qty FROM items</Code> -

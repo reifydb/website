@@ -4,7 +4,7 @@ import { Layout } from '../../layout.tsx';
 import { AsciiDiagram, Callout, RqlCodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function QueuesPage() {
@@ -15,7 +15,7 @@ export function QueuesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             Queues
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -43,7 +43,7 @@ export function QueuesPage() {
         </Callout>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Creating a queue</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating a queue</h2>
           <p className="text-text-secondary mb-4">
             <Code>create queue</Code> takes the same column list as a table plus a{' '}
             <Code>with</Code> block. The block must contain a dispatch block;{' '}
@@ -113,7 +113,7 @@ export function QueuesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What the engine rejects at creation</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What the engine rejects at creation</h2>
           <p className="text-text-secondary mb-4">
             The dispatch block is not optional. If a missing block defaulted to{' '}
             <Code>fifo</Code>, adding a second dispatch later would silently change what
@@ -157,7 +157,7 @@ export function QueuesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Enqueueing</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Enqueueing</h2>
           <p className="text-text-secondary mb-4">
             <Code>insert</Code> enqueues one item per record. Its confirmation names the
             queue and counts what was enqueued and what was dropped as a duplicate; an
@@ -248,7 +248,7 @@ export function QueuesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Reading items back</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reading items back</h2>
           <p className="text-text-secondary mb-4">
             A bare <Code>from</Code> returns the stored items as rows in enqueue order,
             with the declared columns only; the scheduling fields the engine keeps beside
@@ -268,7 +268,7 @@ export function QueuesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Consuming</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Consuming</h2>
           <p className="text-text-secondary mb-4">
             Workers drive a queue through procedures. All of them must run in a command
             transaction; in a read-only query they fail rather than report success while
@@ -397,7 +397,7 @@ ok     | 1    | 1`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Dropping a queue</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dropping a queue</h2>
           <p className="text-text-secondary mb-4">
             <Code>drop queue</Code> removes the definition, the items, and the queue's
             scheduling state. The confirmation has no id column:

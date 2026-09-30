@@ -17,9 +17,9 @@ export function CodeBlock({ code, language = 'bash', className }: CodeBlockProps
   };
 
   return (
-    <div className={cn('border border-border-default rounded-lg bg-code-bg overflow-hidden', className)}>
+    <div className={cn('border-2 border-[#4b52d6] bg-code-bg shadow-[0_4px_var(--color-primary-dark)] overflow-hidden', className)}>
       <div className="flex justify-between items-center px-4 py-2 border-b border-border-default bg-code-bg-elevated">
-        <span className="text-xs font-medium text-code-text-muted uppercase tracking-wider">
+        <span className="pixel-label uppercase text-code-text-muted">
           {language}
         </span>
         <button
@@ -57,7 +57,7 @@ export function TabbedCodeBlock({ examples, className }: TabbedCodeBlockProps) {
   };
 
   return (
-    <div className={cn('border border-border-default rounded-lg bg-code-bg overflow-hidden', className)}>
+    <div className={cn('border-2 border-[#4b52d6] bg-code-bg shadow-[0_4px_var(--color-primary-dark)] overflow-hidden', className)}>
       <div className="flex items-center justify-between border-b border-border-default bg-code-bg-elevated">
         <div className="flex">
           {examples.map((example, index) => (

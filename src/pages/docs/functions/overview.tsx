@@ -7,22 +7,22 @@ export function FunctionsOverviewPage() {
     <Layout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             Functions
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             RQL comes with built-in function modules for the operations you use most.
             Call them with the{' '}
-            <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">::</code> syntax.
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">::</code> syntax.
           </p>
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Available Modules</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Available Modules</h2>
           <div className="space-y-4">
             <Link
               to="/docs/functions/blob"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">blob</h3>
               <p className="text-text-secondary text-sm">
@@ -32,7 +32,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/clock"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">clock</h3>
               <p className="text-text-secondary text-sm">
@@ -42,7 +42,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/date"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date</h3>
               <p className="text-text-secondary text-sm">
@@ -52,7 +52,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/datetime"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">datetime</h3>
               <p className="text-text-secondary text-sm">
@@ -62,7 +62,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/duration"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">duration</h3>
               <p className="text-text-secondary text-sm">
@@ -72,7 +72,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/identity"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">identity</h3>
               <p className="text-text-secondary text-sm">
@@ -82,7 +82,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/is"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">is</h3>
               <p className="text-text-secondary text-sm">
@@ -92,7 +92,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/json"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">json</h3>
               <p className="text-text-secondary text-sm">
@@ -102,7 +102,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/math"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">math</h3>
               <p className="text-text-secondary text-sm">
@@ -112,7 +112,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/meta"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">meta</h3>
               <p className="text-text-secondary text-sm">
@@ -122,7 +122,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/text"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">text</h3>
               <p className="text-text-secondary text-sm">
@@ -132,7 +132,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/time"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">time</h3>
               <p className="text-text-secondary text-sm">
@@ -144,8 +144,8 @@ export function FunctionsOverviewPage() {
 
         <Callout variant="tip" title="Syntax">
           Call any module function with{' '}
-          <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">module::function(args)</code>.
-          For example: <code className="bg-bg-tertiary px-1.5 py-0.5 text-sm font-bold">text::lower(name)</code>.
+          <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">module::function(args)</code>.
+          For example: <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">text::lower(name)</code>.
         </Callout>
       </div>
     </Layout>

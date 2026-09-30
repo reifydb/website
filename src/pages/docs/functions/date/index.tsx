@@ -9,7 +9,7 @@ export function DateModuleOverviewPage() {
       <div className="space-y-8">
         {/* Header */}
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             date Module
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -19,7 +19,7 @@ export function DateModuleOverviewPage() {
 
         {/* Quick Example */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Quick Example</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Quick Example</h2>
           <ExecutableSnippet
             title="Quick Example"
             initialCode={dateOverviewQuick.code}
@@ -28,14 +28,14 @@ export function DateModuleOverviewPage() {
 
         {/* Date Extraction Functions */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Date Extraction</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Date Extraction</h2>
           <p className="text-text-secondary mb-4">
             Pull out the parts you need from any date or timestamp.
           </p>
           <div className="grid gap-3">
             <Link
               to="/docs/functions/date/year"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::year</h3>
               <p className="text-text-secondary text-sm">
@@ -45,7 +45,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/month"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::month</h3>
               <p className="text-text-secondary text-sm">
@@ -55,7 +55,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/day"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::day</h3>
               <p className="text-text-secondary text-sm">
@@ -65,7 +65,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/day_of_year"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::day_of_year</h3>
               <p className="text-text-secondary text-sm">
@@ -75,7 +75,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/day_of_week"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::day_of_week</h3>
               <p className="text-text-secondary text-sm">
@@ -85,7 +85,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/quarter"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::quarter</h3>
               <p className="text-text-secondary text-sm">
@@ -95,7 +95,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/week"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::week</h3>
               <p className="text-text-secondary text-sm">
@@ -107,14 +107,14 @@ export function DateModuleOverviewPage() {
 
         {/* Date Properties */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Date Properties</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Date Properties</h2>
           <p className="text-text-secondary mb-4">
             Inspect properties and boundaries of dates.
           </p>
           <div className="grid gap-3">
             <Link
               to="/docs/functions/date/is_leap_year"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::is_leap_year</h3>
               <p className="text-text-secondary text-sm">
@@ -124,7 +124,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/days_in_month"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::days_in_month</h3>
               <p className="text-text-secondary text-sm">
@@ -134,7 +134,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/start_of_month"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::start_of_month</h3>
               <p className="text-text-secondary text-sm">
@@ -144,7 +144,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/end_of_month"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::end_of_month</h3>
               <p className="text-text-secondary text-sm">
@@ -154,7 +154,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/start_of_year"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::start_of_year</h3>
               <p className="text-text-secondary text-sm">
@@ -166,14 +166,14 @@ export function DateModuleOverviewPage() {
 
         {/* Date Manipulation Functions */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Date Manipulation</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Date Manipulation</h2>
           <p className="text-text-secondary mb-4">
             Add time, compute differences, or grab the current timestamp.
           </p>
           <div className="grid gap-3">
             <Link
               to="/docs/functions/date/new"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::new</h3>
               <p className="text-text-secondary text-sm">
@@ -183,7 +183,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/now"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::now</h3>
               <p className="text-text-secondary text-sm">
@@ -193,7 +193,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/add"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::add</h3>
               <p className="text-text-secondary text-sm">
@@ -203,7 +203,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/subtract"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::subtract</h3>
               <p className="text-text-secondary text-sm">
@@ -213,7 +213,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/diff"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::diff</h3>
               <p className="text-text-secondary text-sm">
@@ -223,7 +223,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/trunc"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::trunc</h3>
               <p className="text-text-secondary text-sm">
@@ -233,7 +233,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/age"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::age</h3>
               <p className="text-text-secondary text-sm">
@@ -245,14 +245,14 @@ export function DateModuleOverviewPage() {
 
         {/* Formatting Functions */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Formatting</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Formatting</h2>
           <p className="text-text-secondary mb-4">
             Turn dates into readable strings.
           </p>
           <div className="grid gap-3">
             <Link
               to="/docs/functions/date/format"
-              className="group block border border-l-[6px] border-border-light bg-bg-secondary rounded-md shadow-[var(--shadow-soft)] p-4 transition-colors duration-200 hover:border-l-primary hover:bg-bg-tertiary"
+              className="group block level-card p-4!"
             >
               <h3 className="font-bold text-primary mb-1">date::format</h3>
               <p className="text-text-secondary text-sm">
@@ -264,10 +264,10 @@ export function DateModuleOverviewPage() {
 
         {/* Reference Table */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Function Reference</h2>
-          <div className="border border-border-light overflow-x-auto rounded-md">
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Function Reference</h2>
+          <div className="dialog overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-bg-tertiary">
+              <thead className="bg-[#efedfb]">
                 <tr>
                   <th className="text-left p-2 sm:p-3 font-bold">Function</th>
                   <th className="text-left p-2 sm:p-3 font-bold">Category</th>

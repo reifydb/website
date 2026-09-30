@@ -13,23 +13,23 @@ export function TimeSecondPage() {
             <Link to="/docs/functions/time" className="font-bold hover:text-primary-color">time</Link>
             {' module'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">time::second</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">time::second</h1>
           <p className="text-lg text-text-secondary leading-relaxed">Extract the second (0-59) from a time value.</p>
         </div>
-        <section><h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2><RqlCodeBlock code={`time::second(time_value)`} /></section>
+        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2><RqlCodeBlock code={`time::second(time_value)`} /></section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border border-border-light overflow-x-auto rounded-md"><table className="w-full">
-            <thead className="bg-bg-tertiary"><tr><th className="text-left p-2 sm:p-3 font-bold">Name</th><th className="text-left p-2 sm:p-3 font-bold">Type</th><th className="text-left p-2 sm:p-3 font-bold">Description</th></tr></thead>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <div className="dialog overflow-x-auto"><table className="w-full">
+            <thead className="bg-[#efedfb]"><tr><th className="text-left p-2 sm:p-3 font-bold">Name</th><th className="text-left p-2 sm:p-3 font-bold">Type</th><th className="text-left p-2 sm:p-3 font-bold">Description</th></tr></thead>
             <tbody><tr className="border-t border-border-light"><td className="p-2 sm:p-3"><code>time_value</code></td><td className="p-2 sm:p-3">Time</td><td className="p-2 sm:p-3">The time value to extract the second from</td></tr></tbody>
           </table></div>
         </section>
-        <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns an Integer representing the second component (0-59) of the given time value.</p></section>
+        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2><p className="text-text-secondary">Returns an Integer representing the second component (0-59) of the given time value.</p></section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
           <ExecutableSnippet title={timeSecondExample.title} initialCode={timeSecondExample.code} />
         </section>
-        <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
+        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap">
           <Link to="/docs/functions/time/minute" className="text-primary-color hover:underline">time::minute</Link>
           <Link to="/docs/functions/time/nanosecond" className="text-primary-color hover:underline">time::nanosecond</Link>
         </div></section>

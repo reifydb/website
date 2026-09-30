@@ -3,7 +3,7 @@ import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 const features: { name: string; where: string; state: string }[] = [
@@ -77,7 +77,7 @@ export function RoadmapPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Roadmap &amp; Experimental</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Roadmap &amp; Experimental</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             ReifyDB is pre-1.0 (the source tree is at 0.9.0) and in active development.
             The documented pages describe what works today. This page lists what exists
@@ -89,7 +89,7 @@ export function RoadmapPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">How to read the states</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">How to read the states</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
@@ -116,10 +116,10 @@ export function RoadmapPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Experimental and in-development features</h2>
-          <div className="border border-border-light overflow-x-auto rounded-md">
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Experimental and in-development features</h2>
+          <div className="dialog overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="bg-bg-tertiary">
+              <thead className="bg-[#efedfb]">
                 <tr>
                   <th className="text-left p-2 sm:p-3 font-bold">Feature</th>
                   <th className="text-left p-2 sm:p-3 font-bold">Where it lives</th>
@@ -145,7 +145,7 @@ export function RoadmapPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Engine work in progress</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Engine work in progress</h2>
           <p className="text-text-secondary mb-4">
             These are open engineering plans in the repository. They change behavior you
             can observe today, so they are worth knowing about even though none of them
@@ -220,7 +220,7 @@ export function RoadmapPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">How a feature graduates</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">How a feature graduates</h2>
           <p className="text-text-secondary mb-4">
             A feature gets a documentation page when it can be exercised end to end in a
             released build, is covered by golden test scripts, and its examples run in the

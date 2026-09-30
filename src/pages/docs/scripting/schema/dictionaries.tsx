@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function DictionariesPage() {
@@ -16,7 +16,7 @@ export function DictionariesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Dictionaries</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Dictionaries</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A dictionary interns values: it assigns each distinct value a compact
             integer ID, once, and hands the same ID back every time that value appears
@@ -27,7 +27,7 @@ export function DictionariesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Creating a dictionary</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Creating a dictionary</h2>
           <p className="text-text-secondary mb-4">
             The declaration is{' '}
             <Code>create dictionary ns::name for value_type as id_type</Code>.{' '}
@@ -58,7 +58,7 @@ export function DictionariesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Inserting entries</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Inserting entries</h2>
           <p className="text-text-secondary mb-4">
             An insert sends records with a single <Code>value</Code> field. The engine
             assigns IDs sequentially starting at 1, and the confirmation returns the
@@ -83,7 +83,7 @@ export function DictionariesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Querying the mapping</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Querying the mapping</h2>
           <p className="text-text-secondary mb-4">
             A dictionary is a readable source like any table or view - each row is an
             ID/value pair. A bare scan returns entries newest-first, the same order
@@ -105,7 +105,7 @@ export function DictionariesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Insert and from are the whole surface</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Insert and from are the whole surface</h2>
           <p className="text-text-secondary mb-4">
             Dictionaries are append-only on purpose. Once <Code>"USD"</Code> is entry
             1, every row that ever stored a 1 depends on that meaning - rewriting or
@@ -123,7 +123,7 @@ export function DictionariesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Dictionary-encoded columns</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dictionary-encoded columns</h2>
           <p className="text-text-secondary mb-4">
             Explicit inserts and joins are the manual gears. The integrated form wires
             a dictionary to a table column with{' '}
@@ -145,7 +145,7 @@ export function DictionariesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Dropping a dictionary</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dropping a dictionary</h2>
           <p className="text-text-secondary mb-4">
             The catalog tracks which columns reference a dictionary, and a dictionary
             that is still referenced cannot be dropped - the attempt fails with{' '}

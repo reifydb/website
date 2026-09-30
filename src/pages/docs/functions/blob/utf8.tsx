@@ -13,18 +13,18 @@ export function BlobUtf8Page() {
             <Link to="/docs/functions/blob" className="font-bold hover:text-primary-color">blob</Link>
             {' module'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">blob::utf8</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">blob::utf8</h1>
           <p className="text-lg text-text-secondary leading-relaxed">Encode or decode a blob as UTF-8 text.</p>
         </div>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`blob::utf8(value)`} />
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border border-border-light overflow-x-auto rounded-md">
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <div className="dialog overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-bg-tertiary">
+              <thead className="bg-[#efedfb]">
                 <tr>
                   <th className="text-left p-2 sm:p-3 font-bold">Name</th>
                   <th className="text-left p-2 sm:p-3 font-bold">Type</th>
@@ -42,15 +42,15 @@ export function BlobUtf8Page() {
           </div>
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2>
           <p className="text-text-secondary">A UTF-8 string when given a blob, or a blob when given a string.</p>
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
           <ExecutableSnippet title={blobUtf8.title} initialCode={blobUtf8.code} />
         </section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
             <Link to="/docs/functions/blob/b58" className="text-primary-color hover:underline">blob::b58</Link>
             <Link to="/docs/functions/blob/b64" className="text-primary-color hover:underline">blob::b64</Link>

@@ -13,23 +13,23 @@ export function MathLogPage() {
             <Link to="/docs/functions/math" className="font-bold hover:text-primary-color">math</Link>
             {' module · Scalar Function'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">math::log</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">math::log</h1>
           <p className="text-lg text-text-secondary leading-relaxed">Compute the natural logarithm (base e) of a value.</p>
         </div>
-        <section><h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2><RqlCodeBlock code={`math::log(value)`} /></section>
+        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2><RqlCodeBlock code={`math::log(value)`} /></section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border border-border-light overflow-x-auto rounded-md"><table className="w-full">
-            <thead className="bg-bg-tertiary"><tr><th className="text-left p-2 sm:p-3 font-bold">Name</th><th className="text-left p-2 sm:p-3 font-bold">Type</th><th className="text-left p-2 sm:p-3 font-bold">Description</th></tr></thead>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <div className="dialog overflow-x-auto"><table className="w-full">
+            <thead className="bg-[#efedfb]"><tr><th className="text-left p-2 sm:p-3 font-bold">Name</th><th className="text-left p-2 sm:p-3 font-bold">Type</th><th className="text-left p-2 sm:p-3 font-bold">Description</th></tr></thead>
             <tbody><tr className="border-t border-border-light"><td className="p-2 sm:p-3"><code>value</code></td><td className="p-2 sm:p-3">Number</td><td className="p-2 sm:p-3">A positive number</td></tr></tbody>
           </table></div>
         </section>
-        <section><h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2><p className="text-text-secondary">Returns a Number representing the natural logarithm of the value.</p></section>
+        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2><p className="text-text-secondary">Returns a Number representing the natural logarithm of the value.</p></section>
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
           <ExecutableSnippet title={mathLogInline.title} initialCode={mathLogInline.code} />
         </section>
-        <section><h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/math/log2" className="text-primary-color hover:underline">math::log2</Link><Link to="/docs/functions/math/log10" className="text-primary-color hover:underline">math::log10</Link><Link to="/docs/functions/math/exp" className="text-primary-color hover:underline">math::exp</Link></div></section>
+        <section><h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2><div className="flex gap-3 flex-wrap"><Link to="/docs/functions/math/log2" className="text-primary-color hover:underline">math::log2</Link><Link to="/docs/functions/math/log10" className="text-primary-color hover:underline">math::log10</Link><Link to="/docs/functions/math/exp" className="text-primary-color hover:underline">math::exp</Link></div></section>
       </div>
     </Layout>
   );

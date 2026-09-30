@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function DataModelEventsPage() {
@@ -16,7 +16,7 @@ export function DataModelEventsPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Events</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Events</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             An event type is a declared set of variants, each with a typed payload, that
             describes something that happens rather than something that is stored.{' '}
@@ -28,7 +28,7 @@ export function DataModelEventsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Declaring an event type</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Declaring an event type</h2>
           <p className="text-text-secondary mb-4">
             <Code>create event</Code> takes a namespaced name and a brace list of
             variants. Each variant lists its payload fields with types, using the same
@@ -40,7 +40,7 @@ export function DataModelEventsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Dispatching</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dispatching</h2>
           <p className="text-text-secondary mb-4">
             <Code>dispatch namespace::event::Variant {'{'} fields {'}'}</Code> raises the
             event. The result is a single number, <Code>handlers_fired</Code>. With no
@@ -51,7 +51,7 @@ export function DataModelEventsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Handlers</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Handlers</h2>
           <p className="text-text-secondary mb-4">
             A handler binds a scripted body to one variant. Inside the body the payload
             fields are visible as <Code>event_{'<'}field{'>'}</Code>. This one records
@@ -73,7 +73,7 @@ export function DataModelEventsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Payload validation</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Payload validation</h2>
           <p className="text-text-secondary mb-4">
             Payload fields are full expressions, evaluated before the handlers run, and
             they can use <Code>let</Code> variables from the same request:
@@ -98,7 +98,7 @@ export function DataModelEventsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Variants without payload</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Variants without payload</h2>
           <p className="text-text-secondary mb-4">
             A variant with empty braces is a pure signal. It is declared, bound, and
             dispatched with <Code>{'{'} {'}'}</Code>:
@@ -107,7 +107,7 @@ export function DataModelEventsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">A failing handler fails the dispatch</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">A failing handler fails the dispatch</h2>
           <p className="text-text-secondary mb-4">
             Handlers run in the dispatching transaction, so a handler error is a request
             error. Bind two handlers to <Code>OrderShipped</Code>, one of which writes to
@@ -128,7 +128,7 @@ export function DataModelEventsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Catalog and lifecycle</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Catalog and lifecycle</h2>
           <p className="text-text-secondary mb-4">
             Event types are listed in <Code>system::events</Code> (<Code>id</Code>,{' '}
             <Code>namespace_id</Code>, <Code>name</Code>). Handlers are in{' '}
@@ -146,7 +146,7 @@ export function DataModelEventsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Event, view, or subscription?</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Event, view, or subscription?</h2>
           <ul className="space-y-2 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>

@@ -5,7 +5,7 @@ import { Layout } from '../layout.tsx';
 import { Callout } from '../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 function L({ to, children }: { to: string; children: React.ReactNode }) {
@@ -20,9 +20,9 @@ type CodeRow = [string, React.ReactNode, React.ReactNode];
 
 function CodeTable({ rows }: { rows: CodeRow[] }) {
   return (
-    <div className="overflow-x-auto border border-border-default rounded-lg mb-4">
+    <div className="dialog overflow-x-auto mb-4">
       <table className="w-full text-sm">
-        <thead className="bg-bg-tertiary">
+        <thead className="bg-[#efedfb]">
           <tr>
             <th className="text-left p-2 sm:p-3 font-bold">Code</th>
             <th className="text-left p-2 sm:p-3 font-bold">Meaning</th>
@@ -139,7 +139,7 @@ export function ErrorsPage() {
       <div className="space-y-8">
         <div>
           <div className="text-sm text-text-muted mb-2 font-bold">Resources</div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Error Reference</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Error Reference</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             Every error RQL returns carries a stable code, a message, usually a{' '}
             <Code>HELP</Code> line, and often the location that failed. The prefix names
@@ -156,7 +156,7 @@ export function ErrorsPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Reading a diagnostic</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Reading a diagnostic</h2>
           <p className="text-text-secondary mb-4">
             Three habits cover most cases. First, when an error nests another under an
             arrow marker, the inner one is the cause: <Code>CAST_002</Code>{' '}
@@ -173,7 +173,7 @@ export function ErrorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Parsing: AST_*</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parsing: AST_*</h2>
           <p className="text-text-secondary mb-4">
             Raised before anything runs. Nothing in the catalog is consulted yet, so an
             AST error never depends on data.
@@ -183,7 +183,7 @@ export function ErrorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Statement shape</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Statement shape</h2>
           <p className="text-text-secondary mb-4">
             Each operator and write statement checks its own shape and reports under its
             own prefix. These are the ones a first week of RQL runs into.
@@ -193,7 +193,7 @@ export function ErrorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Catalog: CA_*</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Catalog: CA_*</h2>
           <p className="text-text-secondary mb-4">
             Anything about objects: names that do not exist, names that already do,
             and objects that cannot be dropped because something else depends on them.
@@ -207,7 +207,7 @@ export function ErrorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Casts: CAST_*</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Casts: CAST_*</h2>
           <p className="text-text-secondary mb-4">
             <Code>CAST_001</Code> means the pair of types has no conversion at all. The
             other five mean the pair is fine but this particular value could not be
@@ -218,7 +218,7 @@ export function ErrorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Expressions and routines</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Expressions and routines</h2>
           <p className="text-text-secondary mb-4">
             Type checks on operators, range checks on numbers, and everything a
             function or procedure call can get wrong. RQL never coerces across types
@@ -229,7 +229,7 @@ export function ErrorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Data integrity and query resolution</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Data integrity and query resolution</h2>
           <CodeTable rows={integrityRows} />
           <ExecutableSnippet title={resErrorsConstraint.title} initialCode={resErrorsConstraint.code} />
           <p className="text-text-secondary mt-4 mb-4">
@@ -241,7 +241,7 @@ export function ErrorsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Transactions: TXN_*</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Transactions: TXN_*</h2>
           <p className="text-text-secondary mb-4">
             The one you will see in the playground is <Code>TXN_015</Code>. Create a
             transactional view, then write to its source and read the view in the same

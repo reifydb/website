@@ -5,7 +5,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function MatchPage() {
@@ -16,7 +16,7 @@ export function MatchPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">match</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">match</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             <Code>match</Code> is RQL's conditional expression. It takes a list of arms,
             evaluates them top to bottom, and produces the result of the first arm that
@@ -30,7 +30,7 @@ export function MatchPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Value match</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Value match</h2>
           <p className="text-text-secondary mb-4">
             Put the value to inspect between <Code>match</Code> and the opening brace.
             Each arm is <Code>pattern =&gt; result</Code>; the arm whose pattern equals
@@ -44,7 +44,7 @@ export function MatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Searched match</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Searched match</h2>
           <p className="text-text-secondary mb-4">
             Leave out the subject and each arm becomes a boolean condition of its own.
             Arms are tried in order and the first true one wins, so put the narrowest
@@ -55,7 +55,7 @@ export function MatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Leaving out else</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Leaving out else</h2>
           <p className="text-text-secondary mb-4">
             <Code>else</Code> is optional. When no arm matches and there is no{' '}
             <Code>else</Code>, the expression is <Code>none</Code>:
@@ -68,7 +68,7 @@ export function MatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Guards</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Guards</h2>
           <p className="text-text-secondary mb-4">
             A value arm can carry an extra condition: <Code>pattern if condition =&gt;
             result</Code>. The arm matches only when both the pattern equals the subject
@@ -79,7 +79,7 @@ export function MatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">match in filter and extend</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">match in filter and extend</h2>
           <p className="text-text-secondary mb-4">
             A <Code>match</Code> whose arms return booleans is a predicate, so it can be
             the whole <Code>filter</Code> condition - a readable way to write an
@@ -94,7 +94,7 @@ export function MatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">none as a subject</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">none as a subject</h2>
           <p className="text-text-secondary mb-4">
             A value arm compares with <Code>==</Code>, and <Code>none</Code> is never
             equal to anything - not even to a <Code>none</Code> pattern. A{' '}
@@ -110,7 +110,7 @@ export function MatchPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">match on its own</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">match on its own</h2>
           <p className="text-text-secondary mb-4">
             A <Code>match</Code> can also stand alone as a statement. It yields a single
             row with one column named <Code>value</Code>, which is handy in scripts and

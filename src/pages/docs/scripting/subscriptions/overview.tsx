@@ -3,7 +3,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, CodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function SubscriptionsOverviewPage() {
@@ -14,7 +14,7 @@ export function SubscriptionsOverviewPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Subscriptions</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Subscriptions</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             A subscription is a live query. You declare a pipeline over tables or
             views, and the engine pushes every change to its result to the client that
@@ -27,7 +27,7 @@ export function SubscriptionsOverviewPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The statement</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The statement</h2>
           <p className="text-text-secondary mb-4">
             The shape mirrors <Code>create view</Code>: a column list, an optional{' '}
             <Code>with</Code> block, and the pipeline in an <Code>as</Code> block. The
@@ -64,7 +64,7 @@ as { pipeline }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">What arrives</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">What arrives</h2>
           <p className="text-text-secondary mb-4">
             The stream is an append-only log. Each entry is a row of the declared shape
             plus <Code>_op</Code>: <Code>1</Code> for insert, <Code>2</Code> for update,{' '}
@@ -93,7 +93,7 @@ as { pipeline }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Hydration</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Hydration</h2>
           <p className="text-text-secondary mb-4">
             By default a new subscription starts by delivering the rows that already
             match, each as an <Code>_op 1</Code> entry, and then continues with live
@@ -113,7 +113,7 @@ as { pipeline }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Throttle and linger</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Throttle and linger</h2>
           <p className="text-text-secondary mb-4">
             Both options shape how entries are batched into messages; neither drops an
             entry.
@@ -134,7 +134,7 @@ as { pipeline }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Opening and closing a subscription</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Opening and closing a subscription</h2>
           <p className="text-text-secondary mb-4">
             A subscription is opened over a persistent connection, not with a
             one-shot request. On the WebSocket protocol the client sends a{' '}
@@ -160,7 +160,7 @@ as { pipeline }`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Dropping a subscription from RQL</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Dropping a subscription from RQL</h2>
           <p className="text-text-secondary mb-4">
             Server-side, every open subscription is a catalog object named{' '}
             <Code>subscription_&lt;id&gt;</Code>, and it can be removed with a

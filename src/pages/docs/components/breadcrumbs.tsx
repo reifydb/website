@@ -12,7 +12,7 @@ export function Breadcrumbs({ trail }: BreadcrumbsProps) {
     <nav aria-label="Breadcrumb" className="mb-6 text-xs text-text-muted">
       <ol className="flex flex-wrap items-center gap-1.5">
         <li>
-          <Link to="/docs" className="hover:text-primary transition-colors">
+          <Link to="/docs" className="hover:text-[#4b52d6] transition-colors">
             Docs
           </Link>
         </li>
@@ -22,11 +22,11 @@ export function Breadcrumbs({ trail }: BreadcrumbsProps) {
             <li key={`${crumb.label}-${index}`} className="flex items-center gap-1.5">
               <span aria-hidden="true">/</span>
               {crumb.href && !isLast ? (
-                <Link to={crumb.href} className="hover:text-primary transition-colors">
+                <Link to={crumb.href} className="hover:text-[#4b52d6] transition-colors">
                   {crumb.label}
                 </Link>
               ) : (
-                <span className={isLast ? 'text-text-secondary font-medium' : undefined}>
+                <span className={isLast ? 'text-[#4b52d6] font-medium' : undefined}>
                   {crumb.label}
                 </span>
               )}

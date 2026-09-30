@@ -3,7 +3,7 @@ import { Layout } from '../../layout.tsx';
 import { Callout, CodeBlock } from '../../components';
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="bg-bg-tertiary px-1.5 py-0.5 text-xs font-bold">{children}</code>;
+  return <code className="bg-[#efedfb] px-1.5 py-0.5 text-xs font-bold">{children}</code>;
 }
 
 export function IndexesPage() {
@@ -14,7 +14,7 @@ export function IndexesPage() {
     >
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">Indexes</h1>
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">Indexes</h1>
           <p className="text-lg text-text-secondary leading-relaxed">
             An index is a structure the engine keeps in step with a table so that
             lookups by the indexed columns do not scan the table. In this release the
@@ -26,7 +26,7 @@ export function IndexesPage() {
         </div>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Primary keys</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Primary keys</h2>
           <p className="text-text-secondary mb-4">
             <Code>create primary key on ns::table {'{'} col, ... {'}'}</Code> declares
             the key: a unique index over one or more columns. Every insert checks it,
@@ -59,7 +59,7 @@ export function IndexesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">The create index statement</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">The create index statement</h2>
           <p className="text-text-secondary mb-4">
             The parser accepts the statement below. <Code>unique</Code> makes the index
             reject duplicate keys; each column may carry a sort direction; a{' '}
@@ -97,7 +97,7 @@ filter status == "open"`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Errors</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Errors</h2>
           <ul className="list-disc pl-6 space-y-2 text-text-secondary">
             <li>
               <Code>INDEX_001</Code> - an insert repeats a primary key that is already

@@ -16,7 +16,7 @@ export function JsonPrettyPage() {
             </Link>
             {' module · Function'}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4">
             json::pretty
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -26,16 +26,16 @@ export function JsonPrettyPage() {
 
         {/* Syntax */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Syntax</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`json::pretty(value)`} />
         </section>
 
         {/* Parameters */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Parameters</h2>
-          <div className="border border-border-light overflow-x-auto rounded-md">
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Parameters</h2>
+          <div className="dialog overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-bg-tertiary">
+              <thead className="bg-[#efedfb]">
                 <tr>
                   <th className="text-left p-2 sm:p-3 font-bold">Name</th>
                   <th className="text-left p-2 sm:p-3 font-bold">Type</th>
@@ -55,7 +55,7 @@ export function JsonPrettyPage() {
 
         {/* Return Value */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Return Value</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Return Value</h2>
           <p className="text-text-secondary">
             Returns a utf8 string containing the indented JSON representation.
           </p>
@@ -63,7 +63,7 @@ export function JsonPrettyPage() {
 
         {/* Examples */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Examples</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Examples</h2>
 
           <h3 className="text-lg font-bold mb-3">Pretty-print JSON</h3>
           <ExecutableSnippet
@@ -74,7 +74,7 @@ export function JsonPrettyPage() {
 
         {/* Related Functions */}
         <section>
-          <h2 className="text-2xl font-black tracking-tight mb-4">Related Functions</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">
             <Link to="/docs/functions/json/serialize" className="text-primary-color hover:underline">
               json::serialize
