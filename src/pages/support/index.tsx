@@ -1,13 +1,58 @@
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { PageCloser, PageHero, ScrollReveal } from '@/components/ui';
-import { Briefcase, Github, Calendar, FileText } from 'lucide-react';
+import { ARROW_COLORS, PageCloser, PageHero, PixelIcon, PixelScene, RIGHT_ARROW, ScrollReveal } from '@/components/ui';
+
+const ICON_COLORS = { x: 'currentColor' };
+
+const BRIEFCASE = [
+  '...xxx...',
+  '...x.x...',
+  'xxxxxxxxx',
+  'x.......x',
+  'xxxxxxxxx',
+  'x...x...x',
+  'x.......x',
+  'xxxxxxxxx',
+];
+
+const ISSUE = [
+  '..xxxxx..',
+  '.x.....x.',
+  'x.......x',
+  'x...x...x',
+  'x...x...x',
+  'x.......x',
+  '.x.....x.',
+  '..xxxxx..',
+];
+
+const CALENDAR = [
+  '.x.....x.',
+  'xxxxxxxxx',
+  'xxxxxxxxx',
+  'x.......x',
+  'x.x.x.x.x',
+  'x.......x',
+  'x.x.x.x.x',
+  'xxxxxxxxx',
+];
+
+const BUBBLE = [
+  'xxxxxxxxx',
+  'x.......x',
+  'x.xxxxx.x',
+  'x.......x',
+  'x.xxx...x',
+  'x.......x',
+  'xxxxxxxxx',
+  '.x.......',
+];
 
 const supportOptions = [
   {
     title: 'Commercial Support',
     description: 'Enterprise support and consulting for production deployments.',
-    icon: Briefcase,
+    icon: BRIEFCASE,
     href: 'mailto:founder@reifydb.com',
     linkText: 'Contact me',
     external: false,
@@ -15,7 +60,7 @@ const supportOptions = [
   {
     title: 'GitHub Issues',
     description: 'Report bugs, request features, or contribute to development.',
-    icon: Github,
+    icon: ISSUE,
     href: 'https://github.com/reifydb/reifydb/issues',
     linkText: 'Open an issue',
     external: true,
@@ -23,7 +68,7 @@ const supportOptions = [
   {
     title: 'Book a Call',
     description: 'Schedule time to discuss your use case or get technical guidance.',
-    icon: Calendar,
+    icon: CALENDAR,
     href: 'https://cal.com/reifydb/30min',
     linkText: 'Schedule a call',
     external: true,
@@ -31,7 +76,7 @@ const supportOptions = [
   {
     title: 'GitHub Discussions',
     description: 'Ask questions, share ideas, and engage with the community.',
-    icon: FileText,
+    icon: BUBBLE,
     href: 'https://github.com/orgs/reifydb/discussions',
     linkText: 'Join the discussion',
     external: true,
@@ -70,37 +115,36 @@ export function SupportPage() {
           eyebrow="Support"
           title="Help, from the people who wrote it"
           subtitle="Community channels for everyday questions, and a direct line when you are putting ReifyDB in front of real traffic."
+          scene={<PixelScene kind="pit" />}
         />
 
-        <section className="section-elevated py-20 sm:py-28">
-          <div className="mx-auto max-w-5xl px-6 md:px-8">
-            <div className="grid gap-5 sm:grid-cols-2">
-              {supportOptions.map((option, index) => (
-                <ScrollReveal key={option.title} delay={index * 75}>
-                  <a
-                    href={option.href}
-                    target={option.external ? '_blank' : undefined}
-                    rel={option.external ? 'noopener noreferrer' : undefined}
-                    className="block h-full"
-                  >
-                    <div className="bento-tile lift-card h-full p-6 sm:p-8 flex flex-col">
-                      <option.icon className="h-6 w-6 text-primary mb-5 shrink-0" strokeWidth={2} />
-                      <h2 className="font-bold text-lg mb-2">{option.title}</h2>
-                      <p className="text-text-muted text-sm leading-relaxed mb-5 flex-1">
-                        {option.description}
-                      </p>
-                      <span className="text-primary font-semibold text-sm">
-                        {option.linkText} &rarr;
-                      </span>
-                    </div>
-                  </a>
-                </ScrollReveal>
-              ))}
-            </div>
+        <section className="pt-12 sm:pt-16 pb-24 sm:pb-32">
+          <div className="mx-auto max-w-5xl px-6 md:px-8 grid gap-6 sm:grid-cols-2">
+            {supportOptions.map((option, index) => (
+              <ScrollReveal key={option.title} className="h-full" delay={index * 75}>
+                <a
+                  href={option.href}
+                  target={option.external ? '_blank' : undefined}
+                  rel={option.external ? 'noopener noreferrer' : undefined}
+                  className="level-card group flex flex-col"
+                >
+                  <PixelIcon rows={option.icon} colors={ICON_COLORS} className="h-8 w-9 text-[#4b52d6] mb-5" />
+                  <h2 className="text-lg font-bold text-text-primary group-hover:text-[#4b52d6] transition-colors mb-2">
+                    {option.title}
+                  </h2>
+                  <p className="text-text-muted text-sm leading-relaxed mb-6">{option.description}</p>
+                  <span className="pixel-label uppercase text-[#4b52d6] mt-auto inline-flex items-center gap-2">
+                    <PixelIcon rows={RIGHT_ARROW} colors={ARROW_COLORS} className="h-3.5 w-2" />
+                    {option.linkText}
+                  </span>
+                </a>
+              </ScrollReveal>
+            ))}
           </div>
         </section>
 
         <PageCloser
+          eyebrow="JOIN THE PARTY"
           title="Follow along"
           subtitle="ReifyDB is built in the open. Watch the repository, or find us where the conversation is."
         >
@@ -112,7 +156,7 @@ export function SupportPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="p-3 rounded-md border border-white/15 bg-white/5 text-white/70 hover:text-white hover:border-white/40 transition-colors"
+                className="p-3 border-2 border-[#a3a9ff] text-[#e6e8fd] shadow-[0_4px_#4b52d6] hover:text-white hover:translate-y-[2px] hover:shadow-[0_2px_#4b52d6] transition-[translate,box-shadow,color] duration-[120ms]"
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d={social.path} />

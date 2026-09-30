@@ -15,7 +15,7 @@ import {
 } from './pixel-market';
 
 type Context = CanvasRenderingContext2D;
-type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | BoardMode;
+type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | BoardMode;
 type Draw = (c: Context, width: number, height: number, time: number) => void;
 
 interface RaceState {
@@ -74,6 +74,8 @@ const QUEUE_GAP = 9;
 const ANSWER_END = 0.6;
 const STEP_START = 1;
 const EXIT_END = 1.8;
+const PIT_LOOP = 5.5;
+const TAP_PERIOD = 0.4;
 
 const GLYPHS: Record<string, string> = {
   '0': '111101101101111',
@@ -758,6 +760,93 @@ function booth(c: Context, width: number, height: number, time: number) {
   visitor(lerp(-10, slotX(QUEUE_SIZE - 1), step), serve + QUEUE_SIZE, true);
 }
 
+function garage(c: Context, left: number, floor: number) {
+  const top = floor - 16;
+  rect(c, left, top, 20, 16, '#ffffff');
+  rect(c, left + 19, top, 1, 16, '#e6e4f5');
+  rect(c, left - 1, top - 1, 22, 7, PRIMARY);
+  caption(c, 'PIT', left + 5, top, INK);
+  rect(c, left + 4, floor - 10, 12, 10, INK);
+}
+
+function smoke(c: Context, x: number, floor: number, time: number) {
+  for (let k = 0; k < 3; k++) {
+    const u = (time * 1.5 + k / 3) % 1;
+    if (u < 0.8) rect(c, x - 2 - u * 4, floor - 8 - u * 8, 2, 2, '#b8b3d6');
+  }
+}
+
+function kart(c: Context, x: number, floor: number, time: number) {
+  bot(c, x, floor - 1, time, 0, false);
+  rect(c, x - 6, floor - 9, 3, 1, INK);
+  rect(c, x - 5, floor - 8, 1, 3, INK);
+  rect(c, x - 4, floor - 5, 15, 3, '#e0708f');
+  rect(c, x - 4, floor - 5, 13, 1, '#f0a3b8');
+  [x - 3, x + 5].forEach((wheelX) => {
+    rect(c, wheelX, floor - 3, 3, 3, INK);
+    rect(c, wheelX + 1, floor - 2, 1, 1, LINE);
+  });
+}
+
+function crew(c: Context, x: number, floor: number, time: number, liftY: number) {
+  bot(c, x, floor, time, 1, false);
+  rect(c, x - 1, liftY, 1, floor - 6 - liftY, LINE);
+  rect(c, x - 3, liftY - 1, 3, 2, '#9a96b8');
+}
+
+function pitStop(c: Context, width: number, height: number, time: number) {
+  const groundY = height - 14;
+  const floor = groundY + 3;
+  clouds(c, width, time);
+  hills(c, width, groundY);
+  grass(c, width, groundY, height - 7, time);
+  dither(c, width, height - 7, height, PRIMARY, PAPER);
+
+  const garageLeft = Math.round(width / 2 + 4);
+  const stopX = garageLeft - 22;
+  const doorX = garageLeft + 7;
+  const crewX = stopX + 12;
+  garage(c, garageLeft, floor);
+  rect(c, stopX - 7, floor - 1, 19, 1, '#e0d2b3');
+  rect(c, stopX - 7, floor - 1, 2, 1, SPARK);
+  rect(c, stopX + 10, floor - 1, 2, 1, SPARK);
+
+  const t = time % PIT_LOOP;
+  const arriveEnd = 1.5;
+  const outEnd = 2.1;
+  const tapEnd = 3.3;
+  const departEnd = 4.3;
+  const backStart = 3.6;
+  const backEnd = 4.4;
+
+  if (t >= arriveEnd && t < backEnd) {
+    let x = crewX;
+    let lift = floor - 9;
+    let hit = false;
+    if (t < outEnd) {
+      x = lerp(doorX, crewX, ease((t - arriveEnd) / (outEnd - arriveEnd)));
+    } else if (t < tapEnd) {
+      hit = (t - outEnd) % TAP_PERIOD >= TAP_PERIOD / 2;
+      lift = hit ? floor - 6 : floor - 12;
+    } else if (t >= backStart) {
+      x = lerp(crewX, doorX, ease((t - backStart) / (backEnd - backStart)));
+    }
+    crew(c, x, floor, time, lift);
+    if (hit) sparkle(c, crewX - 3, floor - 6, time);
+  }
+
+  if (t < departEnd) {
+    const x =
+      t < arriveEnd
+        ? lerp(-18, stopX, ease(t / arriveEnd))
+        : t < tapEnd
+          ? stopX
+          : lerp(stopX, width + 10, ((t - tapEnd) / (departEnd - tapEnd)) ** 2);
+    if (t < tapEnd) smoke(c, x - 4, floor, time);
+    kart(c, x, floor, time);
+  }
+}
+
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
@@ -769,6 +858,7 @@ const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Dra
   stack: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: stack },
   invaders: { height: 48, heightClass: 'h-[192px] max-sm:h-[96px]', draw: invaders },
   booth: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: booth },
+  pit: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: pitStop },
 };
 
 interface PixelSceneProps {
