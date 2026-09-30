@@ -1,6 +1,7 @@
 export { Button } from './button'
 export { CtaSection } from './cta-section'
 export { ExecutableSnippet } from './executable-snippet'
+export { FaqItem } from './faq-item'
 export { GameButton } from './game-button'
 export { GitHubStars } from './github-stars'
 export { InstallCommand } from './install-command'

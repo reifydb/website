@@ -1,38 +1,7 @@
-import { useState } from 'react';
-import { cn } from '@/lib';
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { Button, PageCloser, PageHero, ScrollReveal } from '@/components/ui';
+import { Button, FaqItem, PageCloser, PageHero, PixelScene, ScrollReveal } from '@/components/ui';
 import { faqs } from '@/data/faq-data';
-
-function FaqItem({ question, answer }: { question: string; answer: string }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="bento-tile lift-card overflow-hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-6 text-left"
-      >
-        <span className="font-bold text-text-primary pr-4">
-          <span className="text-primary mr-2">&gt;</span>
-          {question}
-        </span>
-        <span className="text-text-muted text-sm font-mono">[{isOpen ? '-' : '+'}]</span>
-      </button>
-      <div
-        className={cn(
-          'overflow-hidden transition-all duration-200',
-          isOpen ? 'max-h-96' : 'max-h-0'
-        )}
-      >
-        <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed border-t border-border-light pt-4">
-          {answer}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export function FaqPage() {
   return (
@@ -48,6 +17,7 @@ export function FaqPage() {
           eyebrow="FAQ"
           title="Frequently asked questions"
           subtitle="What ReifyDB is, how it differs from the stack you have, and where it fits today."
+          scene={<PixelScene kind="booth" />}
         />
 
         <section className="section-elevated py-20 sm:py-28">

@@ -15,7 +15,7 @@ import {
 } from './pixel-market';
 
 type Context = CanvasRenderingContext2D;
-type SceneKind = 'hall' | 'stack' | 'invaders' | BoardMode;
+type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | BoardMode;
 type Draw = (c: Context, width: number, height: number, time: number) => void;
 
 interface RaceState {
@@ -68,6 +68,12 @@ const NOTE_GAP = 4;
 const MAX_NOTES = 5;
 const WOOD = '#b98b64';
 const SPARK = '#ffe08a';
+const SERVE_LOOP = 2.5;
+const QUEUE_SIZE = 3;
+const QUEUE_GAP = 9;
+const ANSWER_END = 0.6;
+const STEP_START = 1;
+const EXIT_END = 1.8;
 
 const GLYPHS: Record<string, string> = {
   '0': '111101101101111',
@@ -104,6 +110,8 @@ const GLYPHS: Record<string, string> = {
   A: '010101111101101',
   '/': '001001010100100',
   V: '101101101101010',
+  '?': '111001010000010',
+  '!': '010010010000010',
 };
 
 const market = createMarket();
@@ -717,6 +725,39 @@ function noticeBoard(c: Context, width: number, height: number, time: number, co
   }
 }
 
+function bubble(c: Context, x: number, y: number, char: string, color: string) {
+  rect(c, x, y, 5, 7, '#ffffff');
+  rect(c, x + 1, y + 7, 1, 1, '#ffffff');
+  glyph(c, char, x + 1, y + 1, color);
+}
+
+function booth(c: Context, width: number, height: number, time: number) {
+  const groundY = height - 14;
+  const floor = groundY + 3;
+  clouds(c, width, time);
+  hills(c, width, groundY);
+  grass(c, width, groundY, height - 7, time);
+  dither(c, width, height - 7, height, PRIMARY, PAPER);
+
+  const boothLeft = Math.round(width / 2 - 8);
+  const t = time % SERVE_LOOP;
+  const serve = Math.floor(time / SERVE_LOOP);
+  stall(c, boothLeft, floor, 2, false, false);
+  caption(c, 'INFO', boothLeft + 1, floor - 21, INK);
+  if (t < ANSWER_END) bubble(c, boothLeft + 5, floor - 30, '!', PRIMARY);
+
+  const slotX = (slot: number) => boothLeft - 7 - slot * QUEUE_GAP;
+  const step = ease((t - STEP_START) / (EXIT_END - STEP_START));
+  const visitor = (x: number, id: number, asking: boolean) => {
+    bot(c, x, floor, time, id, false);
+    if (asking) bubble(c, x, floor - 19, '?', INK);
+  };
+  const exit = ease((t - ANSWER_END) / (EXIT_END - ANSWER_END));
+  visitor(lerp(slotX(0), width + 10, exit), serve, t < ANSWER_END);
+  for (let slot = 1; slot < QUEUE_SIZE; slot++) visitor(lerp(slotX(slot), slotX(slot - 1), step), serve + slot, true);
+  visitor(lerp(-10, slotX(QUEUE_SIZE - 1), step), serve + QUEUE_SIZE, true);
+}
+
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
@@ -727,6 +768,7 @@ const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Dra
   },
   stack: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: stack },
   invaders: { height: 48, heightClass: 'h-[192px] max-sm:h-[96px]', draw: invaders },
+  booth: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: booth },
 };
 
 interface PixelSceneProps {
