@@ -294,6 +294,20 @@ div::backdrop {
   color: #a3a9ff;
 }
 
+.level-card {
+  height: 100%;
+  padding: 24px;
+  border: 1px solid #4b52d6;
+  background: #ffffff;
+  box-shadow: 0 4px var(--color-primary-dark);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.level-card:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px var(--color-primary-dark);
+}
+
 .flip-pop {
   display: inline-block;
   animation: flip-pop 0.2s ease-out;
