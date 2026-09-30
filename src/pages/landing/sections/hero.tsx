@@ -6,7 +6,7 @@ export function HeroSection() {
       <div className="mx-auto max-w-6xl px-6 md:px-8 pt-[clamp(36px,6vw,72px)] pb-[clamp(24px,3vw,36px)]">
         <div className="grid gap-[clamp(28px,5vw,64px)] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] items-center">
           <div>
-            <p className="eyebrow-pixel mb-5">LIVE MARKETS, ONE FLIP AT A TIME</p>
+            <p className="eyebrow-pixel mb-5">THE DATABASE THAT RUNS YOUR BACKEND</p>
 
             <h1 className="text-[clamp(34px,4.6vw,56px)] leading-[1.04] tracking-[-0.035em] text-text-primary mb-[18px] text-balance">
               One database instead of Postgres + Redis + a queue + a cron job.

@@ -1,9 +1,7 @@
-import { GameButton, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
+import { ARROW_COLORS, GameButton, PixelIcon, PixelScene, RIGHT_ARROW, ScrollReveal } from '@/components/ui';
 import { HEADLINE } from '@/components/manifesto';
 
-const RIGHT_ARROW = ['x...', 'xx..', 'xxx.', 'xxxx', 'xxx.', 'xx..', 'x...'];
 const LEFT_ARROW = RIGHT_ARROW.map((row) => [...row].reverse().join(''));
-const ARROW_COLORS = { x: 'currentColor' };
 
 export function CloserSection() {
   return (

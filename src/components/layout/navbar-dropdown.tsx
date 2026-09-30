@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { ARROW_COLORS, PixelIcon, RIGHT_ARROW } from '@/components/ui';
 import { cn } from '@/lib';
 import type { NavDropdown, NavDropdownItem } from './navbar-data';
 
@@ -76,29 +77,36 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
       >
         <div
           className={cn(
-            "bg-bg-secondary border border-border-light rounded-lg shadow-[var(--shadow-soft)] transition-[opacity,translate,visibility]",
-            instant ? "duration-0" : "duration-200",
+            "dialog transition-[opacity,translate,visibility] ease-[steps(3)]",
+            instant ? "duration-0" : "duration-150",
             isOpen ? "visible opacity-100 translate-y-0" : "invisible opacity-0 -translate-y-2"
           )}
         >
           <div className="p-3">
           {dropdown.columns.map((column) => (
             <div key={column.title}>
-              <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2 px-1">
+              <h3 className="pixel-label uppercase text-[#4b52d6] mb-2 pl-7 pr-1">
                 {column.title}
               </h3>
               <div className="flex flex-col gap-1">
                 {column.items.map((item) => (
                   <ItemLink key={item.label} item={item} className="group block">
-                    <div className="p-3 rounded-md transition-all duration-150 hover:bg-bg-tertiary">
-                      <div className="font-medium text-sm text-text-primary group-hover:text-primary transition-colors">
-                        {item.label}
-                      </div>
-                      {item.description && (
-                        <div className="text-xs text-text-secondary mt-1">
-                          {item.description}
+                    <div className="flex gap-2 p-3">
+                      <PixelIcon
+                        rows={RIGHT_ARROW}
+                        colors={ARROW_COLORS}
+                        className="invisible mt-[3px] h-3.5 w-2 shrink-0 text-[#4b52d6] group-hover:visible"
+                      />
+                      <div>
+                        <div className="font-medium text-sm text-text-primary group-hover:text-[#4b52d6] transition-colors">
+                          {item.label}
                         </div>
-                      )}
+                        {item.description && (
+                          <div className="text-xs text-text-secondary mt-1">
+                            {item.description}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </ItemLink>
                 ))}
