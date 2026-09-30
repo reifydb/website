@@ -65,3 +65,7 @@ export const CODE = [
   '...x.....',
   '...x.....',
 ];
+
+export const GEM = ['.x.', 'xxx', '.x.'];
+
+export const GEM_COLORS = ['#d64545', '#e0708f', '#2f9e6b', '#4b52d6', '#e0a040', '#7e85f2', '#2a9bb0'];

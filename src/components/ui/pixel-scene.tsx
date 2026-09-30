@@ -13,9 +13,10 @@ import {
   tradedRowOf,
   type BoardMode,
 } from './pixel-market';
+import { GEM_COLORS } from './pixel-icons';
 
 type Context = CanvasRenderingContext2D;
-type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | 'build' | BoardMode;
+type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | 'build' | 'trade' | BoardMode;
 type Draw = (c: Context, width: number, height: number, time: number) => void;
 
 interface RaceState {
@@ -85,6 +86,10 @@ const SHAPES = [
 ];
 const SHAPE_TIME = 4;
 const DROP_TIME = 0.5;
+const TRADE_LOOP = 8;
+const OFFER_TIME = 3;
+const VULTURE = '#6b4a35';
+const VULTURE_HEAD = '#e0a0a0';
 
 const GLYPHS: Record<string, string> = {
   '0': '111101101101111',
@@ -990,6 +995,96 @@ function build(c: Context, width: number, height: number, time: number) {
   if (t >= buildEnd && t < clearStart) sparkle(c, buildLeft + shape[0].length * 4 + 1, floor - 4 * shape.length - 1, time);
 }
 
+function cross(c: Context, x: number, y: number) {
+  for (let i = 0; i < 5; i++) {
+    rect(c, x + i, y + i, 1, 1, '#d4506c');
+    rect(c, x + 4 - i, y + i, 1, 1, '#d4506c');
+  }
+}
+
+function gem(c: Context, x: number, y: number, color: string) {
+  rect(c, x + 1, y, 1, 3, color);
+  rect(c, x, y + 1, 3, 1, color);
+  rect(c, x + 1, y, 1, 1, '#ffffff');
+}
+
+function vulture(c: Context, x: number, y: number, time: number, facing: number) {
+  const at = (dx: number, dy: number, w: number, h: number, color: string) =>
+    rect(c, facing > 0 ? x + dx : x - dx - w + 1, y + dy, w, h, color);
+  const slope = Math.floor(time * 4) % 2 === 0 ? -0.5 : 0.3;
+  for (let k = 0; k < 13; k++) {
+    const dy = Math.round(k * slope);
+    const thickness = k < 6 ? 3 : k < 10 ? 2 : 1;
+    at(-3 - k, dy, 1, thickness, VULTURE);
+    at(3 + k, dy, 1, thickness, VULTURE);
+  }
+  at(-3, 0, 7, 4, VULTURE);
+  at(-2, 4, 5, 1, VULTURE);
+  at(-1, 5, 1, 2, SPARK);
+  at(1, 5, 1, 2, SPARK);
+  at(3, 3, 1, 1, VULTURE_HEAD);
+  at(4, 2, 3, 3, VULTURE_HEAD);
+  at(5, 2, 1, 1, INK);
+  at(7, 3, 2, 1, SPARK);
+  at(8, 4, 1, 1, SPARK);
+}
+
+function moneyBag(c: Context, x: number, top: number, size: number) {
+  const half = (size - 1) / 2;
+  const y = top + 3;
+  rect(c, x - 1, top, 3, 2, WOOD);
+  rect(c, x - 2, top + 2, 5, 1, VULTURE);
+  rect(c, x - half + 1, y, size - 2, size + 1, WOOD);
+  rect(c, x - half, y + 1, size, size - 1, WOOD);
+  const dollar = y + Math.ceil((size - 6) / 2);
+  rect(c, x, dollar, 1, 7, SPARK);
+  glyph(c, 'S', x - 1, dollar + 1, SPARK);
+}
+
+function trade(c: Context, width: number, height: number, time: number) {
+  const groundY = height - 14;
+  const floor = groundY + 3;
+  clouds(c, width, time);
+  hills(c, width, groundY);
+  grass(c, width, groundY, height - 7, time);
+  dither(c, width, height - 7, height, PRIMARY, PAPER);
+
+  const botX = Math.round(width / 2) + 14;
+  const hoverX = botX - 30;
+  const hoverY = 14;
+  const t = time % TRADE_LOOP;
+
+  let shake = 0;
+  if (t < 2 * OFFER_TIME) {
+    const size = t < OFFER_TIME ? 7 : 9;
+    const u = t % OFFER_TIME;
+    const slideEnd = 0.8;
+    const shakeEnd = 1.4;
+    const crossEnd = 2.2;
+    const leaving = u >= crossEnd;
+    const progress =
+      u < slideEnd ? ease(u / slideEnd) : leaving ? 1 - ease((u - crossEnd) / (OFFER_TIME - crossEnd)) : 1;
+    const x = Math.round(lerp(-20, hoverX, progress));
+    const bob = Math.floor(time * 4) % 2 === 0 ? 0 : -1;
+    const y = Math.round(lerp(leaving ? 2 : 4, hoverY, progress)) + bob;
+    vulture(c, x, y, time, leaving ? -1 : 1);
+    moneyBag(c, x, y + 7, size);
+    if (u >= slideEnd && u < shakeEnd) shake = Math.floor(time * 12) % 2 ? 1 : -1;
+    if (u >= shakeEnd && u < crossEnd && Math.floor(time * 6) % 2 === 0) cross(c, hoverX + 8, hoverY + 12);
+  }
+  bot(c, botX + shake, floor, time, 0, false);
+
+  const middle = (GEM_COLORS.length - 1) / 2;
+  GEM_COLORS.forEach((color, i) => {
+    const x = botX + 1 + Math.round((i - middle) * 5);
+    const y = floor - 17 - Math.round((middle - Math.abs(i - middle)) * 2) + Math.round(Math.sin(time * 3 + i));
+    gem(c, x, y, color);
+    if (t >= 2 * OFFER_TIME && Math.floor((t - 2 * OFFER_TIME) * 2.5) % GEM_COLORS.length === i) {
+      sparkle(c, x + 1, y - 2, time);
+    }
+  });
+}
+
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
@@ -1004,6 +1099,7 @@ const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Dra
   pit: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: pitStop },
   plane: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: paperPlane },
   build: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: build },
+  trade: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: trade },
 };
 
 interface PixelSceneProps {
