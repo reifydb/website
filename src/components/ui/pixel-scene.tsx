@@ -15,7 +15,7 @@ import {
 } from './pixel-market';
 
 type Context = CanvasRenderingContext2D;
-type SceneKind = 'hall' | 'ground' | 'stack' | BoardMode;
+type SceneKind = 'hall' | 'stack' | 'invaders' | BoardMode;
 type Draw = (c: Context, width: number, height: number, time: number) => void;
 
 interface RaceState {
@@ -51,6 +51,15 @@ const NIGHT_TEXT = '#e6e8fd';
 const BUCKET = ['.hh.', 'h..h', 'wwww', 'bbbb', '.bb.'];
 const BUCKET_COLORS: Record<string, string> = { h: '#c9c3dc', w: '#ffffff', b: '#4b52d6' };
 const PYRAMID = [4, 3, 2, 1];
+const INVADERS = ['CACHE', 'CRON', 'QUEUE', 'WORKERS', 'GLUE'];
+const KILL_ORDER = [2, 0, 4, 1, 3];
+const WAVE_LOOP = 8;
+const WAVE_ENTRY = 0.6;
+const KILL_START = 1.2;
+const KILL_GAP = 1.2;
+const SHOT_TIME = 0.35;
+const MARCH_STEP = 0.15;
+const BOX_GAP = 6;
 
 const GLYPHS: Record<string, string> = {
   '0': '111101101101111',
@@ -86,6 +95,7 @@ const GLYPHS: Record<string, string> = {
   '+': '000010111010000',
   A: '010101111101101',
   '/': '001001010100100',
+  V: '101101101101010',
 };
 
 const market = createMarket();
@@ -359,11 +369,6 @@ function compare(c: Context, width: number, height: number, time: number, mode: 
   bot(c, x - 5, floor, time, 1, false, liftY);
 }
 
-function ground(c: Context, width: number, height: number, time: number) {
-  grass(c, width, 3, height - 7, time);
-  dither(c, width, height - 7, height, PRIMARY, PAPER);
-}
-
 function caption(c: Context, text: string, x: number, y: number, color: string) {
   [...text].forEach((char, i) => glyph(c, char, x + i * 4, y, color));
 }
@@ -550,6 +555,80 @@ function race(c: Context, width: number, time: number, state: RaceState) {
   lane(c, width, RACE_LANE, time, t, distance, trip, 1, state.statements, 'REIFYDB', 1);
 }
 
+function invader(c: Context, x: number, y: number, label: string, step: number) {
+  const width = label.length * 4 + 5;
+  rect(c, x, y, width, 9, '#c9ccfb');
+  rect(c, x, y, width, 1, NIGHT_TEXT);
+  rect(c, x, y + 8, width, 1, '#8f95ea');
+  caption(c, label, x + 3, y + 2, INK);
+  const spread = step % 2 ? 1 : 2;
+  rect(c, x + spread, y + 9, 1, 1, '#8f95ea');
+  rect(c, x + width - 1 - spread, y + 9, 1, 1, '#8f95ea');
+}
+
+function puff(c: Context, centerX: number, centerY: number, u: number) {
+  for (let k = 0; k < 14; k++) {
+    if (hash(k * 7 + 1) < u) continue;
+    const angle = hash(k * 3 + 2) * Math.PI * 2;
+    const radius = u * 10 * (0.4 + hash(k * 5 + 3));
+    rect(c, centerX + Math.cos(angle) * radius, centerY + Math.sin(angle) * radius * 0.6, 1, 1, k % 3 ? '#ffe08a' : '#ffffff');
+  }
+}
+
+function invaders(c: Context, width: number, height: number, time: number) {
+  const t = time % WAVE_LOOP;
+  const wave = Math.floor(time / WAVE_LOOP);
+  const floor = height - 3;
+  grass(c, width, floor, height, time);
+
+  const widths = INVADERS.map((label) => label.length * 4 + 5);
+  const formation = widths.reduce((sum, w) => sum + w, 0) + BOX_GAP * (INVADERS.length - 1);
+  const reach = Math.max(1, Math.floor(Math.min(60, width - formation - 8) / 2));
+  const formationAt = (at: number) => {
+    const step = Math.floor(at / MARCH_STEP);
+    const swing = step % (2 * reach);
+    const offset = (swing < reach ? swing : 2 * reach - swing) * 2 - reach;
+    const drop = Math.min(2, Math.floor(step / reach)) * 2;
+    const entry = lerp(-20, 0, ease(at / WAVE_ENTRY));
+    return { left: Math.round(width / 2 - formation / 2 + offset), top: Math.round(10 + drop + entry), step };
+  };
+  const boxLeft = (i: number, at: number) =>
+    formationAt(at).left + widths.slice(0, i).reduce((sum, w) => sum + w, 0) + i * BOX_GAP;
+  const killTime = (i: number) => KILL_START + KILL_ORDER.indexOf(i) * KILL_GAP;
+  const aimX = (i: number) => boxLeft(i, killTime(i)) + widths[i] / 2 - 2;
+
+  const now = formationAt(t);
+  INVADERS.forEach((label, i) => {
+    const hit = killTime(i);
+    if (t < hit) invader(c, boxLeft(i, t), now.top, label, now.step);
+    else if (t < hit + 0.5) puff(c, aimX(i) + 2, formationAt(hit).top + 4, (t - hit) / 0.5);
+  });
+
+  const home = width / 2 - 2;
+  const lastKill = killTime(KILL_ORDER[KILL_ORDER.length - 1]);
+  const next = KILL_ORDER.findIndex((i) => t < killTime(i));
+  let botX = lerp(aimX(KILL_ORDER[KILL_ORDER.length - 1]), home, ease(t - lastKill));
+  if (next !== -1) {
+    const target = KILL_ORDER[next];
+    const from = next === 0 ? home : aimX(KILL_ORDER[next - 1]);
+    const fromTime = next === 0 ? WAVE_ENTRY : killTime(KILL_ORDER[next - 1]);
+    const fireTime = killTime(target) - SHOT_TIME;
+    botX = lerp(from, aimX(target), ease((t - fromTime) / (fireTime - fromTime)));
+    if (t >= fireTime) {
+      const boltY = lerp(floor - 11, formationAt(killTime(target)).top + 9, (t - fireTime) / SHOT_TIME);
+      rect(c, botX + 2, boltY, 1, 3, '#ffe08a');
+    }
+  }
+  bot(c, botX, floor, time, 0, false);
+
+  const margin = Math.max(4, Math.round(width * 0.04));
+  const kills = wave * INVADERS.length + KILL_ORDER.filter((i) => t >= killTime(i)).length;
+  caption(c, `SCORE ${String(kills * 10).padStart(6, '0')}`, margin, 2, NIGHT_TEXT);
+  if (t >= lastKill + 0.3 && t < WAVE_LOOP - 0.3 && Math.floor(t * 4) % 2 === 0) {
+    caption(c, 'WAVE CLEAR', Math.round(width / 2 - 20), 16, '#ffe08a');
+  }
+}
+
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
@@ -558,8 +637,8 @@ const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Dra
     heightClass: 'h-[216px]',
     draw: (c, width, height, time) => compare(c, width, height, time, 'incremental'),
   },
-  ground: { height: 17, heightClass: 'h-[68px]', draw: ground },
   stack: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: stack },
+  invaders: { height: 48, heightClass: 'h-[192px] max-sm:h-[96px]', draw: invaders },
 };
 
 interface PixelSceneProps {

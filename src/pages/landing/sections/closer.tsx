@@ -1,4 +1,4 @@
-import { GameButton, PixelIcon, ScrollReveal } from '@/components/ui';
+import { GameButton, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
 import { HEADLINE } from '@/components/manifesto';
 
 const RIGHT_ARROW = ['x...', 'xx..', 'xxx.', 'xxxx', 'xxx.', 'xx..', 'x...'];
@@ -7,7 +7,7 @@ const ARROW_COLORS = { x: 'currentColor' };
 
 export function CloserSection() {
   return (
-    <section className="night py-24 sm:py-32">
+    <section className="night pt-24 sm:pt-32">
       <div className="relative z-10 mx-auto max-w-4xl px-6 md:px-8 text-center">
         <ScrollReveal>
           <p className="eyebrow-pixel press-start inline-flex items-center gap-3 mb-8">
@@ -34,6 +34,7 @@ export function CloserSection() {
           </div>
         </ScrollReveal>
       </div>
+      <PixelScene kind="invaders" className="relative z-10 mt-16 sm:mt-20 -mb-px" />
     </section>
   );
 }
