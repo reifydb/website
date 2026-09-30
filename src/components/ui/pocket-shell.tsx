@@ -1,11 +1,12 @@
 import { Loader2 } from 'lucide-react';
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
+import type { Shell } from '@reifydb/shell';
 import { useMounted } from '@/hooks';
 import { cn } from '@/lib';
 
-const ExecutableShellLive = lazy(() => import('./executable-shell-live'));
+const PocketShellLive = lazy(() => import('./pocket-shell-live'));
 
-interface ExecutableShellProps {
+interface PocketShellProps {
   className?: string;
   /** Render a terminal-shaped skeleton and load xterm during browser idle time, instead of on mount. */
   deferLoad?: boolean;
@@ -13,11 +14,9 @@ interface ExecutableShellProps {
 
 function ShellSkeleton() {
   return (
-    <div className="shell-surface flex flex-col justify-center gap-3 px-4 font-mono text-sm">
-      <div className="flex items-center gap-2 text-gray-500">
-        <Loader2 className="h-4 w-4 animate-spin" />
-        <span className="text-xs">Booting the database in this tab...</span>
-      </div>
+    <div className="pocket__boot">
+      <Loader2 className="h-4 w-4 animate-spin" />
+      <span>Booting the database in this tab...</span>
     </div>
   );
 }
@@ -64,24 +63,44 @@ function useTerminalPainted(containerRef: React.RefObject<HTMLDivElement | null>
   return painted;
 }
 
-export function ExecutableShell({ className, deferLoad = false }: ExecutableShellProps) {
+export function PocketShell({ className, deferLoad = false }: PocketShellProps) {
   const mounted = useMounted();
   const idleReady = useIdleReady(deferLoad);
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldLoadLive = deferLoad ? idleReady : mounted;
   const painted = useTerminalPainted(containerRef, shouldLoadLive);
+  const [shell, setShell] = useState<Shell | null>(null);
 
   return (
-    <div ref={containerRef} className={cn('shell-frame relative', className)}>
-      <div className={cn('shell-surface', !painted && 'invisible absolute inset-0')}>
-        {shouldLoadLive && (
-          <Suspense fallback={null}>
-            <ExecutableShellLive />
-          </Suspense>
-        )}
+    <div className={cn('pocket', className)}>
+      <div className="pocket__bezel">
+        <div className="pocket__bezel-top">
+          <span className="pocket__led" />
+          POWER
+        </div>
+        <div ref={containerRef} className="pocket__screen">
+          <div className={cn('pocket__surface', !painted && 'invisible absolute inset-0')}>
+            {shouldLoadLive && (
+              <Suspense fallback={null}>
+                <PocketShellLive onReady={setShell} />
+              </Suspense>
+            )}
+          </div>
+          <div className={cn('pocket__surface', painted && 'invisible absolute inset-0')}>
+            <ShellSkeleton />
+          </div>
+        </div>
       </div>
-      <div className={cn('shell-surface', painted && 'invisible absolute inset-0')}>
-        <ShellSkeleton />
+      <div className="pocket__pad">
+        <span className="pocket__maker">RQL POCKET</span>
+        <div className="pocket__buttons">
+          <button type="button" className="pocket__button" disabled={!shell} onClick={() => shell?.clear()}>
+            CLEAR
+          </button>
+          <button type="button" className="pocket__button" disabled={!shell} onClick={() => void shell?.run()}>
+            RUN
+          </button>
+        </div>
       </div>
     </div>
   );

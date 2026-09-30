@@ -75,33 +75,116 @@ html {
   cursor: pointer;
 }
 
-.shell-surface {
-  height: 420px;
-  background: var(--color-gray-900);
+.pocket {
+  padding: 22px 22px 18px;
+  border: 1px solid #4b52d6;
+  border-radius: 22px 22px 22px 60px;
+  background: linear-gradient(#dfe1ff, #c9ccfb);
+  box-shadow:
+    inset 0 2px #ffffffb3,
+    inset 0 -4px #2e39df33,
+    0 5px var(--color-primary-dark),
+    0 26px 44px -20px #2e39df99;
 }
 
-.panel-frame--fullscreen {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
+.pocket__bezel {
+  padding: 12px 16px 16px;
+  border-radius: 10px 10px 10px 28px;
+  background: #5a5fa8;
+}
+
+.pocket__bezel-top {
   display: flex;
-  flex-direction: column;
-  border-radius: 0;
-  background: var(--color-gray-900);
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 9px;
+  font-family: 'Press Start 2P', ui-monospace, monospace;
+  font-size: 7px;
+  letter-spacing: 0.06em;
+  color: #d7d9ff;
 }
 
-.panel-frame--fullscreen .panel-frame__body {
-  flex: 1;
-  min-height: 0;
+.pocket__led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffd166;
+  box-shadow: 0 0 8px #ffd166;
 }
 
-.panel-frame--fullscreen .shell-frame,
-.panel-frame--fullscreen .shell-surface {
+.pocket__screen {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #e6e8fd;
+}
+
+.pocket__screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: radial-gradient(#2e39df10 1px, transparent 1.2px) 0 0 / 4px 4px;
+  box-shadow: inset 0 0 0 2px #2e39df33;
+  pointer-events: none;
+}
+
+.pocket__surface {
   height: 100%;
 }
 
-body:has(.panel-frame--fullscreen) .site-header {
-  z-index: 0;
+.pocket__boot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding: 14px 16px;
+  font-family: 'VT323', ui-monospace, monospace;
+  font-size: 19px;
+  color: #7f85e0;
+}
+
+.pocket__pad {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding: 0 6px;
+}
+
+.pocket__maker {
+  font-family: 'Press Start 2P', ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: #2e39df;
+}
+
+.pocket__buttons {
+  display: flex;
+  gap: 14px;
+}
+
+.pocket__button {
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 999px;
+  font-family: 'Press Start 2P', ui-monospace, monospace;
+  font-size: 8px;
+  color: #ffffff;
+  background: linear-gradient(#a3a9ff, #6a71e6);
+  box-shadow: inset 0 1px #ffffff8c, 0 3px var(--color-primary-dark);
+  cursor: pointer;
+}
+
+.pocket__button:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 1px #ffffff8c, 0 1px var(--color-primary-dark);
+}
+
+.pocket__button:disabled {
+  cursor: default;
 }
 
 /* Fullscreen background — used by pitch page */
@@ -124,18 +207,6 @@ div::backdrop {
     radial-gradient(45rem 32rem at 12% 88%, rgba(46, 57, 223, 0.22), transparent 70%);
 }
 
-.window-shell {
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.10),
-    0 24px 60px -12px rgba(0, 0, 0, 0.65),
-    0 0 90px -20px rgba(126, 133, 242, 0.55);
-}
-
-.window-body-flush > * {
-  border: 0;
-  border-radius: 0;
-  margin: 0;
-}
 
 .section-dark {
   background: var(--color-gray-900);
@@ -160,4 +231,81 @@ div::backdrop {
 
 .proof-slider-dark {
   background: rgba(255, 255, 255, 0.15);
+}
+
+.sky {
+  background: linear-gradient(#efedfb 0%, #f6f1f4 60%, #faf3e8 100%);
+}
+
+.eyebrow-pixel {
+  font-family: 'Press Start 2P', ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+  color: #4b52d6;
+}
+
+.pixel-tag {
+  font-family: 'Press Start 2P', ui-monospace, monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.04em;
+  padding: 7px 9px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-light);
+  background: var(--color-bg-secondary);
+}
+
+.pixel-canvas {
+  display: block;
+  width: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.game-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 12.5px 22px;
+  border-radius: 11px;
+  color: #10123a;
+  background: linear-gradient(#a3a9ff, var(--color-primary) 55%, #6a71e6);
+  border: 1px solid #4b52d6;
+  box-shadow: inset 0 1px #ffffff8c, inset 0 -2px #2e39df4d, 0 3px var(--color-primary-dark), 0 14px 28px -12px #2e39dfb3;
+  transition: transform 0.12s, box-shadow 0.12s, filter 0.15s;
+}
+
+.game-button:hover {
+  filter: brightness(1.05);
+}
+
+.game-button--sm {
+  font-size: 10px;
+  padding: 9px 13px;
+  border-radius: 7px;
+  box-shadow: inset 0 1px #ffffff8c, inset 0 -2px #2e39df4d, 0 2px var(--color-primary-dark), 0 6px 14px -6px #2e39df8c;
+}
+
+.game-button:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 1px #ffffff8c, inset 0 -1px #2e39df4d, 0 1px var(--color-primary-dark), 0 6px 14px -8px #2e39dfb3;
+}
+
+.game-button__arrow {
+  transition: transform 0.16s;
+}
+
+.game-button:hover .game-button__arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-button,
+  .game-button__arrow {
+    transition: none;
+  }
 }

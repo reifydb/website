@@ -2,6 +2,8 @@ import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { App } from './app';
 import '@fontsource/archivo-black/index.css';
+import '@fontsource/press-start-2p/index.css';
+import '@fontsource/vt323/index.css';
 import '@fontsource-variable/ibm-plex-sans/index.css';
 import '@fontsource-variable/jetbrains-mono/index.css';
 import '@fontsource-variable/schibsted-grotesk/index.css';

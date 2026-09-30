@@ -56,9 +56,9 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative z-10 bg-bg-secondary border-t border-primary py-12 sm:py-16 text-text-secondary">
+    <footer className="relative z-10 bg-bg-primary border-t border-border-light py-12 sm:py-16 text-text-muted">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] text-sm">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] text-[13px]">
           <div className="sm:col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center gap-2">
               <img
@@ -70,7 +70,7 @@ export function Footer() {
                 ReifyDB
               </span>
             </Link>
-            <p className="mt-4 max-w-xs text-text-secondary">
+            <p className="mt-4 max-w-xs text-text-muted">
               The database that runs your backend logic.
             </p>
             <div className="mt-5 flex items-center gap-1 -ml-2">
@@ -96,7 +96,7 @@ export function Footer() {
               </h3>
               <ul className="space-y-2.5">
                 {section.links.map((link) => {
-                  const className = "group flex items-center text-text-secondary hover:text-text-primary transition-colors";
+                  const className = "group flex items-center text-text-muted hover:text-text-primary transition-colors";
 
                   return (
                     <li key={link.label}>

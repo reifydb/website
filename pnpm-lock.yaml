@@ -20,6 +20,12 @@ importers:
       '@fontsource/archivo-black':
         specifier: ^5.2.8
         version: 5.2.8
+      '@fontsource/press-start-2p':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/vt323':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@monaco-editor/react':
         specifier: ^4.7.0
         version: 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -709,6 +715,12 @@ packages:
 
   '@fontsource/archivo-black@5.2.8':
     resolution: {integrity: sha512-3zNj/o9LzWyDl/UEpY5IOHpAQyUtFr3hQaFS7NSKwCLLkXOfH/CMCt1L2b2Z+OF25OURtOYenCadgAebALz7/A==}
+
+  '@fontsource/press-start-2p@5.3.0':
+    resolution: {integrity: sha512-gxWFxdeDglPhEYSwEeooomcaFK8kSQYLQwVxfnOJeYRj2sPEHXjpVtFgEaYfqzOjuAJGrIcJOipu2KY5YkbyuQ==}
+
+  '@fontsource/vt323@5.3.0':
+    resolution: {integrity: sha512-3w33Rg/0+R1587HQfz4t7Q7e0GGeCqr3wmzIwqdGInUnrGEwMA5eX39GP4Z9wpTQnwfhVOhYuxuRwRUeIcicbw==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -3254,6 +3266,10 @@ snapshots:
   '@fontsource-variable/schibsted-grotesk@5.3.0': {}
 
   '@fontsource/archivo-black@5.2.8': {}
+
+  '@fontsource/press-start-2p@5.3.0': {}
+
+  '@fontsource/vt323@5.3.0': {}
 
   '@humanfs/core@0.19.1': {}
 

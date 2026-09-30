@@ -60,8 +60,8 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
         className={cn(
           "px-3 py-2 transition-colors duration-150",
           isOpen || isDropdownActive
-            ? "text-primary"
-            : "text-text-secondary hover:text-primary"
+            ? "text-text-primary"
+            : "text-text-muted hover:text-text-primary"
         )}
       >
         {dropdown.label}

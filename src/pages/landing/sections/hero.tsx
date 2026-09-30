@@ -1,5 +1,5 @@
 import { Star } from 'lucide-react';
-import { Button, ExecutableShell, InstallCommand, PanelFrame } from '@/components/ui';
+import { Button, GameButton, InstallCommand, PixelScene, PocketShell } from '@/components/ui';
 import { useGitHubStars } from '@/hooks';
 
 const stats = [
@@ -13,26 +13,28 @@ function TrustStrip() {
   const { formatted, loading } = useGitHubStars();
 
   return (
-    <div className="mt-16 border-t border-white/10 pt-8">
-      <div className="grid grid-cols-2 gap-y-6 gap-x-8 sm:grid-cols-3 lg:grid-cols-5">
-        <a
-          href="https://github.com/reifydb/reifydb"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group"
-        >
-          <div className="flex items-center gap-1.5 text-xl font-black text-white group-hover:text-primary transition-colors">
-            <Star size={16} className="fill-current text-primary" />
-            {loading || !formatted ? 'GitHub' : formatted}
-          </div>
-          <div className="text-xs text-white/45 mt-1">stars on GitHub</div>
-        </a>
-        {stats.map((stat) => (
-          <div key={stat.label}>
-            <div className="text-xl font-black text-white">{stat.value}</div>
-            <div className="text-xs text-white/45 mt-1">{stat.label}</div>
-          </div>
-        ))}
+    <div className="bg-bg-primary border-b border-border-light">
+      <div className="mx-auto max-w-6xl px-6 md:px-8 py-8">
+        <div className="grid grid-cols-2 gap-y-6 gap-x-8 sm:grid-cols-3 lg:grid-cols-5">
+          <a
+            href="https://github.com/reifydb/reifydb"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group"
+          >
+            <div className="flex items-center gap-1.5 text-xl font-semibold text-text-primary group-hover:text-primary transition-colors">
+              <Star size={16} className="fill-current text-primary" />
+              {loading || !formatted ? 'GitHub' : formatted}
+            </div>
+            <div className="text-xs text-text-muted mt-1">stars on GitHub</div>
+          </a>
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <div className="text-xl font-semibold text-text-primary">{stat.value}</div>
+              <div className="text-xs text-text-muted mt-1">{stat.label}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -40,57 +42,44 @@ function TrustStrip() {
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden section-dark">
-      <div className="absolute inset-0 z-0 dot-grid-dark" />
-      <div className="absolute inset-0 z-0 hero-glow" />
+    <>
+      <section className="sky relative overflow-hidden">
+        <div className="mx-auto max-w-6xl px-6 md:px-8 pt-[clamp(36px,6vw,72px)] pb-[clamp(24px,3vw,36px)]">
+          <div className="grid gap-[clamp(28px,5vw,64px)] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] items-center">
+            <div>
+              <p className="eyebrow-pixel mb-5">LIVE MARKETS, ONE FLIP AT A TIME</p>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 pt-20 pb-16 lg:pt-28 lg:pb-20">
-        <div className="grid gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-14 items-center">
-          <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 rounded-pill border border-white/15 bg-white/5 px-3 py-1 mb-7">
-              <span className="status-dot status-dot-connected" />
-              <span className="text-xs label-uppercase text-white/70">Runs in your browser, right here</span>
+              <h1 className="text-[clamp(34px,4.6vw,56px)] leading-[1.04] tracking-[-0.035em] text-text-primary mb-[18px] text-balance">
+                One database instead of Postgres + Redis + a queue + a cron job.
+              </h1>
+
+              <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted mb-[30px] max-w-[46ch] text-pretty">
+                Writes, business rules, and derived views commit in one transaction, inside the database,
+                as the user who asked. Nothing to invalidate. Nothing to babysit.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-3.5 mb-8">
+                <GameButton href="/docs/quick-start" size="lg">
+                  Get started <span className="game-button__arrow">→</span>
+                </GameButton>
+                <Button href="/playground" variant="secondary" size="lg">
+                  Open the playground
+                </Button>
+              </div>
+
+              <InstallCommand className="w-full sm:w-auto text-left" />
             </div>
 
-            <h1 className="text-4xl sm:text-5xl leading-[1.05] tracking-tight text-white mb-6 text-balance">
-              One database instead of Postgres + Redis + a queue + a cron job.
-            </h1>
-
-            <p className="text-lg sm:text-xl text-white/60 mb-9 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Writes, business rules, and derived views commit in one transaction, inside the database,
-              as the user who asked. Nothing to invalidate. Nothing to babysit.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-8">
-              <Button href="/docs/quick-start" size="lg">
-                Get started
-              </Button>
-              <Button href="/playground" variant="secondary" size="lg">
-                Open the playground
-              </Button>
-            </div>
-
-            <InstallCommand className="w-full sm:w-auto text-left" />
-          </div>
-
-          <div className="w-full min-w-0">
-            <PanelFrame label="RQL SHELL (wasm)" fullscreen className="window-shell">
-              <ExecutableShell deferLoad />
-            </PanelFrame>
-
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-white/50 mt-5">
-              <a href="/examples" className="hover:text-white transition-colors">
-                Explore all examples &rarr;
-              </a>
-              <a href="/tour" className="hover:text-white transition-colors">
-                Take the tour &rarr;
-              </a>
+            <div className="w-full min-w-0">
+              <PocketShell deferLoad />
             </div>
           </div>
         </div>
 
-        <TrustStrip />
-      </div>
-    </section>
+        <PixelScene kind="hall" className="-mb-px" />
+      </section>
+
+      <TrustStrip />
+    </>
   );
 }

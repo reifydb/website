@@ -1,11 +1,16 @@
-import { useState, useRef, useEffect, type ReactNode } from 'react';
+import { useState, useRef, useEffect, useSyncExternalStore, type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Button, GitHubStars } from '@/components/ui';
+import { GameButton, GitHubStars } from '@/components/ui';
 import { cn } from '@/lib';
 import { NavbarDropdown } from './navbar-dropdown';
 import { navDropdowns, navDirectLinks } from './navbar-data';
 import { MobileMenu } from './mobile-menu';
 import { Menu, X } from 'lucide-react';
+
+function subscribeToScroll(onChange: () => void) {
+  window.addEventListener('scroll', onChange, { passive: true });
+  return () => window.removeEventListener('scroll', onChange);
+}
 
 interface NavbarProps {
   mobileExtra?: ReactNode;
@@ -15,6 +20,8 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const scrolled = useSyncExternalStore(subscribeToScroll, () => window.scrollY > 0, () => false);
+  const isLanding = location.pathname === '/';
   const [isSwitching, setIsSwitching] = useState(false);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -54,7 +61,16 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
 
   return (
     <>
-      <header className="site-header sticky top-0 z-40 w-full bg-bg-primary border-b border-border-default">
+      <header
+        className={cn(
+          'site-header sticky top-0 z-40 w-full border-b transition-colors duration-150',
+          scrolled
+            ? 'bg-bg-primary border-border-light'
+            : isLanding
+              ? 'bg-[#efedfb] border-transparent'
+              : 'bg-bg-primary border-transparent'
+        )}
+      >
         <div className="flex h-[60px] w-full items-center justify-between px-4 sm:px-6 md:pl-8 md:pr-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
@@ -69,7 +85,7 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex gap-0 text-sm items-center flex-1 justify-center">
+          <nav className="hidden lg:flex gap-0 text-[13px] font-medium items-center flex-1 justify-center">
             {/* Dropdown Menus */}
             {navDropdowns.map((dropdown) => (
               <NavbarDropdown
@@ -92,7 +108,7 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
                   <a
                     key={link.href}
                     href={link.href}
-                    className="px-3 py-2 transition-colors duration-150 text-text-secondary hover:text-primary"
+                    className="px-3 py-2 transition-colors duration-150 text-text-muted hover:text-text-primary"
                   >
                     {link.label}
                   </a>
@@ -106,8 +122,8 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
                   className={cn(
                     "px-3 py-2 transition-colors duration-150",
                     active
-                      ? "text-primary"
-                      : "text-text-secondary hover:text-primary"
+                      ? "text-text-primary"
+                      : "text-text-muted hover:text-text-primary"
                   )}
                 >
                   {link.label}
@@ -132,9 +148,9 @@ export function Navbar({ mobileExtra }: NavbarProps = {}) {
                 </svg>
               </a>
               <GitHubStars />
-              <Button href="/docs" size="sm">
+              <GameButton href="/docs" size="sm">
                 Get Started
-              </Button>
+              </GameButton>
             </div>
 
             {/* Hamburger Button */}

@@ -21,7 +21,7 @@ export function InstallCommand({ className }: { className?: string }) {
 
   return (
     <div className={cn('inline-flex flex-col gap-2', className)}>
-      <div className="flex items-center gap-4 justify-center lg:justify-start">
+      <div className="flex items-center gap-4 justify-start">
         {targets.map((t) => (
           <button
             key={t.id}
@@ -29,21 +29,21 @@ export function InstallCommand({ className }: { className?: string }) {
             onClick={() => setActive(t.id)}
             className={cn(
               'text-xs label-uppercase transition-colors',
-              active === t.id ? 'text-white' : 'text-white/40 hover:text-white/70'
+              active === t.id ? 'text-text-primary' : 'text-text-muted hover:text-text-primary'
             )}
           >
             {t.label}
           </button>
         ))}
       </div>
-      <div className="flex items-center gap-3 rounded-md border border-white/15 bg-white/5 px-4 py-3 font-mono text-sm">
+      <div className="flex items-center gap-3 rounded-md border border-border-light bg-white shadow-soft px-4 py-3 font-mono text-sm">
         <span className="text-primary select-none">$</span>
-        <code className="text-white/90 whitespace-nowrap">{command}</code>
+        <code className="text-text-primary whitespace-nowrap">{command}</code>
         <button
           type="button"
           onClick={copy}
           aria-label="Copy install command"
-          className="ml-auto text-white/40 hover:text-white transition-colors"
+          className="ml-auto text-text-muted hover:text-text-primary transition-colors"
         >
           {copied ? <Check size={16} className="text-status-success" /> : <Copy size={16} />}
         </button>
