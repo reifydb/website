@@ -56,8 +56,9 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative z-10 bg-bg-primary border-t border-border-light py-12 sm:py-16 text-text-muted">
-      <div className="mx-auto max-w-6xl px-6 md:px-8">
+    <footer className="relative z-10 bg-bg-primary pb-12 sm:pb-16 text-text-muted">
+      <div className="pixel-fade" aria-hidden="true" />
+      <div className="mx-auto max-w-6xl px-6 md:px-8 pt-12 sm:pt-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] text-[13px]">
           <div className="sm:col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center gap-2">
@@ -91,7 +92,7 @@ export function Footer() {
 
           {sections.map((section) => (
             <div key={section.title}>
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-text-secondary mb-3">
+              <h3 className="pixel-label uppercase text-[#4b52d6] mb-3">
                 {section.title}
               </h3>
               <ul className="space-y-2.5">
