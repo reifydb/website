@@ -102,9 +102,10 @@ const SHELL_VARS = {
 
 interface PocketShellLiveProps {
   onReady: (shell: Shell) => void;
+  onFullscreenChange: (full: boolean) => void;
 }
 
-export default function PocketShellLive({ onReady }: PocketShellLiveProps) {
+export default function PocketShellLive({ onReady, onFullscreenChange }: PocketShellLiveProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -130,6 +131,7 @@ export default function PocketShellLive({ onReady }: PocketShellLiveProps) {
         tableBorder: 'none',
         tableTheme: POCKET_TABLE_THEME,
         displayMode: 'truncate',
+        onFullscreenChange,
       });
       shell.start();
       onReady(shell);
@@ -139,7 +141,7 @@ export default function PocketShellLive({ onReady }: PocketShellLiveProps) {
       cancelled = true;
       shell?.dispose();
     };
-  }, [onReady]);
+  }, [onReady, onFullscreenChange]);
 
   return <div ref={containerRef} className="h-full w-full" style={SHELL_VARS} />;
 }

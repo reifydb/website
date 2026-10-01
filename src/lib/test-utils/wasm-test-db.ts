@@ -2,7 +2,7 @@
  * Test utilities for WASM database
  */
 
-import { create_wasm_db, type WasmDB } from '@reifydb/wasm';
+import { createWasmDb, type WasmDB } from '@reifydb/wasm';
 import { seedCommand } from '../seed-data';
 import { renderFrame } from './render-frame';
 import type { CodeExample } from '../examples/types';
@@ -23,7 +23,7 @@ export interface VerificationResult {
  * Creates a fresh WASM database instance seeded with test data.
  */
 export async function createTestDB(): Promise<WasmDB> {
-  const db = await create_wasm_db();
+  const db = await createWasmDb();
   db.admin(seedCommand);
   return db;
 }

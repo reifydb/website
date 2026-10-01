@@ -113,6 +113,20 @@ html {
   box-shadow: 0 0 8px #ffd166;
 }
 
+.pocket__toggle {
+  display: flex;
+  margin: -10px -10px -10px auto;
+  padding: 10px;
+  border: 0;
+  color: #d7d9ff;
+  background: none;
+  cursor: pointer;
+}
+
+.pocket__toggle:disabled {
+  cursor: default;
+}
+
 .pocket__screen {
   position: relative;
   height: 360px;
@@ -186,6 +200,41 @@ html {
 
 .pocket__button:disabled {
   cursor: default;
+}
+
+.pocket .reifydb-shell-fullscreen {
+  position: static !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: auto !important;
+}
+
+.pocket__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: #1c208073;
+}
+
+.pocket--full {
+  position: fixed;
+  inset: 24px;
+  z-index: 61;
+  display: flex;
+  flex-direction: column;
+}
+
+.pocket--full .pocket__bezel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.pocket--full .pocket__screen {
+  flex: 1;
+  height: auto;
+  min-height: 0;
 }
 
 /* Fullscreen background — used by pitch page */
