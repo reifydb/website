@@ -28,8 +28,8 @@ export function Callout({ variant = 'note', title, children, className }: Callou
 
   return (
     <div
-      className={cn('mt-6 border-2 px-5 py-4', className)}
-      style={{ borderColor: colors.frame, backgroundColor: `${colors.frame}1f` }}
+      className={cn('mt-6 border-l-4 pl-4 py-1', className)}
+      style={{ borderColor: colors.frame }}
     >
       <div className="pixel-label uppercase mb-3" style={{ color: colors.label }}>
         {title || variantTitles[variant]}

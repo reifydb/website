@@ -105,11 +105,11 @@ export const AccordionItem = memo(function AccordionItem({ item, index, currentP
   const itemStyles = cn(
     'group w-full flex items-center text-left transition-colors duration-150',
     isLevel
-      ? 'gap-3 p-3'
+      ? 'relative gap-2.5 py-[7px] pr-2.5 pl-[22px]'
       : cn(
-          'gap-2 px-2 py-1 text-sm',
+          'gap-2 px-2 py-1 text-[13px] font-medium',
           isActive
-            ? 'bg-[#ffe08a] text-[#1b1840] font-medium'
+            ? 'relative text-[#1b1840] before:absolute before:left-[-15px] before:top-1/2 before:-mt-1 before:size-2 before:bg-[#ffe08a] before:shadow-[0_0_0_2px_#4b52d6]'
             : isCurrent
               ? 'text-[#4b52d6] font-medium'
               : 'text-text-secondary hover:text-[#4b52d6]',
@@ -119,20 +119,22 @@ export const AccordionItem = memo(function AccordionItem({ item, index, currentP
 
   const content = (
     <>
+      {isLevel && isCurrent && (
+        <PixelIcon
+          rows={RIGHT_ARROW}
+          colors={ARROW_COLORS}
+          className="absolute left-1.5 top-1/2 -translate-y-1/2 h-2.5 w-1.5 text-[#4b52d6]"
+        />
+      )}
       {isLevel && (
-        <span
-          className={cn(
-            'flex h-7 w-7 shrink-0 items-center justify-center font-mono text-xs font-bold',
-            isCurrent ? 'bg-[#ffe08a] text-[#1b1840]' : 'bg-[#4b52d6] text-white'
-          )}
-        >
-          {index + 1}
+        <span className={cn('text-[13px] font-medium shrink-0', isCurrent ? 'text-[#4b52d6]' : 'text-[#a8a3c0]')}>
+          {String(index + 1).padStart(2, '0')}
         </span>
       )}
       <span
         className={cn(
           'truncate flex-1 min-w-0',
-          isLevel && cn('text-sm font-medium', isCurrent ? 'text-[#4b52d6]' : 'text-text-primary group-hover:text-[#4b52d6]')
+          isLevel && cn('text-[13px] font-medium', isCurrent ? 'text-[#4b52d6]' : 'text-text-primary group-hover:text-[#4b52d6]')
         )}
       >
         {item.label}
@@ -148,7 +150,7 @@ export const AccordionItem = memo(function AccordionItem({ item, index, currentP
   );
 
   return (
-    <li ref={activeRef} className={cn(isLevel && (isCurrent ? 'dialog' : 'border-2 border-transparent'))}>
+    <li ref={activeRef}>
       {item.href && !hasChildren ? (
         <Link to={item.href} onClick={onNavigate} className={itemStyles}>
           {content}
@@ -166,7 +168,7 @@ export const AccordionItem = memo(function AccordionItem({ item, index, currentP
           )}
         >
           <div className="overflow-hidden">
-            <ul className={cn('space-y-0.5 pl-3', DOTTED_PATH, isLevel ? 'ml-[25px] mr-3 mb-3' : 'ml-2')}>
+            <ul className={cn('space-y-0.5 pl-3', DOTTED_PATH, isLevel ? 'ml-[27px] mr-2.5 mb-2.5' : 'ml-2')}>
               {item.children!.map((child, childIndex) => (
                 <AccordionItem
                   key={child.id}
@@ -234,11 +236,11 @@ export function DocsNavTree({ sections, currentPath, onNavigate = noop }: DocsNa
         return (
           <div key={section.title} className="mb-4">
             {singleSection ? (
-              <h3 className="pixel-label uppercase text-text-muted mb-3 px-3">{section.title}</h3>
+              <h3 className="text-[13px] font-medium uppercase text-text-muted mb-3 px-3">{section.title}</h3>
             ) : (
               <button
                 onClick={() => toggleItem(sectionId)}
-                className="w-full flex items-center justify-between pixel-label uppercase text-text-muted mb-3 px-3 py-1 hover:text-[#4b52d6] transition-colors"
+                className="w-full flex items-center justify-between text-[13px] font-medium uppercase text-text-muted mb-3 px-3 py-1 hover:text-[#4b52d6] transition-colors"
               >
                 {section.title}
                 <PixelIcon
@@ -255,7 +257,7 @@ export function DocsNavTree({ sections, currentPath, onNavigate = noop }: DocsNa
               )}
             >
               <div className="overflow-hidden">
-                <ul className="space-y-2">
+                <ul className="space-y-0.5">
                   {section.items.map((item, index) => (
                     <AccordionItem
                       key={item.id}

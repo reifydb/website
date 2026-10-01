@@ -35,7 +35,7 @@ export function DateModuleOverviewPage() {
           <div className="grid gap-3">
             <Link
               to="/docs/functions/date/year"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::year</h3>
               <p className="text-text-secondary text-sm">
@@ -45,7 +45,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/month"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::month</h3>
               <p className="text-text-secondary text-sm">
@@ -55,7 +55,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/day"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::day</h3>
               <p className="text-text-secondary text-sm">
@@ -65,7 +65,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/day_of_year"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::day_of_year</h3>
               <p className="text-text-secondary text-sm">
@@ -75,7 +75,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/day_of_week"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::day_of_week</h3>
               <p className="text-text-secondary text-sm">
@@ -85,7 +85,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/quarter"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::quarter</h3>
               <p className="text-text-secondary text-sm">
@@ -95,7 +95,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/week"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::week</h3>
               <p className="text-text-secondary text-sm">
@@ -114,7 +114,7 @@ export function DateModuleOverviewPage() {
           <div className="grid gap-3">
             <Link
               to="/docs/functions/date/is_leap_year"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::is_leap_year</h3>
               <p className="text-text-secondary text-sm">
@@ -124,7 +124,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/days_in_month"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::days_in_month</h3>
               <p className="text-text-secondary text-sm">
@@ -134,7 +134,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/start_of_month"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::start_of_month</h3>
               <p className="text-text-secondary text-sm">
@@ -144,7 +144,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/end_of_month"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::end_of_month</h3>
               <p className="text-text-secondary text-sm">
@@ -154,7 +154,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/start_of_year"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::start_of_year</h3>
               <p className="text-text-secondary text-sm">
@@ -173,7 +173,7 @@ export function DateModuleOverviewPage() {
           <div className="grid gap-3">
             <Link
               to="/docs/functions/date/new"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::new</h3>
               <p className="text-text-secondary text-sm">
@@ -183,7 +183,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/now"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::now</h3>
               <p className="text-text-secondary text-sm">
@@ -193,7 +193,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/add"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::add</h3>
               <p className="text-text-secondary text-sm">
@@ -203,7 +203,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/subtract"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::subtract</h3>
               <p className="text-text-secondary text-sm">
@@ -213,7 +213,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/diff"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::diff</h3>
               <p className="text-text-secondary text-sm">
@@ -223,7 +223,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/trunc"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::trunc</h3>
               <p className="text-text-secondary text-sm">
@@ -233,7 +233,7 @@ export function DateModuleOverviewPage() {
 
             <Link
               to="/docs/functions/date/age"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::age</h3>
               <p className="text-text-secondary text-sm">
@@ -252,7 +252,7 @@ export function DateModuleOverviewPage() {
           <div className="grid gap-3">
             <Link
               to="/docs/functions/date/format"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date::format</h3>
               <p className="text-text-secondary text-sm">

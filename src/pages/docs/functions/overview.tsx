@@ -22,7 +22,7 @@ export function FunctionsOverviewPage() {
           <div className="space-y-4">
             <Link
               to="/docs/functions/blob"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">blob</h3>
               <p className="text-text-secondary text-sm">
@@ -32,7 +32,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/clock"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">clock</h3>
               <p className="text-text-secondary text-sm">
@@ -42,7 +42,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/date"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">date</h3>
               <p className="text-text-secondary text-sm">
@@ -52,7 +52,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/datetime"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">datetime</h3>
               <p className="text-text-secondary text-sm">
@@ -62,7 +62,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/duration"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">duration</h3>
               <p className="text-text-secondary text-sm">
@@ -72,7 +72,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/identity"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">identity</h3>
               <p className="text-text-secondary text-sm">
@@ -82,7 +82,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/is"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">is</h3>
               <p className="text-text-secondary text-sm">
@@ -92,7 +92,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/json"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">json</h3>
               <p className="text-text-secondary text-sm">
@@ -102,7 +102,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/math"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">math</h3>
               <p className="text-text-secondary text-sm">
@@ -112,7 +112,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/meta"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">meta</h3>
               <p className="text-text-secondary text-sm">
@@ -122,7 +122,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/text"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">text</h3>
               <p className="text-text-secondary text-sm">
@@ -132,7 +132,7 @@ export function FunctionsOverviewPage() {
 
             <Link
               to="/docs/functions/time"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">time</h3>
               <p className="text-text-secondary text-sm">

@@ -13,7 +13,7 @@ export function IdentityModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Functions</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Link to="/docs/functions/identity/id" className="group block level-card p-4!">
+            <Link to="/docs/functions/identity/id" className="group block">
               <h3 className="font-bold font-mono mb-1">identity::id</h3>
               <p className="text-sm text-text-secondary">Get the unique identifier of a record.</p>
             </Link>

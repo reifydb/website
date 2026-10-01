@@ -13,19 +13,19 @@ export function TimeModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Extraction</h2>
           <div className="grid gap-4">
-            <Link to="/docs/functions/time/hour" className="group block level-card p-4!">
+            <Link to="/docs/functions/time/hour" className="group block">
               <h3 className="font-bold mb-1">time::hour</h3>
               <p className="text-text-secondary text-sm">Extract the hour (0-23) from a time value.</p>
             </Link>
-            <Link to="/docs/functions/time/minute" className="group block level-card p-4!">
+            <Link to="/docs/functions/time/minute" className="group block">
               <h3 className="font-bold mb-1">time::minute</h3>
               <p className="text-text-secondary text-sm">Extract the minute (0-59) from a time value.</p>
             </Link>
-            <Link to="/docs/functions/time/second" className="group block level-card p-4!">
+            <Link to="/docs/functions/time/second" className="group block">
               <h3 className="font-bold mb-1">time::second</h3>
               <p className="text-text-secondary text-sm">Extract the second (0-59) from a time value.</p>
             </Link>
-            <Link to="/docs/functions/time/nanosecond" className="group block level-card p-4!">
+            <Link to="/docs/functions/time/nanosecond" className="group block">
               <h3 className="font-bold mb-1">time::nanosecond</h3>
               <p className="text-text-secondary text-sm">Extract the nanosecond component from a time value.</p>
             </Link>
@@ -35,11 +35,11 @@ export function TimeModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Construction</h2>
           <div className="grid gap-4">
-            <Link to="/docs/functions/time/new" className="group block level-card p-4!">
+            <Link to="/docs/functions/time/new" className="group block">
               <h3 className="font-bold mb-1">time::new</h3>
               <p className="text-text-secondary text-sm">Create a new time from hour, minute, and second components.</p>
             </Link>
-            <Link to="/docs/functions/time/now" className="group block level-card p-4!">
+            <Link to="/docs/functions/time/now" className="group block">
               <h3 className="font-bold mb-1">time::now</h3>
               <p className="text-text-secondary text-sm">Get the current time of day.</p>
             </Link>
@@ -49,23 +49,23 @@ export function TimeModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Manipulation</h2>
           <div className="grid gap-4">
-            <Link to="/docs/functions/time/add" className="group block level-card p-4!">
+            <Link to="/docs/functions/time/add" className="group block">
               <h3 className="font-bold mb-1">time::add</h3>
               <p className="text-text-secondary text-sm">Add a duration to a time value.</p>
             </Link>
-            <Link to="/docs/functions/time/subtract" className="group block level-card p-4!">
+            <Link to="/docs/functions/time/subtract" className="group block">
               <h3 className="font-bold mb-1">time::subtract</h3>
               <p className="text-text-secondary text-sm">Subtract a duration from a time value.</p>
             </Link>
-            <Link to="/docs/functions/time/diff" className="group block level-card p-4!">
+            <Link to="/docs/functions/time/diff" className="group block">
               <h3 className="font-bold mb-1">time::diff</h3>
               <p className="text-text-secondary text-sm">Calculate the difference between two time values.</p>
             </Link>
-            <Link to="/docs/functions/time/trunc" className="group block level-card p-4!">
+            <Link to="/docs/functions/time/trunc" className="group block">
               <h3 className="font-bold mb-1">time::trunc</h3>
               <p className="text-text-secondary text-sm">Truncate a time to a specified precision.</p>
             </Link>
-            <Link to="/docs/functions/time/age" className="group block level-card p-4!">
+            <Link to="/docs/functions/time/age" className="group block">
               <h3 className="font-bold mb-1">time::age</h3>
               <p className="text-text-secondary text-sm">Calculate the elapsed duration from a time value until now.</p>
             </Link>
@@ -75,7 +75,7 @@ export function TimeModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Formatting</h2>
           <div className="grid gap-4">
-            <Link to="/docs/functions/time/format" className="group block level-card p-4!">
+            <Link to="/docs/functions/time/format" className="group block">
               <h3 className="font-bold mb-1">time::format</h3>
               <p className="text-text-secondary text-sm">Format a time value as a string.</p>
             </Link>

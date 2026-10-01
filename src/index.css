@@ -331,6 +331,24 @@ div::backdrop {
   box-shadow: 0 4px var(--color-primary-dark);
 }
 
+.rdb-snippet.rdb-snippet--static,
+.rdb-snippet.rdb-snippet--static:hover {
+  border: 0;
+  box-shadow: none;
+  background: #f3f2fb;
+}
+
+.rdb-snippet--static .rdb-snippet__header {
+  background: transparent;
+  border-bottom: 0;
+}
+
+.rdb-snippet--static .monaco-editor,
+.rdb-snippet--static .monaco-editor .margin,
+.rdb-snippet--static .monaco-editor-background {
+  background-color: #f3f2fb;
+}
+
 .dialog {
   border: 2px solid #4b52d6;
   background: #ffffff;
@@ -532,14 +550,8 @@ div::backdrop {
   }
 }
 
-.docs-boards section:not(.rdb-snippet section) {
-  padding: 0 18px 18px;
-  border: 1px solid var(--color-border-light);
-  background: #ffffff;
-}
-
-.docs-boards section > h2 {
-  margin: 0 -18px 18px;
-  padding: 14px 18px;
-  border-bottom: 1px solid var(--color-border-light);
+.docs-boards .dialog:has(> table) {
+  border: 0;
+  box-shadow: none;
+  background: none;
 }

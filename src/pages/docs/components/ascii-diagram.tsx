@@ -8,9 +8,9 @@ interface AsciiDiagramProps {
 
 export function AsciiDiagram({ children, label, className }: AsciiDiagramProps) {
   return (
-    <div className={cn('dialog overflow-x-auto', className)}>
+    <div className={cn('bg-[#f3f2fb] overflow-x-auto', className)}>
       {label && (
-        <div className="px-4 py-2 border-b-2 border-[#4b52d6] bg-[#efedfb]">
+        <div className="px-4 py-2">
           <span className="pixel-label uppercase text-[#4b52d6]">{label}</span>
         </div>
       )}

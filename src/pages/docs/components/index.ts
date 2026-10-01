@@ -3,7 +3,7 @@ export { DocsNavTree } from './docs-nav-tree';
 export { Breadcrumbs } from './breadcrumbs';
 export { PageNav } from './page-nav';
 export { AsciiDiagram } from './ascii-diagram';
-export { CodeBlock, TabbedCodeBlock } from './code-block';
+export { CodeBlock } from './code-block';
 export { RqlCodeBlock } from './rql-code-block';
 export { Callout } from './callout';
 export { DocStub } from './templates/doc-stub';

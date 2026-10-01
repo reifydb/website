@@ -30,23 +30,23 @@ export function TextModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Case & Whitespace</h2>
           <div className="grid gap-3">
-            <Link to="/docs/functions/text/lower" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/lower" className="group block">
               <h3 className="font-bold text-primary mb-1">text::lower</h3>
               <p className="text-text-secondary text-sm">Convert a string to lowercase</p>
             </Link>
-            <Link to="/docs/functions/text/upper" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/upper" className="group block">
               <h3 className="font-bold text-primary mb-1">text::upper</h3>
               <p className="text-text-secondary text-sm">Convert a string to uppercase</p>
             </Link>
-            <Link to="/docs/functions/text/trim" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/trim" className="group block">
               <h3 className="font-bold text-primary mb-1">text::trim</h3>
               <p className="text-text-secondary text-sm">Remove leading and trailing whitespace</p>
             </Link>
-            <Link to="/docs/functions/text/trim_start" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/trim_start" className="group block">
               <h3 className="font-bold text-primary mb-1">text::trim_start</h3>
               <p className="text-text-secondary text-sm">Remove leading whitespace</p>
             </Link>
-            <Link to="/docs/functions/text/trim_end" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/trim_end" className="group block">
               <h3 className="font-bold text-primary mb-1">text::trim_end</h3>
               <p className="text-text-secondary text-sm">Remove trailing whitespace</p>
             </Link>
@@ -57,23 +57,23 @@ export function TextModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Search & Match</h2>
           <div className="grid gap-3">
-            <Link to="/docs/functions/text/contains" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/contains" className="group block">
               <h3 className="font-bold text-primary mb-1">text::contains</h3>
               <p className="text-text-secondary text-sm">Check if a string contains a substring</p>
             </Link>
-            <Link to="/docs/functions/text/starts_with" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/starts_with" className="group block">
               <h3 className="font-bold text-primary mb-1">text::starts_with</h3>
               <p className="text-text-secondary text-sm">Check if a string starts with a prefix</p>
             </Link>
-            <Link to="/docs/functions/text/ends_with" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/ends_with" className="group block">
               <h3 className="font-bold text-primary mb-1">text::ends_with</h3>
               <p className="text-text-secondary text-sm">Check if a string ends with a suffix</p>
             </Link>
-            <Link to="/docs/functions/text/index_of" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/index_of" className="group block">
               <h3 className="font-bold text-primary mb-1">text::index_of</h3>
               <p className="text-text-secondary text-sm">Find the index of a substring</p>
             </Link>
-            <Link to="/docs/functions/text/count" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/count" className="group block">
               <h3 className="font-bold text-primary mb-1">text::count</h3>
               <p className="text-text-secondary text-sm">Count the number of characters in a string</p>
             </Link>
@@ -84,31 +84,31 @@ export function TextModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Manipulation</h2>
           <div className="grid gap-3">
-            <Link to="/docs/functions/text/concat" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/concat" className="group block">
               <h3 className="font-bold text-primary mb-1">text::concat</h3>
               <p className="text-text-secondary text-sm">Concatenate multiple strings together</p>
             </Link>
-            <Link to="/docs/functions/text/substring" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/substring" className="group block">
               <h3 className="font-bold text-primary mb-1">text::substring</h3>
               <p className="text-text-secondary text-sm">Extract a portion of a string</p>
             </Link>
-            <Link to="/docs/functions/text/replace" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/replace" className="group block">
               <h3 className="font-bold text-primary mb-1">text::replace</h3>
               <p className="text-text-secondary text-sm">Replace all occurrences of a substring</p>
             </Link>
-            <Link to="/docs/functions/text/repeat" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/repeat" className="group block">
               <h3 className="font-bold text-primary mb-1">text::repeat</h3>
               <p className="text-text-secondary text-sm">Repeat a string multiple times</p>
             </Link>
-            <Link to="/docs/functions/text/reverse" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/reverse" className="group block">
               <h3 className="font-bold text-primary mb-1">text::reverse</h3>
               <p className="text-text-secondary text-sm">Reverse the characters in a string</p>
             </Link>
-            <Link to="/docs/functions/text/pad_left" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/pad_left" className="group block">
               <h3 className="font-bold text-primary mb-1">text::pad_left</h3>
               <p className="text-text-secondary text-sm">Pad a string on the left</p>
             </Link>
-            <Link to="/docs/functions/text/pad_right" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/pad_right" className="group block">
               <h3 className="font-bold text-primary mb-1">text::pad_right</h3>
               <p className="text-text-secondary text-sm">Pad a string on the right</p>
             </Link>
@@ -119,15 +119,15 @@ export function TextModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Measurement & Encoding</h2>
           <div className="grid gap-3">
-            <Link to="/docs/functions/text/length" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/length" className="group block">
               <h3 className="font-bold text-primary mb-1">text::length</h3>
               <p className="text-text-secondary text-sm">Get the length of a string</p>
             </Link>
-            <Link to="/docs/functions/text/ascii" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/ascii" className="group block">
               <h3 className="font-bold text-primary mb-1">text::ascii</h3>
               <p className="text-text-secondary text-sm">Get the ASCII code of the first character</p>
             </Link>
-            <Link to="/docs/functions/text/char" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/char" className="group block">
               <h3 className="font-bold text-primary mb-1">text::char</h3>
               <p className="text-text-secondary text-sm">Convert an ASCII code to a character</p>
             </Link>
@@ -138,11 +138,11 @@ export function TextModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Formatting</h2>
           <div className="grid gap-3">
-            <Link to="/docs/functions/text/format_bytes" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/format_bytes" className="group block">
               <h3 className="font-bold text-primary mb-1">text::format_bytes</h3>
               <p className="text-text-secondary text-sm">Format bytes using binary units (KiB, MiB)</p>
             </Link>
-            <Link to="/docs/functions/text/format_bytes_si" className="group block level-card p-4!">
+            <Link to="/docs/functions/text/format_bytes_si" className="group block">
               <h3 className="font-bold text-primary mb-1">text::format_bytes_si</h3>
               <p className="text-text-secondary text-sm">Format bytes using SI units (KB, MB)</p>
             </Link>

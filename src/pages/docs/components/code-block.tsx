@@ -17,8 +17,8 @@ export function CodeBlock({ code, language = 'bash', className }: CodeBlockProps
   };
 
   return (
-    <div className={cn('border-2 border-[#4b52d6] bg-code-bg shadow-[0_4px_var(--color-primary-dark)] overflow-hidden', className)}>
-      <div className="flex justify-between items-center px-4 py-2 border-b border-border-default bg-code-bg-elevated">
+    <div className={cn('bg-[#f3f2fb] overflow-hidden', className)}>
+      <div className="flex justify-between items-center px-4 py-2">
         <span className="pixel-label uppercase text-code-text-muted">
           {language}
         </span>
@@ -32,59 +32,6 @@ export function CodeBlock({ code, language = 'bash', className }: CodeBlockProps
       </div>
       <pre className="p-4 overflow-x-auto text-sm font-mono text-code-text">
         <code>{code}</code>
-      </pre>
-    </div>
-  );
-}
-
-interface TabbedCodeBlockProps {
-  examples: {
-    language: string;
-    label: string;
-    code: string;
-  }[];
-  className?: string;
-}
-
-export function TabbedCodeBlock({ examples, className }: TabbedCodeBlockProps) {
-  const [activeTab, setActiveTab] = useState(0);
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(examples[activeTab].code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <div className={cn('border-2 border-[#4b52d6] bg-code-bg shadow-[0_4px_var(--color-primary-dark)] overflow-hidden', className)}>
-      <div className="flex items-center justify-between border-b border-border-default bg-code-bg-elevated">
-        <div className="flex">
-          {examples.map((example, index) => (
-            <button
-              key={example.language}
-              onClick={() => setActiveTab(index)}
-              className={cn(
-                'px-4 py-2 text-xs font-medium uppercase tracking-wider transition-colors border-r border-border-default',
-                activeTab === index
-                  ? 'bg-primary text-white'
-                  : 'text-code-text-muted hover:text-code-text'
-              )}
-            >
-              {example.label}
-            </button>
-          ))}
-        </div>
-        <button
-          onClick={handleCopy}
-          className="min-w-[44px] min-h-[44px] flex items-center justify-center mr-2 text-code-text-muted hover:text-primary transition-colors"
-          aria-label={copied ? 'Copied' : 'Copy code'}
-        >
-          <span className="text-xs">{copied ? 'Copied' : 'Copy'}</span>
-        </button>
-      </div>
-      <pre className="p-4 overflow-x-auto text-sm font-mono text-code-text">
-        <code>{examples[activeTab].code}</code>
       </pre>
     </div>
   );

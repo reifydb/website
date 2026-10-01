@@ -13,11 +13,11 @@ export function IsModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Value Checks</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Link to="/docs/functions/is/some" className="group block level-card p-4!">
+            <Link to="/docs/functions/is/some" className="group block">
               <h3 className="font-bold font-mono mb-1">is::some</h3>
               <p className="text-sm text-text-secondary">Check if a value is not none (has some value).</p>
             </Link>
-            <Link to="/docs/functions/is/none" className="group block level-card p-4!">
+            <Link to="/docs/functions/is/none" className="group block">
               <h3 className="font-bold font-mono mb-1">is::none</h3>
               <p className="text-sm text-text-secondary">Check if a value is none (has no value).</p>
             </Link>
@@ -27,7 +27,7 @@ export function IsModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Type Checks</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Link to="/docs/functions/is/type" className="group block level-card p-4!">
+            <Link to="/docs/functions/is/type" className="group block">
               <h3 className="font-bold font-mono mb-1">is::type</h3>
               <p className="text-sm text-text-secondary">Check if a value is of a specified type.</p>
             </Link>
@@ -37,11 +37,11 @@ export function IsModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Permission Checks</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Link to="/docs/functions/is/root" className="group block level-card p-4!">
+            <Link to="/docs/functions/is/root" className="group block">
               <h3 className="font-bold font-mono mb-1">is::root</h3>
               <p className="text-sm text-text-secondary">Check if the current user has root privileges.</p>
             </Link>
-            <Link to="/docs/functions/is/anonymous" className="group block level-card p-4!">
+            <Link to="/docs/functions/is/anonymous" className="group block">
               <h3 className="font-bold font-mono mb-1">is::anonymous</h3>
               <p className="text-sm text-text-secondary">Check if the current user is anonymous (not authenticated).</p>
             </Link>

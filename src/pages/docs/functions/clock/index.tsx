@@ -39,7 +39,7 @@ export function ClockModuleOverviewPage() {
           <div className="grid gap-3">
             <Link
               to="/docs/functions/clock/now"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">clock::now</h3>
               <p className="text-text-secondary text-sm">
@@ -60,7 +60,7 @@ export function ClockModuleOverviewPage() {
           <div className="grid gap-3">
             <Link
               to="/docs/functions/clock/set"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">
                 clock::set
@@ -73,7 +73,7 @@ export function ClockModuleOverviewPage() {
 
             <Link
               to="/docs/functions/clock/advance"
-              className="group block level-card p-4!"
+              className="group block"
             >
               <h3 className="font-bold text-primary mb-1">
                 clock::advance

@@ -30,19 +30,19 @@ export function JsonModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Available Functions</h2>
           <div className="space-y-3">
-            <Link to="/docs/functions/json/array" className="group block level-card p-4!">
+            <Link to="/docs/functions/json/array" className="group block">
               <h3 className="font-bold text-primary mb-1">json::array</h3>
               <p className="text-text-secondary text-sm">Build a JSON array from a list of values</p>
             </Link>
-            <Link to="/docs/functions/json/object" className="group block level-card p-4!">
+            <Link to="/docs/functions/json/object" className="group block">
               <h3 className="font-bold text-primary mb-1">json::object</h3>
               <p className="text-text-secondary text-sm">Build a JSON object from key-value pairs</p>
             </Link>
-            <Link to="/docs/functions/json/serialize" className="group block level-card p-4!">
+            <Link to="/docs/functions/json/serialize" className="group block">
               <h3 className="font-bold text-primary mb-1">json::serialize</h3>
               <p className="text-text-secondary text-sm">Serialize a JSON value to a compact string</p>
             </Link>
-            <Link to="/docs/functions/json/pretty" className="group block level-card p-4!">
+            <Link to="/docs/functions/json/pretty" className="group block">
               <h3 className="font-bold text-primary mb-1">json::pretty</h3>
               <p className="text-text-secondary text-sm">Serialize a JSON value to a pretty-printed string</p>
             </Link>

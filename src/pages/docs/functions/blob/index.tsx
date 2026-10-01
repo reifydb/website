@@ -15,23 +15,23 @@ export function BlobModuleOverviewPage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Encoding Functions</h2>
           <p className="text-text-secondary mb-4">Convert between blobs and encoded string representations.</p>
           <div className="grid gap-3">
-            <Link to="/docs/functions/blob/b58" className="group block level-card p-4!">
+            <Link to="/docs/functions/blob/b58" className="group block">
               <h3 className="font-bold text-primary mb-1">blob::b58</h3>
               <p className="text-text-secondary text-sm">Encode or decode using Base58</p>
             </Link>
-            <Link to="/docs/functions/blob/b64" className="group block level-card p-4!">
+            <Link to="/docs/functions/blob/b64" className="group block">
               <h3 className="font-bold text-primary mb-1">blob::b64</h3>
               <p className="text-text-secondary text-sm">Encode or decode using Base64</p>
             </Link>
-            <Link to="/docs/functions/blob/b64url" className="group block level-card p-4!">
+            <Link to="/docs/functions/blob/b64url" className="group block">
               <h3 className="font-bold text-primary mb-1">blob::b64url</h3>
               <p className="text-text-secondary text-sm">Encode or decode using URL-safe Base64</p>
             </Link>
-            <Link to="/docs/functions/blob/hex" className="group block level-card p-4!">
+            <Link to="/docs/functions/blob/hex" className="group block">
               <h3 className="font-bold text-primary mb-1">blob::hex</h3>
               <p className="text-text-secondary text-sm">Encode or decode using hexadecimal</p>
             </Link>
-            <Link to="/docs/functions/blob/utf8" className="group block level-card p-4!">
+            <Link to="/docs/functions/blob/utf8" className="group block">
               <h3 className="font-bold text-primary mb-1">blob::utf8</h3>
               <p className="text-text-secondary text-sm">Encode or decode as UTF-8 text</p>
             </Link>

@@ -13,7 +13,7 @@ export function MetaModuleOverviewPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Functions</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Link to="/docs/functions/meta/type" className="group block level-card p-4!">
+            <Link to="/docs/functions/meta/type" className="group block">
               <h3 className="font-bold font-mono mb-1">meta::type</h3>
               <p className="text-sm text-text-secondary">Get the type name of a value as a string.</p>
             </Link>

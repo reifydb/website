@@ -24,6 +24,7 @@ export default function ExecutableSnippetLive({
       theme="reifydb"
       monacoTheme={reifydbLightTheme}
       readonly={readonly}
+      className={readonly ? 'rdb-snippet--static' : undefined}
     />
   );
 }

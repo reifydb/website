@@ -22,11 +22,12 @@ function StaticSnippet({
   initialCode,
   title,
   description,
-}: Omit<ExecutableSnippetProps, 'className' | 'readonly' | 'deferLoad'>) {
+  readonly,
+}: Omit<ExecutableSnippetProps, 'className' | 'deferLoad'>) {
   return (
-    <div className="border-2 border-[#4b52d6] bg-code-bg shadow-[0_4px_var(--color-primary-dark)] overflow-hidden">
+    <div className={readonly ? 'bg-[#f3f2fb] overflow-hidden' : 'border-2 border-[#4b52d6] bg-code-bg shadow-[0_4px_var(--color-primary-dark)] overflow-hidden'}>
       {(title || description) && (
-        <div className="px-4 py-2 border-b border-border-default bg-code-bg-elevated">
+        <div className={readonly ? 'px-4 py-2' : 'px-4 py-2 border-b border-border-default bg-code-bg-elevated'}>
           {title && (
             <div className="text-xs font-medium text-code-text-muted uppercase tracking-wider">
               {title}

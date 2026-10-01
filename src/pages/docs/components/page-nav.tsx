@@ -17,7 +17,7 @@ function PageNavCard({ entry, direction }: { entry: PageNavEntry; direction: 'pr
     <Link
       to={entry.href}
       className={cn(
-        'group level-card flex-1 min-w-0 flex flex-col',
+        'group flex-1 min-w-0 flex flex-col py-1.5',
         direction === 'next' && 'items-end text-right',
       )}
     >
