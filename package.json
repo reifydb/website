@@ -17,7 +17,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "llms": "node scripts/generate-llms.js",
-    "og": "node scripts/generate-og.mjs"
+    "og": "node scripts/generate-og.mjs",
+    "icons": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
     "@fontsource-variable/ibm-plex-sans": "^5.2.8",

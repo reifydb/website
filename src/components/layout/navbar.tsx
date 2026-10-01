@@ -78,7 +78,7 @@ export function Navbar({ mobileExtra, framed }: NavbarProps = {}) {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <img
-              src="/assets/img/logo.png"
+              src="/assets/img/logo.svg"
               alt="ReifyDB"
               className="h-7 w-auto"
             />

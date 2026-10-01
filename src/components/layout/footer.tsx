@@ -63,7 +63,7 @@ export function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center gap-2">
               <img
-                src="/assets/img/logo.png"
+                src="/assets/img/logo.svg"
                 alt="ReifyDB"
                 className="h-7 w-auto"
               />
