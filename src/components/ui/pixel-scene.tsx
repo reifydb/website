@@ -64,22 +64,16 @@ const NIGHT_TEXT = '#e6e8fd';
 const BUCKET = ['.hh.', 'h..h', 'wwww', 'bbbb', '.bb.'];
 const BUCKET_COLORS: Record<string, string> = { h: '#c9c3dc', w: '#ffffff', b: '#4b52d6' };
 const SMALL_RING = ['.TTT.', 'L...R', 'L.C.R', 'L...R', '.BBB.'];
-const LARGE_RING = [
-  '.....TTTTT.....',
-  '...TTTTTTTTT...',
-  '...TTTTTTTTT...',
-  '.LL.TTTTTTT.RR.',
-  '.LLL.......RRR.',
-  'LLLL..CCC..RRRR',
-  'LLLL.CCCCC.RRRR',
-  'LLLL.CCCCC.RRRR',
-  'LLLL.CCCCC.RRRR',
-  'LLLL..CCC..RRRR',
-  '.LLL.......RRR.',
-  '.LL.BBBBBBB.RR.',
-  '...BBBBBBBBB...',
-  '...BBBBBBBBB...',
-  '.....BBBBB.....',
+const MEDIUM_RING = [
+  '..TTTTT..',
+  '.L.TTT.R.',
+  'LL.....RR',
+  'LL.....RR',
+  'LL.....RR',
+  'LL.....RR',
+  'LL.....RR',
+  '.L.BBB.R.',
+  '..BBBBB..',
 ];
 const RING_COLORS: Record<string, string> = { T: '#3d44c9', R: '#a8acf5', B: '#7e85f2', L: '#5d64e6', C: '#262a8f' };
 const PYRAMID = [4, 3, 2, 1];
@@ -348,6 +342,32 @@ function bot(c: Context, x: number, floor: number, time: number, index: number, 
   }
 }
 
+function mascot(c: Context, x: number, floor: number, time: number, index: number, carrying: boolean, liftY?: number) {
+  const left = x - 2;
+  const y = floor - 12;
+  rect(c, left + 2, floor - 3, 2, 2, RING_COLORS.C);
+  rect(c, left + 5, floor - 3, 2, 2, RING_COLORS.C);
+  rect(c, left + 2, y + 2, 5, 5, '#ffffff');
+  ring(c, MEDIUM_RING, left, y);
+  const eyeX = left + 3 + (Math.floor(time / 2.2 + index) % 4 === 1 ? 1 : 0);
+  if ((time + index * 0.9) % 3.2 < 0.15) {
+    rect(c, eyeX, y + 4, 1, 1, RING_COLORS.C);
+    rect(c, eyeX + 2, y + 4, 1, 1, RING_COLORS.C);
+  } else {
+    rect(c, eyeX, y + 3, 1, 3, RING_COLORS.C);
+    rect(c, eyeX + 2, y + 3, 1, 3, RING_COLORS.C);
+  }
+  if (carrying) {
+    rect(c, left + 3, y - 4, 3, 4, '#ffffff');
+    rect(c, left + 3, y - 3, 3, 1, PRIMARY);
+    rect(c, left + 3, y - 1, 2, 1, LINE);
+  }
+  if (liftY !== undefined) {
+    rect(c, left + 9, liftY, 1, floor - 7 - liftY, LINE);
+    rect(c, left + 8, liftY - 1, 3, 1, '#ffffff');
+  }
+}
+
 function stall(c: Context, left: number, floor: number, index: number, flash: boolean, ticket: boolean) {
   const top = floor - 15;
   const awning = AWNING_COLORS[index % 4];
@@ -410,6 +430,10 @@ function hall(c: Context, width: number, height: number, time: number) {
 
   const dropX = boardLeft + 33;
   const stallCenter = (trade: number) => stallXs[stallOf(trade)] + 8;
+  const handoffX = (from: number) => (from < dropX ? dropX - 9 : dropX + 11);
+  const liftElapsed = time - currentTrade * TRADE_PERIOD;
+  const lifting = liftElapsed >= 1.4 && liftElapsed < 1.75;
+  mascot(c, dropX, floor, time, 2, false, lifting ? boardTop + 3 + tradedRowOf(currentTrade) * ROW_HEIGHT + 3 : undefined);
   for (let botIndex = 0; botIndex < 2; botIndex++) {
     const lap = Math.floor((time - botIndex * TRADE_PERIOD) / (2 * TRADE_PERIOD));
     if (lap < 0) {
@@ -419,15 +443,16 @@ function hall(c: Context, width: number, height: number, time: number) {
     const trade = 2 * lap + botIndex;
     const elapsed = time - trade * TRADE_PERIOD;
     const from = stallCenter(trade) - 2;
+    const handoff = handoffX(from);
     if (elapsed < 0.25) {
       bot(c, from, floor, time, botIndex, false);
     } else if (elapsed < 1.4) {
-      bot(c, lerp(from, dropX, ease((elapsed - 0.25) / 1.15)), floor, time, botIndex, true);
+      bot(c, lerp(from, handoff, ease((elapsed - 0.25) / 1.15)), floor, time, botIndex, true);
     } else if (elapsed < 1.75) {
-      bot(c, dropX, floor, time, botIndex, false, boardTop + 3 + tradedRowOf(trade) * ROW_HEIGHT + 3);
+      bot(c, handoff, floor, time, botIndex, false);
     } else {
       const next = stallCenter(trade + 2) - 2;
-      bot(c, lerp(dropX, next, ease((elapsed - 1.75) / (2 * TRADE_PERIOD - 1.75))), floor, time, botIndex, false);
+      bot(c, lerp(handoff, next, ease((elapsed - 1.75) / (2 * TRADE_PERIOD - 1.75))), floor, time, botIndex, false);
     }
   }
 
@@ -461,7 +486,7 @@ function compare(c: Context, width: number, height: number, time: number, mode: 
   const elapsed = time - market.lastFlipTime;
   if (mode === 'incremental') {
     const liftY = elapsed >= 0 && elapsed < 0.45 ? boardTop + 3 + market.lastTradedRow * ROW_HEIGHT + 3 : undefined;
-    bot(c, boardLeft + 33, floor, time, 0, false, liftY);
+    mascot(c, boardLeft + 33, floor, time, 0, false, liftY);
     ring(c, SMALL_RING, boardLeft + BOARD_WIDTH - 6, boardTop + BOARD_HEIGHT + 1);
     return;
   }
@@ -579,7 +604,8 @@ function stack(c: Context, width: number, height: number, time: number) {
     const pop = Math.min(1, (t - i * ARRIVAL_GAP) / 0.3);
     stall(c, huts[i], floor - Math.round((1 - ease(pop)) * 6), i, pop < 1 || hits.has(i), hits.has(i));
   }
-  bots.forEach((b, index) => bot(c, b.x, floor, time, index, b.carrying));
+  const worker = t >= FOLD_START ? mascot : bot;
+  bots.forEach((b, index) => worker(c, b.x, floor, time, index, b.carrying));
   shelterFront(c, shelterLeft, shelterRight, floor, fold);
 
   const folded = t >= FOLD_START;
@@ -660,9 +686,8 @@ function lane(
 
   stall(c, appLeft, floor, index, false, false);
   const hit = moving && phase >= 0.5 && phase < 0.62;
-  if (index === 1) ring(c, LARGE_RING, dbLeft + 2, floor - 15, hit ? SPARK : NIGHT_TEXT);
-  else database(c, dbLeft, floor, hit);
-  bot(c, x, floor, time, index, false);
+  database(c, dbLeft, floor, hit);
+  (index === 1 ? mascot : bot)(c, x, floor, time, index, false);
   if (outbound) buckets(c, x, floor, stack);
 
   const count = `${done}/${trips}`;
@@ -743,7 +768,7 @@ function invaders(c: Context, width: number, height: number, time: number) {
       rect(c, botX + 2, boltY, 1, 3, '#ffe08a');
     }
   }
-  bot(c, botX, floor, time, 0, false);
+  mascot(c, botX, floor, time, 0, false);
 
   const margin = Math.max(4, Math.round(width * 0.04));
   const kills = wave * INVADERS.length + KILL_ORDER.filter((i) => t >= killTime(i)).length;
@@ -809,7 +834,7 @@ function noticeBoard(c: Context, width: number, height: number, time: number, co
   for (let i = 0; i < newest; i++) note(c, slotX(i), slotY, label(i), pin(i), false);
 
   const t = time % NOTICE_LOOP;
-  const head = floor - 7;
+  const head = floor - 12;
   const standX = slotX(newest) + 2;
   const carryLift = head - 2;
   const pinLift = slotY + NOTE_HEIGHT + 1;
@@ -821,7 +846,7 @@ function noticeBoard(c: Context, width: number, height: number, time: number, co
   if (t < liftEnd) {
     const x = t < walkEnd ? lerp(-10, standX, ease(t / walkEnd)) : standX;
     const lift = t < walkEnd ? carryLift : lerp(carryLift, pinLift, ease((t - walkEnd) / (liftEnd - walkEnd)));
-    bot(c, x, floor, time, 0, false, lift);
+    mascot(c, x, floor, time, 0, false, lift);
     note(c, x - 2, lift - 1 - NOTE_HEIGHT, label(newest), pin(newest), true);
     return;
   }
@@ -829,9 +854,9 @@ function noticeBoard(c: Context, width: number, height: number, time: number, co
   note(c, slotX(newest), slotY, label(newest), pin(newest), true);
   sparkle(c, slotX(newest) + NOTE_WIDTH, slotY - 1, time);
   if (t < lowerEnd) {
-    bot(c, standX, floor, time, 0, false, lerp(pinLift, carryLift, ease((t - liftEnd) / (lowerEnd - liftEnd))));
+    mascot(c, standX, floor, time, 0, false, lerp(pinLift, carryLift, ease((t - liftEnd) / (lowerEnd - liftEnd))));
   } else if (t < leaveEnd) {
-    bot(c, lerp(standX, width + 10, ease((t - lowerEnd) / (leaveEnd - lowerEnd))), floor, time, 0, false);
+    mascot(c, lerp(standX, width + 10, ease((t - lowerEnd) / (leaveEnd - lowerEnd))), floor, time, 0, false);
   }
 }
 
@@ -853,6 +878,12 @@ function booth(c: Context, width: number, height: number, time: number) {
   const t = time % SERVE_LOOP;
   const serve = Math.floor(time / SERVE_LOOP);
   stall(c, boothLeft, floor, 2, false, false);
+  c.save();
+  c.beginPath();
+  c.rect(boothLeft + 2, floor - 11, 12, 4);
+  c.clip();
+  mascot(c, boothLeft + 6, floor - 1, time, 0, false);
+  c.restore();
   ring(c, SMALL_RING, boothLeft + 5, floor - 5);
   caption(c, 'INFO', boothLeft + 1, floor - 21, INK);
   if (t < ANSWER_END) bubble(c, boothLeft + 5, floor - 30, '!', PRIMARY);
@@ -899,7 +930,7 @@ function kart(c: Context, x: number, floor: number, time: number) {
 }
 
 function crew(c: Context, x: number, floor: number, time: number, liftY: number) {
-  bot(c, x, floor, time, 1, false);
+  mascot(c, x + 2, floor, time, 1, false);
   rect(c, x - 1, liftY, 1, floor - 6 - liftY, LINE);
   rect(c, x - 3, liftY - 1, 3, 2, '#9a96b8');
 }
@@ -993,7 +1024,11 @@ function paperPlane(c: Context, width: number, height: number, time: number) {
   const glowEnd = 5;
   const lit = t >= landEnd && t < glowEnd;
   house(c, houseLeft, floor, lit);
-  if (lit) sparkle(c, houseLeft + 16, floor - 12, time);
+  if (lit) {
+    sparkle(c, houseLeft + 16, floor - 12, time);
+    const out = ease(Math.min(t - landEnd, glowEnd - t) / 0.5);
+    mascot(c, Math.round(lerp(houseLeft + 3, houseLeft - 10, out)), floor, time, 1, false);
+  }
 
   const raised = floor - 13;
   const rest = floor - 6;
@@ -1070,17 +1105,19 @@ function build(c: Context, width: number, height: number, time: number) {
   const buildEnd = popEnd + cells.length * DROP_TIME;
   const clearStart = buildEnd + 0.6;
   const raised = floor - 14;
+  const thinkerX = botX - 12;
   signpost(c, buildLeft + 18, floor);
-  bot(c, botX, floor, time, 0, false, t >= popEnd && t < buildEnd ? raised : undefined);
+  bot(c, thinkerX, floor, time, 1, false);
+  mascot(c, botX, floor, time, 0, false, t >= popEnd && t < buildEnd ? raised : undefined);
 
   if (t < clearStart) {
-    rect(c, botX - 2, floor - 13, 1, 1, '#ffffff');
-    if (t >= 0.2) rect(c, botX - 5, floor - 17, 2, 2, '#ffffff');
-    if (t >= 0.4) thought(c, botX - 18, floor - 29, shape);
+    rect(c, thinkerX - 2, floor - 13, 1, 1, '#ffffff');
+    if (t >= 0.2) rect(c, thinkerX - 5, floor - 17, 2, 2, '#ffffff');
+    if (t >= 0.4) thought(c, thinkerX - 18, floor - 29, shape);
   }
 
   const blink = t >= clearStart && Math.floor(t * 8) % 2 === 0;
-  const handX = botX + 4;
+  const handX = botX + 6;
   const handY = raised - 5;
   cells.forEach(({ r, col }, i) => {
     const start = popEnd + i * DROP_TIME;
@@ -1171,7 +1208,7 @@ function trade(c: Context, width: number, height: number, time: number) {
     if (u >= shakeEnd && u < crossEnd && Math.floor(time * 6) % 2 === 0) cross(c, hoverX + 8, hoverY + 12);
   }
   signpost(c, botX + 25, floor);
-  bot(c, botX + shake, floor, time, 0, false);
+  mascot(c, botX + shake, floor, time, 0, false);
 
   const middle = (GEM_COLORS.length - 1) / 2;
   GEM_COLORS.forEach((color, i) => {
@@ -1370,10 +1407,10 @@ function runner(c: Context, width: number, height: number, time: number) {
   }
 
   if (botFloor === floor) {
-    bot(c, botX, floor - 1, time, 0, false);
+    mascot(c, botX, floor - 1, time, 0, false);
     rect(c, botX + (Math.floor(time * 8) % 2 ? 0 : 3), floor - 2, 2, 1, '#3f3b99');
   } else {
-    bot(c, botX, Math.round(botFloor), time, 0, false);
+    mascot(c, botX, Math.round(botFloor), time, 0, false);
   }
 }
 
@@ -1494,6 +1531,8 @@ function library(c: Context, width: number, height: number, time: number) {
 
   bookshelf(c, shelfLeft, floor, t < pushEnd ? shelf : -1, slot);
   bot(c, botX, floor, time, 0, false);
+  const fetching = t < flyEnd || (t >= closeEnd && t < pushEnd);
+  mascot(c, center - 6, floor, time, 1, false, fetching ? floor - 20 : undefined);
 
   if (t < pullEnd || (t >= backEnd && t < pushEnd)) {
     const u = t < pullEnd ? t / PULL_TIME : 1 - (t - backEnd) / PULL_TIME;
@@ -1583,7 +1622,7 @@ function arcade(c: Context, width: number, height: number, time: number) {
     bubble(c, openX, floor - 14, '?', INK);
   }
 
-  bot(c, playerX, floor - 5, time, 0, false);
+  mascot(c, playerX, floor - 5, time, 0, false);
 }
 
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
