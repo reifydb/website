@@ -20,11 +20,11 @@ insert tf_join::departments [
 from tf_join::employees
 inner join { from tf_join::departments } as d using (dept_id, d.id)
 map { id, name, department: d_name }`,
-    expected: `id | name  | department
----+-------+------------
-3  | Linus | Engineering
-2  | Grace | Marketing
-1  | Ada   | Engineering`,
+    expected: `id | name  | department  | #rownum
+---+-------+-------------+--------
+3  | Linus | Engineering | 1
+2  | Grace | Marketing   | 2
+1  | Ada   | Engineering | 3`,
   };
 
 export const joinLeftExample: CodeExample = {
@@ -33,12 +33,12 @@ export const joinLeftExample: CodeExample = {
     code: `from tf_join::employees
 left join { from tf_join::departments } as d using (dept_id, d.id)
 map { id, name, department: d_name }`,
-    expected: `id | name  | department
----+-------+------------
-4  | Ken   | ⟪none⟫
-3  | Linus | Engineering
-2  | Grace | Marketing
-1  | Ada   | Engineering`,
+    expected: `id | name  | department  | #rownum
+---+-------+-------------+--------
+4  | Ken   | ⟪none⟫      | 1
+3  | Linus | Engineering | 2
+2  | Grace | Marketing   | 3
+1  | Ada   | Engineering | 4`,
   };
 
 export const joinFlattenedColumnsExample: CodeExample = {
@@ -46,12 +46,12 @@ export const joinFlattenedColumnsExample: CodeExample = {
     title: 'What the Joined Row Looks Like',
     code: `from tf_join::employees
 left join { from tf_join::departments } as d using (dept_id, d.id)`,
-    expected: `id | name  | dept_id | d_id   | d_name
----+-------+---------+--------+------------
-4  | Ken   | 9       | ⟪none⟫ | ⟪none⟫
-3  | Linus | 1       | 1      | Engineering
-2  | Grace | 2       | 2      | Marketing
-1  | Ada   | 1       | 1      | Engineering`,
+    expected: `id | name  | dept_id | d_id   | d_name      | #rownum
+---+-------+---------+--------+-------------+--------
+4  | Ken   | 9       | ⟪none⟫ | ⟪none⟫      | 1
+3  | Linus | 1       | 1      | Engineering | 2
+2  | Grace | 2       | 2      | Marketing   | 3
+1  | Ada   | 1       | 1      | Engineering | 4`,
   };
 
 export const joinDotAccessExample: CodeExample = {
@@ -69,11 +69,11 @@ export const joinDefaultIsInnerExample: CodeExample = {
     code: `from tf_join::employees
 join { from tf_join::departments } as d using (dept_id, d.id)
 map { id, name, department: d_name }`,
-    expected: `id | name  | department
----+-------+------------
-3  | Linus | Engineering
-2  | Grace | Marketing
-1  | Ada   | Engineering`,
+    expected: `id | name  | department  | #rownum
+---+-------+-------------+--------
+3  | Linus | Engineering | 1
+2  | Grace | Marketing   | 2
+1  | Ada   | Engineering | 3`,
   };
 
 export const joinAggregateExample: CodeExample = {
@@ -107,10 +107,10 @@ insert tf_join::prices [
 from tf_join::stock
 inner join { from tf_join::prices } as p using (sku, p.sku) and (warehouse, p.warehouse)
 map { sku, warehouse, value: qty * p_price }`,
-    expected: `sku | warehouse | value
-----+-----------+------
-A1  | west      | 22
-A1  | east      | 50`,
+    expected: `sku | warehouse | value | #rownum
+----+-----------+-------+--------
+A1  | west      | 22    | 1
+A1  | east      | 50    | 2`,
   };
 
 export const joinOrKeysExample: CodeExample = {
@@ -119,15 +119,15 @@ export const joinOrKeysExample: CodeExample = {
     code: `from tf_join::stock
 inner join { from tf_join::prices } as p using (sku, p.sku) or (warehouse, p.warehouse)
 map { sku, warehouse, p_sku, p_warehouse }`,
-    expected: `sku | warehouse | p_sku | p_warehouse
-----+-----------+-------+------------
-B2  | east      | B2    | west
-B2  | east      | A1    | east
-A1  | west      | B2    | west
-A1  | west      | A1    | west
-A1  | west      | A1    | east
-A1  | east      | A1    | west
-A1  | east      | A1    | east`,
+    expected: `sku | warehouse | p_sku | p_warehouse | #rownum
+----+-----------+-------+-------------+--------
+B2  | east      | B2    | west        | 1
+B2  | east      | A1    | east        | 2
+A1  | west      | B2    | west        | 3
+A1  | west      | A1    | west        | 4
+A1  | west      | A1    | east        | 5
+A1  | east      | A1    | west        | 6
+A1  | east      | A1    | east        | 7`,
   };
 
 export const joinNaturalExample: CodeExample = {
@@ -141,11 +141,11 @@ insert tf_join::salaries [
 ];
 from tf_join::employees
 natural join { from tf_join::salaries } as s`,
-    expected: `id | name  | dept_id | s_amount
----+-------+---------+---------
-3  | Linus | 1       | 110
-2  | Grace | 2       | 95
-1  | Ada   | 1       | 120`,
+    expected: `id | name  | dept_id | s_amount | #rownum
+---+-------+---------+----------+--------
+3  | Linus | 1       | 110      | 1
+2  | Grace | 2       | 95       | 2
+1  | Ada   | 1       | 120      | 3`,
   };
 
 export const joinNaturalLeftExample: CodeExample = {
@@ -154,12 +154,12 @@ export const joinNaturalLeftExample: CodeExample = {
     code: `from tf_join::employees
 natural left join { from tf_join::salaries } as s
 map { id, name, amount: s_amount }`,
-    expected: `id | name  | amount
----+-------+-------
-4  | Ken   | ⟪none⟫
-3  | Linus | 110
-2  | Grace | 95
-1  | Ada   | 120`,
+    expected: `id | name  | amount | #rownum
+---+-------+--------+--------
+4  | Ken   | ⟪none⟫ | 1
+3  | Linus | 110    | 2
+2  | Grace | 95     | 3
+1  | Ada   | 120    | 4`,
   };
 
 export const rqlTransformsJoinExamples: CodeExample[] = [

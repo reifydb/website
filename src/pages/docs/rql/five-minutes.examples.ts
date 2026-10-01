@@ -7,12 +7,12 @@ export const rql5PipelineExample: CodeExample = {
 filter { active == true }
 map { name, email }
 sort { name: asc }`,
-    expected: `name  | email
-------+------------------
-Alice | alice@example.com
-Bob   | bob@example.com
-David | david@example.com
-Eve   | eve@example.com`,
+    expected: `name  | email             | #rownum
+------+-------------------+--------
+Alice | alice@example.com | 1
+Bob   | bob@example.com   | 2
+David | david@example.com | 4
+Eve   | eve@example.com   | 5`,
   };
 
 export const rql5InlineExample: CodeExample = {
@@ -100,11 +100,11 @@ from app::users
 filter { age >= $threshold }
 map { name, age }
 sort { age: desc }`,
-    expected: `name  | age
-------+----
-Carol | 35
-Eve   | 32
-Alice | 30`,
+    expected: `name  | age | #rownum
+------+-----+--------
+Carol | 35  | 3
+Eve   | 32  | 5
+Alice | 30  | 1`,
   };
 
 export const rqlFiveMinutesExamples: CodeExample[] = [

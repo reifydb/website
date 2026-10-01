@@ -15,11 +15,11 @@ insert cpt_none::people [
   { id: 3, name: "Alan", nickname: none }
 ];
 from cpt_none::people sort { id: asc }`,
-    expected: `id | name  | nickname
----+-------+---------
-1  | Ada   | Al
-2  | Grace | ⟪none⟫
-3  | Alan  | ⟪none⟫`,
+    expected: `id | name  | nickname | #rownum
+---+-------+----------+--------
+1  | Ada   | Al       | 1
+2  | Grace | ⟪none⟫   | 2
+3  | Alan  | ⟪none⟫   | 3`,
   };
 
 export const conceptsNoneRequiredRejectsExample: CodeExample = {
@@ -69,10 +69,10 @@ export const conceptsNoneIsNoneExample: CodeExample = {
 filter { is::none(nickname) }
 map { name }
 sort { name: asc }`,
-    expected: `name
------
-Alan
-Grace`,
+    expected: `name  | #rownum
+------+--------
+Alan  | 3
+Grace | 2`,
   };
 
 export const conceptsNoneFilterDropsExample: CodeExample = {
@@ -106,11 +106,11 @@ export const conceptsNoneReplaceExample: CodeExample = {
     code: `from cpt_none::people
 map { name, nickname: match { is::none(nickname) => "(no nickname)", else => nickname } }
 sort { name: asc }`,
-    expected: `name  | nickname
-------+--------------
-Ada   | Al
-Alan  | (no nickname)
-Grace | (no nickname)`,
+    expected: `name  | nickname      | #rownum
+------+---------------+--------
+Ada   | Al            | 1
+Alan  | (no nickname) | 3
+Grace | (no nickname) | 2`,
   };
 
 export const conceptsNoneClearExample: CodeExample = {
@@ -118,11 +118,11 @@ export const conceptsNoneClearExample: CodeExample = {
     title: 'Clear a Value by Writing none',
     code: `update cpt_none::people { nickname: none } filter { name == "Ada" };
 from cpt_none::people map { name, nickname } sort { name: asc }`,
-    expected: `name  | nickname
-------+---------
-Ada   | ⟪none⟫
-Alan  | ⟪none⟫
-Grace | ⟪none⟫`,
+    expected: `name  | nickname | #rownum
+------+----------+--------
+Ada   | ⟪none⟫   | 1
+Alan  | ⟪none⟫   | 3
+Grace | ⟪none⟫   | 2`,
   };
 
 export const conceptsNoneLeftJoinExample: CodeExample = {
@@ -134,11 +134,11 @@ from cpt_none::people
 left join { from cpt_none::phones } as p using (id, p.person_id)
 map { name, phone: p_phone }
 sort { name: asc }`,
-    expected: `name  | phone
-------+---------
-Ada   | 555-0100
-Alan  | ⟪none⟫
-Grace | ⟪none⟫`,
+    expected: `name  | phone    | #rownum
+------+----------+--------
+Ada   | 555-0100 | 3
+Alan  | ⟪none⟫   | 1
+Grace | ⟪none⟫   | 2`,
   };
 
 export const conceptsNoneJoinMissingExample: CodeExample = {
@@ -149,10 +149,10 @@ left join { from cpt_none::phones } as p using (id, p.person_id)
 filter { is::none(p_phone) }
 map { name }
 sort { name: asc }`,
-    expected: `name
------
-Alan
-Grace`,
+    expected: `name  | #rownum
+------+--------
+Alan  | 1
+Grace | 2`,
   };
 
 export const conceptsNoneAggregatesExample: CodeExample = {

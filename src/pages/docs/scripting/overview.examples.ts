@@ -30,10 +30,10 @@ for $row in $rows {
   }
 };
 from scr::flagged sort { id: asc }`,
-    expected: `id | total
----+------
-2  | 250
-3  | 120`,
+    expected: `id | total | #rownum
+---+-------+--------
+2  | 250   | 2
+3  | 120   | 1`,
   };
 
 export const scriptingAssertExample: CodeExample = {
@@ -42,10 +42,10 @@ export const scriptingAssertExample: CodeExample = {
     code: `from scr::flagged
 | assert { total > 100 } "only large orders are flagged"
 | map { id, total }`,
-    expected: `id | total
----+------
-2  | 250
-3  | 120`,
+    expected: `id | total | #rownum
+---+-------+--------
+2  | 250   | 2
+3  | 120   | 1`,
   };
 
 export const scriptingTestExample: CodeExample = {

@@ -27,11 +27,11 @@ export const insScanExample: CodeExample = {
     id: 'scripting-insert-scan',
     title: 'All Rows Are There',
     code: `from ins::users sort { id: asc }`,
-    expected: `id | name  | active
----+-------+-------
-1  | ada   | true
-2  | grace | true
-3  | alan  | false`,
+    expected: `id | name  | active | #rownum
+---+-------+--------+--------
+1  | ada   | true   | 1
+2  | grace | true   | 2
+3  | alan  | false  | 3`,
   };
 
 export const insReturningExample: CodeExample = {
@@ -39,9 +39,9 @@ export const insReturningExample: CodeExample = {
     title: 'Get the Inserted Rows Back',
     code: `insert ins::users [{ id: 4, name: "edsger", active: true }]
 returning { id, name }`,
-    expected: `id | name
----+-------
-4  | edsger`,
+    expected: `id | name   | #rownum
+---+--------+--------
+4  | edsger | 4`,
   };
 
 export const insAutoIncrementExample: CodeExample = {
@@ -50,10 +50,10 @@ export const insAutoIncrementExample: CodeExample = {
     code: `create table ins::tickets { id: int8 with { auto_increment }, title: utf8 };
 insert ins::tickets [{ title: "first" }, { title: "second" }]
 returning { id, title }`,
-    expected: `id | title
----+-------
-1  | first
-2  | second`,
+    expected: `id | title  | #rownum
+---+--------+--------
+1  | first  | 1
+2  | second | 2`,
   };
 
 export const insOptionalExample: CodeExample = {
@@ -66,11 +66,11 @@ insert ins::contacts [
   { id: 3, name: "alan" }
 ];
 from ins::contacts sort { id: asc }`,
-    expected: `id | name  | email
----+-------+----------------
-1  | ada   | ada@example.com
-2  | grace | ⟪none⟫
-3  | alan  | ⟪none⟫`,
+    expected: `id | name  | email           | #rownum
+---+-------+-----------------+--------
+1  | ada   | ada@example.com | 1
+2  | grace | ⟪none⟫          | 2
+3  | alan  | ⟪none⟫          | 3`,
   };
 
 export const insMissingRequiredExample: CodeExample = {

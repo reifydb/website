@@ -45,10 +45,10 @@ for $item in $items {
   }
 };
 from cf_for::restock sort { id: asc }`,
-    expected: `id | qty
----+----
-1  | 2
-3  | 4`,
+    expected: `id | qty | #rownum
+---+-----+--------
+1  | 2   | 2
+3  | 4   | 1`,
   };
 
 export const rqlControlFlowForExamples: CodeExample[] = [

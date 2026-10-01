@@ -19,13 +19,13 @@ export const faqBareFromOrderExample: CodeExample = {
   id: 'faq-bare-from-order',
   title: 'Scanning a Table with No sort',
   code: `from app::orders`,
-  expected: `id | total  | status    | region | created_at                     | order_date
----+--------+-----------+--------+--------------------------------+-----------
-5  | 320.75 | pending   | North  | 2024-05-12T16:00:00.000000000Z | 2024-05-12
-4  | 55.25  | completed | West   | 2024-04-05T11:30:00.000000000Z | 2024-04-05
-3  | 245    | completed | East   | 2024-03-10T09:15:00.000000000Z | 2024-03-10
-2  | 89.99  | pending   | South  | 2024-02-20T14:00:00.000000000Z | 2024-02-20
-1  | 150.5  | completed | North  | 2024-01-15T10:30:00.000000000Z | 2024-01-15`,
+  expected: `id | total  | status    | region | created_at                     | order_date | #rownum
+---+--------+-----------+--------+--------------------------------+------------+--------
+5  | 320.75 | pending   | North  | 2024-05-12T16:00:00.000000000Z | 2024-05-12 | 5
+4  | 55.25  | completed | West   | 2024-04-05T11:30:00.000000000Z | 2024-04-05 | 4
+3  | 245    | completed | East   | 2024-03-10T09:15:00.000000000Z | 2024-03-10 | 3
+2  | 89.99  | pending   | South  | 2024-02-20T14:00:00.000000000Z | 2024-02-20 | 2
+1  | 150.5  | completed | North  | 2024-01-15T10:30:00.000000000Z | 2024-01-15 | 1`,
 };
 
 export const faqExamples: CodeExample[] = [

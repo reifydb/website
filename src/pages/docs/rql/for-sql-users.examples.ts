@@ -7,10 +7,10 @@ export const rqlsqlSelectExample: CodeExample = {
 filter { role == "admin" }
 map { name, email }
 sort { name: asc }`,
-    expected: `name  | email
-------+------------------
-Alice | alice@example.com
-David | david@example.com`,
+    expected: `name  | email             | #rownum
+------+-------------------+--------
+Alice | alice@example.com | 1
+David | david@example.com | 4`,
   };
 
 export const rqlsqlGroupbyExample: CodeExample = {

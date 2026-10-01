@@ -55,10 +55,10 @@ export const svoDeferredReadExample: CodeExample = {
     id: 'svo-deferred-read',
     title: 'Deferred Views Backfill',
     code: `from svo::open_deferred`,
-    expected: `id | total
----+------
-2  | 75
-1  | 40`,
+    expected: `id | total | #rownum
+---+-------+--------
+2  | 75    | 2
+1  | 40    | 1`,
   };
 
 export const svoTransactionalExample: CodeExample = {

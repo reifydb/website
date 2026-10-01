@@ -34,10 +34,10 @@ CALL pr_cf::classify(5);
 CALL pr_cf::classify(15);
 FROM pr_cf::results
 sort { id: asc }`,
-    expected: `id | label
----+------
-5  | low
-15 | high`,
+    expected: `id | label | #rownum
+---+-------+--------
+5  | low   | 1
+15 | high  | 2`,
   };
 
 export const spCfElseIfExample: CodeExample = {
@@ -63,9 +63,9 @@ create procedure sp_cf::record_positive { n: int4 } as {
 };
 call sp_cf::record_positive(-5);
 call sp_cf::record_positive(7)`,
-    expected: `n
--
-7`,
+    expected: `n | #rownum
+--+--------
+7 | 1`,
   };
 
 export const scriptingProcedureWhileExample: CodeExample = {
@@ -83,11 +83,11 @@ CREATE PROCEDURE pr_w::fill AS {
 CALL pr_w::fill();
 FROM pr_w::numbers
 sort { val: asc }`,
-    expected: `val
----
-1
-2
-3`,
+    expected: `val | #rownum
+----+--------
+1   | 1
+2   | 2
+3   | 3`,
   };
 
 export const spCfForSeriesExample: CodeExample = {
@@ -99,11 +99,11 @@ create procedure sp_cf::reserve { count: int4 } as {
   from sp_cf::slots sort { slot: asc }
 };
 call sp_cf::reserve(3)`,
-    expected: `slot
-----
-1
-2
-3`,
+    expected: `slot | #rownum
+-----+--------
+1    | 1
+2    | 2
+3    | 3`,
   };
 
 export const spCfForFrameExample: CodeExample = {
@@ -211,11 +211,11 @@ export const spCfLoopCallExample: CodeExample = {
     code: `let $rows = from sp_cf::lines;
 for $row in $rows { call sp_cf::record_positive($row.qty) };
 from sp_cf::audit sort { n: asc }`,
-    expected: `n
--
-1
-2
-7`,
+    expected: `n | #rownum
+--+--------
+1 | 2
+2 | 3
+7 | 1`,
   };
 
 export const scriptingProceduresControlFlowExamples: CodeExample[] = [

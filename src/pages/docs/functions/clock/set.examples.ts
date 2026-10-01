@@ -4,9 +4,9 @@ export const clockSetBasicExample: CodeExample = {
   id: 'clock-set-basic',
   title: 'Set the Mock Clock to an Absolute Point',
   code: `call clock::set(duration::days(1))`,
-  expected: `clock
-------------------------------
-1970-01-02T00:00:00.000000000Z`,
+  expected: `clock                          | #rownum
+-------------------------------+--------
+1970-01-02T00:00:00.000000000Z | 1`,
 };
 
 export const clockSetThenNowExample: CodeExample = {

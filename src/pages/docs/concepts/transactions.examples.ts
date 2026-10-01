@@ -12,10 +12,10 @@ insert txn::accounts [
 update txn::accounts { balance: 75 } filter { owner == "ada" };
 update txn::accounts { balance: 75 } filter { owner == "grace" };
 from txn::accounts sort { id: asc }`,
-    expected: `id | owner | balance
----+-------+--------
-1  | ada   | 75
-2  | grace | 75`,
+    expected: `id | owner | balance | #rownum
+---+-------+---------+--------
+1  | ada   | 75      | 1
+2  | grace | 75      | 2`,
   };
 
 export const txnRollbackErrorExample: CodeExample = {
@@ -31,19 +31,20 @@ export const txnRollbackVerifyExample: CodeExample = {
     id: 'txn-rollback-verify',
     title: 'Nothing Was Applied',
     code: `from txn::accounts sort { id: asc }`,
-    expected: `id | owner | balance
----+-------+--------
-1  | ada   | 75
-2  | grace | 75`,
+    expected: `id | owner | balance | #rownum
+---+-------+---------+--------
+1  | ada   | 75      | 1
+2  | grace | 75      | 2`,
   };
 
 export const txnViewSetupExample: CodeExample = {
     id: 'txn-view-setup',
     title: 'A Transactional View over a Table',
     code: `create table txn::orders { id: int4, total: int8 };
-create transactional view txn::revenue { revenue: int8 } as {
+create transactional view txn::big_orders { id: int4, total: int8 } as {
   from txn::orders
-  aggregate { revenue: math::sum(total) } by {}
+  filter { total >= 30 }
+  map { id, total }
 }`,
   };
 
@@ -59,28 +60,22 @@ txn       | orders | 2`,
 export const txnViewReadExample: CodeExample = {
     id: 'txn-view-read',
     title: 'The View Committed with the Write',
-    code: `from txn::revenue`,
-    expected: `revenue
--------
-65`,
+    code: `from txn::big_orders`,
+    expected: `id | total | #rownum
+---+-------+--------
+1  | 40    | 1`,
   };
 
 export const txnViewReadAfterWriteExample: CodeExample = {
     id: 'txn-view-read-after-write',
     title: 'Write Then Read the View in One Request',
-    description: 'The insert dirties the view\'s source, so the read fails with TXN_015 and the whole request rolls back.',
-    code: `insert txn::orders [{ id: 3, total: 10 }];
-from txn::revenue`,
-    expectsError: true,
-  };
-
-export const txnViewUnchangedExample: CodeExample = {
-    id: 'txn-view-unchanged',
-    title: 'The Failed Request Left Nothing Behind',
-    code: `from txn::revenue`,
-    expected: `revenue
--------
-65`,
+    description: 'The read sees the order inserted earlier in the same request.',
+    code: `insert txn::orders [{ id: 3, total: 50 }];
+from txn::big_orders`,
+    expected: `id | total | #rownum
+---+-------+--------
+3  | 50    | 3
+1  | 40    | 1`,
   };
 
 export const txnDeferredSetupExample: CodeExample = {
@@ -109,7 +104,6 @@ export const conceptsTransactionsExamples: CodeExample[] = [
   txnViewWriteExample,
   txnViewReadExample,
   txnViewReadAfterWriteExample,
-  txnViewUnchangedExample,
   txnDeferredSetupExample,
   txnDeferredReadAfterWriteExample,
 ];

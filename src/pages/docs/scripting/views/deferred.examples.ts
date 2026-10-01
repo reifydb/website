@@ -24,10 +24,10 @@ export const svdBackfillReadExample: CodeExample = {
     id: 'svd-backfill-read',
     title: 'Backfilled from the Existing Rows',
     code: `from svd::open_orders`,
-    expected: `id | customer | total
----+----------+------
-2  | grace    | 75
-1  | ada      | 40`,
+    expected: `id | customer | total | #rownum
+---+----------+-------+--------
+2  | grace    | 75    | 2
+1  | ada      | 40    | 1`,
   };
 
 export const svdInsertExample: CodeExample = {
@@ -85,11 +85,11 @@ export const svdAggregateReadExample: CodeExample = {
     id: 'svd-aggregate-read',
     title: 'Totals per Customer',
     code: `from svd::spend sort { customer: asc }`,
-    expected: `customer | total
----------+------
-ada      | 60
-grace    | 75
-linus    | 90`,
+    expected: `customer | total | #rownum
+---------+-------+--------
+ada      | 60    | 1
+grace    | 75    | 2
+linus    | 90    | 3`,
   };
 
 export const svdJoinExample: CodeExample = {
@@ -117,11 +117,11 @@ export const svdJoinReadExample: CodeExample = {
     id: 'svd-join-read',
     title: 'Unmatched Rows Carry none',
     code: `from svd::directory sort { emp_id: asc }`,
-    expected: `emp_id | emp_name | department
--------+----------+------------
-101    | Alice    | Engineering
-102    | Bob      | Sales
-103    | Carol    | ⟪none⟫`,
+    expected: `emp_id | emp_name | department  | #rownum
+-------+----------+-------------+--------
+101    | Alice    | Engineering | 1
+102    | Bob      | Sales       | 2
+103    | Carol    | ⟪none⟫      | 3`,
   };
 
 export const svdJoinRightInsertExample: CodeExample = {
@@ -137,11 +137,11 @@ export const svdJoinRightReadExample: CodeExample = {
     id: 'svd-join-right-read',
     title: 'Carol Now Has a Department',
     code: `from svd::directory sort { emp_id: asc }`,
-    expected: `emp_id | emp_name | department
--------+----------+------------
-101    | Alice    | Engineering
-102    | Bob      | Sales
-103    | Carol    | Support`,
+    expected: `emp_id | emp_name | department  | #rownum
+-------+----------+-------------+--------
+101    | Alice    | Engineering | 1
+102    | Bob      | Sales       | 2
+103    | Carol    | Support     | 4`,
   };
 
 export const svdChainExample: CodeExample = {

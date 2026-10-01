@@ -47,9 +47,9 @@ export const dmEventsEffectExample: CodeExample = {
     id: 'dm-events-effect',
     title: 'The Handler Already Wrote Its Row',
     code: `from dm_evt::audit`,
-    expected: `order_id | note
----------+--------
-42       | express`,
+    expected: `order_id | note    | #rownum
+---------+---------+--------
+42       | express | 1`,
   };
 
 export const dmEventsPayloadExprExample: CodeExample = {
@@ -58,9 +58,9 @@ export const dmEventsPayloadExprExample: CodeExample = {
     code: `let $n = 5;
 dispatch dm_evt::order_event::OrderPlaced { id: $n * 6, note: "batch " + "b" };
 from dm_evt::audit filter { order_id == 30 }`,
-    expected: `order_id | note
----------+--------
-30       | batch b`,
+    expected: `order_id | note    | #rownum
+---------+---------+--------
+30       | batch b | 2`,
   };
 
 export const dmEventsMissingFieldExample: CodeExample = {

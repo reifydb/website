@@ -27,9 +27,9 @@ export const snsUseTableExample: CodeExample = {
     title: 'Every Reference Uses the Qualified Name',
     code: `insert sns::users [{ id: 1, name: "Ada", active: true }];
 from sns::users`,
-    expected: `id | name | active
----+------+-------
-1  | Ada  | true`,
+    expected: `id | name | active | #rownum
+---+------+--------+--------
+1  | Ada  | true   | 1`,
   };
 
 export const snsEnumExample: CodeExample = {
@@ -56,9 +56,9 @@ export const snsNestedTableExample: CodeExample = {
     code: `create table sns::internal::audit { id: int4, action: utf8 };
 insert sns::internal::audit [{ id: 1, action: "login" }];
 from sns::internal::audit`,
-    expected: `id | action
----+-------
-1  | login`,
+    expected: `id | action | #rownum
+---+--------+--------
+1  | login  | 1`,
   };
 
 export const snsIfNotExistsExample: CodeExample = {

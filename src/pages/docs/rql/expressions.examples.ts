@@ -64,10 +64,10 @@ insert expr::events [
 ];
 from expr::events
 map { name, year: date::year(at), quarter: date::quarter(at) }`,
-    expected: `name   | year | quarter
--------+------+--------
-review | 2024 | 4
-launch | 2024 | 1`,
+    expected: `name   | year | quarter | #rownum
+-------+------+---------+--------
+review | 2024 | 4       | 2
+launch | 2024 | 1       | 1`,
   };
 
 export const exprFunctionTypeErrorExample: CodeExample = {

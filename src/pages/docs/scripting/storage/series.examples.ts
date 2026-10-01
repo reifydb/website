@@ -30,21 +30,21 @@ export const scriptingSeriesInsertExample: CodeExample = {
   { ts: datetime::from_epoch_millis(1704067320000), value: 22.4 }
 ];
 from st_sr::metrics`,
-    expected: `ts                             | value
--------------------------------+------
-2024-01-01T00:02:00.000000000Z | 22.4
-2024-01-01T00:01:00.000000000Z | 21.9
-2024-01-01T00:00:00.000000000Z | 21.5`,
+    expected: `ts                             | value | #rownum
+-------------------------------+-------+--------
+2024-01-01T00:02:00.000000000Z | 22.4  | 3
+2024-01-01T00:01:00.000000000Z | 21.9  | 2
+2024-01-01T00:00:00.000000000Z | 21.5  | 1`,
   };
 
 export const scriptingSeriesRangeExample: CodeExample = {
     id: 'scripting-series-range',
     title: 'Range Queries Filter on the Key',
     code: `from st_sr::metrics filter { ts >= datetime::from_epoch_millis(1704067260000) }`,
-    expected: `ts                             | value
--------------------------------+------
-2024-01-01T00:02:00.000000000Z | 22.4
-2024-01-01T00:01:00.000000000Z | 21.9`,
+    expected: `ts                             | value | #rownum
+-------------------------------+-------+--------
+2024-01-01T00:02:00.000000000Z | 22.4  | 3
+2024-01-01T00:01:00.000000000Z | 21.9  | 2`,
   };
 
 export const scriptingSeriesAutoKeyExample: CodeExample = {
@@ -53,9 +53,9 @@ export const scriptingSeriesAutoKeyExample: CodeExample = {
     code: `create series st_sr::deploys { ts: datetime, note: utf8 } with { key: ts };
 insert st_sr::deploys [{ note: "rollout finished" }];
 from st_sr::deploys map { note }`,
-    expected: `note
-----------------
-rollout finished`,
+    expected: `note             | #rownum
+-----------------+--------
+rollout finished | 1`,
   };
 
 export const scriptingSeriesPrecisionExample: CodeExample = {
@@ -67,9 +67,9 @@ export const scriptingSeriesPrecisionExample: CodeExample = {
 } with { key: ts, precision: second };
 insert st_sr::coarse [{ ts: datetime::from_epoch_millis(1704067201500), hits: 12 }];
 from st_sr::coarse`,
-    expected: `ts                             | hits
--------------------------------+-----
-2024-01-01T00:00:01.000000000Z | 12`,
+    expected: `ts                             | hits | #rownum
+-------------------------------+------+--------
+2024-01-01T00:00:01.000000000Z | 12   | 1`,
   };
 
 export const scriptingSeriesTagExample: CodeExample = {
@@ -99,11 +99,11 @@ insert st_sr::per_sensor [
   { ts: datetime::from_epoch_millis(2000), sensor: 1, value: 11.5 }
 ];
 from st_sr::per_sensor`,
-    expected: `ts                             | sensor | value
--------------------------------+--------+------
-1970-01-01T00:00:02.000000000Z | 1      | 11.5
-1970-01-01T00:00:01.000000000Z | 1      | 10.5
-1970-01-01T00:00:03.000000000Z | 2      | 20.5`,
+    expected: `ts                             | sensor | value | #rownum
+-------------------------------+--------+-------+--------
+1970-01-01T00:00:02.000000000Z | 1      | 11.5  | 2
+1970-01-01T00:00:01.000000000Z | 1      | 10.5  | 1
+1970-01-01T00:00:03.000000000Z | 2      | 20.5  | 1`,
   };
 
 export const scriptingSeriesUpdateExample: CodeExample = {
@@ -120,10 +120,10 @@ export const scriptingSeriesDeleteExample: CodeExample = {
     title: 'Delete a Key Range',
     code: `delete st_sr::metrics filter { ts < datetime::from_epoch_millis(1704067260000) };
 from st_sr::metrics`,
-    expected: `ts                             | value
--------------------------------+------
-2024-01-01T00:02:00.000000000Z | 22.4
-2024-01-01T00:01:00.000000000Z | 21.7`,
+    expected: `ts                             | value | #rownum
+-------------------------------+-------+--------
+2024-01-01T00:02:00.000000000Z | 22.4  | 3
+2024-01-01T00:01:00.000000000Z | 21.7  | 2`,
   };
 
 export const scriptingStorageSeriesExamples: CodeExample[] = [

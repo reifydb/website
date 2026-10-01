@@ -10,19 +10,19 @@ create table dm_seq::tickets {
 };
 insert dm_seq::tickets [{ title: "First" }, { title: "Second" }];
 from dm_seq::tickets`,
-    expected: `id | title
----+-------
-2  | Second
-1  | First`,
+    expected: `id | title  | #rownum
+---+--------+--------
+2  | Second | 2
+1  | First  | 1`,
   };
 
 export const dmSequencesReturningExample: CodeExample = {
     id: 'dm-sequences-returning',
     title: 'Read the Generated ID Back',
     code: `insert dm_seq::tickets [{ title: "Third" }] returning { id, title }`,
-    expected: `id | title
----+------
-3  | Third`,
+    expected: `id | title | #rownum
+---+-------+--------
+3  | Third | 3`,
   };
 
 export const dmSequencesExplicitExample: CodeExample = {
@@ -30,9 +30,9 @@ export const dmSequencesExplicitExample: CodeExample = {
     title: 'An Explicit ID Does Not Move the Sequence',
     code: `insert dm_seq::tickets [{ id: 100, title: "Imported" }];
 insert dm_seq::tickets [{ title: "Fourth" }] returning { id, title }`,
-    expected: `id | title
----+-------
-4  | Fourth`,
+    expected: `id | title  | #rownum
+---+--------+--------
+4  | Fourth | 5`,
   };
 
 export const dmSequencesAlterExample: CodeExample = {
@@ -48,9 +48,9 @@ export const dmSequencesAfterAlterExample: CodeExample = {
     id: 'dm-sequences-after-alter',
     title: 'The Next Insert Draws value + 1',
     code: `insert dm_seq::tickets [{ title: "Fifth" }] returning { id, title }`,
-    expected: `id  | title
-----+------
-101 | Fifth`,
+    expected: `id  | title | #rownum
+----+-------+--------
+101 | Fifth | 6`,
   };
 
 export const dmSequencesGapFailExample: CodeExample = {
@@ -66,9 +66,9 @@ export const dmSequencesGapExample: CodeExample = {
     id: 'dm-sequences-gap',
     title: 'The Sequence Has a Gap',
     code: `insert dm_seq::tickets [{ title: "Sixth" }] returning { id, title }`,
-    expected: `id  | title
-----+------
-103 | Sixth`,
+    expected: `id  | title | #rownum
+----+-------+--------
+103 | Sixth | 8`,
   };
 
 export const dmSequencesBackwardsExample: CodeExample = {
@@ -76,19 +76,19 @@ export const dmSequencesBackwardsExample: CodeExample = {
     title: 'Moving a Sequence Backwards Reuses IDs',
     code: `alter sequence dm_seq::tickets::id set value 1;
 insert dm_seq::tickets [{ title: "Clash" }] returning { id, title }`,
-    expected: `id | title
----+------
-2  | Clash`,
+    expected: `id | title | #rownum
+---+-------+--------
+2  | Clash | 9`,
   };
 
 export const dmSequencesDuplicateExample: CodeExample = {
     id: 'dm-sequences-duplicate',
     title: 'Two Rows Now Share an ID',
     code: `from dm_seq::tickets filter { id == 2 }`,
-    expected: `id | title
----+-------
-2  | Clash
-2  | Second`,
+    expected: `id | title  | #rownum
+---+--------+--------
+2  | Clash  | 9
+2  | Second | 2`,
   };
 
 export const dmSequencesNonAutoExample: CodeExample = {

@@ -10,10 +10,10 @@ insert res_kw::hops [
   { from: "b", to: "c", filter: false, key: 2 }
 ];
 from res_kw::hops sort { key: asc }`,
-    expected: `from | to | filter | key
------+----+--------+----
-a    | b  | true   | 1
-b    | c  | false  | 2`,
+    expected: `from | to | filter | key | #rownum
+-----+----+--------+-----+--------
+a    | b  | true   | 1   | 1
+b    | c  | false  | 2   | 2`,
   };
 
 export const resKeywordsBareFailsExample: CodeExample = {
@@ -30,19 +30,19 @@ export const resKeywordsBacktickExample: CodeExample = {
     code: `from res_kw::hops
 filter { \`filter\` == true }
 map { \`from\`, \`to\` }`,
-    expected: `from | to
------+---
-a    | b`,
+    expected: `from | to | #rownum
+-----+----+--------
+a    | b  | 1`,
   };
 
 export const resKeywordsSoftExample: CodeExample = {
     id: 'res-keywords-soft',
     title: 'Soft Keywords Work Bare',
     code: `from res_kw::hops map { key, to } sort { key: asc }`,
-    expected: `key | to
-----+---
-1   | b
-2   | c`,
+    expected: `key | to | #rownum
+----+----+--------
+1   | b  | 1
+2   | c  | 2`,
   };
 
 export const resKeywordsTableNameExample: CodeExample = {
@@ -51,9 +51,9 @@ export const resKeywordsTableNameExample: CodeExample = {
     code: `create table res_kw::user { id: int4, role: utf8 };
 insert res_kw::user [{ id: 1, role: "admin" }];
 from res_kw::user map { id, role }`,
-    expected: `id | role
----+------
-1  | admin`,
+    expected: `id | role  | #rownum
+---+-------+--------
+1  | admin | 1`,
   };
 
 export const resKeywordsExamples: CodeExample[] = [

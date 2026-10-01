@@ -14,13 +14,13 @@ insert tf_sort::orders [
 ];
 from tf_sort::orders
 sort { total: asc }`,
-    expected: `id | customer | total | note
----+----------+-------+-------
-3  | ada      | 8.25  | gift
-5  | bob      | 12    | repeat
-2  | bob      | 12    | ⟪none⟫
-1  | ada      | 30.5  | rush
-4  | cy       | 45    | ⟪none⟫`,
+    expected: `id | customer | total | note   | #rownum
+---+----------+-------+--------+--------
+3  | ada      | 8.25  | gift   | 3
+5  | bob      | 12    | repeat | 5
+2  | bob      | 12    | ⟪none⟫ | 2
+1  | ada      | 30.5  | rush   | 1
+4  | cy       | 45    | ⟪none⟫ | 4`,
   };
 
 export const sortDescExample: CodeExample = {
@@ -28,13 +28,13 @@ export const sortDescExample: CodeExample = {
     title: 'Descending',
     code: `from tf_sort::orders
 sort { total: desc }`,
-    expected: `id | customer | total | note
----+----------+-------+-------
-4  | cy       | 45    | ⟪none⟫
-1  | ada      | 30.5  | rush
-5  | bob      | 12    | repeat
-2  | bob      | 12    | ⟪none⟫
-3  | ada      | 8.25  | gift`,
+    expected: `id | customer | total | note   | #rownum
+---+----------+-------+--------+--------
+4  | cy       | 45    | ⟪none⟫ | 4
+1  | ada      | 30.5  | rush   | 1
+5  | bob      | 12    | repeat | 5
+2  | bob      | 12    | ⟪none⟫ | 2
+3  | ada      | 8.25  | gift   | 3`,
   };
 
 export const sortBareExample: CodeExample = {
@@ -42,13 +42,13 @@ export const sortBareExample: CodeExample = {
     title: 'No Direction Means Descending',
     code: `from tf_sort::orders
 sort { total }`,
-    expected: `id | customer | total | note
----+----------+-------+-------
-4  | cy       | 45    | ⟪none⟫
-1  | ada      | 30.5  | rush
-5  | bob      | 12    | repeat
-2  | bob      | 12    | ⟪none⟫
-3  | ada      | 8.25  | gift`,
+    expected: `id | customer | total | note   | #rownum
+---+----------+-------+--------+--------
+4  | cy       | 45    | ⟪none⟫ | 4
+1  | ada      | 30.5  | rush   | 1
+5  | bob      | 12    | repeat | 5
+2  | bob      | 12    | ⟪none⟫ | 2
+3  | ada      | 8.25  | gift   | 3`,
   };
 
 export const sortMultiExample: CodeExample = {
@@ -57,13 +57,13 @@ export const sortMultiExample: CodeExample = {
     code: `from tf_sort::orders
 sort { customer: asc, total: desc }
 map { customer, total, id }`,
-    expected: `customer | total | id
----------+-------+---
-ada      | 30.5  | 1
-ada      | 8.25  | 3
-bob      | 12    | 5
-bob      | 12    | 2
-cy       | 45    | 4`,
+    expected: `customer | total | id | #rownum
+---------+-------+----+--------
+ada      | 30.5  | 1  | 1
+ada      | 8.25  | 3  | 3
+bob      | 12    | 5  | 5
+bob      | 12    | 2  | 2
+cy       | 45    | 4  | 4`,
   };
 
 export const sortNoneAscExample: CodeExample = {
@@ -72,13 +72,13 @@ export const sortNoneAscExample: CodeExample = {
     code: `from tf_sort::orders
 sort { note: asc }
 map { id, note }`,
-    expected: `id | note
----+-------
-3  | gift
-5  | repeat
-1  | rush
-4  | ⟪none⟫
-2  | ⟪none⟫`,
+    expected: `id | note   | #rownum
+---+--------+--------
+3  | gift   | 3
+5  | repeat | 5
+1  | rush   | 1
+4  | ⟪none⟫ | 4
+2  | ⟪none⟫ | 2`,
   };
 
 export const sortNoneDescExample: CodeExample = {
@@ -87,13 +87,13 @@ export const sortNoneDescExample: CodeExample = {
     code: `from tf_sort::orders
 sort { note: desc }
 map { id, note }`,
-    expected: `id | note
----+-------
-4  | ⟪none⟫
-2  | ⟪none⟫
-1  | rush
-5  | repeat
-3  | gift`,
+    expected: `id | note   | #rownum
+---+--------+--------
+4  | ⟪none⟫ | 4
+2  | ⟪none⟫ | 2
+1  | rush   | 1
+5  | repeat | 5
+3  | gift   | 3`,
   };
 
 export const sortTakeExample: CodeExample = {
@@ -102,10 +102,10 @@ export const sortTakeExample: CodeExample = {
     code: `from tf_sort::orders
 sort { total: desc }
 take 2`,
-    expected: `id | customer | total | note
----+----------+-------+-------
-4  | cy       | 45    | ⟪none⟫
-1  | ada      | 30.5  | rush`,
+    expected: `id | customer | total | note   | #rownum
+---+----------+-------+--------+--------
+4  | cy       | 45    | ⟪none⟫ | 4
+1  | ada      | 30.5  | rush   | 1`,
   };
 
 export const sortTextExample: CodeExample = {

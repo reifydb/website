@@ -31,9 +31,9 @@ export const dmHandlersEffectsExample: CodeExample = {
     id: 'dm-handlers-effects',
     title: 'Each Handler Did Its Own Work',
     code: `from dm_h::stats`,
-    expected: `total
------
-250`,
+    expected: `total | #rownum
+------+--------
+250   | 1`,
   };
 
 export const dmHandlersScriptedExample: CodeExample = {
@@ -56,9 +56,9 @@ export const dmHandlersScriptedEffectExample: CodeExample = {
     id: 'dm-handlers-scripted-effect',
     title: 'Read the Computed Result',
     code: `from dm_h::results`,
-    expected: `sum
----
-30`,
+    expected: `sum | #rownum
+----+--------
+30  | 1`,
   };
 
 export const dmHandlersNestedExample: CodeExample = {
@@ -80,11 +80,11 @@ export const dmHandlersNestedEffectsExample: CodeExample = {
     id: 'dm-handlers-nested-effects',
     title: 'The Whole Chain Committed Together',
     code: `from dm_h::audit`,
-    expected: `kind
--------
-shipped
-placed
-placed`,
+    expected: `kind    | #rownum
+--------+--------
+shipped | 3
+placed  | 2
+placed  | 1`,
   };
 
 export const dmHandlersDropExample: CodeExample = {

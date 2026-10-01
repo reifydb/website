@@ -33,10 +33,10 @@ shop002   | orders | 3`,
     title: 'Read The View',
     code: `from shop002::revenue_by_region
 sort { region: asc }`,
-    expected: `region | revenue
--------+--------
-north  | 120
-south  | 80.5`,
+    expected: `region | revenue | #rownum
+-------+---------+--------
+north  | 120     | 1
+south  | 80.5    | 2`,
   },
   {
     id: 'blog002-insert-north',

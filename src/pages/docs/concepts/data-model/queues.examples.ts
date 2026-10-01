@@ -27,11 +27,11 @@ export const dmQueuesScanExample: CodeExample = {
     id: 'dm-queues-scan',
     title: 'Items Are Rows in Enqueue Order',
     code: `from cpt_queue::jobs`,
-    expected: `id | payload
----+--------
-1  | alpha
-2  | beta
-3  | gamma`,
+    expected: `id | payload | #rownum
+---+---------+--------
+1  | alpha   | 1
+2  | beta    | 2
+3  | gamma   | 3`,
   };
 
 export const dmQueuesImmutableExample: CodeExample = {

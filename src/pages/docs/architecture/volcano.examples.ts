@@ -18,10 +18,10 @@ from cpt_exec::orders
 filter { status == "completed" }
 sort { total: desc }
 take 2`,
-    expected: `id | total | status    | region
----+-------+-----------+-------
-3  | 245   | completed | north
-1  | 150.5 | completed | north`,
+    expected: `id | total | status    | region | #rownum
+---+-------+-----------+--------+--------
+3  | 245   | completed | north  | 3
+1  | 150.5 | completed | north  | 1`,
   };
 
 export const execExplainPipelineExample: CodeExample = {

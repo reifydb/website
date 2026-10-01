@@ -34,9 +34,9 @@ insert cpt_dt::events [
   { day: @2024-03-15, at: @2024-03-15T14:30:00Z, tod: @14:30:00, span: cast("P1DT2H30M", duration) }
 ];
 from cpt_dt::events`,
-    expected: `day        | at                             | tod                | span
------------+--------------------------------+--------------------+--------
-2024-03-15 | 2024-03-15T14:30:00.000000000Z | 14:30:00.000000000 | 1d2h30m`,
+    expected: `day        | at                             | tod                | span    | #rownum
+-----------+--------------------------------+--------------------+---------+--------
+2024-03-15 | 2024-03-15T14:30:00.000000000Z | 14:30:00.000000000 | 1d2h30m | 1`,
   };
 
 export const dtIdsBlobExample: CodeExample = {
@@ -47,9 +47,9 @@ insert cpt_dt::assets [
   { ref: cast("550e8400-e29b-41d4-a716-446655440000", uuid4), raw: blob::hex("48656c6c6f") }
 ];
 from cpt_dt::assets map { ref, raw, ref_type: meta::type(ref) }`,
-    expected: `ref                                  | raw          | ref_type
--------------------------------------+--------------+---------
-550e8400-e29b-41d4-a716-446655440000 | 0x48656c6c6f | Uuid4`,
+    expected: `ref                                  | raw          | ref_type | #rownum
+-------------------------------------+--------------+----------+--------
+550e8400-e29b-41d4-a716-446655440000 | 0x48656c6c6f | Uuid4    | 1`,
   };
 
 export const dtLiteralTypesExample: CodeExample = {
@@ -90,9 +90,9 @@ insert cpt_dt::wide [
   }
 ];
 from cpt_dt::wide`,
-    expected: `v                                        | w
------------------------------------------+----------------------------------------
--170141183460469231731687303715884105728 | 340282366920938463463374607431768211455`,
+    expected: `v                                        | w                                       | #rownum
+-----------------------------------------+-----------------------------------------+--------
+-170141183460469231731687303715884105728 | 340282366920938463463374607431768211455 | 1`,
   };
 
 export const dtWideningExample: CodeExample = {
@@ -135,10 +135,10 @@ insert cpt_dt::coerce [
   { n: 2.9, s: "x" }
 ];
 from cpt_dt::coerce`,
-    expected: `n | s
---+---
-2 | x
-7 | 42`,
+    expected: `n | s  | #rownum
+--+----+--------
+2 | x  | 2
+7 | 42 | 1`,
   };
 
 export const dtCastExample: CodeExample = {
@@ -171,10 +171,10 @@ export const dtOptionExample: CodeExample = {
     code: `create table cpt_dt::notes { id: int4, note: Option(utf8) };
 insert cpt_dt::notes [{ id: 1 }, { id: 2, note: "hi" }];
 from cpt_dt::notes map { id, note, note_type: meta::type(note), id_type: meta::type(id) }`,
-    expected: `id | note   | note_type    | id_type
----+--------+--------------+--------
-2  | hi     | Option(Utf8) | Int4
-1  | ⟪none⟫ | Option(Utf8) | Int4`,
+    expected: `id | note   | note_type    | id_type | #rownum
+---+--------+--------------+---------+--------
+2  | hi     | Option(Utf8) | Int4    | 2
+1  | ⟪none⟫ | Option(Utf8) | Int4    | 1`,
   };
 
 export const dtStringConcatExample: CodeExample = {

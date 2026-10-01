@@ -22,11 +22,11 @@ export const dmRingBuffersFillExample: CodeExample = {
   { user_id: 3, at: "09:12" }
 ];
 from dm_rb::recent_logins`,
-    expected: `user_id | at
---------+------
-1       | 09:00
-2       | 09:05
-3       | 09:12`,
+    expected: `user_id | at    | #rownum
+--------+-------+--------
+1       | 09:00 | 1
+2       | 09:05 | 2
+3       | 09:12 | 3`,
   };
 
 export const dmRingBuffersEvictExample: CodeExample = {
@@ -34,11 +34,11 @@ export const dmRingBuffersEvictExample: CodeExample = {
     title: 'One More Insert Evicts the Oldest Row',
     code: `insert dm_rb::recent_logins [{ user_id: 4, at: "09:20" }];
 from dm_rb::recent_logins`,
-    expected: `user_id | at
---------+------
-2       | 09:05
-3       | 09:12
-4       | 09:20`,
+    expected: `user_id | at    | #rownum
+--------+-------+--------
+2       | 09:05 | 2
+3       | 09:12 | 3
+4       | 09:20 | 4`,
   };
 
 export const dmRingBuffersBatchExample: CodeExample = {
@@ -51,11 +51,11 @@ export const dmRingBuffersBatchExample: CodeExample = {
   { user_id: 8, at: "09:34" }
 ];
 from dm_rb::recent_logins`,
-    expected: `user_id | at
---------+------
-6       | 09:32
-7       | 09:33
-8       | 09:34`,
+    expected: `user_id | at    | #rownum
+--------+-------+--------
+6       | 09:32 | 6
+7       | 09:33 | 7
+8       | 09:34 | 8`,
   };
 
 export const dmRingBuffersPartitionExample: CodeExample = {
@@ -72,11 +72,11 @@ insert dm_rb::region_events [
   { id: 4, region: "west" }
 ];
 from dm_rb::region_events sort { id: asc }`,
-    expected: `id | region
----+-------
-2  | east
-3  | east
-4  | west`,
+    expected: `id | region | #rownum
+---+--------+--------
+2  | east   | 2
+3  | east   | 3
+4  | west   | 4`,
   };
 
 export const dmRingBuffersUpdateExample: CodeExample = {
@@ -85,9 +85,9 @@ export const dmRingBuffersUpdateExample: CodeExample = {
     code: `update dm_rb::recent_logins { at: "09:35" }
 filter { user_id == 8 }
 returning { user_id, at }`,
-    expected: `user_id | at
---------+------
-8       | 09:35`,
+    expected: `user_id | at    | #rownum
+--------+-------+--------
+8       | 09:35 | 8`,
   };
 
 export const dmRingBuffersDeleteExample: CodeExample = {
@@ -96,11 +96,11 @@ export const dmRingBuffersDeleteExample: CodeExample = {
     code: `delete dm_rb::recent_logins filter { user_id == 6 };
 insert dm_rb::recent_logins [{ user_id: 9, at: "09:40" }];
 from dm_rb::recent_logins`,
-    expected: `user_id | at
---------+------
-7       | 09:33
-8       | 09:35
-9       | 09:40`,
+    expected: `user_id | at    | #rownum
+--------+-------+--------
+7       | 09:33 | 7
+8       | 09:35 | 8
+9       | 09:40 | 9`,
   };
 
 export const dmRingBuffersViewSetupExample: CodeExample = {
@@ -110,7 +110,7 @@ export const dmRingBuffersViewSetupExample: CodeExample = {
   id: int4,
   message: utf8
 } with { capacity: 3 };
-create transactional view dm_rb::error_count { n: int8 } as {
+create view dm_rb::error_count { n: int8 } as {
   from dm_rb::errors
   aggregate { n: math::count(id) } by {}
 }`,

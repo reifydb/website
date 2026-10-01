@@ -45,9 +45,9 @@ if not $dry_run {
   insert cf_if::audit [{ event: "deploy" }]
 };
 from cf_if::audit`,
-    expected: `event
-------
-deploy`,
+    expected: `event  | #rownum
+-------+--------
+deploy | 1`,
   };
 
 export const cfIfBranchShapesExample: CodeExample = {

@@ -261,11 +261,11 @@ export const acRootSeesAllExample: CodeExample = {
     id: 'ac-root-sees-all',
     title: 'The Playground Runs as root',
     code: `from ac::documents sort { title: asc }`,
-    expected: `org    | owner | title   | public
--------+-------+---------+-------
-acme   | bob   | Budget  | false
-globex | carol | Launch  | true
-acme   | alice | Roadmap | true`,
+    expected: `org    | owner | title   | public | #rownum
+-------+-------+---------+--------+--------
+acme   | bob   | Budget  | false  | 2
+globex | carol | Launch  | true   | 3
+acme   | alice | Roadmap | true   | 1`,
   };
 
 export const acDropRoleAndUserExample: CodeExample = {

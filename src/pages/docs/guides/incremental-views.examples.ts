@@ -18,7 +18,7 @@ create transactional view iv_t::open_tickets { id: int4, subject: utf8 } as {
 export const ivComposedSetupExample: CodeExample = {
   id: 'iv-composed-setup',
   title: 'A View over a View',
-  code: `create transactional view iv_t::open_ticket_count { total: int8 } as {
+  code: `create view iv_t::open_ticket_count { total: int8 } as {
   from iv_t::open_tickets
   aggregate { total: math::count(id) }
 }`,
@@ -45,10 +45,10 @@ export const ivTransactionalQueryExample: CodeExample = {
   title: 'Read Your Write',
   code: `from iv_t::open_tickets
 sort { id: asc }`,
-  expected: `id | subject
----+----------------------
-1  | Login fails on Safari
-3  | Export button missing`,
+  expected: `id | subject               | #rownum
+---+-----------------------+--------
+1  | Login fails on Safari | 1
+3  | Export button missing | 3`,
 };
 
 export const ivComposedQueryExample: CodeExample = {
@@ -93,10 +93,10 @@ export const ivDeferredQueryExample: CodeExample = {
   title: 'Query the Deferred View',
   code: `from iv_d::error_events
 sort { id: asc }`,
-  expected: `id | kind
----+------
-2  | error
-3  | error`,
+  expected: `id | kind  | #rownum
+---+-------+--------
+2  | error | 2
+3  | error | 3`,
 };
 
 export const incrementalViewsExamples: CodeExample[] = [

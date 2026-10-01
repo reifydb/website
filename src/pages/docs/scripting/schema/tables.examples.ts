@@ -42,10 +42,10 @@ insert sst::profiles [
   { id: 2, name: "grace" }
 ];
 from sst::profiles`,
-    expected: `id | name  | bio
----+-------+--------------
-2  | grace | ⟪none⟫
-1  | ada   | mathematician`,
+    expected: `id | name  | bio           | #rownum
+---+-------+---------------+--------
+2  | grace | ⟪none⟫        | 2
+1  | ada   | mathematician | 1`,
   };
 
 export const sstRequiredExample: CodeExample = {
@@ -62,10 +62,10 @@ export const sstAutoIncrementExample: CodeExample = {
     code: `create table sst::tickets { id: int8 with { auto_increment }, title: utf8 };
 insert sst::tickets [{ title: "first" }, { title: "second" }];
 from sst::tickets sort { id: asc }`,
-    expected: `id | title
----+-------
-1  | first
-2  | second`,
+    expected: `id | title  | #rownum
+---+--------+--------
+1  | first  | 1
+2  | second | 2`,
   };
 
 export const sstAutoIncrementExplicitExample: CodeExample = {
@@ -73,12 +73,12 @@ export const sstAutoIncrementExplicitExample: CodeExample = {
     title: 'Explicit Values Alongside Generated Ones',
     code: `insert sst::tickets [{ id: 10, title: "pinned" }, { title: "third" }];
 from sst::tickets sort { id: asc }`,
-    expected: `id | title
----+-------
-1  | first
-2  | second
-3  | third
-10 | pinned`,
+    expected: `id | title  | #rownum
+---+--------+--------
+1  | first  | 1
+2  | second | 2
+3  | third  | 4
+10 | pinned | 3`,
   };
 
 export const sstPrimaryKeyExample: CodeExample = {
@@ -142,10 +142,10 @@ insert sst::staging [
   { id: 2, name: "grace" }
 ];
 from sst::staging`,
-    expected: `id | name  | email
----+-------+----------------
-2  | grace | ⟪none⟫
-1  | ada   | ada@example.com`,
+    expected: `id | name  | email           | #rownum
+---+-------+-----------------+--------
+2  | grace | ⟪none⟫          | 2
+1  | ada   | ada@example.com | 1`,
   };
 
 export const sstDropColumnExample: CodeExample = {
@@ -162,10 +162,10 @@ export const sstRenameColumnExample: CodeExample = {
     title: 'Rename a Column',
     code: `alter table sst::profiles rename column bio to about;
 from sst::profiles`,
-    expected: `id | name  | about
----+-------+--------------
-2  | grace | ⟪none⟫
-1  | ada   | mathematician`,
+    expected: `id | name  | about         | #rownum
+---+-------+---------------+--------
+2  | grace | ⟪none⟫        | 2
+1  | ada   | mathematician | 1`,
   };
 
 export const sstDropMissingColumnExample: CodeExample = {

@@ -87,10 +87,10 @@ insert sc_dict::payments [
 from sc_dict::payments
 left join { from sc_dict::currencies } as c using (currency, c.id)
 map { currency: c_value, amount }`,
-    expected: `currency | amount
----------+-------
-EUR      | 800
-USD      | 1200`,
+    expected: `currency | amount | #rownum
+---------+--------+--------
+EUR      | 800    | 1
+USD      | 1200   | 2`,
   };
 
 export const scDictUpdateErrorExample: CodeExample = {
@@ -121,10 +121,10 @@ insert sc_dict::invoices [
   { currency: "NOK", total: 250 }
 ];
 from sc_dict::invoices`,
-    expected: `currency | total
----------+------
-NOK      | 250
-USD      | 100`,
+    expected: `currency | total | #rownum
+---------+-------+--------
+NOK      | 250   | 2
+USD      | 100   | 1`,
   };
 
 export const scDictInternedExample: CodeExample = {

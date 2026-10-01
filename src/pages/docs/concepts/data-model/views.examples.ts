@@ -2,10 +2,10 @@ import type { CodeExample } from '@/lib/examples/types';
 
 export const dmViewsTransactionalExample: CodeExample = {
     id: 'dm-views-transactional',
-    title: 'A Transactional View Is Maintained by the Write Itself',
+    title: 'A View Aggregates Its Source',
     code: `create namespace dm_vw;
 create table dm_vw::orders { id: int4, region: utf8, total: float8 };
-create transactional view dm_vw::revenue { region: utf8, revenue: float8 } as {
+create view dm_vw::revenue { region: utf8, revenue: float8 } as {
   from dm_vw::orders
   aggregate { revenue: math::sum(total) } by { region }
 }`,

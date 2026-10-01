@@ -10,7 +10,7 @@ create transactional view svt::overdrawn { id: int4, owner: utf8, balance: int8 
   filter { balance < 0 }
   map { id, owner, balance }
 };
-create transactional view svt::total_balance { total: int8 } as {
+create view svt::total_balance { total: int8 } as {
   from svt::accounts
   aggregate { total: math::sum(balance) } by {}
 }`,

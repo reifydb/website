@@ -118,10 +118,10 @@ export const tstIsolationCheckExample: CodeExample = {
     id: 'tst-isolation-check',
     title: 'And Gone Once It Finishes',
     code: `from tst::items`,
-    expected: `id | name
----+-------
-2  | Gadget
-1  | Widget`,
+    expected: `id | name   | #rownum
+---+--------+--------
+2  | Gadget | 2
+1  | Widget | 1`,
   };
 
 export const tstProcedureExample: CodeExample = {

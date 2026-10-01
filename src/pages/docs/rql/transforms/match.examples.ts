@@ -17,12 +17,12 @@ map {
   region,
   zone: match region { "North" => "Northern", "South" => "Southern", else => "Other" }
 }`,
-    expected: `id | region | zone
----+--------+---------
-4  | West   | Other
-3  | East   | Other
-2  | South  | Southern
-1  | North  | Northern`,
+    expected: `id | region | zone     | #rownum
+---+--------+----------+--------
+4  | West   | Other    | 4
+3  | East   | Other    | 3
+2  | South  | Southern | 2
+1  | North  | Northern | 1`,
   };
 
 export const matchSearchedExample: CodeExample = {
@@ -34,12 +34,12 @@ map {
   total,
   size: match { total > 200 => "large", total > 100 => "medium", else => "small" }
 }`,
-    expected: `id | total | size
----+-------+-------
-4  | 55    | small
-3  | 245   | large
-2  | 80    | small
-1  | 150   | medium`,
+    expected: `id | total | size   | #rownum
+---+-------+--------+--------
+4  | 55    | small  | 4
+3  | 245   | large  | 3
+2  | 80    | small  | 2
+1  | 150   | medium | 1`,
   };
 
 export const matchNoElseExample: CodeExample = {
@@ -47,12 +47,12 @@ export const matchNoElseExample: CodeExample = {
     title: 'Without else, No Match Means none',
     code: `from tf_match::orders
 map { id, status, settled: match status { "paid" => "yes" } }`,
-    expected: `id | status    | settled
----+-----------+--------
-4  | cancelled | ⟪none⟫
-3  | paid      | yes
-2  | pending   | ⟪none⟫
-1  | paid      | yes`,
+    expected: `id | status    | settled | #rownum
+---+-----------+---------+--------
+4  | cancelled | ⟪none⟫  | 4
+3  | paid      | yes     | 3
+2  | pending   | ⟪none⟫  | 2
+1  | paid      | yes     | 1`,
   };
 
 export const matchGuardExample: CodeExample = {
@@ -69,12 +69,12 @@ map {
     else => "elsewhere"
   }
 }`,
-    expected: `id | region | total | bucket
----+--------+-------+-------------
-4  | West   | 55    | elsewhere
-3  | East   | 245   | elsewhere
-2  | South  | 80    | elsewhere
-1  | North  | 150   | big northern`,
+    expected: `id | region | total | bucket       | #rownum
+---+--------+-------+--------------+--------
+4  | West   | 55    | elsewhere    | 4
+3  | East   | 245   | elsewhere    | 3
+2  | South  | 80    | elsewhere    | 2
+1  | North  | 150   | big northern | 1`,
   };
 
 export const matchInFilterExample: CodeExample = {
@@ -83,11 +83,11 @@ export const matchInFilterExample: CodeExample = {
     code: `from tf_match::orders
 filter { match status { "paid" => true, "pending" => true, else => false } }
 map { id, status }`,
-    expected: `id | status
----+--------
-3  | paid
-2  | pending
-1  | paid`,
+    expected: `id | status  | #rownum
+---+---------+--------
+3  | paid    | 3
+2  | pending | 2
+1  | paid    | 1`,
   };
 
 export const matchExtendThenFilterExample: CodeExample = {
@@ -97,10 +97,10 @@ export const matchExtendThenFilterExample: CodeExample = {
 extend { size: match { total > 100 => "big", else => "small" } }
 filter { size == "big" }
 map { id, total, size }`,
-    expected: `id | total | size
----+-------+-----
-3  | 245   | big
-1  | 150   | big`,
+    expected: `id | total | size | #rownum
+---+-------+------+--------
+3  | 245   | big  | 3
+1  | 150   | big  | 1`,
   };
 
 export const matchNoneSubjectExample: CodeExample = {
@@ -113,10 +113,10 @@ insert tf_match::signups [
 ];
 from tf_match::signups
 map { id, source: match referrer { none => "direct", "ads" => "campaign", else => "unknown" } }`,
-    expected: `id | source
----+---------
-2  | unknown
-1  | campaign`,
+    expected: `id | source   | #rownum
+---+----------+--------
+2  | unknown  | 2
+1  | campaign | 1`,
   };
 
 export const matchNoneSearchedExample: CodeExample = {
@@ -124,10 +124,10 @@ export const matchNoneSearchedExample: CodeExample = {
     title: 'Test for none with a Searched Arm',
     code: `from tf_match::signups
 map { id, source: match { is::none(referrer) => "direct", else => "campaign" } }`,
-    expected: `id | source
----+---------
-2  | direct
-1  | campaign`,
+    expected: `id | source   | #rownum
+---+----------+--------
+2  | direct   | 2
+1  | campaign | 1`,
   };
 
 export const matchStandaloneExample: CodeExample = {

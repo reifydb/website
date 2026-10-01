@@ -14,10 +14,10 @@ insert tf_filter::orders [
 ];
 from tf_filter::orders
 filter { total > 20 }`,
-    expected: `id | customer | total | note
----+----------+-------+-------
-4  | cy       | 45    | ⟪none⟫
-1  | ada      | 30.5  | rush`,
+    expected: `id | customer | total | note   | #rownum
+---+----------+-------+--------+--------
+4  | cy       | 45    | ⟪none⟫ | 4
+1  | ada      | 30.5  | rush   | 1`,
   };
 
 export const filterOrExample: CodeExample = {
@@ -25,11 +25,11 @@ export const filterOrExample: CodeExample = {
     title: 'Combine Conditions with and, or, not',
     code: `from tf_filter::orders
 filter { customer == "ada" or total > 40 }`,
-    expected: `id | customer | total | note
----+----------+-------+-------
-4  | cy       | 45    | ⟪none⟫
-3  | ada      | 8.25  | gift
-1  | ada      | 30.5  | rush`,
+    expected: `id | customer | total | note   | #rownum
+---+----------+-------+--------+--------
+4  | cy       | 45    | ⟪none⟫ | 4
+3  | ada      | 8.25  | gift   | 3
+1  | ada      | 30.5  | rush   | 1`,
   };
 
 export const filterInExample: CodeExample = {
@@ -37,11 +37,11 @@ export const filterInExample: CodeExample = {
     title: 'Match Any of a List',
     code: `from tf_filter::orders
 filter { customer in ["ada", "cy"] }`,
-    expected: `id | customer | total | note
----+----------+-------+-------
-4  | cy       | 45    | ⟪none⟫
-3  | ada      | 8.25  | gift
-1  | ada      | 30.5  | rush`,
+    expected: `id | customer | total | note   | #rownum
+---+----------+-------+--------+--------
+4  | cy       | 45    | ⟪none⟫ | 4
+3  | ada      | 8.25  | gift   | 3
+1  | ada      | 30.5  | rush   | 1`,
   };
 
 export const filterBetweenExample: CodeExample = {
@@ -49,11 +49,11 @@ export const filterBetweenExample: CodeExample = {
     title: 'Match a Closed Range',
     code: `from tf_filter::orders
 filter { total between 10 and 31 }`,
-    expected: `id | customer | total | note
----+----------+-------+-------
-5  | bob      | 12    | repeat
-2  | bob      | 12    | ⟪none⟫
-1  | ada      | 30.5  | rush`,
+    expected: `id | customer | total | note   | #rownum
+---+----------+-------+--------+--------
+5  | bob      | 12    | repeat | 5
+2  | bob      | 12    | ⟪none⟫ | 2
+1  | ada      | 30.5  | rush   | 1`,
   };
 
 export const filterChainedExample: CodeExample = {
@@ -62,9 +62,9 @@ export const filterChainedExample: CodeExample = {
     code: `from tf_filter::orders
 filter { total > 10 }
 filter { customer == "ada" }`,
-    expected: `id | customer | total | note
----+----------+-------+-----
-1  | ada      | 30.5  | rush`,
+    expected: `id | customer | total | note | #rownum
+---+----------+-------+------+--------
+1  | ada      | 30.5  | rush | 1`,
   };
 
 export const filterNoneIsExample: CodeExample = {
@@ -72,10 +72,10 @@ export const filterNoneIsExample: CodeExample = {
     title: 'Test for none with is::none',
     code: `from tf_filter::orders
 filter { is::none(note) }`,
-    expected: `id | customer | total | note
----+----------+-------+-------
-4  | cy       | 45    | ⟪none⟫
-2  | bob      | 12    | ⟪none⟫`,
+    expected: `id | customer | total | note   | #rownum
+---+----------+-------+--------+--------
+4  | cy       | 45    | ⟪none⟫ | 4
+2  | bob      | 12    | ⟪none⟫ | 2`,
   };
 
 export const filterNoneEqExample: CodeExample = {
@@ -91,10 +91,10 @@ export const filterThreeValuedExample: CodeExample = {
     title: 'none Rows Are Dropped, Even Under not',
     code: `from tf_filter::orders
 filter { not (note == "rush") }`,
-    expected: `id | customer | total | note
----+----------+-------+-------
-5  | bob      | 12    | repeat
-3  | ada      | 8.25  | gift`,
+    expected: `id | customer | total | note   | #rownum
+---+----------+-------+--------+--------
+5  | bob      | 12    | repeat | 5
+3  | ada      | 8.25  | gift   | 3`,
   };
 
 export const filterHavingExample: CodeExample = {

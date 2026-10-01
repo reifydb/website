@@ -14,11 +14,11 @@ insert tf_distinct::visits [
 ];
 from tf_distinct::visits
 distinct { user }`,
-    expected: `id | user  | page
----+-------+------
-5  | grace | /docs
-4  | linus | /home
-3  | ada   | /docs`,
+    expected: `id | user  | page  | #rownum
+---+-------+-------+--------
+5  | grace | /docs | 5
+4  | linus | /home | 4
+3  | ada   | /docs | 3`,
   };
 
 export const distinctMultiExample: CodeExample = {
@@ -26,12 +26,12 @@ export const distinctMultiExample: CodeExample = {
     title: 'Deduplicate on a Combination of Columns',
     code: `from tf_distinct::visits
 distinct { user, page }`,
-    expected: `id | user  | page
----+-------+------
-5  | grace | /docs
-4  | linus | /home
-3  | ada   | /docs
-1  | ada   | /home`,
+    expected: `id | user  | page  | #rownum
+---+-------+-------+--------
+5  | grace | /docs | 5
+4  | linus | /home | 4
+3  | ada   | /docs | 3
+1  | ada   | /home | 1`,
   };
 
 export const distinctSortFirstExample: CodeExample = {
@@ -40,11 +40,11 @@ export const distinctSortFirstExample: CodeExample = {
     code: `from tf_distinct::visits
 sort { id: asc }
 distinct { user }`,
-    expected: `id | user  | page
----+-------+------
-1  | ada   | /home
-2  | grace | /docs
-4  | linus | /home`,
+    expected: `id | user  | page  | #rownum
+---+-------+-------+--------
+1  | ada   | /home | 1
+2  | grace | /docs | 2
+4  | linus | /home | 4`,
   };
 
 export const distinctProjectExample: CodeExample = {
@@ -53,10 +53,10 @@ export const distinctProjectExample: CodeExample = {
     code: `from tf_distinct::visits
 distinct { page }
 map { page }`,
-    expected: `page
------
-/docs
-/home`,
+    expected: `page  | #rownum
+------+--------
+/docs | 5
+/home | 4`,
   };
 
 export const distinctNoneExample: CodeExample = {
@@ -71,10 +71,10 @@ insert tf_distinct::signups [
 ];
 from tf_distinct::signups
 distinct { referrer }`,
-    expected: `id | referrer
----+---------
-4  | ⟪none⟫
-3  | ads`,
+    expected: `id | referrer | #rownum
+---+----------+--------
+4  | ⟪none⟫   | 4
+3  | ads      | 3`,
   };
 
 export const distinctEmptyExample: CodeExample = {
@@ -82,13 +82,13 @@ export const distinctEmptyExample: CodeExample = {
     title: 'Empty Braces Deduplicate on Nothing',
     code: `from tf_distinct::visits
 distinct {}`,
-    expected: `id | user  | page
----+-------+------
-5  | grace | /docs
-4  | linus | /home
-3  | ada   | /docs
-2  | grace | /docs
-1  | ada   | /home`,
+    expected: `id | user  | page  | #rownum
+---+-------+-------+--------
+5  | grace | /docs | 5
+4  | linus | /home | 4
+3  | ada   | /docs | 3
+2  | grace | /docs | 2
+1  | ada   | /home | 1`,
   };
 
 export const rqlTransformsDistinctExamples: CodeExample[] = [

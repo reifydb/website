@@ -25,10 +25,10 @@ CALL pr_p::add_user(1, 'Alice');
 CALL pr_p::add_user(2, 'Bob');
 FROM pr_p::users
 sort { id: asc }`,
-    expected: `id | name
----+------
-1  | Alice
-2  | Bob`,
+    expected: `id | name  | #rownum
+---+-------+--------
+1  | Alice | 1
+2  | Bob   | 2`,
   };
 
 export const spOvArgumentsExample: CodeExample = {
@@ -43,10 +43,10 @@ let $base = 10;
 call sp_ov::log_at("boot", $base);
 call sp_ov::log_at("ready", $base + 5);
 from sp_ov::log sort { level: asc }`,
-    expected: `note  | level
-------+------
-boot  | 10
-ready | 15`,
+    expected: `note  | level | #rownum
+------+-------+--------
+boot  | 10    | 1
+ready | 15    | 2`,
   };
 
 export const spOvOptionParamExample: CodeExample = {
@@ -68,9 +68,9 @@ export const spOvLastStatementExample: CodeExample = {
   from sp_ov::log filter { level >= $min_level } sort { level: desc }
 };
 call sp_ov::recent(12)`,
-    expected: `note  | level
-------+------
-ready | 15`,
+    expected: `note  | level | #rownum
+------+-------+--------
+ready | 15    | 2`,
   };
 
 export const spOvWriteResultExample: CodeExample = {
@@ -89,9 +89,9 @@ export const spOvReturningExample: CodeExample = {
   update sp_ov::log { note: $new } filter { note == $old } returning { note, level }
 };
 call sp_ov::relabel("boot", "start")`,
-    expected: `note  | level
-------+------
-start | 10`,
+    expected: `note  | level | #rownum
+------+-------+--------
+start | 10    | 1`,
   };
 
 export const spOvNoResultExample: CodeExample = {

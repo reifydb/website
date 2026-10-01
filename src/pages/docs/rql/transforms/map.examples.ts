@@ -13,12 +13,12 @@ insert tf_map::orders [
 ];
 from tf_map::orders
 map { customer, total }`,
-    expected: `customer | total
----------+------
-cy       | 45
-ada      | 8.25
-bob      | 12
-ada      | 30.5`,
+    expected: `customer | total | #rownum
+---------+-------+--------
+cy       | 45    | 4
+ada      | 8.25  | 3
+bob      | 12    | 2
+ada      | 30.5  | 1`,
   };
 
 export const mapComputeExample: CodeExample = {
@@ -26,12 +26,12 @@ export const mapComputeExample: CodeExample = {
     title: 'Rename and Compute',
     code: `from tf_map::orders
 map { order_id: id, half: total / 2 }`,
-    expected: `order_id | half
----------+------
-4        | 22.5
-3        | 4.125
-2        | 6
-1        | 15.25`,
+    expected: `order_id | half  | #rownum
+---------+-------+--------
+4        | 22.5  | 4
+3        | 4.125 | 3
+2        | 6     | 2
+1        | 15.25 | 1`,
   };
 
 export const mapUnaliasedExample: CodeExample = {
@@ -39,12 +39,12 @@ export const mapUnaliasedExample: CodeExample = {
     title: 'An Expression Without an Alias',
     code: `from tf_map::orders
 map { id, total * 2 }`,
-    expected: `id | total * 2
----+----------
-4  | 90
-3  | 16.5
-2  | 24
-1  | 61`,
+    expected: `id | total * 2 | #rownum
+---+-----------+--------
+4  | 90        | 4
+3  | 16.5      | 3
+2  | 24        | 2
+1  | 61        | 1`,
   };
 
 export const mapLiteralsOnlyExample: CodeExample = {
@@ -67,11 +67,11 @@ insert tf_map::items [
 ];
 from tf_map::items
 map { id, cost: price * qty }`,
-    expected: `id | cost
----+-------
-3  | 10
-2  | ⟪none⟫
-1  | 10`,
+    expected: `id | cost   | #rownum
+---+--------+--------
+3  | 10     | 3
+2  | ⟪none⟫ | 2
+1  | 10     | 1`,
   };
 
 export const mapRownumExample: CodeExample = {
@@ -79,12 +79,12 @@ export const mapRownumExample: CodeExample = {
     title: 'Project a System Column',
     code: `from tf_map::orders
 map { row: #rownum, customer }`,
-    expected: `row | customer
-----+---------
-4   | cy
-3   | ada
-2   | bob
-1   | ada`,
+    expected: `row | customer | #rownum
+----+----------+--------
+4   | cy       | 4
+3   | ada      | 3
+2   | bob      | 2
+1   | ada      | 1`,
   };
 
 export const mapMatchExample: CodeExample = {
@@ -92,12 +92,12 @@ export const mapMatchExample: CodeExample = {
     title: 'Derive a Label with match',
     code: `from tf_map::orders
 map { id, size: match { total > 20 => "large", else => "small" } }`,
-    expected: `id | size
----+------
-4  | large
-3  | small
-2  | small
-1  | large`,
+    expected: `id | size  | #rownum
+---+-------+--------
+4  | large | 4
+3  | small | 3
+2  | small | 2
+1  | large | 1`,
   };
 
 export const mapDropsColumnsExample: CodeExample = {

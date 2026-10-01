@@ -21,12 +21,12 @@ export const appendViewQueryExample: CodeExample = {
     id: 'append-view-query',
     title: 'Rows from Both Sources',
     code: `from tf_append::all_orders sort { id: asc }`,
-    expected: `id | customer
----+---------
-1  | Alice
-2  | Bob
-3  | Carol
-4  | Dan`,
+    expected: `id | customer | #rownum
+---+----------+--------
+1  | Alice    | 2
+2  | Bob      | 4
+3  | Carol    | 3
+4  | Dan      | 5`,
   };
 
 export const appendViewIncrementalInsertExample: CodeExample = {
@@ -42,13 +42,13 @@ export const appendViewQueryAgainExample: CodeExample = {
     id: 'append-view-query-again',
     title: 'The View Picked Up the New Row',
     code: `from tf_append::all_orders sort { id: asc }`,
-    expected: `id | customer
----+---------
-1  | Alice
-2  | Bob
-3  | Carol
-4  | Dan
-5  | Eve`,
+    expected: `id | customer | #rownum
+---+----------+--------
+1  | Alice    | 2
+2  | Bob      | 4
+3  | Carol    | 3
+4  | Dan      | 5
+5  | Eve      | 7`,
   };
 
 export const appendViewDeleteExample: CodeExample = {
@@ -64,12 +64,12 @@ export const appendViewQueryAfterDeleteExample: CodeExample = {
     id: 'append-view-query-after-delete',
     title: 'The Deleted Row Is Gone',
     code: `from tf_append::all_orders sort { id: asc }`,
-    expected: `id | customer
----+---------
-2  | Bob
-3  | Carol
-4  | Dan
-5  | Eve`,
+    expected: `id | customer | #rownum
+---+----------+--------
+2  | Bob      | 4
+3  | Carol    | 3
+4  | Dan      | 5
+5  | Eve      | 7`,
   };
 
 export const appendChainedCreateExample: CodeExample = {
@@ -91,13 +91,13 @@ export const appendChainedQueryExample: CodeExample = {
     id: 'append-chained-query',
     title: 'All Three Sources in One Frame',
     code: `from tf_append::every_order sort { id: asc }`,
-    expected: `id | customer
----+---------
-2  | Bob
-3  | Carol
-4  | Dan
-5  | Eve
-6  | Fay`,
+    expected: `id | customer | #rownum
+---+----------+--------
+2  | Bob      | 8
+3  | Carol    | 5
+4  | Dan      | 9
+5  | Eve      | 13
+6  | Fay      | 6`,
   };
 
 export const appendDuplicatesCreateExample: CodeExample = {
@@ -116,10 +116,10 @@ export const appendDuplicatesQueryExample: CodeExample = {
     id: 'append-duplicates-query',
     title: 'Each Source Contributes Its Rows',
     code: `from tf_append::web_twice sort { id: asc }`,
-    expected: `id | customer
----+---------
-2  | Bob
-2  | Bob`,
+    expected: `id | customer | #rownum
+---+----------+--------
+2  | Bob      | 5
+2  | Bob      | 4`,
   };
 
 export const appendSubqueryPipelineCreateExample: CodeExample = {
@@ -138,10 +138,10 @@ export const appendSubqueryPipelineQueryExample: CodeExample = {
     id: 'append-subquery-pipeline-query',
     title: 'Only the Filtered Rows of the Appended Side',
     code: `from tf_append::big_ids_a sort { id: asc }`,
-    expected: `id | customer
----+---------
-2  | Bob
-5  | Eve`,
+    expected: `id | customer | #rownum
+---+----------+--------
+2  | Bob      | 4
+5  | Eve      | 7`,
   };
 
 export const appendAfterAppendCreateExample: CodeExample = {
@@ -162,10 +162,10 @@ export const appendAfterAppendQueryExample: CodeExample = {
     id: 'append-after-append-query',
     title: 'Filtered Before and After the Append',
     code: `from tf_append::big_ids_c sort { id: asc }`,
-    expected: `id | customer
----+---------
-4  | Dan
-5  | Eve`,
+    expected: `id | customer | #rownum
+---+----------+--------
+4  | Dan      | 5
+5  | Eve      | 7`,
   };
 
 export const appendTransactionalCreateExample: CodeExample = {
@@ -196,10 +196,10 @@ export const appendTransactionalQueryExample: CodeExample = {
     id: 'append-transactional-query',
     title: 'Query the Transactional View',
     code: `from tf_append::tx_all sort { id: asc }`,
-    expected: `id | customer
----+---------
-1  | Ann
-2  | Ben`,
+    expected: `id | customer | #rownum
+---+----------+--------
+1  | Ann      | 2
+2  | Ben      | 3`,
   };
 
 export const appendMismatchedShapeExample: CodeExample = {
@@ -220,10 +220,10 @@ export const appendMismatchedShapeQueryExample: CodeExample = {
     id: 'append-mismatched-shape-query',
     title: 'The View\'s Column List Decides',
     code: `from tf_append::mixed sort { id: asc }`,
-    expected: `id | customer
----+---------
-2  | Bob
-7  | ⟪none⟫`,
+    expected: `id | customer | #rownum
+---+----------+--------
+2  | Bob      | 4
+7  | ⟪none⟫   | 3`,
   };
 
 export const appendSameRequestWritesExample: CodeExample = {
@@ -255,13 +255,13 @@ export const appendVariableExample: CodeExample = {
 let $more = from tf_append::phone_orders;
 append $rows from $more;
 from $rows sort { id: asc }`,
-    expected: `id | customer
----+---------
-2  | Bob
-3  | Carol
-4  | Dan
-5  | Eve
-8  | Hal`,
+    expected: `id | customer | #rownum
+---+----------+--------
+2  | Bob      | 2
+3  | Carol    | 1
+4  | Dan      | 2
+5  | Eve      | 3
+8  | Hal      | 3`,
   };
 
 export const appendVariablePipeExample: CodeExample = {
@@ -271,11 +271,11 @@ export const appendVariablePipeExample: CodeExample = {
 let $more = from tf_append::phone_orders;
 append $rows from $more | filter { id > 4 };
 from $rows sort { id: asc }`,
-    expected: `id | customer
----+---------
-2  | Bob
-5  | Eve
-8  | Hal`,
+    expected: `id | customer | #rownum
+---+----------+--------
+2  | Bob      | 2
+5  | Eve      | 3
+8  | Hal      | 3`,
   };
 
 export const appendVariableMismatchExample: CodeExample = {

@@ -23,10 +23,10 @@ create procedure dm_proc::add_user { id: int4, name: utf8 } as {
 call dm_proc::add_user(1, "Ada");
 call dm_proc::add_user(2, "Grace");
 from dm_proc::users`,
-    expected: `id | name
----+------
-2  | Grace
-1  | Ada`,
+    expected: `id | name  | #rownum
+---+-------+--------
+2  | Grace | 2
+1  | Ada   | 1`,
   };
 
 export const dmProceduresLogicExample: CodeExample = {

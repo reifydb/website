@@ -34,11 +34,11 @@ insert sc_enum::tasks [
   { id: 3, status: sc_enum::status::Inactive }
 ];
 from sc_enum::tasks`,
-    expected: `id | status_tag
----+-----------
-3  | 1
-2  | 2
-1  | 0`,
+    expected: `id | status_tag | #rownum
+---+------------+--------
+3  | 1          | 3
+2  | 2          | 2
+1  | 0          | 1`,
   };
 
 export const scEnumsPayloadExample: CodeExample = {
@@ -54,10 +54,10 @@ insert sc_enum::drawings [
   { id: 2, s: sc_enum::shape::Rectangle { width: 3.0, height: 4.0 } }
 ];
 from sc_enum::drawings`,
-    expected: `id | s_tag | s_circle_radius | s_rectangle_width | s_rectangle_height
----+-------+-----------------+-------------------+-------------------
-2  | 1     | ⟪none⟫          | 3                 | 4
-1  | 0     | 2.5             | ⟪none⟫            | ⟪none⟫`,
+    expected: `id | s_tag | s_circle_radius | s_rectangle_width | s_rectangle_height | #rownum
+---+-------+-----------------+-------------------+--------------------+--------
+2  | 1     | ⟪none⟫          | 3                 | 4                  | 2
+1  | 0     | 2.5             | ⟪none⟫            | ⟪none⟫             | 1`,
   };
 
 export const scEnumsInsertStringExample: CodeExample = {
@@ -72,31 +72,31 @@ export const scEnumsFilterExample: CodeExample = {
     id: 'sc-enums-filter',
     title: 'Filter on the Tag Column',
     code: `from sc_enum::tasks filter { status_tag == 0 }`,
-    expected: `id | status_tag
----+-----------
-1  | 0`,
+    expected: `id | status_tag | #rownum
+---+------------+--------
+1  | 0          | 1`,
   };
 
 export const scEnumsSortExample: CodeExample = {
     id: 'sc-enums-sort',
     title: 'Sort in Declaration Order',
     code: `from sc_enum::tasks sort { status_tag: asc }`,
-    expected: `id | status_tag
----+-----------
-1  | 0
-3  | 1
-2  | 2`,
+    expected: `id | status_tag | #rownum
+---+------------+--------
+1  | 0          | 1
+3  | 1          | 3
+2  | 2          | 2`,
   };
 
 export const scEnumsCastExample: CodeExample = {
     id: 'sc-enums-cast',
     title: 'The Tag Casts Like Any Integer',
     code: `from sc_enum::tasks map { id, tag_text: cast(status_tag, utf8) }`,
-    expected: `id | tag_text
----+---------
-3  | 1
-2  | 2
-1  | 0`,
+    expected: `id | tag_text | #rownum
+---+----------+--------
+3  | 1        | 3
+2  | 2        | 2
+1  | 0        | 1`,
   };
 
 export const scEnumsDropInUseExample: CodeExample = {

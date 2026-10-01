@@ -14,11 +14,11 @@ insert dm_srs::readings [
   { seq: 3, celsius: 21.8 }
 ];
 from dm_srs::readings`,
-    expected: `seq | celsius
-----+--------
-3   | 21.8
-2   | 22
-1   | 21.5`,
+    expected: `seq | celsius | #rownum
+----+---------+--------
+3   | 21.8    | 3
+2   | 22      | 2
+1   | 21.5    | 1`,
   };
 
 export const dmSeriesDatetimeKeyExample: CodeExample = {
@@ -33,10 +33,10 @@ insert dm_srs::temps [
   { at: datetime::from_epoch_millis(1704070800000), celsius: 6.0 }
 ];
 from dm_srs::temps`,
-    expected: `at                             | celsius
--------------------------------+--------
-2024-01-01T01:00:00.000000000Z | 6
-2024-01-01T00:00:00.000000000Z | 5.5`,
+    expected: `at                             | celsius | #rownum
+-------------------------------+---------+--------
+2024-01-01T01:00:00.000000000Z | 6       | 2
+2024-01-01T00:00:00.000000000Z | 5.5     | 1`,
   };
 
 export const dmSeriesAutoKeyExample: CodeExample = {
@@ -45,19 +45,19 @@ export const dmSeriesAutoKeyExample: CodeExample = {
     code: `create series dm_srs::pings { at: datetime, note: utf8 } with { key: at };
 insert dm_srs::pings [{ note: "deploy started" }];
 from dm_srs::pings map { note }`,
-    expected: `note
---------------
-deploy started`,
+    expected: `note           | #rownum
+---------------+--------
+deploy started | 1`,
   };
 
 export const dmSeriesKeyRangeExample: CodeExample = {
     id: 'dm-series-key-range',
     title: 'Key Filters Use the Series Order',
     code: `from dm_srs::readings filter { seq >= 2 }`,
-    expected: `seq | celsius
-----+--------
-3   | 21.8
-2   | 22`,
+    expected: `seq | celsius | #rownum
+----+---------+--------
+3   | 21.8    | 3
+2   | 22      | 2`,
   };
 
 export const dmSeriesUpdateExample: CodeExample = {
@@ -105,10 +105,10 @@ insert dm_srs::coarse [
   { at: datetime::from_epoch_millis(1704067201900), hits: 7 }
 ];
 from dm_srs::coarse`,
-    expected: `at                             | hits
--------------------------------+-----
-2024-01-01T00:00:01.000000000Z | 7
-2024-01-01T00:00:01.000000000Z | 12`,
+    expected: `at                             | hits | #rownum
+-------------------------------+------+--------
+2024-01-01T00:00:01.000000000Z | 7    | 2
+2024-01-01T00:00:01.000000000Z | 12   | 1`,
   };
 
 export const dmSeriesPartitionExample: CodeExample = {
@@ -125,11 +125,11 @@ insert dm_srs::per_sensor [
   { at: datetime::from_epoch_millis(2000), sensor: 1, celsius: 11.5 }
 ];
 from dm_srs::per_sensor sort { sensor: asc, at: desc }`,
-    expected: `at                             | sensor | celsius
--------------------------------+--------+--------
-1970-01-01T00:00:02.000000000Z | 1      | 11.5
-1970-01-01T00:00:01.000000000Z | 1      | 10.5
-1970-01-01T00:00:03.000000000Z | 2      | 20.5`,
+    expected: `at                             | sensor | celsius | #rownum
+-------------------------------+--------+---------+--------
+1970-01-01T00:00:02.000000000Z | 1      | 11.5    | 2
+1970-01-01T00:00:01.000000000Z | 1      | 10.5    | 1
+1970-01-01T00:00:03.000000000Z | 2      | 20.5    | 1`,
   };
 
 export const dataModelSeriesExamples: CodeExample[] = [

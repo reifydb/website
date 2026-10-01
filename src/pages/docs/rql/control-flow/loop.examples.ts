@@ -27,11 +27,11 @@ loop {
   insert cf_loop::odds [{ n: $n }]
 };
 from cf_loop::odds sort { n: asc }`,
-    expected: `n
--
-1
-3
-5`,
+    expected: `n | #rownum
+--+--------
+1 | 1
+3 | 2
+5 | 3`,
   };
 
 export const cfLoopResultExample: CodeExample = {

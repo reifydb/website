@@ -12,12 +12,12 @@ insert tf_from::orders [
   { id: 4, customer: "cy", total: 45.0 }
 ];
 from tf_from::orders`,
-    expected: `id | customer | total | note
----+----------+-------+-------
-4  | cy       | 45    | ⟪none⟫
-3  | ada      | 8.25  | gift
-2  | bob      | 12    | ⟪none⟫
-1  | ada      | 30.5  | rush`,
+    expected: `id | customer | total | note   | #rownum
+---+----------+-------+--------+--------
+4  | cy       | 45    | ⟪none⟫ | 4
+3  | ada      | 8.25  | gift   | 3
+2  | bob      | 12    | ⟪none⟫ | 2
+1  | ada      | 30.5  | rush   | 1`,
   };
 
 export const fromPipelineExample: CodeExample = {
@@ -26,10 +26,10 @@ export const fromPipelineExample: CodeExample = {
     code: `from tf_from::orders
 filter { total > 20 }
 map { id, total }`,
-    expected: `id | total
----+------
-4  | 45
-1  | 30.5`,
+    expected: `id | total | #rownum
+---+-------+--------
+4  | 45    | 4
+1  | 30.5  | 1`,
   };
 
 export const fromInlineExample: CodeExample = {
@@ -90,10 +90,10 @@ export const fromViewReadExample: CodeExample = {
     id: 'from-view-read',
     title: 'Read a View',
     code: `from tf_from::big_orders`,
-    expected: `id | customer | total
----+----------+------
-4  | cy       | 45
-1  | ada      | 30.5`,
+    expected: `id | customer | total | #rownum
+---+----------+-------+--------
+4  | cy       | 45    | 4
+1  | ada      | 30.5  | 1`,
   };
 
 export const fromVariableExample: CodeExample = {
@@ -101,10 +101,10 @@ export const fromVariableExample: CodeExample = {
     title: 'Read a Frame Variable',
     code: `let $orders = from tf_from::orders;
 from $orders filter { customer == "ada" }`,
-    expected: `id | customer | total | note
----+----------+-------+-----
-3  | ada      | 8.25  | gift
-1  | ada      | 30.5  | rush`,
+    expected: `id | customer | total | note | #rownum
+---+----------+-------+------+--------
+3  | ada      | 8.25  | gift | 3
+1  | ada      | 30.5  | rush | 1`,
   };
 
 export const fromMissingExample: CodeExample = {

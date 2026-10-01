@@ -60,10 +60,10 @@ from tf::employees
 filter { dept == "eng" }
 map { name, salary }
 sort { salary: asc }`,
-    expected: `name  | salary
-------+-------
-Ada   | 120
-Grace | 150`,
+    expected: `name  | salary | #rownum
+------+--------+--------
+Ada   | 120    | 1
+Grace | 150    | 2`,
   };
 
 export const transformOrderMattersExample: CodeExample = {
@@ -73,10 +73,10 @@ export const transformOrderMattersExample: CodeExample = {
 take 2
 sort { salary: desc }
 map { name, salary }`,
-    expected: `name  | salary
-------+-------
-Grace | 150
-Linus | 90`,
+    expected: `name  | salary | #rownum
+------+--------+--------
+Grace | 150    | 2
+Linus | 90     | 3`,
   };
 
 export const rqlTransformsExamples: CodeExample[] = [

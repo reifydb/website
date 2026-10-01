@@ -20,20 +20,20 @@ insert dm_enum::tasks [
   { id: 3, status: dm_enum::status::Inactive }
 ];
 from dm_enum::tasks`,
-    expected: `id | status_tag
----+-----------
-3  | 1
-2  | 2
-1  | 0`,
+    expected: `id | status_tag | #rownum
+---+------------+--------
+3  | 1          | 3
+2  | 2          | 2
+1  | 0          | 1`,
   };
 
 export const dmEnumsFilterIsExample: CodeExample = {
     id: 'dm-enums-filter-is',
     title: 'Filter by Variant with is',
     code: `from dm_enum::tasks filter { status is dm_enum::status::Pending }`,
-    expected: `id | status_tag
----+-----------
-2  | 2`,
+    expected: `id | status_tag | #rownum
+---+------------+--------
+2  | 2          | 2`,
   };
 
 export const dmEnumsUpdateExample: CodeExample = {
@@ -42,9 +42,9 @@ export const dmEnumsUpdateExample: CodeExample = {
     code: `update dm_enum::tasks { status: dm_enum::status::Inactive }
 filter { id == 1 }
 returning { id, status_tag }`,
-    expected: `id | status_tag
----+-----------
-1  | 1`,
+    expected: `id | status_tag | #rownum
+---+------------+--------
+1  | 1          | 1`,
   };
 
 export const dmEnumsAggregateExample: CodeExample = {
@@ -72,10 +72,10 @@ insert dm_enum::drawings [
   { id: 2, s: dm_enum::shape::Rectangle { width: 3.0, height: 4.0 } }
 ];
 from dm_enum::drawings`,
-    expected: `id | s_tag | s_circle_radius | s_rectangle_width | s_rectangle_height
----+-------+-----------------+-------------------+-------------------
-2  | 1     | ⟪none⟫          | 3                 | 4
-1  | 0     | 2.5             | ⟪none⟫            | ⟪none⟫`,
+    expected: `id | s_tag | s_circle_radius | s_rectangle_width | s_rectangle_height | #rownum
+---+-------+-----------------+-------------------+--------------------+--------
+2  | 1     | ⟪none⟫          | 3                 | 4                  | 2
+1  | 0     | 2.5             | ⟪none⟫            | ⟪none⟫             | 1`,
   };
 
 export const dmEnumsPayloadMathExample: CodeExample = {
@@ -84,9 +84,9 @@ export const dmEnumsPayloadMathExample: CodeExample = {
     code: `from dm_enum::drawings
 filter { s is dm_enum::shape::Rectangle }
 map { id, area: s_rectangle_width * s_rectangle_height }`,
-    expected: `id | area
----+-----
-2  | 12`,
+    expected: `id | area | #rownum
+---+------+--------
+2  | 12   | 2`,
   };
 
 export const dmEnumsViewExample: CodeExample = {
@@ -120,9 +120,9 @@ export const dmEnumsViewReadExample: CodeExample = {
     id: 'dm-enums-view-read',
     title: 'Only the Active Rows Arrived',
     code: `from dm_enum::active_tasks`,
-    expected: `id | status_tag
----+-----------
-4  | 0`,
+    expected: `id | status_tag | #rownum
+---+------------+--------
+4  | 0          | 4`,
   };
 
 export const dmEnumsStringRejectedExample: CodeExample = {

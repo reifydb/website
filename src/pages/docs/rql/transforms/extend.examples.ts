@@ -12,11 +12,11 @@ insert tf_extend::items [
 ];
 from tf_extend::items
 extend { line: price * qty }`,
-    expected: `id | price | qty    | line
----+-------+--------+-------
-3  | 1.25  | 8      | 10
-2  | 10    | ⟪none⟫ | ⟪none⟫
-1  | 2.5   | 4      | 10`,
+    expected: `id | price | qty    | line   | #rownum
+---+-------+--------+--------+--------
+3  | 1.25  | 8      | 10     | 3
+2  | 10    | ⟪none⟫ | ⟪none⟫ | 2
+1  | 2.5   | 4      | 10     | 1`,
   };
 
 export const extendMultipleExample: CodeExample = {
@@ -24,11 +24,11 @@ export const extendMultipleExample: CodeExample = {
     title: 'Several Columns, Later Ones See Earlier Ones',
     code: `from tf_extend::items
 extend { doubled: price * 2, quadrupled: doubled * 2 }`,
-    expected: `id | price | qty    | doubled | quadrupled
----+-------+--------+---------+-----------
-3  | 1.25  | 8      | 2.5     | 5
-2  | 10    | ⟪none⟫ | 20      | 40
-1  | 2.5   | 4      | 5       | 10`,
+    expected: `id | price | qty    | doubled | quadrupled | #rownum
+---+-------+--------+---------+------------+--------
+3  | 1.25  | 8      | 2.5     | 5          | 3
+2  | 10    | ⟪none⟫ | 20      | 40         | 2
+1  | 2.5   | 4      | 5       | 10         | 1`,
   };
 
 export const extendFilterExample: CodeExample = {
@@ -37,10 +37,10 @@ export const extendFilterExample: CodeExample = {
     code: `from tf_extend::items
 extend { has_qty: is::some(qty) }
 filter { has_qty }`,
-    expected: `id | price | qty | has_qty
----+-------+-----+--------
-3  | 1.25  | 8   | true
-1  | 2.5   | 4   | true`,
+    expected: `id | price | qty | has_qty | #rownum
+---+-------+-----+---------+--------
+3  | 1.25  | 8   | true    | 3
+1  | 2.5   | 4   | true    | 1`,
   };
 
 export const extendAfterAggregateExample: CodeExample = {
@@ -67,11 +67,11 @@ export const extendUnaliasedExample: CodeExample = {
     title: 'An Expression Without an Alias',
     code: `from tf_extend::items
 extend { price * 2 }`,
-    expected: `id | price | qty    | price * 2
----+-------+--------+----------
-3  | 1.25  | 8      | 2.5
-2  | 10    | ⟪none⟫ | 20
-1  | 2.5   | 4      | 5`,
+    expected: `id | price | qty    | price * 2 | #rownum
+---+-------+--------+-----------+--------
+3  | 1.25  | 8      | 2.5       | 3
+2  | 10    | ⟪none⟫ | 20        | 2
+1  | 2.5   | 4      | 5         | 1`,
   };
 
 export const extendUnknownColumnExample: CodeExample = {

@@ -20,9 +20,9 @@ export const delScanExample: CodeExample = {
     id: 'scripting-delete-scan',
     title: 'Only the Match Survived',
     code: `from del::sessions`,
-    expected: `id | account | expired
----+---------+--------
-1  | ada     | false`,
+    expected: `id | account | expired | #rownum
+---+---------+---------+--------
+1  | ada     | false   | 1`,
   };
 
 export const delReturningExample: CodeExample = {
@@ -30,9 +30,9 @@ export const delReturningExample: CodeExample = {
     title: 'See What Was Removed',
     code: `insert del::sessions [{ id: 4, account: "kurt", expired: true }];
 delete del::sessions filter { id == 4 } returning { id, account }`,
-    expected: `id | account
----+--------
-4  | kurt`,
+    expected: `id | account | #rownum
+---+---------+--------
+4  | kurt    | 4`,
   };
 
 export const delNoFilterExample: CodeExample = {
@@ -76,9 +76,9 @@ export const delRingbufferScanExample: CodeExample = {
     id: 'scripting-delete-ringbuffer-scan',
     title: 'The Buffer Keeps the Rest',
     code: `from del::recent`,
-    expected: `action
-------
-logout`,
+    expected: `action | #rownum
+-------+--------
+logout | 2`,
   };
 
 export const delSeriesExample: CodeExample = {
@@ -97,9 +97,9 @@ del       | temps  | 1`,
 
 export const delViewSetupExample: CodeExample = {
     id: 'scripting-delete-view-setup',
-    title: 'A Transactional View over a Table',
+    title: 'A View over a Table',
     code: `create table del::orders { id: int4, amount: int8 };
-create transactional view del::revenue { revenue: int8 } as {
+create view del::revenue { revenue: int8 } as {
   from del::orders
   aggregate { revenue: math::sum(amount) } by {}
 }`,

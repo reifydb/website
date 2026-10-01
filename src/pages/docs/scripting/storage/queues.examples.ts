@@ -59,20 +59,20 @@ export const stQueueScanExample: CodeExample = {
     id: 'st-queue-scan',
     title: 'Read Items Back',
     code: `from st_queue::jobs`,
-    expected: `id | payload
----+--------
-1  | alpha
-2  | beta
-3  | gamma`,
+    expected: `id | payload | #rownum
+---+---------+--------
+1  | alpha   | 1
+2  | beta    | 2
+3  | gamma   | 3`,
   };
 
 export const stQueueReturningExample: CodeExample = {
     id: 'st-queue-returning',
     title: 'returning Hands Back the Enqueued Item',
     code: `insert st_queue::jobs [{ id: 4, payload: "delta" }] returning { id, payload }`,
-    expected: `id | payload
----+--------
-4  | delta`,
+    expected: `id | payload | #rownum
+---+---------+--------
+4  | delta   | 4`,
   };
 
 export const stQueueNotBeforeExample: CodeExample = {
@@ -108,9 +108,9 @@ export const stQueueDedupScanExample: CodeExample = {
     id: 'st-queue-dedup-scan',
     title: 'Only the First Item Was Enqueued',
     code: `from st_queue::dedup`,
-    expected: `id
---
-1`,
+    expected: `id | #rownum
+---+--------
+1  | 1`,
   };
 
 export const stQueueDeclaredDedupExample: CodeExample = {
@@ -134,10 +134,10 @@ export const stQueueDeclaredDedupScanExample: CodeExample = {
     id: 'st-queue-declared-dedup-scan',
     title: 'The Repeated Tenant Collapsed',
     code: `from st_queue::tenants`,
-    expected: `id | tenant
----+-------
-1  | a
-2  | b`,
+    expected: `id | tenant | #rownum
+---+--------+--------
+1  | a      | 1
+2  | b      | 2`,
   };
 
 export const stQueueDedupConflictExample: CodeExample = {

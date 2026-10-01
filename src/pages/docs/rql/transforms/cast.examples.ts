@@ -48,11 +48,11 @@ insert tf_cast::imports [
 ];
 from tf_cast::imports
 map { id, qty: cast(qty, int4), id_text: cast(id, utf8) }`,
-  expected: `id | qty | id_text
----+-----+--------
-3  | 3   | 3
-2  | 7   | 2
-1  | 12  | 1`,
+  expected: `id | qty | id_text | #rownum
+---+-----+---------+--------
+3  | 3   | 3       | 3
+2  | 7   | 2       | 2
+1  | 12  | 1       | 1`,
 };
 
 export const castInFilterExample: CodeExample = {
@@ -61,10 +61,10 @@ export const castInFilterExample: CodeExample = {
   code: `from tf_cast::imports
 filter { cast(qty, int4) >= 7 }
 map { id, qty: cast(qty, int4) }`,
-  expected: `id | qty
----+----
-2  | 7
-1  | 12`,
+  expected: `id | qty | #rownum
+---+-----+--------
+2  | 7   | 2
+1  | 12  | 1`,
 };
 
 export const castInArithmeticExample: CodeExample = {
@@ -72,11 +72,11 @@ export const castInArithmeticExample: CodeExample = {
   title: 'Cast Before You Multiply',
   code: `from tf_cast::imports
 map { id, total: cast(qty, float8) * price }`,
-  expected: `id | total
----+------
-3  | 4.875
-2  | 28
-1  | 30`,
+  expected: `id | total | #rownum
+---+-------+--------
+3  | 4.875 | 3
+2  | 28    | 2
+1  | 30    | 1`,
 };
 
 export const castInInsertExample: CodeExample = {
@@ -88,10 +88,10 @@ insert tf_cast::shipments [
   { id: 2, shipped: cast("2024-05-03", date) }
 ];
 from tf_cast::shipments`,
-  expected: `id | shipped
----+-----------
-2  | 2024-05-03
-1  | 2024-05-01`,
+  expected: `id | shipped    | #rownum
+---+------------+--------
+2  | 2024-05-03 | 2
+1  | 2024-05-01 | 1`,
 };
 
 export const castNoneExample: CodeExample = {
@@ -104,10 +104,10 @@ insert tf_cast::readings [
 ];
 from tf_cast::readings
 map { id, temp: cast(raw, float8) }`,
-  expected: `id | temp
----+-------
-2  | ⟪none⟫
-1  | 21.5`,
+  expected: `id | temp   | #rownum
+---+--------+--------
+2  | ⟪none⟫ | 2
+1  | 21.5   | 1`,
 };
 
 export const castInvalidNumberExample: CodeExample = {
@@ -146,9 +146,9 @@ export const castFloat4NoiseExample: CodeExample = {
   code: `from app::orders
 filter { id == 2 }
 map { total, widened: cast(total, float8) }`,
-  expected: `total | widened
-------+-----------------
-89.99 | 89.9899978637695`,
+  expected: `total | widened          | #rownum
+------+------------------+--------
+89.99 | 89.9899978637695 | 2`,
 };
 
 export const castExamples: CodeExample[] = [

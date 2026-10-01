@@ -37,12 +37,12 @@ while $week <= 4 {
   $week = $week + 1
 };
 from cf_while::backups sort { week: asc }`,
-    expected: `week | day
------+----
-1    | 7
-2    | 14
-3    | 21
-4    | 28`,
+    expected: `week | day | #rownum
+-----+-----+--------
+1    | 7   | 1
+2    | 14  | 2
+3    | 21  | 3
+4    | 28  | 4`,
   };
 
 export const cfWhileCapExample: CodeExample = {
@@ -124,9 +124,9 @@ while $year < 3 {
   $year = $year + 1
 };
 from cf_while::savings`,
-    expected: `id | balance
----+--------
-1  | 800`,
+    expected: `id | balance | #rownum
+---+---------+--------
+1  | 800     | 1`,
   };
 
 export const cfWhileRollbackSetupExample: CodeExample = {

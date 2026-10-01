@@ -7,9 +7,9 @@ export const dmNamespacesCreateExample: CodeExample = {
 create table dm_ns::users { id: int4, name: utf8 };
 insert dm_ns::users [{ id: 1, name: "Ada" }];
 from dm_ns::users`,
-    expected: `id | name
----+-----
-1  | Ada`,
+    expected: `id | name | #rownum
+---+------+--------
+1  | Ada  | 1`,
   };
 
 export const dmNamespacesSameNameExample: CodeExample = {
@@ -22,9 +22,9 @@ create table dm_ns_staging::orders { id: int4 };
 insert dm_ns_prod::orders [{ id: 1001 }];
 insert dm_ns_staging::orders [{ id: 1 }];
 from dm_ns_prod::orders`,
-    expected: `id
-----
-1001`,
+    expected: `id   | #rownum
+-----+--------
+1001 | 1`,
   };
 
 export const dmNamespacesIfNotExistsExample: CodeExample = {
@@ -40,9 +40,9 @@ export const dmNamespacesNestedExample: CodeExample = {
 create table dm_ns::internal::audit { id: int4, action: utf8 };
 insert dm_ns::internal::audit [{ id: 1, action: "login" }];
 from dm_ns::internal::audit`,
-    expected: `id | action
----+-------
-1  | login`,
+    expected: `id | action | #rownum
+---+--------+--------
+1  | login  | 1`,
   };
 
 export const dmNamespacesSystemExample: CodeExample = {

@@ -12,11 +12,11 @@ insert tf_patch::items [
 ];
 from tf_patch::items
 patch { price: price * 2 }`,
-    expected: `id | price | qty    | status
----+-------+--------+-------
-3  | 2.5   | 8      | new
-2  | 20    | ⟪none⟫ | new
-1  | 5     | 4      | new`,
+    expected: `id | price | qty    | status | #rownum
+---+-------+--------+--------+--------
+3  | 2.5   | 8      | new    | 3
+2  | 20    | ⟪none⟫ | new    | 2
+1  | 5     | 4      | new    | 1`,
   };
 
 export const patchAddExample: CodeExample = {
@@ -24,11 +24,11 @@ export const patchAddExample: CodeExample = {
     title: 'A New Name Is Added on the Right',
     code: `from tf_patch::items
 patch { line: price * qty }`,
-    expected: `id | price | qty    | status | line
----+-------+--------+--------+-------
-3  | 1.25  | 8      | new    | 10
-2  | 10    | ⟪none⟫ | new    | ⟪none⟫
-1  | 2.5   | 4      | new    | 10`,
+    expected: `id | price | qty    | status | line   | #rownum
+---+-------+--------+--------+--------+--------
+3  | 1.25  | 8      | new    | 10     | 3
+2  | 10    | ⟪none⟫ | new    | ⟪none⟫ | 2
+1  | 2.5   | 4      | new    | 10     | 1`,
   };
 
 export const patchMixedExample: CodeExample = {
@@ -36,11 +36,11 @@ export const patchMixedExample: CodeExample = {
     title: 'Replace and Add in One Block',
     code: `from tf_patch::items
 patch { status: "checked", line: price * qty }`,
-    expected: `id | price | qty    | status  | line
----+-------+--------+---------+-------
-3  | 1.25  | 8      | checked | 10
-2  | 10    | ⟪none⟫ | checked | ⟪none⟫
-1  | 2.5   | 4      | checked | 10`,
+    expected: `id | price | qty    | status  | line   | #rownum
+---+-------+--------+---------+--------+--------
+3  | 1.25  | 8      | checked | 10     | 3
+2  | 10    | ⟪none⟫ | checked | ⟪none⟫ | 2
+1  | 2.5   | 4      | checked | 10     | 1`,
   };
 
 export const patchExtendCollisionExample: CodeExample = {
@@ -57,11 +57,11 @@ export const patchReadsInputExample: CodeExample = {
     title: 'Every Entry Reads the Incoming Row',
     code: `from tf_patch::items
 patch { price: price * 2, was: price }`,
-    expected: `id | price | qty    | status | was
----+-------+--------+--------+-----
-3  | 2.5   | 8      | new    | 1.25
-2  | 20    | ⟪none⟫ | new    | 10
-1  | 5     | 4      | new    | 2.5`,
+    expected: `id | price | qty    | status | was  | #rownum
+---+-------+--------+--------+------+--------
+3  | 2.5   | 8      | new    | 1.25 | 3
+2  | 20    | ⟪none⟫ | new    | 10   | 2
+1  | 5     | 4      | new    | 2.5  | 1`,
   };
 
 export const patchSameBlockReferenceExample: CodeExample = {
@@ -82,11 +82,11 @@ export const patchChainedExample: CodeExample = {
     code: `from tf_patch::items
 patch { price: price * 2 }
 patch { price: price + 1 }`,
-    expected: `id | price | qty    | status
----+-------+--------+-------
-3  | 3.5   | 8      | new
-2  | 21    | ⟪none⟫ | new
-1  | 6     | 4      | new`,
+    expected: `id | price | qty    | status | #rownum
+---+-------+--------+--------+--------
+3  | 3.5   | 8      | new    | 3
+2  | 21    | ⟪none⟫ | new    | 2
+1  | 6     | 4      | new    | 1`,
   };
 
 export const patchTypeExample: CodeExample = {
@@ -95,11 +95,11 @@ export const patchTypeExample: CodeExample = {
     code: `from tf_patch::items
 patch { was: meta::type(qty), qty: "5" }
 map { id, was, qty, now: meta::type(qty) }`,
-    expected: `id | was          | qty | now
----+--------------+-----+-----
-3  | Option(Int4) | 5   | Utf8
-2  | Option(Int4) | 5   | Utf8
-1  | Option(Int4) | 5   | Utf8`,
+    expected: `id | was          | qty | now  | #rownum
+---+--------------+-----+------+--------
+3  | Option(Int4) | 5   | Utf8 | 3
+2  | Option(Int4) | 5   | Utf8 | 2
+1  | Option(Int4) | 5   | Utf8 | 1`,
   };
 
 export const patchNoneExample: CodeExample = {
@@ -107,11 +107,11 @@ export const patchNoneExample: CodeExample = {
     title: 'Set a Column to none',
     code: `from tf_patch::items
 patch { qty: none }`,
-    expected: `id | price | qty    | status
----+-------+--------+-------
-3  | 1.25  | ⟪none⟫ | new
-2  | 10    | ⟪none⟫ | new
-1  | 2.5   | ⟪none⟫ | new`,
+    expected: `id | price | qty    | status | #rownum
+---+-------+--------+--------+--------
+3  | 1.25  | ⟪none⟫ | new    | 3
+2  | 10    | ⟪none⟫ | new    | 2
+1  | 2.5   | ⟪none⟫ | new    | 1`,
   };
 
 export const patchDownstreamFilterExample: CodeExample = {
@@ -120,10 +120,10 @@ export const patchDownstreamFilterExample: CodeExample = {
     code: `from tf_patch::items
 patch { cheap: price < 3 }
 filter { cheap }`,
-    expected: `id | price | qty | status | cheap
----+-------+-----+--------+------
-3  | 1.25  | 8   | new    | true
-1  | 2.5   | 4   | new    | true`,
+    expected: `id | price | qty | status | cheap | #rownum
+---+-------+-----+--------+-------+--------
+3  | 1.25  | 8   | new    | true  | 3
+1  | 2.5   | 4   | new    | true  | 1`,
   };
 
 export const patchAfterMapExample: CodeExample = {
@@ -132,11 +132,11 @@ export const patchAfterMapExample: CodeExample = {
     code: `from tf_patch::items
 map { id, price }
 patch { price: price + 1 }`,
-    expected: `id | price
----+------
-3  | 2.25
-2  | 11
-1  | 3.5`,
+    expected: `id | price | #rownum
+---+-------+--------
+3  | 2.25  | 3
+2  | 11    | 2
+1  | 3.5   | 1`,
   };
 
 export const patchUnaliasedExample: CodeExample = {
@@ -144,11 +144,11 @@ export const patchUnaliasedExample: CodeExample = {
     title: 'An Expression Without an Alias',
     code: `from tf_patch::items
 patch { price * 2 }`,
-    expected: `id | price | qty    | status | price * 2
----+-------+--------+--------+----------
-3  | 1.25  | 8      | new    | 2.5
-2  | 10    | ⟪none⟫ | new    | 20
-1  | 2.5   | 4      | new    | 5`,
+    expected: `id | price | qty    | status | price * 2 | #rownum
+---+-------+--------+--------+-----------+--------
+3  | 1.25  | 8      | new    | 2.5       | 3
+2  | 10    | ⟪none⟫ | new    | 20        | 2
+1  | 2.5   | 4      | new    | 5         | 1`,
   };
 
 export const patchEmptyInputExample: CodeExample = {
@@ -165,11 +165,11 @@ export const patchDuplicateNameExample: CodeExample = {
     title: 'The Same Name Twice in One Block',
     code: `from tf_patch::items
 patch { price: 1, price: 2 }`,
-    expected: `id | price | qty    | status
----+-------+--------+-------
-3  | 1     | 8      | new
-2  | 1     | ⟪none⟫ | new
-1  | 1     | 4      | new`,
+    expected: `id | price | qty    | status | #rownum
+---+-------+--------+--------+--------
+3  | 1     | 8      | new    | 3
+2  | 1     | ⟪none⟫ | new    | 2
+1  | 1     | 4      | new    | 1`,
   };
 
 export const patchNoBracesExample: CodeExample = {

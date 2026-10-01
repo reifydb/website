@@ -5,9 +5,9 @@ export const clockAdvanceBasicExample: CodeExample = {
   title: 'Advance the Mock Clock',
   code: `call clock::set(0);
 call clock::advance(duration::hours(2))`,
-  expected: `clock
-------------------------------
-1970-01-01T02:00:00.000000000Z`,
+  expected: `clock                          | #rownum
+-------------------------------+--------
+1970-01-01T02:00:00.000000000Z | 1`,
 };
 
 export const clockAdvanceAdditiveExample: CodeExample = {
@@ -16,9 +16,9 @@ export const clockAdvanceAdditiveExample: CodeExample = {
   code: `call clock::set(0);
 call clock::advance(duration::minutes(30));
 call clock::advance(duration::minutes(45))`,
-  expected: `clock
-------------------------------
-1970-01-01T01:15:00.000000000Z`,
+  expected: `clock                          | #rownum
+-------------------------------+--------
+1970-01-01T01:15:00.000000000Z | 1`,
 };
 
 export const clockAdvanceRejectsNegativeExample: CodeExample = {

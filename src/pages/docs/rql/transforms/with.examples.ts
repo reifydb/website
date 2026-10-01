@@ -14,10 +14,10 @@ insert rql_with::recent_errors [
   { id: 3, message: "reset" }
 ];
 from rql_with::recent_errors sort { id: asc }`,
-    expected: `id | message
----+--------
-2  | refused
-3  | reset`,
+    expected: `id | message | #rownum
+---+---------+--------
+2  | refused | 2
+3  | reset   | 3`,
   };
 
 export const withRowTtlExample: CodeExample = {
@@ -43,10 +43,10 @@ export const withColumnOptionsExample: CodeExample = {
 };
 insert rql_with::tickets [{ title: "first" }, { title: "second" }];
 from rql_with::tickets sort { id: asc }`,
-    expected: `id | title
----+-------
-1  | first
-2  | second`,
+    expected: `id | title  | #rownum
+---+--------+--------
+1  | first  | 1
+2  | second | 2`,
   };
 
 export const withJoinOptionsExample: CodeExample = {
@@ -56,13 +56,13 @@ export const withJoinOptionsExample: CodeExample = {
 inner join { from app::departments } as d using (dept_id, d.id) with { snapshot: true }
 map { id, department: d_name }
 sort { id: asc }`,
-    expected: `id | department
----+------------
-1  | Engineering
-2  | Engineering
-3  | Marketing
-4  | Marketing
-5  | Sales`,
+    expected: `id | department  | #rownum
+---+-------------+--------
+1  | Engineering | 5
+2  | Engineering | 4
+3  | Marketing   | 3
+4  | Marketing   | 2
+5  | Sales       | 1`,
   };
 
 export const withDistinctTtlExample: CodeExample = {

@@ -26,13 +26,13 @@ export const clockNowMultiRowExample: CodeExample = {
   code: `call clock::set(1000);
 from app::orders
 map { id, now: clock::now() }`,
-  expected: `id | now
----+-----
-5  | 1000
-4  | 1000
-3  | 1000
-2  | 1000
-1  | 1000`,
+  expected: `id | now  | #rownum
+---+------+--------
+5  | 1000 | 5
+4  | 1000 | 4
+3  | 1000 | 3
+2  | 1000 | 2
+1  | 1000 | 1`,
 };
 
 export const clockNowExamples: CodeExample[] = [

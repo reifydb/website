@@ -15,10 +15,10 @@ insert dm_tbl::products [
   { id: 2, name: "Gadget", price: 24.5, discontinued: false }
 ];
 from dm_tbl::products`,
-    expected: `id | name   | price | discontinued
----+--------+-------+-------------
-2  | Gadget | 24.5  | false
-1  | Widget | 9.99  | false`,
+    expected: `id | name   | price | discontinued | #rownum
+---+--------+-------+--------------+--------
+2  | Gadget | 24.5  | false        | 2
+1  | Widget | 9.99  | false        | 1`,
   };
 
 export const dmTablesOptionExample: CodeExample = {
@@ -34,10 +34,10 @@ insert dm_tbl::customers [
   { id: 2, name: "Grace" }
 ];
 from dm_tbl::customers`,
-    expected: `id | name  | referral
----+-------+---------
-2  | Grace | ⟪none⟫
-1  | Ada   | friend`,
+    expected: `id | name  | referral | #rownum
+---+-------+----------+--------
+2  | Grace | ⟪none⟫   | 2
+1  | Ada   | friend   | 1`,
   };
 
 export const dmTablesAutoIncrementExample: CodeExample = {
@@ -49,10 +49,10 @@ export const dmTablesAutoIncrementExample: CodeExample = {
 };
 insert dm_tbl::tickets [{ title: "First" }, { title: "Second" }];
 from dm_tbl::tickets`,
-    expected: `id | title
----+-------
-2  | Second
-1  | First`,
+    expected: `id | title  | #rownum
+---+--------+--------
+2  | Second | 2
+1  | First  | 1`,
   };
 
 export const dmTablesPrimaryKeyExample: CodeExample = {
@@ -71,9 +71,9 @@ export const dmTablesUpdateReturningExample: CodeExample = {
     code: `update dm_tbl::products { price: 19.99 }
 filter { name == "Gadget" }
 returning { id, name, price }`,
-    expected: `id | name   | price
----+--------+------
-2  | Gadget | 19.99`,
+    expected: `id | name   | price | #rownum
+---+--------+-------+--------
+2  | Gadget | 19.99 | 2`,
   };
 
 export const dmTablesDeleteExample: CodeExample = {
@@ -90,10 +90,10 @@ export const dmTablesRownumExample: CodeExample = {
     id: 'dm-tables-rownum',
     title: 'System Columns',
     code: `from dm_tbl::customers map { row: #rownum, name }`,
-    expected: `row | name
-----+------
-2   | Grace
-1   | Ada`,
+    expected: `row | name  | #rownum
+----+-------+--------
+2   | Grace | 2
+1   | Ada   | 1`,
   };
 
 export const dmTablesAlterExample: CodeExample = {

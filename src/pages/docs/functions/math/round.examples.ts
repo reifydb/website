@@ -5,12 +5,12 @@ export const mathRoundDecimalExample: CodeExample = {
     title: 'Round to 2 decimal places',
     code: `from app::prices
 extend { rounded: math::round(price, 2) }`,
-    expected: `id | price | rounded
----+-------+--------
-4  | 29.99 | 29.99
-3  | 99.95 | 99.95
-2  | 49.5  | 49.5
-1  | 19.99 | 19.99`,
+    expected: `id | price | rounded | #rownum
+---+-------+---------+--------
+4  | 29.99 | 29.99   | 4
+3  | 99.95 | 99.95   | 3
+2  | 49.5  | 49.5    | 2
+1  | 19.99 | 19.99   | 1`,
   };
 
 export const mathRoundIntegerExample: CodeExample = {
@@ -18,12 +18,12 @@ export const mathRoundIntegerExample: CodeExample = {
     title: 'Round to nearest integer',
     code: `from app::metrics
 extend { rounded_value: math::round(value) }`,
-    expected: `id | value  | rounded_value
----+--------+--------------
-4  | 312    | 312
-3  | 89.25  | 89
-2  | 230.75 | 231
-1  | 125.5  | 126`,
+    expected: `id | value  | rounded_value | #rownum
+---+--------+---------------+--------
+4  | 312    | 312           | 4
+3  | 89.25  | 89            | 3
+2  | 230.75 | 231           | 2
+1  | 125.5  | 126           | 1`,
   };
 
 export const functionsMathRoundExamples: CodeExample[] = [

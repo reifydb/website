@@ -37,10 +37,10 @@ export const quickstartQueryTableExample: CodeExample = {
     code: `from shop::orders
 filter { status == "open" }
 sort { id: asc }`,
-    expected: `id | item     | amount | status
----+----------+--------+-------
-1  | keyboard | 89     | open
-2  | monitor  | 349.5  | open`,
+    expected: `id | item     | amount | status | #rownum
+---+----------+--------+--------+--------
+1  | keyboard | 89     | open   | 1
+2  | monitor  | 349.5  | open   | 2`,
   };
 
 export const quickstartQueryViewExample: CodeExample = {
@@ -48,10 +48,10 @@ export const quickstartQueryViewExample: CodeExample = {
     title: 'Query the View',
     code: `from shop::open_orders
 sort { id: asc }`,
-    expected: `id | item     | amount
----+----------+-------
-1  | keyboard | 89
-2  | monitor  | 349.5`,
+    expected: `id | item     | amount | #rownum
+---+----------+--------+--------
+1  | keyboard | 89     | 1
+2  | monitor  | 349.5  | 2`,
   };
 
 export const quickstartShipOrderExample: CodeExample = {
@@ -68,9 +68,9 @@ export const quickstartViewUpdatedExample: CodeExample = {
     title: 'The View Maintained Itself',
     code: `from shop::open_orders
 sort { id: asc }`,
-    expected: `id | item    | amount
----+---------+-------
-2  | monitor | 349.5`,
+    expected: `id | item    | amount | #rownum
+---+---------+--------+--------
+2  | monitor | 349.5  | 2`,
   };
 
 export const quickstartAggregateExample: CodeExample = {

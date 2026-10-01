@@ -7,9 +7,9 @@ export const resErrorsSetupExample: CodeExample = {
 create table res_err::items { id: int4, name: utf8 };
 insert res_err::items [{ id: 1, name: "a" }];
 from res_err::items`,
-    expected: `id | name
----+-----
-1  | a`,
+    expected: `id | name | #rownum
+---+------+--------
+1  | a    | 1`,
   };
 
 export const resErrorsParseExample: CodeExample = {
@@ -66,9 +66,9 @@ export const resErrorsQueryColumnExample: CodeExample = {
 
 export const resErrorsViewSetupExample: CodeExample = {
     id: 'res-errors-view-setup',
-    title: 'A Transactional View Over a Table',
+    title: 'A View Over a Table',
     code: `create table res_err::orders { id: int4, total: float8 };
-create transactional view res_err::revenue { total: float8 } as {
+create view res_err::revenue { total: float8 } as {
   from res_err::orders
   aggregate { total: math::sum(total) } by {}
 }`,

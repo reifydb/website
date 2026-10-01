@@ -20,11 +20,11 @@ export const updScanExample: CodeExample = {
     id: 'scripting-update-scan',
     title: 'Unlisted Columns Are Untouched',
     code: `from upd::products sort { id: asc }`,
-    expected: `id | name   | price | stocked
----+--------+-------+--------
-1  | widget | 25    | true
-2  | gadget | 45    | true
-3  | gizmo  | 60    | false`,
+    expected: `id | name   | price | stocked | #rownum
+---+--------+-------+---------+--------
+1  | widget | 25    | true    | 1
+2  | gadget | 45    | true    | 2
+3  | gizmo  | 60    | false   | 3`,
   };
 
 export const updMultiFieldExample: CodeExample = {
@@ -33,9 +33,9 @@ export const updMultiFieldExample: CodeExample = {
     code: `update upd::products { price: price + 5, stocked: true }
 filter { id == 3 }
 returning { id, name, price, stocked }`,
-    expected: `id | name  | price | stocked
----+-------+-------+--------
-3  | gizmo | 65    | true`,
+    expected: `id | name  | price | stocked | #rownum
+---+-------+-------+---------+--------
+3  | gizmo | 65    | true    | 3`,
   };
 
 export const updNoFilterExample: CodeExample = {
@@ -57,9 +57,9 @@ upd       | products | 3`,
 
 export const updViewSetupExample: CodeExample = {
     id: 'scripting-update-view-setup',
-    title: 'A Transactional View over a Table',
+    title: 'A View over a Table',
     code: `create table upd::orders { id: int4, total: int8 };
-create transactional view upd::revenue { revenue: int8 } as {
+create view upd::revenue { revenue: int8 } as {
   from upd::orders
   aggregate { revenue: math::sum(total) } by {}
 }`,

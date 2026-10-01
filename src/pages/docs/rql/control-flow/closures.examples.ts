@@ -120,9 +120,9 @@ udf bump($n) { update cf_clo::counters { hits: hits + 1 } filter { name == $n } 
 bump("visits");
 bump("visits");
 from cf_clo::counters`,
-    expected: `name   | hits
--------+-----
-visits | 2`,
+    expected: `name   | hits | #rownum
+-------+------+--------
+visits | 2    | 1`,
   };
 
 export const cfClosuresRequestScopedExample: CodeExample = {

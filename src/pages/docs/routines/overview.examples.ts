@@ -24,10 +24,10 @@ CALL rt_ov::log('first entry');
 CALL rt_ov::log('second entry');
 FROM rt_ov::audit
 SORT { note: asc }`,
-    expected: `note
-------------
-first entry
-second entry`,
+    expected: `note         | #rownum
+-------------+--------
+first entry  | 1
+second entry | 2`,
   };
 
 export const routinesOverviewExamples: CodeExample[] = [

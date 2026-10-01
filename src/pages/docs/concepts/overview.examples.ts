@@ -5,7 +5,7 @@ export const conceptsDerivedSchemaExample: CodeExample = {
     title: 'A Table and Two Views Derived From It',
     code: `create namespace cpt;
 create table cpt::orders { id: int4, region: utf8, total: float8 };
-create transactional view cpt::revenue_by_region { region: utf8, revenue: float8 } as {
+create view cpt::revenue_by_region { region: utf8, revenue: float8 } as {
   from cpt::orders
   aggregate { revenue: math::sum(total) } by { region }
 };
@@ -63,11 +63,11 @@ insert cpt_rb::recent_logins [
   { user_id: 4, at: "09:20" }
 ];
 from cpt_rb::recent_logins`,
-    expected: `user_id | at
---------+------
-2       | 09:05
-3       | 09:12
-4       | 09:20`,
+    expected: `user_id | at    | #rownum
+--------+-------+--------
+2       | 09:05 | 2
+3       | 09:12 | 3
+4       | 09:20 | 4`,
   };
 
 export const conceptsOverviewExamples: CodeExample[] = [

@@ -17,10 +17,10 @@ export const modelStateInsertProjectsExample: CodeExample = {
   { name: "Website" },
   { name: "Mobile App" }
 ] returning { id, name }`,
-    expected: `id | name
----+-----------
-1  | Website
-2  | Mobile App`,
+    expected: `id | name       | #rownum
+---+------------+--------
+1  | Website    | 1
+2  | Mobile App | 2`,
   };
 
 export const modelStateEnumExample: CodeExample = {
@@ -51,7 +51,7 @@ export const modelStateTasksTableExample: CodeExample = {
 export const modelStateViewExample: CodeExample = {
     id: 'model-state-view',
     title: 'Derived State: Open Tasks per Assignee',
-    code: `create transactional view tracker::workload { assignee: utf8, open: int8 } as {
+    code: `create view tracker::workload { assignee: utf8, open: int8 } as {
   from tracker::tasks
   filter { done == false }
   aggregate { open: math::count(id) } by { assignee }
@@ -91,9 +91,9 @@ insert tracker::tasks [
   { project_id: 2, title: "Push notifications", priority: tracker::priority::Low,
     assignee: "grace", done: false }
 ] returning { id, title }`,
-    expected: `id  | title
-----+-------------------
-101 | Push notifications`,
+    expected: `id  | title              | #rownum
+----+--------------------+--------
+101 | Push notifications | 4`,
   };
 
 export const modelStateReadTasksExample: CodeExample = {
@@ -101,12 +101,12 @@ export const modelStateReadTasksExample: CodeExample = {
     title: 'Read the Tasks Back',
     code: `from tracker::tasks
 sort { id: asc }`,
-    expected: `id  | project_id | title               | priority_tag | assignee | done
-----+------------+---------------------+--------------+----------+------
-1   | 1          | Design landing page | 2            | ada      | false
-2   | 1          | Set up analytics    | 0            | grace    | false
-3   | 2          | Login screen        | 1            | ada      | false
-101 | 2          | Push notifications  | 0            | grace    | false`,
+    expected: `id  | project_id | title               | priority_tag | assignee | done  | #rownum
+----+------------+---------------------+--------------+----------+-------+--------
+1   | 1          | Design landing page | 2            | ada      | false | 1
+2   | 1          | Set up analytics    | 0            | grace    | false | 2
+3   | 2          | Login screen        | 1            | ada      | false | 3
+101 | 2          | Push notifications  | 0            | grace    | false | 4`,
   };
 
 export const modelStateReadDictionaryExample: CodeExample = {
@@ -138,12 +138,12 @@ filter { done == false }
 inner join { from tracker::projects } as p using (project_id, p.id)
 map { title, project: p_name }
 sort { title: asc }`,
-    expected: `title               | project
---------------------+-----------
-Design landing page | Website
-Login screen        | Mobile App
-Push notifications  | Mobile App
-Set up analytics    | Website`,
+    expected: `title               | project    | #rownum
+--------------------+------------+--------
+Design landing page | Website    | 4
+Login screen        | Mobile App | 2
+Push notifications  | Mobile App | 1
+Set up analytics    | Website    | 3`,
   };
 
 export const modelStateCompleteTaskExample: CodeExample = {
@@ -176,11 +176,11 @@ export const modelStateActivityEvictExample: CodeExample = {
   { task_id: 1, action: "completed" }
 ];
 from tracker::activity`,
-    expected: `task_id | action
---------+-----------
-1       | commented
-2       | reassigned
-1       | completed`,
+    expected: `task_id | action     | #rownum
+--------+------------+--------
+1       | commented  | 2
+2       | reassigned | 3
+1       | completed  | 4`,
   };
 
 export const guidesModelApplicationStateExamples: CodeExample[] = [

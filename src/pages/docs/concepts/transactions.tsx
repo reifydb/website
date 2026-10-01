@@ -1,4 +1,4 @@
-import { txnAtomicScriptExample as txnAtomicScript, txnDeferredReadAfterWriteExample as txnDeferredReadAfterWrite, txnDeferredSetupExample as txnDeferredSetup, txnRollbackErrorExample as txnRollbackError, txnRollbackVerifyExample as txnRollbackVerify, txnViewReadExample as txnViewRead, txnViewReadAfterWriteExample as txnViewReadAfterWrite, txnViewSetupExample as txnViewSetup, txnViewUnchangedExample as txnViewUnchanged, txnViewWriteExample as txnViewWrite } from './transactions.examples';
+import { txnAtomicScriptExample as txnAtomicScript, txnDeferredReadAfterWriteExample as txnDeferredReadAfterWrite, txnDeferredSetupExample as txnDeferredSetup, txnRollbackErrorExample as txnRollbackError, txnRollbackVerifyExample as txnRollbackVerify, txnViewReadExample as txnViewRead, txnViewReadAfterWriteExample as txnViewReadAfterWrite, txnViewSetupExample as txnViewSetup, txnViewWriteExample as txnViewWrite } from './transactions.examples';
 import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
@@ -153,36 +153,28 @@ export function TransactionsPage() {
           <ExecutableSnippet title={txnViewWrite.title} initialCode={txnViewWrite.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The view is already current - there is no window in which the table shows the
-            new order but the view shows the old revenue:
+            new order but the view does not:
           </p>
           <ExecutableSnippet title={txnViewRead.title} initialCode={txnViewRead.code} />
           <p className="text-text-secondary mb-4">
-            That timing has one consequence worth knowing: once a request writes to a
-            view's source data, reading that view later in the same request is an error
-            (<Code>TXN_015</Code>), and the whole request fails and rolls back. Mid-request
-            the view still holds its pre-request contents, and ReifyDB fails loudly rather
-            than hand you stale data:
+            It stays current inside the request too: a request that writes to the
+            source and then reads the view sees its own write:
           </p>
           <ExecutableSnippet title={txnViewReadAfterWrite.title} initialCode={txnViewReadAfterWrite.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            The failed request committed nothing, and reading the view in its own request
-            works as before:
-          </p>
-          <ExecutableSnippet title={txnViewUnchanged.title} initialCode={txnViewUnchanged.code} />
-          <p className="text-text-secondary mt-4 mb-4">
-            The rule applies to transactional and deferred views alike, and it follows
-            view chains - a view built on top of another view is protected too. Reading a
-            view <em>before</em> writing to its sources is fine. The remedy depends on the
-            view kind: a transactional view is current the moment the write returns, so
-            split the write and the read into separate requests, or read the source tables
-            directly. A deferred view updates asynchronously after commit, so read the
-            source tables directly, or consume the view through a{' '}
+            Deferred views are different. They update asynchronously after commit, so
+            once a request writes to a deferred view's source data, reading that view
+            later in the same request is an error (<Code>TXN_015</Code>), and the whole
+            request fails and rolls back. ReifyDB fails loudly rather than hand you stale
+            data. The rule follows view chains - a view built on top of another view is
+            protected too. Reading a view <em>before</em> writing to its sources is fine.
+            Read the source tables directly, or consume the view through a{' '}
             <Link to="/docs/concepts/data-model/subscriptions" className="text-primary hover:text-primary-light font-medium transition-colors">subscription</Link>:
           </p>
           <ExecutableSnippet title={txnDeferredSetup.title} initialCode={txnDeferredSetup.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Writing upstream of the deferred view and reading it in the same request fails
-            the same way:
+            with <Code>TXN_015</Code>:
           </p>
           <ExecutableSnippet title={txnDeferredReadAfterWrite.title} initialCode={txnDeferredReadAfterWrite.code} />
           <p className="text-text-secondary mt-4 mb-4">

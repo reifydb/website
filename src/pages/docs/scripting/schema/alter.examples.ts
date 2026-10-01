@@ -28,10 +28,10 @@ insert ref_alter::users [
   { id: 2, name: "grace" }
 ];
 from ref_alter::users sort { id: asc }`,
-    expected: `id | name  | email           | ticket
----+-------+-----------------+-------
-1  | ada   | ada@example.com | 1
-2  | grace | ⟪none⟫          | 2`,
+    expected: `id | name  | email           | ticket | #rownum
+---+-------+-----------------+--------+--------
+1  | ada   | ada@example.com | 1      | 1
+2  | grace | ⟪none⟫          | 2      | 2`,
   };
 
 export const refAlterAddDuplicateExample: CodeExample = {
@@ -47,10 +47,10 @@ export const refAlterRenameColumnExample: CodeExample = {
     title: 'Rename a Column on a Populated Table',
     code: `alter table ref_alter::users rename column name to display_name;
 from ref_alter::users sort { id: asc }`,
-    expected: `id | display_name | email           | ticket
----+--------------+-----------------+-------
-1  | ada          | ada@example.com | 1
-2  | grace        | ⟪none⟫          | 2`,
+    expected: `id | display_name | email           | ticket | #rownum
+---+--------------+-----------------+--------+--------
+1  | ada          | ada@example.com | 1      | 1
+2  | grace        | ⟪none⟫          | 2      | 2`,
   };
 
 export const refAlterDropColumnExample: CodeExample = {
@@ -101,11 +101,11 @@ insert ref_alter::events [
   { id: 3, region: "eu" }
 ];
 from ref_alter::events sort { id: asc }`,
-    expected: `id | region
----+-------
-1  | eu
-2  | us
-3  | eu`,
+    expected: `id | region | #rownum
+---+--------+--------
+1  | eu     | 1
+2  | us     | 2
+3  | eu     | 3`,
   };
 
 export const refAlterTruncatePartitionExample: CodeExample = {
@@ -122,10 +122,10 @@ export const refAlterPartitionAfterTruncateExample: CodeExample = {
     title: 'The Partition Keeps Accepting Rows',
     code: `insert ref_alter::events [{ id: 4, region: "eu" }];
 from ref_alter::events sort { id: asc }`,
-    expected: `id | region
----+-------
-2  | us
-4  | eu`,
+    expected: `id | region | #rownum
+---+--------+--------
+2  | us     | 2
+4  | eu     | 4`,
   };
 
 export const refAlterDropPartitionExample: CodeExample = {
@@ -142,10 +142,10 @@ export const refAlterPartitionAfterDropExample: CodeExample = {
     title: 'A Dropped Partition Comes Back on the Next Insert',
     code: `insert ref_alter::events [{ id: 5, region: "us" }];
 from ref_alter::events sort { id: asc }`,
-    expected: `id | region
----+-------
-4  | eu
-5  | us`,
+    expected: `id | region | #rownum
+---+--------+--------
+4  | eu     | 4
+5  | us     | 5`,
   };
 
 export const refAlterPartitionValueStringExample: CodeExample = {
@@ -171,9 +171,9 @@ export const refAlterSequenceNextExample: CodeExample = {
     id: 'ref-alter-sequence-next',
     title: 'The Next Insert Draws value + 1',
     code: `insert ref_alter::tickets [{ title: "second" }] returning { id, title }`,
-    expected: `id   | title
------+-------
-1001 | second`,
+    expected: `id   | title  | #rownum
+-----+--------+--------
+1001 | second | 2`,
   };
 
 export const refAlterSequenceNotAutoExample: CodeExample = {

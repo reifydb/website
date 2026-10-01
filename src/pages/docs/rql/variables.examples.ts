@@ -15,10 +15,10 @@ from cf_var::items
 filter { stock >= $min_stock }
 map { name, stock }
 sort { stock: desc }`,
-    expected: `name   | stock
--------+------
-bolt   | 120
-washer | 45`,
+    expected: `name   | stock | #rownum
+-------+-------+--------
+bolt   | 120   | 1
+washer | 45    | 3`,
   };
 
 export const rqlVariablesReassignExample: CodeExample = {
@@ -49,10 +49,10 @@ from $items
 filter { stock < 50 }
 sort { stock: asc }
 map { name, stock }`,
-    expected: `name   | stock
--------+------
-nut    | 8
-washer | 45`,
+    expected: `name   | stock | #rownum
+-------+-------+--------
+nut    | 8     | 2
+washer | 45    | 3`,
   };
 
 export const rqlVariablesFrameFieldExample: CodeExample = {
@@ -66,10 +66,10 @@ from cf_var::items
 filter { stock < $limit }
 sort { stock: asc }
 map { name, stock }`,
-    expected: `name   | stock
--------+------
-nut    | 8
-washer | 45`,
+    expected: `name   | stock | #rownum
+-------+-------+--------
+nut    | 8     | 2
+washer | 45    | 3`,
   };
 
 export const rqlVariablesScopeExample: CodeExample = {

@@ -31,11 +31,11 @@ export const scriptingRbFillExample: CodeExample = {
   { id: 3, level: "warn", msg: "slow request" }
 ];
 from st_rb::logs`,
-    expected: `id | level | msg
----+-------+-------------------
-1  | info  | service started
-2  | info  | listening on :8080
-3  | warn  | slow request`,
+    expected: `id | level | msg                | #rownum
+---+-------+--------------------+--------
+1  | info  | service started    | 1
+2  | info  | listening on :8080 | 2
+3  | warn  | slow request       | 3`,
   };
 
 export const scriptingRbEvictExample: CodeExample = {
@@ -43,11 +43,11 @@ export const scriptingRbEvictExample: CodeExample = {
     title: 'One Insert Past Capacity Evicts the Oldest Row',
     code: `insert st_rb::logs [{ id: 4, level: "error", msg: "upstream timeout" }];
 from st_rb::logs`,
-    expected: `id | level | msg
----+-------+-------------------
-2  | info  | listening on :8080
-3  | warn  | slow request
-4  | error | upstream timeout`,
+    expected: `id | level | msg                | #rownum
+---+-------+--------------------+--------
+2  | info  | listening on :8080 | 2
+3  | warn  | slow request       | 3
+4  | error | upstream timeout   | 4`,
   };
 
 export const scriptingRbTableOrderExample: CodeExample = {
@@ -60,11 +60,11 @@ insert st_rb::audit [
   { id: 3, action: "deleted" }
 ];
 from st_rb::audit`,
-    expected: `id | action
----+--------
-3  | deleted
-2  | updated
-1  | created`,
+    expected: `id | action  | #rownum
+---+---------+--------
+3  | deleted | 3
+2  | updated | 2
+1  | created | 1`,
   };
 
 export const scriptingRbPartitionExample: CodeExample = {
@@ -81,11 +81,11 @@ insert st_rb::region_logs [
   { region: "west", msg: "backup complete" }
 ];
 from st_rb::region_logs`,
-    expected: `region | msg
--------+-----------------
-east   | retry scheduled
-east   | shard rebalanced
-west   | backup complete`,
+    expected: `region | msg              | #rownum
+-------+------------------+--------
+east   | retry scheduled  | 2
+east   | shard rebalanced | 3
+west   | backup complete  | 4`,
   };
 
 export const scriptingRbUpdateExample: CodeExample = {
@@ -102,10 +102,10 @@ export const scriptingRbDeleteExample: CodeExample = {
     title: 'Delete Ahead of Eviction',
     code: `delete st_rb::logs filter { id == 2 };
 from st_rb::logs`,
-    expected: `id | level | msg
----+-------+-----------------
-3  | warn  | slow request
-4  | fatal | upstream timeout`,
+    expected: `id | level | msg              | #rownum
+---+-------+------------------+--------
+3  | warn  | slow request     | 3
+4  | fatal | upstream timeout | 4`,
   };
 
 export const scriptingRbViewSetupExample: CodeExample = {

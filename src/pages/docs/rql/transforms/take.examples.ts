@@ -14,10 +14,10 @@ insert tf_take::events [
 ];
 from tf_take::events
 take 2`,
-    expected: `id | kind     | size
----+----------+-----
-5  | view     | 40
-4  | purchase | 120`,
+    expected: `id | kind     | size | #rownum
+---+----------+------+--------
+5  | view     | 40   | 5
+4  | purchase | 120  | 4`,
   };
 
 export const takeTopNExample: CodeExample = {
@@ -26,11 +26,11 @@ export const takeTopNExample: CodeExample = {
     code: `from tf_take::events
 sort { size: desc }
 take 3`,
-    expected: `id | kind     | size
----+----------+-----
-4  | purchase | 120
-5  | view     | 40
-2  | view     | 25`,
+    expected: `id | kind     | size | #rownum
+---+----------+------+--------
+4  | purchase | 120  | 4
+5  | view     | 40   | 5
+2  | view     | 25   | 2`,
   };
 
 export const takeAfterFilterExample: CodeExample = {
@@ -40,9 +40,9 @@ export const takeAfterFilterExample: CodeExample = {
 filter { kind == "click" }
 sort { id: asc }
 take 1`,
-    expected: `id | kind  | size
----+-------+-----
-1  | click | 10`,
+    expected: `id | kind  | size | #rownum
+---+-------+------+--------
+1  | click | 10   | 1`,
   };
 
 export const takeZeroExample: CodeExample = {
@@ -58,13 +58,13 @@ export const takeMoreThanAvailableExample: CodeExample = {
     title: 'Asking for More Than Exists',
     code: `from tf_take::events
 take 100`,
-    expected: `id | kind     | size
----+----------+-----
-5  | view     | 40
-4  | purchase | 120
-3  | click    | 5
-2  | view     | 25
-1  | click    | 10`,
+    expected: `id | kind     | size | #rownum
+---+----------+------+--------
+5  | view     | 40   | 5
+4  | purchase | 120  | 4
+3  | click    | 5    | 3
+2  | view     | 25   | 2
+1  | click    | 10   | 1`,
   };
 
 export const takeVariableExample: CodeExample = {
@@ -73,10 +73,10 @@ export const takeVariableExample: CodeExample = {
     code: `let $n = 2;
 from tf_take::events
 take $n`,
-    expected: `id | kind     | size
----+----------+-----
-5  | view     | 40
-4  | purchase | 120`,
+    expected: `id | kind     | size | #rownum
+---+----------+------+--------
+5  | view     | 40   | 5
+4  | purchase | 120  | 4`,
   };
 
 export const takeInUpdateExample: CodeExample = {
@@ -86,9 +86,9 @@ export const takeInUpdateExample: CodeExample = {
 filter { kind == "view" }
 take 1
 returning { id, kind, size }`,
-    expected: `id | kind | size
----+------+-----
-5  | view | 0`,
+    expected: `id | kind | size | #rownum
+---+------+------+--------
+5  | view | 0    | 5`,
   };
 
 export const rqlTransformsTakeExamples: CodeExample[] = [

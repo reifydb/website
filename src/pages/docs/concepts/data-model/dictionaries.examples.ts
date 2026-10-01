@@ -49,10 +49,10 @@ insert dm_dict::trades [
   { symbol: "NVDA", qty: 50 }
 ];
 from dm_dict::trades`,
-    expected: `symbol | qty
--------+----
-NVDA   | 50
-AAPL   | 100`,
+    expected: `symbol | qty | #rownum
+-------+-----+--------
+NVDA   | 50  | 2
+AAPL   | 100 | 1`,
   };
 
 export const dmDictionariesNewEntryExample: CodeExample = {
@@ -68,9 +68,9 @@ export const dmDictionariesFilterEncodedExample: CodeExample = {
     id: 'dm-dictionaries-filter-encoded',
     title: 'Readers Filter with Plain Strings',
     code: `from dm_dict::trades filter { symbol == "AAPL" }`,
-    expected: `symbol | qty
--------+----
-AAPL   | 100`,
+    expected: `symbol | qty | #rownum
+-------+-----+--------
+AAPL   | 100 | 1`,
   };
 
 export const dmDictionariesExplicitIdExample: CodeExample = {

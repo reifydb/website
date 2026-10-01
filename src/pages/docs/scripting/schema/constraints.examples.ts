@@ -11,11 +11,11 @@ insert ref_cons::items [
   { id: 3, name: "washer" }
 ];
 from ref_cons::items sort { id: asc }`,
-    expected: `id | name   | qty
----+--------+-------
-1  | bolt   | 40
-2  | nut    | ⟪none⟫
-3  | washer | ⟪none⟫`,
+    expected: `id | name   | qty    | #rownum
+---+--------+--------+--------
+1  | bolt   | 40     | 1
+2  | nut    | ⟪none⟫ | 2
+3  | washer | ⟪none⟫ | 3`,
   };
 
 export const refConsNoneRejectedExample: CodeExample = {
@@ -50,13 +50,13 @@ export const refConsCoercionExample: CodeExample = {
   { id: 5.9, name: "cog" }
 ];
 from ref_cons::items sort { id: asc }`,
-    expected: `id | name   | qty
----+--------+-------
-1  | bolt   | 40
-2  | nut    | ⟪none⟫
-3  | washer | ⟪none⟫
-4  | gear   | ⟪none⟫
-5  | cog    | ⟪none⟫`,
+    expected: `id | name   | qty    | #rownum
+---+--------+--------+--------
+1  | bolt   | 40     | 1
+2  | nut    | ⟪none⟫ | 2
+3  | washer | ⟪none⟫ | 3
+4  | gear   | ⟪none⟫ | 4
+5  | cog    | ⟪none⟫ | 5`,
   };
 
 export const refConsRangeExample: CodeExample = {
@@ -83,9 +83,9 @@ export const refConsMaxLengthExample: CodeExample = {
     code: `create table ref_cons::codes { code: utf8(3) };
 insert ref_cons::codes [{ code: "abc" }];
 from ref_cons::codes`,
-    expected: `code
-----
-abc`,
+    expected: `code | #rownum
+-----+--------
+abc  | 1`,
   };
 
 export const refConsMaxLengthExceededExample: CodeExample = {
@@ -124,9 +124,9 @@ insert ref_cons::seats [{ seat_no: 1, holder: "ada" }];
 delete ref_cons::seats filter { seat_no == 1 };
 insert ref_cons::seats [{ seat_no: 1, holder: "grace" }];
 from ref_cons::seats`,
-    expected: `seat_no | holder
---------+-------
-1       | grace`,
+    expected: `seat_no | holder | #rownum
+--------+--------+--------
+1       | grace  | 2`,
   };
 
 export const refConsKeyCatalogExample: CodeExample = {
@@ -146,10 +146,10 @@ export const refConsSaturationNoneExample: CodeExample = {
 create column property on ref_cons::sensors::level { saturation: none };
 insert ref_cons::sensors [{ id: 1, level: 300 }, { id: 2, level: 5 }];
 from ref_cons::sensors sort { id: asc }`,
-    expected: `id | level
----+-------
-1  | ⟪none⟫
-2  | 5`,
+    expected: `id | level  | #rownum
+---+--------+--------
+1  | ⟪none⟫ | 1
+2  | 5      | 2`,
   };
 
 export const refConsSaturationRequiresOptionExample: CodeExample = {
