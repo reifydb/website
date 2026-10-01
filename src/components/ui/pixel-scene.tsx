@@ -16,7 +16,7 @@ import {
 import { GEM_COLORS } from './pixel-icons';
 
 type Context = CanvasRenderingContext2D;
-type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | 'build' | 'trade' | 'bug' | 'library' | BoardMode;
+type SceneKind = 'hall' | 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | 'build' | 'trade' | 'bug' | 'library' | 'arcade' | BoardMode;
 type Draw = (c: Context, width: number, height: number, time: number) => void;
 
 interface RunnerBug {
@@ -63,6 +63,25 @@ const DB_WIDTH = 20;
 const NIGHT_TEXT = '#e6e8fd';
 const BUCKET = ['.hh.', 'h..h', 'wwww', 'bbbb', '.bb.'];
 const BUCKET_COLORS: Record<string, string> = { h: '#c9c3dc', w: '#ffffff', b: '#4b52d6' };
+const SMALL_RING = ['.TTT.', 'L...R', 'L.C.R', 'L...R', '.BBB.'];
+const LARGE_RING = [
+  '.....TTTTT.....',
+  '...TTTTTTTTT...',
+  '...TTTTTTTTT...',
+  '.LL.TTTTTTT.RR.',
+  '.LLL.......RRR.',
+  'LLLL..CCC..RRRR',
+  'LLLL.CCCCC.RRRR',
+  'LLLL.CCCCC.RRRR',
+  'LLLL.CCCCC.RRRR',
+  'LLLL..CCC..RRRR',
+  '.LLL.......RRR.',
+  '.LL.BBBBBBB.RR.',
+  '...BBBBBBBBB...',
+  '...BBBBBBBBB...',
+  '.....BBBBB.....',
+];
+const RING_COLORS: Record<string, string> = { T: '#3d44c9', R: '#a8acf5', B: '#7e85f2', L: '#5d64e6', C: '#262a8f' };
 const PYRAMID = [4, 3, 2, 1];
 const INVADERS = ['CACHE', 'CRON', 'QUEUE', 'WORKERS', 'GLUE'];
 const KILL_ORDER = [2, 0, 4, 1, 3];
@@ -110,7 +129,7 @@ const SQUASH_TIME = 0.15;
 const BOUNCE_TIME = 0.35;
 const MERGE_TIME = 0.6;
 const POOF_TIME = 0.6;
-const MERGED_WIDTH = 31;
+const MERGED_WIDTH = 38;
 const LEVEL_HEIGHT = 27;
 const LEVEL_WALK_SPEED = 40;
 const LIBRARY_LOOP = 7;
@@ -123,6 +142,9 @@ const OPEN_TIME = 0.3;
 const READ_TIME = 3;
 const PAGE_TIME = 1;
 const TURN_TIME = 0.3;
+const ARCADE_LOOP = 7;
+const ARCADE_PLAY = 4.5;
+const CABINET_WIDTH = 34;
 const RUNNER_BUGS: RunnerBug[] = [
   { shape: 'beetle', boxes: ['PG', 'REDIS'] },
   { shape: 'fly', boxes: ['CACHE'] },
@@ -425,6 +447,7 @@ function hall(c: Context, width: number, height: number, time: number) {
   const poleX = Math.round(middle);
   rect(c, poleX, roofY(poleX) - 6, 1, 6, LINE);
   rect(c, poleX + 1, roofY(poleX) - 6, 3 + (Math.floor(time * 4) % 2), 2, PRIMARY);
+  ring(c, SMALL_RING, poleX - 2, wallTop - 8);
 }
 
 function compare(c: Context, width: number, height: number, time: number, mode: BoardMode) {
@@ -439,6 +462,7 @@ function compare(c: Context, width: number, height: number, time: number, mode: 
   if (mode === 'incremental') {
     const liftY = elapsed >= 0 && elapsed < 0.45 ? boardTop + 3 + market.lastTradedRow * ROW_HEIGHT + 3 : undefined;
     bot(c, boardLeft + 33, floor, time, 0, false, liftY);
+    ring(c, SMALL_RING, boardLeft + BOARD_WIDTH - 6, boardTop + BOARD_HEIGHT + 1);
     return;
   }
   const sweeping = elapsed >= 0 && elapsed < 0.7;
@@ -560,7 +584,8 @@ function stack(c: Context, width: number, height: number, time: number) {
 
   const folded = t >= FOLD_START;
   const label = folded ? 'REIFYDB' : arrived === 1 ? STACK_SYSTEMS[0] : `+ ${STACK_SYSTEMS[arrived - 1]}`;
-  caption(c, label, left, 4, folded ? '#4b52d6' : INK);
+  if (folded) ring(c, SMALL_RING, left, 4);
+  caption(c, label, folded ? left + 7 : left, 4, folded ? '#4b52d6' : INK);
 }
 
 function database(c: Context, left: number, floor: number, flash: boolean) {
@@ -577,6 +602,25 @@ function bucket(c: Context, x: number, y: number) {
       if (cell !== '.') rect(c, x + i, y + j, 1, 1, BUCKET_COLORS[cell]);
     });
   });
+}
+
+function ring(c: Context, sprite: string[], x: number, y: number, core = RING_COLORS.C) {
+  sprite.forEach((row, j) => {
+    [...row].forEach((cell, i) => {
+      if (cell !== '.') rect(c, x + i, y + j, 1, 1, cell === 'C' ? core : RING_COLORS[cell]);
+    });
+  });
+}
+
+function plate(c: Context, x: number, y: number) {
+  rect(c, x, y, 7, 7, '#ffffff');
+  ring(c, SMALL_RING, x + 1, y + 1);
+}
+
+function signpost(c: Context, x: number, floor: number) {
+  rect(c, x + 3, floor - 8, 1, 6, WOOD);
+  plate(c, x, floor - 15);
+  rect(c, x, floor - 9, 7, 1, LINE);
 }
 
 function buckets(c: Context, botX: number, floor: number, count: number) {
@@ -615,7 +659,9 @@ function lane(
   const x = !moving ? home : outbound ? lerp(home, target, ease(phase * 2)) : lerp(target, home, ease((phase - 0.5) * 2));
 
   stall(c, appLeft, floor, index, false, false);
-  database(c, dbLeft, floor, moving && phase >= 0.5 && phase < 0.62);
+  const hit = moving && phase >= 0.5 && phase < 0.62;
+  if (index === 1) ring(c, LARGE_RING, dbLeft + 2, floor - 15, hit ? SPARK : NIGHT_TEXT);
+  else database(c, dbLeft, floor, hit);
   bot(c, x, floor, time, index, false);
   if (outbound) buckets(c, x, floor, stack);
 
@@ -701,7 +747,8 @@ function invaders(c: Context, width: number, height: number, time: number) {
 
   const margin = Math.max(4, Math.round(width * 0.04));
   const kills = wave * INVADERS.length + KILL_ORDER.filter((i) => t >= killTime(i)).length;
-  caption(c, `SCORE ${String(kills * 10).padStart(6, '0')}`, margin, 2, NIGHT_TEXT);
+  ring(c, SMALL_RING, margin, 2, NIGHT_TEXT);
+  caption(c, `SCORE ${String(kills * 10).padStart(6, '0')}`, margin + 7, 2, NIGHT_TEXT);
   if (t >= lastKill + 0.3 && t < WAVE_LOOP - 0.3 && Math.floor(t * 4) % 2 === 0) {
     caption(c, 'WAVE CLEAR', Math.round(width / 2 - 20), 16, '#ffe08a');
   }
@@ -745,6 +792,7 @@ function noticeBoard(c: Context, width: number, height: number, time: number, co
   const slotY = boardTop + 5;
 
   [boardLeft + 4, boardLeft + boardWidth - 6].forEach((x) => rect(c, x, boardBottom, 2, groundY - boardBottom + 1, WOOD));
+  ring(c, SMALL_RING, Math.round(boardLeft + boardWidth / 2) - 2, boardTop - 5);
   rect(c, boardLeft, boardTop, boardWidth, boardHeight, WOOD);
   rect(c, boardLeft, boardTop, boardWidth, 1, '#d4ad86');
   rect(c, boardLeft + 2, boardTop + 2, boardWidth - 4, boardHeight - 4, '#ecdcc0');
@@ -805,6 +853,7 @@ function booth(c: Context, width: number, height: number, time: number) {
   const t = time % SERVE_LOOP;
   const serve = Math.floor(time / SERVE_LOOP);
   stall(c, boothLeft, floor, 2, false, false);
+  ring(c, SMALL_RING, boothLeft + 5, floor - 5);
   caption(c, 'INFO', boothLeft + 1, floor - 21, INK);
   if (t < ANSWER_END) bubble(c, boothLeft + 5, floor - 30, '!', PRIMARY);
 
@@ -825,7 +874,8 @@ function garage(c: Context, left: number, floor: number) {
   rect(c, left, top, 20, 16, '#ffffff');
   rect(c, left + 19, top, 1, 16, '#e6e4f5');
   rect(c, left - 1, top - 1, 22, 7, PRIMARY);
-  caption(c, 'PIT', left + 5, top, INK);
+  plate(c, left, top - 1);
+  caption(c, 'PIT', left + 9, top, INK);
   rect(c, left + 4, floor - 10, 12, 10, INK);
 }
 
@@ -915,6 +965,7 @@ function plane(c: Context, x: number, y: number) {
 
 function house(c: Context, left: number, floor: number, lit: boolean) {
   for (let r = 0; r < 10; r++) rect(c, left - 1 + r, floor - 13 - r, 20 - 2 * r, 1, PRIMARY);
+  plate(c, left + 6, floor - 19);
   rect(c, left, floor - 12, 18, 12, '#ffffff');
   rect(c, left + 17, floor - 12, 1, 12, '#e6e4f5');
   rect(c, left + 3, floor - 7, 4, 7, WOOD);
@@ -1019,6 +1070,7 @@ function build(c: Context, width: number, height: number, time: number) {
   const buildEnd = popEnd + cells.length * DROP_TIME;
   const clearStart = buildEnd + 0.6;
   const raised = floor - 14;
+  signpost(c, buildLeft + 18, floor);
   bot(c, botX, floor, time, 0, false, t >= popEnd && t < buildEnd ? raised : undefined);
 
   if (t < clearStart) {
@@ -1118,6 +1170,7 @@ function trade(c: Context, width: number, height: number, time: number) {
     if (u >= slideEnd && u < shakeEnd) shake = Math.floor(time * 12) % 2 ? 1 : -1;
     if (u >= shakeEnd && u < crossEnd && Math.floor(time * 6) % 2 === 0) cross(c, hoverX + 8, hoverY + 12);
   }
+  signpost(c, botX + 25, floor);
   bot(c, botX + shake, floor, time, 0, false);
 
   const middle = (GEM_COLORS.length - 1) / 2;
@@ -1140,6 +1193,13 @@ function labelBox(c: Context, text: string, left: number, top: number, color: st
   rect(c, left, top, width, 7, '#ffffff');
   rect(c, left, top + 7, width, 1, LINE);
   caption(c, text, left + 2, top + 1, color);
+}
+
+function brandBox(c: Context, left: number, top: number) {
+  rect(c, left, top, MERGED_WIDTH, 7, '#ffffff');
+  rect(c, left, top + 7, MERGED_WIDTH, 1, LINE);
+  ring(c, SMALL_RING, left + 2, top + 1);
+  caption(c, 'REIFYDB', left + 9, top + 1, '#4b52d6');
 }
 
 function beetle(c: Context, x: number, floor: number, time: number) {
@@ -1298,7 +1358,7 @@ function runner(c: Context, width: number, height: number, time: number) {
         labelBox(c, box.text, left, Math.round(lerp(box.top, floor - 9, u)), INK);
       });
     } else {
-      labelBox(c, 'REIFYDB', Math.round(center - MERGED_WIDTH / 2), floor - 9, '#4b52d6');
+      brandBox(c, Math.round(center - MERGED_WIDTH / 2), floor - 9);
     }
 
     if (since >= -JUMP_TIME && since < SQUASH_TIME + BOUNCE_TIME) {
@@ -1345,6 +1405,7 @@ function levelMap(
     rect(c, x, floor - 9, 7, 1, LINE);
     glyph(c, String(i + 1), x + 2, floor - 14, INK);
   }
+  signpost(c, signX(count - 1) + 17, floor);
 
   const distance = Math.abs(signX(walk.to) - signX(walk.from));
   const u = distance > 0 ? Math.min(1, (time - walk.start) / (distance / LEVEL_WALK_SPEED)) : 1;
@@ -1375,6 +1436,7 @@ function bookshelf(c: Context, left: number, floor: number, gapShelf: number, ga
   const top = floor - 29;
   rect(c, left, top, SHELF_WIDTH, 28, WOOD);
   rect(c, left, top, SHELF_WIDTH, 1, '#d8b08a');
+  ring(c, SMALL_RING, left + SHELF_WIDTH / 2 - 2, top - 5);
   for (let shelf = 0; shelf < 2; shelf++) {
     const back = top + 2 + shelf * 13;
     rect(c, left + 2, back, SHELF_WIDTH - 4, 11, SHELF_BACK);
@@ -1449,6 +1511,81 @@ function library(c: Context, width: number, height: number, time: number) {
   }
 }
 
+function pingPong(u: number) {
+  return 1 - Math.abs((u % 2) - 1);
+}
+
+function cabinet(c: Context, left: number, floor: number) {
+  rect(c, left, floor - 40, CABINET_WIDTH, 9, '#3f3b99');
+  rect(c, left + 1, floor - 39, CABINET_WIDTH - 2, 7, SPARK);
+  ring(c, SMALL_RING, left + 4, floor - 38);
+  caption(c, 'REIFY', left + 11, floor - 38, INK);
+  rect(c, left, floor - 32, CABINET_WIDTH, 32, '#4b52d6');
+  rect(c, left, floor - 32, 1, 32, '#6a71e6');
+  rect(c, left + CABINET_WIDTH - 1, floor - 32, 1, 32, '#3f3b99');
+  rect(c, left + 2, floor - 31, CABINET_WIDTH - 4, 14, '#3f3b99');
+  rect(c, left + 3, floor - 30, CABINET_WIDTH - 6, 12, INK);
+  rect(c, left - 1, floor - 14, CABINET_WIDTH + 2, 3, '#6a71e6');
+  rect(c, left - 1, floor - 14, CABINET_WIDTH + 2, 1, '#a3a9ff');
+  rect(c, left + 1, floor - 11, CABINET_WIDTH - 2, 11, '#6a71e6');
+  rect(c, left + 14, floor - 9, 6, 6, '#3f3b99');
+  rect(c, left + 16, floor - 8, 2, 1, SPARK);
+}
+
+function seat(c: Context, x: number, floor: number, tilt: number, lit: boolean) {
+  rect(c, x - 1 + tilt, floor - 16, 1, 1, LINE);
+  rect(c, x - 1, floor - 15, 1, 1, LINE);
+  rect(c, x - 2 + tilt, floor - 18, 3, 2, '#e0708f');
+  rect(c, x + 5, floor - 15, 2, 1, lit ? SPARK : '#a3a9ff');
+  rect(c, x - 1, floor - 6, 7, 2, WOOD);
+  rect(c, x - 1, floor - 6, 7, 1, '#c9a27a');
+  rect(c, x, floor - 4, 1, 4, WOOD);
+  rect(c, x + 4, floor - 4, 1, 4, WOOD);
+}
+
+function pong(c: Context, left: number, top: number, time: number) {
+  const screenWidth = CABINET_WIDTH - 6;
+  for (let y = 0; y < 12; y += 2) rect(c, left + screenWidth / 2, top + y, 1, 1, '#3f3b99');
+  caption(c, '9', left + 8, top + 1, '#6a71e6');
+  if (Math.floor(time * 2) % 2 === 0) caption(c, '?', left + 17, top + 1, SPARK);
+  const ballX = left + 2 + Math.round(pingPong(time * 1.1) * (screenWidth - 3));
+  const ballY = top + Math.round(pingPong(time * 1.7) * 11);
+  rect(c, left + 1, Math.min(top + 8, Math.max(top, ballY - 1)), 1, 4, '#ffffff');
+  rect(c, ballX, ballY, 1, 1, '#ffffff');
+}
+
+function arcade(c: Context, width: number, height: number, time: number) {
+  const groundY = height - 14;
+  const floor = groundY + 3;
+  clouds(c, width, time);
+  hills(c, width, groundY);
+  grass(c, width, groundY, height - 7, time);
+  dither(c, width, height - 7, height, PRIMARY, PAPER);
+
+  const left = Math.round(width / 2) - CABINET_WIDTH / 2;
+  const playerX = left + 5;
+  const openX = left + 24;
+  const t = time % ARCADE_LOOP;
+  const playing = t < ARCADE_PLAY;
+  const lit = !playing && Math.floor(t * 4) % 2 === 0;
+  cabinet(c, left, floor);
+  seat(c, playerX, floor, playing ? (Math.floor(time * 1.7) % 2 === 0 ? 1 : -1) : 0, false);
+  seat(c, openX, floor, 0, lit);
+
+  if (playing) {
+    pong(c, left + 3, floor - 30, time);
+  } else {
+    if (Math.floor(t * 3) % 2 === 0) {
+      caption(c, 'PRESS', left + 7, floor - 29, SPARK);
+      caption(c, 'START', left + 7, floor - 23, SPARK);
+    }
+    if (lit) sparkle(c, openX + 5, floor - 15, time);
+    bubble(c, openX, floor - 14, '?', INK);
+  }
+
+  bot(c, playerX, floor - 5, time, 0, false);
+}
+
 const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
   hall: { height: 84, heightClass: 'h-[336px] max-sm:h-[252px] max-[341px]:h-[168px]', draw: hall },
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
@@ -1466,6 +1603,7 @@ const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Dra
   trade: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: trade },
   bug: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: runner },
   library: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: library },
+  arcade: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: arcade },
 };
 
 interface PixelSceneProps {
