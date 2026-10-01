@@ -155,7 +155,7 @@ export function DocsOverview() {
               </li>
               <li>
                 <Link to="/contact" className="text-[#4b52d6] hover:text-primary-dark font-medium transition-colors link-underline">
-                  Contact Me &rarr;
+                  Contact Us &rarr;
                 </Link>
               </li>
             </ul>

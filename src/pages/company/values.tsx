@@ -101,6 +101,19 @@ const values: Value[] = [
       'No first-line support tier',
     ],
   },
+  {
+    id: 'every-line-is-ours',
+    title: 'Every line is ours',
+    body: [
+      'We build ReifyDB with the best tools we can find, and today that includes AI. It lets a small team build and test more than it could by hand, and we would rather say so than pretend otherwise.',
+      'But a tool does not ship code, we do. Whatever wrote a line, it goes out under our name and is held to the same bar as the rest of the engine. When it is wrong, it is our bug, not the tool\'s. "The AI wrote it" is never an answer you will get from us.',
+    ],
+    practice: [
+      'We use the best tools available, AI included',
+      'Code is held to the same bar, whatever wrote it',
+      'Every bug is ours, no matter which tool wrote the line',
+    ],
+  },
 ];
 
 export function ValuesPage() {
@@ -108,14 +121,14 @@ export function ValuesPage() {
     <>
       <PageMeta
         title="Values | ReifyDB"
-        description="Seven promises ReifyDB makes to its users: no venture capital, a license that stays, no paywall on the essentials, written down so you can hold us to them."
+        description="Eight promises ReifyDB makes to its users: no venture capital, a license that stays, no paywall on the essentials, written down so you can hold us to them."
       />
       <Navbar />
 
       <main>
         <PageHero
           eyebrow="Values"
-          title="Seven things no one can buy"
+          title="Eight things no one can buy"
           subtitle="Every database makes choices. These are ours, written down so you can hold us to them."
           scene={<PixelScene kind="trade" />}
         />

@@ -14,7 +14,7 @@ export const faqs: FaqItemData[] = [
   },
   {
     question: 'Is ReifyDB production ready?',
-    answer: 'No. ReifyDB is in active development. APIs and guarantees may change. I recommend using it for experimentation and development, but not for production workloads yet.',
+    answer: 'No. ReifyDB is in active development. APIs and guarantees may change. We recommend using it for experimentation and development, but not for production workloads yet.',
   },
   {
     question: 'What is the licensing model?',

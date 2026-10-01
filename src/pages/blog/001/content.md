@@ -52,6 +52,6 @@ ReifyDB is built with a few strong principles: incremental by default, columnar 
 
 CS 101 says never build your own database. That is solid advice if your goal is a paper. It is worse advice if you've spent years wiring triggers into schedulers, standing up a service whose only job is cache invalidation, and refreshing a materialized view from a cron job nobody trusts.
 
-I did not build ReifyDB from a research problem. I built it from an application backlog. Every feature in it exists because the alternative was one more moving part to operate at 3am. Incremental, programmable state should not require five separate systems glued together.
+We did not build ReifyDB from a research problem. We built it from an application backlog. Every feature in it exists because the alternative was one more moving part to operate at 3am. Incremental, programmable state should not require five separate systems glued together.
 
 If you're building something where data never sleeps, ReifyDB is the thing you were already assembling by hand.

@@ -21,7 +21,7 @@ const supportOptions = [
     description: 'Enterprise support and consulting for production deployments.',
     icon: BRIEFCASE,
     href: 'mailto:founder@reifydb.com',
-    linkText: 'Contact me',
+    linkText: 'Contact us',
     external: false,
   },
   {
