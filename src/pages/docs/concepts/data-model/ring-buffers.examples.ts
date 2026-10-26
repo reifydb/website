@@ -116,7 +116,7 @@ create view dm_rb::error_count { n: int8 } as {
 }`,
     expected: `id    | namespace | view        | created
 ------+-----------+-------------+--------
-16420 | dm_rb     | error_count | true`,
+16419 | dm_rb     | error_count | true`,
   };
 
 export const dmRingBuffersViewInsertExample: CodeExample = {
@@ -153,7 +153,7 @@ export const dmRingBuffersDeferredViewExample: CodeExample = {
 }`,
     expected: `id    | namespace | view          | created
 ------+-----------+---------------+--------
-16422 | dm_rb     | latest_errors | true`,
+16420 | dm_rb     | latest_errors | true`,
   };
 
 export const dmRingBuffersDeferredReadExample: CodeExample = {

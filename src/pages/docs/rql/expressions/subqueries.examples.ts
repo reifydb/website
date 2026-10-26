@@ -144,7 +144,7 @@ export const subqViewCreateExample: CodeExample = {
 }`,
     expected: `id    | namespace | view        | created
 ------+-----------+-------------+--------
-16420 | expr_subq | paid_orders | true`,
+16419 | expr_subq | paid_orders | true`,
   };
 
 export const subqJoinViewExample: CodeExample = {
@@ -169,7 +169,7 @@ export const subqViewJoinCreateExample: CodeExample = {
 }`,
     expected: `id    | namespace | view         | created
 ------+-----------+--------------+--------
-16422 | expr_subq | north_orders | true`,
+16420 | expr_subq | north_orders | true`,
   };
 
 export const subqViewJoinQueryExample: CodeExample = {
@@ -193,21 +193,21 @@ export const subqAppendViewCreateExample: CodeExample = {
 }`,
     expected: `id    | namespace | view   | created
 ------+-----------+--------+--------
-16424 | expr_subq | people | true`,
+16421 | expr_subq | people | true`,
   };
 
 export const subqAppendViewQueryExample: CodeExample = {
     id: 'subqueries-append-view-query',
     title: 'Both Sources in One View',
     code: `from expr_subq::people`,
-    expected: `name
------
-Sam
-Nora
-Ken
-Linus
-Grace
-Ada`,
+    expected: `name  | #rownum
+------+--------
+Ken   | 8
+Linus | 6
+Sam   | 5
+Grace | 4
+Nora  | 3
+Ada   | 2`,
   };
 
 export const subqLetPipedExample: CodeExample = {

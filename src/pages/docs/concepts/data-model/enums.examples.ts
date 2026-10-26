@@ -101,7 +101,7 @@ export const dmEnumsViewExample: CodeExample = {
 }`,
     expected: `id    | namespace | view         | created
 ------+-----------+--------------+--------
-16421 | dm_enum   | active_tasks | true`,
+16420 | dm_enum   | active_tasks | true`,
   };
 
 export const dmEnumsViewInsertExample: CodeExample = {

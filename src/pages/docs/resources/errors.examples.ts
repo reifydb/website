@@ -74,7 +74,7 @@ create view res_err::revenue { total: float8 } as {
 }`,
     expected: `id    | namespace | view    | created
 ------+-----------+---------+--------
-16419 | res_err   | revenue | true`,
+16418 | res_err   | revenue | true`,
   };
 
 export const resErrorsTxnViewReadExample: CodeExample = {

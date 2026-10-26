@@ -120,7 +120,7 @@ create deferred ringbuffer view st_rb::recent_events {
 }`,
     expected: `id    | namespace | view          | created
 ------+-----------+---------------+--------
-16421 | st_rb     | recent_events | true`,
+16420 | st_rb     | recent_events | true`,
   };
 
 export const scriptingRbViewInsertExample: CodeExample = {
