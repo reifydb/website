@@ -111,7 +111,7 @@ aggregate {
 }`,
     expected: `rows | with_qty | units | avg_units
 -----+----------+-------+----------
-3    | 2        | 12    | 6`,
+3    | 2        | 12    | 6.000000`,
   };
 
 export const aggregateEmptyInputExample: CodeExample = {

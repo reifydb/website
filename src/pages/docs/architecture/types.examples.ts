@@ -16,9 +16,9 @@ insert cpt_dt::items [
   { id: 1, qty: 3, price: 19.99, exact: 10.5, name: "Widget", ok: true }
 ];
 from cpt_dt::items`,
-    expected: `id | qty | price | exact | name   | ok
----+-----+-------+-------+--------+-----
-1  | 3   | 19.99 | 10.5  | Widget | true`,
+    expected: `id | qty | price | exact         | name   | ok   | #rownum
+---+-----+-------+---------------+--------+------+--------
+1  | 3   | 19.99 | 10.5000000000 | Widget | true | 1`,
   };
 
 export const dtTemporalExample: CodeExample = {
@@ -65,9 +65,9 @@ export const dtLiteralTypesExample: CodeExample = {
   day: meta::type(@2024-03-15),
   missing: meta::type(none)
 }`,
-    expected: `small | million | big  | fraction | text | flag    | day  | missing
-------+---------+------+----------+------+---------+------+------------
-Int1  | Int4    | Int8 | Decimal  | Utf8 | Boolean | Date | Option(Any)`,
+    expected: `small | million | big  | fraction      | text | flag    | day  | missing
+------+---------+------+---------------+------+---------+------+------------
+Int1  | Int4    | Int8 | Decimal(2, 1) | Utf8 | Boolean | Date | Option(Any)`,
   };
 
 export const dtRangeErrorExample: CodeExample = {
@@ -108,8 +108,8 @@ export const dtWideningExample: CodeExample = {
   int4_decimal: meta::type(cast(1, int4) + 1.5)
 }`,
     expected: `sum | sum_type | int4_int4 | int4_int8 | uint4_int4 | int4_float4 | int4_decimal
-----+----------+-----------+-----------+------------+-------------+-------------
-128 | Int2     | Int8      | Int16     | Int8       | Float8      | Decimal`,
+----+----------+-----------+-----------+------------+-------------+---------------
+128 | Int2     | Int8      | Int16     | Int8       | Float8      | Decimal(12, 1)`,
   };
 
 export const dtFloatDecimalExample: CodeExample = {
@@ -121,9 +121,9 @@ export const dtFloatDecimalExample: CodeExample = {
   f4_doubled: cast(19.99, float4) * 2,
   f8_doubled: cast(19.99, float8) * 2
 }`,
-    expected: `exact | exact_type | f4_doubled       | f8_doubled
-------+------------+------------------+-----------
-0.3   | Decimal    | 39.9799995422363 | 39.98`,
+    expected: `exact | exact_type    | f4_doubled       | f8_doubled
+------+---------------+------------------+-----------
+0.3   | Decimal(2, 1) | 39.9799995422363 | 39.98`,
   };
 
 export const dtInsertCoercionExample: CodeExample = {

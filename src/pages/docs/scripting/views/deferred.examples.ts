@@ -43,11 +43,11 @@ export const svdInsertReadExample: CodeExample = {
     id: 'svd-insert-read',
     title: 'The New Row Has Propagated',
     code: `from svd::open_orders`,
-    expected: `id | customer | total
----+----------+------
-4  | linus    | 90
-2  | grace    | 75
-1  | ada      | 40`,
+    expected: `id | customer | total | #rownum
+---+----------+-------+--------
+4  | linus    | 90    | 4
+2  | grace    | 75    | 2
+1  | ada      | 40    | 1`,
   };
 
 export const svdLeaveExample: CodeExample = {
@@ -63,10 +63,10 @@ export const svdLeaveReadExample: CodeExample = {
     id: 'svd-leave-read',
     title: 'Order 1 Is Gone',
     code: `from svd::open_orders`,
-    expected: `id | customer | total
----+----------+------
-4  | linus    | 90
-2  | grace    | 75`,
+    expected: `id | customer | total | #rownum
+---+----------+-------+--------
+4  | linus    | 90    | 4
+2  | grace    | 75    | 2`,
   };
 
 export const svdAggregateExample: CodeExample = {
@@ -161,10 +161,10 @@ export const svdChainReadExample: CodeExample = {
     id: 'svd-chain-read',
     title: 'The Chain Backfills Too',
     code: `from svd::big_spenders sort { customer: asc }`,
-    expected: `customer
---------
-grace
-linus`,
+    expected: `customer | #rownum
+---------+--------
+grace    | 2
+linus    | 3`,
   };
 
 export const svdSameRequestExample: CodeExample = {

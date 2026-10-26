@@ -32,10 +32,10 @@ export const svoReadExample: CodeExample = {
     id: 'svo-read',
     title: 'Read the View',
     code: `from svo::open_orders`,
-    expected: `id | customer | total
----+----------+------
-2  | grace    | 75
-1  | ada      | 40`,
+    expected: `id | customer | total | #rownum
+---+----------+-------+--------
+2  | grace    | 75    | 2
+1  | ada      | 40    | 1`,
   };
 
 export const svoDeferredExample: CodeExample = {

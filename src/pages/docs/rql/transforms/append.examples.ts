@@ -240,12 +240,12 @@ export const appendSameRequestQueryExample: CodeExample = {
     id: 'append-same-request-query',
     title: 'The Second Source Was Read with the First One\'s Layout',
     code: `from tf_append::mixed sort { id: asc }`,
-    expected: `id | customer
----+---------
-2  | Bob
-7  | ⟪none⟫
-8  | Hal
-9  | gold`,
+    expected: `id | customer | #rownum
+---+----------+--------
+2  | Bob      | 4
+7  | ⟪none⟫   | 3
+8  | Hal      | 6
+9  | ⟪none⟫   | 5`,
   };
 
 export const appendVariableExample: CodeExample = {

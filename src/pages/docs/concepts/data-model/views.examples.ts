@@ -28,10 +28,10 @@ export const dmViewsTransactionalReadExample: CodeExample = {
     id: 'dm-views-transactional-read',
     title: 'The View Is Already Current',
     code: `from dm_vw::revenue sort { region: asc }`,
-    expected: `region | revenue
--------+--------
-eu     | 15
-us     | 20`,
+    expected: `region | revenue | #rownum
+-------+---------+--------
+eu     | 15      | 1
+us     | 20      | 2`,
   };
 
 export const dmViewsFilterMembershipExample: CodeExample = {
@@ -61,9 +61,9 @@ export const dmViewsFilterReadExample: CodeExample = {
     id: 'dm-views-filter-read',
     title: 'Read the View',
     code: `from dm_vw::active_users`,
-    expected: `id | name
----+------
-1  | Alice`,
+    expected: `id | name  | #rownum
+---+-------+--------
+1  | Alice | 1`,
   };
 
 export const dmViewsFilterLeaveExample: CodeExample = {
@@ -132,9 +132,9 @@ export const dmViewsDeferredReadExample: CodeExample = {
     id: 'dm-views-deferred-read',
     title: 'The Deferred View Has Caught Up',
     code: `from dm_vw::order_count`,
-    expected: `orders
-------
-4`,
+    expected: `orders | #rownum
+-------+--------
+4      | 1`,
   };
 
 export const dmViewsRingbufferBackedExample: CodeExample = {
@@ -167,10 +167,10 @@ export const dmViewsRingbufferReadExample: CodeExample = {
     id: 'dm-views-ringbuffer-read',
     title: 'Only the Newest Derived Rows Remain',
     code: `from dm_vw::recent_clicks`,
-    expected: `id | page
----+---------
-3  | /docs
-2  | /pricing`,
+    expected: `id | page     | #rownum
+---+----------+--------
+3  | /docs    | 3
+2  | /pricing | 2`,
   };
 
 export const dmViewsSeriesBackedExample: CodeExample = {

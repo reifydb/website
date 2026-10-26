@@ -87,9 +87,9 @@ export const updViewReadExample: CodeExample = {
     id: 'scripting-update-view-read',
     title: 'The View Reflects the Update',
     code: `from upd::revenue`,
-    expected: `revenue
--------
-125`,
+    expected: `revenue | #rownum
+--------+--------
+125     | 1`,
   };
 
 export const updViewErrorExample: CodeExample = {

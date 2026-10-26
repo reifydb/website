@@ -137,9 +137,9 @@ export const dmRingBuffersViewReadExample: CodeExample = {
     id: 'dm-ring-buffers-view-read',
     title: 'The View Saw the Eviction',
     code: `from dm_rb::error_count`,
-    expected: `n
--
-3`,
+    expected: `n | #rownum
+--+--------
+3 | 1`,
   };
 
 export const dmRingBuffersDeferredViewExample: CodeExample = {
@@ -160,10 +160,10 @@ export const dmRingBuffersDeferredReadExample: CodeExample = {
     id: 'dm-ring-buffers-deferred-read',
     title: 'Derived Rows, Newest Two, Newest First',
     code: `from dm_rb::latest_errors`,
-    expected: `id | message
----+--------
-4  | reset
-3  | timeout`,
+    expected: `id | message | #rownum
+---+---------+--------
+4  | reset   | 3
+3  | timeout | 2`,
   };
 
 export const dmRingBuffersNoCapacityExample: CodeExample = {

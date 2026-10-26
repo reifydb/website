@@ -124,10 +124,10 @@ export const modelStateReadViewExample: CodeExample = {
     title: 'Query the Workload View',
     code: `from tracker::workload
 sort { assignee: asc }`,
-    expected: `assignee | open
----------+-----
-ada      | 2
-grace    | 2`,
+    expected: `assignee | open | #rownum
+---------+------+--------
+ada      | 2    | 1
+grace    | 2    | 2`,
   };
 
 export const modelStateJoinExample: CodeExample = {
@@ -161,10 +161,10 @@ export const modelStateViewAfterExample: CodeExample = {
     title: 'The View Already Reflects the Change',
     code: `from tracker::workload
 sort { assignee: asc }`,
-    expected: `assignee | open
----------+-----
-ada      | 1
-grace    | 2`,
+    expected: `assignee | open | #rownum
+---------+------+--------
+ada      | 1    | 1
+grace    | 2    | 2`,
   };
 
 export const modelStateActivityEvictExample: CodeExample = {

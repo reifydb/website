@@ -25,8 +25,8 @@ aggregate { avg_price: math::avg(price) } by { category }
 sort { category: asc }`,
     expected: `category | avg_price
 ---------+----------
-book     | 10.0
-game     | 60.0`,
+book     | 10.000000
+game     | 60.000000`,
   };
 
 export const rqlsqlEqNoneExample: CodeExample = {

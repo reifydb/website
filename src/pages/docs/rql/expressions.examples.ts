@@ -120,9 +120,9 @@ aggregate { total: math::sum(amount), orders: math::count(amount) } by { region 
 map { region, total, average: total / orders }
 sort { region: asc }`,
     expected: `region | total | average
--------+-------+--------
-north  | 30.0  | 15.0
-south  | 5.0   | 5.0`,
+-------+-------+----------
+north  | 30.0  | 15.000000
+south  | 5.0   | 5.000000`,
   };
 
 export const exprVariableExample: CodeExample = {
@@ -148,9 +148,9 @@ export const exprResultTypesExample: CodeExample = {
   compare: meta::type(1 == 1),
   concat: meta::type("a" + 1)
 }`,
-    expected: `int_sum | int_div | dec_div | compare | concat
---------+---------+---------+---------+-------
-Int8    | Int1    | Decimal | Boolean | Utf8`,
+    expected: `int_sum | int_div | dec_div        | compare | concat
+--------+---------+----------------+---------+-------
+Int8    | Int1    | Decimal(10, 6) | Boolean | Utf8`,
   };
 
 export const rqlExpressionsExamples: CodeExample[] = [

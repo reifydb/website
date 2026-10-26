@@ -27,9 +27,9 @@ export const litNumericTypesExample: CodeExample = {
   decimal: meta::type(3.5),
   exponent: meta::type(1e3)
 }`,
-    expected: `small | medium | large | huge | decimal | exponent
-------+--------+-------+------+---------+---------
-Int1  | Int2   | Int4  | Int8 | Decimal | Decimal`,
+    expected: `small | medium | large | huge | decimal       | exponent
+------+--------+-------+------+---------------+--------------
+Int1  | Int2   | Int4  | Int8 | Decimal(2, 1) | Decimal(4, 0)`,
   };
 
 export const litDecimalExactExample: CodeExample = {

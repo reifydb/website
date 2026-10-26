@@ -53,10 +53,10 @@ shop002   | orders | 1`,
     title: 'One Row In, One Row Out',
     code: `from shop002::revenue_by_region
 sort { region: asc }`,
-    expected: `region | revenue
--------+--------
-north  | 420
-south  | 80.5`,
+    expected: `region | revenue | #rownum
+-------+---------+--------
+north  | 420     | 1
+south  | 80.5    | 2`,
   },
   {
     id: 'blog002-update-total',
@@ -71,10 +71,10 @@ shop002   | orders | 1`,
     title: 'The Number Goes Down',
     code: `from shop002::revenue_by_region
 sort { region: asc }`,
-    expected: `region | revenue
--------+--------
-north  | 420
-south  | 180.5`,
+    expected: `region | revenue | #rownum
+-------+---------+--------
+north  | 420     | 1
+south  | 180.5   | 2`,
   },
   {
     id: 'blog002-update-status-paid',
@@ -89,10 +89,10 @@ shop002   | orders | 1`,
     title: 'A Row Enters The View',
     code: `from shop002::revenue_by_region
 sort { region: asc }`,
-    expected: `region | revenue
--------+--------
-north  | 660
-south  | 180.5`,
+    expected: `region | revenue | #rownum
+-------+---------+--------
+north  | 660     | 1
+south  | 180.5   | 2`,
   },
   {
     id: 'blog002-update-status-refunded',
@@ -107,10 +107,10 @@ shop002   | orders | 1`,
     title: 'A Row Leaves The View',
     code: `from shop002::revenue_by_region
 sort { region: asc }`,
-    expected: `region | revenue
--------+--------
-north  | 540
-south  | 180.5`,
+    expected: `region | revenue | #rownum
+-------+---------+--------
+north  | 540     | 1
+south  | 180.5   | 2`,
   },
   {
     id: 'blog002-update-region',
@@ -125,10 +125,10 @@ shop002   | orders | 1`,
     title: 'A Row Changes Groups',
     code: `from shop002::revenue_by_region
 sort { region: asc }`,
-    expected: `region | revenue
--------+--------
-north  | 240
-south  | 480.5`,
+    expected: `region | revenue | #rownum
+-------+---------+--------
+north  | 240     | 1
+south  | 480.5   | 2`,
   },
   {
     id: 'blog002-delete',
@@ -143,8 +143,8 @@ shop002   | orders | 1`,
     title: 'The Group Is Gone',
     code: `from shop002::revenue_by_region
 sort { region: asc }`,
-    expected: `region | revenue
--------+--------
-south  | 480.5`,
+    expected: `region | revenue | #rownum
+-------+---------+--------
+south  | 480.5   | 2`,
   },
 ];

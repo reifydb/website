@@ -122,9 +122,9 @@ export const delViewReadExample: CodeExample = {
     id: 'scripting-delete-view-read',
     title: 'The View Before the Delete',
     code: `from del::revenue`,
-    expected: `revenue
--------
-100`,
+    expected: `revenue | #rownum
+--------+--------
+100     | 1`,
   };
 
 export const delViewDeleteExample: CodeExample = {
@@ -140,9 +140,9 @@ export const delViewAfterExample: CodeExample = {
     id: 'scripting-delete-view-after',
     title: 'The View Reflects the Delete',
     code: `from del::revenue`,
-    expected: `revenue
--------
-65`,
+    expected: `revenue | #rownum
+--------+--------
+65      | 1`,
   };
 
 export const scriptingDmlDeleteExamples: CodeExample[] = [

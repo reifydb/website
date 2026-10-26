@@ -27,9 +27,9 @@ export const opDivisionExample: CodeExample = {
   int_rem: -10 % 3,
   dec_rem: 10.5 % 3
 }`,
-    expected: `int_div | neg_div | dec_div | int_rem | dec_rem
---------+---------+---------+---------+--------
-3       | -3      | 3.5     | -1      | 1.5`,
+    expected: `int_div | neg_div | dec_div  | int_rem | dec_rem
+--------+---------+----------+---------+--------
+3       | -3      | 3.500000 | -1      | 1.5`,
   };
 
 export const opDivideByZeroExample: CodeExample = {
@@ -67,8 +67,8 @@ export const opPromotionExample: CodeExample = {
   dec_type: meta::type(7 / 2.0)
 }`,
     expected: `sum | sum_type | big        | big_type | dec_type
-----+----------+------------+----------+---------
-128 | Int2     | 2147483648 | Int8     | Decimal`,
+----+----------+------------+----------+---------------
+128 | Int2     | 2147483648 | Int8     | Decimal(10, 6)`,
   };
 
 export const opComparisonExample: CodeExample = {

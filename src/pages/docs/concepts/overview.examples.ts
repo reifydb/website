@@ -33,19 +33,19 @@ export const conceptsDerivedQueryExample: CodeExample = {
     title: 'The View Is Already Current',
     code: `from cpt::revenue_by_region
 sort { region: asc }`,
-    expected: `region | revenue
--------+--------
-North  | 165.5
-South  | 80`,
+    expected: `region | revenue | #rownum
+-------+---------+--------
+North  | 165.5   | 1
+South  | 80      | 2`,
   };
 
 export const conceptsDeferredQueryExample: CodeExample = {
     id: 'concepts-deferred-query',
     title: 'The Deferred View Caught Up',
     code: `from cpt::order_count`,
-    expected: `orders
-------
-3`,
+    expected: `orders | #rownum
+-------+--------
+3      | 1`,
   };
 
 export const conceptsRingbufferExample: CodeExample = {

@@ -140,10 +140,10 @@ export const scriptingRbViewReadExample: CodeExample = {
     id: 'scripting-rb-view-read',
     title: 'The View Keeps Only Its Newest Rows',
     code: `from st_rb::recent_events`,
-    expected: `id | action
----+-------
-3  | login
-2  | logout`,
+    expected: `id | action | #rownum
+---+--------+--------
+3  | login  | 3
+2  | logout | 2`,
   };
 
 export const scriptingStorageRingbuffersExamples: CodeExample[] = [
