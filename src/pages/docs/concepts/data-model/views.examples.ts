@@ -212,9 +212,10 @@ export const dmViewsChainReadExample: CodeExample = {
     id: 'dm-views-chain-read',
     title: 'Read the End of the Chain',
     code: `from dm_vw::biggest_clicks`,
-    expected: `id
---
-4`,
+    expected: `id | #rownum
+---+--------
+4  | 4
+3  | 3`,
   };
 
 export const dmViewsSortedExample: CodeExample = {

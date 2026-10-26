@@ -76,9 +76,12 @@ export const svoTransactionalExample: CodeExample = {
 
 export const svoTransactionalReadExample: CodeExample = {
     id: 'svo-transactional-read',
-    title: 'Transactional Views Start Empty',
+    title: 'Transactional Views Backfill Too',
     code: `from svo::open_tx`,
-    expected: `(empty)`,
+    expected: `id | total | #rownum
+---+-------+--------
+2  | 75    | 2
+1  | 40    | 1`,
   };
 
 export const svoReadOnlyExample: CodeExample = {

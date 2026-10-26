@@ -70,22 +70,17 @@ as { pipeline }`}
             <Link to="/docs/scripting/views/transactional" className="text-primary hover:text-primary-light font-medium transition-colors">transactional views</Link>{' '}
             and{' '}
             <Link to="/docs/scripting/views/deferred" className="text-primary hover:text-primary-light font-medium transition-colors">deferred views</Link>{' '}
-            cover each in depth. One difference shows up the moment you create the view.
-            A deferred view starts by processing the change log, so it picks up rows
-            that were written before it existed:
+            cover each in depth. Both kinds pick up rows that were written before they
+            existed. A deferred view does it by processing the change log:
           </p>
           <ExecutableSnippet title={svoDeferred.title} initialCode={svoDeferred.code} />
           <ExecutableSnippet title={svoDeferredRead.title} initialCode={svoDeferredRead.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            A transactional view only ever sees writes that commit after it exists. The
-            same pipeline over the same rows, created now, is empty:
+            A transactional view scans its source when it is created, so the same
+            pipeline over the same rows, created now, holds the same rows:
           </p>
           <ExecutableSnippet title={svoTransactional.title} initialCode={svoTransactional.code} />
           <ExecutableSnippet title={svoTransactionalRead.title} initialCode={svoTransactionalRead.code} />
-          <p className="text-text-secondary mt-4">
-            So declare transactional views together with their tables, before data
-            starts flowing. Deferred views can be added later.
-          </p>
         </section>
 
         <section>
