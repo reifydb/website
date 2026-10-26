@@ -74,12 +74,11 @@ export function RqlExpressionsPage() {
             <Code>#rownum</Code> are referenced with their <Code>#</Code> prefix.
           </p>
           <ExecutableSnippet title={exprColumnChain.title} initialCode={exprColumnChain.code} />
-          <Callout variant="warning" title="An unknown name is not an error">
+          <Callout variant="warning" title="An unknown name is an error">
             Inside <Code>map</Code> and <Code>extend</Code>, a name that matches no column
-            evaluates to <Code>none</Code>. That includes a column defined earlier in the
-            same block: entries of one <Code>map</Code> do not see each other, only the
-            input row. Split dependent computations across stages, and treat an unexpected{' '}
-            <Code>none</Code> column as a likely typo.
+            fails the query with <Code>QUERY_001</Code>. That includes a column defined earlier
+            in the same block: entries of one <Code>map</Code> do not see each other, only the
+            input row. Split dependent computations across stages.
           </Callout>
           <div className="mt-4">
             <ExecutableSnippet title={exprUnknownColumn.title} initialCode={exprUnknownColumn.code} />

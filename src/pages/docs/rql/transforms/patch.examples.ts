@@ -69,11 +69,7 @@ export const patchSameBlockReferenceExample: CodeExample = {
     title: 'Entries in One Block Do Not See Each Other',
     code: `from tf_patch::items
 patch { doubled: price * 2, quadrupled: doubled * 2 }`,
-    expected: `id | price | qty    | status | doubled | quadrupled
----+-------+--------+--------+---------+-----------
-3  | 1.25  | 8      | new    | 2.5     | ⟪none⟫
-2  | 10    | ⟪none⟫ | new    | 20      | ⟪none⟫
-1  | 2.5   | 4      | new    | 5       | ⟪none⟫`,
+    expectsError: true,
   };
 
 export const patchChainedExample: CodeExample = {

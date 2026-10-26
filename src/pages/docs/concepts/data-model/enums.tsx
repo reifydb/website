@@ -1,4 +1,4 @@
-import { dmEnumsAggregateExample as dmEnumsAggregate, dmEnumsColumnExample as dmEnumsColumn, dmEnumsCreateExample as dmEnumsCreate, dmEnumsDropExample as dmEnumsDrop, dmEnumsDropInUseExample as dmEnumsDropInUse, dmEnumsFilterIsExample as dmEnumsFilterIs, dmEnumsOptionRejectedExample as dmEnumsOptionRejected, dmEnumsPayloadMathExample as dmEnumsPayloadMath, dmEnumsProjectionNoneExample as dmEnumsProjectionNone, dmEnumsStringRejectedExample as dmEnumsStringRejected, dmEnumsStructExample as dmEnumsStruct, dmEnumsUpdateExample as dmEnumsUpdate, dmEnumsViewExample as dmEnumsView, dmEnumsViewInsertExample as dmEnumsViewInsert, dmEnumsViewReadExample as dmEnumsViewRead } from './enums.examples';
+import { dmEnumsAggregateExample as dmEnumsAggregate, dmEnumsColumnExample as dmEnumsColumn, dmEnumsCreateExample as dmEnumsCreate, dmEnumsDropExample as dmEnumsDrop, dmEnumsDropInUseExample as dmEnumsDropInUse, dmEnumsFilterIsExample as dmEnumsFilterIs, dmEnumsOptionExample as dmEnumsOption, dmEnumsPayloadMathExample as dmEnumsPayloadMath, dmEnumsProjectionNoneExample as dmEnumsProjectionNone, dmEnumsStringRejectedExample as dmEnumsStringRejected, dmEnumsStructExample as dmEnumsStruct, dmEnumsUpdateExample as dmEnumsUpdate, dmEnumsViewExample as dmEnumsView, dmEnumsViewInsertExample as dmEnumsViewInsert, dmEnumsViewReadExample as dmEnumsViewRead } from './enums.examples';
 import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
@@ -116,10 +116,10 @@ export function DataModelEnumsPage() {
           </p>
           <ExecutableSnippet title={dmEnumsStringRejected.title} initialCode={dmEnumsStringRejected.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            Enum columns are always required. <Code>Option(enum)</Code> is not a type the
-            engine knows; if "no status yet" is a real state, make it a variant:
+            An enum column can be optional. Wrap it in <Code>Option(...)</Code> and a row
+            with no variant holds <Code>none</Code> in its <Code>_tag</Code> column:
           </p>
-          <ExecutableSnippet title={dmEnumsOptionRejected.title} initialCode={dmEnumsOptionRejected.code} />
+          <ExecutableSnippet title={dmEnumsOption.title} initialCode={dmEnumsOption.code} />
           <p className="text-text-secondary mt-4 mb-4">
             An enum that any column still references cannot be dropped:
           </p>
@@ -136,8 +136,8 @@ export function DataModelEnumsPage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Sharp edges</h2>
           <p className="text-text-secondary mb-4">
             After flattening, the declared column name no longer names anything.
-            Projecting it does not fail; it silently yields <Code>none</Code>. Always
-            project the <Code>_tag</Code> column or a payload column:
+            Projecting it fails with <Code>QUERY_001</Code>. Always project the{' '}
+            <Code>_tag</Code> column or a payload column:
           </p>
           <ExecutableSnippet title={dmEnumsProjectionNone.title} initialCode={dmEnumsProjectionNone.code} />
           <Callout variant="warning" title="Statements that crash the playground engine">

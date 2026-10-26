@@ -98,20 +98,10 @@ export const refConsMaxLengthExceededExample: CodeExample = {
 
 export const refConsKeyOptionalExample: CodeExample = {
     id: 'ref-cons-key-optional',
-    title: 'none Is a Key Value Like Any Other',
+    title: 'A Key Column Cannot Be Optional',
     code: `create table ref_cons::slots { id: Option(int4), label: utf8 };
 create primary key on ref_cons::slots { id };
 insert ref_cons::slots [{ label: "unassigned" }]`,
-    expected: `namespace | table | inserted
-----------+-------+---------
-ref_cons  | slots | 1`,
-  };
-
-export const refConsKeyOptionalDuplicateExample: CodeExample = {
-    id: 'ref-cons-key-optional-duplicate',
-    title: 'So Only One Row May Have It',
-    description: 'A second row with id none repeats the key and fails with INDEX_001.',
-    code: `insert ref_cons::slots [{ label: "also unassigned" }]`,
     expectsError: true,
   };
 
@@ -135,8 +125,7 @@ export const refConsKeyCatalogExample: CodeExample = {
     code: `from system::primary_key_columns`,
     expected: `primary_key_id | column_id | position
 ---------------+-----------+---------
-16386          | 16479     | 0
-16385          | 16477     | 0`,
+16385          | 16479     | 0`,
   };
 
 export const refConsSaturationNoneExample: CodeExample = {
@@ -179,20 +168,10 @@ export const refConsUnknownPropertyExample: CodeExample = {
     expectsError: true,
   };
 
-export const refConsDefaultIgnoredExample: CodeExample = {
-    id: 'ref-cons-default-ignored',
-    title: 'default Is Accepted at Creation',
+export const refConsDefaultRejectedExample: CodeExample = {
+    id: 'ref-cons-default-rejected',
+    title: 'default Is Rejected at Creation',
     code: `create table ref_cons::orders { id: int4, qty: int4 with { default: 1 } }`,
-    expected: `id    | namespace | table  | created
-------+-----------+--------+--------
-16423 | ref_cons  | orders | true`,
-  };
-
-export const refConsDefaultNotAppliedExample: CodeExample = {
-    id: 'ref-cons-default-not-applied',
-    title: 'But Never Applied',
-    description: 'The insert leaves qty out, and nothing fills it in: CONSTRAINT_007.',
-    code: `insert ref_cons::orders [{ id: 1 }]`,
     expectsError: true,
   };
 
@@ -207,13 +186,11 @@ export const scriptingSchemaConstraintsExamples: CodeExample[] = [
   refConsMaxLengthExample,
   refConsMaxLengthExceededExample,
   refConsKeyOptionalExample,
-  refConsKeyOptionalDuplicateExample,
   refConsKeyFreedExample,
   refConsKeyCatalogExample,
   refConsSaturationNoneExample,
   refConsSaturationRequiresOptionExample,
   refConsPropertyCatalogExample,
   refConsUnknownPropertyExample,
-  refConsDefaultIgnoredExample,
-  refConsDefaultNotAppliedExample,
+  refConsDefaultRejectedExample,
 ];

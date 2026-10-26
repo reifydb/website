@@ -103,11 +103,10 @@ export function MapPage() {
           </p>
           <ExecutableSnippet title={mapDropsColumns.title} initialCode={mapDropsColumns.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            <Code>sort</Code> is the strict one. Inside a <Code>map</Code>,{' '}
-            <Code>extend</Code>, or <Code>filter</Code> expression, a name that matches
-            no column is not an error: it evaluates to <Code>none</Code> on every row.
-            A misspelled column shows up as a column full of <Code>none</Code>, or as a
-            filter that matches nothing:
+            Inside a <Code>map</Code>, <Code>extend</Code>, or <Code>filter</Code>{' '}
+            expression, a name that matches no column fails the query with{' '}
+            <Code>QUERY_001</Code>, the same as in <Code>sort</Code>. A misspelled column is
+            caught before any row is read:
           </p>
           <ExecutableSnippet title={mapUnknownColumn.title} initialCode={mapUnknownColumn.code} />
         </section>

@@ -124,7 +124,7 @@ const integrityRows: CodeRow[] = [
 
 const txnRows: CodeRow[] = [
   ['TXN_001 (source)', <>Write conflict: another transaction committed over what this one read or wrote. The server retries up to 10 times before surfacing it.</>, <>Resubmit the request. Not reproducible in the single-user playground; see <L to="/docs/concepts/transactions">Transactions</L>.</>],
-  ['TXN_015', <>A view was read in the same request that wrote one of its sources; the request rolls back rather than return stale rows.</>, <>Split the write and the read into two requests, or read the source table.</>],
+  ['TXN_015', <>A deferred view was read in the same request that wrote one of its sources; the request rolls back rather than return stale rows.</>, <>Split the write and the read into two requests, or read the source table.</>],
   ['TXN_002 (source)', <>Transaction rolled back and cannot be committed.</>, <>Start a new request.</>],
   ['TXN_003 (source)', <>Transaction contains too many writes.</>, <>Split the batch across requests.</>],
   ['TXN_004 (source)', <>Transaction open too long; its conflict history was evicted.</>, <>Keep requests short.</>],
@@ -244,7 +244,7 @@ export function ErrorsPage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Transactions: TXN_*</h2>
           <p className="text-text-secondary mb-4">
             The one you will see in the playground is <Code>TXN_015</Code>. Create a
-            transactional view, then write to its source and read the view in the same
+            deferred view, then write to its source and read the view in the same
             request:
           </p>
           <ExecutableSnippet title={resErrorsViewSetup.title} initialCode={resErrorsViewSetup.code} />

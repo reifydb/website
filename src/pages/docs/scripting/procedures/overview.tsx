@@ -1,4 +1,4 @@
-import { scriptingCreateProcedureExample as scriptingCreateProcedure, scriptingProcedureParamsExample as scriptingProcedureParams, spOvArgumentsExample as spOvArguments, spOvBadBatchCallExample as spOvBadBatchCall, spOvBadBatchCreateExample as spOvBadBatchCreate, spOvBadBatchVerifyExample as spOvBadBatchVerify, spOvCallDroppedExample as spOvCallDropped, spOvDropExample as spOvDrop, spOvDropIfExistsExample as spOvDropIfExists, spOvDuplicateExample as spOvDuplicate, spOvLastStatementExample as spOvLastStatement, spOvNoResultExample as spOvNoResult, spOvNotAFunctionExample as spOvNotAFunction, spOvOptionParamExample as spOvOptionParam, spOvPipeRejectedExample as spOvPipeRejected, spOvPipelineExample as spOvPipeline, spOvRedefineExample as spOvRedefine, spOvReturningExample as spOvReturning, spOvTestProcedureExample as spOvTestProcedure, spOvWriteResultExample as spOvWriteResult } from './overview.examples';
+import { scriptingCreateProcedureExample as scriptingCreateProcedure, scriptingProcedureParamsExample as scriptingProcedureParams, spOvArgumentsExample as spOvArguments, spOvBadBatchCallExample as spOvBadBatchCall, spOvBadBatchCreateExample as spOvBadBatchCreate, spOvBadBatchVerifyExample as spOvBadBatchVerify, spOvCallDroppedExample as spOvCallDropped, spOvDropExample as spOvDrop, spOvDropIfExistsExample as spOvDropIfExists, spOvDuplicateExample as spOvDuplicate, spOvLastStatementExample as spOvLastStatement, spOvNoResultExample as spOvNoResult, spOvNotAFunctionExample as spOvNotAFunction, spOvOptionParamExample as spOvOptionParam, spOvPipelineExample as spOvPipeline, spOvRedefineExample as spOvRedefine, spOvReturningExample as spOvReturning, spOvTestProcedureExample as spOvTestProcedure, spOvWriteResultExample as spOvWriteResult } from './overview.examples';
 import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
@@ -118,20 +118,10 @@ export function ProceduresOverviewPage() {
             <Code>insert</Code>, <Code>update</Code>, and <Code>delete</Code>;{' '}
             <Code>call</Code> of another procedure; variables and control flow; even
             schema changes, which then require an admin transaction (below). Inside a
-            body, pipeline stages chain with whitespace or newlines:
+            body, pipeline stages chain the same way as at the top level of a request,
+            with whitespace, newlines, or <Code>|</Code>:
           </p>
           <ExecutableSnippet title={spOvPipeline.title} initialCode={spOvPipeline.code} />
-          <p className="text-text-secondary mt-4 mb-4">
-            The <Code>|</Code> separator that works at the top level of a request is not
-            accepted inside a procedure body. The <Code>create</Code> fails to parse:
-          </p>
-          <ExecutableSnippet title={spOvPipeRejected.title} initialCode={spOvPipeRejected.code} />
-          <Callout variant="warning" title="No | inside a body">
-            Write <Code>from t filter {'{'} ... {'}'} map {'{'} ... {'}'}</Code> inside a
-            procedure, never <Code>from t | filter ...</Code>. The pipe form fails with{' '}
-            <Code>AST_006</Code> at <Code>create</Code> time, so the procedure is never
-            stored.
-          </Callout>
         </section>
 
         <section>

@@ -120,10 +120,10 @@ filter { total > 10 && customer == "ada" }`,
 
 export const filterUnknownColumnExample: CodeExample = {
     id: 'filter-unknown-column',
-    title: 'An Unknown Column Matches Nothing',
+    title: 'An Unknown Column Is an Error',
     code: `from tf_filter::orders
 filter { custmer == "ada" }`,
-    expected: `(empty)`,
+    expectsError: true,
   };
 
 export const rqlTransformsFilterExamples: CodeExample[] = [

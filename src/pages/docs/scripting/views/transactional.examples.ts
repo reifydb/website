@@ -99,19 +99,17 @@ export const svtAggregateAfterExample: CodeExample = {
 export const svtSameRequestExample: CodeExample = {
     id: 'svt-same-request',
     title: 'Write Then Read the View in One Request',
-    description: 'The update dirties the view\'s source, so the read fails with TXN_015 and the whole request rolls back.',
+    description: 'The read sees the update: linus is no longer overdrawn.',
     code: `update svt::accounts { balance: 0 } filter { owner == "linus" };
 from svt::overdrawn`,
-    expectsError: true,
+    expected: `(empty)`,
   };
 
 export const svtSameRequestVerifyExample: CodeExample = {
     id: 'svt-same-request-verify',
-    title: 'Nothing Was Applied',
+    title: 'The Write Was Committed',
     code: `from svt::overdrawn`,
-    expected: `id | owner | balance
----+-------+--------
-3  | linus | -5`,
+    expected: `(empty)`,
   };
 
 export const svtNoBackfillExample: CodeExample = {

@@ -1,4 +1,4 @@
-import { refConsCoercionExample as refConsCoercion, refConsDefaultIgnoredExample as refConsDefaultIgnored, refConsDefaultNotAppliedExample as refConsDefaultNotApplied, refConsKeyCatalogExample as refConsKeyCatalog, refConsKeyFreedExample as refConsKeyFreed, refConsKeyOptionalDuplicateExample as refConsKeyOptionalDuplicate, refConsKeyOptionalExample as refConsKeyOptional, refConsMaxLengthExample as refConsMaxLength, refConsMaxLengthExceededExample as refConsMaxLengthExceeded, refConsNoneRejectedExample as refConsNoneRejected, refConsOptionalExample as refConsOptional, refConsPropertyCatalogExample as refConsPropertyCatalog, refConsRangeExample as refConsRange, refConsRangeExceededExample as refConsRangeExceeded, refConsSaturationNoneExample as refConsSaturationNone, refConsSaturationRequiresOptionExample as refConsSaturationRequiresOption, refConsTypeMismatchExample as refConsTypeMismatch, refConsUnknownPropertyExample as refConsUnknownProperty, refConsUpdateNoneRejectedExample as refConsUpdateNoneRejected } from './constraints.examples';
+import { refConsCoercionExample as refConsCoercion, refConsDefaultRejectedExample as refConsDefaultRejected, refConsKeyCatalogExample as refConsKeyCatalog, refConsKeyFreedExample as refConsKeyFreed, refConsKeyOptionalExample as refConsKeyOptional, refConsMaxLengthExample as refConsMaxLength, refConsMaxLengthExceededExample as refConsMaxLengthExceeded, refConsNoneRejectedExample as refConsNoneRejected, refConsOptionalExample as refConsOptional, refConsPropertyCatalogExample as refConsPropertyCatalog, refConsRangeExample as refConsRange, refConsRangeExceededExample as refConsRangeExceeded, refConsSaturationNoneExample as refConsSaturationNone, refConsSaturationRequiresOptionExample as refConsSaturationRequiresOption, refConsTypeMismatchExample as refConsTypeMismatch, refConsUnknownPropertyExample as refConsUnknownProperty, refConsUpdateNoneRejectedExample as refConsUpdateNoneRejected } from './constraints.examples';
 import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
@@ -117,12 +117,11 @@ export function ConstraintsPage() {
             repeat fails with <Code>INDEX_001</Code>, and the whole insert rolls back.
             The{' '}
             <Link to="/docs/scripting/schema/tables" className="text-primary hover:text-primary-light font-medium transition-colors">Tables</Link>{' '}
-            page shows the basic case; three details matter beyond it. First,{' '}
-            <Code>none</Code> is a key value like any other, so a key over an{' '}
-            <Code>Option</Code> column allows exactly one row without a value:
+            page shows the basic case; three details matter beyond it. First, a key
+            column must always hold a value: a key over an <Code>Option</Code> column
+            is rejected with <Code>CA_104</Code>:
           </p>
           <ExecutableSnippet title={refConsKeyOptional.title} initialCode={refConsKeyOptional.code} />
-          <ExecutableSnippet title={refConsKeyOptionalDuplicate.title} initialCode={refConsKeyOptionalDuplicate.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Second, a deleted row gives its key back, so the value can be inserted
             again in the same request:
@@ -184,15 +183,14 @@ export function ConstraintsPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Declared but not enforced</h2>
           <p className="text-text-secondary mb-4">
-            A column declaration accepts four property names after <Code>with</Code>:
+            A column declaration accepts three property names after <Code>with</Code>:
           </p>
           <CodeBlock
             language="rql"
             code={`create table ns::name {
   id: int8 with { auto_increment },
   label: utf8 with { dictionary: ns::labels },
-  level: int1 with { saturation: error },
-  qty: int4 with { default: 1 }
+  level: int1 with { saturation: error }
 }`}
           />
           <p className="text-text-secondary mt-4 mb-4">
@@ -205,14 +203,11 @@ export function ConstraintsPage() {
           </p>
           <ExecutableSnippet title={refConsUnknownProperty.title} initialCode={refConsUnknownProperty.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            The inline <Code>saturation</Code> and <Code>default</Code> forms are
-            parsed and then dropped. A table declares them without complaint:
+            The inline <Code>saturation</Code> form is parsed and then dropped. An
+            inline <Code>default</Code> is rejected with <Code>AST_011</Code>, even though
+            the error's own hint still lists <Code>default</Code> as accepted:
           </p>
-          <ExecutableSnippet title={refConsDefaultIgnored.title} initialCode={refConsDefaultIgnored.code} />
-          <p className="text-text-secondary mt-4 mb-4">
-            But an insert that relies on the default finds nothing there:
-          </p>
-          <ExecutableSnippet title={refConsDefaultNotApplied.title} initialCode={refConsDefaultNotApplied.code} />
+          <ExecutableSnippet title={refConsDefaultRejected.title} initialCode={refConsDefaultRejected.code} />
           <p className="text-text-secondary mt-4">
             There is no <Code>unique</Code> property, no inline <Code>primary key</Code>{' '}
             on a column, and no executed <Code>create index</Code>; the{' '}

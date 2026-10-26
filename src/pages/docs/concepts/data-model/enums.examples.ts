@@ -133,12 +133,14 @@ export const dmEnumsStringRejectedExample: CodeExample = {
     expectsError: true,
   };
 
-export const dmEnumsOptionRejectedExample: CodeExample = {
-    id: 'dm-enums-option-rejected',
-    title: 'Enum Columns Cannot Be Optional',
-    description: 'Option(enum) is not supported; the declaration fails with AST_008.',
+export const dmEnumsOptionExample: CodeExample = {
+    id: 'dm-enums-option',
+    title: 'Enum Columns Can Be Optional',
+    description: 'Option(enum) holds none when no variant is set.',
     code: `create table dm_enum::maybe { id: int4, status: Option(dm_enum::status) }`,
-    expectsError: true,
+    expected: `id    | namespace | table | created
+------+-----------+-------+--------
+16421 | dm_enum   | maybe | true`,
   };
 
 export const dmEnumsDropInUseExample: CodeExample = {
@@ -163,9 +165,7 @@ export const dmEnumsProjectionNoneExample: CodeExample = {
     id: 'dm-enums-projection-none',
     title: 'The Declared Column Name Is Gone After Flattening',
     code: `from dm_enum::tasks filter { id == 1 } map { id, status, status_tag }`,
-    expected: `id | status | status_tag
----+--------+-----------
-1  | ⟪none⟫ | 1`,
+    expectsError: true,
   };
 
 export const dataModelEnumsExamples: CodeExample[] = [
@@ -180,7 +180,7 @@ export const dataModelEnumsExamples: CodeExample[] = [
   dmEnumsViewInsertExample,
   dmEnumsViewReadExample,
   dmEnumsStringRejectedExample,
-  dmEnumsOptionRejectedExample,
+  dmEnumsOptionExample,
   dmEnumsDropInUseExample,
   dmEnumsDropExample,
   dmEnumsProjectionNoneExample,

@@ -96,16 +96,15 @@ export function ExtendPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Sharp edges</h2>
           <p className="text-text-secondary mb-4">
-            A column name that does not exist in the incoming frame is not an error
-            inside an expression; it reads as <Code>none</Code> on every row. That is
-            easy to hit after a <Code>map</Code> has narrowed the frame. The extend
-            below succeeds and produces a column of <Code>none</Code>, because{' '}
-            <Code>qty</Code> was dropped one step earlier:
+            A column name that does not exist in the incoming frame fails the query
+            with <Code>QUERY_001</Code>. That is easy to hit after a <Code>map</Code> has
+            narrowed the frame. The extend below fails because <Code>qty</Code> was
+            dropped one step earlier:
           </p>
           <ExecutableSnippet title={extendUnknownColumn.title} initialCode={extendUnknownColumn.code} />
           <p className="text-text-muted text-sm mt-3">
-            When a computed column is unexpectedly all <Code>none</Code>, check the
-            spelling of the inputs and what the previous <Code>map</Code> kept.
+            When an extend fails with <Code>QUERY_001</Code>, check the spelling of the
+            inputs and what the previous <Code>map</Code> kept.
           </p>
           <p className="text-text-secondary mt-4 mb-4">
             <Code>extend</Code> without a <Code>from</Code> in front of it behaves like{' '}

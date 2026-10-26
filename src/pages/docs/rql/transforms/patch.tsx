@@ -106,8 +106,8 @@ export function PatchPage() {
           <ExecutableSnippet title={patchReadsInput.title} initialCode={patchReadsInput.code} />
           <p className="text-text-secondary mt-4 mb-4">
             For the same reason an entry cannot use a column added earlier in the same
-            block. The name does not exist on the incoming row, so it reads as{' '}
-            <Code>none</Code>:
+            block. The name does not exist on the incoming row, so the query fails with{' '}
+            <Code>QUERY_001</Code>:
           </p>
           <ExecutableSnippet title={patchSameBlockReference.title} initialCode={patchSameBlockReference.code} />
           <p className="text-text-secondary mt-4 mb-4">
@@ -176,11 +176,10 @@ export function PatchPage() {
           </p>
           <ExecutableSnippet title={patchUnaliased.title} initialCode={patchUnaliased.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            An unknown column name inside an expression is not an error; it reads as{' '}
-            <Code>none</Code> on every row. That is what happened to{' '}
-            <Code>quadrupled</Code> above, and it is easy to hit after a{' '}
-            <Code>map</Code> has dropped a column. When a patched column is unexpectedly
-            all <Code>none</Code>, check the spelling of its inputs and what the previous
+            An unknown column name inside an expression fails the query with{' '}
+            <Code>QUERY_001</Code>. That is what happened to <Code>doubled</Code> above,
+            and it is easy to hit after a <Code>map</Code> has dropped a column. When a
+            patch fails this way, check the spelling of its inputs and what the previous
             operator kept.
           </p>
           <p className="text-text-secondary mb-4">

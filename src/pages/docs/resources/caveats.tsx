@@ -67,7 +67,7 @@ export function CaveatsPage() {
           <ul className="space-y-2 text-text-secondary">
             <Item>One request is one transaction, so if the last statement in a request fails, every earlier statement in it rolls back, including <Code>create</Code> and <Code>drop</Code>. See <L to="/docs/concepts/transactions">Transactions</L>.</Item>
             <Item>Write conflicts are retried up to 10 times with jittered backoff, then surface as <Code>TXN_001</Code>.</Item>
-            <Item>Reading a view after writing one of its sources in the same request fails with <Code>TXN_015</Code> and rolls the request back; a transactional view is current from the next request, a deferred view shortly after.</Item>
+            <Item>Reading a deferred view after writing one of its sources in the same request fails with <Code>TXN_015</Code> and rolls the request back; a transactional view sees the request's own writes.</Item>
             <Item>The transactions that maintain views do not track their read sets, which is safe only because the scheduler never runs two flows over overlapping keys in parallel; it is not a general-purpose concurrency guarantee.</Item>
           </ul>
         </section>

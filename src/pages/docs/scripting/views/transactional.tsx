@@ -74,19 +74,15 @@ export function TransactionalViewsPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reading in the request that wrote the source</h2>
           <p className="text-text-secondary mb-4">
-            The view is updated at commit, not statement by statement. So inside a
-            request that has already written to the source, the view still holds its
-            pre-request contents. The engine refuses to return them: the read fails with{' '}
-            <Code>TXN_015</Code>, and because a request is one transaction, the write is
-            rolled back with it:
+            The view is maintained inside the request, write by write. A request that
+            writes to the source and then reads the view sees its own write:
           </p>
           <ExecutableSnippet title={svtSameRequest.title} initialCode={svtSameRequest.code} />
           <ExecutableSnippet title={svtSameRequestVerify.title} initialCode={svtSameRequestVerify.code} />
           <p className="text-text-secondary mt-4">
-            Reading the view <em>before</em> writing in the same request is fine. When
-            you need the post-write value, read the source table in that request, or
-            read the view in the next one - it is current the moment the write returns.
-            See{' '}
+            The write commits with the request. Deferred views do not work this way:
+            reading one after writing its source in the same request fails with{' '}
+            <Code>TXN_015</Code>. See{' '}
             <Link to="/docs/concepts/transactions" className="text-primary hover:text-primary-light font-medium transition-colors">Transactions</Link>{' '}
             for the rule in full.
           </p>

@@ -31,12 +31,10 @@ filter { c > 3 }`,
 
 export const exprUnknownColumnExample: CodeExample = {
     id: 'expr-unknown-column',
-    title: 'An Unknown Name Evaluates to none',
+    title: 'An Unknown Name Is an Error',
     code: `from [{ a: 1 }]
 map { b: a + 1, c: b * 2, d: nosuch }`,
-    expected: `b | c      | d
---+--------+-------
-2 | ⟪none⟫ | ⟪none⟫`,
+    expectsError: true,
   };
 
 export const exprFunctionsExample: CodeExample = {

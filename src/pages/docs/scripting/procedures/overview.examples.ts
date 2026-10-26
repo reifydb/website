@@ -118,16 +118,6 @@ call sp_ov::summary()`,
 3`,
   };
 
-export const spOvPipeRejectedExample: CodeExample = {
-    id: 'sp-ov-pipe-rejected',
-    title: 'The | Form Is Rejected Inside a Body',
-    description: 'A procedure body does not accept the pipe separator; the create fails to parse with AST_006.',
-    code: `create procedure sp_ov::broken as {
-  from sp_ov::log | filter { level > 0 }
-}`,
-    expectsError: true,
-  };
-
 export const spOvBadBatchCreateExample: CodeExample = {
     id: 'sp-ov-bad-batch-create',
     title: 'The Body Is Compiled When Called, Not When Created',
@@ -233,7 +223,6 @@ export const scriptingProceduresOverviewExamples: CodeExample[] = [
   spOvReturningExample,
   spOvNoResultExample,
   spOvPipelineExample,
-  spOvPipeRejectedExample,
   spOvBadBatchCreateExample,
   spOvBadBatchCallExample,
   spOvBadBatchVerifyExample,

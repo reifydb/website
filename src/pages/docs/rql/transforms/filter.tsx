@@ -121,16 +121,10 @@ export function FilterPage() {
           </p>
           <ExecutableSnippet title={filterSymbolicOps.title} initialCode={filterSymbolicOps.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            A column name that does not exist in the frame is not an error inside an
-            expression: it evaluates to <Code>none</Code> on every row, and the filter
-            silently matches nothing. A typo looks exactly like an empty table:
+            A column name that does not exist in the frame fails the query with{' '}
+            <Code>QUERY_001</Code>. A typo is an error, not an empty table:
           </p>
           <ExecutableSnippet title={filterUnknownColumn.title} initialCode={filterUnknownColumn.code} />
-          <p className="text-text-muted text-sm mt-3">
-            <Code>sort</Code>, by contrast, rejects an unknown column
-            (<Code>QUERY_001</Code>). If a filter returns nothing you did not expect,
-            check the column name first.
-          </p>
         </section>
 
         <section>

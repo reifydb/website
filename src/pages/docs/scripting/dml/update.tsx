@@ -80,8 +80,8 @@ export function DmlUpdatePage() {
             The order's total went from 40 to 100, and the aggregate follows:
           </p>
           <ExecutableSnippet title={updViewRead.title} initialCode={updViewRead.code} />
-          <Callout variant="warning" title="Do not read a view you just wrote under">
-            Once a request has updated a view's source table, reading that view later in
+          <Callout variant="warning" title="Do not read a deferred view you just wrote under">
+            Once a request has updated a deferred view's source table, reading that view later in
             the same request fails with <Code>TXN_015</Code> and rolls the whole request
             back. Split the write and the read into separate requests, or read the source
             directly - see{' '}

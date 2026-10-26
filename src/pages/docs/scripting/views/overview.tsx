@@ -123,10 +123,11 @@ as { pipeline }`}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reading a view in the request that writes its source</h2>
           <p className="text-text-secondary mb-4">
-            Once a request has written to a view's source, reading that view later in
-            the same request is an error (<Code>TXN_015</Code>), and the whole request
+            Once a request has written to a deferred view's source, reading that view
+            later in the same request is an error (<Code>TXN_015</Code>), and the whole request
             rolls back - the engine refuses to hand you contents it knows are stale.
-            This applies to both maintenance modes and follows view chains:
+            A transactional view has no such limit: it sees the request's own writes.
+            The rule follows view chains:
           </p>
           <ExecutableSnippet title={svoSameRequest.title} initialCode={svoSameRequest.code} />
           <p className="text-text-secondary mt-4">

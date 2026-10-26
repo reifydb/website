@@ -111,15 +111,10 @@ sort { total: asc }`,
 
 export const mapUnknownColumnExample: CodeExample = {
     id: 'map-unknown-column',
-    title: 'An Unknown Column Reads as none',
+    title: 'An Unknown Column Is an Error',
     code: `from tf_map::orders
 map { id, who: custmer }`,
-    expected: `id | who
----+-------
-4  | ⟪none⟫
-3  | ⟪none⟫
-2  | ⟪none⟫
-1  | ⟪none⟫`,
+    expectsError: true,
   };
 
 export const rqlTransformsMapExamples: CodeExample[] = [

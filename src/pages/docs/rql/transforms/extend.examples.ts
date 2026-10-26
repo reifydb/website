@@ -76,15 +76,11 @@ extend { price * 2 }`,
 
 export const extendUnknownColumnExample: CodeExample = {
     id: 'extend-unknown-column',
-    title: 'A Column Dropped Upstream Reads as none',
+    title: 'A Column Dropped Upstream Is an Error',
     code: `from tf_extend::items
 map { id, price }
 extend { line: price * qty }`,
-    expected: `id | price | line
----+-------+-------
-3  | 1.25  | ⟪none⟫
-2  | 10    | ⟪none⟫
-1  | 2.5   | ⟪none⟫`,
+    expectsError: true,
   };
 
 export const rqlTransformsExtendExamples: CodeExample[] = [

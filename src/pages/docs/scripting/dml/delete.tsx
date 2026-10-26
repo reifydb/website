@@ -105,7 +105,7 @@ export function DmlDeletePage() {
             Views themselves are not a delete target - naming one fails with{' '}
             <Code>CA_004</Code>, since derived state is maintained by the engine, only
             ever through its sources. And as with any write, a request that deletes from
-            a view's source cannot read that view later in the same request
+            a deferred view's source cannot read that view later in the same request
             (<Code>TXN_015</Code>) - see{' '}
             <Link to="/docs/concepts/transactions" className="text-primary hover:text-primary-light font-medium transition-colors">Transactions</Link>.
           </p>
