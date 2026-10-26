@@ -81,16 +81,14 @@ create series dm_srs::tagged_readings {
 
 export const dmSeriesTagInsertExample: CodeExample = {
     id: 'dm-series-tag-insert',
-    title: 'Tagged Entries Render the Tag as 0',
+    title: 'Tagged Entries Render the Tag as a Number',
     code: `insert dm_srs::tagged_readings [
-  { at: datetime::from_epoch_millis(1000), tag: Sensor { location: "roof" }, v: 21.5 },
   { at: datetime::from_epoch_millis(2000), tag: Manual, v: 22.0 }
 ];
 from dm_srs::tagged_readings`,
-    expected: `at                             | tag | v
--------------------------------+-----+-----
-1970-01-01T00:00:02.000000000Z | 0   | 22
-1970-01-01T00:00:01.000000000Z | 0   | 21.5`,
+    expected: `at                             | tag | v  | #rownum
+-------------------------------+-----+----+--------
+1970-01-01T00:00:02.000000000Z | 1   | 22 | 1`,
   };
 
 export const dmSeriesPrecisionExample: CodeExample = {

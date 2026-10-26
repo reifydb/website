@@ -55,16 +55,18 @@ export function DataModelTagsPage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Labelling entries on insert</h2>
           <p className="text-text-secondary mb-4">
             Each inserted row may include a <Code>tag</Code> field holding a variant,
-            written by its bare name rather than a full path. Payload variants take their
-            fields in braces. The field is optional; rows without it are accepted:
+            written by its bare name or its full path. The field is optional; rows
+            without it are accepted:
           </p>
           <ExecutableSnippet title={dmTagsInsert.title} initialCode={dmTagsInsert.code} />
-          <Callout variant="warning" title="Labels are not readable back in the current build">
-            The <Code>tag</Code> column renders <Code>0</Code> for every row above,
-            whether the row was labelled <Code>Sensor</Code>, <Code>Manual</Code>, or not
-            at all. Inserts are not validated against the tag type either: an unknown
-            variant name or a payload of the wrong type is accepted silently, and a
-            series declared without a tag type still accepts a <Code>tag</Code> field.
+          <Callout variant="warning" title="Tags only partly work in the current build">
+            The <Code>tag</Code> column renders a number, not the variant name:{' '}
+            <Code>Manual</Code> reads back as <Code>1</Code> and a row without a tag as{' '}
+            <Code>0</Code>. A payload variant such as{' '}
+            <Code>Sensor {'{'} location: "roof" {'}'}</Code> cannot be inserted; the braces
+            fail with <Code>QUERY_001</Code>. An unknown variant name is rejected with{' '}
+            <Code>CA_100</Code>, but a bare number is accepted as a tag without a check,
+            and filtering on the <Code>tag</Code> column does not narrow the rows.
             Treat tags as declared intent for now. If you need to filter or group by a
             classification today, store it in an ordinary column, or use an{' '}
             <Link to="/docs/concepts/data-model/enums" className="text-primary hover:text-primary-light font-medium transition-colors">enum</Link>{' '}

@@ -26,16 +26,14 @@ export const dmTagsInsertExample: CodeExample = {
     id: 'dm-tags-insert',
     title: 'Label Entries as You Insert Them',
     code: `insert dm_tag::readings [
-  { at: datetime::from_epoch_millis(1000), tag: Sensor { location: "roof" }, v: 21.5 },
   { at: datetime::from_epoch_millis(2000), tag: Manual, v: 22.0 },
   { at: datetime::from_epoch_millis(3000), v: 22.5 }
 ];
 from dm_tag::readings`,
-    expected: `at                             | tag | v
--------------------------------+-----+-----
-1970-01-01T00:00:03.000000000Z | 0   | 22.5
-1970-01-01T00:00:02.000000000Z | 0   | 22
-1970-01-01T00:00:01.000000000Z | 0   | 21.5`,
+    expected: `at                             | tag | v    | #rownum
+-------------------------------+-----+------+--------
+1970-01-01T00:00:02.000000000Z | 1   | 22   | 1
+1970-01-01T00:00:03.000000000Z | 0   | 22.5 | 2`,
   };
 
 export const dmTagsMissingExample: CodeExample = {

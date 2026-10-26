@@ -96,8 +96,8 @@ export const fnArithNonePropagatesExample: CodeExample = {
     title: 'Missing Input Propagates in Every Variant',
     description: 'A none input produces a none result before any policy applies - even strict does not fail.',
     code: `map {
-  strict: math::add_strict(none, cast(1, int4), 'unreachable'),
-  zero: math::add_zero(none, cast(1, int4))
+  strict: math::add_strict(cast(none, int4), cast(1, int4), 'unreachable'),
+  zero: math::add_zero(cast(none, int4), cast(1, int4))
 }`,
     expected: `strict | zero
 -------+-------

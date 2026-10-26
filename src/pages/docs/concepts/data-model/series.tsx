@@ -132,10 +132,10 @@ export function DataModelSeriesPage() {
             declared ones, and an insert may set it to one of the variants:
           </p>
           <ExecutableSnippet title={dmSeriesTagInsert.title} initialCode={dmSeriesTagInsert.code} />
-          <Callout variant="warning" title="Variant tags do not read back in the current build">
-            A variant name written to the <Code>tag</Code> field is not resolved: the
-            column renders <Code>0</Code> for every row, whatever variant was written,
-            and the value is not validated against the tag type.
+          <Callout variant="warning" title="Variant tags read back as numbers in the current build">
+            A variant written to the <Code>tag</Code> field renders as a number, not its
+            name (<Code>Manual</Code> reads back as <Code>1</Code>), and payload variants
+            cannot be inserted.
             Treat a tag as declared intent for now. To filter or group on a
             classification today, store it in an ordinary column. The{' '}
             <Link to="/docs/concepts/data-model/tags" className="text-primary hover:text-primary-light font-medium transition-colors">Tags</Link>{' '}
