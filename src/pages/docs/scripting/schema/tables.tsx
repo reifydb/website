@@ -41,7 +41,7 @@ export function TablesPage() {
   col: type,
   col: Option(type),
   col: type with { auto_increment }
-} [with { row: { ttl: { duration: '30d' } } }]`}
+} [with { time: processing, row: { ttl: 30d } }]`}
           />
           <p className="text-text-secondary mt-4 mb-4">
             Run the snippets on this page in order. The confirmation carries the
@@ -127,7 +127,7 @@ export function TablesPage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Row settings</h2>
           <p className="text-text-secondary mb-4">
             The <Code>with</Code> block after the columns configures the rows
-            themselves. A TTL makes every row expire a fixed time after it was written:
+            themselves. A TTL makes every row expire a fixed time after its last write:
           </p>
           <ExecutableSnippet title={sstRowSettings.title} initialCode={sstRowSettings.code} />
           <p className="text-text-secondary mt-4">

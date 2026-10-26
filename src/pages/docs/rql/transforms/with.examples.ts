@@ -26,12 +26,12 @@ export const withRowTtlExample: CodeExample = {
     code: `create table rql_with::sessions {
   token: utf8,
   user_id: int4
-} with { row: { ttl: { duration: '30m', mode: drop } } };
+} with { time: processing, row: { ttl: 30m } };
 insert rql_with::sessions [{ token: "a1", user_id: 1 }];
 from rql_with::sessions`,
-    expected: `token | user_id
-------+--------
-a1    | 1`,
+    expected: `token | user_id | #rownum
+------+---------+--------
+a1    | 1       | 1`,
   };
 
 export const withColumnOptionsExample: CodeExample = {
@@ -65,20 +65,6 @@ sort { id: asc }`,
 5  | Sales       | 1`,
   };
 
-export const withDistinctTtlExample: CodeExample = {
-    id: 'with-distinct-ttl',
-    title: 'Options on Distinct',
-    code: `from app::employees
-distinct { dept_id } with { ttl: { duration: '1h' } }
-map { dept_id }
-sort { dept_id: asc }`,
-    expected: `dept_id
--------
-1
-2
-3`,
-  };
-
 export const withUnknownKeyExample: CodeExample = {
     id: 'with-unknown-key',
     title: 'Unknown Keys Are Rejected',
@@ -94,6 +80,5 @@ export const rqlTransformsWithExamples: CodeExample[] = [
   withRowTtlExample,
   withColumnOptionsExample,
   withJoinOptionsExample,
-  withDistinctTtlExample,
   withUnknownKeyExample,
 ];

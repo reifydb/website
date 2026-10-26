@@ -5,7 +5,8 @@ export const ttlCreateTableExample: CodeExample = {
   title: 'A Session Table That Cleans Itself Up',
   code: `create namespace ttlg;
 create table ttlg::sessions { id: int4, user_id: int4, token: utf8 } with {
-  row: { ttl: { duration: "1h", mode: drop } }
+  time: processing,
+  row: { ttl: 1h }
 }`,
   expected: `id    | namespace | table    | created
 ------+-----------+----------+--------
@@ -14,14 +15,14 @@ create table ttlg::sessions { id: int4, user_id: int4, token: utf8 } with {
 
 export const ttlCreateViewExample: CodeExample = {
   id: 'ttl-create-view',
-  title: 'A View That Sees Expiry Too',
+  title: 'A View over the Sessions',
   code: `create transactional view ttlg::active_sessions { id: int4, user_id: int4 } as {
   from ttlg::sessions
   map { id, user_id }
 }`,
   expected: `id    | namespace | view            | created
 ------+-----------+-----------------+--------
-16418 | ttlg      | active_sessions | true`,
+16417 | ttlg      | active_sessions | true`,
 };
 
 export const ttlInsertExample: CodeExample = {
@@ -42,11 +43,11 @@ export const ttlQueryTableExample: CodeExample = {
   title: 'Sessions Are There Until the TTL Elapses',
   code: `from ttlg::sessions
 sort { id: asc }`,
-  expected: `id | user_id | token
----+---------+-----------
-1  | 101     | tok_abc123
-2  | 102     | tok_def456
-3  | 101     | tok_ghi789`,
+  expected: `id | user_id | token      | #rownum
+---+---------+------------+--------
+1  | 101     | tok_abc123 | 1
+2  | 102     | tok_def456 | 2
+3  | 101     | tok_ghi789 | 3`,
 };
 
 export const ttlQueryViewExample: CodeExample = {
@@ -54,11 +55,11 @@ export const ttlQueryViewExample: CodeExample = {
   title: 'The View Agrees',
   code: `from ttlg::active_sessions
 sort { id: asc }`,
-  expected: `id | user_id
----+--------
-1  | 101
-2  | 102
-3  | 101`,
+  expected: `id | user_id | #rownum
+---+---------+--------
+1  | 101     | 1
+2  | 102     | 2
+3  | 101     | 3`,
 };
 
 export const ttlExamples: CodeExample[] = [

@@ -109,7 +109,7 @@ export const sstRowSettingsExample: CodeExample = {
     code: `create table sst::sessions {
   token: utf8,
   user_id: int4
-} with { row: { ttl: { duration: '30m' } } }`,
+} with { time: processing, row: { ttl: 30m } }`,
     expected: `id    | namespace | table    | created
 ------+-----------+----------+--------
 16421 | sst       | sessions | true`,

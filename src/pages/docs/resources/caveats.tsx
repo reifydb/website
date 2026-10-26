@@ -58,7 +58,7 @@ export function CaveatsPage() {
             <Item>Commits reach disk on a background flush (5 seconds by default), so a hard crash loses up to roughly one flush interval of committed writes; a clean stop loses nothing. See <L to="/docs/concepts/durability">Durability &amp; Storage</L>.</Item>
             <Item>The change log is written synchronously at commit while the row store is not, so after a crash a deferred view, a replica, or a subscriber may have seen writes the tables no longer contain; replaying the log at boot is designed but not built.</Item>
             <Item>There is no write-ahead log for user commits; the memory tier is the record of recent commits and the flush is the only path to disk, and <Code>sqlite_without_buffer</Code> trades write latency for durability at commit.</Item>
-            <Item>TTL expiry in <Code>drop</Code> mode removes rows silently, with no change-log event, so views and subscriptions over a TTL store are not notified, and <Code>mode: delete</Code> is accepted but never collected. See <L to="/docs/concepts/ttl">TTL &amp; Row Settings</L>.</Item>
+            <Item>TTL expiry removes rows silently, with no change-log event, so views and subscriptions over a TTL store are not notified. See <L to="/docs/concepts/ttl">TTL &amp; Row Settings</L>.</Item>
           </ul>
         </section>
 

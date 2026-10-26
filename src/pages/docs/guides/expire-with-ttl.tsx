@@ -35,20 +35,20 @@ export function TtlGuidePage() {
           </p>
           <Snippet example={ttlCreateTableExample} />
           <p className="text-text-muted text-sm mt-3">
-            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">duration</code> is
-            required. <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">mode</code>{' '}
-            is optional and takes either{' '}
-            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">drop</code> (used
-            here) or <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">delete</code>;
-            leave it out and the engine picks the default for you.
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">ttl</code> is a bare
+            duration such as <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">1h</code>. A row ttl
+            needs a time domain; <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">time: processing</code>{' '}
+            ages rows by the engine clock at their last write.
           </p>
         </section>
 
         <section>
-          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">2. TTL is just another row setting to downstream views</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">2. Views do not see expiry</h2>
           <p className="text-text-secondary mb-4">
-            A view built on a TTL'd table does not need to know the table expires rows; it
-            reads the table like any other:
+            A view built on a TTL'd table reads the table like any other while its rows are
+            alive. Expiry itself is silent: when the engine removes expired rows, the view is
+            not told and keeps its copy. Give a deferred view its own row TTL if it should age
+            out too; see <Link to="/docs/concepts/ttl" className="text-primary hover:text-primary-light font-medium transition-colors">TTL & Row Settings</Link>:
           </p>
           <Snippet example={ttlCreateViewExample} />
         </section>
@@ -80,12 +80,12 @@ export function TtlGuidePage() {
           <p>
             A row's TTL is anchored to its own last write, not to a fixed calendar time, so
             updating a row resets its clock the same way updating it changes anything else
-            about it. This documentation build cannot demonstrate the expiry itself live: it
-            would mean holding a browser tab open past the declared duration with nothing else
-            happening in between, which is not a realistic thing to script into a page. Treat
-            the behavior above, syntax that creates cleanly and data that reads back exactly as
-            written, as the part you can rely on this page to prove; treat the expiry itself as
-            documented, tested engine behavior you exercise by simply letting time pass.
+            about it. The in-browser engine on this page runs no collector, so rows here never
+            expire; on a server, a background sweep removes expired rows every{' '}
+            <code className="bg-[#efedfb] px-1.5 py-0.5 text-sm font-bold">RETENTION_EVICT_INTERVAL</code>{' '}
+            (60 seconds by default). Treat syntax that creates cleanly and data that reads
+            back as written as what this page proves; treat expiry as engine behavior you see
+            on a running server.
           </p>
         </Callout>
 

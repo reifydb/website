@@ -33,12 +33,12 @@ export function ViewsOverviewPage() {
           <p className="text-text-secondary mb-4">
             Every view statement has the same shape: an optional maintenance keyword,
             the qualified name, the column list, an optional <Code>with</Code> block
-            for row settings, and the pipeline in an <Code>as</Code> block:
+            for row settings (deferred views only), and the pipeline in an <Code>as</Code> block:
           </p>
           <CodeBlock
             language="rql"
             code={`create [deferred | transactional] view ns::name { col: type, ... }
-[with { row: { ttl: { duration: '30d' } } }]
+[with { row: { ttl: 30d } }]
 as { pipeline }`}
           />
           <p className="text-text-secondary mt-4 mb-4">

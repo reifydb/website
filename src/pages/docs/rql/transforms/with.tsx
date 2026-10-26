@@ -1,4 +1,4 @@
-import { withColumnOptionsExample as withColumnOptions, withDistinctTtlExample as withDistinctTtl, withJoinOptionsExample as withJoinOptions, withRowTtlExample as withRowTtl, withStorageOptionsExample as withStorageOptions, withUnknownKeyExample as withUnknownKey } from './with.examples';
+import { withColumnOptionsExample as withColumnOptions, withJoinOptionsExample as withJoinOptions, withRowTtlExample as withRowTtl, withStorageOptionsExample as withStorageOptions, withUnknownKeyExample as withUnknownKey } from './with.examples';
 import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
@@ -65,8 +65,7 @@ export function WithPage() {
               <span className="text-primary font-mono">--</span>
               <span>
                 <strong>Pipeline operators.</strong> At the end of{' '}
-                <DocLink to="/docs/rql/transforms/join">join</DocLink>,{' '}
-                <DocLink to="/docs/rql/transforms/distinct">distinct</DocLink>, and{' '}
+                <DocLink to="/docs/rql/transforms/join">join</DocLink> and{' '}
                 <DocLink to="/docs/rql/transforms/window">window</DocLink>: state
                 lifetime and behavior options for the engine that keeps views up to
                 date.
@@ -98,17 +97,18 @@ export function WithPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Row settings</h2>
           <p className="text-text-secondary mb-4">
-            Tables, ring buffers, series, and views all accept a <Code>row</Code> block
-            that controls the lifetime of their rows: <Code>ttl</Code> with a{' '}
-            <Code>duration</Code> such as <Code>'30m'</Code> or <Code>'30d'</Code> and
-            an optional <Code>mode</Code> (<Code>drop</Code> or <Code>delete</Code>),
-            plus <Code>persistent: false</Code> for rows that live in memory only.
+            Tables, ring buffers, series, and deferred views accept a <Code>row</Code>{' '}
+            block that controls the lifetime of their rows: <Code>ttl</Code> with a bare
+            duration such as <Code>30m</Code> or <Code>30d</Code>, plus{' '}
+            <Code>persistent: false</Code> for rows that live in memory only. A table,
+            ring buffer, or series also needs a time domain (<Code>time: processing</Code>{' '}
+            or <Code>time: event(col)</Code>) to declare a ttl.
             A non-persistent shape must also declare a TTL - rows that never reach disk
             have to expire.
           </p>
           <ExecutableSnippet title={withRowTtl.title} initialCode={withRowTtl.code} />
           <p className="text-text-secondary mt-4">
-            The full expiry semantics - what anchors the clock, what each mode means for
+            The full expiry semantics - what anchors the clock, what expiry means for
             views and subscriptions - are covered on the{' '}
             <DocLink to="/docs/concepts/ttl">TTL</DocLink> page.
           </p>
@@ -136,17 +136,10 @@ export function WithPage() {
             right-side changes update the join's state but emit no revisions to rows
             already joined; <Code>latest: true</Code> keeps only the newest right-side
             row per key instead of every match; and{' '}
-            <Code>ttl: {'{ left: { duration: \'1h\' } }'}</Code> (and/or{' '}
-            <Code>right</Code>) evicts join state that has not been touched within the
-            duration.
+            <Code>retention: {'{ left: 1h }'}</Code> (and/or <Code>right</Code>) evicts
+            join state older than the duration; retention needs event time on the sources.
           </p>
           <ExecutableSnippet title={withJoinOptions.title} initialCode={withJoinOptions.code} />
-          <p className="text-text-secondary mt-4 mb-4">
-            <Code>distinct</Code> takes a <Code>ttl</Code> the same way: an entry the
-            operator has not seen within the duration is evicted, so the value counts
-            as new when it next appears.
-          </p>
-          <ExecutableSnippet title={withDistinctTtl.title} initialCode={withDistinctTtl.code} />
           <p className="text-text-secondary mt-4">
             These options exist for incremental view maintenance. An ad-hoc query like
             the ones above accepts them, but since it computes its result in one shot,

@@ -491,7 +491,7 @@ create namespace if not exists ns`} />
           <RqlCodeBlock code={`create table ns::orders { id: int4, customer_id: int4, total: float8, status: utf8 };
 create table if not exists ns::customers { id: int4, name: utf8 };
 create table ns::tickets { id: int4 with { auto_increment }, title: utf8 };
-create table ns::sessions { token: utf8 } with { row: { ttl: { duration: '30m' } } }`} />
+create table ns::sessions { token: utf8 } with { time: processing, row: { ttl: 30m } }`} />
           <Details to="/docs/scripting/schema/tables" label="Tables" />
         </Statement>
 

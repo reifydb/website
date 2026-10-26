@@ -29,32 +29,33 @@ export function TtlPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Declaring a TTL</h2>
           <p className="text-text-secondary mb-4">
-            Row settings are part of the <Code>with</Code> block at creation:{' '}
-            <Code>with {'{'} row: {'{'} ttl: {'{'} duration: '30m', mode: drop {'}'} {'}'} {'}'}</Code>.
-            The <Code>duration</Code> is required and must be positive; it is a quoted
-            duration literal such as <Code>'45s'</Code>, <Code>'30m'</Code>,{' '}
-            <Code>'2d'</Code>, or a compound like <Code>'2d12h'</Code>.{' '}
-            <Code>mode</Code> is optional and defaults to <Code>drop</Code>, the only
-            mode the collector currently executes (more on <Code>delete</Code> below).
-            Run the snippets on this page in order:
+            Row settings are part of the <Code>with</Code> block at creation, next to the
+            object's time domain:{' '}
+            <Code>with {'{'} time: processing, row: {'{'} ttl: 30m {'}'} {'}'}</Code>.
+            The ttl is a bare duration literal such as <Code>45s</Code>, <Code>30m</Code>,{' '}
+            <Code>2d</Code>, or a compound like <Code>2d12h</Code>, and must be positive.
+            A row ttl needs a time domain, <Code>time: processing</Code> or{' '}
+            <Code>time: event(col)</Code>; without one the create fails with{' '}
+            <Code>TIME_005</Code>. Run the snippets on this page in order:
           </p>
           <ExecutableSnippet title={conceptsTtlDeclare.title} initialCode={conceptsTtlDeclare.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The same <Code>row</Code> block is accepted wherever rows are stored: tables,{' '}
             <Link to="/docs/concepts/data-model/series" className="text-primary hover:text-primary-light font-medium transition-colors">series</Link>,{' '}
-            <Link to="/docs/concepts/data-model/ring-buffers" className="text-primary hover:text-primary-light font-medium transition-colors">ring buffers</Link>, and{' '}
+            <Link to="/docs/concepts/data-model/ring-buffers" className="text-primary hover:text-primary-light font-medium transition-colors">ring buffers</Link>, and deferred{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">views</Link>.
-            Row settings are fixed at creation - there is no <Code>alter</Code> for them.
+            A transactional view rejects a row ttl (<Code>FLOW_084</Code>). Row settings are fixed at creation - there is no <Code>alter</Code> for them.
           </p>
         </section>
 
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The clock starts at the last write</h2>
           <p className="text-text-secondary mb-4">
-            A row's age is measured from its last committed write, not from a timestamp
-            column you maintain. Every commit is stamped with a version, and the engine
-            keeps a mapping from wall-clock time to commit versions; a row expires when
-            its newest version is older than the TTL. That makes TTL an{' '}
+            A row's age is measured from its last write, not from a timestamp column you
+            maintain. Every insert and update stamps the row with the engine clock, and a
+            row expires once that stamp is older than the TTL. That holds under{' '}
+            <Code>time: event(col)</Code> too: the event column decides how windows bucket
+            a row, not when it expires. That makes TTL an{' '}
             <em>inactivity</em> bound: updating a row - any column, any value - restarts
             its clock. A session stays alive as long as it is touched, and quietly ages
             out once it is not:
@@ -73,9 +74,10 @@ export function TtlPage() {
           <p className="text-text-secondary mb-4">
             Expired rows are collected by a background scan, not at read time. The
             collector wakes on an interval (60 seconds by default, the{' '}
-            <Code>ROW_TTL_SCAN_INTERVAL</Code> engine setting), walks each store that
+            <Code>RETENTION_EVICT_INTERVAL</Code> engine setting), walks each store that
             declares a TTL in batches, and physically removes every version of each
-            expired row - reclaiming the storage, from memory and disk alike.
+            expired row - reclaiming the storage, from memory and disk alike. The
+            in-browser playground runs no collector, so rows on this page never expire here.
           </p>
           <p className="text-text-secondary mb-4">
             The consequence: a TTL is a retention guarantee, not a precise visibility
@@ -89,7 +91,7 @@ export function TtlPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What expiry means for views</h2>
           <p className="text-text-secondary mb-4">
-            <Code>drop</Code> mode is silent by design. Expired rows are removed from
+            Expiry is silent by design. Expired rows are removed from
             storage directly - no delete events are emitted, nothing flows through CDC,
             and{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">views</Link>{' '}
@@ -100,17 +102,10 @@ export function TtlPage() {
           </p>
           <p className="text-text-secondary mb-4">
             That is not a gap to work around - it is how derived retention is meant to be
-            expressed. Views accept the same <Code>row</Code> settings, so derived state
+            expressed. Deferred views accept the same <Code>row</Code> settings, so derived state
             declares its own lifetime, independent of its sources:
           </p>
           <ExecutableSnippet title={conceptsTtlView.title} initialCode={conceptsTtlView.code} />
-          <Callout variant="warning" title="mode: delete is accepted but not collected yet">
-            The syntax reserves <Code>mode: delete</Code> for expiry that emits real
-            deletes - removals that would flow through incremental view maintenance and
-            CDC like any other write. The current collector skips stores configured with{' '}
-            <Code>delete</Code> entirely, so declaring it today means no cleanup happens
-            at all. Use <Code>drop</Code>.
-          </Callout>
         </section>
 
         <section>
@@ -135,16 +130,12 @@ export function TtlPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">TTL for operator state</h2>
           <p className="text-text-secondary mb-4">
-            Stateful operators inside a view query accept a TTL of their own:{' '}
-            <Code>apply</Code>, <Code>distinct</Code>, and <Code>append</Code> take{' '}
-            <Code>with {'{'} ttl: {'{'} duration: '1h' {'}'} {'}'}</Code>, and a join
-            scopes it per side with{' '}
-            <Code>with {'{'} ttl: {'{'} left: {'{'} duration: '1h' {'}'}, right: {'{'} duration: '1d' {'}'} {'}'} {'}'}</Code>.
-            This bounds the operator's internal state - join entries, distinct keys -
-            the same way a row TTL bounds a store: entries idle longer than the duration
-            are evicted by the background collector. Operator TTL is always silent
-            (only <Code>drop</Code> is allowed), so evicting state emits nothing
-            downstream; it means the operator simply forgets inputs older than the TTL.
+            Stateful operators inside a view query keep internal state of their own. A
+            join bounds it per side with{' '}
+            <Code>with {'{'} retention: {'{'} left: 1h, right: 2d {'}'} {'}'}</Code>, and{' '}
+            <Code>lookup</Code> takes the same form. Retention needs event time on the
+            sources. Eviction is silent: the operator simply forgets inputs older than the
+            retention. <Code>distinct</Code> has no retention option.
           </p>
         </section>
 
@@ -180,8 +171,7 @@ export function TtlPage() {
 
         <Callout variant="note" title="The engine eats its own cooking">
           ReifyDB's internal metrics series are seeded with row TTLs at bootstrap -
-          7 days for runtime telemetry, 1 hour for profiler samples, both in{' '}
-          <Code>drop</Code> mode - so the system's own append-only telemetry is bounded
+          7 days for runtime telemetry, 1 hour for profiler samples - so the system's own append-only telemetry is bounded
           by the same mechanism available to your data.
         </Callout>
       </div>
