@@ -259,7 +259,7 @@ HELP
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Managing policies</h2>
           <p className="text-text-secondary mb-4">
             Every policy is listed in <Code>system::policies</Code> with its scope and
-            whether it is enabled. The namespace-wide policy has no <Code>target_shape</Code>:
+            whether it is enabled. The namespace-wide policy has no <Code>target_object</Code>:
           </p>
           <ExecutableSnippet title={acListPolicies.title} initialCode={acListPolicies.code} />
           <p className="text-text-secondary mt-4 mb-4">

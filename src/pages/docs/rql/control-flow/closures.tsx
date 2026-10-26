@@ -1,4 +1,4 @@
-import { cfClosuresBasicExample as cfClosuresBasic, cfClosuresBlockBodyExample as cfClosuresBlockBody, cfClosuresCaptureExample as cfClosuresCapture, cfClosuresComposeExample as cfClosuresCompose, cfClosuresInlineFailsExample as cfClosuresInlineFails, cfClosuresIntoQueryExample as cfClosuresIntoQuery, cfClosuresRequestScopedExample as cfClosuresRequestScoped, cfClosuresShadowExample as cfClosuresShadow, cfClosuresUdfExample as cfClosuresUdf, cfClosuresUdfDmlExample as cfClosuresUdfDml, cfClosuresUdfEarlyReturnExample as cfClosuresUdfEarlyReturn, cfClosuresUdfFilterExample as cfClosuresUdfFilter } from './closures.examples';
+import { cfClosuresBasicExample as cfClosuresBasic, cfClosuresBlockBodyExample as cfClosuresBlockBody, cfClosuresCaptureExample as cfClosuresCapture, cfClosuresComposeExample as cfClosuresCompose, cfClosuresInlineExample as cfClosuresInline, cfClosuresIntoQueryExample as cfClosuresIntoQuery, cfClosuresRequestScopedExample as cfClosuresRequestScoped, cfClosuresShadowExample as cfClosuresShadow, cfClosuresUdfExample as cfClosuresUdf, cfClosuresUdfDmlExample as cfClosuresUdfDml, cfClosuresUdfEarlyReturnExample as cfClosuresUdfEarlyReturn, cfClosuresUdfFilterExample as cfClosuresUdfFilter } from './closures.examples';
 import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
@@ -72,18 +72,18 @@ export function RqlControlFlowClosuresPage() {
           </p>
           <ExecutableSnippet title={cfClosuresIntoQuery.title} initialCode={cfClosuresIntoQuery.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            What does <em>not</em> work is calling the closure variable inline inside a
-            pipeline expression - <Code>map</Code> and <Code>filter</Code> do not
-            resolve <Code>$f(4)</Code> as a callable:
+            A closure variable can also be called inline inside a pipeline expression;{' '}
+            <Code>map</Code> and <Code>filter</Code> resolve <Code>$f(4)</Code> like any
+            function call:
           </p>
-          <ExecutableSnippet title={cfClosuresInlineFails.title} initialCode={cfClosuresInlineFails.code} />
+          <ExecutableSnippet title={cfClosuresInline.title} initialCode={cfClosuresInline.code} />
         </section>
 
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Named functions with udf</h2>
           <p className="text-text-secondary mb-4">
-            When the whole point is to call the function from inside a pipeline,
-            declare it with <Code>udf</Code> instead. A named udf is callable anywhere
+            To give a function a name of its own, declare it with <Code>udf</Code>. A
+            named udf is callable anywhere
             a built-in function is:
           </p>
           <ExecutableSnippet title={cfClosuresUdf.title} initialCode={cfClosuresUdf.code} />

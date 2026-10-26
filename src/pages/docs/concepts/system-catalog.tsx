@@ -65,7 +65,7 @@ const securityRows: string[][] = [
   ['authentications', 'id, user_id, method', 'panics on read'],
   ['roles', 'id, name', 'empty until you create one'],
   ['granted_roles', 'identity_id, role_id', 'empty until you grant one; a scan names the first column identity'],
-  ['policies', 'id, name, target_type, target_namespace, target_shape, enabled', 'empty until you create one'],
+  ['policies', 'id, name, target_type, target_namespace, target_object, enabled', 'empty until you create one'],
   ['policy_operations', 'policy_id, operation, body_source', 'empty until you create one'],
 ];
 

@@ -49,7 +49,7 @@ describe('examples page sections', () => {
     const names = rows.map((r) => r.name).sort();
     expect(names).toEqual(['no_private_inserts', 'public_only']);
     for (const row of rows) {
-      expect(row).toMatchObject({ target_type: 'table', target_shape: 'documents', enabled: 'true' });
+      expect(row).toMatchObject({ target_type: 'table', target_object: 'documents', enabled: 'true' });
     }
   });
 

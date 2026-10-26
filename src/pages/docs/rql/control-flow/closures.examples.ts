@@ -67,13 +67,15 @@ map { doubled: $r }`,
 8`,
   };
 
-export const cfClosuresInlineFailsExample: CodeExample = {
-    id: 'cf-closures-inline-fails',
-    title: 'Closure Variables Cannot Be Called Inline',
-    description: 'Inside map and filter, $f(4) is not resolved as a callable in the current build; bind the result with let first.',
+export const cfClosuresInlineExample: CodeExample = {
+    id: 'cf-closures-inline',
+    title: 'Closure Variables Can Be Called Inline',
+    description: 'map resolves $f(4) like any function call.',
     code: `let $f = ($x) { $x * 2 };
 map { v: $f(4) }`,
-    expectsError: true,
+    expected: `v
+-
+8`,
   };
 
 export const cfClosuresUdfExample: CodeExample = {
@@ -140,7 +142,7 @@ export const rqlControlFlowClosuresExamples: CodeExample[] = [
   cfClosuresBlockBodyExample,
   cfClosuresComposeExample,
   cfClosuresIntoQueryExample,
-  cfClosuresInlineFailsExample,
+  cfClosuresInlineExample,
   cfClosuresUdfExample,
   cfClosuresUdfEarlyReturnExample,
   cfClosuresUdfFilterExample,

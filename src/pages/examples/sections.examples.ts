@@ -53,7 +53,7 @@ export const exPoliciesInspectExample: CodeExample = {
   title: 'The rules are catalog objects, not application code',
   code: `from system::policies
 filter { target_namespace == "ex_pol" }
-map { name, target_type, target_shape, enabled }`,
+map { name, target_type, target_object, enabled }`,
 };
 
 export const exProceduresExample: CodeExample = {

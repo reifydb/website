@@ -45,12 +45,12 @@ export const dmPoliciesInspectExample: CodeExample = {
     title: 'Inspect Policies via the System Catalog',
     code: `from system::policies
 filter { target_namespace == "dm_pol" }
-map { name, target_type, target_shape, enabled }`,
-    expected: `name               | target_type | target_shape | enabled
--------------------+-------------+--------------+--------
-no_private_inserts | table       | documents    | true
-mask_email         | table       | people       | true
-public_only        | table       | documents    | true`,
+map { name, target_type, target_object, enabled }`,
+    expected: `name               | target_type | target_object | enabled
+-------------------+-------------+---------------+--------
+no_private_inserts | table       | documents     | true
+mask_email         | table       | people        | true
+public_only        | table       | documents     | true`,
   };
 
 export const dmPoliciesDisableExample: CodeExample = {

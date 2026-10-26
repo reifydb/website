@@ -216,17 +216,18 @@ export const acListPoliciesExample: CodeExample = {
     id: 'ac-list-policies',
     title: 'Inspect Policies',
     code: `from system::policies
-map { name, target_namespace, target_shape, enabled }
+filter { target_namespace == "ac" }
+map { name, target_namespace, target_object, enabled }
 sort { name: asc }`,
-    expected: `name             | target_namespace | target_shape | enabled
------------------+------------------+--------------+--------
-ac_readable      | ac               |              | true
-editors_update   | ac               | documents    | true
-hide_owner       | ac               | documents    | true
-owner_only       | ac               | documents    | true
-public_only      | ac               | documents    | true
-tenant_isolation | ac               | documents    | true
-title_required   | ac               | documents    | true`,
+    expected: `name             | target_namespace | target_object | enabled
+-----------------+------------------+---------------+--------
+ac_readable      | ac               |               | true
+editors_update   | ac               | documents     | true
+hide_owner       | ac               | documents     | true
+owner_only       | ac               | documents     | true
+public_only      | ac               | documents     | true
+tenant_isolation | ac               | documents     | true
+title_required   | ac               | documents     | true`,
   };
 
 export const acPolicyDisableExample: CodeExample = {
