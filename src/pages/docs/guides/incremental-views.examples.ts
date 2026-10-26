@@ -12,7 +12,7 @@ create transactional view iv_t::open_tickets { id: int4, subject: utf8 } as {
 }`,
   expected: `id    | namespace | view         | created
 ------+-----------+--------------+--------
-16418 | iv_t      | open_tickets | true`,
+16417 | iv_t      | open_tickets | true`,
 };
 
 export const ivComposedSetupExample: CodeExample = {
@@ -24,7 +24,7 @@ export const ivComposedSetupExample: CodeExample = {
 }`,
   expected: `id    | namespace | view              | created
 ------+-----------+-------------------+--------
-16420 | iv_t      | open_ticket_count | true`,
+16418 | iv_t      | open_ticket_count | true`,
 };
 
 export const ivTransactionalInsertExample: CodeExample = {
@@ -55,9 +55,9 @@ export const ivComposedQueryExample: CodeExample = {
   id: 'iv-composed-query',
   title: 'Query the Composed View',
   code: `from iv_t::open_ticket_count`,
-  expected: `total
------
-2`,
+  expected: `total | #rownum
+------+--------
+2     | 1`,
 };
 
 export const ivDeferredSetupExample: CodeExample = {
@@ -72,7 +72,7 @@ create deferred view iv_d::error_events { id: int4, kind: utf8 } as {
 }`,
   expected: `id    | namespace | view         | created
 ------+-----------+--------------+--------
-16423 | iv_d      | error_events | true`,
+16420 | iv_d      | error_events | true`,
 };
 
 export const ivDeferredInsertExample: CodeExample = {

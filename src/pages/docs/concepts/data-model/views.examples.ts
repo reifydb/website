@@ -105,9 +105,9 @@ export const dmViewsGateReadExample: CodeExample = {
     id: 'dm-views-gate-read',
     title: 'Read the Gated View',
     code: `from dm_vw::gated_users`,
-    expected: `id | name
----+-----
-2  | Bob`,
+    expected: `id | name | #rownum
+---+------+--------
+2  | Bob  | 2`,
   };
 
 export const dmViewsDeferredExample: CodeExample = {

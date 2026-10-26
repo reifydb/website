@@ -17,7 +17,7 @@ create deferred view svd::open_orders { id: int4, customer: utf8, total: int8 } 
 }`,
     expected: `id    | namespace | view        | created
 ------+-----------+-------------+--------
-16418 | svd       | open_orders | true`,
+16417 | svd       | open_orders | true`,
   };
 
 export const svdBackfillReadExample: CodeExample = {
@@ -78,7 +78,7 @@ export const svdAggregateExample: CodeExample = {
 }`,
     expected: `id    | namespace | view  | created
 ------+-----------+-------+--------
-16420 | svd       | spend | true`,
+16418 | svd       | spend | true`,
   };
 
 export const svdAggregateReadExample: CodeExample = {
@@ -110,7 +110,7 @@ create deferred view svd::directory { emp_id: int4, emp_name: utf8, department: 
 }`,
     expected: `id    | namespace | view      | created
 ------+-----------+-----------+--------
-16424 | svd       | directory | true`,
+16421 | svd       | directory | true`,
   };
 
 export const svdJoinReadExample: CodeExample = {
@@ -154,7 +154,7 @@ export const svdChainExample: CodeExample = {
 }`,
     expected: `id    | namespace | view         | created
 ------+-----------+--------------+--------
-16426 | svd       | big_spenders | true`,
+16422 | svd       | big_spenders | true`,
   };
 
 export const svdChainReadExample: CodeExample = {

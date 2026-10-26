@@ -12,7 +12,7 @@ create view svo::open_orders { id: int4, customer: utf8, total: int8 } as {
 }`,
     expected: `id    | namespace | view        | created
 ------+-----------+-------------+--------
-16418 | svo       | open_orders | true`,
+16417 | svo       | open_orders | true`,
   };
 
 export const svoWriteExample: CodeExample = {
@@ -48,7 +48,7 @@ export const svoDeferredExample: CodeExample = {
 }`,
     expected: `id    | namespace | view          | created
 ------+-----------+---------------+--------
-16420 | svo       | open_deferred | true`,
+16418 | svo       | open_deferred | true`,
   };
 
 export const svoDeferredReadExample: CodeExample = {
@@ -71,7 +71,7 @@ export const svoTransactionalExample: CodeExample = {
 }`,
     expected: `id    | namespace | view    | created
 ------+-----------+---------+--------
-16422 | svo       | open_tx | true`,
+16419 | svo       | open_tx | true`,
   };
 
 export const svoTransactionalReadExample: CodeExample = {
