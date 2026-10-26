@@ -109,7 +109,7 @@ export const appendDuplicatesCreateExample: CodeExample = {
 }`,
     expected: `id    | namespace | view      | created
 ------+-----------+-----------+--------
-16428 | tf_append | web_twice | true`,
+16423 | tf_append | web_twice | true`,
   };
 
 export const appendDuplicatesQueryExample: CodeExample = {
@@ -131,7 +131,7 @@ export const appendSubqueryPipelineCreateExample: CodeExample = {
 }`,
     expected: `id    | namespace | view      | created
 ------+-----------+-----------+--------
-16424 | tf_append | big_ids_a | true`,
+16421 | tf_append | big_ids_a | true`,
   };
 
 export const appendSubqueryPipelineQueryExample: CodeExample = {
@@ -155,7 +155,7 @@ export const appendAfterAppendCreateExample: CodeExample = {
 }`,
     expected: `id    | namespace | view      | created
 ------+-----------+-----------+--------
-16426 | tf_append | big_ids_c | true`,
+16422 | tf_append | big_ids_c | true`,
   };
 
 export const appendAfterAppendQueryExample: CodeExample = {
@@ -179,7 +179,7 @@ create transactional view tf_append::tx_all { id: int4, customer: utf8 } as {
 }`,
     expected: `id    | namespace | view   | created
 ------+-----------+--------+--------
-16432 | tf_append | tx_all | true`,
+16426 | tf_append | tx_all | true`,
   };
 
 export const appendTransactionalInsertExample: CodeExample = {

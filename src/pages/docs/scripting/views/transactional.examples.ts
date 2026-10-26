@@ -16,7 +16,7 @@ create view svt::total_balance { total: int8 } as {
 }`,
     expected: `id    | namespace | view          | created
 ------+-----------+---------------+--------
-16420 | svt       | total_balance | true`,
+16418 | svt       | total_balance | true`,
   };
 
 export const svtWriteExample: CodeExample = {
@@ -36,18 +36,18 @@ export const svtReadExample: CodeExample = {
     id: 'svt-read',
     title: 'The View Is Current on the Next Request',
     code: `from svt::overdrawn`,
-    expected: `id | owner | balance
----+-------+--------
-2  | grace | -20`,
+    expected: `id | owner | balance | #rownum
+---+-------+---------+--------
+2  | grace | -20     | 2`,
   };
 
 export const svtAggregateReadExample: CodeExample = {
     id: 'svt-aggregate-read',
     title: 'So Is the Aggregate',
     code: `from svt::total_balance`,
-    expected: `total
------
-80`,
+    expected: `total | #rownum
+------+--------
+80    | 1`,
   };
 
 export const svtEnterExample: CodeExample = {
@@ -63,10 +63,10 @@ export const svtEnterReadExample: CodeExample = {
     id: 'svt-enter-read',
     title: 'Linus Is Now Overdrawn',
     code: `from svt::overdrawn`,
-    expected: `id | owner | balance
----+-------+--------
-3  | linus | -5
-2  | grace | -20`,
+    expected: `id | owner | balance | #rownum
+---+-------+---------+--------
+3  | linus | -5      | 3
+2  | grace | -20     | 2`,
   };
 
 export const svtLeaveExample: CodeExample = {
@@ -82,18 +82,18 @@ export const svtLeaveReadExample: CodeExample = {
     id: 'svt-leave-read',
     title: 'Grace Is Gone',
     code: `from svt::overdrawn`,
-    expected: `id | owner | balance
----+-------+--------
-3  | linus | -5`,
+    expected: `id | owner | balance | #rownum
+---+-------+---------+--------
+3  | linus | -5      | 3`,
   };
 
 export const svtAggregateAfterExample: CodeExample = {
     id: 'svt-aggregate-after',
     title: 'The Total Tracked Every Update',
     code: `from svt::total_balance`,
-    expected: `total
------
-125`,
+    expected: `total | #rownum
+------+--------
+125   | 1`,
   };
 
 export const svtSameRequestExample: CodeExample = {
@@ -112,8 +112,8 @@ export const svtSameRequestVerifyExample: CodeExample = {
     expected: `(empty)`,
   };
 
-export const svtNoBackfillExample: CodeExample = {
-    id: 'svt-no-backfill',
+export const svtBackfillExample: CodeExample = {
+    id: 'svt-backfill',
     title: 'A View Created after the Data',
     code: `create transactional view svt::rich { id: int4, owner: utf8 } as {
   from svt::accounts
@@ -122,32 +122,16 @@ export const svtNoBackfillExample: CodeExample = {
 }`,
     expected: `id    | namespace | view | created
 ------+-----------+------+--------
-16422 | svt       | rich | true`,
+16419 | svt       | rich | true`,
   };
 
-export const svtNoBackfillReadExample: CodeExample = {
-    id: 'svt-no-backfill-read',
-    title: 'Existing Rows Are Not Picked Up',
+export const svtBackfillReadExample: CodeExample = {
+    id: 'svt-backfill-read',
+    title: 'Existing Rows Are Picked Up',
     code: `from svt::rich`,
-    expected: `(empty)`,
-  };
-
-export const svtTouchExample: CodeExample = {
-    id: 'svt-touch',
-    title: 'A Later Write to the Row Brings It In',
-    code: `update svt::accounts { balance: 150 } filter { owner == "ada" }`,
-    expected: `namespace | table    | updated
-----------+----------+--------
-svt       | accounts | 1`,
-  };
-
-export const svtTouchReadExample: CodeExample = {
-    id: 'svt-touch-read',
-    title: 'Ada Appears',
-    code: `from svt::rich`,
-    expected: `id | owner
----+------
-1  | ada`,
+    expected: `id | owner | #rownum
+---+-------+--------
+1  | ada   | 1`,
   };
 
 export const svtChainExample: CodeExample = {
@@ -159,7 +143,7 @@ export const svtChainExample: CodeExample = {
 }`,
     expected: `id    | namespace | view             | created
 ------+-----------+------------------+--------
-16424 | svt       | overdrawn_owners | true`,
+16420 | svt       | overdrawn_owners | true`,
   };
 
 export const svtChainWriteExample: CodeExample = {
@@ -175,9 +159,9 @@ export const svtChainReadExample: CodeExample = {
     id: 'svt-chain-read',
     title: 'Both Levels Committed with the Insert',
     code: `from svt::overdrawn_owners`,
-    expected: `owner
------
-bob`,
+    expected: `owner | #rownum
+------+--------
+bob   | 4`,
   };
 
 export const scriptingViewsTransactionalExamples: CodeExample[] = [
@@ -192,10 +176,8 @@ export const scriptingViewsTransactionalExamples: CodeExample[] = [
   svtAggregateAfterExample,
   svtSameRequestExample,
   svtSameRequestVerifyExample,
-  svtNoBackfillExample,
-  svtNoBackfillReadExample,
-  svtTouchExample,
-  svtTouchReadExample,
+  svtBackfillExample,
+  svtBackfillReadExample,
   svtChainExample,
   svtChainWriteExample,
   svtChainReadExample,

@@ -157,10 +157,9 @@ export function AppendPage() {
             limited to deferred views; a{' '}
             <Link to="/docs/scripting/views/transactional" className="text-primary hover:text-primary-light font-medium transition-colors">transactional view</Link>{' '}
             accepts it too. A transactional view is updated in the same transaction as
-            its sources, but it cannot be read in the request that created it, nor in a
-            request that has written a source, so create, write and read are three
-            requests. It also never backfills: rows that were in either source before
-            the view was created are not part of it, on either side of the append.
+            its sources, so it can be read in the request that created it or wrote a
+            source, and it backfills: rows already in either source when the view is
+            created are part of it, on both sides of the append.
           </p>
           <ExecutableSnippet title={appendTransactionalCreate.title} initialCode={appendTransactionalCreate.code} />
           <div className="mt-4">

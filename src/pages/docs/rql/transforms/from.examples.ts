@@ -83,7 +83,7 @@ export const fromViewCreateExample: CodeExample = {
 }`,
     expected: `id    | namespace | view       | created
 ------+-----------+------------+--------
-16418 | tf_from   | big_orders | true`,
+16417 | tf_from   | big_orders | true`,
   };
 
 export const fromViewReadExample: CodeExample = {

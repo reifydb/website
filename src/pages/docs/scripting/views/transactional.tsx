@@ -1,4 +1,4 @@
-import { svtAggregateAfterExample as svtAggregateAfter, svtAggregateReadExample as svtAggregateRead, svtChainExample as svtChain, svtChainReadExample as svtChainRead, svtChainWriteExample as svtChainWrite, svtCreateExample as svtCreate, svtEnterExample as svtEnter, svtEnterReadExample as svtEnterRead, svtLeaveExample as svtLeave, svtLeaveReadExample as svtLeaveRead, svtNoBackfillExample as svtNoBackfill, svtNoBackfillReadExample as svtNoBackfillRead, svtReadExample as svtRead, svtSameRequestExample as svtSameRequest, svtSameRequestVerifyExample as svtSameRequestVerify, svtTouchExample as svtTouch, svtTouchReadExample as svtTouchRead, svtWriteExample as svtWrite } from './transactional.examples';
+import { svtAggregateAfterExample as svtAggregateAfter, svtAggregateReadExample as svtAggregateRead, svtBackfillExample as svtBackfill, svtBackfillReadExample as svtBackfillRead, svtChainExample as svtChain, svtChainReadExample as svtChainRead, svtChainWriteExample as svtChainWrite, svtCreateExample as svtCreate, svtEnterExample as svtEnter, svtEnterReadExample as svtEnterRead, svtLeaveExample as svtLeave, svtLeaveReadExample as svtLeaveRead, svtReadExample as svtRead, svtSameRequestExample as svtSameRequest, svtSameRequestVerifyExample as svtSameRequestVerify, svtWriteExample as svtWrite } from './transactional.examples';
 import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
@@ -89,25 +89,14 @@ export function TransactionalViewsPage() {
         </section>
 
         <section>
-          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">No backfill</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Backfill on creation</h2>
           <p className="text-text-secondary mb-4">
-            A transactional view is fed by the commits that happen after it is created.
-            It does not scan its source on creation. Ada's balance has been at least 100
-            since the first insert, but a view created now does not contain her:
+            A transactional view scans its source when it is created, so rows that
+            already exist are part of it from the start. Ada's balance has been at least
+            100 since the first insert, and a view created now contains her:
           </p>
-          <ExecutableSnippet title={svtNoBackfill.title} initialCode={svtNoBackfill.code} />
-          <ExecutableSnippet title={svtNoBackfillRead.title} initialCode={svtNoBackfillRead.code} />
-          <p className="text-text-secondary mt-4 mb-4">
-            Only a later write to her row is seen, and that write brings the row in:
-          </p>
-          <ExecutableSnippet title={svtTouch.title} initialCode={svtTouch.code} />
-          <ExecutableSnippet title={svtTouchRead.title} initialCode={svtTouchRead.code} />
-          <p className="text-text-secondary mt-4">
-            This is why the table and its transactional views belong in one request. If
-            you need a view over data that already exists, create a{' '}
-            <Link to="/docs/scripting/views/deferred" className="text-primary hover:text-primary-light font-medium transition-colors">deferred view</Link>,
-            which backfills from the change log.
-          </p>
+          <ExecutableSnippet title={svtBackfill.title} initialCode={svtBackfill.code} />
+          <ExecutableSnippet title={svtBackfillRead.title} initialCode={svtBackfillRead.code} />
         </section>
 
         <section>
