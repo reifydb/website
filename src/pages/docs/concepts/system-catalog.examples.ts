@@ -6,17 +6,18 @@ export const conceptsSystemCatalogVersionsExample: CodeExample = {
     code: `from system::versions map { name, version, type }`,
     expected: `name                | version | type
 --------------------+---------+----------
-reifydb-webassembly | 0.8.0   | package
-core                | 0.8.0   | module
-engine              | 0.8.0   | module
-catalog             | 0.8.0   | module
-store-multi         | 0.8.0   | module
-store-single        | 0.8.0   | module
-transaction         | 0.8.0   | module
-auth                | 0.8.0   | module
-rql                 | 0.8.0   | module
-cdc                 | 0.8.0   | module
-sub-flow            | 0.8.0   | subsystem`,
+reifydb-webassembly | 0.9.3   | package
+core                | 0.9.3   | module
+engine              | 0.9.3   | module
+catalog             | 0.9.3   | module
+store-multi         | 0.9.3   | module
+store-single        | 0.9.3   | module
+store-operator      | 0.9.3   | module
+transaction         | 0.9.3   | module
+auth                | 0.9.3   | module
+rql                 | 0.9.3   | module
+cdc                 | 0.9.3   | module
+sub-flow            | 0.9.3   | subsystem`,
   };
 
 export const conceptsSystemCatalogCountExample: CodeExample = {
@@ -27,7 +28,7 @@ filter { namespace_id == 1 }
 aggregate { tables: math::count(id) } by {}`,
     expected: `tables
 ------
-44`,
+39`,
   };
 
 export const conceptsSystemCatalogListExample: CodeExample = {
@@ -40,14 +41,14 @@ take 8
 map { id, name }`,
     expected: `id | name
 ---+------------------
-46 | authentications
-12 | cdc_consumers
+44 | authentications
+10 | cdc_consumers
 6  | column_properties
 5  | columns
-47 | configs
-17 | dictionaries
-49 | enum_variants
-34 | enums`,
+45 | configs
+15 | dictionaries
+47 | enum_variants
+32 | enums`,
   };
 
 export const conceptsSystemCatalogCreateExample: CodeExample = {
@@ -82,7 +83,7 @@ export const conceptsSystemCatalogColumnsExample: CodeExample = {
     id: 'concepts-system-catalog-columns',
     title: 'Columns of a Table',
     code: `from system::columns
-filter { shape_id == 16416 }
+filter { object_id == 16416 }
 sort { position: asc }
 map { name, type, position, auto_increment }`,
     expected: `name   | type | position | auto_increment
@@ -107,7 +108,7 @@ export const conceptsSystemCatalogJoinExample: CodeExample = {
     id: 'concepts-system-catalog-join-types',
     title: 'Join Columns to Their Type Names',
     code: `from system::columns
-filter { shape_id == 16416 }
+filter { object_id == 16416 }
 inner join { from system::types } as t using (type, t.id)
 sort { position: asc }
 map { name, type: t_name, position }`,
@@ -130,7 +131,9 @@ map { name, type, position }`,
 id             | 13   | 0
 namespace_id   | 13   | 1
 name           | 9    | 2
-primary_key_id | 13   | 3`,
+primary_key_id | 13   | 3
+time           | 9    | 4
+ts             | 9    | 5`,
   };
 
 export const conceptsSystemCatalogViewFlowExample: CodeExample = {
@@ -147,19 +150,6 @@ from system::flows`,
     expected: `id | namespace_id | name         | status
 ---+--------------+--------------+-------
 1  | 16386        | order_totals | Active`,
-  };
-
-export const conceptsSystemCatalogFlowNodesExample: CodeExample = {
-    id: 'concepts-system-catalog-flow-nodes',
-    title: 'The Nodes of a Flow',
-    code: `from system::flow_nodes
-sort { id: asc }
-map { id, flow_id, node_type }`,
-    expected: `id | flow_id | node_type
----+---------+----------
-1  | 1       | 1
-2  | 1       | 8
-3  | 1       | 19`,
   };
 
 export const conceptsSystemCatalogRolesExample: CodeExample = {
@@ -184,11 +174,11 @@ export const conceptsSystemCatalogConfigsExample: CodeExample = {
     id: 'concepts-system-catalog-configs',
     title: 'One Runtime Setting',
     code: `from system::configs
-filter { key == "ROW_TTL_SCAN_INTERVAL" }
+filter { key == "RETENTION_EVICT_INTERVAL" }
 map { key, value, default_value, requires_restart }`,
-    expected: `key                   | value | default_value | requires_restart
-----------------------+-------+---------------+-----------------
-ROW_TTL_SCAN_INTERVAL | 1m    | 1m            | false`,
+    expected: `key                      | value | default_value | requires_restart
+-------------------------+-------+---------------+-----------------
+RETENTION_EVICT_INTERVAL | 1m    | 1m            | true`,
   };
 
 export const conceptsSystemCatalogExamples: CodeExample[] = [
@@ -202,7 +192,6 @@ export const conceptsSystemCatalogExamples: CodeExample[] = [
   conceptsSystemCatalogJoinExample,
   conceptsSystemCatalogSelfExample,
   conceptsSystemCatalogViewFlowExample,
-  conceptsSystemCatalogFlowNodesExample,
   conceptsSystemCatalogRolesExample,
   conceptsSystemCatalogConfigsExample,
   conceptsSystemCatalogReadOnlyExample,
