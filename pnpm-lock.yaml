@@ -30,20 +30,20 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/core':
-        specifier: ^0.10.0
-        version: 0.10.0
+        specifier: ^0.10.1
+        version: 0.10.1
       '@reifydb/editor':
-        specifier: ^0.10.0
-        version: 0.10.0(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^0.10.1
+        version: 0.10.1(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/shell':
-        specifier: ^0.10.0
-        version: 0.10.0(@reifydb/client@0.9.1)(@xterm/addon-fit@0.10.0(@xterm/xterm@5.5.0))(@xterm/xterm@5.5.0)
+        specifier: ^0.10.1
+        version: 0.10.1(@reifydb/client@0.9.1)(@xterm/addon-fit@0.10.0(@xterm/xterm@5.5.0))(@xterm/xterm@5.5.0)
       '@reifydb/ui':
-        specifier: ^0.10.0
-        version: 0.10.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^0.10.1
+        version: 0.10.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@reifydb/wasm':
-        specifier: ^0.10.0
-        version: 0.10.0
+        specifier: ^0.10.1
+        version: 0.10.1
       '@xterm/addon-fit':
         specifier: ^0.10.0
         version: 0.10.0(@xterm/xterm@5.5.0)
@@ -995,24 +995,24 @@ packages:
   '@poppinss/exception@1.2.3':
     resolution: {integrity: sha512-dCED+QRChTVatE9ibtoaxc+WkdzOSjYTKi/+uacHWIsfodVfpsueo3+DKpgU5Px8qXjgmXkSvhXvSCz3fnP9lw==}
 
-  '@reifydb/client@0.10.0':
-    resolution: {integrity: sha512-BrUfSwHS5b3/Y4hf8TuOlx+cwn54U1RyeYAKVMcGfVw7juabFJjCRt0NgH9Om9z1ehAwWQZWn9H9HVYrydn89Q==}
+  '@reifydb/client@0.10.1':
+    resolution: {integrity: sha512-u/QJvMp3ninhbHGLhZyOSZXK2IclICvL8D/oZrnOnVBfTF+g/CW1SJtnpScqlu85VTwV6R6uE6eraSe93tAl/Q==}
     engines: {node: '>=16.0.0'}
 
   '@reifydb/client@0.9.1':
     resolution: {integrity: sha512-zSeZ99N6ZPdxoVQZypYkcY+3TgoOiJlYZqEjrWDujC14gczbg7I2evt2PLGeD+G/r+lINQwZWNDIFxFEHcKuRA==}
     engines: {node: '>=16.0.0'}
 
-  '@reifydb/core@0.10.0':
-    resolution: {integrity: sha512-jcuaf8+J9gGtEPhFhOr24mDUD/OjO3/1kdImo0SrK3Hb+ba0LzCIWtHNLvRCc9PqyEd0hDFX/Nxn7d50C8Ex/A==}
+  '@reifydb/core@0.10.1':
+    resolution: {integrity: sha512-5X967+Hq9dhzlsM2YGfb1va5hd4Sr/zeaaAd8XbTuGSh28Wdu4abVpdWB59qEADGHwFSo0U21NRJaGzU4eENMw==}
     engines: {node: '>=16.0.0'}
 
   '@reifydb/core@0.9.1':
     resolution: {integrity: sha512-6sfv4PojFOw6009PoZW4aAMo548COr7dbRFTOk1kurjRONRP8oFu4mcAFhtvfMXn6+Uqvg9CRS0QVxqrHUFOrw==}
     engines: {node: '>=16.0.0'}
 
-  '@reifydb/editor@0.10.0':
-    resolution: {integrity: sha512-w0blFczUBMrUCCaGZdDL8vhoLYPOD9TYpCBhDODul/oUTlDXamPzyc3vsibh6MBL5VyWM+t/br5grdaHD7xhgg==}
+  '@reifydb/editor@0.10.1':
+    resolution: {integrity: sha512-FmRt5S3IK8yYxvFpe5/kUn3eZ6UD70kl/clRJuTPjupVVYMeUw/X8O+olM8/0VlSnr8nP2azABKA7U9boYmugw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@monaco-editor/react': '>=4.0.0'
@@ -1020,8 +1020,8 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@reifydb/shell@0.10.0':
-    resolution: {integrity: sha512-8DMdBwQdpElp0otDmZv6iWB7lpGtmVnVrH7ZFen7UgbwJuaRPu0Dkps52krD8wANqb+nEWKN6TUuiHwkfjUVrg==}
+  '@reifydb/shell@0.10.1':
+    resolution: {integrity: sha512-LQtpG8Hgvd2t0i4iILGmW1AkDuTtrXUHqFXKt2p3iQ+stvytr3aqZvjG+ufrMRr+yz36u48zwz8TJdti5lHuhg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@reifydb/client': '*'
@@ -1031,15 +1031,15 @@ packages:
       '@reifydb/client':
         optional: true
 
-  '@reifydb/ui@0.10.0':
-    resolution: {integrity: sha512-5awjN3VjTor0FOsP7IY0pYbei7BxzWMd0mgsTB3VfOU5JpcxjKvoG92nyL+Gv4UiV+xlfkYnjcJbQPZAgjaMnA==}
+  '@reifydb/ui@0.10.1':
+    resolution: {integrity: sha512-EQ5ItlR3XagsoMbpnSjKWtYS9KO/grU2B7bUzY+/SocX0nB647hZCX0AZGJzeBn1SsjA8JrbGdu1ILxHTg6xow==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@reifydb/wasm@0.10.0':
-    resolution: {integrity: sha512-ZP4HXqxvm1jmuJjQHtEhQ2kJuH3DMfzqqeN+qp83YqWuBdLggzoGwKcBDngn1tC4QIcUmqkHSd7qAdhtUPMcLw==}
+  '@reifydb/wasm@0.10.1':
+    resolution: {integrity: sha512-DvXX5zd7C1TkGbtVLnuj+p/dow9YfyFY9XBDwQbp1dHF1mysvmKnZM1nsL6BcWvoRFbQgpI4xfnkp3CAijOkiA==}
     engines: {node: '>=16.0.0'}
 
   '@rolldown/pluginutils@1.0.0-beta.53':
@@ -3488,9 +3488,9 @@ snapshots:
 
   '@poppinss/exception@1.2.3': {}
 
-  '@reifydb/client@0.10.0':
+  '@reifydb/client@0.10.1':
     dependencies:
-      '@reifydb/core': 0.10.0
+      '@reifydb/core': 0.10.1
       uuid: 11.1.1
       ws: 8.21.0
     transitivePeerDependencies:
@@ -3507,7 +3507,7 @@ snapshots:
       - utf-8-validate
     optional: true
 
-  '@reifydb/core@0.10.0':
+  '@reifydb/core@0.10.1':
     dependencies:
       uuid: 11.1.1
 
@@ -3516,11 +3516,11 @@ snapshots:
       uuid: 11.1.1
     optional: true
 
-  '@reifydb/editor@0.10.0(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@reifydb/editor@0.10.1(@monaco-editor/react@4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@monaco-editor/react': 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@reifydb/client': 0.10.0
-      '@reifydb/core': 0.10.0
+      '@reifydb/client': 0.10.1
+      '@reifydb/core': 0.10.1
       monaco-editor: 0.55.1
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -3528,23 +3528,23 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@reifydb/shell@0.10.0(@reifydb/client@0.9.1)(@xterm/addon-fit@0.10.0(@xterm/xterm@5.5.0))(@xterm/xterm@5.5.0)':
+  '@reifydb/shell@0.10.1(@reifydb/client@0.9.1)(@xterm/addon-fit@0.10.0(@xterm/xterm@5.5.0))(@xterm/xterm@5.5.0)':
     dependencies:
-      '@reifydb/core': 0.10.0
+      '@reifydb/core': 0.10.1
       '@xterm/addon-fit': 0.10.0(@xterm/xterm@5.5.0)
       '@xterm/xterm': 5.5.0
     optionalDependencies:
       '@reifydb/client': 0.9.1
 
-  '@reifydb/ui@0.10.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@reifydb/ui@0.10.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       prismjs: 1.30.0
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
 
-  '@reifydb/wasm@0.10.0':
+  '@reifydb/wasm@0.10.1':
     dependencies:
-      '@reifydb/core': 0.10.0
+      '@reifydb/core': 0.10.1
 
   '@rolldown/pluginutils@1.0.0-beta.53': {}
 
