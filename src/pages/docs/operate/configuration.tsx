@@ -60,7 +60,7 @@ const listeners = `server::sqlite(config)
 const pinned = `use reifydb::{ConfigKey, Value};
 
 server::sqlite(config)
-    .with_config(ConfigKey::QueryMemoryLimit, Value::Uint8(4 * 1024 * 1024 * 1024))
+    .with_config(ConfigKey::QueryBytes, Value::Uint8(4 * 1024 * 1024 * 1024))
     .with_config(ConfigKey::MultiFlushInterval, Value::duration_seconds(1))
     .with_config(ConfigKey::ThreadsCompute, Value::Uint2(8))`;
 
@@ -213,7 +213,7 @@ ORACLE_WINDOW_SIZE | 1000`}
           <Table
             headers={['Key', 'Default', 'Restart', 'What it controls']}
             rows={[
-              ['QUERY_MEMORY_LIMIT', '1 GiB', 'no', 'memory one query may use before it fails with QUERY_006'],
+              ['QUERY_BYTES', '1 GiB', 'no', 'memory one query may use before it fails with QUERY_006'],
               ['QUERY_ROW_BATCH_SIZE', '128', 'no', 'rows per batch in the query pipeline'],
               ['ORACLE_WINDOW_SIZE', '500', 'no', 'transactions per conflict-detection window'],
               ['COMMIT_GROUP_LINGER', 'none', 'yes', 'wait to batch commits together; none disables grouping'],
@@ -227,7 +227,7 @@ ORACLE_WINDOW_SIZE | 1000`}
               ['HISTORICAL_GC_INTERVAL', '30s', 'no', 'how often superseded row versions are reclaimed'],
               ['TOMBSTONE_REAP_INTERVAL', '1s', 'no', 'how often deleted rows are physically removed'],
               ['FLOW_TICK', '1s', 'no', 'how often deferred views pull new changes'],
-              ['FLOW_BACKLOG_MEMORY_LIMIT', '64 MiB', 'yes', 'memory for changes waiting on deferred views'],
+              ['FLOW_BACKLOG_BYTES', '64 MiB', 'yes', 'memory for changes waiting on deferred views'],
               ['CDC_CONSUME_WAIT_TIMEOUT', '30s', 'no', 'how long a consumer waits for the change log before giving up'],
               ['THREADS_COMPUTE', '2', 'yes', 'query execution threads'],
               ['THREADS_FLOW', '2', 'yes', 'deferred-view maintenance threads'],
@@ -239,10 +239,12 @@ ORACLE_WINDOW_SIZE | 1000`}
           />
           <p className="text-text-secondary mb-4">
             Thread counts must be at least 1. <Code>METRICS_SNAPSHOT_INTERVAL</Code> must be
-            at least the sample interval. Buffer and read-window sizes for each store
-            (<Code>MULTI_READ_BUFFER_*</Code>, <Code>OPERATOR_*_BUFFER_BYTES</Code>,{' '}
-            <Code>CDC_*_BUFFER_BYTES</Code>) all require a restart and are best left at
-            their defaults until the{' '}
+            at least the sample interval. Cache sizes (<Code>MULTI_POINT_BUFFER_*</Code>,{' '}
+            <Code>MULTI_RANGE_BUFFER_*</Code>, <Code>CDC_READ_BUFFER_*</Code>,{' '}
+            <Code>OPERATOR_RANGE_TIER_BYTES</Code>) all require a restart. Each sharded cache takes a
+            total in <Code>*_TOTAL_BYTES</Code>, split evenly across <Code>*_SHARDS</Code>, and the
+            total must be at least the shard count; <Code>OPERATOR_RANGE_TIER_BYTES</Code> is per
+            keyspace. They are best left at their defaults until the{' '}
             <Link to="/docs/operate/observability" className="text-primary hover:text-primary-light font-medium transition-colors">metrics</Link>{' '}
             show a reason to move them.
           </p>

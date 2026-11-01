@@ -137,7 +137,7 @@ export function VolcanoPage() {
             Here the <Code>Sort</Code> above the <Code>Aggregate</Code> is cheap - it only
             sees one row per region - but a <Code>sort</Code> placed directly over a large
             scan holds the entire scan in memory. Each query runs under a memory budget
-            (<Code>QueryMemoryLimit</Code>, 1 GiB by default); exceeding it fails the query
+            (<Code>QUERY_BYTES</Code>, 1 GiB by default); exceeding it fails the query
             with an error rather than swapping or spilling.
           </p>
         </section>
