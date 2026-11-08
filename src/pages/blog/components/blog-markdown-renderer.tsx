@@ -34,7 +34,7 @@ function createComponents(): Components {
     ),
     h3: ({ children }) => (
       <h3
-        className={`${measure} pixel-label uppercase text-[#4b52d6] mt-10 mb-3`}
+        className={`${measure} label uppercase text-[#4b52d6] mt-10 mb-3`}
       >
         {children}
       </h3>

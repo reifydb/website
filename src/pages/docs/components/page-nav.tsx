@@ -21,7 +21,7 @@ function PageNavCard({ entry, direction }: { entry: PageNavEntry; direction: 'pr
         direction === 'next' && 'items-end text-right',
       )}
     >
-      <span className="inline-flex items-center gap-2 pixel-label uppercase text-[#4b52d6] mb-2">
+      <span className="inline-flex items-center gap-2 label uppercase text-[#4b52d6] mb-2">
         {direction === 'prev' && <PixelIcon rows={LEFT_ARROW} colors={ARROW_COLORS} className="h-3.5 w-2" />}
         {direction === 'prev' ? 'Previous' : 'Next'}
         {direction === 'next' && <PixelIcon rows={RIGHT_ARROW} colors={ARROW_COLORS} className="h-3.5 w-2" />}

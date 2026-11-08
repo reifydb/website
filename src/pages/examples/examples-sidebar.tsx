@@ -49,7 +49,7 @@ export function ExamplesSidebar({ sections, activeId, onSelect }: ExamplesSideba
   return (
     <aside className="hidden lg:flex w-72 border-r-2 border-[#4b52d6] bg-[#efedfb] flex-col">
       <nav className="flex-1 p-4 pt-6 overflow-y-auto sidebar-no-scrollbar">
-        <h3 className="pixel-label uppercase text-text-muted mb-3 px-3">Examples</h3>
+        <h3 className="label uppercase text-text-muted mb-3 px-3">Examples</h3>
         <ul className="space-y-2">
           {sections.map((section, index) => (
             <li key={section.id}>
@@ -108,7 +108,7 @@ export function ExamplesSidebarMobile({ sections, activeId, onSelect, isOpen, on
         )}
       >
         <div className="flex items-center justify-between p-4 border-b border-[#c9c3dc]">
-          <h3 className="pixel-label uppercase text-text-muted">Examples</h3>
+          <h3 className="label uppercase text-text-muted">Examples</h3>
           <button
             onClick={onClose}
             className="w-8 h-8 flex items-center justify-center text-text-muted hover:text-text-primary transition-colors"

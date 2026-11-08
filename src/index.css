@@ -250,17 +250,17 @@ div::backdrop {
   background: linear-gradient(#efedfb 0%, #f6f1f4 60%, #faf3e8 100%);
 }
 
-.eyebrow-pixel {
+.eyebrow {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.8;
   letter-spacing: 0.06em;
   color: #4b52d6;
 }
 
-.pixel-label {
+.label {
   font-family: var(--font-mono);
-  font-size: 8.5px;
+  font-size: 11px;
   letter-spacing: 0.04em;
 }
 
@@ -318,7 +318,7 @@ div::backdrop {
   }
 }
 
-.night .eyebrow-pixel {
+.night .eyebrow {
   color: #a3a9ff;
 }
 
@@ -414,10 +414,6 @@ div::backdrop {
   }
 }
 
-.press-start {
-  animation: blink 1.2s steps(2) infinite;
-}
-
 .flip-pop {
   display: inline-block;
   animation: flip-pop 0.2s ease-out;
@@ -435,6 +431,24 @@ div::backdrop {
   width: 100%;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+}
+
+.pixel-scene {
+  position: relative;
+  overflow: hidden;
+}
+
+.pixel-scene__labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.pixel-scene__labels span {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .trade__old {

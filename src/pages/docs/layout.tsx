@@ -18,7 +18,7 @@ function DraftBanner() {
   return (
     <div className="sticky top-[60px] z-30 -mx-4 sm:-mx-6 md:-mx-8 lg:-ml-12 -mt-6 sm:-mt-8 mb-6 bg-[#f7eddd] border-b-2 border-[#e0a040] px-4 py-2">
       <div className="flex items-center gap-3 text-text-primary text-sm">
-        <span className="pixel-label uppercase">Draft</span>
+        <span className="label uppercase">Draft</span>
         <span>This page is not published. Only visible in development mode.</span>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { PostSigil } from './post-sigil';
 import { ShareRow } from './share-row';
 import { TagChips } from './tag-chips';
 
-const creditLabel = 'pixel-label text-[#4b52d6]';
+const creditLabel = 'label text-[#4b52d6]';
 
 export function EntryDetail({ post }: { post: BlogPost }) {
   return (
@@ -13,7 +13,7 @@ export function EntryDetail({ post }: { post: BlogPost }) {
       <header className="sky">
         <div className="mx-auto max-w-3xl px-6 md:px-8 pt-[clamp(28px,5vw,56px)] pb-10 sm:pb-12">
           <BackLink label="SELECT ENTRY" className="mb-8" />
-          <p className="pixel-label text-[#4b52d6] mb-4">
+          <p className="label text-[#4b52d6] mb-4">
             ENTRY {post.sequence} · {formatPostDate(post.date)} · {formatReadTime(post.readTime)}
           </p>
           <h1 className="text-[clamp(28px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.03em] text-text-primary mb-4 text-balance">

@@ -21,7 +21,7 @@ export function OnlyChangesSection() {
         <div className="grid gap-4 lg:grid-cols-2">
           {boards.map((board) => (
             <div key={board.mode} className="overflow-hidden border border-border-light bg-white">
-              <div className={cn('pixel-label px-[18px] py-3.5 border-b border-border-light', board.accent && 'text-[#4b52d6]')}>
+              <div className={cn('label px-[18px] py-3.5 border-b border-border-light', board.accent && 'text-[#4b52d6]')}>
                 {board.label}
               </div>
               <PixelScene kind={board.mode} className="bg-[linear-gradient(#f6f4fd,#fbf8f1)]" />

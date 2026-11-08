@@ -18,7 +18,7 @@ export function PageCloser({ eyebrow, title, subtitle, scene, children }: PageCl
       <div className="relative z-10 mx-auto max-w-4xl px-6 md:px-8 text-center">
         <ScrollReveal>
           {eyebrow && (
-            <p className="eyebrow-pixel press-start uppercase inline-flex items-center gap-3 mb-8">
+            <p className="eyebrow uppercase inline-flex items-center gap-3 mb-8">
               <PixelIcon rows={RIGHT_ARROW} colors={ARROW_COLORS} className="h-3.5 w-2" />
               {eyebrow}
               <PixelIcon rows={LEFT_ARROW} colors={ARROW_COLORS} className="h-3.5 w-2" />

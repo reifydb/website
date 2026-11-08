@@ -54,7 +54,7 @@ export function DocsOverview() {
           <div className="dialog overflow-hidden">
             <div className="sky">
               <div className="px-6 sm:px-10 pt-8 sm:pt-10 text-center">
-                <p className="eyebrow-pixel uppercase mb-3">Documentation</p>
+                <p className="eyebrow uppercase mb-3">Documentation</p>
                 <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4 text-balance">
                   ReifyDB Documentation
                 </h1>

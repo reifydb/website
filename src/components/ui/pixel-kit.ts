@@ -136,14 +136,16 @@ export function glyph(c: Context, char: string, x: number, y: number, color: str
   }
 }
 
-export function tile(c: Context, x: number, y: number, now: string, old: string, elapsed: number) {
+export type TileWriter = (char: string, x: number, y: number, hidden: 'top' | 'bottom' | null) => void;
+
+export function tile(c: Context, x: number, y: number, now: string, old: string, elapsed: number, write: TileWriter) {
   rect(c, x, y, 5, 7, elapsed >= 0 && elapsed < 1.2 ? '#e3e5ff' : PAPER);
   if (elapsed >= 0 && elapsed < FLIP_DURATION) {
     const firstHalf = elapsed < FLIP_DURATION / 2;
-    glyph(c, firstHalf ? old : now, x + 1, y + 1, INK);
+    write(firstHalf ? old : now, x + 1, y + 1, firstHalf ? 'top' : 'bottom');
     rect(c, x, firstHalf ? y : y + 4, 5, 3, LINE);
   } else {
-    glyph(c, now, x + 1, y + 1, INK);
+    write(now, x + 1, y + 1, null);
   }
   rect(c, x, y + 3, 1, 1, '#b8b3d6');
   rect(c, x + 4, y + 3, 1, 1, '#b8b3d6');

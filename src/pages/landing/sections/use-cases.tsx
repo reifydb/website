@@ -99,7 +99,7 @@ function UseCaseCell({ useCase, index }: { useCase: (typeof useCases)[number]; i
         <div className="flex items-center gap-4 mb-4">
           <PixelIcon rows={useCase.icon} colors={ICON_COLORS} className="h-10 w-10 shrink-0" />
           <div>
-            <p className="pixel-label text-[#4b52d6] mb-2">WORLD {index + 1}</p>
+            <p className="label text-[#4b52d6] mb-2">WORLD {index + 1}</p>
             <h3 className="text-lg font-bold group-hover:text-primary transition-colors">
               {useCase.title}
             </h3>
@@ -119,7 +119,7 @@ export function UseCasesSection() {
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <p className="eyebrow-pixel mb-3">USE CASES</p>
+            <p className="eyebrow mb-3">USE CASES</p>
             <h2 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] text-text-primary mb-4 text-balance">
               Built for Live Application State
             </h2>

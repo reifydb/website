@@ -34,7 +34,7 @@ export function OperatorPage({
   return (
     <div className="space-y-8">
       <div>
-        <div className="pixel-label uppercase text-[#4b52d6] mb-3">
+        <div className="label uppercase text-[#4b52d6] mb-3">
           <Link to="/docs/rql/transforms" className="hover:text-primary-light transition-colors">
             RQL
           </Link>

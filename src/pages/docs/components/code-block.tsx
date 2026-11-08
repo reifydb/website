@@ -19,7 +19,7 @@ export function CodeBlock({ code, language = 'bash', className }: CodeBlockProps
   return (
     <div className={cn('bg-[#f3f2fb] overflow-hidden', className)}>
       <div className="flex justify-between items-center px-4 py-2">
-        <span className="pixel-label uppercase text-code-text-muted">
+        <span className="label uppercase text-code-text-muted">
           {language}
         </span>
         <button

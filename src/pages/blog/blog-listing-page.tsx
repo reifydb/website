@@ -72,7 +72,7 @@ export function BlogListingPage() {
           <>
             <section className="sky">
               <div className="mx-auto max-w-6xl px-6 md:px-8 pt-[clamp(36px,6vw,72px)] text-center">
-                <p className="eyebrow-pixel mb-3">BLOG</p>
+                <p className="eyebrow mb-3">BLOG</p>
                 <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] text-text-primary mb-4 text-balance">
                   Notes from the build.
                 </h1>

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useSyncExternalStore } from 'react';
+import type { RefObject } from 'react';
 import { cn } from '@/lib';
 import {
   MARKET_ROWS,
@@ -61,6 +62,7 @@ const ROW_HEIGHT = 8;
 const BOARD_HEIGHT = 3 + MARKET_ROWS.length * ROW_HEIGHT + 2;
 const FRAME_INTERVAL = 83;
 const MIN_WIDTH = 90;
+const LABEL_FONT = 6.67;
 const STACK_SYSTEMS = ['POSTGRES', 'REDIS', 'CRON', 'QUEUE', 'WORKERS'];
 const STACK_LOOP = 12;
 const ARRIVAL_GAP = 1.5;
@@ -177,7 +179,7 @@ function board(c: Context, left: number, top: number, time: number, mode: BoardM
     const old = symbol.padEnd(SYMBOL_WIDTH) + formatPrice(change ? change.oldPrice : market.prices[row]);
     for (let column = 0; column < TILES_PER_ROW; column++) {
       const x = left + 3 + column * 6 + (column >= SYMBOL_WIDTH ? 3 : 0);
-      tile(c, x, y, now[column], old[column], time - tileFlipTime(market, row, column, mode));
+      tile(c, x, y, now[column], old[column], time - tileFlipTime(market, row, column, mode), tileLabel);
     }
     if (!change) return;
     const arrowX = left + 56;
@@ -213,8 +215,40 @@ function compare(c: Context, width: number, height: number, time: number, mode: 
   bot(c, x - 5, floor, time, 1, false, liftY);
 }
 
-function caption(c: Context, text: string, x: number, y: number, color: string) {
-  [...text].forEach((char, i) => glyph(c, char, x + i * 4, y, color));
+interface Label {
+  text: string;
+  x: number;
+  y: number;
+  color: string;
+  hidden: 'top' | 'bottom' | null;
+}
+
+let frameLabels: Label[] = [];
+
+function caption(_c: Context, text: string, x: number, y: number, color: string) {
+  frameLabels.push({ text, x, y, color, hidden: null });
+}
+
+function tileLabel(char: string, x: number, y: number, hidden: 'top' | 'bottom' | null) {
+  frameLabels.push({ text: char, x, y, color: INK, hidden });
+}
+
+const CLIP: Record<'top' | 'bottom', string> = { top: 'inset(43% 0 0 0)', bottom: 'inset(0 0 43% 0)' };
+
+function syncLabels(layer: HTMLDivElement, labels: Label[], scaleX: number, scaleY: number) {
+  while (layer.childElementCount < labels.length) layer.appendChild(document.createElement('span'));
+  while (layer.childElementCount > labels.length) layer.lastElementChild!.remove();
+  const fontSize = LABEL_FONT * scaleY;
+  labels.forEach((label, i) => {
+    const span = layer.children[i] as HTMLSpanElement;
+    if (span.textContent !== label.text) span.textContent = label.text;
+    span.style.left = `${label.x * scaleX}px`;
+    span.style.top = `${(label.y - 1) * scaleY}px`;
+    span.style.fontSize = `${fontSize}px`;
+    span.style.lineHeight = `${7 * scaleY}px`;
+    span.style.color = label.color;
+    span.style.clipPath = label.hidden ? CLIP[label.hidden] : '';
+  });
 }
 
 function wire(c: Context, from: number, to: number, y: number) {
@@ -1149,7 +1183,7 @@ function levelMap(
     rect(c, x + 3, floor - 8, 1, 6, WOOD);
     rect(c, x, floor - 15, 7, 7, i === index ? SPARK : '#ffffff');
     rect(c, x, floor - 9, 7, 1, LINE);
-    glyph(c, String(i + 1), x + 2, floor - 14, INK);
+    caption(c, String(i + 1), x + 2, floor - 14, INK);
   }
   signpost(c, signX(count - 1) + 17, floor);
 
@@ -1295,7 +1329,7 @@ function pong(c: Context, left: number, top: number, time: number) {
   const screenWidth = CABINET_WIDTH - 6;
   for (let y = 0; y < 12; y += 2) rect(c, left + screenWidth / 2, top + y, 1, 1, '#3f3b99');
   caption(c, '9', left + 8, top + 1, '#6a71e6');
-  if (Math.floor(time * 2) % 2 === 0) caption(c, '?', left + 17, top + 1, SPARK);
+  if (Math.floor(time * 2) % 2 === 0) glyph(c, '?', left + 17, top + 1, SPARK);
   const ballX = left + 2 + Math.round(pingPong(time * 1.1) * (screenWidth - 3));
   const ballY = top + Math.round(pingPong(time * 1.7) * 11);
   rect(c, left + 1, Math.min(top + 8, Math.max(top, ballY - 1)), 1, 4, '#ffffff');
@@ -1360,9 +1394,11 @@ interface PixelSceneProps {
 
 function usePixelLoop(height: number, draw: Draw) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const labelsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current!;
+    const layer = labelsRef.current!;
     const context = canvas.getContext('2d');
     if (!context) throw new Error('pixel canvas has no 2d context');
     let width = 0;
@@ -1373,7 +1409,9 @@ function usePixelLoop(height: number, draw: Draw) {
       const time = ms / 1000;
       advanceSharedMarket(time);
       context.clearRect(0, 0, width, height);
+      frameLabels = [];
       draw(context, width, height, time);
+      syncLabels(layer, frameLabels, canvas.clientWidth / width, canvas.clientHeight / height);
     };
     const resize = () => {
       const scale = Math.round(canvas.clientHeight / height);
@@ -1401,15 +1439,28 @@ function usePixelLoop(height: number, draw: Draw) {
     };
   }, [height, draw]);
 
-  return canvasRef;
+  return { canvasRef, labelsRef };
+}
+
+interface FrameProps {
+  canvasRef: RefObject<HTMLCanvasElement | null>;
+  labelsRef: RefObject<HTMLDivElement | null>;
+  className: string;
+}
+
+function SceneFrame({ canvasRef, labelsRef, className }: FrameProps) {
+  return (
+    <div aria-hidden="true" className={cn('pixel-scene', className)}>
+      <canvas ref={canvasRef} className="pixel-canvas h-full" />
+      <div ref={labelsRef} className="pixel-scene__labels" />
+    </div>
+  );
 }
 
 export function PixelScene({ kind, className }: PixelSceneProps) {
-  const canvasRef = usePixelLoop(SCENES[kind].height, SCENES[kind].draw);
+  const { canvasRef, labelsRef } = usePixelLoop(SCENES[kind].height, SCENES[kind].draw);
 
-  return (
-    <canvas ref={canvasRef} aria-hidden="true" className={cn('pixel-canvas', SCENES[kind].heightClass, className)} />
-  );
+  return <SceneFrame canvasRef={canvasRef} labelsRef={labelsRef} className={cn(SCENES[kind].heightClass, className)} />;
 }
 
 interface RaceSceneProps {
@@ -1425,9 +1476,9 @@ export function RaceScene({ rtt, statements, className }: RaceSceneProps) {
     state.current.statements = statements;
   }, [rtt, statements]);
   const draw = useCallback<Draw>((c, width, _height, time) => race(c, width, time, state.current), []);
-  const canvasRef = usePixelLoop(RACE_HEIGHT, draw);
+  const { canvasRef, labelsRef } = usePixelLoop(RACE_HEIGHT, draw);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className={cn('pixel-canvas h-[288px] max-sm:h-[144px]', className)} />;
+  return <SceneFrame canvasRef={canvasRef} labelsRef={labelsRef} className={cn('h-[288px] max-sm:h-[144px]', className)} />;
 }
 
 interface NoticeBoardSceneProps {
@@ -1437,9 +1488,9 @@ interface NoticeBoardSceneProps {
 
 export function NoticeBoardScene({ count, className }: NoticeBoardSceneProps) {
   const draw = useCallback<Draw>((c, width, height, time) => noticeBoard(c, width, height, time, count), [count]);
-  const canvasRef = usePixelLoop(NOTICE_HEIGHT, draw);
+  const { canvasRef, labelsRef } = usePixelLoop(NOTICE_HEIGHT, draw);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className={cn('pixel-canvas h-[216px] max-sm:h-[108px]', className)} />;
+  return <SceneFrame canvasRef={canvasRef} labelsRef={labelsRef} className={cn('h-[216px] max-sm:h-[108px]', className)} />;
 }
 
 interface LevelMapSceneProps {
@@ -1459,9 +1510,9 @@ export function LevelMapScene({ index, count, className }: LevelMapSceneProps) {
     (c, width, height, time) => levelMap(c, width, height, time, count, index, walk.current),
     [count, index],
   );
-  const canvasRef = usePixelLoop(LEVEL_HEIGHT, draw);
+  const { canvasRef, labelsRef } = usePixelLoop(LEVEL_HEIGHT, draw);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className={cn('pixel-canvas h-[108px] max-sm:h-[54px]', className)} />;
+  return <SceneFrame canvasRef={canvasRef} labelsRef={labelsRef} className={cn('h-[108px] max-sm:h-[54px]', className)} />;
 }
 
 interface FlipCounterProps {

@@ -46,7 +46,7 @@ export function MissionPage() {
           <div className="mx-auto max-w-4xl px-6 md:px-8">
             <ScrollReveal>
               <div className="dialog p-8 sm:p-12">
-                <p className="pixel-label uppercase text-[#4b52d6] mb-8">Origin story</p>
+                <p className="label uppercase text-[#4b52d6] mb-8">Origin story</p>
                 <div className="grid gap-8 sm:grid-cols-[auto_1fr] sm:gap-10 items-start">
                   <img
                     src="/assets/img/me.jpeg"

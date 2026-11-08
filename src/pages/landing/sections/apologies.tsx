@@ -41,7 +41,7 @@ export function ApologiesSection() {
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
-            <p className="eyebrow-pixel mb-3">REPLACES</p>
+            <p className="eyebrow mb-3">REPLACES</p>
             <h2 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] text-text-primary mb-4 text-balance">
               Every box is an apology.
             </h2>

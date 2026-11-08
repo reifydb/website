@@ -100,7 +100,7 @@ export function SupportPage() {
                     {option.title}
                   </h2>
                   <p className="text-text-muted text-sm leading-relaxed mb-6">{option.description}</p>
-                  <span className="pixel-label uppercase text-[#4b52d6] mt-auto inline-flex items-center gap-2">
+                  <span className="label uppercase text-[#4b52d6] mt-auto inline-flex items-center gap-2">
                     <PixelIcon rows={RIGHT_ARROW} colors={ARROW_COLORS} className="h-3.5 w-2" />
                     {option.linkText}
                   </span>

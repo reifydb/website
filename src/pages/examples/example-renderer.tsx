@@ -15,7 +15,7 @@ export function ExampleRenderer({ section }: ExampleRendererProps) {
   return (
     <div className="mt-8 space-y-8">
       <div className="dialog px-5 py-4">
-        <h2 className="pixel-label uppercase text-text-muted mb-3">What happens</h2>
+        <h2 className="label uppercase text-text-muted mb-3">What happens</h2>
         <PipelineVisual steps={pipeline} />
       </div>
 
@@ -49,7 +49,7 @@ export function ExampleRenderer({ section }: ExampleRendererProps) {
           </div>
 
           <div className="min-w-0">
-            <h3 className="pixel-label uppercase text-text-muted">What you now have</h3>
+            <h3 className="label uppercase text-text-muted">What you now have</h3>
             <div className="mt-2 text-text-secondary leading-relaxed">{finish}</div>
           </div>
         </li>

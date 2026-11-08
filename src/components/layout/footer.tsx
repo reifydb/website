@@ -92,7 +92,7 @@ export function Footer() {
 
           {sections.map((section) => (
             <div key={section.title}>
-              <h3 className="pixel-label uppercase text-[#4b52d6] mb-3">
+              <h3 className="label uppercase text-[#4b52d6] mb-3">
                 {section.title}
               </h3>
               <ul className="space-y-2.5">

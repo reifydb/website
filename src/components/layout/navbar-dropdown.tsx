@@ -85,7 +85,7 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
           <div className="p-3">
           {dropdown.columns.map((column) => (
             <div key={column.title}>
-              <h3 className="pixel-label uppercase text-[#4b52d6] mb-2 pl-7 pr-1">
+              <h3 className="label uppercase text-[#4b52d6] mb-2 pl-7 pr-1">
                 {column.title}
               </h3>
               <div className="flex flex-col gap-1">

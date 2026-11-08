@@ -122,7 +122,7 @@ export function JobsPage() {
           <div className="mx-auto max-w-3xl px-6 md:px-8">
             <ScrollReveal>
               <div className="dialog p-8 sm:p-12">
-                <p className="pixel-label uppercase text-[#4b52d6] mb-6">The job</p>
+                <p className="label uppercase text-[#4b52d6] mb-6">The job</p>
                 <p className="text-text-secondary leading-relaxed mb-6">
                   ReifyDB is a database written in Rust. It keeps live application state in one place: tables,
                   incremental views, queues, and the logic around them, instead of Postgres plus Redis plus cron
@@ -154,7 +154,7 @@ export function JobsPage() {
               {areas.map((area, index) => (
                 <ScrollReveal key={area.title} className="h-full" delay={index * 75}>
                   <article className="dialog h-full p-6 flex flex-col">
-                    <p className="pixel-label uppercase text-[#4b52d6] mb-3">
+                    <p className="label uppercase text-[#4b52d6] mb-3">
                       Area {String(index + 1).padStart(2, '0')}
                     </p>
                     <h3 className="text-lg font-bold text-text-primary mb-2">{area.title}</h3>
@@ -177,7 +177,7 @@ export function JobsPage() {
                     className="h-full border-2 p-6 sm:p-8"
                     style={{ borderColor: color, backgroundColor: `${color}1f` }}
                   >
-                    <h2 className="pixel-label uppercase text-text-muted mb-5 inline-flex items-center gap-2">
+                    <h2 className="label uppercase text-text-muted mb-5 inline-flex items-center gap-2">
                       <PixelIcon rows={GEM} colors={{ x: color }} className="h-3 w-3" />
                       {list.title}
                     </h2>
@@ -228,7 +228,7 @@ export function JobsPage() {
               {steps.map((step, index) => (
                 <ScrollReveal key={step.title} className="h-full" delay={index * 75}>
                   <div className="dialog h-full p-6">
-                    <span className="pixel-label inline-flex h-8 w-8 items-center justify-center bg-[#4b52d6] text-white mb-5">
+                    <span className="label inline-flex h-8 w-8 items-center justify-center bg-[#4b52d6] text-white mb-5">
                       {index + 1}
                     </span>
                     <h3 className="text-lg font-bold text-text-primary mb-2">{step.title}</h3>

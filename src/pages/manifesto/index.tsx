@@ -82,7 +82,7 @@ export function ManifestoPage() {
                   className={apologySpans[index] ?? 'md:col-span-2'}
                 >
                   <div className="dialog h-full p-6 sm:p-8 flex flex-col">
-                    <span className="pixel-label uppercase text-[#4b52d6] mb-3">{item.box}</span>
+                    <span className="label uppercase text-[#4b52d6] mb-3">{item.box}</span>
                     <h3 className="text-text-primary font-bold text-lg mb-3">{item.role}</h3>
                     <p className="text-text-secondary leading-relaxed">{item.text}</p>
                     <span className="mt-5 pt-4 border-t border-border-light font-mono text-xs text-text-muted inline-flex items-center gap-2">
@@ -131,7 +131,7 @@ export function ManifestoPage() {
               {tenets.map((tenet, index) => (
                 <ScrollReveal key={tenet.claim} delay={index * 60}>
                   <div className="dialog h-full p-6 sm:p-8 flex flex-col">
-                    <span className="pixel-label uppercase text-[#4b52d6] mb-3">
+                    <span className="label uppercase text-[#4b52d6] mb-3">
                       Tenet {String(index + 1).padStart(2, '0')}
                     </span>
                     <h3 className="text-xl font-bold tracking-tight mb-3 text-balance">{tenet.claim}</h3>
@@ -174,7 +174,7 @@ export function ManifestoPage() {
 
             <ScrollReveal>
               <div className="mt-12 max-w-3xl p-6 sm:p-8 border-2 border-[#e0a040] bg-[#e0a0401f]">
-                <div className="pixel-label uppercase text-text-muted mb-3">Status</div>
+                <div className="label uppercase text-text-muted mb-3">Status</div>
                 <p className="text-text-primary font-bold mb-2">Version 0.9. Not production ready.</p>
                 <p className="text-text-secondary leading-relaxed">
                   APIs and guarantees will change, and every page says so. What will not change is the list above.

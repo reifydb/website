@@ -18,7 +18,7 @@ export function DocStub({ title, kicker, description, sections, children }: DocS
     <div className="space-y-8">
       <div>
         {kicker && (
-          <div className="pixel-label uppercase text-[#4b52d6] mb-3">
+          <div className="label uppercase text-[#4b52d6] mb-3">
             {kicker}
           </div>
         )}

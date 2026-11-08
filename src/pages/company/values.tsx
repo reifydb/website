@@ -141,7 +141,7 @@ export function ValuesPage() {
                 <ScrollReveal key={value.id} className="border-t border-[#c9c3dc] last:border-b">
                   <article className="grid gap-4 md:grid-cols-[minmax(190px,1fr)_minmax(0,60ch)] md:gap-[clamp(20px,4.5vw,68px)] py-[clamp(34px,4.4vw,54px)]">
                     <div className="self-start md:sticky md:top-[84px]">
-                      <p className="pixel-label uppercase text-[#4b52d6] inline-flex items-center gap-2 mb-3">
+                      <p className="label uppercase text-[#4b52d6] inline-flex items-center gap-2 mb-3">
                         <PixelIcon rows={GEM} colors={{ x: color }} className="h-3 w-3" />
                         Value {String(index + 1).padStart(2, '0')}
                       </p>
@@ -159,7 +159,7 @@ export function ValuesPage() {
                         className="mt-[clamp(22px,2.6vw,30px)] border-2 p-5"
                         style={{ borderColor: color, backgroundColor: `${color}1f` }}
                       >
-                        <h3 className="pixel-label uppercase text-text-muted mb-3">In practice</h3>
+                        <h3 className="label uppercase text-text-muted mb-3">In practice</h3>
                         <ul className="grid gap-2.5">
                           {value.practice.map((item) => (
                             <li

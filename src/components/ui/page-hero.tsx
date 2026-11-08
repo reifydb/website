@@ -18,7 +18,7 @@ export function PageHero({ eyebrow, title, subtitle, scene, children }: PageHero
           !scene && 'pb-[clamp(36px,6vw,72px)]'
         )}
       >
-        {eyebrow && <p className="eyebrow-pixel uppercase mb-3">{eyebrow}</p>}
+        {eyebrow && <p className="eyebrow uppercase mb-3">{eyebrow}</p>}
 
         <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] text-text-primary mb-4 text-balance">
           {title}

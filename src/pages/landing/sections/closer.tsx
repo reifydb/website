@@ -1,4 +1,4 @@
-import { ARROW_COLORS, Button, LEFT_ARROW, PixelIcon, PixelScene, RIGHT_ARROW, ScrollReveal } from '@/components/ui';
+import { Button, PixelScene, ScrollReveal } from '@/components/ui';
 import { HEADLINE } from '@/components/manifesto';
 
 
@@ -7,11 +7,6 @@ export function CloserSection() {
     <section className="night pt-24 sm:pt-32">
       <div className="relative z-10 mx-auto max-w-4xl px-6 md:px-8 text-center">
         <ScrollReveal>
-          <p className="eyebrow-pixel press-start inline-flex items-center gap-3 mb-8">
-            <PixelIcon rows={RIGHT_ARROW} colors={ARROW_COLORS} className="h-3.5 w-2" />
-            PRESS START
-            <PixelIcon rows={LEFT_ARROW} colors={ARROW_COLORS} className="h-3.5 w-2" />
-          </p>
           <p className="text-[clamp(28px,4vw,48px)] font-normal leading-[1.08] tracking-[-0.03em] text-[#f4f3fb] mb-6 text-balance">
             {HEADLINE}
           </p>
