@@ -35,7 +35,7 @@ export function ConnectPage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">No server yet? Use the browser</h2>
           <p className="text-text-secondary mb-4">
             The fastest connection is no connection. The{' '}
-            <DocLink to="/playground">playground</DocLink> and every runnable snippet in
+            <DocLink to="/examples">examples</DocLink> and every runnable snippet in
             these docs execute against a real ReifyDB engine compiled to WebAssembly,
             entirely in your browser. Nothing to install, nothing to configure. If you are
             evaluating RQL or the data model, start with the{' '}

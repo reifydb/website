@@ -19,8 +19,8 @@ export function HeroSection() {
             <Button href="/docs/quick-start" size="lg">
               Get started <span className="transition-transform group-hover:translate-x-[3px]">→</span>
             </Button>
-            <Button href="/playground" size="lg" variant="secondary">
-              Open the playground
+            <Button href="/examples" size="lg" variant="secondary">
+              Open examples
             </Button>
           </div>
         </div>

@@ -214,7 +214,7 @@ curl -s https://reifydb.com/llms-full.txt | grep -n '^URL: '`}
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What the playground can and cannot tell you</h2>
           <p className="text-text-secondary mb-4">
             The runnable snippets and the{' '}
-            <a href="/playground" className="text-primary hover:text-primary-light font-medium transition-colors">playground</a>{' '}
+            <a href="/examples" className="text-primary hover:text-primary-light font-medium transition-colors">examples</a>{' '}
             run <Code>@reifydb/wasm</Code> 0.8.1 in the browser; the engine source is at
             0.9.0. An agent that probes the playground should read the results with that
             gap in mind:

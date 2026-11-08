@@ -15,7 +15,6 @@ interface MobileMenuProps {
 const shortDescriptions: Record<string, string> = {
   Docs: 'reference',
   Examples: 'runnable',
-  Playground: 'sandbox',
   Blog: 'updates',
   FAQ: 'answers',
   Support: 'help',

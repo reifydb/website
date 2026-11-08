@@ -64,7 +64,7 @@ export function ClientsOverviewPage() {
           </p>
           <p className="text-text-secondary mb-4">
             There is a third shape for trying things: the engine compiled to WebAssembly
-            runs entirely in the browser. The <DocLink to="/playground">playground</DocLink>{' '}
+            runs entirely in the browser. The <DocLink to="/examples">examples</DocLink>{' '}
             and every runnable snippet in these docs use it. It needs no client library and
             no server at all.
           </p>

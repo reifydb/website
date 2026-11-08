@@ -541,7 +541,7 @@ export function LiveUsers() {
             <Code>@reifydb/wasm</Code> is not a client - it is the whole engine
             compiled to WebAssembly, running in the page with no server and no
             network. It is what powers the{' '}
-            <DocLink to="/playground">playground</DocLink> and every runnable snippet
+            <DocLink to="/examples">examples</DocLink> and every runnable snippet
             in these docs. The API is synchronous and shape-free: statements return
             decoded value objects directly.
           </p>

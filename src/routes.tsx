@@ -25,7 +25,6 @@ const sitePages: PageEntry[] = [
   { path: '/examples', name: 'ExamplesPage', load: () => import('@/pages/examples') },
   { path: '/pitch', name: 'PitchPage', load: () => import('@/pages/pitch') },
   { path: '/blog/:slug?', name: 'BlogListingPage', load: () => import('@/pages/blog') },
-  { path: '/playground', name: 'PlaygroundPage', load: () => import('@/pages/playground') },
 ];
 
 const docsPages: PageEntry[] = [

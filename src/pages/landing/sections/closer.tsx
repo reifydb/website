@@ -16,7 +16,7 @@ export function CloserSection() {
             {HEADLINE}
           </p>
           <p className="max-w-2xl mx-auto text-[#b9bcf5] text-lg mb-12">
-            Read the docs, run the examples in the playground, and see how it fits your workload.
+            Read the docs, run the examples, and see how it fits your workload.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button href="/docs/quick-start" size="lg">

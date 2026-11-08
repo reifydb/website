@@ -85,8 +85,8 @@ export function MissionPage() {
           title="See what it looks like in practice"
           subtitle="The database compiles to WebAssembly, so you can run it in this browser tab without installing anything."
         >
-          <Button href="/playground" size="lg">
-            Open the playground
+          <Button href="/examples" size="lg">
+            Open examples
           </Button>
           <Button href="/company/values" variant="secondary" size="lg">
             Our values
