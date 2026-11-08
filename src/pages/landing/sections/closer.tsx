@@ -1,4 +1,4 @@
-import { ARROW_COLORS, GameButton, LEFT_ARROW, PixelIcon, PixelScene, RIGHT_ARROW, ScrollReveal } from '@/components/ui';
+import { ARROW_COLORS, Button, LEFT_ARROW, PixelIcon, PixelScene, RIGHT_ARROW, ScrollReveal } from '@/components/ui';
 import { HEADLINE } from '@/components/manifesto';
 
 
@@ -19,15 +19,15 @@ export function CloserSection() {
             Read the docs, run the examples in the playground, and see how it fits your workload.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <GameButton href="/docs/quick-start" size="lg">
-              Get started <span className="game-button__arrow">→</span>
-            </GameButton>
-            <GameButton href="/manifesto" size="lg" variant="secondary">
+            <Button href="/docs/quick-start" size="lg">
+              Get started <span className="transition-transform group-hover:translate-x-[3px]">→</span>
+            </Button>
+            <Button href="/manifesto" size="lg" variant="secondary">
               Read the Manifesto
-            </GameButton>
-            <GameButton href="https://github.com/reifydb/reifydb" size="lg" variant="secondary">
+            </Button>
+            <Button href="https://github.com/reifydb/reifydb" size="lg" variant="secondary">
               View on GitHub
-            </GameButton>
+            </Button>
           </div>
         </ScrollReveal>
       </div>

@@ -40,12 +40,10 @@ const GAP = 8;
 const INSET = 34;
 
 const MONO = 'JetBrains Mono Variable';
-const DISPLAY = 'Archivo Black';
 const BODY = 'IBM Plex Sans Variable';
 
 const FONTS = [
   ['@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2', MONO],
-  ['@fontsource/archivo-black/files/archivo-black-latin-400-normal.woff2', DISPLAY],
   ['@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-normal.woff2', BODY],
 ];
 
@@ -154,7 +152,7 @@ function renderCard(post) {
 
   const textW = WIDTH - PAD * 2;
 
-  ctx.font = `50px "${DISPLAY}"`;
+  ctx.font = `600 50px "${BODY}"`;
   const titleLines = wrap(ctx, post.title, textW).slice(0, 2);
   ctx.fillStyle = TEXT;
   titleLines.forEach((line, index) => {
@@ -188,11 +186,11 @@ function renderDefaultCard() {
   ctx.fillStyle = MUTED;
   ctx.fillText('reifydb.com', PAD, PAD + 4);
 
-  ctx.font = `76px "${DISPLAY}"`;
+  ctx.font = `600 76px "${BODY}"`;
   ctx.fillStyle = TEXT;
   ctx.fillText(SITE_TITLE, PAD, TITLE_TOP + 6);
 
-  ctx.font = `34px "${DISPLAY}"`;
+  ctx.font = `600 34px "${BODY}"`;
   ctx.fillStyle = PRIMARY_DARK;
   ctx.fillText(SITE_SUBTITLE, PAD, TITLE_TOP + 58);
 

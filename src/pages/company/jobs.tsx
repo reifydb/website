@@ -1,6 +1,6 @@
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { GameButton, GEM, GEM_COLORS, PageCloser, PageHero, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
+import { Button, GEM, GEM_COLORS, PageCloser, PageHero, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
 
 const APPLY_HREF = 'mailto:founder@reifydb.com?subject=Rust%20engineer';
 const REPO_HREF = 'https://github.com/reifydb/reifydb';
@@ -110,12 +110,12 @@ export function JobsPage() {
           subtitle="We are hiring a full-time, remote Rust engineer to build the database engine with us. Hackers who ship, not ticket movers."
           scene={<PixelScene kind="arcade" />}
         >
-          <GameButton href={APPLY_HREF} size="lg">
+          <Button href={APPLY_HREF} size="lg">
             Apply by email
-          </GameButton>
-          <GameButton href={REPO_HREF} variant="secondary" size="lg">
+          </Button>
+          <Button href={REPO_HREF} variant="secondary" size="lg">
             Read the code
-          </GameButton>
+          </Button>
         </PageHero>
 
         <section className="py-20 sm:py-28">
@@ -245,12 +245,12 @@ export function JobsPage() {
           title="Ready?"
           subtitle="Code you are proud of and one email. That is the whole application."
         >
-          <GameButton href={APPLY_HREF} size="lg">
+          <Button href={APPLY_HREF} size="lg">
             Apply by email
-          </GameButton>
-          <GameButton href={REPO_HREF} variant="secondary" size="lg">
+          </Button>
+          <Button href={REPO_HREF} variant="secondary" size="lg">
             Read the code
-          </GameButton>
+          </Button>
         </PageCloser>
       </main>
 

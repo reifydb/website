@@ -1,6 +1,6 @@
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { BUBBLE, CODE, GameButton, ICON_COLORS, MAIL, PageHero, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
+import { BUBBLE, CODE, Button, ICON_COLORS, MAIL, PageHero, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
 
 const channels = [
   {
@@ -42,12 +42,12 @@ export function ContactPage() {
           subtitle="Questions about ReifyDB, or a use case you want to talk through? Thirty minutes is usually enough."
           scene={<PixelScene kind="plane" />}
         >
-          <GameButton href="https://cal.com/reifydb/30min" size="lg">
+          <Button href="https://cal.com/reifydb/30min" size="lg">
             Book a call
-          </GameButton>
-          <GameButton href="mailto:founder@reifydb.com" variant="secondary" size="lg">
+          </Button>
+          <Button href="mailto:founder@reifydb.com" variant="secondary" size="lg">
             Send an email
-          </GameButton>
+          </Button>
         </PageHero>
 
         <section className="pt-12 sm:pt-16 pb-24 sm:pb-32">

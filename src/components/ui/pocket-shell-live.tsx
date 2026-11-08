@@ -28,7 +28,7 @@ const PROMPT_LENGTH = 2;
 
 const INITIAL_INPUT = 'from app::users map { name, role, age } take 3;';
 
-const FONT_FAMILY = "'VT323', ui-monospace, monospace";
+const FONT_FAMILY = "'JetBrains Mono Variable', ui-monospace, monospace";
 const FONT_SIZE = 19;
 
 const SCREEN = '#e6e8fd';
@@ -115,7 +115,7 @@ export default function PocketShellLive({ onReady, onFullscreenChange }: PocketS
     let shell: Shell | null = null;
     let cancelled = false;
 
-    void Promise.all([getWasmDB(), document.fonts.load(`${FONT_SIZE}px VT323`)]).then(([db]) => {
+    void Promise.all([getWasmDB(), document.fonts.load(`${FONT_SIZE}px "JetBrains Mono Variable"`)]).then(([db]) => {
       if (cancelled) return;
       shell = new Shell(element, {
         executor: new WasmExecutor(db),

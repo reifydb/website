@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { ARROW_COLORS, GameButton, PageCloser, PageHero, PixelIcon, PixelScene, RIGHT_ARROW, ScrollReveal } from '@/components/ui';
+import { ARROW_COLORS, Button, PageCloser, PageHero, PixelIcon, PixelScene, RIGHT_ARROW, ScrollReveal } from '@/components/ui';
 import { HEADLINE, apologies, tenets, StackDiagram, FeatureDiagram } from '@/components/manifesto';
 
 const apologySpans = ['md:col-span-4', 'md:col-span-2', 'md:col-span-2', 'md:col-span-2', 'md:col-span-2'];
@@ -189,12 +189,12 @@ export function ManifestoPage() {
           title={HEADLINE}
           subtitle="If you have written that cron job, shipped a service whose entire job is knowing which key to delete, or explained why the dashboard and the database disagree, then you already agree with this page. Agree, and build on it. Disagree, and say so."
         >
-          <GameButton href="mailto:founder@reifydb.com?subject=Challenging%20the%20manifesto" size="lg">
+          <Button href="mailto:founder@reifydb.com?subject=Challenging%20the%20manifesto" size="lg">
             Challenge us with your opinion
-          </GameButton>
-          <GameButton href="/docs" variant="secondary" size="lg">
+          </Button>
+          <Button href="/docs" variant="secondary" size="lg">
             Read the docs
-          </GameButton>
+          </Button>
         </PageCloser>
       </main>
 

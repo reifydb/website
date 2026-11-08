@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useSyncExternalStore, type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { GameButton, GitHubStars } from '@/components/ui';
+import { Button, GitHubStars } from '@/components/ui';
 import { cn } from '@/lib';
 import { NavbarDropdown } from './navbar-dropdown';
 import { navDropdowns, navDirectLinks } from './navbar-data';
@@ -151,9 +151,9 @@ export function Navbar({ mobileExtra, framed }: NavbarProps = {}) {
                 </svg>
               </a>
               <GitHubStars />
-              <GameButton href="/docs" size="sm">
+              <Button href="/docs" size="sm">
                 Get Started
-              </GameButton>
+              </Button>
             </div>
 
             {/* Hamburger Button */}

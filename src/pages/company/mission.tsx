@@ -1,6 +1,6 @@
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { GameButton, PageCloser, PageHero, PixelScene, ScrollReveal } from '@/components/ui';
+import { Button, PageCloser, PageHero, PixelScene, ScrollReveal } from '@/components/ui';
 
 export function MissionPage() {
   return (
@@ -85,12 +85,12 @@ export function MissionPage() {
           title="See what it looks like in practice"
           subtitle="The database compiles to WebAssembly, so you can run it in this browser tab without installing anything."
         >
-          <GameButton href="/playground" size="lg">
+          <Button href="/playground" size="lg">
             Open the playground
-          </GameButton>
-          <GameButton href="/company/values" variant="secondary" size="lg">
+          </Button>
+          <Button href="/company/values" variant="secondary" size="lg">
             Our values
-          </GameButton>
+          </Button>
         </PageCloser>
       </main>
 

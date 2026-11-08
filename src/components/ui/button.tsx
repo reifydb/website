@@ -11,12 +11,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles = {
   primary: cn(
-    'bg-primary text-text-primary border border-primary-dark shadow-soft',
-    'hover:brightness-90'
+    'bg-primary text-white border border-primary',
+    'hover:bg-[#6a71e6] hover:border-[#6a71e6]'
   ),
   secondary: cn(
-    'bg-bg-secondary border border-border-light text-text-primary',
-    'hover:bg-bg-elevated'
+    'bg-white border border-[#e3e5f4] text-[#2a2f8f]',
+    'hover:border-primary'
   ),
   ghost: cn(
     'text-text-secondary',
@@ -27,9 +27,9 @@ const variantStyles = {
 }
 
 const sizeStyles = {
-  sm: 'px-4 py-2 text-sm',
+  sm: 'px-3 py-1.5 text-[13px]',
   md: 'px-5 py-2.5 text-sm',
-  lg: 'px-6 py-3 text-base',
+  lg: 'px-[18px] py-2.5 text-[15px]',
 }
 
 export function Button({
@@ -42,8 +42,8 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles = cn(
-    'inline-flex items-center justify-center gap-2',
-    'font-semibold transition-colors duration-150',
+    'group inline-flex items-center justify-center gap-2 rounded-[6px]',
+    'font-medium transition-colors duration-150',
     'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-bg-primary',
     'disabled:opacity-30 disabled:cursor-not-allowed',
     variantStyles[variant],

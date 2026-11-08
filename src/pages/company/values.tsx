@@ -1,6 +1,6 @@
 import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { GameButton, GEM, GEM_COLORS, PageCloser, PageHero, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
+import { Button, GEM, GEM_COLORS, PageCloser, PageHero, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
 
 interface Value {
   id: string;
@@ -185,12 +185,12 @@ export function ValuesPage() {
           title="What we are building, and why"
           subtitle="Why the Postgres + Redis + cron stack is a bug, not an architecture."
         >
-          <GameButton href="/manifesto" size="lg">
+          <Button href="/manifesto" size="lg">
             Read the manifesto
-          </GameButton>
-          <GameButton href="/company/mission" variant="secondary" size="lg">
+          </Button>
+          <Button href="/company/mission" variant="secondary" size="lg">
             Our mission
-          </GameButton>
+          </Button>
         </PageCloser>
       </main>
 
