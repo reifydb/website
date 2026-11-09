@@ -582,37 +582,6 @@ div::backdrop {
   background: #ffffff;
 }
 
-.market-hall__board--pulse {
-  animation: market-hall-pulse 0.6s ease-out;
-}
-
-.market-hall__board--pulse .market-hall__title {
-  animation: market-hall-pulse-title 0.6s ease-out;
-}
-
-@keyframes market-hall-pulse {
-  0% {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 1px var(--color-primary);
-  }
-
-  100% {
-    border-color: #c9c3dc;
-    box-shadow: 0 0 0 0 transparent;
-  }
-}
-
-@keyframes market-hall-pulse-title {
-  0% {
-    color: #ffffff;
-    background: var(--color-primary);
-  }
-
-  100% {
-    background: #ebe9f7;
-  }
-}
-
 .market-hall__title {
   padding: 0.25em 0.6em;
   font-family: 'IBM Plex Sans Variable', system-ui, sans-serif;
@@ -735,9 +704,7 @@ div::backdrop {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .market-hall__delta,
-  .market-hall__board--pulse,
-  .market-hall__board--pulse .market-hall__title {
+  .market-hall__delta {
     animation: none;
   }
 }
