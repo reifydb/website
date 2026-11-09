@@ -1375,7 +1375,7 @@ const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Dra
     heightClass: 'h-[216px]',
     draw: (c, width, height, time) => compare(c, width, height, time, 'incremental'),
   },
-  stack: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: stack },
+  stack: { height: 54, heightClass: 'h-[216px] max-sm:h-[162px]', draw: stack },
   invaders: { height: 48, heightClass: 'h-[192px] max-sm:h-[96px]', draw: invaders },
   booth: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: booth },
   pit: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: pitStop },
