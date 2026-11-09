@@ -542,8 +542,14 @@ div::backdrop {
 
 .market-hall__stage {
   position: relative;
-  min-width: 720px;
   container-type: inline-size;
+}
+
+@media (min-width: 768px) {
+  .market-hall__stage,
+  .market-hall__frame--empty {
+    min-width: 720px;
+  }
 }
 
 .market-hall__frame {
@@ -557,14 +563,14 @@ div::backdrop {
   inset: 0;
   pointer-events: none;
   font-family: var(--font-mono);
-  font-size: calc(100cqw / 360 * 4.6);
+  font-size: calc(100cqw / var(--hall-width) * 4.6);
   line-height: 1.35;
   color: var(--color-text-primary);
 }
 
 .market-hall__pair {
   position: absolute;
-  font-size: calc(100cqw / 360 * 4.4);
+  font-size: calc(100cqw / var(--hall-width) * 4.4);
   color: var(--color-text-muted);
 }
 
@@ -679,7 +685,7 @@ div::backdrop {
 .market-hall__you {
   position: absolute;
   transform: translateX(-50%);
-  font-size: calc(100cqw / 360 * 4.2);
+  font-size: calc(100cqw / var(--hall-width) * 4.2);
   font-weight: 500;
   white-space: nowrap;
 }
@@ -698,11 +704,16 @@ div::backdrop {
 }
 
 .market-hall__frame--empty {
-  min-width: 720px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #f3f2fb;
+}
+
+@media (max-width: 767px) {
+  .market-hall__frame--empty {
+    aspect-ratio: 180 / 268;
+  }
 }
 
 .market-hall__hint {

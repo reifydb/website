@@ -59,9 +59,6 @@ interface Box {
   height?: number;
 }
 
-const WIDTH = 360;
-const HEIGHT = 140;
-const FLOOR = 126;
 const FRAME_INTERVAL = 83;
 const SLOT_MS = 400;
 const AUTO_MS = 1200;
@@ -72,31 +69,73 @@ const MARK_SECONDS = 2;
 const RETIRE = 3;
 const NODES: NodeId[] = ['normalized', 'trades', 'block', 'volume', 'twap', 'candles', 'app'];
 const WALK = 0.7;
-const STALL_X = 30;
-const DESK_X = 72;
 const RISE = '#2f9e6b';
 const FALL = '#d4506c';
 
-const BOXES: Record<NodeId, Box> = {
-  normalized: { x: 6, y: 20, width: 126 },
-  trades: { x: 142, y: 6, width: 66 },
-  block: { x: 142, y: 60, width: 66 },
-  volume: { x: 216, y: 6, width: 64 },
-  twap: { x: 216, y: 36, width: 64 },
-  candles: { x: 216, y: 66, width: 64, height: 54 },
-  app: { x: 290, y: 40, width: 64 },
+interface Layout {
+  width: number;
+  height: number;
+  floor: number;
+  stallX: number;
+  deskX: number;
+  boxes: Record<NodeId, Box>;
+  candleChart: Required<Box>;
+  wires: { target: NodeId; points: [number, number][] }[];
+}
+
+const WIDE: Layout = {
+  width: 360,
+  height: 140,
+  floor: 126,
+  stallX: 30,
+  deskX: 72,
+  boxes: {
+    normalized: { x: 6, y: 20, width: 126 },
+    trades: { x: 142, y: 6, width: 66 },
+    block: { x: 142, y: 60, width: 66 },
+    volume: { x: 216, y: 6, width: 64 },
+    twap: { x: 216, y: 36, width: 64 },
+    candles: { x: 216, y: 66, width: 64, height: 54 },
+    app: { x: 290, y: 40, width: 64 },
+  },
+  candleChart: { x: 216, y: 75, width: 64, height: 44 },
+  wires: [
+    { target: 'trades', points: [[132, 50], [137, 50], [137, 22], [142, 22]] },
+    { target: 'block', points: [[175, 44], [175, 60]] },
+    { target: 'volume', points: [[208, 74], [212, 74], [212, 16], [216, 16]] },
+    { target: 'twap', points: [[212, 46], [216, 46]] },
+    { target: 'candles', points: [[212, 74], [212, 80], [216, 80]] },
+    { target: 'app', points: [[280, 96], [285, 96], [285, 62], [290, 62]] },
+  ],
 };
 
-const CANDLE_CHART = { x: 216, y: 75, width: 64, height: 44 };
+const TALL: Layout = {
+  width: 180,
+  height: 268,
+  floor: 46,
+  stallX: 20,
+  deskX: 110,
+  boxes: {
+    normalized: { x: 6, y: 62, width: 168 },
+    trades: { x: 6, y: 128, width: 81 },
+    block: { x: 93, y: 128, width: 81 },
+    volume: { x: 6, y: 174, width: 81 },
+    twap: { x: 93, y: 174, width: 81 },
+    candles: { x: 6, y: 206, width: 81, height: 54 },
+    app: { x: 93, y: 214, width: 81 },
+  },
+  candleChart: { x: 6, y: 215, width: 81, height: 44 },
+  wires: [
+    { target: 'trades', points: [[46, 100], [46, 128]] },
+    { target: 'block', points: [[87, 140], [93, 140]] },
+    { target: 'volume', points: [[133, 150], [133, 166], [46, 166], [46, 174]] },
+    { target: 'twap', points: [[133, 150], [133, 174]] },
+    { target: 'candles', points: [[46, 166], [3, 166], [3, 220], [6, 220]] },
+    { target: 'app', points: [[87, 236], [93, 236]] },
+  ],
+};
 
-const WIRES: { target: NodeId; points: [number, number][] }[] = [
-  { target: 'trades', points: [[132, 50], [137, 50], [137, 22], [142, 22]] },
-  { target: 'block', points: [[175, 44], [175, 60]] },
-  { target: 'volume', points: [[208, 74], [212, 74], [212, 16], [216, 16]] },
-  { target: 'twap', points: [[212, 46], [216, 46]] },
-  { target: 'candles', points: [[212, 74], [212, 80], [216, 80]] },
-  { target: 'app', points: [[280, 96], [285, 96], [285, 62], [290, 62]] },
-];
+const TALL_QUERY = '(max-width: 767px)';
 
 let setupPromise: Promise<void> | null = null;
 let clockStart = 0;
@@ -258,25 +297,34 @@ function recentMarks(flows: Flow[], id: NodeId, now: number): Record<string, Mar
   return marks;
 }
 
-function viewOf(base: Settled, flows: Flow[], now: number): View {
+function walkerOf(layout: Layout, flows: Flow[], now: number): number | null {
+  const walking = flows.find((flow) => flow.mine && now - flow.start < WALK + 1.2);
+  if (!walking) return null;
+  return Math.round(lerp(layout.stallX + 8, layout.deskX, ease(Math.min(1, (now - walking.start) / WALK))));
+}
+
+function viewOf(base: Settled, flows: Flow[], now: number, you: number | null): View {
   const nodes = {} as Record<NodeId, NodeView>;
   for (const id of NODES) {
     nodes[id] = { snapshot: shownSnapshot(base.snapshot, flows, now), marks: recentMarks(flows, id, now) };
   }
   let updated = base.updated;
   for (const flow of flows) if (now >= flow.start) updated = flow.updated;
-  const walking = flows.find((flow) => flow.mine && now - flow.start < WALK + 1.2);
-  const you = walking ? lerp(STALL_X + 8, DESK_X, ease(Math.min(1, (now - walking.start) / WALK))) : null;
-  return { slot: currentSlot(performance.now()), nodes, you: you === null ? null : Math.round(you), updated: Math.round(updated) };
+  return { slot: currentSlot(performance.now()), nodes, you, updated: Math.round(updated) };
 }
 
-function drawHall(c: Context) {
-  rect(c, 0, 0, WIDTH, HEIGHT, PAPER);
-  rect(c, 0, 0, WIDTH, FLOOR, '#f3f2fb');
-  for (let x = 0; x < WIDTH; x += 24) rect(c, x, 0, 1, FLOOR, '#ebe9f7');
-  rect(c, 0, FLOOR, WIDTH, 2, '#e0d2b3');
-  for (let x = 0; x < WIDTH; x += 4) rect(c, x, FLOOR + 2, 2, 1, '#eadfc8');
-  rect(c, 0, FLOOR + 3, WIDTH, HEIGHT - FLOOR - 3, '#f1e8d6');
+function drawHall(c: Context, { width, height, floor }: Layout) {
+  const ground = Math.min(height, floor + 14);
+  rect(c, 0, 0, width, height, PAPER);
+  rect(c, 0, 0, width, floor, '#f3f2fb');
+  for (let x = 0; x < width; x += 24) rect(c, x, 0, 1, floor, '#ebe9f7');
+  rect(c, 0, floor, width, 2, '#e0d2b3');
+  for (let x = 0; x < width; x += 4) rect(c, x, floor + 2, 2, 1, '#eadfc8');
+  rect(c, 0, floor + 3, width, ground - floor - 3, '#f1e8d6');
+  if (ground < height) {
+    rect(c, 0, ground, width, height - ground, '#f3f2fb');
+    for (let x = 0; x < width; x += 24) rect(c, x, ground, 1, height - ground, '#ebe9f7');
+  }
 }
 
 function drawWire(c: Context, points: [number, number][]) {
@@ -287,8 +335,8 @@ function drawWire(c: Context, points: [number, number][]) {
   }
 }
 
-function drawCandles(c: Context, node: NodeView) {
-  const { x, y, width, height } = CANDLE_CHART;
+function drawCandles(c: Context, chart: Required<Box>, node: NodeView) {
+  const { x, y, width, height } = chart;
   rect(c, x, y, width, height, '#ffffff');
   const candles = node.snapshot.candles;
   if (!candles.length) return;
@@ -307,34 +355,34 @@ function drawCandles(c: Context, node: NodeView) {
   });
 }
 
-function drawFloor(c: Context, flows: Flow[], now: number) {
-  stall(c, STALL_X, FLOOR, 0, false, false);
-  rect(c, DESK_X - 2, FLOOR - 9, 60, 9, '#c9a27a');
-  rect(c, DESK_X - 2, FLOOR - 9, 60, 1, '#e6caa0');
-  mascot(c, DESK_X + 28, FLOOR - 9, now, 0, false);
+function drawFloor(c: Context, { floor, stallX, deskX }: Layout, flows: Flow[], now: number) {
+  stall(c, stallX, floor, 0, false, false);
+  rect(c, deskX - 2, floor - 9, 60, 9, '#c9a27a');
+  rect(c, deskX - 2, floor - 9, 60, 1, '#e6caa0');
+  mascot(c, deskX + 28, floor - 9, now, 0, false);
   flows.forEach((flow, index) => {
     const elapsed = now - flow.start;
-    const from = STALL_X + 6;
-    if (elapsed < WALK) bot(c, lerp(from, DESK_X, ease(elapsed / WALK)), FLOOR, now, index, true);
-    else if (elapsed < WALK + 1.2) bot(c, lerp(DESK_X, from, ease((elapsed - WALK) / 1.2)), FLOOR, now, index, false);
+    const from = stallX + 6;
+    if (elapsed < WALK) bot(c, lerp(from, deskX, ease(elapsed / WALK)), floor, now, index, true);
+    else if (elapsed < WALK + 1.2) bot(c, lerp(deskX, from, ease((elapsed - WALK) / 1.2)), floor, now, index, false);
   });
 }
 
-function draw(c: Context, view: View, flows: Flow[], now: number) {
-  drawHall(c);
-  for (const wire of WIRES) drawWire(c, wire.points);
-  drawCandles(c, view.nodes.candles);
-  drawFloor(c, flows, now);
+function draw(c: Context, layout: Layout, view: View, flows: Flow[], now: number) {
+  drawHall(c, layout);
+  for (const wire of layout.wires) drawWire(c, wire.points);
+  drawCandles(c, layout.candleChart, view.nodes.candles);
+  drawFloor(c, layout, flows, now);
 }
 
-function place(box: Box): CSSProperties {
-  const style: CSSProperties = { left: `${(box.x / WIDTH) * 100}%`, top: `${(box.y / HEIGHT) * 100}%`, width: `${(box.width / WIDTH) * 100}%` };
-  if (box.height) style.height = `${(box.height / HEIGHT) * 100}%`;
+function place({ width, height }: Layout, box: Box): CSSProperties {
+  const style: CSSProperties = { left: `${(box.x / width) * 100}%`, top: `${(box.y / height) * 100}%`, width: `${(box.width / width) * 100}%` };
+  if (box.height) style.height = `${(box.height / height) * 100}%`;
   return style;
 }
 
-function at(x: number, y: number): CSSProperties {
-  return { left: `${(x / WIDTH) * 100}%`, top: `${(y / HEIGHT) * 100}%` };
+function at({ width, height }: Layout, x: number, y: number): CSSProperties {
+  return { left: `${(x / width) * 100}%`, top: `${(y / height) * 100}%` };
 }
 
 function side(row: Row): string {
@@ -362,6 +410,7 @@ function MarkView({ mark, format }: { mark?: Mark; format: (value: number) => st
 }
 
 interface BoardProps {
+  layout: Layout;
   id: NodeId;
   title: string;
   node: NodeView;
@@ -369,9 +418,9 @@ interface BoardProps {
   format: (value: number) => string;
 }
 
-function BoardView({ id, title, node, rows, format }: BoardProps) {
+function BoardView({ layout, id, title, node, rows, format }: BoardProps) {
   return (
-    <div className="market-hall__board" style={place(BOXES[id])}>
+    <div className="market-hall__board" style={place(layout, layout.boxes[id])}>
       <div className="market-hall__title">{title}</div>
       {rows.map((row) => (
         <div key={row.key} className="market-hall__row">
@@ -386,7 +435,7 @@ function BoardView({ id, title, node, rows, format }: BoardProps) {
   );
 }
 
-function Overlay({ view }: { view: View }) {
+function Overlay({ view, layout }: { view: View; layout: Layout }) {
   const { nodes } = view;
   const card = nodes.normalized.snapshot.card;
   const normalized = card.normalized;
@@ -407,10 +456,10 @@ function Overlay({ view }: { view: View }) {
   const change = last && first ? ((Number(last.close) - Number(first.open)) / Number(first.open)) * 100 : 0;
   return (
     <div className="market-hall__overlay">
-      <div className="market-hall__pair" style={at(6, 5)}>
+      <div className="market-hall__pair" style={at(layout, 6, 5)}>
         SOL/USDC · slot {view.slot.toLocaleString('en-US')}
       </div>
-      <div className="market-hall__board market-hall__card" style={place(BOXES.normalized)}>
+      <div className="market-hall__board market-hall__card" style={place(layout, layout.boxes.normalized)}>
         <div className="market-hall__title">Normalize</div>
         <div className="market-hall__source">{RAW_TABLE}</div>
         {RAW_COLUMNS.map((column) => (
@@ -429,14 +478,14 @@ function Overlay({ view }: { view: View }) {
           </span>
         </div>
       </div>
-      <BoardView id="trades" title="market::trades" node={nodes.trades} rows={trades} format={money} />
-      <BoardView id="block" title="market::block · vwap" node={nodes.block} rows={block} format={money} />
-      <BoardView id="volume" title="market::volume" node={nodes.volume} rows={volume} format={compact} />
-      <BoardView id="twap" title="market::twap" node={nodes.twap} rows={twap} format={money} />
-      <div className="market-hall__board market-hall__candles" style={place(BOXES.candles)}>
+      <BoardView layout={layout} id="trades" title="market::trades" node={nodes.trades} rows={trades} format={money} />
+      <BoardView layout={layout} id="block" title="market::block · vwap" node={nodes.block} rows={block} format={money} />
+      <BoardView layout={layout} id="volume" title="market::volume" node={nodes.volume} rows={volume} format={compact} />
+      <BoardView layout={layout} id="twap" title="market::twap" node={nodes.twap} rows={twap} format={money} />
+      <div className="market-hall__board market-hall__candles" style={place(layout, layout.boxes.candles)}>
         <div className="market-hall__title">market::candles</div>
       </div>
-      <div className="market-hall__board market-hall__app" style={place(BOXES.app)}>
+      <div className="market-hall__board market-hall__app" style={place(layout, layout.boxes.app)}>
         <div className="market-hall__title">Your app</div>
         <div className="market-hall__price">
           {last ? money(last.close) : '-'}
@@ -448,11 +497,11 @@ function Overlay({ view }: { view: View }) {
         </div>
         <div className="market-hall__source">reads market::candles</div>
       </div>
-      <div className="market-hall__stall" style={at(STALL_X + 8, FLOOR - 29)}>
+      <div className="market-hall__stall" style={at(layout, layout.stallX + 8, layout.floor - 29)}>
         raydium
       </div>
       {view.you !== null && (
-        <div className="market-hall__you" style={at(view.you, FLOOR - 34)}>
+        <div className="market-hall__you" style={at(layout, view.you, layout.floor - 34)}>
           you
         </div>
       )}
@@ -460,11 +509,23 @@ function Overlay({ view }: { view: View }) {
   );
 }
 
+function useLayout(): Layout {
+  const [tall, setTall] = useState(() => window.matchMedia(TALL_QUERY).matches);
+  useEffect(() => {
+    const query = window.matchMedia(TALL_QUERY);
+    const update = () => setTall(query.matches);
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+  return tall ? TALL : WIDE;
+}
+
 function prefersReducedMotion(): boolean {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
 export default function MarketHallLive() {
+  const layout = useLayout();
   const [view, setView] = useState<View | null>(null);
   const [failure, setFailure] = useState<Error | null>(null);
   const [driving, setDriving] = useState(visitorTookOver);
@@ -510,7 +571,7 @@ export default function MarketHallLive() {
       .then(() => settle(lastSwap!, historyStart))
       .then((settled) => {
         baseRef.current = settled;
-        setView(viewOf(settled, [], performance.now() / 1000));
+        setView(viewOf(settled, [], performance.now() / 1000, null));
       }, setFailure);
   }, []);
 
@@ -532,8 +593,8 @@ export default function MarketHallLive() {
       const now = reduceRef.current ? Infinity : ms / 1000;
       const flows = flowsRef.current;
       while (flows.length && ms / 1000 - flows[0].start > RETIRE) baseRef.current = flows.shift()!;
-      const next = viewOf(baseRef.current!, flows, now);
-      draw(context, next, flows, now);
+      const next = viewOf(baseRef.current!, flows, now, walkerOf(layout, flows, now));
+      draw(context, layout, next, flows, now);
       const key = JSON.stringify(next);
       if (key !== lastKey) {
         lastKey = key;
@@ -561,7 +622,7 @@ export default function MarketHallLive() {
       cancelAnimationFrame(frameId);
       window.clearInterval(auto);
     };
-  }, [loaded]);
+  }, [loaded, layout]);
 
   if (failure) throw failure;
   if (!view) return <MarketHallSkeleton />;
@@ -576,16 +637,17 @@ export default function MarketHallLive() {
   return (
     <>
       <div className="market-hall__scroll">
-        <div className="market-hall__stage">
+        <div className="market-hall__stage" style={{ '--hall-width': layout.width } as CSSProperties}>
           <canvas
             ref={canvasRef}
-            width={WIDTH}
-            height={HEIGHT}
+            width={layout.width}
+            height={layout.height}
+            style={{ aspectRatio: `${layout.width} / ${layout.height}` }}
             className="market-hall__frame pixel-canvas"
             role="img"
             aria-label="A pixel market hall where bots carry raydium swaps from a stall to a normalize desk"
           />
-          <Overlay view={view} />
+          <Overlay view={view} layout={layout} />
         </div>
       </div>
       <div className="market-hall__dock">
