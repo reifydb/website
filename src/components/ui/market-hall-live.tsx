@@ -28,7 +28,7 @@ interface Snapshot {
 
 interface Settled {
   snapshot: Snapshot;
-  updated: number;
+  updated: number | null;
 }
 
 interface Flow extends Settled {
@@ -49,7 +49,7 @@ interface View {
   slot: number;
   nodes: Record<NodeId, NodeView>;
   you: number | null;
-  updated: number;
+  updated: number | null;
 }
 
 interface Box {
@@ -144,7 +144,6 @@ let mid = 142.5;
 let seed = 7;
 let visitorTookOver = false;
 let lastSwap: Swap | null = null;
-let historyStart = 0;
 
 import.meta.hot?.accept(() => window.location.reload());
 
@@ -179,7 +178,6 @@ function ensureSetup(): Promise<void> {
       const count = Math.floor(random() * 3);
       for (let k = 0; k < count; k++) history.push(makeSwap(slot));
     }
-    historyStart = performance.now();
     await exec(insertSwaps(history));
     lastSwap = history[history.length - 1];
     clockStart = performance.now();
@@ -194,6 +192,17 @@ function yieldTask(): Promise<void> {
     const channel = new MessageChannel();
     channel.port1.onmessage = () => resolve();
     channel.port2.postMessage(null);
+  });
+}
+
+function whenVisible(): Promise<void> {
+  return new Promise((resolve) => {
+    const update = () => {
+      if (document.hidden) return;
+      document.removeEventListener('visibilitychange', update);
+      resolve();
+    };
+    document.addEventListener('visibilitychange', update);
   });
 }
 
@@ -225,16 +234,22 @@ function reflects(snapshot: Snapshot, swap: Swap): boolean {
 }
 
 async function settle(swap: Swap, written: number): Promise<Settled> {
-  const deadline = performance.now() + SETTLE_TIMEOUT_MS;
+  let deadline = performance.now() + SETTLE_TIMEOUT_MS;
   let previous = '';
   let seen = 0;
+  let paused = false;
   for (;;) {
     const snapshot = await readSnapshot(swap);
     if (snapshot && reflects(snapshot, swap)) {
       seen ||= performance.now();
       const key = JSON.stringify(snapshot);
-      if (key === previous) return { snapshot, updated: seen - written };
+      if (key === previous) return { snapshot, updated: paused ? null : seen - written };
       previous = key;
+    }
+    if (document.hidden) {
+      paused ||= !seen;
+      await whenVisible();
+      deadline = performance.now() + SETTLE_TIMEOUT_MS;
     }
     if (performance.now() > deadline) throw new Error(`market hall views did not catch up with swap ${swap.id} within ${SETTLE_TIMEOUT_MS}ms`);
     await yieldTask();
@@ -309,8 +324,8 @@ function viewOf(base: Settled, flows: Flow[], now: number, you: number | null): 
     nodes[id] = { snapshot: shownSnapshot(base.snapshot, flows, now), marks: recentMarks(flows, id, now) };
   }
   let updated = base.updated;
-  for (const flow of flows) if (now >= flow.start) updated = flow.updated;
-  return { slot: currentSlot(performance.now()), nodes, you, updated: Math.round(updated) };
+  for (const flow of flows) if (now >= flow.start && flow.updated !== null) updated = flow.updated;
+  return { slot: currentSlot(performance.now()), nodes, you, updated: updated === null ? null : Math.round(updated) };
 }
 
 function drawHall(c: Context, { width, height, floor }: Layout) {
@@ -577,10 +592,10 @@ export default function MarketHallLive() {
 
   useEffect(() => {
     ensureSetup()
-      .then(() => settle(lastSwap!, historyStart))
-      .then((settled) => {
-        baseRef.current = settled;
-        setView(viewOf(settled, [], performance.now() / 1000, null));
+      .then(() => settle(lastSwap!, performance.now()))
+      .then(({ snapshot }) => {
+        baseRef.current = { snapshot, updated: null };
+        setView(viewOf(baseRef.current, [], performance.now() / 1000, null));
       }, setFailure);
   }, []);
 
@@ -601,7 +616,10 @@ export default function MarketHallLive() {
     const paint = (ms: number) => {
       const now = reduceRef.current ? Infinity : ms / 1000;
       const flows = flowsRef.current;
-      while (flows.length && ms / 1000 - flows[0].start > RETIRE) baseRef.current = flows.shift()!;
+      while (flows.length && ms / 1000 - flows[0].start > RETIRE) {
+        const retired = flows.shift()!;
+        baseRef.current = { snapshot: retired.snapshot, updated: retired.updated ?? baseRef.current!.updated };
+      }
       const next = viewOf(baseRef.current!, flows, now, walkerOf(layout, flows, now));
       draw(context, layout, next, flows, now);
       const key = JSON.stringify(next);
@@ -623,7 +641,7 @@ export default function MarketHallLive() {
     const auto = reduceRef.current
       ? 0
       : window.setInterval(() => {
-          if (visitorTookOver || !visibleRef.current || queueRef.current.length > 1) return;
+          if (visitorTookOver || document.hidden || !visibleRef.current || queueRef.current.length > 1) return;
           enqueue(makeSwap(currentSlot(performance.now())), false);
         }, AUTO_MS);
     return () => {
@@ -679,7 +697,7 @@ export default function MarketHallLive() {
           <i className={driving ? 'market-hall__dot market-hall__dot--off' : 'market-hall__dot'} aria-hidden="true" />
           {driving ? "you're driving · auto-play off" : 'auto-playing until you click'}
         </span>
-        <span className="market-hall__updated">views updated in {view.updated} ms</span>
+        <span className="market-hall__updated">views updated in {view.updated ?? '-'} ms</span>
       </div>
     </>
   );
