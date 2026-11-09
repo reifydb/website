@@ -26,11 +26,15 @@ interface Snapshot {
   candles: Row[];
 }
 
-interface Flow {
+interface Settled {
+  snapshot: Snapshot;
+  updated: number;
+}
+
+interface Flow extends Settled {
   start: number;
   swap: Swap;
   mine: boolean;
-  snapshot: Snapshot;
   previous: Snapshot;
 }
 
@@ -45,6 +49,7 @@ interface View {
   slot: number;
   nodes: Record<NodeId, NodeView>;
   you: number | null;
+  updated: number;
 }
 
 interface Box {
@@ -66,8 +71,7 @@ const VISITOR_SIZES = [5, 25, 100];
 const MARK_SECONDS = 2;
 const RETIRE = 3;
 const NODES: NodeId[] = ['normalized', 'trades', 'block', 'volume', 'twap', 'candles', 'app'];
-const DEPTH: Record<NodeId, number> = { normalized: 0, trades: 1, block: 2, volume: 3, twap: 3, candles: 3, app: 4 };
-const ARRIVE = [0.7, 1.0, 1.3, 1.6, 1.9];
+const WALK = 0.7;
 const STALL_X = 30;
 const DESK_X = 72;
 const RISE = '#2f9e6b';
@@ -101,6 +105,7 @@ let mid = 142.5;
 let seed = 7;
 let visitorTookOver = false;
 let lastSwap: Swap | null = null;
+let historyStart = 0;
 
 import.meta.hot?.accept(() => window.location.reload());
 
@@ -135,6 +140,7 @@ function ensureSetup(): Promise<void> {
       const count = Math.floor(random() * 3);
       for (let k = 0; k < count; k++) history.push(makeSwap(slot));
     }
+    historyStart = performance.now();
     await exec(insertSwaps(history));
     lastSwap = history[history.length - 1];
     clockStart = performance.now();
@@ -143,7 +149,14 @@ function ensureSetup(): Promise<void> {
 }
 
 const SETTLE_TIMEOUT_MS = 2000;
-const SETTLE_POLL_MS = 15;
+
+function yieldTask(): Promise<void> {
+  return new Promise((resolve) => {
+    const channel = new MessageChannel();
+    channel.port1.onmessage = () => resolve();
+    channel.port2.postMessage(null);
+  });
+}
 
 function bucketOf(slot: number): string {
   return String(Math.floor(slot / SLOTS_PER_BUCKET));
@@ -172,18 +185,20 @@ function reflects(snapshot: Snapshot, swap: Swap): boolean {
   );
 }
 
-async function settle(swap: Swap): Promise<Snapshot> {
+async function settle(swap: Swap, written: number): Promise<Settled> {
   const deadline = performance.now() + SETTLE_TIMEOUT_MS;
   let previous = '';
+  let seen = 0;
   for (;;) {
     const snapshot = await readSnapshot(swap);
     if (snapshot && reflects(snapshot, swap)) {
+      seen ||= performance.now();
       const key = JSON.stringify(snapshot);
-      if (key === previous) return snapshot;
+      if (key === previous) return { snapshot, updated: seen - written };
       previous = key;
     }
     if (performance.now() > deadline) throw new Error(`market hall views did not catch up with swap ${swap.id} within ${SETTLE_TIMEOUT_MS}ms`);
-    await new Promise((resolve) => setTimeout(resolve, SETTLE_POLL_MS));
+    await yieldTask();
   }
 }
 
@@ -228,33 +243,31 @@ function compact(value: unknown): string {
   return n >= 1000 ? `${(n / 1000).toFixed(1)}k` : n.toFixed(0);
 }
 
-function arrival(flow: Flow, id: NodeId): number {
-  return flow.start + ARRIVE[DEPTH[id]];
-}
-
-function shownSnapshot(base: Snapshot, flows: Flow[], id: NodeId, now: number): Snapshot {
+function shownSnapshot(base: Snapshot, flows: Flow[], now: number): Snapshot {
   let shown = base;
-  for (const flow of flows) if (now >= arrival(flow, id)) shown = flow.snapshot;
+  for (const flow of flows) if (now >= flow.start) shown = flow.snapshot;
   return shown;
 }
 
 function recentMarks(flows: Flow[], id: NodeId, now: number): Record<string, Mark> {
   let marks: Record<string, Mark> = {};
   for (const flow of flows) {
-    if (now < arrival(flow, id) || now >= arrival(flow, id) + MARK_SECONDS) continue;
+    if (now < flow.start || now >= flow.start + MARK_SECONDS) continue;
     marks = { ...marks, ...marksOf(id, flow) };
   }
   return marks;
 }
 
-function viewOf(base: Snapshot, flows: Flow[], now: number): View {
+function viewOf(base: Settled, flows: Flow[], now: number): View {
   const nodes = {} as Record<NodeId, NodeView>;
   for (const id of NODES) {
-    nodes[id] = { snapshot: shownSnapshot(base, flows, id, now), marks: recentMarks(flows, id, now) };
+    nodes[id] = { snapshot: shownSnapshot(base.snapshot, flows, now), marks: recentMarks(flows, id, now) };
   }
-  const walking = flows.find((flow) => flow.mine && now - flow.start < ARRIVE[0] + 1.2);
-  const you = walking ? lerp(STALL_X + 8, DESK_X, ease(Math.min(1, (now - walking.start) / ARRIVE[0]))) : null;
-  return { slot: currentSlot(performance.now()), nodes, you: you === null ? null : Math.round(you) };
+  let updated = base.updated;
+  for (const flow of flows) if (now >= flow.start) updated = flow.updated;
+  const walking = flows.find((flow) => flow.mine && now - flow.start < WALK + 1.2);
+  const you = walking ? lerp(STALL_X + 8, DESK_X, ease(Math.min(1, (now - walking.start) / WALK))) : null;
+  return { slot: currentSlot(performance.now()), nodes, you: you === null ? null : Math.round(you), updated: Math.round(updated) };
 }
 
 function drawHall(c: Context) {
@@ -302,8 +315,8 @@ function drawFloor(c: Context, flows: Flow[], now: number) {
   flows.forEach((flow, index) => {
     const elapsed = now - flow.start;
     const from = STALL_X + 6;
-    if (elapsed < ARRIVE[0]) bot(c, lerp(from, DESK_X, ease(elapsed / ARRIVE[0])), FLOOR, now, index, true);
-    else if (elapsed < ARRIVE[0] + 1.2) bot(c, lerp(DESK_X, from, ease((elapsed - ARRIVE[0]) / 1.2)), FLOOR, now, index, false);
+    if (elapsed < WALK) bot(c, lerp(from, DESK_X, ease(elapsed / WALK)), FLOOR, now, index, true);
+    else if (elapsed < WALK + 1.2) bot(c, lerp(DESK_X, from, ease((elapsed - WALK) / 1.2)), FLOOR, now, index, false);
   });
 }
 
@@ -456,7 +469,7 @@ export default function MarketHallLive() {
   const [failure, setFailure] = useState<Error | null>(null);
   const [driving, setDriving] = useState(visitorTookOver);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const baseRef = useRef<Snapshot | null>(null);
+  const baseRef = useRef<Settled | null>(null);
   const flowsRef = useRef<Flow[]>([]);
   const queueRef = useRef<{ swap: Swap; mine: boolean }[]>([]);
   const busyRef = useRef(false);
@@ -471,12 +484,13 @@ export default function MarketHallLive() {
       while (queueRef.current.length) {
         const { swap, mine } = queueRef.current.shift()!;
         const flows = flowsRef.current;
-        const previous = flows.length ? flows[flows.length - 1].snapshot : baseRef.current!;
+        const previous = flows.length ? flows[flows.length - 1].snapshot : baseRef.current!.snapshot;
+        const written = performance.now();
         await exec(insertSwaps([swap]));
         lastSwap = swap;
-        const snapshot = await settle(swap);
+        const { snapshot, updated } = await settle(swap, written);
         const start = reduceRef.current ? -Infinity : performance.now() / 1000;
-        flows.push({ start, swap, mine, snapshot, previous });
+        flows.push({ start, swap, mine, snapshot, previous, updated });
         if (reduceRef.current) repaintRef.current();
       }
     } catch (error) {
@@ -493,10 +507,10 @@ export default function MarketHallLive() {
 
   useEffect(() => {
     ensureSetup()
-      .then(() => settle(lastSwap!))
-      .then((snapshot) => {
-        baseRef.current = snapshot;
-        setView(viewOf(snapshot, [], performance.now() / 1000));
+      .then(() => settle(lastSwap!, historyStart))
+      .then((settled) => {
+        baseRef.current = settled;
+        setView(viewOf(settled, [], performance.now() / 1000));
       }, setFailure);
   }, []);
 
@@ -517,7 +531,7 @@ export default function MarketHallLive() {
     const paint = (ms: number) => {
       const now = reduceRef.current ? Infinity : ms / 1000;
       const flows = flowsRef.current;
-      while (flows.length && ms / 1000 - flows[0].start > RETIRE) baseRef.current = flows.shift()!.snapshot;
+      while (flows.length && ms / 1000 - flows[0].start > RETIRE) baseRef.current = flows.shift()!;
       const next = viewOf(baseRef.current!, flows, now);
       draw(context, next, flows, now);
       const key = JSON.stringify(next);
@@ -594,6 +608,7 @@ export default function MarketHallLive() {
           <i className={driving ? 'market-hall__dot market-hall__dot--off' : 'market-hall__dot'} aria-hidden="true" />
           {driving ? "you're driving · auto-play off" : 'auto-playing until you click'}
         </span>
+        <span className="market-hall__updated">views updated in {view.updated} ms</span>
       </div>
     </>
   );
