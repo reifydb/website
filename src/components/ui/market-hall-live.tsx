@@ -409,6 +409,15 @@ function MarkView({ mark, format }: { mark?: Mark; format: (value: number) => st
   );
 }
 
+function pulseOf(node: NodeView): number | null {
+  const flows = Object.values(node.marks).map((mark) => mark.flow);
+  return flows.length ? Math.max(...flows) : null;
+}
+
+function boardClass(node: NodeView, ...names: string[]): string {
+  return cn('market-hall__board', ...names, pulseOf(node) !== null && 'market-hall__board--pulse');
+}
+
 interface BoardProps {
   layout: Layout;
   id: NodeId;
@@ -420,7 +429,7 @@ interface BoardProps {
 
 function BoardView({ layout, id, title, node, rows, format }: BoardProps) {
   return (
-    <div className="market-hall__board" style={place(layout, layout.boxes[id])}>
+    <div className={boardClass(node)} style={place(layout, layout.boxes[id])}>
       <div className="market-hall__title">{title}</div>
       {rows.map((row) => (
         <div key={row.key} className="market-hall__row">
@@ -459,7 +468,7 @@ function Overlay({ view, layout }: { view: View; layout: Layout }) {
       <div className="market-hall__pair" style={at(layout, 6, 5)}>
         SOL/USDC · slot {view.slot.toLocaleString('en-US')}
       </div>
-      <div className="market-hall__board market-hall__card" style={place(layout, layout.boxes.normalized)}>
+      <div key={`normalized-${pulseOf(nodes.normalized) ?? 'none'}`} className={boardClass(nodes.normalized, 'market-hall__card')} style={place(layout, layout.boxes.normalized)}>
         <div className="market-hall__title">Normalize</div>
         <div className="market-hall__source">{RAW_TABLE}</div>
         {RAW_COLUMNS.map((column) => (
@@ -478,14 +487,14 @@ function Overlay({ view, layout }: { view: View; layout: Layout }) {
           </span>
         </div>
       </div>
-      <BoardView layout={layout} id="trades" title="market::trades" node={nodes.trades} rows={trades} format={money} />
-      <BoardView layout={layout} id="block" title="market::block · vwap" node={nodes.block} rows={block} format={money} />
-      <BoardView layout={layout} id="volume" title="market::volume" node={nodes.volume} rows={volume} format={compact} />
-      <BoardView layout={layout} id="twap" title="market::twap" node={nodes.twap} rows={twap} format={money} />
-      <div className="market-hall__board market-hall__candles" style={place(layout, layout.boxes.candles)}>
+      <BoardView key={`trades-${pulseOf(nodes.trades) ?? 'none'}`} layout={layout} id="trades" title="market::trades" node={nodes.trades} rows={trades} format={money} />
+      <BoardView key={`block-${pulseOf(nodes.block) ?? 'none'}`} layout={layout} id="block" title="market::block · vwap" node={nodes.block} rows={block} format={money} />
+      <BoardView key={`volume-${pulseOf(nodes.volume) ?? 'none'}`} layout={layout} id="volume" title="market::volume" node={nodes.volume} rows={volume} format={compact} />
+      <BoardView key={`twap-${pulseOf(nodes.twap) ?? 'none'}`} layout={layout} id="twap" title="market::twap" node={nodes.twap} rows={twap} format={money} />
+      <div key={`candles-${pulseOf(nodes.candles) ?? 'none'}`} className={boardClass(nodes.candles, 'market-hall__candles')} style={place(layout, layout.boxes.candles)}>
         <div className="market-hall__title">market::candles</div>
       </div>
-      <div className="market-hall__board market-hall__app" style={place(layout, layout.boxes.app)}>
+      <div key={`app-${pulseOf(nodes.app) ?? 'none'}`} className={boardClass(nodes.app, 'market-hall__app')} style={place(layout, layout.boxes.app)}>
         <div className="market-hall__title">Your app</div>
         <div className="market-hall__price">
           {last ? money(last.close) : '-'}
