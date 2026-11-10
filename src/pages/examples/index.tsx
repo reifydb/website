@@ -68,7 +68,7 @@ export function ExamplesPage() {
             </section>
 
             <section className="mt-10">
-              <h2 className="label uppercase text-text-muted mb-3">Subscribe to the candles</h2>
+              <h2 className="label uppercase text-text-muted mb-3">{active.subscription.heading}</h2>
               <LivePanel example={active} />
             </section>
 

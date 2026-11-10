@@ -37,7 +37,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    exclude: ['@/lib/wasm'],
+    exclude: ['@reifydb/wasm'],
   },
   server: useLocalSdk ? { fs: { allow: [SDK_ROOT, __dirname] } } : undefined,
 })

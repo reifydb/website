@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import type { ComponentType, LazyExoticComponent } from 'react';
 import { RAW_TABLE, READS } from './swap-candle/swap-candle';
+import { READS as RATE_READS } from './rate-limiter/rate-limiter';
 
 export interface SceneProps {
   howTo: string;
@@ -14,6 +15,7 @@ export interface Example {
   howTo: string;
   howItWorks: string[];
   subscription: {
+    heading: string;
     query: string;
     key: string;
     columns: string[];
@@ -37,6 +39,7 @@ export const EXAMPLES: Example[] = [
       'Nothing refreshes them. Each view catches up from the change alone, and your app just reads market::candles.',
     ],
     subscription: {
+      heading: 'Subscribe to the candles',
       query: READS.live,
       key: 'bucket',
       columns: ['bucket', 'open', 'high', 'low', 'close'],
@@ -84,6 +87,52 @@ export const EXAMPLES: Example[] = [
       },
     ],
     load: () => import('./swap-candle/scene'),
+  },
+  {
+    id: 'rate-limiter',
+    title: 'Rate limiter',
+    headline: 'Five requests, then the door shuts.',
+    subline: 'One ring buffer per user keeps their last five requests. No cleanup job, no counters to reset.',
+    howTo: 'Click Send as alice, or spam her, and watch her ring fill and turn.',
+    howItWorks: [
+      'Every request lands in limits::requests, a ring buffer with capacity 5, partitioned by user. Each user gets their own five slots.',
+      'When a ring is full, the next request overwrites the oldest slot. Nothing deletes old rows; the ring never grows.',
+      'Before storing, one read counts the rows from the last 10 seconds. If all five are that recent, the request is blocked and not stored.',
+    ],
+    subscription: {
+      heading: 'Subscribe to the requests',
+      query: RATE_READS.live,
+      key: 'id',
+      columns: ['id', 'user', 'at'],
+      ready: () => import('./rate-limiter/setup').then((setup) => setup.ensureSetup()),
+      actions: [
+        { label: 'Send as alice', action: 'send', primary: true },
+        { label: 'Spam 5 as alice', action: 'spam', primary: false },
+      ],
+    },
+    reads: [
+      {
+        title: 'The whole ring',
+        description: 'Every request still held. However long it runs, this never passes 15 rows.',
+        rql: 'from limits::requests sort { id }',
+      },
+      {
+        title: "One user's ring",
+        description: 'The partition for alice. Spam her and run it again: still five rows or fewer.',
+        rql: 'from limits::requests filter { user == "alice" } sort { id }',
+      },
+      {
+        title: 'Rows per user',
+        description: 'Each user is capped at the capacity on their own.',
+        rql: 'from limits::requests aggregate { kept: math::count(id) } by { user }',
+      },
+      {
+        title: 'Newest request',
+        description: 'The last request that got through.',
+        rql: 'from limits::requests sort { id } take 1',
+      },
+    ],
+    load: () => import('./rate-limiter/scene'),
   },
 ];
 
