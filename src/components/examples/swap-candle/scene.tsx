@@ -414,7 +414,7 @@ function Boards({ view, layout }: { view: View; layout: Layout }) {
     };
   });
   const block = nodes.block.snapshot.block.map((row) => ({ key: String(row.slot), left: `…${String(row.slot).slice(-3)}`, right: money(row.vwap) }));
-  const volume = nodes.volume.snapshot.volume.map((row, i) => ({ key: String(row.bucket), left: i === 0 ? 'now' : 'prev', right: `${compact(row.volume)} USDC` }));
+  const volume = nodes.volume.snapshot.volume.map((row, i) => ({ key: String(row.bucket), left: i === 0 ? 'now' : 'prev', right: `${compact(row.volume)} USD` }));
   const twap = nodes.twap.snapshot.twap.map((row, i) => ({ key: String(row.bucket), left: i === 0 ? 'now' : 'prev', right: money(row.twap) }));
   const candles = nodes.app.snapshot.candles;
   const last = candles[candles.length - 1];
@@ -423,7 +423,7 @@ function Boards({ view, layout }: { view: View; layout: Layout }) {
   return (
     <div className="swap-candle__boards">
       <div className="swap-candle__pair" style={at(layout, layout.pair)}>
-        SOL/USDC · slot {view.slot.toLocaleString('en-US')}
+        RDB/USD · slot {view.slot.toLocaleString('en-US')}
       </div>
       <div className="swap-candle__board swap-candle__card" style={place(layout, layout.boxes.normalized)}>
         <div className="swap-candle__title">Normalize</div>
@@ -437,7 +437,7 @@ function Boards({ view, layout }: { view: View; layout: Layout }) {
         <div className="swap-candle__source">→ {NORMALIZED_VIEW}</div>
         <div className="swap-candle__row swap-candle__result">
           <span>
-            {Number(normalized.base_volume).toFixed(2)} SOL · {money(normalized.quote_volume)} USDC
+            {Number(normalized.base_volume).toFixed(2)} RDB · {money(normalized.quote_volume)} USD
           </span>
           <span>
             @{money(normalized.price)} {side(normalized)}
@@ -613,7 +613,7 @@ export default function SwapCandleScene({ howTo }: SceneProps) {
             ref={stageRef}
             className="swap-candle__stage"
             role="img"
-            aria-label="A pipeline of views carrying raydium swaps from a raw row to candles"
+            aria-label="A pipeline of views carrying swaps from a raw row to candles"
             style={{ '--hall-width': layout.width, aspectRatio: `${layout.width} / ${layout.height}` } as CSSProperties}
           >
             <Wiring view={view} layout={layout} />
@@ -627,14 +627,14 @@ export default function SwapCandleScene({ howTo }: SceneProps) {
           <div className="swap-candle__side" role="group" aria-label="Buy">
             {VISITOR_SIZES.map((size) => (
               <Button key={size} type="button" size="lg" onClick={() => trade(true, size)}>
-                Buy {size} SOL
+                Buy {size} RDB
               </Button>
             ))}
           </div>
           <div className="swap-candle__side" role="group" aria-label="Sell">
             {VISITOR_SIZES.map((size) => (
               <Button key={size} type="button" size="lg" variant="secondary" onClick={() => trade(false, size)}>
-                Sell {size} SOL
+                Sell {size} RDB
               </Button>
             ))}
           </div>

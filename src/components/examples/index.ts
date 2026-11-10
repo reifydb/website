@@ -32,7 +32,7 @@ export const EXAMPLES: Example[] = [
     subline: 'One venue, one pipeline, every step a view running in this tab. Place a swap and follow it.',
     howTo: 'Click Buy or Sell, then follow your swap through each view.',
     howItWorks: [
-      'Your swap lands as a raw Raydium row: integer amounts and a direction flag.',
+      'Your swap lands as a raw venue row: integer amounts and a direction flag.',
       "A deferred view joins the pool's decimals and turns it into a trade with a price. Each later view builds on the one before: per slot VWAP, then volume, TWAP and candles per 10 slots.",
       'Nothing refreshes them. Each view catches up from the change alone, and your app just reads market::candles.',
     ],
@@ -42,13 +42,13 @@ export const EXAMPLES: Example[] = [
       columns: ['bucket', 'open', 'high', 'low', 'close'],
       ready: () => import('./swap-candle/setup').then((setup) => setup.ensureSetup()),
       actions: [
-        { label: 'Buy 25 SOL', action: 'buy:25', primary: true },
-        { label: 'Sell 25 SOL', action: 'sell:25', primary: false },
+        { label: 'Buy 25 RDB', action: 'buy:25', primary: true },
+        { label: 'Sell 25 RDB', action: 'sell:25', primary: false },
       ],
     },
     reads: [
       {
-        title: 'Raw, as Raydium sends it',
+        title: 'Raw, as the venue sends it',
         description: 'Integer amounts and a direction flag, before any view touches them.',
         rql: `from ${RAW_TABLE} sort { id } take 4`,
       },
@@ -59,7 +59,7 @@ export const EXAMPLES: Example[] = [
       },
       {
         title: 'Big trades',
-        description: '25 SOL or more. Buy 25 or 100 to see your own swap here.',
+        description: '25 RDB or more. Buy 25 or 100 to see your own swap here.',
         rql: 'from market::trades filter { base_volume >= 25.0 } sort { id } take 5',
       },
       {

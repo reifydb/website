@@ -49,7 +49,7 @@ describe('market hall pipeline', () => {
     run(db, SETUP);
   });
 
-  it('raydium raw amounts normalize to sol and usdc through the pool decimals', async () => {
+  it('raw venue amounts normalize to rdb and usd through the pool decimals', async () => {
     // Normalization is the first board the visitor sees; if the decimals join or the lamport math drifts, every view after it is wrong.
     await swap(db, [1, 2, 3].map((id) => ({ id, slot: 1000, isBuy: true, size: 2, price: 140 })));
     for (const id of [1, 2, 3]) {
@@ -62,7 +62,7 @@ describe('market hall pipeline', () => {
   });
 
   it('zero_for_one true normalizes to a sell', async () => {
-    // Raydium encodes direction as zero_for_one; a flipped flag silently inverts buy volume and every candle color.
+    // The venue encodes direction as zero_for_one; a flipped flag silently inverts buy volume and every candle color.
     await swap(db, [10, 11, 12].map((id) => ({ id, slot: 1001, isBuy: false, size: 1, price: 150 })));
     for (const id of [10, 11, 12]) {
       const [row] = run(db, READS.normalized(id));
@@ -85,7 +85,7 @@ describe('market hall pipeline', () => {
   });
 
   it('block vwap weights by size', async () => {
-    // Slot 1000 holds three 2 SOL buys at 140; slot 1001 three 1 SOL sells at 150; an unweighted mean would also pass slot 1000, so slot 1002 mixes sizes.
+    // Slot 1000 holds three 2 RDB buys at 140; slot 1001 three 1 RDB sells at 150; an unweighted mean would also pass slot 1000, so slot 1002 mixes sizes.
     await swap(db, [
       { id: 20, slot: 1002, isBuy: true, size: 3, price: 100 },
       { id: 21, slot: 1002, isBuy: false, size: 1, price: 200 },
@@ -161,7 +161,7 @@ describe('market hall pipeline', () => {
     expect(run(db, rql).length).toBeGreaterThan(0);
   });
 
-  it('big trades is empty until a visitor buys 25 SOL, then shows exactly that swap', async () => {
+  it('big trades is empty until a visitor buys 25 RDB, then shows exactly that swap', async () => {
     // The box tells visitors to buy 25 to see their swap; otherwise the description is a lie.
     const { rql } = READ_BOXES.find((read) => read.title === 'Big trades')!;
     expect(run(db, rql)).toHaveLength(0);

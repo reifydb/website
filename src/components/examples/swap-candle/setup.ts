@@ -5,7 +5,7 @@ import type { Swap } from './swap-candle';
 type Row = Record<string, unknown>;
 
 const SLOT_MS = 400;
-const START_SLOT = 333_000_000;
+const START_SLOT = 1_000;
 const HISTORY_SLOTS = 80;
 
 let setupPromise: Promise<void> | null = null;
