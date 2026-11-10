@@ -44,10 +44,10 @@ describe('rate limiter', () => {
     const fresh = await createTestDB();
     run(fresh, SETUP);
     let id = 0;
-    const exec = async (rql: string) => run(fresh, rql);
+    const call = async (rql: string) => executeExample(fresh, rql);
     return {
       db: fresh,
-      send: (user: 'alice' | 'bob' | 'carol', at: number) => sendRequest(exec, ++id, user, at),
+      send: (user: 'alice' | 'bob' | 'carol', at: number) => sendRequest(call, ++id, user, at),
     };
   }
 

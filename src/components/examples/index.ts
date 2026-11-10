@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import type { ComponentType, LazyExoticComponent } from 'react';
-import { RAW_TABLE, READS } from './swap-candle/swap-candle';
-import { READS as RATE_READS } from './rate-limiter/rate-limiter';
+import { CANDLES_DDL, NORMALIZED_DDL, RAW_DDL, RAW_TABLE, READS } from './swap-candle/swap-candle';
+import { PROCEDURE_DDL, READS as RATE_READS, RING_DDL, requestCall } from './rate-limiter/rate-limiter';
 
 export interface SceneProps {
   howTo: string;
@@ -13,7 +13,7 @@ export interface Example {
   headline: string;
   subline: string;
   howTo: string;
-  howItWorks: string[];
+  howItWorks: { why: string; steps: { text: string; rql?: string }[] };
   subscription: {
     heading: string;
     query: string;
@@ -33,11 +33,15 @@ export const EXAMPLES: Example[] = [
     headline: 'Watch a swap become a candle.',
     subline: 'One venue, one pipeline, every step a view running in this tab. Place a swap and follow it.',
     howTo: 'Click Buy or Sell, then follow your swap through each view.',
-    howItWorks: [
-      'Your swap lands as a raw venue row: integer amounts and a direction flag.',
-      "A deferred view joins the pool's decimals and turns it into a trade with a price. Each later view builds on the one before: per slot VWAP, then volume, TWAP and candles per 10 slots.",
-      'Nothing refreshes them. Each view catches up from the change alone, and your app just reads market::candles.',
-    ],
+    howItWorks: {
+      why: 'Trades arrive as raw integers and flags, and your app wants candles. Usually that means a batch job. Here every step is a view that keeps itself up to date.',
+      steps: [
+        { text: 'Your swap lands as a raw venue row: integer amounts and a direction flag.', rql: RAW_DDL },
+        { text: "A deferred view joins the pool's decimals and turns it into a trade with a price.", rql: NORMALIZED_DDL },
+        { text: 'Each later view builds on the one before: per-slot VWAP, then volume, TWAP and candles per 10 slots.', rql: CANDLES_DDL },
+        { text: 'Nothing refreshes them. Your app just reads market::candles.', rql: READS.candles },
+      ],
+    },
     subscription: {
       heading: 'Subscribe to the candles',
       query: READS.live,
@@ -94,11 +98,23 @@ export const EXAMPLES: Example[] = [
     headline: 'Five requests, then the door shuts.',
     subline: 'One ring buffer per user keeps their last five requests. No cleanup job, no counters to reset.',
     howTo: 'Click Send as alice, or spam her, and watch her ring fill and turn.',
-    howItWorks: [
-      'Every request lands in limits::requests, a ring buffer with capacity 5, partitioned by user. Each user gets their own five slots.',
-      'When a ring is full, the next request overwrites the oldest slot. Nothing deletes old rows; the ring never grows.',
-      'Before storing, one read counts the rows from the last 10 seconds. If all five are that recent, the request is blocked and not stored.',
-    ],
+    howItWorks: {
+      why: 'A rate limiter has to decide and record in one step. If the check and the write are separate calls, two requests can both see 4 and both get through.',
+      steps: [
+        {
+          text: 'Requests land in a ring buffer with capacity 5 and one ring per user. A full ring overwrites its oldest row, so nothing ever cleans up.',
+          rql: RING_DDL,
+        },
+        {
+          text: "The rule is a procedure. It counts this user's rows from the last 10 seconds, asserts fewer than five, then inserts, all inside one transaction.",
+          rql: PROCEDURE_DDL,
+        },
+        {
+          text: 'The app makes one call per request. A failed assert means blocked, and nothing is stored.',
+          rql: requestCall(1, 'alice', 1794317010477),
+        },
+      ],
+    },
     subscription: {
       heading: 'Subscribe to the requests',
       query: RATE_READS.live,

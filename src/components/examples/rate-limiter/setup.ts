@@ -16,6 +16,10 @@ export async function exec(rql: string): Promise<Row[]> {
   return result.data ?? [];
 }
 
+export function call(rql: string) {
+  return wasmExecutor.execute(rql);
+}
+
 export function ensureSetup(): Promise<void> {
   setupPromise ??= exec(SETUP).then(() => undefined);
   return setupPromise;

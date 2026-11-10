@@ -6,7 +6,7 @@ import type { SceneProps } from '../index';
 import { handleLiveActions, isWatched } from '../live';
 import { LIMIT, READS, USERS, WINDOW_MS, sendRequest, windowQuery } from './rate-limiter';
 import type { User } from './rate-limiter';
-import { ensureSetup, exec, takeId } from './setup';
+import { call, ensureSetup, exec, takeId } from './setup';
 
 const TICK_MS = 400;
 const BOB_EVERY = 8;
@@ -88,7 +88,7 @@ export default function RateLimiterScene({ howTo }: SceneProps) {
       .then(async () => {
         const id = takeId();
         const slot = seqRef.current[user] % LIMIT;
-        const outcome = await sendRequest(exec, id, user, Date.now());
+        const outcome = await sendRequest(call, id, user, Date.now());
         setRan(outcome.rql);
         markRef.current += 1;
         if (outcome.blocked) {

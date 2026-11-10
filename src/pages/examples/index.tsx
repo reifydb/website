@@ -5,6 +5,7 @@ import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { PageMeta } from '@/components/page-meta';
 import { ExecutableSnippet } from '@/components/ui';
+import { RqlHighlight } from '@/components/ui/rql-highlight';
 import { EXAMPLES, ExampleHost, LivePanel, exampleById, useWatchWhileVisible } from '@/components/examples';
 import { ExamplesSidebar, ExamplesSidebarMobile } from './examples-sidebar';
 import { SectionHeader } from './section-header';
@@ -60,11 +61,23 @@ export function ExamplesPage() {
 
             <section className="mt-10">
               <h2 className="label uppercase text-text-muted mb-3">How it works</h2>
-              <ul className="list-disc pl-5 space-y-2 text-text-secondary leading-relaxed">
-                {active.howItWorks.map((line) => (
-                  <li key={line}>{line}</li>
+              <p className="text-text-secondary leading-relaxed mb-6">{active.howItWorks.why}</p>
+              <ol className="space-y-6">
+                {active.howItWorks.steps.map((step, index) => (
+                  <li key={step.text}>
+                    <p className="text-text-secondary leading-relaxed mb-2">
+                      <span className="font-mono text-text-muted mr-2">{index + 1}</span>
+                      {step.text}
+                    </p>
+                    {step.rql && (
+                      <RqlHighlight
+                        code={step.rql}
+                        className="px-4 py-3 border border-border-default bg-white font-mono text-[13px] leading-5 overflow-x-auto"
+                      />
+                    )}
+                  </li>
                 ))}
-              </ul>
+              </ol>
             </section>
 
             <section className="mt-10">
