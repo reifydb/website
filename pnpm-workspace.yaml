@@ -4,9 +4,9 @@ allowBuilds:
   esbuild: true
   workerd: true
 minimumReleaseAgeExclude:
-  - '@reifydb/client@0.10.1'
-  - '@reifydb/core@0.10.1'
-  - '@reifydb/editor@0.10.1'
-  - '@reifydb/shell@0.10.1'
-  - '@reifydb/ui@0.10.1'
-  - '@reifydb/wasm@0.10.1'
+  - '@reifydb/client@0.10.1 || 0.10.2'
+  - '@reifydb/core@0.10.1 || 0.10.2'
+  - '@reifydb/editor@0.10.1 || 0.10.2'
+  - '@reifydb/shell@0.10.1 || 0.10.2'
+  - '@reifydb/ui@0.10.1 || 0.10.2'
+  - '@reifydb/wasm@0.10.1 || 0.10.2'
