@@ -559,7 +559,7 @@ div::backdrop {
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 360 / 126;
+  aspect-ratio: 384 / 126;
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--color-text-muted);
@@ -568,7 +568,7 @@ div::backdrop {
 
 @media (max-width: 767px) {
   .example-frame__empty {
-    aspect-ratio: 180 / 218;
+    aspect-ratio: 186 / 226;
   }
 }
 

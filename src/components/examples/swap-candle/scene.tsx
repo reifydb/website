@@ -77,7 +77,7 @@ interface Layout {
 
 const FRAME_INTERVAL = 83;
 const SLOT_MS = 400;
-const AUTO_MS = 1200;
+const AUTO_MS = 400;
 const START_SLOT = 333_000_000;
 const HISTORY_SLOTS = 80;
 const VISITOR_SIZES = [5, 25, 100];
@@ -94,50 +94,50 @@ const RISE = '#2f9e6b';
 const FALL = '#d4506c';
 
 const WIDE: Layout = {
-  width: 360,
+  width: 384,
   height: 126,
   pair: [6, 5],
   boxes: {
     normalized: { x: 6, y: 20, width: 126 },
-    trades: { x: 142, y: 6, width: 66 },
-    block: { x: 142, y: 60, width: 66 },
-    volume: { x: 216, y: 6, width: 64 },
-    twap: { x: 216, y: 36, width: 64 },
-    candles: { x: 216, y: 66, width: 64, height: 54 },
-    app: { x: 290, y: 40, width: 64 },
+    trades: { x: 150, y: 6, width: 66 },
+    block: { x: 150, y: 60, width: 66 },
+    volume: { x: 232, y: 6, width: 64 },
+    twap: { x: 232, y: 36, width: 64 },
+    candles: { x: 232, y: 66, width: 64, height: 54 },
+    app: { x: 314, y: 40, width: 64 },
   },
-  candleChart: { x: 216, y: 75, width: 64, height: 44 },
+  candleChart: { x: 232, y: 75, width: 64, height: 44 },
   wires: {
-    trades: [[132, 50], [137, 50], [137, 22], [142, 22]],
-    block: [[175, 44], [175, 60]],
-    volume: [[208, 74], [212, 74], [212, 16], [216, 16]],
-    twap: [[208, 74], [212, 74], [212, 46], [216, 46]],
-    candles: [[208, 74], [212, 74], [212, 80], [216, 80]],
-    app: [[280, 96], [285, 96], [285, 62], [290, 62]],
+    trades: [[132, 50], [141, 50], [141, 22], [150, 22]],
+    block: [[183, 44], [183, 60]],
+    volume: [[216, 74], [224, 74], [224, 16], [232, 16]],
+    twap: [[216, 74], [224, 74], [224, 46], [232, 46]],
+    candles: [[216, 74], [224, 74], [224, 80], [232, 80]],
+    app: [[296, 96], [305, 96], [305, 62], [314, 62]],
   },
 };
 
 const TALL: Layout = {
-  width: 180,
-  height: 218,
+  width: 186,
+  height: 226,
   pair: [6, 2],
   boxes: {
-    normalized: { x: 6, y: 12, width: 168 },
+    normalized: { x: 6, y: 12, width: 174 },
     trades: { x: 6, y: 78, width: 81 },
-    block: { x: 93, y: 78, width: 81 },
-    volume: { x: 6, y: 124, width: 81 },
-    twap: { x: 93, y: 124, width: 81 },
-    candles: { x: 6, y: 156, width: 81, height: 54 },
-    app: { x: 93, y: 164, width: 81 },
+    block: { x: 99, y: 78, width: 81 },
+    volume: { x: 6, y: 132, width: 81 },
+    twap: { x: 99, y: 132, width: 81 },
+    candles: { x: 6, y: 164, width: 81, height: 54 },
+    app: { x: 99, y: 172, width: 81 },
   },
-  candleChart: { x: 6, y: 165, width: 81, height: 44 },
+  candleChart: { x: 6, y: 173, width: 81, height: 44 },
   wires: {
     trades: [[46, 50], [46, 78]],
-    block: [[87, 90], [93, 90]],
-    volume: [[133, 100], [133, 116], [46, 116], [46, 124]],
-    twap: [[133, 100], [133, 124]],
-    candles: [[133, 100], [133, 116], [3, 116], [3, 170], [6, 170]],
-    app: [[87, 186], [93, 186]],
+    block: [[87, 90], [99, 90]],
+    volume: [[139, 110], [139, 124], [46, 124], [46, 132]],
+    twap: [[139, 110], [139, 132]],
+    candles: [[139, 110], [139, 124], [3, 124], [3, 178], [6, 178]],
+    app: [[87, 194], [99, 194]],
   },
 };
 
