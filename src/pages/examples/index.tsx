@@ -18,6 +18,7 @@ export function ExamplesPage() {
   const activeIndex = EXAMPLES.indexOf(active);
   const next = EXAMPLES[(activeIndex + 1) % EXAMPLES.length];
   const readsRef = useWatchWhileVisible<HTMLElement>(active.id);
+  const editorRef = useWatchWhileVisible<HTMLElement>(active.id);
 
   const handleSelect = useCallback((id: string) => {
     setSearchParams({ id }, { replace: true });
@@ -80,10 +81,20 @@ export function ExamplesPage() {
               </ol>
             </section>
 
-            <section className="mt-10">
-              <h2 className="label uppercase text-text-muted mb-3">{active.subscription.heading}</h2>
-              <LivePanel example={active} />
-            </section>
+            {active.subscription && (
+              <section className="mt-10">
+                <h2 className="label uppercase text-text-muted mb-3">{active.subscription.heading}</h2>
+                <LivePanel id={active.id} subscription={active.subscription} />
+              </section>
+            )}
+
+            {active.editor && (
+              <section ref={editorRef} className="mt-10">
+                <h2 className="label uppercase text-text-muted mb-3">{active.editor.heading}</h2>
+                <p className="text-text-secondary mb-4">{active.editor.description}</p>
+                <ExecutableSnippet initialCode={active.editor.rql} title={active.editor.title} />
+              </section>
+            )}
 
             <section ref={readsRef} className="mt-10">
               <h2 className="label uppercase text-text-muted mb-3">Read the live tables</h2>

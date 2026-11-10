@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import type { ComponentType, LazyExoticComponent } from 'react';
 import { CANDLES_DDL, NORMALIZED_DDL, RAW_DDL, RAW_TABLE, READS } from './swap-candle/swap-candle';
 import { PROCEDURE_DDL, READS as RATE_READS, RING_DDL, requestCall } from './rate-limiter/rate-limiter';
+import { CLAIM, NAMES_DDL, READS as FLEET_READS, STORAGES_DDL, insertDevice } from './shared-dictionary/shared-dictionary';
 
 export interface SceneProps {
   howTo: string;
@@ -14,7 +15,7 @@ export interface Example {
   subline: string;
   howTo: string;
   howItWorks: { why: string; steps: { text: string; rql?: string }[] };
-  subscription: {
+  subscription?: {
     heading: string;
     query: string;
     key: string;
@@ -22,6 +23,7 @@ export interface Example {
     ready: () => Promise<void>;
     actions: { label: string; action: string; primary: boolean }[];
   };
+  editor?: { heading: string; title: string; description: string; rql: string };
   reads: { title: string; description: string; rql: string }[];
   load: () => Promise<{ default: ComponentType<SceneProps> }>;
 }
@@ -149,6 +151,33 @@ export const EXAMPLES: Example[] = [
       },
     ],
     load: () => import('./rate-limiter/scene'),
+  },
+  {
+    id: 'shared-dictionary',
+    title: 'Shared dictionary',
+    headline: 'One dictionary, four kinds of storage.',
+    subline: 'Device names live once in a dictionary. A table, a series, a ring buffer and a queue all point at\u00a0it.',
+    howTo: 'Click Add device and watch one new entry reach all four boards with the same id.',
+    howItWorks: {
+      why: 'The same device name gets written thousands of times, into very different kinds of storage. A shared dictionary stores each name once and gives every storage the same small id, so a name means one thing everywhere.',
+      steps: [
+        { text: 'The dictionary maps each name to a small id.', rql: NAMES_DDL },
+        { text: 'Four storages, one column type. Each name column points at the same dictionary.', rql: STORAGES_DDL },
+        {
+          text: 'Writes and reads use plain strings. A new name gets its id on first insert; repeats reuse it.',
+          rql: insertDevice('gate-1', 'new'),
+        },
+        { text: 'A worker takes commands off the queue and reports back. The name comes back decoded.', rql: CLAIM },
+      ],
+    },
+    editor: {
+      heading: 'Query the dictionary',
+      title: 'The dictionary',
+      description: 'Every device name and the id the four storages share. Add a device above and run it again.',
+      rql: FLEET_READS.names,
+    },
+    reads: [],
+    load: () => import('./shared-dictionary/scene'),
   },
 ];
 

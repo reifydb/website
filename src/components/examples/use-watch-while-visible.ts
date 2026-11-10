@@ -5,6 +5,8 @@ export function useWatchWhileVisible<T extends Element>(id: string) {
   const ref = useRef<T>(null);
 
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
     let stop: (() => void) | null = null;
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !stop) stop = watchLive(id);
@@ -13,7 +15,7 @@ export function useWatchWhileVisible<T extends Element>(id: string) {
         stop = null;
       }
     });
-    observer.observe(ref.current!);
+    observer.observe(node);
     return () => {
       observer.disconnect();
       stop?.();

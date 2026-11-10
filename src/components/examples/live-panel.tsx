@@ -3,8 +3,7 @@ import { LiveSubscription } from '@/components/ui';
 import { sendLiveAction, watchLive } from './live';
 import type { Example } from './index';
 
-export function LivePanel({ example }: { example: Example }) {
-  const { id, subscription } = example;
+export function LivePanel({ id, subscription }: { id: string; subscription: NonNullable<Example['subscription']> }) {
   const stopRef = useRef<(() => void) | null>(null);
   const actions = useMemo(
     () =>

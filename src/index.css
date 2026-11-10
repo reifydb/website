@@ -1026,3 +1026,144 @@ div::backdrop {
     transition: none;
   }
 }
+
+.shared-dictionary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 12px;
+}
+
+.shared-dictionary__dict,
+.shared-dictionary__board {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 8px 10px 10px;
+  border: 1px solid #c9c3dc;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.shared-dictionary__dict {
+  border-color: #7e85f2;
+  box-shadow: 0 2px 0 #e6e8fd;
+}
+
+.shared-dictionary__board-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 8px;
+  color: var(--color-text-muted);
+  font-size: 11px;
+}
+
+.shared-dictionary__table {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.shared-dictionary__entries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.shared-dictionary__entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px 2px 2px;
+  border-radius: 999px;
+  background: #ebe9f7;
+}
+
+.shared-dictionary__entry--fresh,
+.shared-dictionary__name--fresh {
+  animation: example-live-insert 1.6s ease-out;
+}
+
+.shared-dictionary__badge {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 1.6em;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #4b52d6;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.shared-dictionary__boards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .shared-dictionary__boards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .shared-dictionary__boards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.shared-dictionary__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-height: 7.5em;
+}
+
+.shared-dictionary__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: opacity 600ms ease;
+}
+
+.shared-dictionary__row > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-text-secondary);
+}
+
+.shared-dictionary__row--done {
+  opacity: 0.4;
+}
+
+.shared-dictionary__name {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 4px;
+}
+
+.shared-dictionary__empty {
+  color: var(--color-text-muted);
+}
+
+.shared-dictionary__count {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shared-dictionary__entry--fresh,
+  .shared-dictionary__name--fresh {
+    animation: none;
+  }
+}
