@@ -605,6 +605,24 @@ div::backdrop {
   color: var(--color-primary-dark);
 }
 
+@media (max-width: 640px) {
+  .example-frame__ran {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+  }
+
+  .example-frame__ran-code {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    height: 6em;
+    line-height: 1.5;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
 .example-live__flash--insert {
   animation: example-live-insert 1.2s ease-out;
 }
