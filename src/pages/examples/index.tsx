@@ -5,7 +5,7 @@ import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { PageMeta } from '@/components/page-meta';
 import { ExecutableSnippet } from '@/components/ui';
-import { EXAMPLES, ExampleHost, LivePanel, exampleById } from '@/components/examples';
+import { EXAMPLES, ExampleHost, LivePanel, exampleById, useWatchWhileVisible } from '@/components/examples';
 import { ExamplesSidebar, ExamplesSidebarMobile } from './examples-sidebar';
 import { SectionHeader } from './section-header';
 
@@ -16,6 +16,7 @@ export function ExamplesPage() {
   const active = exampleById(searchParams.get('id')) ?? EXAMPLES[0];
   const activeIndex = EXAMPLES.indexOf(active);
   const next = EXAMPLES[(activeIndex + 1) % EXAMPLES.length];
+  const readsRef = useWatchWhileVisible<HTMLElement>(active.id);
 
   const handleSelect = useCallback((id: string) => {
     setSearchParams({ id }, { replace: true });
@@ -71,7 +72,7 @@ export function ExamplesPage() {
               <LivePanel example={active} />
             </section>
 
-            <section className="mt-10">
+            <section ref={readsRef} className="mt-10">
               <h2 className="label uppercase text-text-muted mb-3">Read the live tables</h2>
               <div className="space-y-6">
                 {active.reads.map((read) => (

@@ -17,6 +17,7 @@ export interface Example {
     query: string;
     key: string;
     columns: string[];
+    ready: () => Promise<void>;
     actions: { label: string; action: string; primary: boolean }[];
   };
   reads: { title: string; description: string; rql: string }[];
@@ -39,6 +40,7 @@ export const EXAMPLES: Example[] = [
       query: READS.live,
       key: 'bucket',
       columns: ['bucket', 'open', 'high', 'low', 'close'],
+      ready: () => import('./swap-candle/setup').then((setup) => setup.ensureSetup()),
       actions: [
         { label: 'Buy 25 SOL', action: 'buy:25', primary: true },
         { label: 'Sell 25 SOL', action: 'sell:25', primary: false },
@@ -95,3 +97,4 @@ export function exampleById(id: string | null): Example | undefined {
 
 export { ExampleFrame, ExampleFrameSkeleton, ExampleHost } from './frame';
 export { LivePanel } from './live-panel';
+export { useWatchWhileVisible } from './use-watch-while-visible';

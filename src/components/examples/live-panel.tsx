@@ -21,6 +21,7 @@ export function LivePanel({ example }: { example: Example }) {
       query={subscription.query}
       rowKey={subscription.key}
       columns={subscription.columns}
+      ready={subscription.ready}
       actions={actions}
       onVisibleChange={(visible) => {
         stopRef.current?.();

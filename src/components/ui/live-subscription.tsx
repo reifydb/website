@@ -20,6 +20,7 @@ interface LiveSubscriptionProps {
   rowKey: string;
   columns: string[];
   actions?: LiveSubscriptionAction[];
+  ready?: () => Promise<void>;
   onVisibleChange?: (visible: boolean) => void;
 }
 
@@ -74,15 +75,17 @@ function Label({ children }: { children: string }) {
   return <div className="px-4 pt-4 pb-2 text-xs font-medium text-code-text-muted uppercase tracking-wider">{children}</div>;
 }
 
-export function LiveSubscription({ query, rowKey, columns, actions, onVisibleChange }: LiveSubscriptionProps) {
+export function LiveSubscription({ query, rowKey, columns, actions, ready, onVisibleChange }: LiveSubscriptionProps) {
   const [state, setState] = useState<State | null>(null);
   const [failure, setFailure] = useState<Error | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const visibleChangeRef = useRef(onVisibleChange);
+  const readyRef = useRef(ready);
 
   useEffect(() => {
     visibleChangeRef.current = onVisibleChange;
-  }, [onVisibleChange]);
+    readyRef.current = ready;
+  }, [onVisibleChange, ready]);
 
   useEffect(() => {
     let visible = false;
@@ -91,11 +94,16 @@ export function LiveSubscription({ query, rowKey, columns, actions, onVisibleCha
     let seq = 0;
     let entry = 0;
     let busy = false;
+    let prepared = false;
 
     const poll = async () => {
       if (busy || !visible || document.hidden) return;
       busy = true;
       try {
+        if (!prepared) {
+          await readyRef.current?.();
+          prepared = true;
+        }
         const result = await wasmExecutor.execute(query);
         if (!result.success) throw new Error(`live subscription failed on "${query}": ${result.error}`);
         const rows = (result.data ?? []) as LiveRow[];

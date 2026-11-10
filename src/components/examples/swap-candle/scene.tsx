@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
-import { wasmExecutor } from '@/lib/wasm-executor-singleton';
 import { cn } from '@/lib';
 import { Button } from '@/components/ui/button';
 import { ExampleFrame, ExampleFrameSkeleton } from '../frame';
 import type { SceneProps } from '../index';
 import { handleLiveActions, isWatched } from '../live';
-import { NORMALIZED_VIEW, RAW_COLUMNS, RAW_TABLE, READS, SETUP, SLOTS_PER_BUCKET, insertSwaps } from './swap-candle';
+import { NORMALIZED_VIEW, RAW_COLUMNS, RAW_TABLE, READS, SLOTS_PER_BUCKET, insertSwaps } from './swap-candle';
+import { currentSlot, ensureSetup, exec, getLastSwap, makeSwap, setLastSwap } from './setup';
 import type { Swap } from './swap-candle';
 
 type Row = Record<string, unknown>;
@@ -76,10 +76,7 @@ interface Layout {
 }
 
 const FRAME_INTERVAL = 83;
-const SLOT_MS = 400;
 const AUTO_MS = 400;
-const START_SLOT = 333_000_000;
-const HISTORY_SLOTS = 80;
 const VISITOR_SIZES = [5, 25, 100];
 const MARK_SECONDS = 2;
 const HOP = 0.35;
@@ -143,52 +140,8 @@ const TALL: Layout = {
 
 const TALL_QUERY = '(max-width: 767px)';
 
-let setupPromise: Promise<void> | null = null;
-let clockStart = 0;
-let nextId = 1;
-let mid = 142.5;
-let seed = 7;
-let lastSwap: Swap | null = null;
-
 import.meta.hot?.accept(() => window.location.reload());
 
-function random(): number {
-  seed = (seed * 16807) % 2147483647;
-  return (seed - 1) / 2147483646;
-}
-
-function makeSwap(slot: number, isBuy?: boolean, size?: number): Swap {
-  const side = isBuy ?? random() < 0.5 + (142.5 - mid) * 0.04;
-  const amount = size ?? Math.round((0.2 + random() * 6) * 100) / 100;
-  mid *= 1 + (side ? 1 : -1) * amount * 0.00012 + (random() - 0.5) * 0.0012;
-  const price = Math.round(mid * 1000000) / 1000000;
-  return { id: nextId++, slot, isBuy: side, size: amount, price };
-}
-
-async function exec(rql: string): Promise<Row[]> {
-  const result = await wasmExecutor.execute(rql);
-  if (!result.success) throw new Error(`swap to candle failed on "${rql.slice(0, 120)}": ${result.error}`);
-  return result.data ?? [];
-}
-
-function currentSlot(now: number): number {
-  return START_SLOT + Math.floor((now - clockStart) / SLOT_MS);
-}
-
-function ensureSetup(): Promise<void> {
-  setupPromise ??= (async () => {
-    await exec(SETUP);
-    const history: Swap[] = [];
-    for (let slot = START_SLOT - HISTORY_SLOTS; slot < START_SLOT; slot++) {
-      const count = Math.floor(random() * 3);
-      for (let k = 0; k < count; k++) history.push(makeSwap(slot));
-    }
-    await exec(insertSwaps(history));
-    lastSwap = history[history.length - 1];
-    clockStart = performance.now();
-  })();
-  return setupPromise;
-}
 
 const SETTLE_TIMEOUT_MS = 2000;
 
@@ -554,7 +507,7 @@ export default function SwapCandleScene({ howTo }: SceneProps) {
         const insert = insertSwaps([swap]);
         await exec(insert);
         setRan(insert);
-        lastSwap = swap;
+        setLastSwap(swap);
         const { snapshot } = await settle(swap);
         const start = reduceRef.current ? -Infinity : performance.now() / 1000;
         flows.push({ start, swap, mine, snapshot, previous });
@@ -574,7 +527,7 @@ export default function SwapCandleScene({ howTo }: SceneProps) {
 
   useEffect(() => {
     ensureSetup()
-      .then(() => settle(lastSwap!))
+      .then(() => settle(getLastSwap()!))
       .then(({ snapshot }) => {
         baseRef.current = { snapshot };
         setView(viewOf(baseRef.current, [], performance.now() / 1000, []));

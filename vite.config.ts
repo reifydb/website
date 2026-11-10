@@ -17,6 +17,9 @@ const localReifydbAliases = useLocalSdk
       { find: /^@reifydb\/shell$/, replacement: join(SDK_ROOT, 'shell/src/index.ts') },
       { find: /^@reifydb\/shell\/dist\/index\.css$/, replacement: join(SDK_ROOT, 'shell/dist/index.css') },
       { find: /^@reifydb\/wasm$/, replacement: join(SDK_ROOT, 'wasm/src/index.ts') },
+      { find: /^@reifydb\/client$/, replacement: join(SDK_ROOT, 'client/src/index.ts') },
+      { find: /^@reifydb\/editor$/, replacement: join(SDK_ROOT, 'editor/src/index.ts') },
+      { find: /^@reifydb\/editor\/styles\.css$/, replacement: join(SDK_ROOT, 'editor/src/styles/editor.css') },
     ]
   : []
 
@@ -67,6 +70,7 @@ export default defineConfig(({ command }) => ({
       { find: 'react', replacement: resolve(__dirname, 'node_modules/react') },
       { find: 'react-dom', replacement: resolve(__dirname, 'node_modules/react-dom') },
     ],
+    dedupe: useLocalSdk ? ['monaco-editor', '@monaco-editor/react'] : [],
   },
   optimizeDeps: {
     exclude: ['@reifydb/wasm'],
