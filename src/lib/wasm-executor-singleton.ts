@@ -43,3 +43,10 @@ class LazyWasmExecutor implements Executor {
 }
 
 export const wasmExecutor = new LazyWasmExecutor();
+
+const exampleStates = new Map<string, unknown>();
+
+export function exampleState<T>(id: string, create: () => T): T {
+  if (!exampleStates.has(id)) exampleStates.set(id, create());
+  return exampleStates.get(id) as T;
+}

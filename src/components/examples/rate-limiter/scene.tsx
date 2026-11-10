@@ -10,8 +10,8 @@ import { call, ensureSetup, exec, takeId } from './setup';
 
 const TICK_MS = 400;
 const BOB_EVERY = 8;
-const CAROL_EVERY = 38;
-const CAROL_BURST = 7;
+const KAREN_EVERY = 38;
+const KAREN_BURST = 7;
 const SPAM = 5;
 
 interface Slot {
@@ -51,11 +51,11 @@ export default function RateLimiterScene({ howTo }: SceneProps) {
   const chainRef = useRef<Promise<void>>(Promise.resolve());
   const slotOfRef = useRef(new Map<number, number>());
   const laneOfRef = useRef(new Map<number, User>());
-  const seqRef = useRef<Record<User, number>>({ alice: 0, bob: 0, carol: 0 });
+  const seqRef = useRef<Record<User, number>>({ alice: 0, bob: 0, karen: 0 });
   const marksRef = useRef<Record<User, { written: number | null; blocked: number | null }>>({
     alice: { written: null, blocked: null },
     bob: { written: null, blocked: null },
-    carol: { written: null, blocked: null },
+    karen: { written: null, blocked: null },
   });
   const eventRef = useRef('Waiting for the first request.');
   const markRef = useRef(0);
@@ -135,7 +135,7 @@ export default function RateLimiterScene({ howTo }: SceneProps) {
       tick += 1;
       if (!reduce) {
         if (tick % BOB_EVERY === 0) send.current('bob');
-        if (tick % CAROL_EVERY < CAROL_BURST) send.current('carol');
+        if (tick % KAREN_EVERY < KAREN_BURST) send.current('karen');
       }
       chainRef.current = chainRef.current.then(() => refresh.current()).catch(setFailure);
     }, TICK_MS);

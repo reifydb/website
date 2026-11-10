@@ -47,7 +47,7 @@ describe('rate limiter', () => {
     const call = async (rql: string) => executeExample(fresh, rql);
     return {
       db: fresh,
-      send: (user: 'alice' | 'bob' | 'carol', at: number) => sendRequest(call, ++id, user, at),
+      send: (user: 'alice' | 'bob' | 'karen', at: number) => sendRequest(call, ++id, user, at),
     };
   }
 
@@ -68,8 +68,8 @@ describe('rate limiter', () => {
   it('one user hitting the limit does not block another', async () => {
     // Each user must have their own ring, otherwise one spammer locks everyone out.
     const { send } = await limiter();
-    for (let k = 0; k < LIMIT; k++) await send('carol', 1_000 + k);
-    expect((await send('carol', 1_010)).blocked).toBe(true);
+    for (let k = 0; k < LIMIT; k++) await send('karen', 1_000 + k);
+    expect((await send('karen', 1_010)).blocked).toBe(true);
     expect((await send('bob', 1_010)).blocked).toBe(false);
   });
 

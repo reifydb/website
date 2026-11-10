@@ -1,6 +1,6 @@
 export const LIMIT = 5;
 export const WINDOW_MS = 10_000;
-export const USERS = ['alice', 'bob', 'carol'] as const;
+export const USERS = ['alice', 'bob', 'karen'] as const;
 export type User = (typeof USERS)[number];
 
 export const RING = 'limits::requests';

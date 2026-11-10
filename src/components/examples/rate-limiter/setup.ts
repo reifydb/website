@@ -1,13 +1,12 @@
-import { wasmExecutor } from '@/lib/wasm-executor-singleton';
+import { exampleState, wasmExecutor } from '@/lib/wasm-executor-singleton';
 import { SETUP } from './rate-limiter';
 
 type Row = Record<string, unknown>;
 
-let setupPromise: Promise<void> | null = null;
-let nextId = 1;
+const state = exampleState('rate-limiter', () => ({ setup: null as Promise<void> | null, nextId: 1 }));
 
 export function takeId(): number {
-  return nextId++;
+  return state.nextId++;
 }
 
 export async function exec(rql: string): Promise<Row[]> {
@@ -21,6 +20,6 @@ export function call(rql: string) {
 }
 
 export function ensureSetup(): Promise<void> {
-  setupPromise ??= exec(SETUP).then(() => undefined);
-  return setupPromise;
+  state.setup ??= exec(SETUP).then(() => undefined);
+  return state.setup;
 }
