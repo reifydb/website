@@ -34,6 +34,7 @@ export const READS = {
   volume: 'from market::volume sort { bucket } take 2',
   twap: 'from market::twap sort { bucket } take 2',
   candles: 'from market::candles sort { bucket } take 8',
+  live: 'from market::candles\ntake 10',
 };
 
 function units(amount: number, decimals: number): number {

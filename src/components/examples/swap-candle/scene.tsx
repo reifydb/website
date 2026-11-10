@@ -2,15 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { wasmExecutor } from '@/lib/wasm-executor-singleton';
 import { cn } from '@/lib';
-import { Button } from './button';
-import { MarketHallSkeleton } from './market-hall';
-import { NORMALIZED_VIEW, RAW_COLUMNS, RAW_TABLE, READS, SETUP, SLOTS_PER_BUCKET, insertSwaps } from './market-hall.examples';
-import type { Swap } from './market-hall.examples';
-import { PAPER, INK, LINE, rect, ease, lerp, bot, mascot, stall } from './pixel-kit';
-import type { Context } from './pixel-kit';
+import { Button } from '@/components/ui/button';
+import { ExampleFrame, ExampleFrameSkeleton } from '../frame';
+import type { SceneProps } from '../index';
+import { handleLiveActions, isWatched } from '../live';
+import { NORMALIZED_VIEW, RAW_COLUMNS, RAW_TABLE, READS, SETUP, SLOTS_PER_BUCKET, insertSwaps } from './swap-candle';
+import type { Swap } from './swap-candle';
 
 type Row = Record<string, unknown>;
 type NodeId = 'normalized' | 'trades' | 'block' | 'volume' | 'twap' | 'candles' | 'app';
+type WireId = Exclude<NodeId, 'normalized'>;
+type Point = [number, number];
 
 interface Card {
   raw: Row;
@@ -44,10 +46,17 @@ interface NodeView {
   marks: Record<string, Mark>;
 }
 
+interface Packet {
+  key: string;
+  x: number;
+  y: number;
+  mine: boolean;
+}
+
 interface View {
   slot: number;
   nodes: Record<NodeId, NodeView>;
-  you: number | null;
+  packets: Packet[];
 }
 
 interface Box {
@@ -57,6 +66,15 @@ interface Box {
   height?: number;
 }
 
+interface Layout {
+  width: number;
+  height: number;
+  pair: Point;
+  boxes: Record<NodeId, Box>;
+  candleChart: Required<Box>;
+  wires: Record<WireId, Point[]>;
+}
+
 const FRAME_INTERVAL = 83;
 const SLOT_MS = 400;
 const AUTO_MS = 1200;
@@ -64,29 +82,21 @@ const START_SLOT = 333_000_000;
 const HISTORY_SLOTS = 80;
 const VISITOR_SIZES = [5, 25, 100];
 const MARK_SECONDS = 2;
-const RETIRE = 3;
+const HOP = 0.35;
+const ARRIVAL: Record<NodeId, number> = { normalized: 0, trades: HOP, block: 2 * HOP, volume: 3 * HOP, twap: 3 * HOP, candles: 3 * HOP, app: 4 * HOP };
+const RETIRE = ARRIVAL.app + MARK_SECONDS + 0.5;
 const NODES: NodeId[] = ['normalized', 'trades', 'block', 'volume', 'twap', 'candles', 'app'];
-const WALK = 0.7;
+const WIRES: WireId[] = ['trades', 'block', 'volume', 'twap', 'candles', 'app'];
+const INK = '#1b1840';
+const LINE = '#c9c3dc';
+const PRIMARY = '#7e85f2';
 const RISE = '#2f9e6b';
 const FALL = '#d4506c';
 
-interface Layout {
-  width: number;
-  height: number;
-  floor: number;
-  stallX: number;
-  deskX: number;
-  boxes: Record<NodeId, Box>;
-  candleChart: Required<Box>;
-  wires: { target: NodeId; points: [number, number][] }[];
-}
-
 const WIDE: Layout = {
   width: 360,
-  height: 140,
-  floor: 126,
-  stallX: 30,
-  deskX: 72,
+  height: 126,
+  pair: [6, 5],
   boxes: {
     normalized: { x: 6, y: 20, width: 126 },
     trades: { x: 142, y: 6, width: 66 },
@@ -97,40 +107,38 @@ const WIDE: Layout = {
     app: { x: 290, y: 40, width: 64 },
   },
   candleChart: { x: 216, y: 75, width: 64, height: 44 },
-  wires: [
-    { target: 'trades', points: [[132, 50], [137, 50], [137, 22], [142, 22]] },
-    { target: 'block', points: [[175, 44], [175, 60]] },
-    { target: 'volume', points: [[208, 74], [212, 74], [212, 16], [216, 16]] },
-    { target: 'twap', points: [[212, 46], [216, 46]] },
-    { target: 'candles', points: [[212, 74], [212, 80], [216, 80]] },
-    { target: 'app', points: [[280, 96], [285, 96], [285, 62], [290, 62]] },
-  ],
+  wires: {
+    trades: [[132, 50], [137, 50], [137, 22], [142, 22]],
+    block: [[175, 44], [175, 60]],
+    volume: [[208, 74], [212, 74], [212, 16], [216, 16]],
+    twap: [[208, 74], [212, 74], [212, 46], [216, 46]],
+    candles: [[208, 74], [212, 74], [212, 80], [216, 80]],
+    app: [[280, 96], [285, 96], [285, 62], [290, 62]],
+  },
 };
 
 const TALL: Layout = {
   width: 180,
-  height: 268,
-  floor: 46,
-  stallX: 20,
-  deskX: 110,
+  height: 218,
+  pair: [6, 2],
   boxes: {
-    normalized: { x: 6, y: 62, width: 168 },
-    trades: { x: 6, y: 128, width: 81 },
-    block: { x: 93, y: 128, width: 81 },
-    volume: { x: 6, y: 174, width: 81 },
-    twap: { x: 93, y: 174, width: 81 },
-    candles: { x: 6, y: 206, width: 81, height: 54 },
-    app: { x: 93, y: 214, width: 81 },
+    normalized: { x: 6, y: 12, width: 168 },
+    trades: { x: 6, y: 78, width: 81 },
+    block: { x: 93, y: 78, width: 81 },
+    volume: { x: 6, y: 124, width: 81 },
+    twap: { x: 93, y: 124, width: 81 },
+    candles: { x: 6, y: 156, width: 81, height: 54 },
+    app: { x: 93, y: 164, width: 81 },
   },
-  candleChart: { x: 6, y: 215, width: 81, height: 44 },
-  wires: [
-    { target: 'trades', points: [[46, 100], [46, 128]] },
-    { target: 'block', points: [[87, 140], [93, 140]] },
-    { target: 'volume', points: [[133, 150], [133, 166], [46, 166], [46, 174]] },
-    { target: 'twap', points: [[133, 150], [133, 174]] },
-    { target: 'candles', points: [[46, 166], [3, 166], [3, 220], [6, 220]] },
-    { target: 'app', points: [[87, 236], [93, 236]] },
-  ],
+  candleChart: { x: 6, y: 165, width: 81, height: 44 },
+  wires: {
+    trades: [[46, 50], [46, 78]],
+    block: [[87, 90], [93, 90]],
+    volume: [[133, 100], [133, 116], [46, 116], [46, 124]],
+    twap: [[133, 100], [133, 124]],
+    candles: [[133, 100], [133, 116], [3, 116], [3, 170], [6, 170]],
+    app: [[87, 186], [93, 186]],
+  },
 };
 
 const TALL_QUERY = '(max-width: 767px)';
@@ -140,7 +148,6 @@ let clockStart = 0;
 let nextId = 1;
 let mid = 142.5;
 let seed = 7;
-let visitorTookOver = false;
 let lastSwap: Swap | null = null;
 
 import.meta.hot?.accept(() => window.location.reload());
@@ -160,7 +167,7 @@ function makeSwap(slot: number, isBuy?: boolean, size?: number): Swap {
 
 async function exec(rql: string): Promise<Row[]> {
   const result = await wasmExecutor.execute(rql);
-  if (!result.success) throw new Error(`market hall failed on "${rql.slice(0, 120)}": ${result.error}`);
+  if (!result.success) throw new Error(`swap to candle failed on "${rql.slice(0, 120)}": ${result.error}`);
   return result.data ?? [];
 }
 
@@ -245,7 +252,7 @@ async function settle(swap: Swap): Promise<Settled> {
       await whenVisible();
       deadline = performance.now() + SETTLE_TIMEOUT_MS;
     }
-    if (performance.now() > deadline) throw new Error(`market hall views did not catch up with swap ${swap.id} within ${SETTLE_TIMEOUT_MS}ms`);
+    if (performance.now() > deadline) throw new Error(`swap to candle views did not catch up with swap ${swap.id} within ${SETTLE_TIMEOUT_MS}ms`);
     await yieldTask();
   }
 }
@@ -291,95 +298,56 @@ function compact(value: unknown): string {
   return n >= 1000 ? `${(n / 1000).toFixed(1)}k` : n.toFixed(0);
 }
 
-function shownSnapshot(base: Snapshot, flows: Flow[], now: number): Snapshot {
+function shownSnapshot(base: Snapshot, flows: Flow[], id: NodeId, now: number): Snapshot {
   let shown = base;
-  for (const flow of flows) if (now >= flow.start) shown = flow.snapshot;
+  for (const flow of flows) if (now >= flow.start + ARRIVAL[id]) shown = flow.snapshot;
   return shown;
 }
 
 function recentMarks(flows: Flow[], id: NodeId, now: number): Record<string, Mark> {
   let marks: Record<string, Mark> = {};
   for (const flow of flows) {
-    if (now < flow.start || now >= flow.start + MARK_SECONDS) continue;
+    const arrived = flow.start + ARRIVAL[id];
+    if (now < arrived || now >= arrived + MARK_SECONDS) continue;
     marks = { ...marks, ...marksOf(id, flow) };
   }
   return marks;
 }
 
-function walkerOf(layout: Layout, flows: Flow[], now: number): number | null {
-  const walking = flows.find((flow) => flow.mine && now - flow.start < WALK + 1.2);
-  if (!walking) return null;
-  return Math.round(lerp(layout.stallX + 8, layout.deskX, ease(Math.min(1, (now - walking.start) / WALK))));
+function pointAt(points: Point[], u: number): Point {
+  const lengths = points.slice(1).map(([x, y], i) => Math.abs(x - points[i][0]) + Math.abs(y - points[i][1]));
+  let left = u * lengths.reduce((sum, length) => sum + length, 0);
+  for (let i = 0; i < lengths.length; i++) {
+    if (left <= lengths[i] || i === lengths.length - 1) {
+      const t = lengths[i] ? Math.min(1, left / lengths[i]) : 1;
+      const [ax, ay] = points[i];
+      const [bx, by] = points[i + 1];
+      return [ax + (bx - ax) * t, ay + (by - ay) * t];
+    }
+    left -= lengths[i];
+  }
+  return points[points.length - 1];
 }
 
-function viewOf(base: Settled, flows: Flow[], now: number, you: number | null): View {
+function packetsOf(layout: Layout, flows: Flow[], now: number): Packet[] {
+  const packets: Packet[] = [];
+  for (const flow of flows) {
+    for (const wire of WIRES) {
+      const u = (now - flow.start - (ARRIVAL[wire] - HOP)) / HOP;
+      if (u < 0 || u >= 1) continue;
+      const [x, y] = pointAt(layout.wires[wire], u);
+      packets.push({ key: `${flow.swap.id}-${wire}`, x: Math.round(x * 4) / 4, y: Math.round(y * 4) / 4, mine: flow.mine });
+    }
+  }
+  return packets;
+}
+
+function viewOf(base: Settled, flows: Flow[], now: number, packets: Packet[]): View {
   const nodes = {} as Record<NodeId, NodeView>;
   for (const id of NODES) {
-    nodes[id] = { snapshot: shownSnapshot(base.snapshot, flows, now), marks: recentMarks(flows, id, now) };
+    nodes[id] = { snapshot: shownSnapshot(base.snapshot, flows, id, now), marks: recentMarks(flows, id, now) };
   }
-  return { slot: currentSlot(performance.now()), nodes, you };
-}
-
-function drawHall(c: Context, { width, height, floor }: Layout) {
-  const ground = Math.min(height, floor + 14);
-  rect(c, 0, 0, width, height, PAPER);
-  rect(c, 0, 0, width, floor, '#f3f2fb');
-  for (let x = 0; x < width; x += 24) rect(c, x, 0, 1, floor, '#ebe9f7');
-  rect(c, 0, floor, width, 2, '#e0d2b3');
-  for (let x = 0; x < width; x += 4) rect(c, x, floor + 2, 2, 1, '#eadfc8');
-  rect(c, 0, floor + 3, width, ground - floor - 3, '#f1e8d6');
-  if (ground < height) {
-    rect(c, 0, ground, width, height - ground, '#f3f2fb');
-    for (let x = 0; x < width; x += 24) rect(c, x, ground, 1, height - ground, '#ebe9f7');
-  }
-}
-
-function drawWire(c: Context, points: [number, number][]) {
-  for (let i = 1; i < points.length; i++) {
-    const [ax, ay] = points[i - 1];
-    const [bx, by] = points[i];
-    rect(c, Math.min(ax, bx), Math.min(ay, by), Math.abs(bx - ax) + 1, Math.abs(by - ay) + 1, LINE);
-  }
-}
-
-function drawCandles(c: Context, chart: Required<Box>, node: NodeView) {
-  const { x, y, width, height } = chart;
-  rect(c, x, y, width, height, '#ffffff');
-  const candles = node.snapshot.candles;
-  if (!candles.length) return;
-  const top = Math.max(...candles.map((row) => Number(row.high)));
-  const bottom = Math.min(...candles.map((row) => Number(row.low)));
-  const span = Math.max(top - bottom, 0.01);
-  const chartTop = y + 3;
-  const chartHeight = height - 6;
-  const toY = (value: number) => Math.round(chartTop + ((top - value) / span) * (chartHeight - 1));
-  candles.forEach((row, index) => {
-    const cx = x + 4 + index * 7;
-    const open = Number(row.open);
-    const close = Number(row.close);
-    rect(c, cx + 2, toY(Number(row.high)), 1, toY(Number(row.low)) - toY(Number(row.high)) + 1, INK);
-    rect(c, cx, Math.min(toY(open), toY(close)), 5, Math.max(1, Math.abs(toY(open) - toY(close))), close >= open ? RISE : FALL);
-  });
-}
-
-function drawFloor(c: Context, { floor, stallX, deskX }: Layout, flows: Flow[], now: number) {
-  stall(c, stallX, floor, 0, false, false);
-  rect(c, deskX - 2, floor - 9, 60, 9, '#c9a27a');
-  rect(c, deskX - 2, floor - 9, 60, 1, '#e6caa0');
-  mascot(c, deskX + 28, floor - 9, now, 0, false);
-  flows.forEach((flow, index) => {
-    const elapsed = now - flow.start;
-    const from = stallX + 6;
-    if (elapsed < WALK) bot(c, lerp(from, deskX, ease(elapsed / WALK)), floor, now, index, true);
-    else if (elapsed < WALK + 1.2) bot(c, lerp(deskX, from, ease((elapsed - WALK) / 1.2)), floor, now, index, false);
-  });
-}
-
-function draw(c: Context, layout: Layout, view: View, flows: Flow[], now: number) {
-  drawHall(c, layout);
-  for (const wire of layout.wires) drawWire(c, wire.points);
-  drawCandles(c, layout.candleChart, view.nodes.candles);
-  drawFloor(c, layout, flows, now);
+  return { slot: currentSlot(performance.now()), nodes, packets };
 }
 
 function place({ width, height }: Layout, box: Box): CSSProperties {
@@ -388,7 +356,7 @@ function place({ width, height }: Layout, box: Box): CSSProperties {
   return style;
 }
 
-function at({ width, height }: Layout, x: number, y: number): CSSProperties {
+function at({ width, height }: Layout, [x, y]: Point): CSSProperties {
   return { left: `${(x / width) * 100}%`, top: `${(y / height) * 100}%` };
 }
 
@@ -403,14 +371,10 @@ function signed(delta: number, format: (value: number) => string): string {
 function MarkView({ mark, format }: { mark?: Mark; format: (value: number) => string }) {
   if (!mark) return null;
   if (mark.fresh) {
-    return (
-      <span className="market-hall__delta market-hall__delta--new">
-        new
-      </span>
-    );
+    return <span className="swap-candle__delta swap-candle__delta--new">new</span>;
   }
   return (
-    <span className={cn('market-hall__delta', mark.delta >= 0 ? 'market-hall__delta--up' : 'market-hall__delta--down')}>
+    <span className={cn('swap-candle__delta', mark.delta >= 0 ? 'swap-candle__delta--up' : 'swap-candle__delta--down')}>
       {signed(mark.delta, format)}
     </span>
   );
@@ -427,10 +391,10 @@ interface BoardProps {
 
 function BoardView({ layout, id, title, node, rows, format }: BoardProps) {
   return (
-    <div className="market-hall__board" style={place(layout, layout.boxes[id])}>
-      <div className="market-hall__title">{title}</div>
+    <div className="swap-candle__board" style={place(layout, layout.boxes[id])}>
+      <div className="swap-candle__title">{title}</div>
       {rows.map((row) => (
-        <div key={row.key} className="market-hall__row">
+        <div key={row.key} className="swap-candle__row">
           <span>{row.left}</span>
           <span>
             {row.right}
@@ -442,7 +406,49 @@ function BoardView({ layout, id, title, node, rows, format }: BoardProps) {
   );
 }
 
-function Overlay({ view, layout }: { view: View; layout: Layout }) {
+function CandleChart({ chart, candles }: { chart: Required<Box>; candles: Row[] }) {
+  const { x, y, height } = chart;
+  if (!candles.length) return null;
+  const top = Math.max(...candles.map((row) => Number(row.high)));
+  const bottom = Math.min(...candles.map((row) => Number(row.low)));
+  const span = Math.max(top - bottom, 0.01);
+  const chartTop = y + 3;
+  const chartHeight = height - 6;
+  const toY = (value: number) => chartTop + ((top - value) / span) * (chartHeight - 1);
+  return (
+    <g>
+      {candles.map((row, index) => {
+        const cx = x + 4 + index * 7;
+        const open = Number(row.open);
+        const close = Number(row.close);
+        const bodyTop = Math.min(toY(open), toY(close));
+        return (
+          <g key={String(row.bucket)}>
+            <rect x={cx + 2} y={toY(Number(row.high))} width={1} height={Math.max(0.5, toY(Number(row.low)) - toY(Number(row.high)))} fill={INK} />
+            <rect x={cx} y={bodyTop} width={5} height={Math.max(1, Math.abs(toY(open) - toY(close)))} fill={close >= open ? RISE : FALL} />
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+function Wiring({ view, layout }: { view: View; layout: Layout }) {
+  return (
+    <svg className="swap-candle__wiring" viewBox={`0 0 ${layout.width} ${layout.height}`} aria-hidden="true">
+      {WIRES.map((wire) => (
+        <polyline key={wire} points={layout.wires[wire].map((p) => p.join(',')).join(' ')} fill="none" stroke={LINE} strokeWidth={1} />
+      ))}
+      <rect {...layout.candleChart} fill="#ffffff" />
+      <CandleChart chart={layout.candleChart} candles={view.nodes.candles.snapshot.candles} />
+      {view.packets.map((packet) => (
+        <circle key={packet.key} cx={packet.x} cy={packet.y} r={2.2} fill={packet.mine ? FALL : PRIMARY} />
+      ))}
+    </svg>
+  );
+}
+
+function Boards({ view, layout }: { view: View; layout: Layout }) {
   const { nodes } = view;
   const card = nodes.normalized.snapshot.card;
   const normalized = card.normalized;
@@ -462,21 +468,21 @@ function Overlay({ view, layout }: { view: View; layout: Layout }) {
   const first = candles[0];
   const change = last && first ? ((Number(last.close) - Number(first.open)) / Number(first.open)) * 100 : 0;
   return (
-    <div className="market-hall__overlay">
-      <div className="market-hall__pair" style={at(layout, 6, 5)}>
+    <div className="swap-candle__boards">
+      <div className="swap-candle__pair" style={at(layout, layout.pair)}>
         SOL/USDC · slot {view.slot.toLocaleString('en-US')}
       </div>
-      <div className="market-hall__board market-hall__card" style={place(layout, layout.boxes.normalized)}>
-        <div className="market-hall__title">Normalize</div>
-        <div className="market-hall__source">{RAW_TABLE}</div>
+      <div className="swap-candle__board swap-candle__card" style={place(layout, layout.boxes.normalized)}>
+        <div className="swap-candle__title">Normalize</div>
+        <div className="swap-candle__source">{RAW_TABLE}</div>
         {RAW_COLUMNS.map((column) => (
-          <div key={column} className="market-hall__row">
+          <div key={column} className="swap-candle__row">
             <span>{column}</span>
             <span>{String(card.raw[column])}</span>
           </div>
         ))}
-        <div className="market-hall__source">→ {NORMALIZED_VIEW}</div>
-        <div className="market-hall__row market-hall__result">
+        <div className="swap-candle__source">→ {NORMALIZED_VIEW}</div>
+        <div className="swap-candle__row swap-candle__result">
           <span>
             {Number(normalized.base_volume).toFixed(2)} SOL · {money(normalized.quote_volume)} USDC
           </span>
@@ -489,29 +495,21 @@ function Overlay({ view, layout }: { view: View; layout: Layout }) {
       <BoardView layout={layout} id="block" title="market::block · vwap" node={nodes.block} rows={block} format={money} />
       <BoardView layout={layout} id="volume" title="market::volume" node={nodes.volume} rows={volume} format={compact} />
       <BoardView layout={layout} id="twap" title="market::twap" node={nodes.twap} rows={twap} format={money} />
-      <div className="market-hall__board market-hall__candles" style={place(layout, layout.boxes.candles)}>
-        <div className="market-hall__title">market::candles</div>
+      <div className="swap-candle__board swap-candle__candles" style={place(layout, layout.boxes.candles)}>
+        <div className="swap-candle__title">market::candles</div>
       </div>
-      <div className="market-hall__board market-hall__app" style={place(layout, layout.boxes.app)}>
-        <div className="market-hall__title">Your app</div>
-        <div className="market-hall__price">
+      <div className="swap-candle__board swap-candle__app" style={place(layout, layout.boxes.app)}>
+        <div className="swap-candle__title">Your app</div>
+        <div className="swap-candle__price">
           {last ? money(last.close) : '-'}
           {last && <MarkView key={nodes.app.marks[keyOf('app', last)]?.flow ?? 'none'} mark={nodes.app.marks[keyOf('app', last)]} format={money} />}
         </div>
-        <div className={change >= 0 ? 'market-hall__rise' : 'market-hall__fall'}>
+        <div className={change >= 0 ? 'swap-candle__rise' : 'swap-candle__fall'}>
           {change >= 0 ? '+' : ''}
           {change.toFixed(2)}% · 8 candles
         </div>
-        <div className="market-hall__source">reads market::candles</div>
+        <div className="swap-candle__source">reads market::candles</div>
       </div>
-      <div className="market-hall__stall" style={at(layout, layout.stallX + 8, layout.floor - 29)}>
-        raydium
-      </div>
-      {view.you !== null && (
-        <div className="market-hall__you" style={at(layout, view.you, layout.floor - 34)}>
-          you
-        </div>
-      )}
     </div>
   );
 }
@@ -531,12 +529,12 @@ function prefersReducedMotion(): boolean {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-export default function MarketHallLive() {
+export default function SwapCandleScene({ howTo }: SceneProps) {
   const layout = useLayout();
   const [view, setView] = useState<View | null>(null);
+  const [ran, setRan] = useState<string | null>(null);
   const [failure, setFailure] = useState<Error | null>(null);
-  const [driving, setDriving] = useState(visitorTookOver);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const baseRef = useRef<Settled | null>(null);
   const flowsRef = useRef<Flow[]>([]);
   const queueRef = useRef<{ swap: Swap; mine: boolean }[]>([]);
@@ -553,7 +551,9 @@ export default function MarketHallLive() {
         const { swap, mine } = queueRef.current.shift()!;
         const flows = flowsRef.current;
         const previous = flows.length ? flows[flows.length - 1].snapshot : baseRef.current!.snapshot;
-        await exec(insertSwaps([swap]));
+        const insert = insertSwaps([swap]);
+        await exec(insert);
+        setRan(insert);
         lastSwap = swap;
         const { snapshot } = await settle(swap);
         const start = reduceRef.current ? -Infinity : performance.now() / 1000;
@@ -577,7 +577,7 @@ export default function MarketHallLive() {
       .then(() => settle(lastSwap!))
       .then(({ snapshot }) => {
         baseRef.current = { snapshot };
-        setView(viewOf(baseRef.current, [], performance.now() / 1000, null));
+        setView(viewOf(baseRef.current, [], performance.now() / 1000, []));
       }, setFailure);
   }, []);
 
@@ -585,13 +585,11 @@ export default function MarketHallLive() {
 
   useEffect(() => {
     if (!loaded) return;
-    const canvas = canvasRef.current!;
-    const context = canvas.getContext('2d');
-    if (!context) throw new Error('market hall canvas has no 2d context');
+    const stage = stageRef.current!;
     const observer = new IntersectionObserver(([entry]) => {
       visibleRef.current = entry.isIntersecting;
     });
-    observer.observe(canvas);
+    observer.observe(stage);
     let frameId = 0;
     let lastPaint = 0;
     let lastKey = '';
@@ -602,8 +600,7 @@ export default function MarketHallLive() {
         const retired = flows.shift()!;
         baseRef.current = { snapshot: retired.snapshot };
       }
-      const next = viewOf(baseRef.current!, flows, now, walkerOf(layout, flows, now));
-      draw(context, layout, next, flows, now);
+      const next = viewOf(baseRef.current!, flows, now, packetsOf(layout, flows, now));
       const key = JSON.stringify(next);
       if (key !== lastKey) {
         lastKey = key;
@@ -623,7 +620,7 @@ export default function MarketHallLive() {
     const auto = reduceRef.current
       ? 0
       : window.setInterval(() => {
-          if (visitorTookOver || document.hidden || !visibleRef.current || queueRef.current.length > 1) return;
+          if (document.hidden || !(visibleRef.current || isWatched('swap-candle')) || queueRef.current.length > 1) return;
           enqueue(makeSwap(currentSlot(performance.now())), false);
         }, AUTO_MS);
     return () => {
@@ -633,53 +630,63 @@ export default function MarketHallLive() {
     };
   }, [loaded, layout]);
 
-  if (failure) throw failure;
-  if (!view) return <MarketHallSkeleton />;
-
-  const trade = (isBuy: boolean, size: number) => {
-    visitorTookOver = true;
-    setDriving(true);
+  const tradeRef = useRef((isBuy: boolean, size: number) => {
     queueRef.current = queueRef.current.filter((item) => item.mine);
-    enqueue(makeSwap(currentSlot(performance.now()), isBuy, size), true);
-  };
+    queueRef.current.push({ swap: makeSwap(currentSlot(performance.now()), isBuy, size), mine: true });
+    void pump.current();
+  });
+
+  useEffect(
+    () =>
+      handleLiveActions('swap-candle', (action) => {
+        const [side, size] = action.split(':');
+        tradeRef.current(side === 'buy', Number(size));
+      }),
+    [],
+  );
+
+  if (failure) throw failure;
+  if (!view) return <ExampleFrameSkeleton howTo={howTo} />;
+
+  const trade = (isBuy: boolean, size: number) => tradeRef.current(isBuy, size);
 
   return (
-    <>
-      <div className="market-hall__scroll">
-        <div className="market-hall__stage" style={{ '--hall-width': layout.width } as CSSProperties}>
-          <canvas
-            ref={canvasRef}
-            width={layout.width}
-            height={layout.height}
-            style={{ aspectRatio: `${layout.width} / ${layout.height}` }}
-            className="market-hall__frame pixel-canvas"
+    <ExampleFrame
+      howTo={howTo}
+      ran={ran}
+      scene={
+        <div className="swap-candle__scroll">
+          <div
+            ref={stageRef}
+            className="swap-candle__stage"
             role="img"
-            aria-label="A pixel market hall where bots carry raydium swaps from a stall to a normalize desk"
-          />
-          <Overlay view={view} layout={layout} />
+            aria-label="A pipeline of views carrying raydium swaps from a raw row to candles"
+            style={{ '--hall-width': layout.width, aspectRatio: `${layout.width} / ${layout.height}` } as CSSProperties}
+          >
+            <Wiring view={view} layout={layout} />
+            <Boards view={view} layout={layout} />
+          </div>
         </div>
-      </div>
-      <div className="market-hall__dock">
-        <span className="market-hall__lead">Your turn</span>
-        <div className="market-hall__side" role="group" aria-label="Buy">
-          {VISITOR_SIZES.map((size) => (
-            <Button key={size} type="button" size="lg" onClick={() => trade(true, size)}>
-              Buy {size} SOL
-            </Button>
-          ))}
-        </div>
-        <div className="market-hall__side" role="group" aria-label="Sell">
-          {VISITOR_SIZES.map((size) => (
-            <Button key={size} type="button" size="lg" variant="secondary" onClick={() => trade(false, size)}>
-              Sell {size} SOL
-            </Button>
-          ))}
-        </div>
-        <span className="market-hall__status" aria-live="polite">
-          <i className={driving ? 'market-hall__dot market-hall__dot--off' : 'market-hall__dot'} aria-hidden="true" />
-          {driving ? "you're driving · auto-play off" : 'auto-playing until you click'}
-        </span>
-      </div>
-    </>
+      }
+      dock={
+        <>
+          <span className="swap-candle__lead">Your turn</span>
+          <div className="swap-candle__side" role="group" aria-label="Buy">
+            {VISITOR_SIZES.map((size) => (
+              <Button key={size} type="button" size="lg" onClick={() => trade(true, size)}>
+                Buy {size} SOL
+              </Button>
+            ))}
+          </div>
+          <div className="swap-candle__side" role="group" aria-label="Sell">
+            {VISITOR_SIZES.map((size) => (
+              <Button key={size} type="button" size="lg" variant="secondary" onClick={() => trade(false, size)}>
+                Sell {size} SOL
+              </Button>
+            ))}
+          </div>
+        </>
+      }
+    />
   );
 }

@@ -1,8 +1,11 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { createTestDB, executeExample } from '@/lib/test-utils/wasm-test-db';
 import type { WasmDB } from '@/lib/wasm-db';
-import { RAW_COLUMNS, READS, SETUP, insertSwaps } from './market-hall.examples';
-import type { Swap } from './market-hall.examples';
+import { RAW_COLUMNS, READS, SETUP, insertSwaps } from './swap-candle';
+import type { Swap } from './swap-candle';
+import { EXAMPLES } from '../index';
+
+const READ_BOXES = EXAMPLES.find((example) => example.id === 'swap-candle')!.reads;
 
 type Row = Record<string, unknown>;
 
@@ -136,5 +139,42 @@ describe('market hall pipeline', () => {
     // The hero shares one wasm instance with every docs snippet.
     const all = [SETUP, ...Object.values(READS).map((read) => (typeof read === 'string' ? read : read(1))), insertSwaps([{ id: 1, slot: 1, isBuy: true, size: 1, price: 1 }])].join('\n');
     expect(all).not.toMatch(/\b(app|shop|store)::/);
+  });
+
+  it('the just ran statement is exactly the insert behind the raw board', async () => {
+    // The strip must show the statement that produced the raw row, otherwise visitors read RQL that never ran.
+    const shown = { id: 40, slot: 1030, isBuy: false, size: 0.5, price: 151.25 };
+    const statement = insertSwaps([shown]);
+    expect(statement).toContain('id: 40');
+    expect(statement).toContain('amount0: 500000000');
+    expect(statement).toContain('amount1: 75625000');
+    expect(statement).toContain('zero_for_one: true');
+    await swap(db, [shown]);
+    const [raw] = run(db, READS.raw(40));
+    expect(num(raw.amount0)).toBe(500000000);
+    expect(num(raw.amount1)).toBe(75625000);
+    expect(String(raw.zero_for_one)).toBe('true');
+  });
+
+  it.each(READ_BOXES.filter((read) => read.title !== 'Big trades'))('read "$title" runs against the live views and returns rows', ({ rql }) => {
+    // Every read box is a promise that pressing Run works; a box that errors or comes back empty breaks it.
+    expect(run(db, rql).length).toBeGreaterThan(0);
+  });
+
+  it('big trades is empty until a visitor buys 25 SOL, then shows exactly that swap', async () => {
+    // The box tells visitors to buy 25 to see their swap; otherwise the description is a lie.
+    const { rql } = READ_BOXES.find((read) => read.title === 'Big trades')!;
+    expect(run(db, rql)).toHaveLength(0);
+    await swap(db, [{ id: 50, slot: 1040, isBuy: true, size: 25, price: 150 }]);
+    expect(run(db, rql).map((row) => num(row.id))).toEqual([50]);
+  });
+
+  it('the live subscription read keeps exactly the newest candles, so older ones retract', async () => {
+    // The panel claims take 10 drops the oldest candle; if the scan order were not newest first it would drop the wrong one.
+    await swap(db, Array.from({ length: 12 }, (_, i) => ({ id: 60 + i, slot: 1100 + i * 10, isBuy: true, size: 1, price: 150 })));
+    const buckets = run(db, 'from market::candles').map((row) => num(row.bucket)).sort((a, b) => b - a);
+    const live = run(db, READS.live).map((row) => num(row.bucket));
+    expect(buckets.length).toBeGreaterThan(10);
+    expect(live).toEqual(buckets.slice(0, 10));
   });
 });

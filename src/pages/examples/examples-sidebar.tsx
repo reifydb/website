@@ -1,22 +1,22 @@
 import { useEffect } from 'react';
 import { X } from 'lucide-react';
 import { cn } from '@/lib';
-import type { ExampleSection } from './sections';
+import type { Example } from '@/components/examples';
 
 interface ExamplesSidebarProps {
-  sections: ExampleSection[];
+  examples: Example[];
   activeId: string;
   onSelect: (id: string) => void;
 }
 
 interface LevelCardProps {
-  section: ExampleSection;
+  example: Example;
   index: number;
   isActive: boolean;
   onClick: () => void;
 }
 
-function LevelCard({ section, index, isActive, onClick }: LevelCardProps) {
+function LevelCard({ example, index, isActive, onClick }: LevelCardProps) {
   return (
     <button
       onClick={onClick}
@@ -37,27 +37,27 @@ function LevelCard({ section, index, isActive, onClick }: LevelCardProps) {
             isActive ? 'text-[#4b52d6]' : 'text-text-primary group-hover:text-[#4b52d6]'
           )}
         >
-          {section.title}
+          {example.title}
         </span>
-        <span className="mt-0.5 block text-xs text-text-muted line-clamp-2">{section.subtitle}</span>
+        <span className="mt-0.5 block text-xs text-text-muted line-clamp-2">{example.subline}</span>
       </span>
     </button>
   );
 }
 
-export function ExamplesSidebar({ sections, activeId, onSelect }: ExamplesSidebarProps) {
+export function ExamplesSidebar({ examples, activeId, onSelect }: ExamplesSidebarProps) {
   return (
     <aside className="hidden lg:flex w-72 border-r-2 border-[#4b52d6] bg-[#efedfb] flex-col">
       <nav className="flex-1 p-4 pt-6 overflow-y-auto sidebar-no-scrollbar">
         <h3 className="label uppercase text-text-muted mb-3 px-3">Examples</h3>
         <ul className="space-y-2">
-          {sections.map((section, index) => (
-            <li key={section.id}>
+          {examples.map((example, index) => (
+            <li key={example.id}>
               <LevelCard
-                section={section}
+                example={example}
                 index={index}
-                isActive={section.id === activeId}
-                onClick={() => onSelect(section.id)}
+                isActive={example.id === activeId}
+                onClick={() => onSelect(example.id)}
               />
             </li>
           ))}
@@ -68,14 +68,14 @@ export function ExamplesSidebar({ sections, activeId, onSelect }: ExamplesSideba
 }
 
 interface ExamplesSidebarMobileProps {
-  sections: ExampleSection[];
+  examples: Example[];
   activeId: string;
   onSelect: (id: string) => void;
   isOpen: boolean;
   onClose: () => void;
 }
 
-export function ExamplesSidebarMobile({ sections, activeId, onSelect, isOpen, onClose }: ExamplesSidebarMobileProps) {
+export function ExamplesSidebarMobile({ examples, activeId, onSelect, isOpen, onClose }: ExamplesSidebarMobileProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -119,14 +119,14 @@ export function ExamplesSidebarMobile({ sections, activeId, onSelect, isOpen, on
         </div>
         <nav className="p-4">
           <ul className="space-y-2">
-            {sections.map((section, index) => (
-              <li key={section.id}>
+            {examples.map((example, index) => (
+              <li key={example.id}>
                 <LevelCard
-                  section={section}
+                  example={example}
                   index={index}
-                  isActive={section.id === activeId}
+                  isActive={example.id === activeId}
                   onClick={() => {
-                    onSelect(section.id);
+                    onSelect(example.id);
                     onClose();
                   }}
                 />
