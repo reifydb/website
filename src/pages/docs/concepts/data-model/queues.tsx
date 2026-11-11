@@ -319,7 +319,7 @@ qt1:16386:0:3:1:w1 | 3    | 1       | 1970-01-01T00:00:31.000000000Z | 3  | b`}
           </p>
           <RqlCodeBlock code={dmQueuesCatalog.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            <Code>system::queue_partitions</Code> breaks the same counters down per
+            <Code>system::queue::partitions</Code> breaks the same counters down per
             partition, one row per <Code>queue_id</Code> and <Code>partition</Code>:
           </p>
           <RqlCodeBlock code={dmQueuesPartitions.code} />

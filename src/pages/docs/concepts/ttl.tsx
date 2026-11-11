@@ -92,8 +92,7 @@ export function TtlPage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What expiry means for views</h2>
           <p className="text-text-secondary mb-4">
             Expiry is silent by design. Expired rows are removed from
-            storage directly - no delete events are emitted, nothing flows through CDC,
-            and{' '}
+            storage directly - no delete events are emitted, and{' '}
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">views</Link>{' '}
             and{' '}
             <Link to="/docs/concepts/data-model/subscriptions" className="text-primary hover:text-primary-light font-medium transition-colors">subscriptions</Link>{' '}

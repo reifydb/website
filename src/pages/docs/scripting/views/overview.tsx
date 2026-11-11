@@ -65,13 +65,13 @@ as { pipeline }`}
             The keyword decides <em>when</em> the view is maintained. A transactional
             view is updated inside the transaction that writes its source: when the
             write commits, the view is already correct, and the write pays for that
-            work. A deferred view is updated after commit, driven by the change log:
+            work. A deferred view is updated after commit, driven by the WAL:
             writes stay cheap, and the view catches up moments later. The pages on{' '}
             <Link to="/docs/scripting/views/transactional" className="text-primary hover:text-primary-light font-medium transition-colors">transactional views</Link>{' '}
             and{' '}
             <Link to="/docs/scripting/views/deferred" className="text-primary hover:text-primary-light font-medium transition-colors">deferred views</Link>{' '}
             cover each in depth. Both kinds pick up rows that were written before they
-            existed. A deferred view does it by processing the change log:
+            existed. A deferred view does it by processing the WAL:
           </p>
           <ExecutableSnippet title={svoDeferred.title} initialCode={svoDeferred.code} />
           <ExecutableSnippet title={svoDeferredRead.title} initialCode={svoDeferredRead.code} />
@@ -163,7 +163,7 @@ as { pipeline }`}
 
         <Callout variant="note" title="Timing in the playground">
           Each snippet on this page runs as one request, and the in-browser engine
-          processes the change log between requests. That is why a deferred view reads
+          processes the WAL between requests. That is why a deferred view reads
           as current in the very next snippet. On a server, a deferred view lags its
           source by a moment; a transactional view never does.
         </Callout>

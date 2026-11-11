@@ -90,7 +90,7 @@ export function DataModelViewsPage() {
           <ExecutableSnippet title={dmViewsDeferred.title} initialCode={dmViewsDeferred.code} />
           <ExecutableSnippet title={dmViewsDeferredWriteRead.title} initialCode={dmViewsDeferredWriteRead.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            By the time you read it, the deferred flow has processed the change log -
+            By the time you read it, the deferred flow has processed the WAL -
             here it counts all four orders written on this page, including those
             written before the view existed:
           </p>

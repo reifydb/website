@@ -194,7 +194,7 @@ export function RunServerPage() {
 mark shutting down, stop accepting requests
   |
   v
-drain change-log consumers (views, subscriptions)   up to 10s
+drain subscriptions                                 up to 10s
 persist view frontiers
 flush pending writes to the store (blocking)
   |

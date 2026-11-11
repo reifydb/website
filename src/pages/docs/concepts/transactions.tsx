@@ -194,7 +194,7 @@ export function TransactionsPage() {
             At commit, a central coordinator checks that read/write set against every
             transaction that committed since the command's snapshot; if nothing overlaps,
             it allocates the next commit version and publishes the write-set - to storage,
-            to transactional view maintenance, and to the change log that feeds
+            to transactional view maintenance, and to the WAL that feeds
             subscriptions, all under that one version. For the full mechanics - the commit
             pipeline, conflict windows, and watermarks - see{' '}
             <Link to="/docs/contributors/internals/transactions" className="text-primary hover:text-primary-light font-medium transition-colors">Transaction Internals</Link>.

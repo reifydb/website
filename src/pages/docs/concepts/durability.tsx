@@ -67,10 +67,11 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
             happens on the commit path. Commit latency is memory latency.
           </p>
           <p className="text-text-secondary mb-4">
-            A background <strong>flush actor</strong> wakes on an interval (5 seconds by
+            A background <strong>flush actor</strong> wakes on an interval (60 seconds by
             default, the <Code>MULTI_FLUSH_INTERVAL</Code> engine setting) and runs a
             sweep. The sweep is gated by a watermark: the oldest commit version still
-            needed by any active query snapshot, version lease, or change-log consumer.
+            needed by any active query snapshot, version lease, or deferred view that has
+            not caught up.
             For every key with versions at or below that watermark, the sweep writes the
             newest such value into SQLite, then drops those versions from the buffer.
             Everything above the watermark stays resident, because someone may still read
@@ -125,7 +126,7 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
           <p className="text-text-secondary mb-4">
             <strong>SQLite backend (buffered, the default):</strong> a commit is durable
             once the flusher has swept it to disk. A clean shutdown (<Code>stop()</Code>)
-            makes that unconditional: it drains the change-log consumers, then runs a full
+            makes that unconditional: it runs a full
             flush that persists every committed write regardless of the watermark - after
             a clean stop, a reopen sees every commit. A crash (<Code>kill -9</Code>, power
             loss) is where the asynchrony shows: commits that had not been flushed yet are
@@ -161,9 +162,10 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
           <CodeBlock
             language="bash"
             code={`/var/lib/myapp/data/
-  multi.db     # row data: tables, views, ring buffers, series, operator state
+  multi.db     # row data: tables, views, ring buffers, series
   single.db    # small system state, including the commit-version clock
-  cdc.db       # the change log (CDC): every committed write, in order`}
+  operator.db  # deferred-view operator state
+  wal/         # the write-ahead log: every committed write, in order`}
           />
           <p className="text-text-secondary mt-4 mb-4">
             All three run SQLite in WAL journal mode. The default preset
@@ -179,7 +181,7 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
           <p className="text-text-secondary mb-4">
             Flush cadence and WAL checkpointing are tunable through engine settings
             (<Code>MULTI_FLUSH_INTERVAL</Code>, <Code>MULTI_WAL_AUTOCHECKPOINT</Code>,{' '}
-            <Code>CDC_WAL_AUTOCHECKPOINT</Code>, and the read-cache sizing knobs). See{' '}
+            <Code>OPERATOR_WAL_AUTOCHECKPOINT</Code>, and the read-cache sizing knobs). See{' '}
             <Link to="/docs/operate/configuration" className="text-primary hover:text-primary-light font-medium transition-colors">Storage &amp; Configuration</Link>{' '}
             for the full reference.
           </p>
@@ -192,8 +194,9 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
               <span className="text-primary font-mono">--</span>
               <span>
                 <strong>All flushed data</strong> - tables, views, ring buffers, series,
-                the catalog, operator state, and the change log come back exactly as
-                persisted. After a clean stop, that is everything.
+                the catalog, and operator state come back exactly as persisted, and any
+                commit still in the write-ahead log is replayed. After a clean stop, that
+                is everything.
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -204,7 +207,7 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
                 <Code>single.db</Code> before any version from the block is handed out.
                 On restart the clock resumes past the last persisted boundary, so commit
                 versions are monotonic across restarts and never repeat - the version
-                numbers may jump, but order is preserved. Snapshots, storage, and CDC all
+                numbers may jump, but order is preserved. Snapshots, storage, and the WAL all
                 keep speaking the same version language across the restart.
               </span>
             </li>
@@ -237,24 +240,19 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
         </section>
 
         <section>
-          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The change log is storage too</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The write-ahead log</h2>
           <p className="text-text-secondary mb-4">
-            Alongside row data, ReifyDB keeps a change-data-capture log: every committed
-            write, converted to change entries by a background producer after commit and
-            appended in commit-version order. It is the source that{' '}
-            <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">deferred views</Link>,{' '}
-            <Link to="/docs/concepts/data-model/subscriptions" className="text-primary hover:text-primary-light font-medium transition-colors">subscriptions</Link>, and
-            replication consume. On the SQLite backend it lives in <Code>cdc.db</Code>{' '}
-            and survives restarts with everything else; on the memory backend it is
-            in-memory like the rest.
+            Every commit is appended to the write-ahead log before it becomes visible.
+            The log is a directory of segment files (64 MiB each), and each record carries
+            the commit version and a checksum.{' '}
+            <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">Deferred views</Link>{' '}
+            read new commits from memory and fall back to the log when they lag;{' '}
+            <Link to="/docs/concepts/data-model/subscriptions" className="text-primary hover:text-primary-light font-medium transition-colors">subscriptions</Link>{' '}
+            start reading at the head of the log.
           </p>
           <p className="text-text-secondary mb-4">
-            By default the log is retained indefinitely. Setting the{' '}
-            <Code>CDC_TTL_DURATION</Code> engine setting puts an age bound on it: entries
-            older than the duration are evicted by a background scan, regardless of
-            consumer state. Independently of retention, a background compactor packs
-            older entries into compressed blocks (zstd) to keep <Code>cdc.db</Code>{' '}
-            small; compaction changes the encoding, not the contents.
+            A segment is deleted once every store has saved past it and every deferred
+            view has processed it. The log has no age limit.
           </p>
         </section>
 
@@ -262,11 +260,8 @@ let db = embedded::sqlite_without_buffer(SqliteConfig::new("/var/lib/myapp/data"
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Scope: one node, local disk</h2>
           <p className="text-text-secondary mb-4">
             Everything above describes a single node: durability means the local SQLite
-            files. A default deployment commits locally only. The engine does ship two
-            distribution subsystems - synchronous Raft consensus inside the commit path,
-            and asynchronous CDC replication that ships the change log to replicas - but
-            both are opt-in server configurations, and neither changes the single-node
-            story documented here. The mechanics are covered in{' '}
+            files. There is no replication: a deployment commits to the local disk only.
+            The mechanics are covered in{' '}
             <Link to="/docs/contributors/internals/transactions" className="text-primary hover:text-primary-light font-medium transition-colors">Transaction Internals</Link>.
           </p>
         </section>

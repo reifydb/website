@@ -89,8 +89,8 @@ export function ConfigurationPage() {
           <p className="text-text-secondary mb-4">
             The first builder call picks the store. <Code>server::memory()</Code> keeps
             everything in RAM and forgets it on exit. <Code>server::sqlite(config)</Code>{' '}
-            persists to a directory of SQLite files, one per store (data, operator state,
-            change log), and is what a server that must survive a restart should use.
+            persists to a directory of SQLite files, one per store (data, operator state),
+            plus a WAL, and is what a server that must survive a restart should use.
           </p>
           <CodeBlock code={storeChoice} language="rust" />
           <p className="text-text-secondary mt-4 mb-4">
@@ -220,15 +220,11 @@ ORACLE_WINDOW_SIZE | 1000`}
               ['COMMIT_GROUP_MAX_ENTRIES', '256', 'yes', 'commits per group when grouping is on'],
               ['MULTI_FLUSH_INTERVAL', '5s', 'yes', 'how often the commit buffer is drained into SQLite'],
               ['MULTI_WAL_AUTOCHECKPOINT', '10 000', 'yes', 'WAL pages between checkpoints of the data store'],
-              ['CDC_WAL_AUTOCHECKPOINT', '10 000', 'yes', 'same for the change log'],
-              ['CDC_TTL_DURATION', 'none', 'no', 'how long change-log entries are kept; none keeps them forever'],
-              ['CDC_TTL_SCAN_INTERVAL', '30s', 'yes', 'how often expired change-log entries are collected'],
               ['RETENTION_EVICT_INTERVAL', '60s', 'yes', 'how often the row-TTL collector runs'],
               ['HISTORICAL_GC_INTERVAL', '30s', 'no', 'how often superseded row versions are reclaimed'],
               ['TOMBSTONE_REAP_INTERVAL', '1s', 'no', 'how often deleted rows are physically removed'],
               ['FLOW_TICK', '1s', 'no', 'how often deferred views pull new changes'],
               ['FLOW_BACKLOG_BYTES', '64 MiB', 'yes', 'memory for changes waiting on deferred views'],
-              ['CDC_CONSUME_WAIT_TIMEOUT', '30s', 'no', 'how long a consumer waits for the change log before giving up'],
               ['THREADS_COMPUTE', '2', 'yes', 'query execution threads'],
               ['THREADS_FLOW', '2', 'yes', 'deferred-view maintenance threads'],
               ['THREADS_TASK / THREADS_COORDINATION / THREADS_ASYNC', '2 / 2 / 1', 'yes', 'background, commit coordination, and async I/O threads'],
@@ -240,7 +236,7 @@ ORACLE_WINDOW_SIZE | 1000`}
           <p className="text-text-secondary mb-4">
             Thread counts must be at least 1. <Code>METRICS_SNAPSHOT_INTERVAL</Code> must be
             at least the sample interval. Cache sizes (<Code>MULTI_POINT_BUFFER_*</Code>,{' '}
-            <Code>MULTI_RANGE_BUFFER_*</Code>, <Code>CDC_READ_BUFFER_*</Code>,{' '}
+            <Code>MULTI_RANGE_BUFFER_*</Code>,{' '}
             <Code>OPERATOR_RANGE_TIER_BYTES</Code>) all require a restart. Each sharded cache takes a
             total in <Code>*_TOTAL_BYTES</Code>, split evenly across <Code>*_SHARDS</Code>, and the
             total must be at least the shard count; <Code>OPERATOR_RANGE_TIER_BYTES</Code> is per

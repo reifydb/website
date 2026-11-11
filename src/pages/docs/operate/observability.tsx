@@ -155,11 +155,10 @@ export function ObservabilityPage() {
             headers={['Table', 'What is in it']}
             rows={[
               ['system::metrics::runtime::memory::current', 'allocator, SQLite, dictionary, and deferred-view operator memory, one row per scope and metric'],
-              ['system::metrics::runtime::watermarks::current', 'commit, query, and change-log watermarks and the lag between them'],
+              ['system::metrics::runtime::watermarks::current', 'commit and query watermarks and the lag between them'],
               ['system::metrics::runtime::operators::current', 'window state entries and bytes per deferred-view operator node'],
               ['system::metrics::storage::current', 'live and superseded bytes and row counts per table, view, or series, per storage tier'],
-              ['system::metrics::cdc::current', 'change-log bytes and entry counts per source'],
-              ['system::metrics::store::*', 'commit, read, and persistent-tier counters for the data, operator, single, and change-log stores'],
+              ['system::metrics::store::*', 'commit, read, and persistent-tier counters for the data, operator, and single stores'],
               ['system::metrics::proc::process::*', 'the process: memory, I/O, scheduling, from /proc'],
               ['system::metrics::proc::cgroup::*', 'the container: CPU, memory, I/O, and pressure from cgroups'],
               ['system::metrics::epoch, ::lifecycle, ::instruments', 'epoch bookkeeping, start/stop events, and internal instruments'],
@@ -178,8 +177,7 @@ filter { scope == "allocator" }
 map { metric, value, unit }`} />
           <p className="text-text-secondary mt-4 mb-4">
             A few metrics are worth an alert. In the watermarks table,{' '}
-            <Code>watermark_lag</Code> (scope <Code>mvcc</Code>) and <Code>cdc_lag</Code>{' '}
-            (scope <Code>cdc</Code>) say how far readers and change-log consumers trail the
+            <Code>watermark_lag</Code> (scope <Code>mvcc</Code>) says how far readers trail the
             newest commit, and a rising <Code>oracle_window_count</Code> means commits are
             piling up in conflict detection. In the memory table,{' '}
             <Code>heap_live_bytes</Code> (scope <Code>allocator</Code>) and{' '}
@@ -239,10 +237,9 @@ engine ---- sampler every 10s --------> system::metrics::*::current
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Catalog views for operators</h2>
           <p className="text-text-secondary mb-4">
             Beyond metrics, the catalog exposes the engine's moving parts as virtual
-            tables: <Code>system::flow_watermarks</Code> and{' '}
-            <Code>system::subscription_watermarks</Code> for how far each deferred view and
-            subscription has consumed, <Code>system::cdc_consumers</Code> for who is
-            reading the change log, <Code>system::versions</Code> for the commit version,
+            tables: <Code>system::flow::watermarks</Code> and{' '}
+            <Code>system::subscription::watermarks</Code> for how far each deferred view and
+            subscription has consumed, <Code>system::versions</Code> for the commit version,
             and <Code>system::configs</Code> for every runtime setting and whether it is at
             its default. See{' '}
             <Link to="/docs/operate/configuration" className="text-primary hover:text-primary-light font-medium transition-colors">Configuration</Link>{' '}

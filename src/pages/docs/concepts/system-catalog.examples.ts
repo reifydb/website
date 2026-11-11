@@ -16,7 +16,6 @@ store-operator      | 0.10.1  | module
 transaction         | 0.10.1  | module
 auth                | 0.10.1  | module
 rql                 | 0.10.1  | module
-cdc                 | 0.10.1  | module
 sub-flow            | 0.10.1  | subsystem`,
   };
 
@@ -42,7 +41,6 @@ map { id, name }`,
     expected: `id | name
 ---+------------------
 44 | authentications
-10 | cdc_consumers
 6  | column_properties
 5  | columns
 45 | configs
@@ -122,7 +120,7 @@ status | utf8   | 2`,
 export const conceptsSystemCatalogSelfExample: CodeExample = {
     id: 'concepts-system-catalog-self-describing',
     title: 'The Catalog Describes Its Own Tables',
-    code: `from system::virtual_table_columns
+    code: `from system::virtual_table::columns
 filter { vtable_id == 3 }
 sort { position: asc }
 map { name, type, position }`,

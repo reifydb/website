@@ -12,14 +12,14 @@ export function DeferredViewsPage() {
   return (
     <Layout
       title="Deferred Views"
-      description="Creating deferred views with RQL: asynchronous maintenance from the change log, backfill of existing rows, propagation of inserts, updates and deletes, aggregates, joins, chains, and the same-request read rule."
+      description="Creating deferred views with RQL: asynchronous maintenance from the WAL, backfill of existing rows, propagation of inserts, updates and deletes, aggregates, joins, chains, and the same-request read rule."
     >
       <div className="space-y-8">
         <div>
           <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">Deferred Views</h1>
           <p className="text-[clamp(16px,1.6vw,18.5px)] leading-[1.65] text-text-muted">
             A deferred view is maintained after the fact. Writes to its sources commit
-            on their own; the view consumes those changes from the change log and
+            on their own; the view consumes those changes from the WAL and
             updates its materialized rows asynchronously. Writers never pay for the
             view, and the view is eventually consistent - usually within moments. This
             makes it the right shape for expensive pipelines and anything where a short
@@ -36,7 +36,7 @@ export function DeferredViewsPage() {
           </p>
           <ExecutableSnippet title={svdCreate.title} initialCode={svdCreate.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            A deferred view starts by working through the change log, so rows written
+            A deferred view starts by working through the WAL, so rows written
             before it existed are already in it on the next request. The closed order
             was filtered out on the way:
           </p>
@@ -95,7 +95,7 @@ export function DeferredViewsPage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Chains</h2>
           <p className="text-text-secondary mb-4">
             A deferred view can read another deferred view. Each level is fed by the
-            change log of the level below it, and a new level backfills from the
+            changes of the level below it, and a new level backfills from the
             existing contents of its source just like a view over a table:
           </p>
           <ExecutableSnippet title={svdChain.title} initialCode={svdChain.code} />
@@ -140,7 +140,7 @@ export function DeferredViewsPage() {
         </section>
 
         <Callout variant="note" title="Lag on a server versus the playground">
-          On a server the change log is consumed by a background flow, so a read issued
+          On a server the WAL is consumed by a background flow, so a read issued
           right after a commit may briefly miss it. The in-browser engine behind these
           snippets processes the log between requests, which is why every read here is
           already current. Code that must never see stale derived state belongs on a{' '}

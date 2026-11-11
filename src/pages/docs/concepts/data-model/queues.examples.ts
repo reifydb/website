@@ -82,7 +82,7 @@ map { name, partitions, ordered_by, depth, in_flight, blocked_keys }`,
 export const dmQueuesPartitionsExample: CodeExample = {
     id: 'dm-queues-partitions',
     title: 'Per-Partition Counters',
-    code: `from system::queue_partitions
+    code: `from system::queue::partitions
 map { queue_id, partition, depth, in_flight, blocked_keys }`,
   };
 

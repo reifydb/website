@@ -259,7 +259,7 @@ export function ErrorsPage() {
 
         <Callout variant="note" title="A code that is not here">
           The engine defines more codes than this page lists: window, subscription,
-          authentication, CDC, temporal, and blob families among them. The operator and function
+          authentication, temporal, and blob families among them. The operator and function
           pages under <L to="/docs/rql/transforms">Pipeline Operators</L> and{' '}
           <L to="/docs/routines">Routines</L> document the failure modes specific to
           them, and <L to="/docs/resources/caveats">Caveats &amp; Limitations</L>{' '}

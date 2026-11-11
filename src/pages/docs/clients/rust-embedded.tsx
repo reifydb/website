@@ -450,8 +450,8 @@ let db = embedded::sqlite(SqliteConfig::new("/var/lib/myapp/data"))
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Shutting down</h2>
           <p className="text-text-secondary mb-4">
-            <Code>db.stop()</Code> is the clean shutdown: it drains the change-log
-            consumers, flushes every committed write to the persistent store, and stops
+            <Code>db.stop()</Code> is the clean shutdown: it drains subscriptions,
+            flushes every committed write to the persistent store, and stops
             all subsystems. After a clean stop, a reopen of a SQLite-backed database
             sees every commit - the flush interval only matters for crashes, as{' '}
             <DocLink to="/docs/concepts/durability">Durability &amp; Storage</DocLink>{' '}

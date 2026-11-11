@@ -109,7 +109,7 @@ export function GlossaryPage() {
             </Term>
             <Term name="Deferred view" to="/docs/scripting/views/deferred">
               A view maintained after the fact. Writes commit on their own; the view
-              consumes the change log and updates asynchronously, so it is eventually
+              consumes the WAL and updates asynchronously, so it is eventually
               consistent, usually within moments.
             </Term>
             <Term name="Flow" to="/docs/concepts/data-model/views">
@@ -128,9 +128,8 @@ export function GlossaryPage() {
               commits. Subscriptions need a server and do not exist in the browser
               playground.
             </Term>
-            <Term name="Change log" to="/docs/concepts/durability">
-              The ordered record of every committed write, also called CDC. Deferred
-              views, subscriptions, and replicas consume it after commit.
+            <Term name="WAL" to="/docs/concepts/durability">
+              The write-ahead log: the ordered record of every committed write.
             </Term>
             <Term name="Event" to="/docs/concepts/data-model/events">
               A declared set of variants, each with a typed payload, describing something

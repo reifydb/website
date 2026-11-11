@@ -37,22 +37,22 @@ const schemaRows: string[][] = [
   ['namespaces', 'id, name, local_name, parent_id', 'rows: system with its config, metrics, procedures and bindings children, default, rql, and yours'],
   ['tables', 'id, namespace_id, name, primary_key_id', 'rows; panics on every read once any primary key exists'],
   ['columns', 'id, object_id, object_type, name, type, position, auto_increment, dictionary_id', 'rows; type is an id into system::types'],
-  ['column_properties', 'id, column_id, type, value', 'empty'],
+  ['column::properties', 'id, column_id, type, value', 'empty'],
   ['views', 'id, namespace_id, name, kind, primary_key_id, underlying_id', 'rows once a view exists; a scan omits kind'],
   ['primary_keys', 'id, shape_id', 'rows once a primary key exists'],
-  ['primary_key_columns', 'primary_key_id, column_id, position', 'rows once a primary key exists'],
+  ['primary_key::columns', 'primary_key_id, column_id, position', 'rows once a primary key exists'],
   ['sequences', 'id, namespace_id, name, value', 'INTERNAL_ERROR on every read: a system sequence id is missing from the catalog'],
   ['ringbuffers', 'id, namespace_id, name, capacity, primary_key_id', 'rows: the two engine ring buffers under system::metrics'],
   ['series', 'id, namespace_id, name, tag_id, key_column, key_kind', 'rows: the 23 snapshots series under system::metrics'],
   ['dictionaries', 'id, namespace_id, name, value_type, id_type', 'empty until you create one'],
   ['enums', 'id, namespace_id, name', 'empty until you create one'],
-  ['enum_variants', 'id, variant_tag, variant_name, field_count, field_index, field_name, field_type', 'one row per variant; variant names come back lower-cased'],
-  ['tags, tag_variants', 'same shape as enums and enum_variants', 'empty until you create one'],
-  ['events, event_variants', 'same shape as enums and enum_variants', 'empty until you create one'],
+  ['enum::variants', 'id, variant_tag, variant_name, field_count, field_index, field_name, field_type', 'one row per variant; variant names come back lower-cased'],
+  ['tags, tag_variants', 'same shape as enums and enum::variants', 'empty until you create one'],
+  ['events, event::variants', 'same shape as enums and enum::variants', 'empty until you create one'],
   ['handlers', 'id, namespace_id, name, on_sumtype_id, on_variant_tag', 'empty until you create one'],
   ['types', 'id, name', '27 rows'],
   ['virtual_tables', 'id, namespace_id, name, kind', '62 rows'],
-  ['virtual_table_columns', 'id, vtable_id, name, type, position', '353 rows'],
+  ['virtual_table::columns', 'id, vtable_id, name, type, position', '353 rows'],
   ['procedures::rql, procedures::test', 'not observable', 'empty; not listed by virtual_tables'],
   ['procedures::in_process, ::extern_c, ::extern_wasm', 'not observable', 'panics on read'],
   ['bindings::http, ::grpc, ::ws', 'not observable', 'empty; not listed by virtual_tables'],
@@ -60,20 +60,19 @@ const schemaRows: string[][] = [
 
 const securityRows: string[][] = [
   ['identities', 'id, name, enabled', 'rows: root is always there'],
-  ['identity_attributes', 'id, name, value_type', 'empty'],
-  ['identity_attribute_values', 'identity, attribute_id, attribute, value', 'empty'],
+  ['identity::attributes', 'id, name, value_type', 'empty'],
+  ['identity::attribute_values', 'identity, attribute_id, attribute, value', 'empty'],
   ['authentications', 'id, user_id, method', 'panics on read'],
   ['roles', 'id, name', 'empty until you create one'],
-  ['granted_roles', 'identity_id, role_id', 'empty until you grant one; a scan names the first column identity'],
+  ['identity::roles', 'identity_id, role_id', 'empty until you grant one; a scan names the first column identity'],
   ['policies', 'id, name, target_type, target_namespace, target_object, enabled', 'empty until you create one'],
-  ['policy_operations', 'policy_id, operation, body_source', 'empty until you create one'],
+  ['policy::operations', 'policy_id, operation, body_source', 'empty until you create one'],
 ];
 
 const flowRows: string[][] = [
   ['flows', 'id, namespace_id, name, status', 'rows once a view exists'],
-  ['flow_watermarks', 'flow_id, shape_id, lag', 'rows once a view exists; not listed by virtual_tables'],
-  ['subscriptions, subscription_watermarks', 'not observable', 'empty; not listed by virtual_tables; the browser build has no subscription service'],
-  ['cdc_consumers', 'consumer_id, checkpoint', 'empty'],
+  ['flow::watermarks', 'flow_id, shape_id, lag', 'rows once a view exists; not listed by virtual_tables'],
+  ['subscriptions, subscription::watermarks', 'not observable', 'empty; not listed by virtual_tables; the browser build has no subscription service'],
 ];
 
 const runtimeRows: string[][] = [
@@ -87,7 +86,6 @@ const runtimeRows: string[][] = [
   ['metrics::request_history', 'ring buffer, capacity 10000', 'empty here'],
   ['metrics::statement_stats', 'ring buffer, capacity 5000', 'empty here'],
   ['metrics::storage::<object>::current', 'id, namespace_id, tier, current and historical key, value and total bytes and counts, total_bytes', '9 tables, one per object kind; empty here'],
-  ['metrics::cdc::<object>::current', 'id, namespace_id, key_bytes, value_bytes, total_bytes, count', '9 tables, one per object kind; empty here'],
   ['metrics::<domain>::snapshots', 'series keyed by ts', '23 series; empty here'],
 ];
 
@@ -199,7 +197,7 @@ export function SystemCatalogPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The catalog describes itself</h2>
           <p className="text-text-secondary mb-4">
-            <Code>system::virtual_table_columns</Code> holds the columns of every virtual
+            <Code>system::virtual_table::columns</Code> holds the columns of every virtual
             table, keyed by <Code>vtable_id</Code>. <Code>system::tables</Code> is virtual
             table 3, so its own shape is one query away:
           </p>
@@ -229,8 +227,8 @@ export function SystemCatalogPage() {
             Identities, roles, grants, and policies are catalog objects like everything
             else. <Code>root</Code> is always present in <Code>system::identities</Code>;
             roles you create appear in <Code>system::roles</Code>, grants in{' '}
-            <Code>system::granted_roles</Code>, and policies in <Code>system::policies</Code>{' '}
-            with their per-operation bodies in <Code>system::policy_operations</Code>:
+            <Code>system::identity::roles</Code>, and policies in <Code>system::policies</Code>{' '}
+            with their per-operation bodies in <Code>system::policy::operations</Code>:
           </p>
           <ExecutableSnippet title={syscatRoles.title} initialCode={syscatRoles.code} />
           <p className="text-text-secondary mt-4">
@@ -252,7 +250,7 @@ export function SystemCatalogPage() {
             Changing a setting is covered in{' '}
             <Link to="/docs/operate/configuration" className="text-primary hover:text-primary-light font-medium transition-colors">Configuration</Link>.
             The engine's own telemetry lives under <Code>system::metrics</Code>: a{' '}
-            <Code>current</Code> table per storage and change-log object kind,{' '}
+            <Code>current</Code> table per storage object kind,{' '}
             <Code>snapshots</Code> series for history, and the{' '}
             <Code>request_history</Code> and <Code>statement_stats</Code> ring buffers.
             They are ordinary catalog objects - <Code>system::ringbuffers</Code> and{' '}
@@ -295,7 +293,7 @@ export function SystemCatalogPage() {
             metrics tables, as listed by <Code>system::virtual_tables</Code> on the
             playground engine, and the few extra names that answer a <Code>from</Code>{' '}
             without being listed. Columns come from{' '}
-            <Code>system::virtual_table_columns</Code>. The last column records what a
+            <Code>system::virtual_table::columns</Code>. The last column records what a
             read returned on a fresh engine; "panics on read" means the engine lists the
             table but has no reader for it: the read traps with <Code>unreachable</Code>{' '}
             ("Unknown virtual table type"), exactly as a misspelled <Code>system::</Code>{' '}

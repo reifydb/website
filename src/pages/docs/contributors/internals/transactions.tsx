@@ -43,10 +43,7 @@ export function InternalsTransactionsPage() {
                 snapshot-based, validated at commit by an oracle. This is the path every
                 user command and query takes. Three transaction shapes exist:{' '}
                 <Code>MultiReadTransaction</Code> (query), <Code>MultiWriteTransaction</Code>{' '}
-                (command), and <Code>MultiReplicaTransaction</Code> (used by CDC
-                replication to apply a primary's committed writes on a replica at their
-                original commit versions - not by Raft, which applies through its own
-                state machine).
+                (command), and <Code>MultiReplicaTransaction</Code>.
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -145,7 +142,7 @@ export function InternalsTransactionsPage() {
               <span>
                 <strong>Version allocation.</strong> A surviving transaction is assigned the
                 next commit version from a monotonic clock. Commit versions are the global
-                order of the database: snapshots, storage, and CDC all speak in them.
+                order of the database: snapshots, storage, and the WAL all speak in them.
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -173,7 +170,7 @@ export function InternalsTransactionsPage() {
         </section>
 
         <section>
-          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">After validation: storage, watermarks, CDC</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">After validation: storage, watermarks</h2>
           <p className="text-text-secondary mb-4">
             Once a commit version is allocated, <Code>finalize_commit</Code> applies the
             transaction in a carefully ordered sequence. The transaction registers with the
@@ -181,21 +178,6 @@ export function InternalsTransactionsPage() {
             the multi-version store at exactly its commit version. On success it publishes
             a <Code>PostCommitEvent</Code> on the event bus and only then calls{' '}
             <Code>done_commit</Code> to advance the oracle's completed-commit watermark.
-          </p>
-          <p className="text-text-secondary mb-4">
-            That ordering is load-bearing. The CDC poll actor treats{' '}
-            <Code>done_until()</Code> as the safe upper bound of what it may consume. If the
-            watermark advanced before the event was published, a concurrently committing
-            transaction could surface a CDC entry that causes the poll actor to permanently
-            skip the current version's changes. Emit first, then advance.
-          </p>
-          <p className="text-text-secondary mb-4">
-            The CDC producer subscribes to <Code>PostCommitEvent</Code>, converts the
-            committed deltas into change entries, persists them to the append-only CDC log,
-            and emits <Code>CdcWrittenEvent</Code>. Downstream consumers - deferred views
-            and subscriptions - process changes strictly in commit-version order. CDC
-            therefore observes exactly the committed write-set, after commit, never a
-            partial transaction.
           </p>
         </section>
 
@@ -270,22 +252,9 @@ export function InternalsTransactionsPage() {
             transactions at all: the Raft state machine
             (<Code>sub-raft/src/state/apply.rs</Code>) applies each committed log entry by
             writing its deltas directly into the multi-version store at the leader's exact
-            commit version and emitting <Code>PostCommitEvent</Code> - so CDC, views, and
+            commit version and emitting <Code>PostCommitEvent</Code> - so views and
             subscriptions fire on followers too. The applied index is asserted to advance
             exactly one entry at a time, so nothing is skipped or re-applied.
-          </p>
-          <p className="text-text-secondary mb-4">
-            <strong>CDC replication</strong> (<Code>crates/sub-replication</Code>) is
-            asynchronous log shipping, entirely after commit. A primary publishes its CDC
-            stream over the wire - the same source-of-truth log that subscriptions read;
-            there is no separate replication log - and replicas tail it. The replica
-            applier consumes entries strictly in transaction-id order (out-of-order apply
-            would let earlier writes stomp later ones) and applies each through a{' '}
-            <Code>ReplicaTransaction</Code> / <Code>MultiReplicaTransaction</Code> at the
-            primary's exact commit version, then advances the replica's version clock via{' '}
-            <Code>advance_version_for_replica</Code>. There is no oracle validation on this
-            path: the primary already serialized these writes, so the replica's job is
-            faithful replay, and its version history converges to the primary's.
           </p>
           <p className="text-text-secondary mb-4">
             Without either subsystem configured, commit applies locally only.

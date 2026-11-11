@@ -13,11 +13,6 @@ const features: { name: string; where: string; state: string }[] = [
     state: 'In development. The raft binary is excluded from the default build; RQL run on a leader replicates to followers in a local cluster.',
   },
   {
-    name: 'CDC-based replication',
-    where: 'sub-replication crate: a replica tails the primary\'s change log and applies the deltas',
-    state: 'In development. A replica can keep writes the primary loses in a crash; see the durability caveat.',
-  },
-  {
     name: 'Sources, sinks, and bindings',
     where: 'create source ... from <connector> { ... } to ns::table, create sink, create binding ... with { method, path, ... }',
     state: 'In development. The parser knows the statements (its tests name postgres and kafka connectors); only a handful of golden scripts exist and nothing runs end to end.',
@@ -152,18 +147,6 @@ export function RoadmapPage() {
             is a feature you switch on.
           </p>
           <ul className="space-y-3 text-text-secondary">
-            <li className="flex items-start gap-3">
-              <span className="text-primary font-mono">--</span>
-              <span>
-                <strong>Crash recovery.</strong> A commit is written to the change log
-                (CDC) synchronously but reaches the row store on a flush interval (5
-                seconds by default). Replaying the change log into the row store at boot
-                is designed, with an open question about sequences that were consumed by
-                the replayed rows, but not built. Today the gap is accepted and pinned by
-                tests. See{' '}
-                <Link to="/docs/concepts/durability" className="text-primary hover:text-primary-light font-medium transition-colors">Durability &amp; Storage</Link>.
-              </span>
-            </li>
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
               <span>

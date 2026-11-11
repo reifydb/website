@@ -122,7 +122,7 @@ from ref_cons::seats`,
 export const refConsKeyCatalogExample: CodeExample = {
     id: 'ref-cons-key-catalog',
     title: 'Keys in the System Catalog',
-    code: `from system::primary_key_columns`,
+    code: `from system::primary_key::columns`,
     expected: `primary_key_id | column_id | position
 ---------------+-----------+---------
 16385          | 16479     | 0`,
@@ -154,7 +154,7 @@ insert ref_cons::gauges [{ id: 1, level: 300 }]`,
 export const refConsPropertyCatalogExample: CodeExample = {
     id: 'ref-cons-property-catalog',
     title: 'Column Properties in the System Catalog',
-    code: `from system::column_properties`,
+    code: `from system::column::properties`,
     expected: `id    | column_id | type | value
 ------+-----------+------+------
 16385 | 16482     | 1    | 2`,

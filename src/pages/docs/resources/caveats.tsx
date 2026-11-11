@@ -56,9 +56,7 @@ export function CaveatsPage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Durability</h2>
           <ul className="space-y-2 text-text-secondary">
             <Item>Commits reach disk on a background flush (5 seconds by default), so a hard crash loses up to roughly one flush interval of committed writes; a clean stop loses nothing. See <L to="/docs/concepts/durability">Durability &amp; Storage</L>.</Item>
-            <Item>The change log is written synchronously at commit while the row store is not, so after a crash a deferred view, a replica, or a subscriber may have seen writes the tables no longer contain; replaying the log at boot is designed but not built.</Item>
-            <Item>There is no write-ahead log for user commits; the memory tier is the record of recent commits and the flush is the only path to disk, and <Code>sqlite_without_buffer</Code> trades write latency for durability at commit.</Item>
-            <Item>TTL expiry removes rows silently, with no change-log event, so views and subscriptions over a TTL store are not notified. See <L to="/docs/concepts/ttl">TTL &amp; Row Settings</L>.</Item>
+            <Item>TTL expiry removes rows silently, with no delete event, so views and subscriptions over a TTL store are not notified. See <L to="/docs/concepts/ttl">TTL &amp; Row Settings</L>.</Item>
           </ul>
         </section>
 
@@ -122,7 +120,7 @@ export function CaveatsPage() {
             <Item><Code>date::now()</Code>, <Code>datetime::now()</Code>, and <Code>time::now()</Code> trap when the frame has two or more rows because the result is not broadcast; use them on single-row frames.</Item>
             <Item><Code>blob::b58</Code>, <Code>b64</Code>, <Code>b64url</Code>, <Code>hex</Code>, and <Code>utf8</Code> decode text into a blob only; feeding a blob back in fails with <Code>FUNCTION_004</Code>. See <L to="/docs/functions/blob">blob</L>.</Item>
             <Item><Code>is::type(x, int4)</Code> takes a bare type keyword; a string argument fails with <Code>FUNCTION_004</Code>. See <L to="/docs/functions/is/type">is::type</L>.</Item>
-            <Item>Sorting an <Code>Any</Code>-typed column (such as <Code>system::identity_attribute_values.value</Code>) hits an unreachable branch in the engine rather than an error.</Item>
+            <Item>Sorting an <Code>Any</Code>-typed column (such as <Code>system::identity::attribute_values.value</Code>) hits an unreachable branch in the engine rather than an error.</Item>
           </ul>
         </section>
 

@@ -130,7 +130,7 @@ export function ConstraintsPage() {
           <p className="text-text-secondary mt-4 mb-4">
             Third, the key is recorded in the system catalog. <Code>system::primary_keys</Code>{' '}
             lists one row per key with the table it belongs to (<Code>shape_id</Code>), and{' '}
-            <Code>system::primary_key_columns</Code> lists the columns of each key in
+            <Code>system::primary_key::columns</Code> lists the columns of each key in
             order:
           </p>
           <ExecutableSnippet title={refConsKeyCatalog.title} initialCode={refConsKeyCatalog.code} />
@@ -166,7 +166,7 @@ export function ConstraintsPage() {
           <p className="text-text-secondary mt-4 mb-4">
             <Code>saturation: error</Code> is the default behaviour written down
             explicitly. A property declared this way lands in{' '}
-            <Code>system::column_properties</Code> as a type and value code; saturation
+            <Code>system::column::properties</Code> as a type and value code; saturation
             is type 1, with 1 for <Code>error</Code> and 2 for <Code>none</Code>.
             Properties written inline on a column declaration never appear there:
           </p>
