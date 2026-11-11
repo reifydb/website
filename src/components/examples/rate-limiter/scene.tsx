@@ -234,13 +234,13 @@ export default function RateLimiterScene({ howTo }: SceneProps) {
       dock={
         <>
           <span className="swap-candle__lead">Your turn</span>
-          <Button type="button" size="lg" onClick={() => send.current('alice')}>
+          <Button type="button" size="lg" variant="demo" onClick={() => send.current('alice')}>
             Send as alice
           </Button>
           <Button
             type="button"
             size="lg"
-            variant="secondary"
+            variant="demo"
             onClick={() => {
               for (let k = 0; k < SPAM; k++) send.current('alice');
             }}

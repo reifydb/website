@@ -22,7 +22,7 @@ export interface Example {
     key: string;
     columns: string[];
     ready: () => Promise<void>;
-    actions: { label: string; action: string; primary: boolean }[];
+    actions: { label: string; action: string }[];
   };
   editor?: { heading: string; title: string; description: string; rql: string };
   reads: { title: string; description: string; rql: string }[];
@@ -52,8 +52,8 @@ export const EXAMPLES: Example[] = [
       columns: ['bucket', 'open', 'high', 'low', 'close'],
       ready: () => import('./swap-candle/setup').then((setup) => setup.ensureSetup()),
       actions: [
-        { label: 'Buy 25 RDB', action: 'buy:25', primary: true },
-        { label: 'Sell 25 RDB', action: 'sell:25', primary: false },
+        { label: 'Buy 25 RDB', action: 'buy:25' },
+        { label: 'Sell 25 RDB', action: 'sell:25' },
       ],
     },
     reads: [
@@ -125,8 +125,8 @@ export const EXAMPLES: Example[] = [
       columns: ['id', 'user', 'at'],
       ready: () => import('./rate-limiter/setup').then((setup) => setup.ensureSetup()),
       actions: [
-        { label: 'Send as alice', action: 'send', primary: true },
-        { label: 'Spam 5 as alice', action: 'spam', primary: false },
+        { label: 'Send as alice', action: 'send' },
+        { label: 'Spam 5 as alice', action: 'spam' },
       ],
     },
     reads: [

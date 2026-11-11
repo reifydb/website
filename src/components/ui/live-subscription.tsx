@@ -11,7 +11,6 @@ const POLL_MS = 500;
 
 export interface LiveSubscriptionAction {
   label: string;
-  primary?: boolean;
   onClick: () => void;
 }
 
@@ -219,8 +218,8 @@ export function LiveSubscription({ query, rowKey, columns, actions, ready, onVis
 
       {actions?.length ? (
         <div className="flex flex-wrap gap-2 px-4 py-3 border-t border-border-default">
-          {actions.map(({ label, primary, onClick }) => (
-            <Button key={label} type="button" variant={primary ? undefined : 'secondary'} onClick={onClick}>
+          {actions.map(({ label, onClick }) => (
+            <Button key={label} type="button" variant="demo" onClick={onClick}>
               {label}
             </Button>
           ))}

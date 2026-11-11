@@ -452,7 +452,7 @@ function Boards({ view, layout }: { view: View; layout: Layout }) {
         <div className="swap-candle__title">market::candles</div>
       </div>
       <div className="swap-candle__board swap-candle__app" style={place(layout, layout.boxes.app)}>
-        <div className="swap-candle__title">Your app</div>
+        <div className="swap-candle__title">Your frontend</div>
         <div className="swap-candle__price">
           {last ? money(last.close) : '-'}
           {last && <MarkView key={nodes.app.marks[keyOf('app', last)]?.flow ?? 'none'} mark={nodes.app.marks[keyOf('app', last)]} format={money} />}
@@ -626,14 +626,14 @@ export default function SwapCandleScene({ howTo }: SceneProps) {
           <span className="swap-candle__lead">Your turn</span>
           <div className="swap-candle__side" role="group" aria-label="Buy">
             {VISITOR_SIZES.map((size) => (
-              <Button key={size} type="button" size="lg" onClick={() => trade(true, size)}>
+              <Button key={size} type="button" size="lg" variant="demo" onClick={() => trade(true, size)}>
                 Buy {size} RDB
               </Button>
             ))}
           </div>
           <div className="swap-candle__side" role="group" aria-label="Sell">
             {VISITOR_SIZES.map((size) => (
-              <Button key={size} type="button" size="lg" variant="secondary" onClick={() => trade(false, size)}>
+              <Button key={size} type="button" size="lg" variant="demo" onClick={() => trade(false, size)}>
                 Sell {size} RDB
               </Button>
             ))}

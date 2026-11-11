@@ -7,9 +7,8 @@ export function LivePanel({ id, subscription }: { id: string; subscription: NonN
   const stopRef = useRef<(() => void) | null>(null);
   const actions = useMemo(
     () =>
-      subscription.actions.map(({ label, action, primary }) => ({
+      subscription.actions.map(({ label, action }) => ({
         label,
-        primary,
         onClick: () => sendLiveAction(id, action),
       })),
     [id, subscription.actions],

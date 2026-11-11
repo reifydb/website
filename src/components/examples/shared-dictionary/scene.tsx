@@ -297,13 +297,13 @@ export default function SharedDictionaryScene({ howTo }: SceneProps) {
       dock={
         <>
           <span className="swap-candle__lead">Your turn</span>
-          <Button type="button" size="lg" disabled={full} onClick={() => actions.current.addDevice()}>
+          <Button type="button" size="lg" variant="demo" disabled={full} onClick={() => actions.current.addDevice()}>
             {full ? 'Fleet full' : 'Add device'}
           </Button>
-          <Button type="button" size="lg" variant="secondary" onClick={() => actions.current.alert()}>
+          <Button type="button" size="lg" variant="demo" onClick={() => actions.current.alert()}>
             Trigger alert
           </Button>
-          <Button type="button" size="lg" variant="secondary" onClick={() => actions.current.command()}>
+          <Button type="button" size="lg" variant="demo" onClick={() => actions.current.command()}>
             Send command
           </Button>
         </>

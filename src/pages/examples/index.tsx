@@ -84,7 +84,7 @@ export function ExamplesPage() {
             {active.subscription && (
               <section className="mt-10">
                 <h2 className="label uppercase text-text-muted mb-3">{active.subscription.heading}</h2>
-                <LivePanel id={active.id} subscription={active.subscription} />
+                <LivePanel key={active.id} id={active.id} subscription={active.subscription} />
               </section>
             )}
 
