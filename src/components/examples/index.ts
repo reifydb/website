@@ -113,7 +113,7 @@ export const EXAMPLES: Example[] = [
         },
         {
           text: 'The app makes one call per request. A failed assert means blocked, and nothing is stored.',
-          rql: requestCall(1, 'alice', 1794317010477),
+          rql: requestCall(1, 'alice'),
         },
       ],
     },

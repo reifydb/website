@@ -88,7 +88,7 @@ export default function RateLimiterScene({ howTo }: SceneProps) {
       .then(async () => {
         const id = takeId();
         const slot = seqRef.current[user] % LIMIT;
-        const outcome = await sendRequest(call, id, user, Date.now());
+        const outcome = await sendRequest(call, id, user);
         setRan(outcome.rql);
         markRef.current += 1;
         if (outcome.blocked) {
