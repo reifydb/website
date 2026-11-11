@@ -3,6 +3,7 @@ import type { ComponentType, LazyExoticComponent } from 'react';
 import { CANDLES_DDL, NORMALIZED_DDL, RAW_DDL, RAW_TABLE, READS } from './swap-candle/swap-candle';
 import { PROCEDURE_DDL, READS as RATE_READS, RING_DDL, requestCall } from './rate-limiter/rate-limiter';
 import { CLAIM, NAMES_DDL, READS as FLEET_READS, STORAGES_DDL, insertDevice } from './shared-dictionary/shared-dictionary';
+import { CLAIM as HOOK_CLAIM, COUNTERS, OUTBOX_DDL, READS as HOOK_READS, ack, fail, placeOrder, replay } from './webhook-outbox/webhook-outbox';
 
 export interface SceneProps {
   howTo: string;
@@ -178,6 +179,35 @@ export const EXAMPLES: Example[] = [
     },
     reads: [],
     load: () => import('./shared-dictionary/scene'),
+  },
+  {
+    id: 'webhook-outbox',
+    title: 'Webhook outbox',
+    headline: "Three tries, then it's dead.",
+    subline: 'A queue in the database holds every webhook. Claim one, fail it, and watch it come back.',
+    howTo: 'Click Claim next, then Succeed or Fail. Fail one three times, or let its lease run out.',
+    howItWorks: {
+      why: 'Webhook receivers go down, and a worker can crash mid-send. A lease in the queue brings the webhook back either way, and because the queue is in the database, the webhook is saved in the same transaction as the order.',
+      steps: [
+        { text: 'The outbox is a queue: 3 tries, with a backoff that starts at 2 seconds and doubles.', rql: OUTBOX_DDL },
+        { text: 'Your app saves the order and its webhook in one transaction. Both land, or neither does.', rql: placeOrder(1, 'order.paid', 'shop.reifydb.com') },
+        { text: 'A worker claims the webhook and gets a lease with a deadline. If the worker never answers, the lease runs out and the webhook comes back.', rql: HOOK_CLAIM },
+        { text: 'Ack when delivered, fail to retry. Out of tries, it is dead until you replay it.', rql: [ack('<token>'), fail('<token>', '503 from receiver'), replay(1)].join('\n') },
+      ],
+    },
+    editor: {
+      heading: 'Query the queue',
+      title: 'The queue counters',
+      description: 'Ready webhooks, webhooks out on a lease, and when the next one is due. Claim or fail above and run it again.',
+      rql: COUNTERS,
+    },
+    reads: [
+      { title: 'Every webhook ever queued', description: 'Done ones stay in storage. Ack a few and run it again.', rql: HOOK_READS.all },
+      { title: 'Only one event type', description: 'A queue is filtered like any table.', rql: HOOK_READS.paid },
+      { title: 'Webhooks per url', description: 'How many webhooks each receiver got.', rql: HOOK_READS.perUrl },
+      { title: 'The queue in the catalog', description: 'The same counters, read from the list of queues.', rql: HOOK_READS.catalog },
+    ],
+    load: () => import('./webhook-outbox/scene'),
   },
 ];
 

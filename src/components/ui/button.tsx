@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { cn } from '@/lib'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost'
+  variant?: 'primary' | 'secondary' | 'ghost' | 'demo'
   size?: 'sm' | 'md' | 'lg'
   href?: string
   children: ReactNode
@@ -17,6 +17,10 @@ const variantStyles = {
   secondary: cn(
     'bg-white border border-[#e3e5f4] text-[#2a2f8f]',
     'hover:border-primary'
+  ),
+  demo: cn(
+    'bg-[#eef0fd] border border-[#7e85f2] text-[#2a2f8f]',
+    'hover:bg-primary hover:border-primary hover:text-white'
   ),
   ghost: cn(
     'text-text-secondary',

@@ -1167,3 +1167,115 @@ div::backdrop {
     animation: none;
   }
 }
+
+.webhook-outbox {
+  padding: 16px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 12px;
+}
+
+.webhook-outbox__columns {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .webhook-outbox__columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .webhook-outbox__columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.webhook-outbox__column {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 8px 10px 10px;
+  border: 1px solid #c9c3dc;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.webhook-outbox__column--claimed {
+  border-color: #7e85f2;
+  box-shadow: 0 2px 0 #e6e8fd;
+}
+
+.webhook-outbox__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 8px;
+  color: var(--color-text-muted);
+  font-size: 11px;
+}
+
+.webhook-outbox__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.webhook-outbox__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 9em;
+}
+
+.webhook-outbox__card {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background: #ebe9f7;
+  animation: example-live-insert 1.6s ease-out;
+  transition: opacity 600ms ease;
+}
+
+.webhook-outbox__hook {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.webhook-outbox__meta {
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.webhook-outbox__card--backoff,
+.webhook-outbox__card--returning {
+  opacity: 0.5;
+}
+
+.webhook-outbox__card--claimed {
+  background: #e6e8fd;
+}
+
+.webhook-outbox__card--done {
+  opacity: 0.6;
+}
+
+.webhook-outbox__card--dead {
+  background: #f8e3e3;
+}
+
+.webhook-outbox__empty {
+  color: var(--color-text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .webhook-outbox__card {
+    animation: none;
+  }
+}
