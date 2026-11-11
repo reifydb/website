@@ -59,19 +59,16 @@ export function MobileMenu({ open, onClose, extra }: MobileMenuProps) {
       style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 9999 }}
       className="lg:hidden"
     >
-      {/* Backdrop */}
       <div
         onClick={onClose}
         style={{ position: 'absolute', inset: 0 }}
         className="bg-black/50"
       />
 
-      {/* Panel */}
       <div
         style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '100%', maxWidth: '100vw' }}
         className="bg-bg-primary overflow-y-auto overflow-x-hidden"
       >
-        {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border-default">
           <span className="text-sm text-text-muted">Navigation</span>
           <button
@@ -83,7 +80,6 @@ export function MobileMenu({ open, onClose, extra }: MobileMenuProps) {
           </button>
         </div>
 
-        {/* Navigation Links */}
         <nav className="flex flex-col px-6 py-4 gap-1">
           {extra && (
             <div className="mb-4 pb-4 border-b border-border-default">
@@ -183,7 +179,6 @@ export function MobileMenu({ open, onClose, extra }: MobileMenuProps) {
             );
           })}
 
-          {/* Direct Links */}
           {navDirectLinks.map((link) => {
             const isAnchor = link.href.startsWith('/#');
 
@@ -214,10 +209,8 @@ export function MobileMenu({ open, onClose, extra }: MobileMenuProps) {
             );
           })}
 
-          {/* Divider */}
           <div className="border-t border-border-light my-2" />
 
-          {/* CTA Button */}
           <Button href="/docs" size="lg" onClick={onClose} className="w-full min-h-[48px]">
             Get Started
           </Button>

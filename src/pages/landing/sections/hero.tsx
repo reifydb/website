@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from 'react';
-import { Button } from '@/components/ui';
+import { Button, PixelScene } from '@/components/ui';
+import { Container } from '@/components/layout';
 import { EXAMPLES, ExampleHost } from '@/components/examples';
 import type { Example } from '@/components/examples';
 
@@ -15,9 +16,12 @@ export function HeroSection() {
   const example = useSyncExternalStore<Example | null>(subscribe, () => PICKED, () => null);
 
   return (
-    <section className="dots relative overflow-hidden border-b border-[#e3e5f4]">
-      <div className="mx-auto max-w-6xl px-6 md:px-8 pt-[clamp(36px,6vw,72px)] pb-[clamp(36px,5vw,64px)]">
-        <div className="flex flex-col items-center text-center mb-[clamp(24px,3vw,36px)]">
+    <section className="sky relative overflow-hidden min-h-[calc(100svh-var(--nav-h))] flex flex-col justify-center">
+      <div className="absolute inset-x-0 bottom-0">
+        <PixelScene kind="landscape" />
+      </div>
+      <Container className="relative pt-[clamp(36px,6vw,72px)] pb-[clamp(36px,5vw,64px)]">
+        <div className="flex flex-col items-start text-left max-w-[48rem] mb-[clamp(24px,3vw,36px)]">
           <p className="eyebrow mb-4">THE DATABASE THAT RUNS YOUR BACKEND</p>
 
           <h1 className="text-[clamp(32px,4.4vw,54px)] leading-[1.05] tracking-[-0.035em] text-text-primary mb-3 text-balance">
@@ -28,7 +32,7 @@ export function HeroSection() {
             {example?.subline ?? NEUTRAL_SUBLINE}
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3.5 mt-[clamp(18px,2.4vw,26px)]">
+          <div className="flex flex-wrap items-center justify-start gap-3.5 mt-[clamp(18px,2.4vw,26px)]">
             <Button href="/docs/quick-start" size="lg">
               Get started <span className="transition-transform group-hover:translate-x-[3px]">→</span>
             </Button>
@@ -39,7 +43,7 @@ export function HeroSection() {
         </div>
 
         <ExampleHost example={example} />
-      </div>
+      </Container>
     </section>
   );
 }

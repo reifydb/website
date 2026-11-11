@@ -108,9 +108,7 @@ export function AmdahlSimulator() {
           }
         `}</style>
 
-        {/* ── Desktop: ASCII art layout ── */}
         <div className="hidden md:block">
-          {/* Title */}
           <div className="whitespace-pre leading-relaxed">
             <span className="text-text-muted">{FULL}</span>
             {'\n'}
@@ -123,16 +121,13 @@ export function AmdahlSimulator() {
             Every database has a speed limit, set by the slowest step that can&#39;t run in parallel.
           </div>
 
-          {/* Parameters */}
           <div>
             <div className="whitespace-pre text-text-muted">{P_TOP}</div>
             <ParameterSliders rtt={rtt} setRtt={setRtt} contention={contention} setContention={setContention} />
             <div className="whitespace-pre text-text-muted">{F_DASH}</div>
           </div>
 
-          {/* Two-column comparison */}
           <div className="flex flex-col md:flex-row gap-4 md:gap-[3ch] mt-4">
-            {/* Traditional */}
             <div className="whitespace-pre leading-relaxed">
               <span className="text-text-muted">{B_LEFT}</span>
               {'\n'}
@@ -156,7 +151,6 @@ export function AmdahlSimulator() {
               <span className="text-text-muted">{B_LEFT}</span>
             </div>
 
-            {/* ReifyDB */}
             <div className="whitespace-pre leading-relaxed">
               <span className="text-text-muted">{B_RIGHT}</span>
               {'\n'}
@@ -176,7 +170,6 @@ export function AmdahlSimulator() {
             </div>
           </div>
 
-          {/* Bottom callout */}
           <div className="whitespace-pre leading-relaxed mt-4">
             <span className="text-text-muted">{FULL}</span>
             {'\n'}
@@ -186,9 +179,7 @@ export function AmdahlSimulator() {
           </div>
         </div>
 
-        {/* ── Mobile: CSS border layout ── */}
         <div className="md:hidden">
-          {/* Title */}
           <div className="border border-border-default p-3 text-center">
             <span className="text-primary font-bold text-xs">AMDAHL&#39;S LAW: THE NETWORK CEILING</span>
           </div>
@@ -197,15 +188,12 @@ export function AmdahlSimulator() {
             Every database has a speed limit, set by the slowest step that can&#39;t run in parallel.
           </p>
 
-          {/* Parameters */}
           <div className="border border-border-default p-3">
             <p className="text-text-muted text-[10px] mb-2">-- PARAMETERS</p>
             <ParameterSliders rtt={rtt} setRtt={setRtt} contention={contention} setContention={setContention} />
           </div>
 
-          {/* Comparison cards */}
           <div className="flex flex-col gap-3 mt-3">
-            {/* Traditional */}
             <div className="border border-border-default p-4">
               <p className="text-primary font-bold text-xs mb-2">TRADITIONAL</p>
               <p className="text-text-secondary text-xs mb-1">( [ APP ] → [ DB ] → [ APP ] ) × N</p>
@@ -221,7 +209,6 @@ export function AmdahlSimulator() {
               </p>
             </div>
 
-            {/* ReifyDB */}
             <div className="border border-border-default p-4">
               <p className="text-primary font-bold text-xs mb-2">REIFYDB</p>
               <p className="text-text-secondary text-xs mb-1">[ APP ] → [ N stmts · 1 ACID TX ] → [ ReifyDB ]</p>
@@ -231,7 +218,6 @@ export function AmdahlSimulator() {
             </div>
           </div>
 
-          {/* Bottom callout */}
           <div className="border border-border-default p-3 mt-3 text-center">
             <p className="text-primary text-xs">The network is the hard limit. ReifyDB eliminates round trips from the hot path.</p>
           </div>

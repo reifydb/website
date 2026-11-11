@@ -69,9 +69,7 @@ export function DocsWipTerminal() {
 
       <main className="flex-1 flex items-center justify-center px-6 py-16">
         <div className="w-full max-w-2xl">
-          {/* Terminal Window */}
           <div className="bg-code-bg border border-white/10 overflow-hidden">
-            {/* macOS Chrome Header */}
             <div className="h-10 sm:h-12 bg-code-bg-elevated border-b border-white/10 flex items-center px-3 sm:px-4 gap-2">
               <div className="flex gap-1.5">
                 <div className="w-3 h-3 rounded-full bg-status-error" />
@@ -81,9 +79,7 @@ export function DocsWipTerminal() {
               <span className="text-xs font-medium text-code-text-muted ml-2">reifydb@docs</span>
             </div>
 
-            {/* Terminal Body */}
             <div className="p-6 sm:p-8 font-mono text-sm sm:text-base leading-relaxed min-h-[200px]">
-              {/* Previous completed messages */}
               {messages.slice(0, messageIndex).map((msg, idx) => (
                 <div key={idx} className="flex items-center mb-2 text-code-text-muted">
                   <span className="text-primary">$</span>
@@ -92,7 +88,6 @@ export function DocsWipTerminal() {
                 </div>
               ))}
 
-              {/* Current typing line */}
               <div className="flex items-center">
                 <span className="text-primary">$</span>
                 <span className="ml-2 text-code-text">{displayText}</span>
@@ -105,7 +100,6 @@ export function DocsWipTerminal() {
             </div>
           </div>
 
-          {/* Info text below terminal */}
           <div className="mt-8 text-center">
             <p className="text-text-secondary mb-4">
               We're actively writing comprehensive documentation for ReifyDB.
@@ -114,7 +108,6 @@ export function DocsWipTerminal() {
               In the meantime, check out our GitHub repository for examples and source code.
             </p>
 
-            {/* Action buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="https://github.com/reifydb/reifydb"

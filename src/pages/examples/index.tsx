@@ -3,6 +3,7 @@ import { Menu } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
+import { Container } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { ExecutableSnippet } from '@/components/ui';
 import { RqlHighlight } from '@/components/ui/rql-highlight';
@@ -42,8 +43,8 @@ export function ExamplesPage() {
       <Navbar framed />
       <div className="flex flex-1">
         <ExamplesSidebar examples={EXAMPLES} activeId={active.id} onSelect={handleSelect} />
-        <main className="flex-1 min-w-0 bg-[#faf8f2] overflow-y-auto">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:pl-12 py-6 sm:py-8">
+        <main className="flex-1 min-w-0 bg-bg-primary overflow-y-auto">
+          <Container className="lg:pl-12 py-6 sm:py-8">
             <button
               onClick={() => setDrawerOpen(true)}
               className="lg:hidden flex items-center gap-2 text-sm text-text-secondary hover:text-primary mb-4 transition-colors"
@@ -53,15 +54,14 @@ export function ExamplesPage() {
             </button>
 
             <SectionHeader
-              eyebrow={`Example ${activeIndex + 1} of ${EXAMPLES.length}`}
               title={active.title}
               subtitle={active.subline}
             />
 
             <ExampleHost key={active.id} example={active} className="mt-8" />
 
-            <section className="mt-10">
-              <h2 className="label uppercase text-text-muted mb-3">How it works</h2>
+            <section className="mt-10 border-t border-[#e3e5f4] pt-6">
+              <h2 className="font-display text-xs font-semibold uppercase tracking-[0.06em] text-text-muted mb-3">How it works</h2>
               <p className="text-text-secondary leading-relaxed mb-6">{active.howItWorks.why}</p>
               <ol className="space-y-6">
                 {active.howItWorks.steps.map((step, index) => (
@@ -82,22 +82,22 @@ export function ExamplesPage() {
             </section>
 
             {active.subscription && (
-              <section className="mt-10">
-                <h2 className="label uppercase text-text-muted mb-3">{active.subscription.heading}</h2>
+              <section className="mt-10 border-t border-[#e3e5f4] pt-6">
+                <h2 className="font-display text-xs font-semibold uppercase tracking-[0.06em] text-text-muted mb-3">{active.subscription.heading}</h2>
                 <LivePanel key={active.id} id={active.id} subscription={active.subscription} />
               </section>
             )}
 
             {active.editor && (
-              <section ref={editorRef} className="mt-10">
-                <h2 className="label uppercase text-text-muted mb-3">{active.editor.heading}</h2>
+              <section ref={editorRef} className="mt-10 border-t border-[#e3e5f4] pt-6">
+                <h2 className="font-display text-xs font-semibold uppercase tracking-[0.06em] text-text-muted mb-3">{active.editor.heading}</h2>
                 <p className="text-text-secondary mb-4">{active.editor.description}</p>
                 <ExecutableSnippet initialCode={active.editor.rql} title={active.editor.title} />
               </section>
             )}
 
-            <section ref={readsRef} className="mt-10">
-              <h2 className="label uppercase text-text-muted mb-3">Read the live tables</h2>
+            <section ref={readsRef} className="mt-10 border-t border-[#e3e5f4] pt-6">
+              <h2 className="font-display text-xs font-semibold uppercase tracking-[0.06em] text-text-muted mb-3">Read the live tables</h2>
               <div className="space-y-6">
                 {active.reads.map((read) => (
                   <div key={read.title}>
@@ -111,12 +111,12 @@ export function ExamplesPage() {
             {EXAMPLES.length > 1 && (
               <button
                 onClick={() => handleSelect(next.id)}
-                className="mt-10 text-sm font-medium text-[#4b52d6] hover:underline"
+                className="link-accent mt-10 text-sm font-medium"
               >
                 Next example: {next.title} →
               </button>
             )}
-          </div>
+          </Container>
         </main>
       </div>
       <Footer />

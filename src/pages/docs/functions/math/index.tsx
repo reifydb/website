@@ -7,7 +7,6 @@ export function MathModuleOverviewPage() {
   return (
     <Layout>
       <div className="space-y-8">
-        {/* Header */}
         <div>
           <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             math Module
@@ -17,7 +16,6 @@ export function MathModuleOverviewPage() {
           </p>
         </div>
 
-        {/* Quick Example */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Quick Example</h2>
           <ExecutableSnippet
@@ -26,7 +24,6 @@ export function MathModuleOverviewPage() {
           />
         </section>
 
-        {/* Aggregation Functions */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Aggregation Functions</h2>
           <p className="text-text-secondary mb-4">
@@ -52,7 +49,6 @@ export function MathModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Scalar Functions */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Scalar Functions</h2>
           <p className="text-text-secondary mb-4">
@@ -110,7 +106,6 @@ export function MathModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Trigonometric Functions */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Trigonometric Functions</h2>
           <p className="text-text-secondary mb-4">
@@ -148,7 +143,6 @@ export function MathModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Logarithmic & Exponential */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Logarithmic & Exponential</h2>
           <p className="text-text-secondary mb-4">
@@ -182,7 +176,6 @@ export function MathModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Reference Table */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Function Reference</h2>
           <div className="dialog overflow-x-auto">

@@ -1,6 +1,6 @@
-import { Navbar, Footer } from '@/components/layout';
+import { Container, Footer, Navbar, Section } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { Button, GEM, GEM_COLORS, PageCloser, PageHero, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
+import { Button, PageCloser, PageHero, PixelScene, ScrollReveal } from '@/components/ui';
 
 interface Value {
   id: string;
@@ -133,18 +133,13 @@ export function ValuesPage() {
           scene={<PixelScene kind="trade" />}
         />
 
-        <section className="pt-12 sm:pt-16 pb-24 sm:pb-32">
-          <div className="mx-auto max-w-5xl px-6 md:px-8">
-            {values.map((value, index) => {
-              const color = GEM_COLORS[index];
+        <Section tone="plain">
+          <Container>
+            {values.map((value) => {
               return (
-                <ScrollReveal key={value.id} className="border-t border-[#c9c3dc] last:border-b">
+                <ScrollReveal key={value.id} className="border-t border-[#e3e5f4] last:border-b">
                   <article className="grid gap-4 md:grid-cols-[minmax(190px,1fr)_minmax(0,60ch)] md:gap-[clamp(20px,4.5vw,68px)] py-[clamp(34px,4.4vw,54px)]">
-                    <div className="self-start md:sticky md:top-[84px]">
-                      <p className="label uppercase text-[#4b52d6] inline-flex items-center gap-2 mb-3">
-                        <PixelIcon rows={GEM} colors={{ x: color }} className="h-3 w-3" />
-                        Value {String(index + 1).padStart(2, '0')}
-                      </p>
+                    <div className="self-start md:sticky md:top-[calc(var(--nav-h)+32px)]">
                       <h2 className="text-[clamp(21px,2.3vw,27px)] font-normal leading-[1.16] tracking-[-0.028em] text-text-primary text-balance">
                         {value.title}
                       </h2>
@@ -155,18 +150,15 @@ export function ValuesPage() {
                           {paragraph}
                         </p>
                       ))}
-                      <div
-                        className="mt-[clamp(22px,2.6vw,30px)] border-2 p-5"
-                        style={{ borderColor: color, backgroundColor: `${color}1f` }}
-                      >
-                        <h3 className="label uppercase text-text-muted mb-3">In practice</h3>
+                      <div className="mt-[clamp(22px,2.6vw,30px)] border-t border-[#e3e5f4] pt-5">
+                        <h3 className="font-display text-xs font-semibold uppercase tracking-[0.06em] text-text-muted mb-3">In practice</h3>
                         <ul className="grid gap-2.5">
                           {value.practice.map((item) => (
                             <li
                               key={item}
                               className="grid grid-cols-[7px_minmax(0,1fr)] items-baseline gap-3 text-[14.5px] leading-normal text-text-primary"
                             >
-                              <span className="h-[7px] w-[7px]" style={{ backgroundColor: color }} aria-hidden="true" />
+                              <span className="h-[7px] w-[7px] bg-[#4b52d6]" aria-hidden="true" />
                               {item}
                             </li>
                           ))}
@@ -177,8 +169,8 @@ export function ValuesPage() {
                 </ScrollReveal>
               );
             })}
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         <PageCloser
           eyebrow="NEXT LEVEL"

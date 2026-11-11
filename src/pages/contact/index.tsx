@@ -1,4 +1,4 @@
-import { Navbar, Footer } from '@/components/layout';
+import { Container, Footer, Navbar, Section } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { BUBBLE, CODE, Button, ICON_COLORS, MAIL, PageHero, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
 
@@ -50,15 +50,15 @@ export function ContactPage() {
           </Button>
         </PageHero>
 
-        <section className="pt-12 sm:pt-16 pb-24 sm:pb-32">
-          <div className="mx-auto max-w-5xl px-6 md:px-8 grid gap-6 sm:grid-cols-3">
+        <Section tone="plain">
+          <Container className="grid gap-6 sm:grid-cols-3">
             {channels.map((channel, index) => (
               <ScrollReveal key={channel.title} className="h-full" delay={index * 75}>
                 <a
                   href={channel.href}
                   target={channel.href.startsWith('http') ? '_blank' : undefined}
                   rel={channel.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="level-card group flex flex-col"
+                  className="group flex h-full flex-col border-t border-[#e3e5f4] pt-6"
                 >
                   <PixelIcon rows={channel.icon} colors={ICON_COLORS} className="h-8 w-9 text-[#4b52d6] mb-5" />
                   <h2 className="text-lg font-bold text-text-primary group-hover:text-[#4b52d6] transition-colors mb-1">
@@ -69,8 +69,8 @@ export function ContactPage() {
                 </a>
               </ScrollReveal>
             ))}
-          </div>
-        </section>
+          </Container>
+        </Section>
       </main>
 
       <Footer />

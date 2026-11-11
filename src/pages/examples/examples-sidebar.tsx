@@ -11,30 +11,21 @@ interface ExamplesSidebarProps {
 
 interface LevelCardProps {
   example: Example;
-  index: number;
   isActive: boolean;
   onClick: () => void;
 }
 
-function LevelCard({ example, index, isActive, onClick }: LevelCardProps) {
+function LevelCard({ example, isActive, onClick }: LevelCardProps) {
   return (
     <button
       onClick={onClick}
-      className={cn('group w-full flex items-start gap-3 text-left p-3', isActive ? 'dialog' : 'border-2 border-transparent')}
+      className="group w-full text-left px-3 py-3.5"
     >
-      <span
-        className={cn(
-          'flex h-7 w-7 shrink-0 items-center justify-center font-mono text-xs font-bold',
-          isActive ? 'bg-[#ffe08a] text-[#1b1840]' : 'bg-[#4b52d6] text-white'
-        )}
-      >
-        {index + 1}
-      </span>
       <span className="min-w-0">
         <span
           className={cn(
             'block text-sm font-medium',
-            isActive ? 'text-[#4b52d6]' : 'text-text-primary group-hover:text-[#4b52d6]'
+            isActive ? 'marker text-[#4b52d6]' : 'text-text-primary group-hover:text-[#4b52d6]'
           )}
         >
           {example.title}
@@ -47,15 +38,14 @@ function LevelCard({ example, index, isActive, onClick }: LevelCardProps) {
 
 export function ExamplesSidebar({ examples, activeId, onSelect }: ExamplesSidebarProps) {
   return (
-    <aside className="hidden lg:flex w-72 border-r-2 border-[#4b52d6] bg-[#efedfb] flex-col">
+    <aside className="hidden lg:flex w-72 shrink-0 sticky top-[var(--nav-h)] self-start h-[calc(100vh-var(--nav-h))] border-r border-[#e3e5f4] bg-bg-primary flex-col">
       <nav className="flex-1 p-4 pt-6 overflow-y-auto sidebar-no-scrollbar">
-        <h3 className="label uppercase text-text-muted mb-3 px-3">Examples</h3>
-        <ul className="space-y-2">
-          {examples.map((example, index) => (
-            <li key={example.id}>
+        <h3 className="font-display text-xs font-semibold uppercase tracking-[0.06em] text-text-muted mb-3 px-3">Examples</h3>
+        <ul className="border-t border-[#e3e5f4]">
+          {examples.map((example) => (
+            <li key={example.id} className="border-b border-[#e3e5f4]">
               <LevelCard
                 example={example}
-                index={index}
                 isActive={example.id === activeId}
                 onClick={() => onSelect(example.id)}
               />
@@ -97,18 +87,16 @@ export function ExamplesSidebarMobile({ examples, activeId, onSelect, isOpen, on
         isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       )}
     >
-      {/* Backdrop */}
       <div onClick={onClose} className="absolute inset-0 bg-black/60" />
 
-      {/* Drawer */}
       <div
         className={cn(
-          'absolute top-0 left-0 h-full w-72 max-w-[85vw] bg-[#efedfb] border-r-2 border-[#4b52d6] z-10 transition-[translate] duration-300 overflow-y-auto',
+          'absolute top-0 left-0 h-full w-72 max-w-[85vw] bg-bg-primary border-r border-[#e3e5f4] z-10 transition-[translate] duration-300 overflow-y-auto',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <div className="flex items-center justify-between p-4 border-b border-[#c9c3dc]">
-          <h3 className="label uppercase text-text-muted">Examples</h3>
+        <div className="flex items-center justify-between p-4 border-b border-[#e3e5f4]">
+          <h3 className="font-display text-xs font-semibold uppercase tracking-[0.06em] text-text-muted">Examples</h3>
           <button
             onClick={onClose}
             className="w-8 h-8 flex items-center justify-center text-text-muted hover:text-text-primary transition-colors"
@@ -118,12 +106,11 @@ export function ExamplesSidebarMobile({ examples, activeId, onSelect, isOpen, on
           </button>
         </div>
         <nav className="p-4">
-          <ul className="space-y-2">
-            {examples.map((example, index) => (
-              <li key={example.id}>
+          <ul className="border-t border-[#e3e5f4]">
+            {examples.map((example) => (
+              <li key={example.id} className="border-b border-[#e3e5f4]">
                 <LevelCard
                   example={example}
-                  index={index}
                   isActive={example.id === activeId}
                   onClick={() => {
                     onSelect(example.id);

@@ -3,6 +3,7 @@ import { cn } from '@/lib';
 import { wasmExecutor } from '@/lib/wasm-executor-singleton';
 import { Button } from './button';
 import { RqlHighlight } from './rql-highlight';
+import { StateLegend } from './state-legend';
 import { changesOf } from './live-subscription-changes';
 import type { LiveChange, LiveRow } from './live-subscription-changes';
 
@@ -41,7 +42,7 @@ const KIND: Record<LiveChange['kind'], string> = { insert: 'new row', update: 'c
 const FLASH: Record<LiveChange['kind'], string | undefined> = {
   insert: 'example-live__flash--insert',
   update: 'example-live__flash--update',
-  remove: undefined,
+  remove: 'example-live__flash--delete',
 };
 
 const th = 'px-4 py-1.5 text-left font-medium text-code-text-muted border-b border-border-default whitespace-nowrap';
@@ -71,7 +72,7 @@ function subscriptionOf(query: string): string {
 }
 
 function Label({ children }: { children: string }) {
-  return <div className="px-4 pt-4 pb-2 text-xs font-medium text-code-text-muted uppercase tracking-wider">{children}</div>;
+  return <div className="px-4 pt-4 pb-2 font-display text-xs font-semibold text-code-text-muted uppercase tracking-[0.06em]">{children}</div>;
 }
 
 export function LiveSubscription({ query, rowKey, columns, actions, ready, onVisibleChange }: LiveSubscriptionProps) {
@@ -144,7 +145,7 @@ export function LiveSubscription({ query, rowKey, columns, actions, ready, onVis
   if (failure) throw failure;
 
   return (
-    <div ref={panelRef} className="border-2 border-[#4b52d6] bg-code-bg shadow-[0_4px_var(--color-primary-dark)] overflow-hidden">
+    <div ref={panelRef} className="border border-[#e3e5f4] bg-code-bg overflow-hidden">
       <div className="px-4 py-2 border-b border-border-default bg-code-bg-elevated font-mono text-sm text-code-text-muted">
         Live subscription
       </div>
@@ -153,7 +154,10 @@ export function LiveSubscription({ query, rowKey, columns, actions, ready, onVis
 
       {state ? (
         <>
-          <Label>{`What your app holds · ${state.rows.length} rows`}</Label>
+          <div className="flex flex-wrap items-end justify-between gap-x-4">
+            <Label>{`What your app holds · ${state.rows.length} rows`}</Label>
+            <StateLegend states={['insert', 'update', 'delete']} className="px-4 pb-2.5" />
+          </div>
           <div className="overflow-x-auto">
             <table className="w-full font-mono text-sm tabular-nums">
               <thead>

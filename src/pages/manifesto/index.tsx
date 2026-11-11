@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
-import { Navbar, Footer } from '@/components/layout';
+import { Container, Footer, Navbar, Section } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { ARROW_COLORS, Button, PageCloser, PageHero, PixelIcon, PixelScene, RIGHT_ARROW, ScrollReveal } from '@/components/ui';
 import { HEADLINE, apologies, tenets, StackDiagram, FeatureDiagram } from '@/components/manifesto';
+import { RELEASE_LINE } from '@/lib/version';
 
 const apologySpans = ['md:col-span-4', 'md:col-span-2', 'md:col-span-2', 'md:col-span-2', 'md:col-span-2'];
 
@@ -33,8 +34,8 @@ export function ManifestoPage() {
           scene={<PixelScene kind="bug" />}
         />
 
-        <section className="py-20 sm:py-28">
-          <div className="mx-auto max-w-3xl px-6 md:px-8">
+        <Section tone="plain">
+          <Container width="narrow">
             <ScrollReveal>
               <SectionTitle>You have built this.</SectionTitle>
               <Prose>
@@ -53,17 +54,17 @@ export function ManifestoPage() {
                 You did not architect that. You accumulated it.
               </p>
             </ScrollReveal>
-          </div>
+          </Container>
 
-          <div className="mx-auto max-w-5xl px-6 md:px-8 mt-14">
+          <Container className="mt-14">
             <ScrollReveal>
               <StackDiagram />
             </ScrollReveal>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="section-elevated py-20 sm:py-28">
-          <div className="mx-auto max-w-5xl px-6 md:px-8">
+        <Section tone="tint">
+          <Container>
             <ScrollReveal>
               <div className="max-w-3xl mb-12">
                 <SectionTitle>Every box is an apology.</SectionTitle>
@@ -81,7 +82,7 @@ export function ManifestoPage() {
                   delay={index * 60}
                   className={apologySpans[index] ?? 'md:col-span-2'}
                 >
-                  <div className="dialog h-full p-6 sm:p-8 flex flex-col">
+                  <div className="h-full border-t border-[#e3e5f4] pt-6 flex flex-col">
                     <span className="label uppercase text-[#4b52d6] mb-3">{item.box}</span>
                     <h3 className="text-text-primary font-bold text-lg mb-3">{item.role}</h3>
                     <p className="text-text-secondary leading-relaxed">{item.text}</p>
@@ -93,11 +94,11 @@ export function ManifestoPage() {
                 </ScrollReveal>
               ))}
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-20 sm:py-28">
-          <div className="mx-auto max-w-3xl px-6 md:px-8">
+        <Section tone="plain">
+          <Container width="narrow">
             <ScrollReveal>
               <SectionTitle>How it got this way.</SectionTitle>
               <Prose>
@@ -110,17 +111,17 @@ export function ManifestoPage() {
                 exceeded or not. It is live, it is derived, and it is bound by rules. Nothing in the record model
                 holds that, so it was pushed out of the database, one piece at a time, into the stack above.
               </Prose>
-              <blockquote className="dialog p-8 sm:p-12 my-12">
+              <blockquote className="border-y border-[#e3e5f4] py-8 sm:py-12 my-12">
                 <p className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight text-balance">
                   Databases became systems of record. Applications need systems of live state.
                 </p>
               </blockquote>
             </ScrollReveal>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="section-elevated py-20 sm:py-28">
-          <div className="mx-auto max-w-5xl px-6 md:px-8">
+        <Section tone="tint">
+          <Container>
             <ScrollReveal>
               <div className="max-w-3xl mb-12">
                 <SectionTitle>What ReifyDB is built on.</SectionTitle>
@@ -130,21 +131,18 @@ export function ManifestoPage() {
             <div className="grid gap-5 md:grid-cols-2">
               {tenets.map((tenet, index) => (
                 <ScrollReveal key={tenet.claim} delay={index * 60}>
-                  <div className="dialog h-full p-6 sm:p-8 flex flex-col">
-                    <span className="label uppercase text-[#4b52d6] mb-3">
-                      Tenet {String(index + 1).padStart(2, '0')}
-                    </span>
+                  <div className="h-full border-t border-[#e3e5f4] pt-6 flex flex-col">
                     <h3 className="text-xl font-bold tracking-tight mb-3 text-balance">{tenet.claim}</h3>
                     <p className="text-text-secondary text-sm leading-relaxed">{tenet.text}</p>
                   </div>
                 </ScrollReveal>
               ))}
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="py-20 sm:py-28">
-          <div className="mx-auto max-w-5xl px-6 md:px-8">
+        <Section tone="plain">
+          <Container>
             <div className="max-w-3xl">
               <ScrollReveal>
                 <SectionTitle>What ReifyDB is.</SectionTitle>
@@ -173,16 +171,16 @@ export function ManifestoPage() {
             </ScrollReveal>
 
             <ScrollReveal>
-              <div className="mt-12 max-w-3xl p-6 sm:p-8 border-2 border-[#e0a040] bg-[#e0a0401f]">
+              <div className="mt-12 max-w-3xl p-6 sm:p-8 border border-[#e0a040] bg-[#e0a0401f]">
                 <div className="label uppercase text-text-muted mb-3">Status</div>
-                <p className="text-text-primary font-bold mb-2">Version 0.9. Not production ready.</p>
+                <p className="text-text-primary font-bold mb-2">Version {RELEASE_LINE}. Not production ready.</p>
                 <p className="text-text-secondary leading-relaxed">
                   APIs and guarantees will change, and every page says so. What will not change is the list above.
                 </p>
               </div>
             </ScrollReveal>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         <PageCloser
           eyebrow="YOUR MOVE"

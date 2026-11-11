@@ -58,9 +58,7 @@ export function PitchPage() {
         description="The case for ReifyDB: why application state deserves a database that keeps derived data correct by construction."
       />
       {!isFullscreen && <Navbar />}
-
-      {/* Progress header */}
-      <div className={`border-b border-border-default bg-bg-secondary sticky ${isFullscreen ? 'top-0' : 'top-[60px]'} z-30`}>
+      <div className={`border-b border-border-default bg-bg-secondary sticky ${isFullscreen ? 'top-0' : 'top-[var(--nav-h)]'} z-30`}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-4">
           <span className="font-mono text-xs text-text-muted shrink-0 hidden sm:inline">
             $ reifydb pitch
@@ -85,15 +83,11 @@ export function PitchPage() {
           </button>
         </div>
       </div>
-
-      {/* Main content — top-aligned, horizontally centered */}
       <main className="flex-1 flex justify-center items-center">
         <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 md:px-8 py-2 sm:py-4">
           {slide.content}
         </div>
       </main>
-
-      {/* Navigation bar */}
       <div className="border-t border-border-default bg-bg-secondary sticky bottom-0 z-30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
           <Button
@@ -104,8 +98,6 @@ export function PitchPage() {
           >
             &larr; Prev
           </Button>
-
-          {/* Slide dots */}
           <div className="flex gap-1.5 items-center">
             {pitchSlides.map((_, i) => (
               <button

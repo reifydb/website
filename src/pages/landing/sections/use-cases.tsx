@@ -1,4 +1,5 @@
 import { PixelIcon, ScrollReveal } from '@/components/ui';
+import { EditorialSection } from './editorial-section';
 
 const ICON_COLORS: Record<string, string> = {
   c: '#e0a83a',
@@ -92,22 +93,15 @@ const useCases: { title: string; description: string; icon: string[] }[] = [
   },
 ];
 
-function UseCaseCell({ useCase, index }: { useCase: (typeof useCases)[number]; index: number }) {
+function UseCaseRow({ useCase, index }: { useCase: (typeof useCases)[number]; index: number }) {
   return (
-    <ScrollReveal className="h-full" delay={index * 75}>
-      <div className="level-card group">
-        <div className="flex items-center gap-4 mb-4">
-          <PixelIcon rows={useCase.icon} colors={ICON_COLORS} className="h-10 w-10 shrink-0" />
-          <div>
-            <p className="label text-[#4b52d6] mb-2">WORLD {index + 1}</p>
-            <h3 className="text-lg font-bold group-hover:text-primary transition-colors">
-              {useCase.title}
-            </h3>
-          </div>
+    <ScrollReveal delay={index * 75}>
+      <div className="flex items-start gap-5 py-7">
+        <PixelIcon rows={useCase.icon} colors={ICON_COLORS} className="h-10 w-10 shrink-0" />
+        <div>
+          <h3 className="text-lg font-bold mb-2">{useCase.title}</h3>
+          <p className="text-text-muted text-sm leading-relaxed max-w-2xl">{useCase.description}</p>
         </div>
-        <p className="text-text-muted text-sm leading-relaxed">
-          {useCase.description}
-        </p>
       </div>
     </ScrollReveal>
   );
@@ -115,26 +109,17 @@ function UseCaseCell({ useCase, index }: { useCase: (typeof useCases)[number]; i
 
 export function UseCasesSection() {
   return (
-    <section id="use-cases" className="py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-6 md:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-12 sm:mb-16">
-            <p className="eyebrow mb-3">USE CASES</p>
-            <h2 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] text-text-primary mb-4 text-balance">
-              Built for Live Application State
-            </h2>
-            <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-              If your application reads it, writes it, and reasons about it on every request, that is the state ReifyDB was built for.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        <div className="grid gap-5 sm:grid-cols-2">
-          {useCases.map((useCase, index) => (
-            <UseCaseCell key={useCase.title} useCase={useCase} index={index} />
-          ))}
-        </div>
+    <EditorialSection
+      id="use-cases"
+      eyebrow="USE CASES"
+      title="Built for Live Application State"
+      intro="If your application reads it, writes it, and reasons about it on every request, that is the state ReifyDB was built for."
+    >
+      <div className="divide-y divide-[#e3e5f4] border-y border-[#e3e5f4]">
+        {useCases.map((useCase, index) => (
+          <UseCaseRow key={useCase.title} useCase={useCase} index={index} />
+        ))}
       </div>
-    </section>
+    </EditorialSection>
   );
 }

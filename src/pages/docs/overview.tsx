@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from './layout.tsx';
 import { Callout } from './components';
-import { BOLT, BOOK, CODE, GEM, GEM_COLORS, ICON_COLORS, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
+import { BOLT, BOOK, CODE, ICON_COLORS, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
 
 const quickLinks = [
   {
@@ -51,7 +51,7 @@ export function DocsOverview() {
     >
       <div className="space-y-8">
         <ScrollReveal>
-          <div className="dialog overflow-hidden">
+          <div className="border-y border-[#e3e5f4] overflow-hidden">
             <div className="sky">
               <div className="px-6 sm:px-10 pt-8 sm:pt-10 text-center">
                 <p className="eyebrow uppercase mb-3">Documentation</p>
@@ -99,14 +99,16 @@ export function DocsOverview() {
         <ScrollReveal delay={150}>
           <section>
             <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-6">Get Started</h2>
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="divide-y divide-[#e3e5f4] border-y border-[#e3e5f4]">
               {quickLinks.map((link) => (
-                <Link key={link.href} to={link.href} className="level-card group flex flex-col">
-                  <PixelIcon rows={link.icon} colors={ICON_COLORS} className="h-8 w-9 text-[#4b52d6] mb-5" />
-                  <h3 className="font-bold text-text-primary mb-1 group-hover:text-[#4b52d6] transition-colors">
-                    {link.title}
-                  </h3>
-                  <p className="text-sm text-text-muted">{link.description}</p>
+                <Link key={link.href} to={link.href} className="group flex items-start gap-5 py-5">
+                  <PixelIcon rows={link.icon} colors={ICON_COLORS} className="h-8 w-9 shrink-0 text-[#4b52d6]" />
+                  <div>
+                    <h3 className="font-bold text-text-primary mb-1 group-hover:text-[#4b52d6] transition-colors">
+                      {link.title}
+                    </h3>
+                    <p className="text-sm text-text-muted">{link.description}</p>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -117,9 +119,9 @@ export function DocsOverview() {
           <section>
             <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Key Features</h2>
             <ul className="space-y-3 text-text-secondary">
-              {keyFeatures.map((feature, index) => (
+              {keyFeatures.map((feature) => (
                 <li key={feature.title} className="flex items-start gap-3">
-                  <PixelIcon rows={GEM} colors={{ x: GEM_COLORS[index] }} className="mt-1.5 h-3 w-3 shrink-0" />
+                  <span className="mt-2 h-[7px] w-[7px] shrink-0 bg-[#4b52d6]" aria-hidden="true" />
                   <span>
                     <strong className="text-text-primary">{feature.title}</strong> - {feature.body}
                   </span>
@@ -130,7 +132,7 @@ export function DocsOverview() {
         </ScrollReveal>
 
         <ScrollReveal delay={250}>
-          <section className="pt-4 border-t border-[#c9c3dc]">
+          <section className="pt-4 border-t border-[#e3e5f4]">
             <h2 className="text-lg font-normal tracking-[-0.03em] mb-4">Resources</h2>
             <ul className="space-y-2 text-text-secondary">
               <li>

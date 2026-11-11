@@ -1,4 +1,4 @@
-import { Navbar, Footer } from '@/components/layout';
+import { Container, Footer, Navbar, Section } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import {
   ARROW_COLORS,
@@ -85,15 +85,15 @@ export function SupportPage() {
           scene={<PixelScene kind="pit" />}
         />
 
-        <section className="pt-12 sm:pt-16 pb-24 sm:pb-32">
-          <div className="mx-auto max-w-5xl px-6 md:px-8 grid gap-6 sm:grid-cols-2">
+        <Section tone="plain">
+          <Container className="grid gap-6 sm:grid-cols-2">
             {supportOptions.map((option, index) => (
               <ScrollReveal key={option.title} className="h-full" delay={index * 75}>
                 <a
                   href={option.href}
                   target={option.external ? '_blank' : undefined}
                   rel={option.external ? 'noopener noreferrer' : undefined}
-                  className="level-card group flex flex-col"
+                  className="group flex h-full flex-col border-t border-[#e3e5f4] pt-6"
                 >
                   <PixelIcon rows={option.icon} colors={ICON_COLORS} className="h-8 w-9 text-[#4b52d6] mb-5" />
                   <h2 className="text-lg font-bold text-text-primary group-hover:text-[#4b52d6] transition-colors mb-2">
@@ -107,8 +107,8 @@ export function SupportPage() {
                 </a>
               </ScrollReveal>
             ))}
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         <PageCloser
           eyebrow="JOIN THE PARTY"
@@ -123,7 +123,7 @@ export function SupportPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="p-3 border-2 border-[#a3a9ff] text-[#e6e8fd] shadow-[0_4px_#4b52d6] hover:text-white hover:translate-y-[2px] hover:shadow-[0_2px_#4b52d6] transition-[translate,box-shadow,color] duration-[120ms]"
+                className="p-3 border border-text-primary text-text-primary hover:bg-bg-tertiary transition-colors duration-150"
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d={social.path} />

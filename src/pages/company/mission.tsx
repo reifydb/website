@@ -1,4 +1,4 @@
-import { Navbar, Footer } from '@/components/layout';
+import { Container, Footer, Navbar, Section } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { Button, PageCloser, PageHero, PixelScene, ScrollReveal } from '@/components/ui';
 
@@ -19,8 +19,8 @@ export function MissionPage() {
           scene={<PixelScene kind="build" />}
         />
 
-        <section className="py-20 sm:py-28">
-          <div className="mx-auto max-w-3xl px-6 md:px-8">
+        <Section tone="plain">
+          <Container width="narrow">
             <ScrollReveal>
               <h2 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-8 text-balance">
                 Most engineers have felt it.
@@ -39,13 +39,13 @@ export function MissionPage() {
                 .
               </p>
             </ScrollReveal>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="pb-20 sm:pb-28">
-          <div className="mx-auto max-w-4xl px-6 md:px-8">
+        <Section tone="tint">
+          <Container width="narrow">
             <ScrollReveal>
-              <div className="dialog p-8 sm:p-12">
+              <div>
                 <p className="label uppercase text-[#4b52d6] mb-8">Origin story</p>
                 <div className="grid gap-8 sm:grid-cols-[auto_1fr] sm:gap-10 items-start">
                   <img
@@ -77,8 +77,8 @@ export function MissionPage() {
                 </div>
               </div>
             </ScrollReveal>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         <PageCloser
           eyebrow="PLAY NOW"

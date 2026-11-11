@@ -1,6 +1,6 @@
-import { Navbar, Footer } from '@/components/layout';
+import { Container, Footer, Navbar, Section } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { Button, GEM, GEM_COLORS, PageCloser, PageHero, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
+import { Button, PageCloser, PageHero, PixelScene, ScrollReveal } from '@/components/ui';
 
 const APPLY_HREF = 'mailto:founder@reifydb.com?subject=Rust%20engineer';
 const REPO_HREF = 'https://github.com/reifydb/reifydb';
@@ -118,10 +118,10 @@ export function JobsPage() {
           </Button>
         </PageHero>
 
-        <section className="py-20 sm:py-28">
-          <div className="mx-auto max-w-3xl px-6 md:px-8">
+        <Section tone="plain">
+          <Container width="narrow">
             <ScrollReveal>
-              <div className="dialog p-8 sm:p-12">
+              <div>
                 <p className="label uppercase text-[#4b52d6] mb-6">The job</p>
                 <p className="text-text-secondary leading-relaxed mb-6">
                   ReifyDB is a database written in Rust. It keeps live application state in one place: tables,
@@ -137,11 +137,11 @@ export function JobsPage() {
                 </p>
               </div>
             </ScrollReveal>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="pb-20 sm:pb-28">
-          <div className="mx-auto max-w-5xl px-6 md:px-8">
+        <Section tone="tint">
+          <Container>
             <ScrollReveal>
               <h2 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-4 text-balance">
                 What you will touch
@@ -150,44 +150,36 @@ export function JobsPage() {
                 One role, the whole engine. These are the areas, with the crates you will find them in.
               </p>
             </ScrollReveal>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="divide-y divide-[#e3e5f4] border-y border-[#e3e5f4]">
               {areas.map((area, index) => (
-                <ScrollReveal key={area.title} className="h-full" delay={index * 75}>
-                  <article className="dialog h-full p-6 flex flex-col">
-                    <p className="label uppercase text-[#4b52d6] mb-3">
-                      Area {String(index + 1).padStart(2, '0')}
-                    </p>
+                <ScrollReveal key={area.title} delay={index * 75}>
+                  <article className="py-7">
                     <h3 className="text-lg font-bold text-text-primary mb-2">{area.title}</h3>
-                    <p className="text-text-muted text-sm leading-relaxed mb-5">{area.body}</p>
-                    <p className="font-mono text-sm text-primary mt-auto">{area.crates.join(', ')}</p>
+                    <p className="text-text-muted text-sm leading-relaxed mb-3">{area.body}</p>
+                    <p className="font-mono text-sm text-primary">{area.crates.join(', ')}</p>
                   </article>
                 </ScrollReveal>
               ))}
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="pb-20 sm:pb-28">
-          <div className="mx-auto max-w-5xl px-6 md:px-8 grid gap-6 md:grid-cols-2">
+        <Section tone="plain">
+          <Container className="grid gap-10 md:grid-cols-2">
             {lists.map((list, index) => {
-              const color = GEM_COLORS[index + 2];
               return (
-                <ScrollReveal key={list.title} className="h-full" delay={index * 75}>
-                  <div
-                    className="h-full border-2 p-6 sm:p-8"
-                    style={{ borderColor: color, backgroundColor: `${color}1f` }}
-                  >
-                    <h2 className="label uppercase text-text-muted mb-5 inline-flex items-center gap-2">
-                      <PixelIcon rows={GEM} colors={{ x: color }} className="h-3 w-3" />
+                <ScrollReveal key={list.title} delay={index * 75}>
+                  <div>
+                    <h2 className="font-display text-xs font-semibold uppercase tracking-[0.06em] text-text-muted mb-3">
                       {list.title}
                     </h2>
-                    <ul className="grid gap-3">
+                    <ul className="divide-y divide-[#e3e5f4] border-y border-[#e3e5f4]">
                       {list.items.map((item) => (
                         <li
                           key={item}
-                          className="grid grid-cols-[7px_minmax(0,1fr)] items-baseline gap-3 leading-normal text-text-primary"
+                          className="grid grid-cols-[7px_minmax(0,1fr)] items-baseline gap-3 py-3 leading-normal text-text-primary"
                         >
-                          <span className="h-[7px] w-[7px]" style={{ backgroundColor: color }} aria-hidden="true" />
+                          <span className="h-[7px] w-[7px] bg-[#4b52d6]" aria-hidden="true" />
                           {item}
                         </li>
                       ))}
@@ -196,16 +188,16 @@ export function JobsPage() {
                 </ScrollReveal>
               );
             })}
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="pb-20 sm:pb-28">
-          <div className="mx-auto max-w-5xl px-6 md:px-8">
+        <Section tone="tint">
+          <Container>
             <ScrollReveal>
               <h2 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-10 text-balance">The deal</h2>
             </ScrollReveal>
             {deal.map((item) => (
-              <ScrollReveal key={item.title} className="border-t border-[#c9c3dc] last:border-b">
+              <ScrollReveal key={item.title} className="border-t border-[#e3e5f4] last:border-b">
                 <div className="grid gap-2 md:grid-cols-[minmax(190px,1fr)_minmax(0,60ch)] md:gap-[clamp(20px,4.5vw,68px)] py-8">
                   <h3 className="text-[clamp(19px,2vw,23px)] font-normal leading-[1.16] tracking-[-0.028em] text-text-primary">
                     {item.title}
@@ -214,31 +206,31 @@ export function JobsPage() {
                 </div>
               </ScrollReveal>
             ))}
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className="pb-24 sm:pb-32">
-          <div className="mx-auto max-w-5xl px-6 md:px-8">
+        <Section tone="plain">
+          <Container>
             <ScrollReveal>
               <h2 className="text-3xl sm:text-4xl font-normal tracking-[-0.03em] mb-10 text-balance">
                 How to apply
               </h2>
             </ScrollReveal>
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="divide-y divide-[#e3e5f4] border-y border-[#e3e5f4]">
               {steps.map((step, index) => (
-                <ScrollReveal key={step.title} className="h-full" delay={index * 75}>
-                  <div className="dialog h-full p-6">
-                    <span className="label inline-flex h-8 w-8 items-center justify-center bg-[#4b52d6] text-white mb-5">
-                      {index + 1}
-                    </span>
-                    <h3 className="text-lg font-bold text-text-primary mb-2">{step.title}</h3>
-                    <p className="text-text-muted text-sm leading-relaxed">{step.body}</p>
+                <ScrollReveal key={step.title} delay={index * 75}>
+                  <div className="grid grid-cols-[2rem_minmax(0,1fr)] items-baseline gap-4 py-7">
+                    <span className="font-mono text-sm text-text-muted">{index + 1}</span>
+                    <div>
+                      <h3 className="text-lg font-bold text-text-primary mb-2">{step.title}</h3>
+                      <p className="text-text-muted text-sm leading-relaxed">{step.body}</p>
+                    </div>
                   </div>
                 </ScrollReveal>
               ))}
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         <PageCloser
           eyebrow="INSERT COIN"

@@ -8,7 +8,6 @@ export function JsonArrayPage() {
   return (
     <Layout>
       <div className="space-y-8">
-        {/* Header with breadcrumb */}
         <div>
           <div className="text-sm text-text-muted mb-2">
             <Link to="/docs/functions/json" className="font-bold hover:text-primary-color">
@@ -24,13 +23,11 @@ export function JsonArrayPage() {
           </p>
         </div>
 
-        {/* Syntax */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`json::array(value1, value2, ...)`} />
         </section>
 
-        {/* Parameters */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameters</h2>
           <div className="dialog overflow-x-auto">
@@ -53,7 +50,6 @@ export function JsonArrayPage() {
           </div>
         </section>
 
-        {/* Return Value */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Return Value</h2>
           <p className="text-text-secondary">
@@ -61,7 +57,6 @@ export function JsonArrayPage() {
           </p>
         </section>
 
-        {/* Examples */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Examples</h2>
 
@@ -78,7 +73,6 @@ export function JsonArrayPage() {
           />
         </section>
 
-        {/* Related Functions */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">

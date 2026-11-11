@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
-import { Navbar, Footer } from '@/components/layout';
+import { Navbar, Footer, Container, Section } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { JsonLd } from '@/components/json-ld';
-import { NoticeBoardScene, ScrollReveal } from '@/components/ui';
+import { NoticeBoardScene, PageHero, ScrollReveal } from '@/components/ui';
 import { blogPosts, getPostBySlug } from '@/data/blog-data';
 import { SITE_LOGO, SITE_NAME, absoluteUrl, canonicalUrl } from '@/lib/site';
 import { NotFoundPage } from '@/pages/not-found';
@@ -70,27 +70,21 @@ export function BlogListingPage() {
           <EntryDetail post={openPost} />
         ) : (
           <>
-            <section className="sky">
-              <div className="mx-auto max-w-6xl px-6 md:px-8 pt-[clamp(36px,6vw,72px)] text-center">
-                <p className="eyebrow mb-3">BLOG</p>
-                <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] text-text-primary mb-4 text-balance">
-                  Notes from the build.
-                </h1>
-                <p className="max-w-2xl mx-auto text-text-secondary text-lg">
-                  Writing from the ReifyDB team on incremental views, application state, and building a database.
-                </p>
-              </div>
-              <NoticeBoardScene count={blogPosts.length} className="mt-10 sm:mt-12" />
-            </section>
-            <section className="pt-12 sm:pt-16 pb-24 sm:pb-32">
-              <div className="mx-auto max-w-6xl px-6 md:px-8 grid gap-6 md:grid-cols-2">
+            <PageHero
+              eyebrow="Blog"
+              title="Notes from the build."
+              subtitle="Writing from the ReifyDB team on incremental views, application state, and building a database."
+              scene={<NoticeBoardScene count={blogPosts.length} />}
+            />
+            <Section>
+              <Container className="divide-y divide-[#e3e5f4] border-y border-[#e3e5f4]">
                 {blogPosts.map((post, index) => (
-                  <ScrollReveal key={post.slug} className="h-full" delay={index * 75}>
+                  <ScrollReveal key={post.slug} delay={index * 75}>
                     <PostCard post={post} />
                   </ScrollReveal>
                 ))}
-              </div>
-            </section>
+              </Container>
+            </Section>
           </>
         )}
       </main>

@@ -56,7 +56,6 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      {/* Trigger Button */}
       <button
         className={cn(
           "px-3 py-2 transition-colors duration-150",
@@ -68,7 +67,6 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
         {dropdown.label}
       </button>
 
-      {/* Dropdown Panel */}
       <div
         className={cn(
           "absolute left-0 top-full pt-1 w-80 z-50",

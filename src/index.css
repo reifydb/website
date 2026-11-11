@@ -3,13 +3,17 @@ html {
   font-size: 16px;
 }
 
+:root {
+  --nav-h: 72px;
+}
+
 @media (min-width: 640px) {
   html {
     font-size: 18px;
   }
 }
 
-/* Link underline animation — used in docs/overview.tsx */
+/* Link underline animation - used in docs/overview.tsx */
 .link-underline {
   position: relative;
 }
@@ -29,7 +33,7 @@ html {
   width: 100%;
 }
 
-/* Hidden scrollbar — used in docs/examples sidebars */
+/* Hidden scrollbar - used in docs/examples sidebars */
 .sidebar-no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -39,19 +43,13 @@ html {
   display: none;
 }
 
-.dots {
-  background-color: #f6f7fd;
-  background-image: radial-gradient(#c3c6e6 1px, transparent 1px);
-  background-size: 16px 16px;
-}
-
 .proof-slider {
   appearance: none;
   -webkit-appearance: none;
   width: 100%;
   height: 8px;
-  border: 2px solid #ffffff26;
-  background: linear-gradient(90deg, var(--color-primary) var(--fill), #ffffff14 var(--fill));
+  border: 2px solid var(--color-border-subtle);
+  background: linear-gradient(90deg, var(--color-primary) var(--fill), var(--color-bg-tertiary) var(--fill));
   outline: none;
   cursor: pointer;
 }
@@ -60,8 +58,8 @@ html {
   -webkit-appearance: none;
   width: 18px;
   height: 18px;
-  border: 2px solid #10123a;
-  background: #e6e8fd;
+  border: 2px solid var(--color-text-primary);
+  background: var(--color-bg-secondary);
   box-shadow: 0 3px var(--color-primary-dark);
   cursor: pointer;
 }
@@ -69,9 +67,9 @@ html {
 .proof-slider::-moz-range-thumb {
   width: 18px;
   height: 18px;
-  border: 2px solid #10123a;
+  border: 2px solid var(--color-text-primary);
   border-radius: 0;
-  background: #e6e8fd;
+  background: var(--color-bg-secondary);
   box-shadow: 0 3px var(--color-primary-dark);
   cursor: pointer;
 }
@@ -237,7 +235,7 @@ html {
   min-height: 0;
 }
 
-/* Fullscreen background — used by pitch page */
+/* Fullscreen background - used by pitch page */
 div:fullscreen {
   background-color: var(--color-bg-primary);
 }
@@ -286,56 +284,6 @@ div::backdrop {
   }
 }
 
-.night {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(#12103a, #1f1c5c);
-}
-
-.night::before,
-.night::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.night::before {
-  background:
-    conic-gradient(at 2px 2px, transparent 75%, #ffffff99 0) 13px 29px / 157px 131px,
-    conic-gradient(at 2px 2px, transparent 75%, #ffffff66 0) 71px 5px / 113px 97px,
-    conic-gradient(at 1px 1px, transparent 75%, #ffffff80 0) 37px 61px / 89px 73px;
-}
-
-.night::after {
-  background: conic-gradient(at 2px 2px, transparent 75%, #ffe08acc 0) 101px 47px / 211px 167px;
-  animation: twinkle 1.6s steps(2) infinite;
-}
-
-@keyframes twinkle {
-  50% {
-    opacity: 0.2;
-  }
-}
-
-.night .eyebrow {
-  color: #a3a9ff;
-}
-
-.level-card {
-  height: 100%;
-  padding: 24px;
-  border: 1px solid #4b52d6;
-  background: #ffffff;
-  box-shadow: 0 4px var(--color-primary-dark);
-  transition: transform 0.12s, box-shadow 0.12s;
-}
-
-.level-card:hover {
-  transform: translateY(2px);
-  box-shadow: 0 2px var(--color-primary-dark);
-}
-
 .rdb-console,
 .rdb-snippet {
   --rdb-radius: 0;
@@ -376,36 +324,39 @@ div::backdrop {
   box-shadow: 0 4px var(--color-primary-dark);
 }
 
-.dialog__question {
+.faq-item {
+  border-top: 1px solid #e3e5f4;
+}
+
+.faq-item__question {
   display: flex;
   align-items: center;
   gap: 12px;
   width: 100%;
-  padding: 18px 20px;
+  padding: 18px 0;
   font-weight: 700;
   text-align: left;
   color: var(--color-text-primary);
 }
 
-.dialog__answer {
+.faq-item__answer {
   display: flex;
   gap: 16px;
-  padding: 18px 20px;
-  border-top: 2px solid #4b52d6;
+  padding: 0 0 20px 20px;
   cursor: pointer;
 }
 
-.dialog__portrait {
+.faq-item__portrait {
   display: grid;
   place-items: center;
   flex-shrink: 0;
   width: 52px;
   height: 52px;
-  border: 2px solid #4b52d6;
+  border: 1px solid #e3e5f4;
   background: #e6e8fd;
 }
 
-.dialog__next {
+.faq-item__next {
   margin-left: 6px;
   font-size: 10px;
   color: #4b52d6;
@@ -539,7 +490,6 @@ div::backdrop {
 .example-frame {
   overflow: hidden;
   border: 1px solid #e3e5f4;
-  border-radius: 10px;
   background: #ffffff;
 }
 
@@ -594,6 +544,10 @@ div::backdrop {
 
 .example-frame__ran-label {
   flex-shrink: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--color-text-muted);
 }
 
@@ -631,9 +585,13 @@ div::backdrop {
   animation: example-live-update 1.2s ease-out;
 }
 
+.example-live__flash--delete {
+  animation: example-live-delete 1.2s ease-out;
+}
+
 @keyframes example-live-insert {
   0% {
-    background: #d9f2e6;
+    background: var(--color-state-insert, #fafd6f);
   }
 
   100% {
@@ -643,7 +601,17 @@ div::backdrop {
 
 @keyframes example-live-update {
   0% {
-    background: #e6e8fd;
+    background: var(--color-state-update, #a9e5f2);
+  }
+
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes example-live-delete {
+  0% {
+    background: color-mix(in srgb, var(--color-state-delete, #eb4fc0) 40%, transparent);
   }
 
   100% {
@@ -653,7 +621,8 @@ div::backdrop {
 
 @media (prefers-reduced-motion: reduce) {
   .example-live__flash--insert,
-  .example-live__flash--update {
+  .example-live__flash--update,
+  .example-live__flash--delete {
     animation: none;
   }
 }
@@ -700,8 +669,7 @@ div::backdrop {
 .swap-candle__board {
   position: absolute;
   overflow: hidden;
-  border: 1px solid #c9c3dc;
-  border-radius: 4px;
+  border: 1px solid #e3e5f4;
   background: #ffffff;
 }
 
@@ -817,8 +785,11 @@ div::backdrop {
 }
 
 .swap-candle__lead {
+  font-family: var(--font-display);
   font-size: 15px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--color-text-primary);
 }
 
@@ -853,7 +824,8 @@ div::backdrop {
 .rate-limiter__cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 12px;
+  border-top: 1px solid #e3e5f4;
+  border-left: 1px solid #e3e5f4;
 }
 
 .rate-limiter__card {
@@ -862,14 +834,15 @@ div::backdrop {
   gap: 8px;
   min-width: 0;
   padding: 10px 12px 12px;
-  border: 1px solid #c9c3dc;
-  border-radius: 6px;
-  background: #ffffff;
-  transition: border-color 200ms ease;
+  border-right: 1px solid #e3e5f4;
+  border-bottom: 1px solid #e3e5f4;
+  outline: 1px solid transparent;
+  outline-offset: -1px;
+  transition: outline-color 200ms ease;
 }
 
 .rate-limiter__card--blocked {
-  border-color: #e3a3a3;
+  outline-color: #e3a3a3;
 }
 
 .rate-limiter__card-head {
@@ -887,7 +860,6 @@ div::backdrop {
 
 .rate-limiter__verdict {
   padding: 2px 8px;
-  border-radius: 999px;
   background: #d9f2e6;
   color: #1d6b45;
   font-size: 12px;
@@ -928,7 +900,6 @@ div::backdrop {
   min-width: 0;
   padding: 4px 0;
   border: 1px dashed #c9c3dc;
-  border-radius: 4px;
   font-size: 12px;
   font-variant-numeric: tabular-nums;
   transition: opacity 300ms ease;
@@ -993,7 +964,6 @@ div::backdrop {
 .rate-limiter__bar {
   flex: 1;
   height: 6px;
-  border-radius: 3px;
   background: #ebe9f7;
   overflow: hidden;
 }
@@ -1043,14 +1013,15 @@ div::backdrop {
   gap: 6px;
   min-width: 0;
   padding: 8px 10px 10px;
-  border: 1px solid #c9c3dc;
-  border-radius: 6px;
-  background: #ffffff;
 }
 
 .shared-dictionary__dict {
-  border-color: #7e85f2;
-  box-shadow: 0 2px 0 #e6e8fd;
+  border: 1px solid #7e85f2;
+}
+
+.shared-dictionary__board {
+  border-right: 1px solid #e3e5f4;
+  border-bottom: 1px solid #e3e5f4;
 }
 
 .shared-dictionary__board-head {
@@ -1079,7 +1050,6 @@ div::backdrop {
   align-items: center;
   gap: 4px;
   padding: 2px 8px 2px 2px;
-  border-radius: 999px;
   background: #ebe9f7;
 }
 
@@ -1093,7 +1063,6 @@ div::backdrop {
   justify-content: center;
   min-width: 1.6em;
   padding: 0 4px;
-  border-radius: 999px;
   background: #4b52d6;
   color: #ffffff;
   font-size: 10px;
@@ -1104,7 +1073,8 @@ div::backdrop {
 .shared-dictionary__boards {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  border-top: 1px solid #e3e5f4;
+  border-left: 1px solid #e3e5f4;
 }
 
 @media (max-width: 900px) {
@@ -1149,7 +1119,6 @@ div::backdrop {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  border-radius: 4px;
 }
 
 .shared-dictionary__empty {
@@ -1177,7 +1146,8 @@ div::backdrop {
 .webhook-outbox__columns {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  border-top: 1px solid #e3e5f4;
+  border-left: 1px solid #e3e5f4;
 }
 
 @media (max-width: 900px) {
@@ -1198,14 +1168,13 @@ div::backdrop {
   gap: 6px;
   min-width: 0;
   padding: 8px 10px 10px;
-  border: 1px solid #c9c3dc;
-  border-radius: 6px;
-  background: #ffffff;
+  border-right: 1px solid #e3e5f4;
+  border-bottom: 1px solid #e3e5f4;
 }
 
 .webhook-outbox__column--claimed {
-  border-color: #7e85f2;
-  box-shadow: 0 2px 0 #e6e8fd;
+  outline: 1px solid #7e85f2;
+  outline-offset: -1px;
 }
 
 .webhook-outbox__head {
@@ -1235,7 +1204,6 @@ div::backdrop {
   flex-direction: column;
   gap: 1px;
   padding: 4px 6px;
-  border-radius: 4px;
   background: #ebe9f7;
   animation: example-live-insert 1.6s ease-out;
   transition: opacity 600ms ease;
@@ -1278,4 +1246,48 @@ div::backdrop {
   .webhook-outbox__card {
     animation: none;
   }
+}
+
+.marker {
+  background: linear-gradient(transparent 55%, var(--color-accent-yellow) 55%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.link-accent {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-pink);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: color 0.15s;
+}
+
+.link-accent:hover {
+  color: var(--color-accent-pink);
+}
+
+.facts-band {
+  background: var(--color-core);
+  color: #ffffff;
+}
+
+.facts-band__fact {
+  padding: 0 20px;
+  border-left: 1px solid rgb(255 255 255 / 0.18);
+}
+
+.facts-band__label {
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #b9bcf5;
+}
+
+.facts-band__value {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
 }

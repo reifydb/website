@@ -8,7 +8,6 @@ export function MathRoundPage() {
   return (
     <Layout>
       <div className="space-y-8">
-        {/* Header with breadcrumb */}
         <div>
           <div className="text-sm text-text-muted mb-2">
             <Link to="/docs/functions/math" className="font-bold hover:text-primary-color">
@@ -24,13 +23,11 @@ export function MathRoundPage() {
           </p>
         </div>
 
-        {/* Syntax */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Syntax</h2>
           <RqlCodeBlock code={`math::round(value, decimal_places)`} />
         </section>
 
-        {/* Parameters */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Parameters</h2>
           <div className="dialog overflow-x-auto">
@@ -58,7 +55,6 @@ export function MathRoundPage() {
           </div>
         </section>
 
-        {/* Return Value */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Return Value</h2>
           <p className="text-text-secondary">
@@ -66,7 +62,6 @@ export function MathRoundPage() {
           </p>
         </section>
 
-        {/* Examples */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Examples</h2>
 
@@ -83,7 +78,6 @@ export function MathRoundPage() {
           />
         </section>
 
-        {/* Related Functions */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Related Functions</h2>
           <div className="flex gap-3 flex-wrap">

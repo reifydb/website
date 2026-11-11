@@ -5,6 +5,7 @@ import { cn } from '@/lib';
 import { NavbarDropdown } from './navbar-dropdown';
 import { navDropdowns, navDirectLinks } from './navbar-data';
 import { MobileMenu } from './mobile-menu';
+import { Container } from './container';
 import { Menu, X } from 'lucide-react';
 
 function subscribeToScroll(onChange: () => void) {
@@ -74,8 +75,7 @@ export function Navbar({ mobileExtra, framed }: NavbarProps = {}) {
                 : 'bg-bg-primary border-b border-transparent'
         )}
       >
-        <div className="flex h-[60px] w-full items-center justify-between px-4 sm:px-6 md:pl-8 md:pr-16">
-          {/* Logo */}
+        <Container className="flex h-[var(--nav-h)] items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <img
               src="/assets/img/logo.svg"
@@ -87,9 +87,7 @@ export function Navbar({ mobileExtra, framed }: NavbarProps = {}) {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex gap-0 text-[13px] font-medium items-center flex-1 justify-center">
-            {/* Dropdown Menus */}
+          <nav className="hidden lg:flex gap-0 font-display text-[12px] font-semibold uppercase tracking-[0.06em] items-center flex-1 justify-center">
             {navDropdowns.map((dropdown) => (
               <NavbarDropdown
                 key={dropdown.id}
@@ -101,7 +99,6 @@ export function Navbar({ mobileExtra, framed }: NavbarProps = {}) {
               />
             ))}
 
-            {/* Direct Links */}
             {navDirectLinks.map((link) => {
               const isAnchor = link.href.startsWith('/#');
               const active = !isAnchor && isActive(link.href);
@@ -135,9 +132,7 @@ export function Navbar({ mobileExtra, framed }: NavbarProps = {}) {
             })}
           </nav>
 
-          {/* CTAs */}
           <div className="flex items-center gap-3">
-            {/* Desktop GitHub + CTA */}
             <div className="hidden lg:flex items-center gap-3">
               <a
                 href="https://discord.gg/HPBwUSPuUS"
@@ -156,7 +151,6 @@ export function Navbar({ mobileExtra, framed }: NavbarProps = {}) {
               </Button>
             </div>
 
-            {/* Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden text-text-muted hover:text-primary transition-colors p-2"
@@ -165,7 +159,7 @@ export function Navbar({ mobileExtra, framed }: NavbarProps = {}) {
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
-        </div>
+        </Container>
       </header>
 
       <MobileMenu open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} extra={mobileExtra} />

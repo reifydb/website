@@ -36,7 +36,7 @@ import {
   type Context,
 } from './pixel-kit';
 
-type SceneKind = 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | 'build' | 'trade' | 'bug' | 'library' | 'arcade' | BoardMode;
+type SceneKind = 'landscape' | 'stack' | 'invaders' | 'booth' | 'pit' | 'plane' | 'build' | 'trade' | 'bug' | 'library' | 'arcade' | BoardMode;
 type Draw = (c: Context, width: number, height: number, time: number) => void;
 
 interface RunnerBug {
@@ -425,8 +425,8 @@ function lane(
   if (outbound) buckets(c, x, floor, stack);
 
   const count = `${done}/${trips}`;
-  caption(c, label, appLeft, top + 2, NIGHT_TEXT);
-  caption(c, count, width - appLeft - count.length * 4 + 1, top + 2, moving ? NIGHT_TEXT : '#ffe08a');
+  caption(c, label, appLeft, top + 2, INK);
+  caption(c, count, width - appLeft - count.length * 4 + 1, top + 2, moving ? INK : '#4b52d6');
 }
 
 function race(c: Context, width: number, time: number, state: RaceState) {
@@ -454,7 +454,7 @@ function puff(c: Context, centerX: number, centerY: number, u: number) {
     if (hash(k * 7 + 1) < u) continue;
     const angle = hash(k * 3 + 2) * Math.PI * 2;
     const radius = u * 10 * (0.4 + hash(k * 5 + 3));
-    rect(c, centerX + Math.cos(angle) * radius, centerY + Math.sin(angle) * radius * 0.6, 1, 1, k % 3 ? '#ffe08a' : '#ffffff');
+    rect(c, centerX + Math.cos(angle) * radius, centerY + Math.sin(angle) * radius * 0.6, 1, 1, k % 3 ? '#ffe08a' : '#4b52d6');
   }
 }
 
@@ -499,17 +499,17 @@ function invaders(c: Context, width: number, height: number, time: number) {
     botX = lerp(from, aimX(target), ease((t - fromTime) / (fireTime - fromTime)));
     if (t >= fireTime) {
       const boltY = lerp(floor - 11, formationAt(killTime(target)).top + 9, (t - fireTime) / SHOT_TIME);
-      rect(c, botX + 2, boltY, 1, 3, '#ffe08a');
+      rect(c, botX + 2, boltY, 1, 3, '#4b52d6');
     }
   }
   mascot(c, botX, floor, time, 0, false);
 
   const margin = Math.max(4, Math.round(width * 0.04));
   const kills = wave * INVADERS.length + KILL_ORDER.filter((i) => t >= killTime(i)).length;
-  ring(c, SMALL_RING, margin, 2, NIGHT_TEXT);
-  caption(c, `SCORE ${String(kills * 10).padStart(6, '0')}`, margin + 7, 2, NIGHT_TEXT);
+  ring(c, SMALL_RING, margin, 2);
+  caption(c, `SCORE ${String(kills * 10).padStart(6, '0')}`, margin + 7, 2, INK);
   if (t >= lastKill + 0.3 && t < WAVE_LOOP - 0.3 && Math.floor(t * 4) % 2 === 0) {
-    caption(c, 'WAVE CLEAR', Math.round(width / 2 - 20), 16, '#ffe08a');
+    caption(c, 'WAVE CLEAR', Math.round(width / 2 - 20), 16, '#4b52d6');
   }
 }
 
@@ -1089,6 +1089,14 @@ function drawBug(c: Context, bug: RunnerBug, x: number, floor: number, flyTop: n
   else fly(c, x, flyTop, time);
 }
 
+function landscape(c: Context, width: number, height: number) {
+  const groundY = height - 14;
+  clouds(c, width, 0);
+  hills(c, width, groundY, 0);
+  grass(c, width, groundY, height - 7, 0, 0);
+  dither(c, width, height - 7, height, PRIMARY, PAPER);
+}
+
 function runner(c: Context, width: number, height: number, time: number) {
   const groundY = height - 14;
   const floor = groundY + 3;
@@ -1317,7 +1325,7 @@ function arcade(c: Context, width: number, height: number, time: number) {
   mascot(c, playerX, floor - 5, time, 0, false);
 }
 
-const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw }> = {
+const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Draw; still?: boolean }> = {
   full: { height: 54, heightClass: 'h-[216px]', draw: (c, width, height, time) => compare(c, width, height, time, 'full') },
   incremental: {
     height: 54,
@@ -1332,6 +1340,7 @@ const SCENES: Record<SceneKind, { height: number; heightClass: string; draw: Dra
   build: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: build },
   trade: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: trade },
   bug: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: runner },
+  landscape: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: landscape, still: true },
   library: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: library },
   arcade: { height: 54, heightClass: 'h-[216px] max-sm:h-[108px]', draw: arcade },
 };
@@ -1341,7 +1350,7 @@ interface PixelSceneProps {
   className?: string;
 }
 
-function usePixelLoop(height: number, draw: Draw) {
+function usePixelLoop(height: number, draw: Draw, still = false) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const labelsRef = useRef<HTMLDivElement>(null);
 
@@ -1372,7 +1381,7 @@ function usePixelLoop(height: number, draw: Draw) {
 
     resize();
     window.addEventListener('resize', resize);
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (!still && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const loop = (ms: number) => {
         if (ms - lastPaint > FRAME_INTERVAL) {
           lastPaint = ms;
@@ -1386,7 +1395,7 @@ function usePixelLoop(height: number, draw: Draw) {
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(frame);
     };
-  }, [height, draw]);
+  }, [height, draw, still]);
 
   return { canvasRef, labelsRef };
 }
@@ -1407,7 +1416,7 @@ function SceneFrame({ canvasRef, labelsRef, className }: FrameProps) {
 }
 
 export function PixelScene({ kind, className }: PixelSceneProps) {
-  const { canvasRef, labelsRef } = usePixelLoop(SCENES[kind].height, SCENES[kind].draw);
+  const { canvasRef, labelsRef } = usePixelLoop(SCENES[kind].height, SCENES[kind].draw, SCENES[kind].still);
 
   return <SceneFrame canvasRef={canvasRef} labelsRef={labelsRef} className={cn(SCENES[kind].heightClass, className)} />;
 }

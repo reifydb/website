@@ -5,9 +5,15 @@ import tailwindcss from '@tailwindcss/vite'
 import wasm from 'vite-plugin-wasm'
 import topLevelAwait from 'vite-plugin-top-level-await'
 import { resolve, join } from 'path'
+import { readFileSync } from 'fs'
 
 const SDK_ROOT = resolve(__dirname, '../reifydb/pkg/typescript')
 const useLocalSdk = process.env.VITE_LOCAL_SDK === '1'
+
+const wasmPackageJson = useLocalSdk
+  ? join(SDK_ROOT, 'wasm/package.json')
+  : resolve(__dirname, 'node_modules/@reifydb/wasm/package.json')
+const reifydbVersion: string = JSON.parse(readFileSync(wasmPackageJson, 'utf8')).version
 
 const localReifydbAliases = useLocalSdk
   ? [
@@ -30,6 +36,7 @@ const REACT_VENDOR = /node_modules\/(react|react-dom|react-router|react-router-d
 
 // https://vite.dev/config/
 export default defineConfig(({ command }) => ({
+  define: { __REIFYDB_VERSION__: JSON.stringify(reifydbVersion) },
   plugins: ssrBuild
     ? [react(), tailwindcss()]
     : [

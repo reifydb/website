@@ -7,7 +7,6 @@ export function DateModuleOverviewPage() {
   return (
     <Layout>
       <div className="space-y-8">
-        {/* Header */}
         <div>
           <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             date Module
@@ -17,7 +16,6 @@ export function DateModuleOverviewPage() {
           </p>
         </div>
 
-        {/* Quick Example */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Quick Example</h2>
           <ExecutableSnippet
@@ -26,7 +24,6 @@ export function DateModuleOverviewPage() {
           />
         </section>
 
-        {/* Date Extraction Functions */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Date Extraction</h2>
           <p className="text-text-secondary mb-4">
@@ -105,7 +102,6 @@ export function DateModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Date Properties */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Date Properties</h2>
           <p className="text-text-secondary mb-4">
@@ -164,7 +160,6 @@ export function DateModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Date Manipulation Functions */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Date Manipulation</h2>
           <p className="text-text-secondary mb-4">
@@ -243,7 +238,6 @@ export function DateModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Formatting Functions */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Formatting</h2>
           <p className="text-text-secondary mb-4">
@@ -262,7 +256,6 @@ export function DateModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Reference Table */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Function Reference</h2>
           <div className="dialog overflow-x-auto">

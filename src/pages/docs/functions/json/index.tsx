@@ -7,7 +7,6 @@ export function JsonModuleOverviewPage() {
   return (
     <Layout>
       <div className="space-y-8">
-        {/* Header */}
         <div>
           <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             json Module
@@ -17,7 +16,6 @@ export function JsonModuleOverviewPage() {
           </p>
         </div>
 
-        {/* Quick Example */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Quick Example</h2>
           <ExecutableSnippet
@@ -26,7 +24,6 @@ export function JsonModuleOverviewPage() {
           />
         </section>
 
-        {/* Available Functions */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Available Functions</h2>
           <div className="space-y-3">
@@ -49,7 +46,6 @@ export function JsonModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Reference Table */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Function Reference</h2>
           <div className="dialog overflow-x-auto">

@@ -8,7 +8,6 @@ export function ClockModuleOverviewPage() {
   return (
     <Layout>
       <div className="space-y-8">
-        {/* Header */}
         <div>
           <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             clock Module
@@ -20,7 +19,6 @@ export function ClockModuleOverviewPage() {
           </p>
         </div>
 
-        {/* Lifecycle example */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">set, advance, and now Together</h2>
           <ExecutableSnippet title={clockLifecycleExample.title} initialCode={clockLifecycleExample.code} />
@@ -30,7 +28,6 @@ export function ClockModuleOverviewPage() {
           </p>
         </section>
 
-        {/* Clock Functions */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Clock Functions</h2>
           <p className="text-text-secondary mb-4">
@@ -49,7 +46,6 @@ export function ClockModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Internal Procedures */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Internal Procedures</h2>
           <p className="text-text-secondary mb-4">
@@ -86,7 +82,6 @@ export function ClockModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Reference Table */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reference</h2>
           <div className="dialog overflow-x-auto">

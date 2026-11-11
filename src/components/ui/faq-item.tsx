@@ -38,13 +38,13 @@ export function FaqItem({ question, answer }: { question: string; answer: string
   }, [isOpen, done, shown, answer.length]);
 
   return (
-    <div className="dialog">
+    <div className="faq-item">
       <button
         onClick={() => {
           setIsOpen(!isOpen);
           setShown(0);
         }}
-        className="dialog__question"
+        className="faq-item__question"
         aria-expanded={isOpen}
       >
         <svg
@@ -62,8 +62,8 @@ export function FaqItem({ question, answer }: { question: string; answer: string
         <span>{question}</span>
       </button>
       {isOpen && (
-        <div className="dialog__answer" onClick={() => setShown(answer.length)}>
-          <div className="dialog__portrait">
+        <div className="faq-item__answer" onClick={() => setShown(answer.length)}>
+          <div className="faq-item__portrait">
             <PixelIcon rows={ROBOT} colors={ROBOT_COLORS} className="h-9 w-7" />
           </div>
           <p className="text-text-secondary text-sm leading-relaxed">
@@ -71,7 +71,7 @@ export function FaqItem({ question, answer }: { question: string; answer: string
             <span aria-hidden="true">
               {answer.slice(0, shown)}
               <span className="invisible">{answer.slice(shown)}</span>
-              {done && <span className="dialog__next">▼</span>}
+              {done && <span className="faq-item__next">▼</span>}
             </span>
           </p>
         </div>

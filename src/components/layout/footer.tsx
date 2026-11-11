@@ -123,7 +123,6 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Bottom Bar */}
         <div className="mt-12 sm:mt-16 border-t border-border-light pt-8 sm:pt-10 text-xs text-text-muted flex flex-col items-center justify-between gap-4 md:flex-row">
           <div>
             &copy; {new Date().getFullYear()} ReifyDB. All Rights Reserved.

@@ -7,7 +7,6 @@ export function TextModuleOverviewPage() {
   return (
     <Layout>
       <div className="space-y-8">
-        {/* Header */}
         <div>
           <h1 className="text-[clamp(26px,3.4vw,40px)] font-normal leading-[1.08] tracking-[-0.03em] mb-4">
             text Module
@@ -17,7 +16,6 @@ export function TextModuleOverviewPage() {
           </p>
         </div>
 
-        {/* Quick Example */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Quick Example</h2>
           <ExecutableSnippet
@@ -26,7 +24,6 @@ export function TextModuleOverviewPage() {
           />
         </section>
 
-        {/* Case & Whitespace */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Case & Whitespace</h2>
           <div className="grid gap-3">
@@ -53,7 +50,6 @@ export function TextModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Search & Match */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Search & Match</h2>
           <div className="grid gap-3">
@@ -80,7 +76,6 @@ export function TextModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Manipulation */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Manipulation</h2>
           <div className="grid gap-3">
@@ -115,7 +110,6 @@ export function TextModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Measurement & Encoding */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Measurement & Encoding</h2>
           <div className="grid gap-3">
@@ -134,7 +128,6 @@ export function TextModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Formatting */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Formatting</h2>
           <div className="grid gap-3">
@@ -149,7 +142,6 @@ export function TextModuleOverviewPage() {
           </div>
         </section>
 
-        {/* Reference Table */}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Function Reference</h2>
           <div className="dialog overflow-x-auto">

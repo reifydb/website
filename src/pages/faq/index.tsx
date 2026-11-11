@@ -1,4 +1,4 @@
-import { Navbar, Footer } from '@/components/layout';
+import { Container, Footer, Navbar, Section } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { Button, FaqItem, PageCloser, PageHero, PixelScene, ScrollReveal } from '@/components/ui';
 import { faqs } from '@/data/faq-data';
@@ -20,17 +20,17 @@ export function FaqPage() {
           scene={<PixelScene kind="booth" />}
         />
 
-        <section className="section-elevated py-20 sm:py-28">
-          <div className="mx-auto max-w-3xl px-6 md:px-8">
-            <div className="space-y-4">
+        <Section tone="tint">
+          <Container width="narrow">
+            <div className="border-b border-[#e3e5f4]">
               {faqs.map((faq, index) => (
                 <ScrollReveal key={faq.question} delay={index * 60}>
                   <FaqItem {...faq} />
                 </ScrollReveal>
               ))}
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         <PageCloser
           title="Still have a question?"
