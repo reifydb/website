@@ -32,7 +32,7 @@ export function HeroSection() {
             <Button href="/docs/quick-start" size="lg">
               Get started <span className="transition-transform group-hover:translate-x-[3px]">→</span>
             </Button>
-            <Button href="/examples" size="lg" variant="secondary">
+            <Button href={example ? `/examples?id=${example.id}` : '/examples'} size="lg" variant="secondary">
               Open examples
             </Button>
           </div>
