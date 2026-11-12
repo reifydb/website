@@ -183,7 +183,7 @@ export const EXAMPLES: Example[] = [
   {
     id: 'webhook-outbox',
     title: 'Webhook outbox',
-    headline: "Three tries, then it's dead.",
+    headline: "Two tries, then it's dead.",
     subline: 'A queue in the database holds every webhook. Claim one, fail it, and watch it come back.',
     howTo: 'Click Claim next, then Succeed or Fail. Fail one twice, or let its lease run out.',
     howItWorks: {

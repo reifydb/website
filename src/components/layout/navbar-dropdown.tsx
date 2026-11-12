@@ -75,7 +75,7 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
       >
         <div
           className={cn(
-            "dialog transition-[opacity,translate,visibility] ease-[steps(3)]",
+            "border border-[#e3e5f4] bg-white transition-[opacity,translate,visibility] ease-[steps(3)]",
             instant ? "duration-0" : "duration-150",
             isOpen ? "visible opacity-100 translate-y-0" : "invisible opacity-0 -translate-y-2"
           )}
@@ -100,7 +100,7 @@ export function NavbarDropdown({ dropdown, isOpen, instant, onMouseEnter, onMous
                           {item.label}
                         </div>
                         {item.description && (
-                          <div className="text-xs text-text-secondary mt-1">
+                          <div className="font-body text-[13px] font-normal normal-case tracking-normal text-text-secondary mt-1">
                             {item.description}
                           </div>
                         )}
