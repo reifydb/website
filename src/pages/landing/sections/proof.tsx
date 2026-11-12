@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { RaceScene, ScrollReveal } from '@/components/ui';
-import { Container, Section } from '@/components/layout';
+import { Container, Section } from '@reifydb/ui';
 
 function fillOf(value: number) {
   return { '--fill': `calc(${(value - 1) / 9} * (100% - 18px) + 9px)` } as React.CSSProperties;

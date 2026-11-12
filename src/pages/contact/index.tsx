@@ -1,6 +1,7 @@
-import { Container, Footer, Navbar, Section } from '@/components/layout';
+import { Footer, Navbar } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { BUBBLE, CODE, Button, ICON_COLORS, MAIL, PageHero, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
+import { BUBBLE, CODE, Button, ICON_COLORS, MAIL, PixelIcon, PixelScene, ScrollReveal } from '@/components/ui';
+import { Container, PageHero, Section } from '@reifydb/ui';
 
 const channels = [
   {

@@ -1,7 +1,8 @@
-import { Container, Footer, Navbar, Section } from '@/components/layout';
+import { Footer, Navbar } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { Button, FaqItem, PageCloser, PageHero, PixelScene, ScrollReveal } from '@/components/ui';
+import { Button, FaqRobot, PageCloser, PixelScene, ScrollReveal } from '@/components/ui';
 import { faqs } from '@/data/faq-data';
+import { Container, FaqItem, PageHero, Section } from '@reifydb/ui';
 
 export function FaqPage() {
   return (
@@ -25,7 +26,7 @@ export function FaqPage() {
             <div className="border-b border-[#e3e5f4]">
               {faqs.map((faq, index) => (
                 <ScrollReveal key={faq.question} delay={index * 60}>
-                  <FaqItem {...faq} />
+                  <FaqItem {...faq} portrait={<FaqRobot />} />
                 </ScrollReveal>
               ))}
             </div>

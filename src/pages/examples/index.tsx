@@ -3,13 +3,13 @@ import { Menu } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
-import { Container } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { ExecutableSnippet } from '@/components/ui';
 import { RqlHighlight } from '@/components/ui/rql-highlight';
 import { EXAMPLES, ExampleHost, LivePanel, exampleById, useWatchWhileVisible } from '@/components/examples';
 import { ExamplesSidebar, ExamplesSidebarMobile } from './examples-sidebar';
 import { SectionHeader } from './section-header';
+import { Container } from '@reifydb/ui';
 
 export function ExamplesPage() {
   const [searchParams, setSearchParams] = useSearchParams();

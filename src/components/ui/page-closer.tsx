@@ -1,9 +1,8 @@
 import type { ReactNode } from 'react';
-import { Container } from '@/components/layout/container';
-import { Section } from '@/components/layout/section';
 import { ARROW_COLORS, LEFT_ARROW, RIGHT_ARROW } from './pixel-arrow';
 import { PixelIcon } from './pixel-icon';
 import { ScrollReveal } from './scroll-reveal';
+import { Container, Section } from '@reifydb/ui';
 
 interface PageCloserProps {
   eyebrow?: string;

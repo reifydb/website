@@ -1,5 +1,3 @@
 export { Navbar } from './navbar'
 export { Footer } from './footer'
 export { RootLayout } from './root-layout'
-export { Container } from './container'
-export { Section } from './section'

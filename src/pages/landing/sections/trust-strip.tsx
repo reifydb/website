@@ -1,6 +1,6 @@
 import { Star } from 'lucide-react';
 import { useGitHubStars } from '@/hooks';
-import { Container } from '@/components/layout';
+import { Container } from '@reifydb/ui';
 
 const facts = [
   { label: 'Query language', value: 'RQL' },

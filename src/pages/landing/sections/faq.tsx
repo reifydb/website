@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { FaqItem, ScrollReveal } from '@/components/ui';
+import { FaqRobot, ScrollReveal } from '@/components/ui';
 import { faqs } from '@/data/faq-data';
 import { EditorialSection } from './editorial-section';
+import { FaqItem } from '@reifydb/ui';
 
 export function FaqSection() {
   return (
@@ -15,7 +16,7 @@ export function FaqSection() {
       <div className="border-b border-[#e3e5f4]">
         {faqs.slice(0, 3).map((faq, index) => (
           <ScrollReveal key={faq.question} delay={index * 75}>
-            <FaqItem {...faq} />
+            <FaqItem {...faq} portrait={<FaqRobot />} />
           </ScrollReveal>
         ))}
       </div>

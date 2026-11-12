@@ -1,6 +1,7 @@
-import { Container, Footer, Navbar, Section } from '@/components/layout';
+import { Footer, Navbar } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { Button, PageCloser, PageHero, PixelScene, ScrollReveal } from '@/components/ui';
+import { Button, PageCloser, PixelScene, ScrollReveal } from '@/components/ui';
+import { Container, PageHero, Section } from '@reifydb/ui';
 
 export function MissionPage() {
   return (

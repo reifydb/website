@@ -1,8 +1,8 @@
 import { useSyncExternalStore } from 'react';
 import { Button, PixelScene } from '@/components/ui';
-import { Container } from '@/components/layout';
 import { EXAMPLES, ExampleHost } from '@/components/examples';
 import type { Example } from '@/components/examples';
+import { Container } from '@reifydb/ui';
 
 const NEUTRAL_HEADLINE = 'A real database, running in this tab.';
 const NEUTRAL_SUBLINE = 'Pick an example below and watch every write move through it.';

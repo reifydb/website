@@ -10,6 +10,7 @@ const useLocalSdk = process.env.VITE_LOCAL_SDK === '1'
 const localReifydbAliases = useLocalSdk
   ? [
       { find: /^@reifydb\/core$/, replacement: join(SDK_ROOT, 'core/src/index.ts') },
+      { find: /^@reifydb\/ui$/, replacement: join(SDK_ROOT, 'ui/src/index.ts') },
       { find: /^@reifydb\/wasm$/, replacement: join(SDK_ROOT, 'wasm/src/index.ts') },
     ]
   : []

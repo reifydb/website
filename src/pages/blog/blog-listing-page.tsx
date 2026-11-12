@@ -1,13 +1,14 @@
 import { useParams } from 'react-router-dom';
-import { Navbar, Footer, Container, Section } from '@/components/layout';
+import { Navbar, Footer } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import { JsonLd } from '@/components/json-ld';
-import { NoticeBoardScene, PageHero, ScrollReveal } from '@/components/ui';
+import { NoticeBoardScene, ScrollReveal } from '@/components/ui';
 import { blogPosts, getPostBySlug } from '@/data/blog-data';
 import { SITE_LOGO, SITE_NAME, absoluteUrl, canonicalUrl } from '@/lib/site';
 import { NotFoundPage } from '@/pages/not-found';
 import { EntryDetail } from './components/entry-detail';
 import { PostCard } from './components/post-card';
+import { Container, PageHero, Section } from '@reifydb/ui';
 
 export function BlogListingPage() {
   const { slug } = useParams<{ slug: string }>();

@@ -3,9 +3,9 @@ import { cn } from '@/lib';
 import { wasmExecutor } from '@/lib/wasm-executor-singleton';
 import { Button } from './button';
 import { RqlHighlight } from './rql-highlight';
-import { StateLegend } from './state-legend';
 import { changesOf } from './live-subscription-changes';
 import type { LiveChange, LiveRow } from './live-subscription-changes';
+import { StateLegend } from '@reifydb/ui';
 
 const LOG_SIZE = 6;
 const POLL_MS = 500;

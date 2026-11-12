@@ -5,7 +5,7 @@ import { cn } from '@/lib';
 import { NavbarDropdown } from './navbar-dropdown';
 import { navDropdowns, navDirectLinks } from './navbar-data';
 import { MobileMenu } from './mobile-menu';
-import { Container } from './container';
+import { Container } from '@reifydb/ui';
 import { Menu, X } from 'lucide-react';
 
 function subscribeToScroll(onChange: () => void) {

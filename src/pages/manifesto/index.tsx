@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react';
-import { Container, Footer, Navbar, Section } from '@/components/layout';
+import { Footer, Navbar } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
-import { ARROW_COLORS, Button, PageCloser, PageHero, PixelIcon, PixelScene, RIGHT_ARROW, ScrollReveal } from '@/components/ui';
+import { ARROW_COLORS, Button, PageCloser, PixelIcon, PixelScene, RIGHT_ARROW, ScrollReveal } from '@/components/ui';
 import { HEADLINE, apologies, tenets, StackDiagram, FeatureDiagram } from '@/components/manifesto';
 import { RELEASE_LINE } from '@/lib/version';
+import { Container, PageHero, Section } from '@reifydb/ui';
 
 const apologySpans = ['md:col-span-4', 'md:col-span-2', 'md:col-span-2', 'md:col-span-2', 'md:col-span-2'];
 

@@ -1,10 +1,10 @@
-import { Container } from '@/components/layout';
 import { formatPostDate, formatReadTime, type BlogPost } from '@/data/blog-data';
 import { BackLink } from './back-link';
 import { BlogMarkdownRenderer } from './blog-markdown-renderer';
 import { PostSigil } from './post-sigil';
 import { ShareRow } from './share-row';
 import { TagChips } from './tag-chips';
+import { Container } from '@reifydb/ui';
 
 const creditLabel = 'label text-[#4b52d6]';
 

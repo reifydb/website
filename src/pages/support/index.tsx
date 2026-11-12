@@ -1,4 +1,4 @@
-import { Container, Footer, Navbar, Section } from '@/components/layout';
+import { Footer, Navbar } from '@/components/layout';
 import { PageMeta } from '@/components/page-meta';
 import {
   ARROW_COLORS,
@@ -8,12 +8,12 @@ import {
   ICON_COLORS,
   ISSUE,
   PageCloser,
-  PageHero,
   PixelIcon,
   PixelScene,
   RIGHT_ARROW,
   ScrollReveal,
 } from '@/components/ui';
+import { Container, PageHero, Section } from '@reifydb/ui';
 
 const supportOptions = [
   {

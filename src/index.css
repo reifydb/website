@@ -244,24 +244,6 @@ div::backdrop {
   background-color: var(--color-bg-primary);
 }
 
-.sky {
-  background: linear-gradient(#efedfb 0%, #f6f1f4 60%, #faf3e8 100%);
-}
-
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  line-height: 1.8;
-  letter-spacing: 0.06em;
-  color: #4b52d6;
-}
-
-.label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-}
-
 .pixel-score {
   font-family: var(--font-mono);
   font-size: 28px;
@@ -316,57 +298,6 @@ div::backdrop {
 .rdb-snippet--static .monaco-editor .margin,
 .rdb-snippet--static .monaco-editor-background {
   background-color: #f3f2fb;
-}
-
-.dialog {
-  border: 2px solid #4b52d6;
-  background: #ffffff;
-  box-shadow: 0 4px var(--color-primary-dark);
-}
-
-.faq-item {
-  border-top: 1px solid #e3e5f4;
-}
-
-.faq-item__question {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  padding: 18px 0;
-  font-weight: 700;
-  text-align: left;
-  color: var(--color-text-primary);
-}
-
-.faq-item__answer {
-  display: flex;
-  gap: 16px;
-  padding: 0 0 20px 20px;
-  cursor: pointer;
-}
-
-.faq-item__portrait {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 52px;
-  height: 52px;
-  border: 1px solid #e3e5f4;
-  background: #e6e8fd;
-}
-
-.faq-item__next {
-  margin-left: 6px;
-  font-size: 10px;
-  color: #4b52d6;
-  animation: blink 1s steps(2) infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
 }
 
 .flip-pop {
@@ -1110,48 +1041,4 @@ div::backdrop {
   .webhook-outbox__card {
     animation: none;
   }
-}
-
-.marker {
-  background: linear-gradient(transparent 55%, var(--color-accent-yellow) 55%);
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-.link-accent {
-  color: var(--color-text-primary);
-  text-decoration: underline;
-  text-decoration-color: var(--color-accent-pink);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  transition: color 0.15s;
-}
-
-.link-accent:hover {
-  color: var(--color-accent-pink);
-}
-
-.facts-band {
-  background: var(--color-core);
-  color: #ffffff;
-}
-
-.facts-band__fact {
-  padding: 0 20px;
-  border-left: 1px solid rgb(255 255 255 / 0.18);
-}
-
-.facts-band__label {
-  margin-bottom: 6px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: #b9bcf5;
-}
-
-.facts-band__value {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.2;
 }

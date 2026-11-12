@@ -1,6 +1,6 @@
 import { Button, PixelScene, ScrollReveal } from '@/components/ui';
 import { HEADLINE } from '@/components/manifesto';
-import { Container, Section } from '@/components/layout';
+import { Container, Section } from '@reifydb/ui';
 
 
 export function CloserSection() {

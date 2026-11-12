@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Container, Section } from '@/components/layout';
+import { Container, Section } from '@reifydb/ui';
 
 interface EditorialSectionProps {
   id?: string;
