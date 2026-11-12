@@ -10,7 +10,8 @@ describe('concepts/ttl examples', () => {
     db = await createTestDB();
   });
 
-  it.each(conceptsTtlExamples)('$id - $title', (example) => {
+  it.each(conceptsTtlExamples)('$id - $title', async (example) => {
+    await db.awaitAllFlows();
     const result = verifyExample(db, example);
     if (!result.success) {
       console.error(`Example ${example.id} failed:`, result.error);

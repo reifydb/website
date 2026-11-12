@@ -104,10 +104,9 @@ export function CaveatsPage() {
             <Item>Row settings (<Code>ttl</Code>, <Code>persistent</Code>) are fixed at creation, and <Code>persistent: false</Code> requires a TTL.</Item>
             <Item>An insert field that matches no column is silently ignored. See <L to="/docs/scripting/dml/insert">insert</L>.</Item>
             <Item><Code>update</Code> and <Code>delete</Code> without <Code>filter</Code> fail (<Code>UPDATE_003</Code>, <Code>DELETE_002</Code>); <Code>filter {'{'} true {'}'}</Code> is the explicit all-rows form.</Item>
-            <Item>The <Code>create enum</Code> confirmation column is headed <Code>sumtype</Code> while <Code>drop enum</Code> says <Code>enum</Code>, and <Code>drop</Code> confirmations carry no <Code>id</Code> column.</Item>
-            <Item>A misspelled enum variant path in an insert, a variant literal in <Code>filter</Code> or <Code>map</Code>, and a cast from text to an enum type trap the engine instead of returning an error. See <L to="/docs/scripting/schema/enums">Enums</L>.</Item>
+            <Item><Code>drop</Code> confirmations carry no <Code>id</Code> column.</Item>
             <Item>A dictionary with a non-<Code>uint</Code> id type is accepted at creation and traps on the first insert. See <L to="/docs/scripting/schema/dictionaries">Dictionaries</L>.</Item>
-            <Item>Series tags do not round-trip visibly (the tag column scans as <Code>0</Code>) and <Code>precision: second</Code> truncates sub-second keys on write. See <L to="/docs/scripting/storage/series">Series</L>.</Item>
+            <Item><Code>precision: second</Code> truncates sub-second keys on write. See <L to="/docs/scripting/storage/series">Series</L>.</Item>
             <Item><Code>create queue</Code> and <Code>create relationship</Code> parse and then trap with a bare <Code>unreachable</Code>; neither is usable yet. See <L to="/docs/resources/roadmap">Roadmap &amp; Experimental</L>.</Item>
           </ul>
         </section>

@@ -6,7 +6,8 @@ import { incrementalViewsExamples } from './incremental-views.examples';
 describe('Incremental Views Examples', () => {
   let db: WasmDB;
   beforeAll(async () => { db = await createTestDB(); });
-  it.each(incrementalViewsExamples)('$id - $title', (example) => {
+  it.each(incrementalViewsExamples)('$id - $title', async (example) => {
+    await db.awaitAllFlows();
     const result = verifyExample(db, example);
     if (!result.success) console.error(`Example ${example.id} failed:`, result.error);
     expect(result.success, result.error).toBe(true);

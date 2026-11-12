@@ -18,7 +18,8 @@ export const stQueueAllOptionsExample: CodeExample = {
   tenant: utf8,
   address: utf8
 } with {
-  fifo: { partitions: 8, ordered_by: tenant },
+  partition: { by: { tenant } },
+  fifo: { ordered_by: tenant },
   deduplicate: { by: { tenant, address }, ttl: 1h },
   retention: { done: 7d },
   retry: { attempts: 3, backoff: 5s },
@@ -31,14 +32,6 @@ export const stQueueNoDispatchExample: CodeExample = {
     title: 'The Dispatch Block Is Required',
     description: 'A queue without a dispatch block is rejected at parse time (AST_005), not defaulted to fifo.',
     code: `create queue st_queue::bare { id: int4 }`,
-    expectsError: true,
-  };
-
-export const stQueueBadPartitionsExample: CodeExample = {
-    id: 'st-queue-bad-partitions',
-    title: 'Partitions Must Be Between 1 and 1024',
-    description: 'Zero partitions would make the queue undeliverable; the engine rejects it (AST_005).',
-    code: `create queue st_queue::zero { id: int4 } with { fifo: { partitions: 0 } }`,
     expectsError: true,
   };
 
@@ -186,7 +179,6 @@ export const scriptingStorageQueuesExamples: CodeExample[] = [
   stQueueCreateExample,
   stQueueAllOptionsExample,
   stQueueNoDispatchExample,
-  stQueueBadPartitionsExample,
   stQueueInsertExample,
   stQueueScanExample,
   stQueueReturningExample,

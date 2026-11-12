@@ -1,4 +1,4 @@
-import { conceptsSystemCatalogColumnsExample as syscatColumns, conceptsSystemCatalogConfigsExample as syscatConfigs, conceptsSystemCatalogCountExample as syscatCount, conceptsSystemCatalogCreateExample as syscatCreate, conceptsSystemCatalogJoinExample as syscatJoin, conceptsSystemCatalogListExample as syscatList, conceptsSystemCatalogReadOnlyExample as syscatReadOnly, conceptsSystemCatalogRolesExample as syscatRoles, conceptsSystemCatalogSelfExample as syscatSelf, conceptsSystemCatalogTablesExample as syscatTables, conceptsSystemCatalogTypesExample as syscatTypes, conceptsSystemCatalogVersionsExample as syscatVersions, conceptsSystemCatalogViewFlowExample as syscatViewFlow } from './system-catalog.examples';
+import { conceptsSystemCatalogColumnsExample as syscatColumns, conceptsSystemCatalogConfigsExample as syscatConfigs, conceptsSystemCatalogCountExample as syscatCount, conceptsSystemCatalogCreateExample as syscatCreate, conceptsSystemCatalogListExample as syscatList, conceptsSystemCatalogReadOnlyExample as syscatReadOnly, conceptsSystemCatalogRolesExample as syscatRoles, conceptsSystemCatalogSelfExample as syscatSelf, conceptsSystemCatalogTablesExample as syscatTables, conceptsSystemCatalogTypesExample as syscatTypes, conceptsSystemCatalogVersionsExample as syscatVersions, conceptsSystemCatalogViewFlowExample as syscatViewFlow } from './system-catalog.examples';
 import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../layout.tsx';
@@ -34,59 +34,63 @@ function Table({ rows }: { rows: string[][] }) {
 }
 
 const schemaRows: string[][] = [
-  ['namespaces', 'id, name, local_name, parent_id', 'rows: system with its config, metrics, procedures and bindings children, default, rql, and yours'],
-  ['tables', 'id, namespace_id, name, primary_key_id', 'rows; panics on every read once any primary key exists'],
-  ['columns', 'id, object_id, object_type, name, type, position, auto_increment, dictionary_id', 'rows; type is an id into system::types'],
-  ['column::properties', 'id, column_id, type, value', 'empty'],
-  ['views', 'id, namespace_id, name, kind, primary_key_id, underlying_id', 'rows once a view exists; a scan omits kind'],
-  ['primary_keys', 'id, shape_id', 'rows once a primary key exists'],
-  ['primary_key::columns', 'primary_key_id, column_id, position', 'rows once a primary key exists'],
-  ['sequences', 'id, namespace_id, name, value', 'INTERNAL_ERROR on every read: a system sequence id is missing from the catalog'],
-  ['ringbuffers', 'id, namespace_id, name, capacity, primary_key_id', 'rows: the two engine ring buffers under system::metrics'],
-  ['series', 'id, namespace_id, name, tag_id, key_column, key_kind', 'rows: the 23 snapshots series under system::metrics'],
+  ['namespaces', 'id, name, local_name, parent_id', 'rows: system and its children, default, rql, and yours'],
+  ['tables', 'id, namespace_id, name, primary_key_id, time_domain, time_column', 'rows: system::source::completeness and yours'],
+  ['columns', 'id, object_id, object_kind, name, type, position, auto_increment, dictionary_id', 'rows; type is the type name'],
+  ['column_properties', 'id, column_id, kind, value', 'empty until you create one'],
+  ['views', 'id, namespace_id, name, kind, storage_kind, primary_key_id', 'empty until you create one'],
+  ['primary_keys', 'id, object_id', 'rows: one engine key, plus yours'],
+  ['primary_key_columns', 'primary_key_id, column_id, position', 'one row per key column'],
+  ['sequences', 'id, namespace_id, name, value', 'rows: the engine sequences'],
+  ['ringbuffers', 'id, namespace_id, name, capacity, primary_key_id, time_domain, time_column', 'rows: the two engine ring buffers under system::metric'],
+  ['series', 'id, namespace_id, name, tag_id, key_column, key_kind, time_domain, time_column', 'rows: the 10 snapshots series under system::metric'],
   ['dictionaries', 'id, namespace_id, name, value_type, id_type', 'empty until you create one'],
   ['enums', 'id, namespace_id, name', 'empty until you create one'],
-  ['enum::variants', 'id, variant_tag, variant_name, field_count, field_index, field_name, field_type', 'one row per variant; variant names come back lower-cased'],
-  ['tags, tag_variants', 'same shape as enums and enum::variants', 'empty until you create one'],
-  ['events, event::variants', 'same shape as enums and enum::variants', 'empty until you create one'],
-  ['handlers', 'id, namespace_id, name, on_sumtype_id, on_variant_tag', 'empty until you create one'],
-  ['types', 'id, name', '27 rows'],
-  ['virtual_tables', 'id, namespace_id, name, kind', '62 rows'],
-  ['virtual_table::columns', 'id, vtable_id, name, type, position', '353 rows'],
-  ['procedures::rql, procedures::test', 'not observable', 'empty; not listed by virtual_tables'],
-  ['procedures::in_process, ::extern_c, ::extern_wasm', 'not observable', 'panics on read'],
-  ['bindings::http, ::grpc, ::ws', 'not observable', 'empty; not listed by virtual_tables'],
+  ['enum_variants', 'id, variant_tag, variant_name, field_count, field_index, field_name, field_type', 'one row per variant field'],
+  ['events, event_variants', 'same shape as enums and enum_variants', 'empty until you create one'],
+  ['handlers', 'id, namespace_id, name, sumtype_id, variant_tag', 'empty until you create one'],
+  ['relationships', 'id, namespace_id, name, source_table_id, source_column_id, target_table_id, target_column_id, junction_table_id, junction_source_column_id, junction_target_column_id, cardinality', 'empty until you create one'],
+  ['types', 'id, name', '25 rows'],
+  ['virtual_tables', 'id, namespace_id, name, kind', '45 rows'],
+  ['virtual_table_columns', 'id, vtable_id, name, type, position', '212 rows'],
 ];
 
 const securityRows: string[][] = [
-  ['identities', 'id, name, enabled', 'rows: root is always there'],
-  ['identity::attributes', 'id, name, value_type', 'empty'],
-  ['identity::attribute_values', 'identity, attribute_id, attribute, value', 'empty'],
-  ['authentications', 'id, user_id, method', 'panics on read'],
+  ['identities', 'id, name, enabled, kind', 'rows: root and system are always there'],
+  ['identity_attributes', 'id, name, value_type', 'empty'],
+  ['identity_attribute_values', 'identity_id, attribute_id, attribute, value', 'empty'],
   ['roles', 'id, name', 'empty until you create one'],
-  ['identity::roles', 'identity_id, role_id', 'empty until you grant one; a scan names the first column identity'],
-  ['policies', 'id, name, target_type, target_namespace, target_object, enabled', 'empty until you create one'],
-  ['policy::operations', 'policy_id, operation, body_source', 'empty until you create one'],
+  ['granted_roles', 'identity_id, role_id', 'empty until you grant one'],
+  ['policies', 'id, name, target_type, target_namespace, target_object, enabled', 'rows: five built-in procedure policies, plus yours'],
+  ['policy_operations', 'policy_id, operation, body_source', 'rows: one per built-in policy, plus yours'],
+  ['authentication::methods', 'id, name, ttl, promote_guest, properties', 'empty until you declare one'],
+  ['authentication::credentials', 'id, identity_id, method', 'empty until you create one'],
 ];
 
 const flowRows: string[][] = [
-  ['flows', 'id, namespace_id, name, status', 'rows once a view exists'],
-  ['flow::watermarks', 'flow_id, shape_id, lag', 'rows once a view exists; not listed by virtual_tables'],
-  ['subscriptions, subscription::watermarks', 'not observable', 'empty; not listed by virtual_tables; the browser build has no subscription service'],
+  ['flow::flows', 'id, namespace_id, name, status, reason', 'rows once a view exists'],
+  ['flow::operators', 'id, flow_id, kind', 'rows once a view exists'],
+  ['flow::edges', 'id, flow_id, source_id, target_id', 'rows once a view exists'],
+  ['flow::operator::types', 'id, name', '23 rows'],
+  ['flow::operator::libraries', 'operator_name, library_path, abi, can_insert, can_update, can_delete', 'empty'],
+  ['flow::operator::library::inputs, ::outputs', 'operator_name, position, name, type, description', 'empty'],
+  ['flow::watermarks', 'not observable', 'empty; not listed by virtual_tables'],
+  ['windowed_view_groups', 'id, namespace_id, name, flow_id', 'empty until you create one'],
+  ['windowed_view_group_members', 'group_id, view_id', 'empty until you create one'],
+  ['queue::queues', 'id, namespace_id, name, partition_by, ordered_by, deduplicate_by, deduplicate_ttl, time_domain, time_column, depth, in_flight, blocked_keys, oldest_due_at', 'empty until you create one'],
+  ['queue::partitions', 'queue_id, partition, depth, in_flight, blocked_keys, oldest_due_at', 'one row per queue partition'],
+  ['subscriptions', 'not observable', 'empty; not listed by virtual_tables'],
 ];
 
 const runtimeRows: string[][] = [
-  ['versions', 'name, version, description, type', '11 rows'],
-  ['configs', 'key, value, default_value, description, requires_restart', '58 rows'],
+  ['versions', 'name, version, description, kind', '12 rows'],
+  ['configs', 'key, value, default_value, description, requires_restart', '53 rows'],
   ['migrations', 'name, action, body, rollback_body', 'empty until you register one'],
-  ['shapes', 'fingerprint, field_count', 'one row per distinct row layout'],
-  ['shape_fields', 'fingerprint, field_index, name, type, constraint_type, constraint_p1, constraint_p2, offset, size, align', 'one row per field per layout'],
-  ['shape_retention_strategies', 'shape_id, shape_type, strategy_type, cleanup_mode, value', 'panics on read'],
-  ['operator_retention_strategies', 'operator_id, strategy_type, cleanup_mode, value', 'panics on read'],
-  ['metrics::request_history', 'ring buffer, capacity 10000', 'empty here'],
-  ['metrics::statement_stats', 'ring buffer, capacity 5000', 'empty here'],
-  ['metrics::storage::<object>::current', 'id, namespace_id, tier, current and historical key, value and total bytes and counts, total_bytes', '9 tables, one per object kind; empty here'],
-  ['metrics::<domain>::snapshots', 'series keyed by ts', '23 series; empty here'],
+  ['row_shapes', 'fingerprint, field_count', 'one row per distinct row layout'],
+  ['row_shape_fields', 'fingerprint, field_index, name, type, offset, size', 'one row per field per layout'],
+  ['metric::request_history', 'ring buffer, capacity 10000', 'empty here'],
+  ['metric::statement_stats', 'ring buffer, capacity 5000', 'empty here'],
+  ['metric::<domain>::snapshots', 'series', '10 series; empty here'],
 ];
 
 export function SystemCatalogPage() {
@@ -160,51 +164,32 @@ export function SystemCatalogPage() {
           <p className="text-text-secondary mt-4 mb-4">
             <Code>primary_key_id</Code> stays <Code>none</Code> until a primary key is
             declared. The columns of a table hang off its id through <Code>object_id</Code>.
-            Each column carries its position, its <Code>auto_increment</Code> flag, and a
-            numeric type id:
+            Each column carries its position, its <Code>auto_increment</Code> flag, and
+            its type by name:
           </p>
           <ExecutableSnippet title={syscatColumns.title} initialCode={syscatColumns.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            Type ids resolve through <Code>system::types</Code>; the full list of types is
-            on the{' '}
+            <Code>system::types</Code> lists every type with its id; the full list is on
+            the{' '}
             <Link to="/docs/concepts/data-types" className="text-primary hover:text-primary-light font-medium transition-colors">Data Types</Link>{' '}
             page:
           </p>
           <ExecutableSnippet title={syscatTypes.title} initialCode={syscatTypes.code} />
-          <p className="text-text-secondary mt-4 mb-4">
-            Two lookups can be one query. A{' '}
-            <Link to="/docs/rql/transforms/join" className="text-primary hover:text-primary-light font-medium transition-colors">join</Link>{' '}
-            over catalog tables works like any other join, in either direction; here the
-            type id of every column of <Code>orders</Code> becomes its name:
+          <p className="text-text-secondary mt-4">
+            A subquery inside <Code>filter</Code> is not supported; it fails with <Code>AST_005</Code>.
           </p>
-          <ExecutableSnippet title={syscatJoin.title} initialCode={syscatJoin.code} />
-          <Callout variant="warning" title="Three forms to know about in this build">
-            A <Code>let</Code> whose stages are chained on whitespace, such as{' '}
-            <Code>let $x = from system::tables filter {'{'} ... {'}'}</Code>, parses and
-            then traps the shipped browser engine (<Code>unreachable</Code>) while
-            planning; that is true of every table, not only the catalog. Pipe the stages
-            instead: <Code>let $x = from system::tables | filter {'{'} ... {'}'}</Code>{' '}
-            works (see{' '}
-            <Link to="/docs/rql/expressions/subqueries" className="text-primary hover:text-primary-light font-medium transition-colors">Subqueries</Link>).
-            A subquery inside <Code>filter</Code> is a clean <Code>AST_005</Code>. A
-            misspelled catalog name is not: <Code>from system::tabels</Code> traps with{' '}
-            <Code>unreachable</Code> ("Unknown virtual table type"), where an unknown
-            table in your own namespace fails with <Code>CA_004</Code>. A trap can leave
-            the shared playground engine unusable; reload the page to recover.
-          </Callout>
         </section>
 
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The catalog describes itself</h2>
           <p className="text-text-secondary mb-4">
-            <Code>system::virtual_table::columns</Code> holds the columns of every virtual
+            <Code>system::virtual_table_columns</Code> holds the columns of every virtual
             table, keyed by <Code>vtable_id</Code>. <Code>system::tables</Code> is virtual
             table 3, so its own shape is one query away:
           </p>
           <ExecutableSnippet title={syscatSelf.title} initialCode={syscatSelf.code} />
           <p className="text-text-secondary mt-4">
-            Type 13 is <Code>uint8</Code> and type 9 is <Code>utf8</Code> in{' '}
-            <Code>system::types</Code>. The reference at the bottom of this page was built
+            The reference at the bottom of this page was built
             from exactly this table.
           </p>
         </section>
@@ -216,7 +201,7 @@ export function SystemCatalogPage() {
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">view</Link>{' '}
             is more than a row in <Code>system::views</Code>. Creating one also registers a
             flow - the dataflow graph that keeps the view current - in{' '}
-            <Code>system::flows</Code>:
+            <Code>system::flow::flows</Code>:
           </p>
           <ExecutableSnippet title={syscatViewFlow.title} initialCode={syscatViewFlow.code} />
         </section>
@@ -289,15 +274,15 @@ export function SystemCatalogPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reference: every table in this build</h2>
           <p className="text-text-secondary mb-4">
-            The groups below cover all 39 virtual tables in <Code>system</Code> plus the
-            metrics tables, as listed by <Code>system::virtual_tables</Code> on the
-            playground engine, and the few extra names that answer a <Code>from</Code>{' '}
+            The groups below cover all 45 virtual tables listed by{' '}
+            <Code>system::virtual_tables</Code> on the playground engine (34 directly in{' '}
+            <Code>system</Code>, the rest under <Code>system::flow</Code>,{' '}
+            <Code>system::queue</Code> and <Code>system::authentication</Code>), the
+            metrics objects, and the few extra names that answer a <Code>from</Code>{' '}
             without being listed. Columns come from{' '}
-            <Code>system::virtual_table::columns</Code>. The last column records what a
-            read returned on a fresh engine; "panics on read" means the engine lists the
-            table but has no reader for it: the read traps with <Code>unreachable</Code>{' '}
-            ("Unknown virtual table type"), exactly as a misspelled <Code>system::</Code>{' '}
-            name does, so never put such a query in a shared playground.
+            <Code>system::virtual_table_columns</Code>. The last column records what a
+            read returned on the playground engine. A name that is not a virtual table
+            fails with <Code>CA_023</Code>.
           </p>
           <h3 className="text-lg font-bold mb-2">Schema objects</h3>
           <Table rows={schemaRows} />

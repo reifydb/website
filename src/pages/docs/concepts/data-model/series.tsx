@@ -119,28 +119,18 @@ export function DataModelSeriesPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Classifying entries with tags</h2>
           <p className="text-text-secondary mb-4">
-            A series can attach a{' '}
-            <Link to="/docs/concepts/data-model/tags" className="text-primary hover:text-primary-light font-medium transition-colors">tag type</Link>{' '}
-            - a named set of variants, optionally with payload fields - to classify
-            where each entry came from or what kind it is, without widening the schema
-            with mostly-empty optional columns. The tag type must exist before the
-            series that names it:
+            A series can attach an{' '}
+            <Link to="/docs/concepts/data-model/enums" className="text-primary hover:text-primary-light font-medium transition-colors">enum</Link>{' '}
+            as its tag to classify where each entry came from or what kind it is,
+            without widening the schema with mostly-empty optional columns. The enum
+            must exist before the series that names it:
           </p>
           <ExecutableSnippet title={dmSeriesTag.title} initialCode={dmSeriesTag.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Entries in a tagged series carry a <Code>tag</Code> column next to the
-            declared ones, and an insert may set it to one of the variants:
+            declared ones, and an insert sets it to a variant name:
           </p>
           <ExecutableSnippet title={dmSeriesTagInsert.title} initialCode={dmSeriesTagInsert.code} />
-          <Callout variant="warning" title="Variant tags read back as numbers in the current build">
-            A variant written to the <Code>tag</Code> field renders as a number, not its
-            name (<Code>Manual</Code> reads back as <Code>1</Code>), and payload variants
-            cannot be inserted.
-            Treat a tag as declared intent for now. To filter or group on a
-            classification today, store it in an ordinary column. The{' '}
-            <Link to="/docs/concepts/data-model/tags" className="text-primary hover:text-primary-light font-medium transition-colors">Tags</Link>{' '}
-            page lists the full set of limits.
-          </Callout>
         </section>
 
         <section>
@@ -210,8 +200,7 @@ export function DataModelSeriesPage() {
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
               <span>
-                A label on each entry that you need to filter or group by today: an
-                ordinary column, until tags read back.
+                A label on each entry from a fixed set: an enum as the series tag.
               </span>
             </li>
           </ul>

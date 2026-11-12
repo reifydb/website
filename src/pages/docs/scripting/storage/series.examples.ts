@@ -74,8 +74,8 @@ from st_sr::coarse`,
 
 export const scriptingSeriesTagExample: CodeExample = {
     id: 'scripting-series-tag',
-    title: 'Attach a Tag Type',
-    code: `create tag st_sr::origin { Sensor { location: utf8 }, Manual };
+    title: 'Attach an Enum as the Tag',
+    code: `create enum st_sr::origin { Sensor { location: utf8 }, Manual };
 create series st_sr::readings {
   ts: datetime,
   value: float8
@@ -101,9 +101,9 @@ insert st_sr::per_sensor [
 from st_sr::per_sensor`,
     expected: `ts                             | sensor | value | #rownum
 -------------------------------+--------+-------+--------
-1970-01-01T00:00:02.000000000Z | 1      | 11.5  | 2
+1970-01-01T00:00:02.000000000Z | 1      | 11.5  | 3
 1970-01-01T00:00:01.000000000Z | 1      | 10.5  | 1
-1970-01-01T00:00:03.000000000Z | 2      | 20.5  | 1`,
+1970-01-01T00:00:03.000000000Z | 2      | 20.5  | 2`,
   };
 
 export const scriptingSeriesUpdateExample: CodeExample = {

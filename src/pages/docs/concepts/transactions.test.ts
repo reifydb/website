@@ -10,7 +10,8 @@ describe('concepts/transactions examples', () => {
     db = await createTestDB();
   });
 
-  it.each(conceptsTransactionsExamples)('$id - $title', (example) => {
+  it.each(conceptsTransactionsExamples)('$id - $title', async (example) => {
+    await db.awaitAllFlows();
     const result = verifyExample(db, example);
     if (!result.success) {
       console.error(`Example ${example.id} failed:`, result.error);

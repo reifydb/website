@@ -36,7 +36,7 @@ export const snsEnumExample: CodeExample = {
     id: 'sns-enum',
     title: 'Other Object Kinds Live in Namespaces Too',
     code: `create enum sns::priority { Low, Medium, High }`,
-    expected: `id    | namespace | sumtype  | created
+    expected: `id    | namespace | enum     | created
 ------+-----------+----------+--------
 16417 | sns       | priority | true`,
   };

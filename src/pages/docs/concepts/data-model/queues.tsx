@@ -1,4 +1,4 @@
-import { dmQueuesCatalogExample as dmQueuesCatalog, dmQueuesClaimExample as dmQueuesClaim, dmQueuesCreateExample as dmQueuesCreate, dmQueuesDropExample as dmQueuesDrop, dmQueuesEnqueueExample as dmQueuesEnqueue, dmQueuesImmutableExample as dmQueuesImmutable, dmQueuesOrderedClaimExample as dmQueuesOrderedClaim, dmQueuesOrderedExample as dmQueuesOrdered, dmQueuesPartitionsExample as dmQueuesPartitions, dmQueuesScanExample as dmQueuesScan } from './queues.examples';
+import { dmQueuesClaimExample as dmQueuesClaim, dmQueuesCreateExample as dmQueuesCreate, dmQueuesDropExample as dmQueuesDrop, dmQueuesEnqueueExample as dmQueuesEnqueue, dmQueuesImmutableExample as dmQueuesImmutable, dmQueuesOrderedClaimExample as dmQueuesOrderedClaim, dmQueuesOrderedExample as dmQueuesOrdered, dmQueuesPartitionsExample as dmQueuesPartitions, dmQueuesScanExample as dmQueuesScan } from './queues.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { AsciiDiagram, Callout, RqlCodeBlock } from '../../components';
@@ -27,17 +27,6 @@ export function DataModelQueuesPage() {
           </p>
         </div>
 
-        <Callout variant="warning" title="Needs a newer engine than the playground runs">
-          The in-browser engine on this site (<Code>@reifydb/wasm</Code> 0.8.1) has no
-          queues: <Code>create queue</Code> traps with a bare <Code>unreachable</Code>{' '}
-          (a Rust panic, not an error code), <Code>drop queue</Code> fails with{' '}
-          <Code>AST_005</Code>, reading <Code>system::queues</Code> traps the same way, and
-          the <Code>queue::</Code> procedures are unknown (<Code>PROCEDURE_001</Code>).
-          The engine source is at 0.9.0. Every snippet on this page is shown, not
-          runnable, and every result is taken from the engine's own tests. See{' '}
-          <Link to="/docs/resources/roadmap" className="text-primary hover:text-primary-light font-medium transition-colors">Roadmap &amp; Experimental</Link>.
-        </Callout>
-
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Creating a queue</h2>
           <p className="text-text-secondary mb-4">
@@ -46,7 +35,7 @@ export function DataModelQueuesPage() {
             typed columns inside a namespace. One thing is mandatory: a dispatch block in
             the <Code>with</Code> clause. <Code>fifo: {'{}'}</Code> is the only dispatch
             today, and leaving it out is a parse error, not a default. Everything else
-            has a default: 16 partitions, no ordering key, no deduplication, no
+            has a default: one partition, no ordering key, no deduplication, no
             retention, and a retry budget of 5 attempts with a 10 second backoff.
           </p>
           <RqlCodeBlock code={dmQueuesCreate.code} />
@@ -200,16 +189,13 @@ cpt_queue::jobs | 1    | ready`}
             number, which stays the same across attempts.
           </p>
           <p className="text-text-secondary mb-4">
-            Without an ordering key there is no global order. Items are spread across
-            partitions by row number, and a claim walks the partitions starting from one
-            picked by the worker's name, so two workers drain different partitions first.
-            Within one partition, due items are handed out oldest due first.
+            Without an ordering key there is no global order across partitions. Within
+            one partition, due items are handed out oldest due first.
           </p>
           <p className="text-text-secondary mb-4">
-            <Code>ordered_by: column</Code> makes order strict per key. All items with the
-            same key land in the same partition, and only the oldest pending item of a
-            key (its head) is claimable; younger siblings are parked until the head is
-            acknowledged or dead. Here two items belong to tenant <Code>a</Code> and one
+            <Code>ordered_by: column</Code> makes order strict per key: only the oldest
+            pending item of a key (its head) is claimable; younger siblings are parked
+            until the head is acknowledged or dead. Here two items belong to tenant <Code>a</Code> and one
             to <Code>b</Code>, and a claim asking for five gets only the two heads:
           </p>
           <RqlCodeBlock code={dmQueuesOrdered.code} />
@@ -234,15 +220,11 @@ qt1:16386:0:3:1:w1 | 3    | 1       | 1970-01-01T00:00:31.000000000Z | 3  | b`}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Partitions</h2>
           <p className="text-text-secondary mb-4">
-            <Code>fifo: {'{'} partitions: N {'}'}</Code> sets how many independent lanes
-            the queue has, between 1 and 1024, 16 by default. Partitions are not a
-            column you see; they are the unit of contention. Each claim locks one
-            partition at a time, so more partitions let more workers claim concurrently,
-            and more keys drain in parallel on an ordered queue. A keyed queue hashes the{' '}
-            <Code>ordered_by</Code> value to a partition, an unkeyed queue hashes the row
-            number. The placement is recomputable from the stored row alone, which is
-            what keeps per-key order intact across a restart. The count is fixed at
-            creation.
+            <Code>partition: {'{'} by: {'{'} column, ... {'}'} {'}'}</Code> splits the queue
+            into one partition per distinct value of those columns. Partitions are not a
+            column you see; they are the unit of contention: each claim locks one
+            partition at a time, so more partitions let more workers claim concurrently.
+            Without it the queue has a single partition.
           </p>
         </section>
 
@@ -308,23 +290,17 @@ qt1:16386:0:3:1:w1 | 3    | 1       | 1970-01-01T00:00:31.000000000Z | 3  | b`}
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Observing a queue</h2>
           <p className="text-text-secondary mb-4">
-            <Code>system::queues</Code> lists every queue with its declaration
-            (<Code>partitions</Code>, <Code>ordered_by</Code>,{' '}
-            <Code>deduplicate_by</Code>, <Code>deduplicate_ttl</Code>, <Code>time</Code>)
-            and its live counters: <Code>depth</Code> the number of items waiting (due, delayed, or parked),{' '}
+            <Code>system::queue::partitions</Code> holds the live counters of every
+            queue, one row per <Code>queue_id</Code> and <Code>partition</Code>:{' '}
+            <Code>depth</Code> the number of items waiting (due, delayed, or parked),{' '}
             <Code>in_flight</Code> the number currently leased, <Code>blocked_keys</Code>{' '}
             the number of keys with a parked sibling, and <Code>oldest_due_at</Code> the
             earliest due instant still waiting. The counters are maintained on every
             transition, never recomputed, so they are cheap to read:
           </p>
-          <RqlCodeBlock code={dmQueuesCatalog.code} />
-          <p className="text-text-secondary mt-4 mb-4">
-            <Code>system::queue::partitions</Code> breaks the same counters down per
-            partition, one row per <Code>queue_id</Code> and <Code>partition</Code>:
-          </p>
           <RqlCodeBlock code={dmQueuesPartitions.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            Both are virtual tables of the{' '}
+            It is a virtual table of the{' '}
             <Link to="/docs/concepts/system-catalog" className="text-primary hover:text-primary-light font-medium transition-colors">system catalog</Link>.{' '}
             <Code>drop queue</Code> removes the definition, the items, and the whole
             scheduling state of that queue:

@@ -10,7 +10,8 @@ describe('scripting/schema/alter examples', () => {
     db = await createTestDB();
   });
 
-  it.each(scriptingSchemaAlterExamples)('$id - $title', (example) => {
+  it.each(scriptingSchemaAlterExamples)('$id - $title', async (example) => {
+    await db.awaitAllFlows();
     const result = verifyExample(db, example);
     if (!result.success) {
       console.error(`Example ${example.id} failed:`, result.error);

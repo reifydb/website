@@ -37,6 +37,10 @@ fn main() {
 }`;
 
 const rootToken = `db.admin_as_root(
+    "create authentication method token with { ttl: forever }",
+    Params::None,
+).unwrap();
+db.admin_as_root(
     "create authentication for root { method: token; token: 'change-me' }",
     Params::None,
 ).unwrap();`;

@@ -44,7 +44,6 @@ const docsPages: PageEntry[] = [
   { path: '/docs/concepts/data-model/policies', name: 'DataModelPoliciesPage', load: () => import('@/pages/docs/concepts/data-model/policies') },
   { path: '/docs/concepts/data-model/subscriptions', name: 'DataModelSubscriptionsPage', load: () => import('@/pages/docs/concepts/data-model/subscriptions') },
   { path: '/docs/concepts/data-model/enums', name: 'DataModelEnumsPage', load: () => import('@/pages/docs/concepts/data-model/enums') },
-  { path: '/docs/concepts/data-model/tags', name: 'DataModelTagsPage', load: () => import('@/pages/docs/concepts/data-model/tags') },
   { path: '/docs/concepts/data-model/events', name: 'DataModelEventsPage', load: () => import('@/pages/docs/concepts/data-model/events') },
   { path: '/docs/concepts/data-model/handlers', name: 'DataModelHandlersPage', load: () => import('@/pages/docs/concepts/data-model/handlers') },
   { path: '/docs/concepts/data-model/procedures', name: 'DataModelProceduresPage', load: () => import('@/pages/docs/concepts/data-model/procedures') },

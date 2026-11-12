@@ -10,7 +10,8 @@ describe('concepts/data-model/ring-buffers examples', () => {
     db = await createTestDB();
   });
 
-  it.each(dataModelRingBuffersExamples)('$id - $title', (example) => {
+  it.each(dataModelRingBuffersExamples)('$id - $title', async (example) => {
+    await db.awaitAllFlows();
     const result = verifyExample(db, example);
     if (!result.success) {
       console.error(`Example ${example.id} failed:`, result.error);

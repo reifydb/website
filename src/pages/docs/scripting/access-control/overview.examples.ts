@@ -67,11 +67,22 @@ export const acListIdentitiesExample: CodeExample = {
     id: 'ac-list-identities',
     title: 'Inspect Identities and Roles',
     code: `from system::identities map { name, enabled } sort { name: asc }`,
-    expected: `name  | enabled
-------+--------
-alice | true
-bob   | true
-root  | true`,
+    expected: `name   | enabled
+-------+--------
+alice  | true
+bob    | true
+root   | true
+system | true`,
+  };
+
+export const acAuthMethodsExample: CodeExample = {
+    id: 'ac-auth-methods',
+    title: 'Declare the Methods',
+    code: `create authentication method password with { ttl: 1h };
+create authentication method token with { ttl: 1h }`,
+    expected: `method | created
+-------+--------
+token  | true`,
   };
 
 export const acAuthPasswordExample: CodeExample = {
@@ -221,7 +232,7 @@ map { name, target_namespace, target_object, enabled }
 sort { name: asc }`,
     expected: `name             | target_namespace | target_object | enabled
 -----------------+------------------+---------------+--------
-ac_readable      | ac               |               | true
+ac_readable      | ac               | ⟪none⟫        | true
 editors_update   | ac               | documents     | true
 hide_owner       | ac               | documents     | true
 owner_only       | ac               | documents     | true
@@ -288,6 +299,7 @@ export const accessControlOverviewExamples: CodeExample[] = [
   acRevokeExample,
   acGrantMissingRoleExample,
   acListIdentitiesExample,
+  acAuthMethodsExample,
   acAuthPasswordExample,
   acAuthTokenExample,
   acDropAuthExample,

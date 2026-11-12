@@ -1,4 +1,4 @@
-import { scEnumsCastExample as scEnumsCast, scEnumsColumnExample as scEnumsColumn, scEnumsCreateExample as scEnumsCreate, scEnumsDropExample as scEnumsDrop, scEnumsDropInUseExample as scEnumsDropInUse, scEnumsFilterExample as scEnumsFilter, scEnumsIfNotExistsExample as scEnumsIfNotExists, scEnumsInsertStringExample as scEnumsInsertString, scEnumsPayloadExample as scEnumsPayload, scEnumsSortExample as scEnumsSort } from './enums.examples';
+import { scEnumsColumnExample as scEnumsColumn, scEnumsCreateExample as scEnumsCreate, scEnumsDropExample as scEnumsDrop, scEnumsDropInUseExample as scEnumsDropInUse, scEnumsFilterExample as scEnumsFilter, scEnumsIfNotExistsExample as scEnumsIfNotExists, scEnumsInsertUnknownExample as scEnumsInsertUnknown, scEnumsPayloadExample as scEnumsPayload, scEnumsSortExample as scEnumsSort } from './enums.examples';
 import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
@@ -31,17 +31,15 @@ export function EnumsPage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Creating an enum</h2>
           <p className="text-text-secondary mb-4">
             <Code>create enum ns::name {'{'} Variant, ... {'}'}</Code> declares the type.
-            Variant names are identifiers, and their order matters: each variant is
-            assigned a tag equal to its position in the declaration, starting at 0, and
-            that tag is what the engine physically stores. Enums are DDL, so the
+            Variant names are identifiers, and their order matters: it is the order a
+            sort on the column follows. Enums are DDL, so the
             statement needs an admin transaction - which is what the runnable snippets
             on this page execute as. Run them in order:
           </p>
           <ExecutableSnippet title={scEnumsCreate.title} initialCode={scEnumsCreate.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The confirmation includes the catalog id the engine assigned to the new
-            type. Note the column header: <Code>sumtype</Code>, not <Code>enum</Code> -
-            internally an enum is a sum type, and the confirmation leaks that name.
+            type.
           </p>
           <p className="text-text-secondary mb-4">
             <Code>create enum if not exists</Code> makes the declaration idempotent -
@@ -57,28 +55,19 @@ export function EnumsPage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Typing a column with an enum</h2>
           <p className="text-text-secondary mb-4">
             Use the qualified enum name anywhere a column type goes. Values are written
-            as fully qualified variant paths - <Code>sc_enum::status::Active</Code>.
-            On disk the column holds only the compact tag, and a read exposes it as a
-            flattened <Code>_tag</Code> column:
+            as the variant name in a string - <Code>'active'</Code> - in any case. A
+            read gives the name back in lower case under the declared column name:
           </p>
           <ExecutableSnippet title={scEnumsColumn.title} initialCode={scEnumsColumn.code} />
-          <p className="text-text-secondary mt-4 mb-4">
-            The declared column was <Code>status</Code>, but the result shows{' '}
-            <Code>status_tag</Code> with the variant indices (0 for{' '}
-            <Code>Active</Code>, 1 for <Code>Inactive</Code>, 2 for{' '}
-            <Code>Pending</Code>). This flattening is the same scheme joins use for
-            aliased columns: the logical name is a prefix, and every physical part of
-            the value gets its own column.
-          </p>
         </section>
 
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Variants with payloads</h2>
           <p className="text-text-secondary mb-4">
             Variants can carry typed fields, which makes an enum a full sum type. Each
-            row stores exactly one variant and its payload; a read flattens the tag and
-            every field of every variant, filling the fields of absent variants with{' '}
-            <Code>none</Code>:
+            row stores exactly one variant and its payload. Every field of every
+            variant is its own column, and the fields of absent variants hold{' '}
+            <Code>none</Code>. An insert names the variant and sets its field columns:
           </p>
           <ExecutableSnippet title={scEnumsPayload.title} initialCode={scEnumsPayload.code} />
           <p className="text-text-secondary mt-4 mb-4">
@@ -94,66 +83,30 @@ export function EnumsPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">What insert accepts</h2>
           <p className="text-text-secondary mb-4">
-            The only accepted value form is the fully qualified variant path. A plain
-            string that happens to spell a variant name is not resolved to one - the
-            value fails to map onto the tag column and the insert is rejected. The
-            error is phrased in terms of the physical storage: the string produces{' '}
-            <Code>none</Code>, and the non-optional tag column refuses it:
+            An insert accepts only a name the enum declares. Any other name is
+            rejected with <Code>CA_100</Code>, so a typo fails at write time:
           </p>
-          <ExecutableSnippet title={scEnumsInsertString.title} initialCode={scEnumsInsertString.code} />
+          <ExecutableSnippet title={scEnumsInsertUnknown.title} initialCode={scEnumsInsertUnknown.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            Writing the raw tag number (<Code>status: 0</Code>) is rejected the same
-            way. The variant path is deliberately the single point of entry: it is the
-            only form the parser can check against the declaration.
+            A raw number (<Code>status: 0</Code>) and the old variant path form
+            (<Code>sc_enum::status::Active</Code>) are both rejected.
           </p>
-          <Callout variant="note" title="Spell the path correctly">
-            A misspelled variant name in an otherwise well-formed path (for example{' '}
-            <Code>sc_enum::status::Actve</Code>) is not caught cleanly in the current
-            engine build - it brings down the session instead of returning a typed
-            error. Until that is fixed upstream, treat variant paths as
-            copy-paste-from-the-declaration material.
-          </Callout>
         </section>
 
         <section>
-          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Filtering, sorting, and casting</h2>
+          <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Filtering and sorting</h2>
           <p className="text-text-secondary mb-4">
-            After flattening, queries work with the physical <Code>_tag</Code> column,
-            and the tag behaves like the small unsigned integer it is. Filtering on a
-            variant's index selects exactly that variant:
+            Queries compare the column with a variant name, the same form an insert
+            uses:
           </p>
           <ExecutableSnippet title={scEnumsFilter.title} initialCode={scEnumsFilter.code} />
           <p className="text-text-secondary mt-4 mb-4">
-            Sorting on the tag orders rows by variant declaration order - the position
+            Sorting on the column orders rows by variant declaration order - the position
             in the <Code>create enum</Code> statement is the collation. If the order is
             meaningful (severity levels, lifecycle stages), declare the variants in
             that order and the sort comes for free:
           </p>
           <ExecutableSnippet title={scEnumsSort.title} initialCode={scEnumsSort.code} />
-          <p className="text-text-secondary mt-4 mb-4">
-            The tag also casts like any integer - here to text:
-          </p>
-          <ExecutableSnippet title={scEnumsCast.title} initialCode={scEnumsCast.code} />
-          <p className="text-text-secondary mt-4 mb-4">
-            There is no built-in function to render a tag back into its variant name,
-            and <Code>cast</Code> from a string to an enum type is not supported in the
-            current build. If you need the names in query output, keep a small lookup
-            table or a{' '}
-            <Link to="/docs/scripting/schema/dictionaries" className="text-primary hover:text-primary-light font-medium transition-colors">dictionary</Link>{' '}
-            alongside the enum and join on the tag.
-          </p>
-          <Callout variant="warning" title="The logical column name does not survive flattening">
-            After a read, <Code>status</Code> no longer exists - only{' '}
-            <Code>status_tag</Code> does. The two failure modes differ:{' '}
-            <Code>sort {'{'} status: asc {'}'}</Code> fails loudly with{' '}
-            <Code>QUERY_001</Code> (column not found), but{' '}
-            <Code>filter {'{'} status == 0 {'}'}</Code> silently matches nothing,
-            because a comparison against a missing column yields <Code>none</Code>.
-            Always use the <Code>_tag</Code> name in query expressions. Variant-path
-            literals (<Code>status_tag == sc_enum::status::Active</Code>) are not
-            usable in filters in the current build either - compare against the
-            numeric tag.
-          </Callout>
         </section>
 
         <section>
@@ -174,7 +127,7 @@ export function EnumsPage() {
           <ExecutableSnippet title={scEnumsDrop.title} initialCode={scEnumsDrop.code} />
           <p className="text-text-secondary mt-4 mb-4">
             Unlike <Code>create</Code> confirmations, the drop confirmation carries no
-            catalog id - and it says <Code>enum</Code>, not <Code>sumtype</Code>.
+            catalog id.
           </p>
         </section>
 

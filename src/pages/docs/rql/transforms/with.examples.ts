@@ -53,7 +53,7 @@ export const withJoinOptionsExample: CodeExample = {
     id: 'with-join-options',
     title: 'Options on a Join',
     code: `from app::employees
-inner join { from app::departments } as d using (dept_id, d.id) with { snapshot: true }
+inner join { from app::departments } as d using (dept_id, d.id) with { emit: false }
 map { id, department: d_name }
 sort { id: asc }`,
     expected: `id | department  | #rownum

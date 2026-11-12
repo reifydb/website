@@ -10,7 +10,8 @@ describe('scripting/views/overview examples', () => {
     db = await createTestDB();
   });
 
-  it.each(scriptingViewsOverviewExamples)('$id - $title', (example) => {
+  it.each(scriptingViewsOverviewExamples)('$id - $title', async (example) => {
+    await db.awaitAllFlows();
     const result = verifyExample(db, example);
     if (!result.success) {
       console.error(`Example ${example.id} failed:`, result.error);

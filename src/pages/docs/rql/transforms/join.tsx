@@ -171,8 +171,8 @@ export function JoinPage() {
             a join is maintained incrementally: the flow engine keeps both sides'
             rows keyed by the join columns and re-pairs them as either source changes.
             A trailing <Code>with</Code> block tunes that state -{' '}
-            <Code>snapshot: true</Code>, <Code>latest: true</Code>, and a per-side{' '}
-            <Code>ttl</Code> - and is described on{' '}
+            <Code>emit: false</Code>, <Code>latest: true</Code>, and a per-side{' '}
+            <Code>retention</Code> - and is described on{' '}
             <Link to="/docs/rql/transforms/with" className="text-primary hover:text-primary-light font-medium transition-colors">the with clause</Link>{' '}
             page. Any other key there is rejected with the list of valid ones.
           </p>

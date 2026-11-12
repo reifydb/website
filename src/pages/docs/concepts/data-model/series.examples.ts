@@ -72,7 +72,7 @@ dm_srs    | readings | 1`,
 export const dmSeriesTagExample: CodeExample = {
     id: 'dm-series-tag',
     title: 'Attach a Tag Type for Classification',
-    code: `create tag dm_srs::origin { Sensor { location: utf8 }, Manual };
+    code: `create enum dm_srs::origin { Sensor { location: utf8 }, Manual };
 create series dm_srs::tagged_readings {
   at: datetime,
   v: float8
@@ -81,14 +81,14 @@ create series dm_srs::tagged_readings {
 
 export const dmSeriesTagInsertExample: CodeExample = {
     id: 'dm-series-tag-insert',
-    title: 'Tagged Entries Render the Tag as a Number',
+    title: 'Tagged Entries Read Back by Name',
     code: `insert dm_srs::tagged_readings [
-  { at: datetime::from_epoch_millis(2000), tag: Manual, v: 22.0 }
+  { at: datetime::from_epoch_millis(2000), tag: 'manual', v: 22.0 }
 ];
 from dm_srs::tagged_readings`,
-    expected: `at                             | tag | v  | #rownum
--------------------------------+-----+----+--------
-1970-01-01T00:00:02.000000000Z | 1   | 22 | 1`,
+    expected: `at                             | tag    | v  | #rownum
+-------------------------------+--------+----+--------
+1970-01-01T00:00:02.000000000Z | manual | 22 | 1`,
   };
 
 export const dmSeriesPrecisionExample: CodeExample = {
@@ -125,9 +125,9 @@ insert dm_srs::per_sensor [
 from dm_srs::per_sensor sort { sensor: asc, at: desc }`,
     expected: `at                             | sensor | celsius | #rownum
 -------------------------------+--------+---------+--------
-1970-01-01T00:00:02.000000000Z | 1      | 11.5    | 2
+1970-01-01T00:00:02.000000000Z | 1      | 11.5    | 3
 1970-01-01T00:00:01.000000000Z | 1      | 10.5    | 1
-1970-01-01T00:00:03.000000000Z | 2      | 20.5    | 1`,
+1970-01-01T00:00:03.000000000Z | 2      | 20.5    | 2`,
   };
 
 export const dataModelSeriesExamples: CodeExample[] = [

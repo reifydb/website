@@ -89,7 +89,8 @@ export function verifyBlogExamples(
     }
 
     if (examples.length > 0) {
-      it.each(examples)('$id - $title', (example) => {
+      it.each(examples)('$id - $title', async (example) => {
+        await db.awaitAllFlows();
         const result = verifyExample(db, example);
         expect(
           result.success,

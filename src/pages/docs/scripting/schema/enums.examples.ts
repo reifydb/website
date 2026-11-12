@@ -9,9 +9,9 @@ create enum sc_enum::status {
   Inactive,
   Pending
 }`,
-    expected: `id    | namespace | sumtype | created
-------+-----------+---------+--------
-16416 | sc_enum   | status  | true`,
+    expected: `id    | namespace | enum   | created
+------+-----------+--------+--------
+16416 | sc_enum   | status | true`,
   };
 
 export const scEnumsIfNotExistsExample: CodeExample = {
@@ -19,9 +19,9 @@ export const scEnumsIfNotExistsExample: CodeExample = {
     title: 'Idempotent Creation',
     description: 'The enum already exists, so nothing is created and the original catalog id is returned.',
     code: `create enum if not exists sc_enum::status { Active }`,
-    expected: `id    | namespace | sumtype | created
-------+-----------+---------+--------
-16416 | sc_enum   | status  | false`,
+    expected: `id    | namespace | enum   | created
+------+-----------+--------+--------
+16416 | sc_enum   | status | false`,
   };
 
 export const scEnumsColumnExample: CodeExample = {
@@ -29,16 +29,16 @@ export const scEnumsColumnExample: CodeExample = {
     title: 'An Enum as a Column Type',
     code: `create table sc_enum::tasks { id: int4, status: sc_enum::status };
 insert sc_enum::tasks [
-  { id: 1, status: sc_enum::status::Active },
-  { id: 2, status: sc_enum::status::Pending },
-  { id: 3, status: sc_enum::status::Inactive }
+  { id: 1, status: 'active' },
+  { id: 2, status: 'pending' },
+  { id: 3, status: 'inactive' }
 ];
 from sc_enum::tasks`,
-    expected: `id | status_tag | #rownum
----+------------+--------
-3  | 1          | 3
-2  | 2          | 2
-1  | 0          | 1`,
+    expected: `id | status   | #rownum
+---+----------+--------
+3  | inactive | 3
+2  | pending  | 2
+1  | active   | 1`,
   };
 
 export const scEnumsPayloadExample: CodeExample = {
@@ -50,53 +50,42 @@ export const scEnumsPayloadExample: CodeExample = {
 };
 create table sc_enum::drawings { id: int4, s: sc_enum::shape };
 insert sc_enum::drawings [
-  { id: 1, s: sc_enum::shape::Circle { radius: 2.5 } },
-  { id: 2, s: sc_enum::shape::Rectangle { width: 3.0, height: 4.0 } }
+  { id: 1, s: 'circle', s_circle_radius: 2.5 },
+  { id: 2, s: 'rectangle', s_rectangle_width: 3.0, s_rectangle_height: 4.0 }
 ];
 from sc_enum::drawings`,
-    expected: `id | s_tag | s_circle_radius | s_rectangle_width | s_rectangle_height | #rownum
----+-------+-----------------+-------------------+--------------------+--------
-2  | 1     | ⟪none⟫          | 3                 | 4                  | 2
-1  | 0     | 2.5             | ⟪none⟫            | ⟪none⟫             | 1`,
+    expected: `id | s         | s_circle_radius | s_rectangle_width | s_rectangle_height | #rownum
+---+-----------+-----------------+-------------------+--------------------+--------
+2  | rectangle | ⟪none⟫          | 3                 | 4                  | 2
+1  | circle    | 2.5             | ⟪none⟫            | ⟪none⟫             | 1`,
   };
 
-export const scEnumsInsertStringExample: CodeExample = {
-    id: 'sc-enums-insert-string',
-    title: 'A Plain String Is Not a Variant',
-    description: 'The string does not resolve to a variant, so the insert is rejected. The error speaks in terms of the underlying tag column.',
-    code: `insert sc_enum::tasks [{ id: 4, status: "Active" }]`,
+export const scEnumsInsertUnknownExample: CodeExample = {
+    id: 'sc-enums-insert-unknown',
+    title: 'An Unknown Name Is Rejected',
+    description: 'The name is not declared by the enum, so the insert fails with CA_100.',
+    code: `insert sc_enum::tasks [{ id: 4, status: 'archived' }]`,
     expectsError: true,
   };
 
 export const scEnumsFilterExample: CodeExample = {
     id: 'sc-enums-filter',
-    title: 'Filter on the Tag Column',
-    code: `from sc_enum::tasks filter { status_tag == 0 }`,
-    expected: `id | status_tag | #rownum
----+------------+--------
-1  | 0          | 1`,
+    title: 'Filter by Variant Name',
+    code: `from sc_enum::tasks filter { status == 'active' }`,
+    expected: `id | status | #rownum
+---+--------+--------
+1  | active | 1`,
   };
 
 export const scEnumsSortExample: CodeExample = {
     id: 'sc-enums-sort',
     title: 'Sort in Declaration Order',
-    code: `from sc_enum::tasks sort { status_tag: asc }`,
-    expected: `id | status_tag | #rownum
----+------------+--------
-1  | 0          | 1
-3  | 1          | 3
-2  | 2          | 2`,
-  };
-
-export const scEnumsCastExample: CodeExample = {
-    id: 'sc-enums-cast',
-    title: 'The Tag Casts Like Any Integer',
-    code: `from sc_enum::tasks map { id, tag_text: cast(status_tag, utf8) }`,
-    expected: `id | tag_text | #rownum
+    code: `from sc_enum::tasks sort { status: asc }`,
+    expected: `id | status   | #rownum
 ---+----------+--------
-3  | 1        | 3
-2  | 2        | 2
-1  | 0        | 1`,
+1  | active   | 1
+3  | inactive | 3
+2  | pending  | 2`,
   };
 
 export const scEnumsDropInUseExample: CodeExample = {
@@ -122,10 +111,9 @@ export const scriptingSchemaEnumsExamples: CodeExample[] = [
   scEnumsIfNotExistsExample,
   scEnumsColumnExample,
   scEnumsPayloadExample,
-  scEnumsInsertStringExample,
+  scEnumsInsertUnknownExample,
   scEnumsFilterExample,
   scEnumsSortExample,
-  scEnumsCastExample,
   scEnumsDropInUseExample,
   scEnumsDropExample,
 ];

@@ -41,6 +41,7 @@ const index: { id: string; name: string }[] = [
   { id: 'assignment', name: '$x = ...' },
   { id: 'break-continue', name: 'break / continue' },
   { id: 'call', name: 'call' },
+  { id: 'create-authentication-method', name: 'create authentication method' },
   { id: 'create-authentication', name: 'create authentication' },
   { id: 'create-column-property', name: 'create column property' },
   { id: 'create-deferred-view', name: 'create deferred view' },
@@ -62,7 +63,6 @@ const index: { id: string; name: string }[] = [
   { id: 'create-subscription', name: 'create subscription' },
   { id: 'create-table', name: 'create table' },
   { id: 'create-policy', name: 'create ... policy' },
-  { id: 'create-tag', name: 'create tag' },
   { id: 'create-test', name: 'create test' },
   { id: 'create-transactional-view', name: 'create transactional view' },
   { id: 'create-user', name: 'create user' },
@@ -254,6 +254,15 @@ map { sum: $sum, i: $i }`} />
           </p>
           <RqlCodeBlock code={`call ns::mark_paid(2)`} />
           <Details to="/docs/scripting/procedures" label="Procedures" />
+        </Statement>
+
+        <Statement id="create-authentication-method" name="create authentication method">
+          <p className="text-text-secondary mb-4">
+            Declare a login method once, before any credential uses it; a credential
+            for an undeclared method fails with <Code>CA_119</Code>.
+          </p>
+          <RqlCodeBlock code={`create authentication method token with { ttl: forever }`} />
+          <Details to="/docs/scripting/access-control" label="Access Control" />
         </Statement>
 
         <Statement id="create-authentication" name="create authentication">
@@ -515,15 +524,6 @@ create namespace policy ns_guard on ns { from: { filter { true } } };
 create procedure policy paid_guard on ns::mark_paid { call: { require { true } } };
 create session policy open_query { query: { require { true } } }`} />
           <Details to="/docs/concepts/data-model/policies" label="Policies" />
-        </Statement>
-
-        <Statement id="create-tag" name="create tag">
-          <p className="text-text-secondary mb-4">
-            Define a tagged union of variants with typed payloads, used to classify rows
-            (for example the tag column of a series).
-          </p>
-          <RqlCodeBlock code={`create tag ns::origin { Sensor { location: utf8 }, Manual }`} />
-          <Details to="/docs/concepts/data-model/tags" label="Tags" />
         </Statement>
 
         <Statement id="create-test" name="create test">

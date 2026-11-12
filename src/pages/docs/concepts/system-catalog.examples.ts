@@ -3,20 +3,21 @@ import type { CodeExample } from '@/lib/examples/types';
 export const conceptsSystemCatalogVersionsExample: CodeExample = {
     id: 'concepts-system-catalog-versions',
     title: 'Which Engine Is Running',
-    code: `from system::versions map { name, version, type }`,
-    expected: `name                | version | type
+    code: `from system::versions map { name, version, kind }`,
+    expected: `name                | version | kind
 --------------------+---------+----------
-reifydb-webassembly | 0.10.1  | package
-core                | 0.10.1  | module
-engine              | 0.10.1  | module
-catalog             | 0.10.1  | module
-store-multi         | 0.10.1  | module
-store-single        | 0.10.1  | module
-store-operator      | 0.10.1  | module
-transaction         | 0.10.1  | module
-auth                | 0.10.1  | module
-rql                 | 0.10.1  | module
-sub-flow            | 0.10.1  | subsystem`,
+reifydb-webassembly | 0.10.2  | package
+core                | 0.10.2  | module
+engine              | 0.10.2  | module
+catalog             | 0.10.2  | module
+store-multi         | 0.10.2  | module
+store-single        | 0.10.2  | module
+store-operator      | 0.10.2  | module
+transaction         | 0.10.2  | module
+auth                | 0.10.2  | module
+rql                 | 0.10.2  | module
+rql-frontend        | 0.10.2  | module
+sub-flow            | 0.10.2  | subsystem`,
   };
 
 export const conceptsSystemCatalogCountExample: CodeExample = {
@@ -27,7 +28,7 @@ filter { namespace_id == 1 }
 aggregate { tables: math::count(id) } by {}`,
     expected: `tables
 ------
-39`,
+34`,
   };
 
 export const conceptsSystemCatalogListExample: CodeExample = {
@@ -40,13 +41,14 @@ take 8
 map { id, name }`,
     expected: `id | name
 ---+------------------
-44 | authentications
 6  | column_properties
 5  | columns
 45 | configs
 15 | dictionaries
 47 | enum_variants
-32 | enums`,
+32 | enums
+48 | event_variants
+33 | events`,
   };
 
 export const conceptsSystemCatalogCreateExample: CodeExample = {
@@ -84,11 +86,11 @@ export const conceptsSystemCatalogColumnsExample: CodeExample = {
 filter { object_id == 16416 }
 sort { position: asc }
 map { name, type, position, auto_increment }`,
-    expected: `name   | type | position | auto_increment
--------+------+----------+---------------
-id     | 7    | 0        | true
-total  | 3    | 1        | false
-status | 9    | 2        | false`,
+    expected: `name   | type   | position | auto_increment
+-------+--------+----------+---------------
+id     | Int8   | 0        | true
+total  | Float8 | 1        | false
+status | Utf8   | 2        | false`,
   };
 
 export const conceptsSystemCatalogTypesExample: CodeExample = {
@@ -102,36 +104,21 @@ export const conceptsSystemCatalogTypesExample: CodeExample = {
 9  | utf8`,
   };
 
-export const conceptsSystemCatalogJoinExample: CodeExample = {
-    id: 'concepts-system-catalog-join-types',
-    title: 'Join Columns to Their Type Names',
-    code: `from system::columns
-filter { object_id == 16416 }
-inner join { from system::types } as t using (type, t.id)
-sort { position: asc }
-map { name, type: t_name, position }`,
-    expected: `name   | type   | position
--------+--------+---------
-id     | int8   | 0
-total  | float8 | 1
-status | utf8   | 2`,
-  };
-
 export const conceptsSystemCatalogSelfExample: CodeExample = {
     id: 'concepts-system-catalog-self-describing',
     title: 'The Catalog Describes Its Own Tables',
-    code: `from system::virtual_table::columns
+    code: `from system::virtual_table_columns
 filter { vtable_id == 3 }
 sort { position: asc }
 map { name, type, position }`,
-    expected: `name           | type | position
----------------+------+---------
-id             | 13   | 0
-namespace_id   | 13   | 1
-name           | 9    | 2
-primary_key_id | 13   | 3
-time           | 9    | 4
-ts             | 9    | 5`,
+    expected: `name           | type  | position
+---------------+-------+---------
+id             | Uint8 | 0
+namespace_id   | Uint8 | 1
+name           | Utf8  | 2
+primary_key_id | Uint8 | 3
+time_domain    | Utf8  | 4
+time_column    | Utf8  | 5`,
   };
 
 export const conceptsSystemCatalogViewFlowExample: CodeExample = {
@@ -144,10 +131,10 @@ export const conceptsSystemCatalogViewFlowExample: CodeExample = {
   from cpt_syscat::orders
   aggregate { total: math::sum(total) } by { status }
 };
-from system::flows`,
-    expected: `id | namespace_id | name         | status
----+--------------+--------------+-------
-1  | 16386        | order_totals | Active`,
+from system::flow::flows`,
+    expected: `id | namespace_id | name         | status | reason
+---+--------------+--------------+--------+-------
+1  | 16386        | order_totals | Active | ⟪none⟫`,
   };
 
 export const conceptsSystemCatalogRolesExample: CodeExample = {
@@ -187,7 +174,6 @@ export const conceptsSystemCatalogExamples: CodeExample[] = [
   conceptsSystemCatalogTablesExample,
   conceptsSystemCatalogColumnsExample,
   conceptsSystemCatalogTypesExample,
-  conceptsSystemCatalogJoinExample,
   conceptsSystemCatalogSelfExample,
   conceptsSystemCatalogViewFlowExample,
   conceptsSystemCatalogRolesExample,

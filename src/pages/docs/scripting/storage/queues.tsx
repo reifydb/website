@@ -1,4 +1,4 @@
-import { stQueueAllOptionsExample as qAllOptions, stQueueBadPartitionsExample as qBadPartitions, stQueueClaimExample as qClaim, stQueueCreateExample as qCreate, stQueueDeclaredDedupExample as qDeclaredDedup, stQueueDeclaredDedupScanExample as qDeclaredDedupScan, stQueueDedupConflictExample as qDedupConflict, stQueueDedupKeyExample as qDedupKey, stQueueDedupRepeatExample as qDedupRepeat, stQueueDedupScanExample as qDedupScan, stQueueDropExample as qDrop, stQueueDropIfExistsExample as qDropIfExists, stQueueImmutableExample as qImmutable, stQueueInsertExample as qInsert, stQueueNoDispatchExample as qNoDispatch, stQueueNotBeforeExample as qNotBefore, stQueueReturningExample as qReturning, stQueueScanExample as qScan, stQueueUnknownOptionExample as qUnknownOption } from './queues.examples';
+import { stQueueAllOptionsExample as qAllOptions, stQueueClaimExample as qClaim, stQueueCreateExample as qCreate, stQueueDeclaredDedupExample as qDeclaredDedup, stQueueDeclaredDedupScanExample as qDeclaredDedupScan, stQueueDedupConflictExample as qDedupConflict, stQueueDedupKeyExample as qDedupKey, stQueueDedupRepeatExample as qDedupRepeat, stQueueDedupScanExample as qDedupScan, stQueueDropExample as qDrop, stQueueDropIfExistsExample as qDropIfExists, stQueueImmutableExample as qImmutable, stQueueInsertExample as qInsert, stQueueNoDispatchExample as qNoDispatch, stQueueNotBeforeExample as qNotBefore, stQueueReturningExample as qReturning, stQueueScanExample as qScan, stQueueUnknownOptionExample as qUnknownOption } from './queues.examples';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
 import { AsciiDiagram, Callout, RqlCodeBlock } from '../../components';
@@ -31,17 +31,6 @@ export function QueuesPage() {
           </p>
         </div>
 
-        <Callout variant="warning" title="Needs a newer engine than the playground runs">
-          The in-browser engine on this site (<Code>@reifydb/wasm</Code> 0.8.1) has no
-          queues: <Code>create queue</Code> traps with a bare <Code>unreachable</Code>{' '}
-          (a Rust panic, not an error code), <Code>drop queue</Code> fails with{' '}
-          <Code>AST_005</Code>, reading <Code>system::queues</Code> traps the same way, and
-          the <Code>queue::</Code> procedures are unknown (<Code>PROCEDURE_001</Code>).
-          The engine source is at 0.9.0. Every snippet on this page is shown, not
-          runnable, and every result is taken from the engine's own tests. See{' '}
-          <Link to="/docs/resources/roadmap" className="text-primary hover:text-primary-light font-medium transition-colors">Roadmap &amp; Experimental</Link>.
-        </Callout>
-
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Creating a queue</h2>
           <p className="text-text-secondary mb-4">
@@ -64,10 +53,16 @@ export function QueuesPage() {
             <li className="flex items-start gap-3">
               <span className="text-primary font-mono">--</span>
               <span>
-                <Code>fifo: {'{'} partitions, ordered_by {'}'}</Code>: required, even
-                when empty. <Code>partitions</Code> is a number from 1 to 1024 (default
-                16). <Code>ordered_by</Code> names one column; items with the same value
-                are delivered strictly in enqueue order.
+                <Code>fifo: {'{'} ordered_by {'}'}</Code>: required, even when empty.{' '}
+                <Code>ordered_by</Code> names one column; items with the same value are
+                delivered strictly in enqueue order.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-mono">--</span>
+              <span>
+                <Code>partition: {'{'} by: {'{'} column, ... {'}'} {'}'}</Code>: one
+                partition per distinct value of those columns.
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -130,9 +125,9 @@ export function QueuesPage() {
               <span className="text-primary font-mono">--</span>
               <span>
                 <Code>AST_005</Code>: no dispatch block, two <Code>fifo</Code> blocks,{' '}
-                <Code>partitions</Code> or <Code>ordered_by</Code> outside the{' '}
-                <Code>fifo</Code> block, a misspelled option key at any level, a{' '}
-                <Code>partitions</Code> value outside 1 to 1024, <Code>attempts</Code>{' '}
+                <Code>ordered_by</Code> outside the <Code>fifo</Code> block, a{' '}
+                <Code>partitions</Code> key anywhere, a misspelled option key at any
+                level, <Code>attempts</Code>{' '}
                 below 1, a non-positive duration, a <Code>deduplicate</Code> block
                 without <Code>by</Code>, an empty <Code>by</Code>, or a column repeated
                 in <Code>by</Code>.
@@ -153,7 +148,6 @@ export function QueuesPage() {
               </span>
             </li>
           </ul>
-          <RqlCodeBlock code={qBadPartitions.code} />
         </section>
 
         <section>

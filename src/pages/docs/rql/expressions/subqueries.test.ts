@@ -10,7 +10,8 @@ describe('rql/expressions/subqueries examples', () => {
     db = await createTestDB();
   });
 
-  it.each(subqueriesExamples)('$id - $title', (example) => {
+  it.each(subqueriesExamples)('$id - $title', async (example) => {
+    await db.awaitAllFlows();
     const result = verifyExample(db, example);
     if (!result.success) {
       console.error(`Example ${example.id} failed:`, result.error);

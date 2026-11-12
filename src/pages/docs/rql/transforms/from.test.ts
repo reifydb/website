@@ -10,7 +10,8 @@ describe('rql/transforms/from examples', () => {
     db = await createTestDB();
   });
 
-  it.each(fromExamples)('$id - $title', (example) => {
+  it.each(fromExamples)('$id - $title', async (example) => {
+    await db.awaitAllFlows();
     const result = verifyExample(db, example);
     if (!result.success) {
       console.error(`Example ${example.id} failed:`, result.error);

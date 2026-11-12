@@ -124,7 +124,7 @@ export function ModelApplicationStatePage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">7. Load the data</h2>
           <p className="text-text-secondary mb-4">
             The schema is complete; now exercise it. Enum values are written as variant
-            paths, and assignees are written as plain strings - the dictionary interns
+            names, and assignees are written as plain strings - the dictionary interns
             new names on the fly:
           </p>
           <ExecutableSnippet title={modelStateInsertTasks.title} initialCode={modelStateInsertTasks.code} />
@@ -141,10 +141,9 @@ export function ModelApplicationStatePage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">8. Read it back</h2>
           <p className="text-text-secondary mb-4">
-            A plain read shows how each choice is stored. The enum column comes back as
-            its compact tag (<Code>priority_tag</Code>: declaration order, so{' '}
-            <Code>Low</Code> is 0 and <Code>High</Code> is 2), while the
-            dictionary-encoded assignee is decoded back to a string for you:
+            A plain read shows how each choice comes back. The enum column returns the
+            variant name, and the dictionary-encoded assignee is decoded back to a
+            string for you:
           </p>
           <ExecutableSnippet title={modelStateReadTasks.title} initialCode={modelStateReadTasks.code} />
           <p className="text-text-secondary mt-4 mb-4">

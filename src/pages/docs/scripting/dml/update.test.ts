@@ -10,7 +10,8 @@ describe('scripting/dml/update examples', () => {
     db = await createTestDB();
   });
 
-  it.each(scriptingDmlUpdateExamples)('$id - $title', (example) => {
+  it.each(scriptingDmlUpdateExamples)('$id - $title', async (example) => {
+    await db.awaitAllFlows();
     const result = verifyExample(db, example);
     if (!result.success) {
       console.error(`Example ${example.id} failed:`, result.error);

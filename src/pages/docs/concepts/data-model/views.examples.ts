@@ -177,10 +177,11 @@ export const dmViewsSeriesBackedExample: CodeExample = {
     id: 'dm-views-series-backed',
     title: 'A View Backed by a Series',
     code: `create deferred series view dm_vw::click_log {
+  ts: datetime,
   id: int4
-} with { precision: millisecond } as {
+} with { key: ts, precision: millisecond } as {
   from dm_vw::clicks
-  map { id }
+  map { ts: datetime::from_epoch_millis(cast(id, int8) * 1000), id }
 }`,
   };
 

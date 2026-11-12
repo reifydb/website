@@ -124,9 +124,9 @@ export const dmEventsRollbackCheckExample: CodeExample = {
 export const dmEventsCatalogExample: CodeExample = {
     id: 'dm-events-catalog',
     title: 'Events and Handlers in the System Catalog',
-    code: `from system::handlers map { name, on_variant_tag } sort { name: asc }`,
-    expected: `name        | on_variant_tag
-------------+---------------
+    code: `from system::handlers map { name, variant_tag } sort { name: asc }`,
+    expected: `name        | variant_tag
+------------+------------
 on_ping     | 0
 on_placed   | 0
 ship_broken | 1

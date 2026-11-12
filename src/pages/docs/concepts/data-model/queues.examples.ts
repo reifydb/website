@@ -54,7 +54,7 @@ export const dmQueuesOrderedExample: CodeExample = {
     code: `create queue cpt_queue::per_tenant {
   id: int4,
   tenant: utf8
-} with { fifo: { partitions: 1, ordered_by: tenant } };
+} with { fifo: { ordered_by: tenant } };
 insert cpt_queue::per_tenant [
   { id: 1, tenant: "a" },
   { id: 2, tenant: "a" },
@@ -69,14 +69,6 @@ export const dmQueuesOrderedClaimExample: CodeExample = {
     id: 'dm-queues-ordered-claim',
     title: 'Only the Head of Each Key Is Claimable',
     code: `call queue::claim("w1", "cpt_queue::per_tenant", 5, duration::seconds(30))`,
-  };
-
-export const dmQueuesCatalogExample: CodeExample = {
-    id: 'dm-queues-catalog',
-    title: 'Queues in the System Catalog',
-    code: `from system::queues
-filter { name == "per_tenant" }
-map { name, partitions, ordered_by, depth, in_flight, blocked_keys }`,
   };
 
 export const dmQueuesPartitionsExample: CodeExample = {
@@ -100,7 +92,6 @@ export const dmQueuesExamples: CodeExample[] = [
   dmQueuesClaimExample,
   dmQueuesOrderedExample,
   dmQueuesOrderedClaimExample,
-  dmQueuesCatalogExample,
   dmQueuesPartitionsExample,
   dmQueuesDropExample,
 ];

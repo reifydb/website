@@ -22,7 +22,6 @@ export {
   DataModelPoliciesPage,
   DataModelSubscriptionsPage,
   DataModelEnumsPage,
-  DataModelTagsPage,
   DataModelEventsPage,
   DataModelHandlersPage,
   DataModelProceduresPage,

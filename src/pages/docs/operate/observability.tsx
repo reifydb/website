@@ -164,7 +164,7 @@ export function ObservabilityPage() {
               ['system::metrics::epoch, ::lifecycle, ::instruments', 'epoch bookkeeping, start/stop events, and internal instruments'],
               ['system::metrics::flow::state', 'per-view processing state'],
               ['system::metrics::request_history', 'ring buffer of the last 10 000 requests: operation, fingerprint, durations, success, statement count, normalised RQL'],
-              ['system::metrics::statement_stats', 'ring buffer of the last 5 000 per-statement aggregates: calls, mean, max, min, rows, errors'],
+              ['system::metrics::statement_stats', 'ring buffer of the last 5 000 per-statement aggregates: calls, mean, max, rows, errors'],
               ['system::metrics::profiler::spans', 'span timings when the profiler subsystem is enabled with with_profiler'],
             ]}
           />

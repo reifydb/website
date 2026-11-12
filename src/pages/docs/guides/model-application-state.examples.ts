@@ -71,11 +71,11 @@ export const modelStateInsertTasksExample: CodeExample = {
     id: 'model-state-insert-tasks',
     title: 'Insert Tasks',
     code: `insert tracker::tasks [
-  { project_id: 1, title: "Design landing page", priority: tracker::priority::High,
+  { project_id: 1, title: "Design landing page", priority: 'high',
     assignee: "ada", done: false },
-  { project_id: 1, title: "Set up analytics", priority: tracker::priority::Low,
+  { project_id: 1, title: "Set up analytics", priority: 'low',
     assignee: "grace", done: false },
-  { project_id: 2, title: "Login screen", priority: tracker::priority::Medium,
+  { project_id: 2, title: "Login screen", priority: 'medium',
     assignee: "ada", done: false }
 ]`,
     expected: `namespace | table | inserted
@@ -88,7 +88,7 @@ export const modelStateAlterSequenceExample: CodeExample = {
     title: 'Reposition the ID Sequence',
     code: `alter sequence tracker::tasks::id set value 100;
 insert tracker::tasks [
-  { project_id: 2, title: "Push notifications", priority: tracker::priority::Low,
+  { project_id: 2, title: "Push notifications", priority: 'low',
     assignee: "grace", done: false }
 ] returning { id, title }`,
     expected: `id  | title              | #rownum
@@ -101,12 +101,12 @@ export const modelStateReadTasksExample: CodeExample = {
     title: 'Read the Tasks Back',
     code: `from tracker::tasks
 sort { id: asc }`,
-    expected: `id  | project_id | title               | priority_tag | assignee | done  | #rownum
-----+------------+---------------------+--------------+----------+-------+--------
-1   | 1          | Design landing page | 2            | ada      | false | 1
-2   | 1          | Set up analytics    | 0            | grace    | false | 2
-3   | 2          | Login screen        | 1            | ada      | false | 3
-101 | 2          | Push notifications  | 0            | grace    | false | 4`,
+    expected: `id  | project_id | title               | priority | assignee | done  | #rownum
+----+------------+---------------------+----------+----------+-------+--------
+1   | 1          | Design landing page | high     | ada      | false | 1
+2   | 1          | Set up analytics    | low      | grace    | false | 2
+3   | 2          | Login screen        | medium   | ada      | false | 3
+101 | 2          | Push notifications  | low      | grace    | false | 4`,
   };
 
 export const modelStateReadDictionaryExample: CodeExample = {

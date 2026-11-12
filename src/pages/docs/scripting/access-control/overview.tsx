@@ -1,4 +1,4 @@
-import { acAuthPasswordExample as acAuthPassword, acAuthTokenExample as acAuthToken, acCreateRoleExample as acCreateRole, acCreateUserDuplicateExample as acCreateUserDuplicate, acCreateUserExample as acCreateUser, acDropAuthExample as acDropAuth, acDropRoleAndUserExample as acDropRoleAndUser, acDropUserIfExistsExample as acDropUserIfExists, acGrantExample as acGrant, acGrantMissingRoleExample as acGrantMissingRole, acListIdentitiesExample as acListIdentities, acListPoliciesExample as acListPolicies, acPolicyAttributeExample as acPolicyAttribute, acPolicyDisableExample as acPolicyDisable, acPolicyDropExample as acPolicyDrop, acPolicyEnableExample as acPolicyEnable, acPolicyIdentityNameExample as acPolicyIdentityName, acPolicyIdentityRolesExample as acPolicyIdentityRoles, acPolicyNamespaceScopeExample as acPolicyNamespaceScope, acPolicyReadFilterExample as acPolicyReadFilter, acPolicyReadMapExample as acPolicyReadMap, acPolicySetupExample as acPolicySetup, acPolicyWriteRequireExample as acPolicyWriteRequire, acRevokeExample as acRevoke, acRootSeesAllExample as acRootSeesAll, acUserAttributeExample as acUserAttribute, acUserAttributeUndeclaredExample as acUserAttributeUndeclared } from './overview.examples';
+import { acAuthMethodsExample as acAuthMethods, acAuthPasswordExample as acAuthPassword, acAuthTokenExample as acAuthToken, acCreateRoleExample as acCreateRole, acCreateUserDuplicateExample as acCreateUserDuplicate, acCreateUserExample as acCreateUser, acDropAuthExample as acDropAuth, acDropRoleAndUserExample as acDropRoleAndUser, acDropUserIfExistsExample as acDropUserIfExists, acGrantExample as acGrant, acGrantMissingRoleExample as acGrantMissingRole, acListIdentitiesExample as acListIdentities, acListPoliciesExample as acListPolicies, acPolicyAttributeExample as acPolicyAttribute, acPolicyDisableExample as acPolicyDisable, acPolicyDropExample as acPolicyDrop, acPolicyEnableExample as acPolicyEnable, acPolicyIdentityNameExample as acPolicyIdentityName, acPolicyIdentityRolesExample as acPolicyIdentityRoles, acPolicyNamespaceScopeExample as acPolicyNamespaceScope, acPolicyReadFilterExample as acPolicyReadFilter, acPolicyReadMapExample as acPolicyReadMap, acPolicySetupExample as acPolicySetup, acPolicyWriteRequireExample as acPolicyWriteRequire, acRevokeExample as acRevoke, acRootSeesAllExample as acRootSeesAll, acUserAttributeExample as acUserAttribute, acUserAttributeUndeclaredExample as acUserAttributeUndeclared } from './overview.examples';
 import { ExecutableSnippet } from '@/components/ui';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layout.tsx';
@@ -107,8 +107,11 @@ export function AccessControlOverviewPage() {
             <Code>create authentication for</Code>. The built-in methods are{' '}
             <Code>password</Code>, <Code>token</Code>, <Code>solana</Code> (wallet
             signature), and <Code>github</Code> (OAuth, which needs client settings on the
-            server).
+            server). A method is declared once with{' '}
+            <Code>create authentication method</Code> before any credential uses it;
+            otherwise the credential fails with <Code>CA_119</Code>:
           </p>
+          <ExecutableSnippet title={acAuthMethods.title} initialCode={acAuthMethods.code} />
           <ExecutableSnippet title={acAuthPassword.title} initialCode={acAuthPassword.code} />
           <p className="text-text-secondary mt-4 mb-4">
             The <Code>token</Code> method is the fit for services and scripts. You do not

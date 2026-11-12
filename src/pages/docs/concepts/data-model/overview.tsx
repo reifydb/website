@@ -108,9 +108,6 @@ export function DataModelPage() {
             <Item to="/docs/concepts/data-model/enums" label="Enums">
               - closed variant sets as column types, with optional payload fields.
             </Item>
-            <Item to="/docs/concepts/data-model/tags" label="Tags">
-              - variant sets that classify series entries.
-            </Item>
             <Item to="/docs/concepts/data-model/sequences" label="Sequences">
               - the counters behind auto-increment columns; inspectable and
               repositionable.

@@ -169,11 +169,6 @@ export function GlossaryPage() {
               A column typed with an enum can only hold one of those variants, and
               variants may carry typed fields of their own.
             </Term>
-            <Term name="Tag" to="/docs/concepts/data-model/tags">
-              A closed set of labels attached to a series, so each entry carries one label
-              without a column for every such distinction. The variant syntax is shared
-              with enums and events.
-            </Term>
             <Term name="Frame" to="/docs/rql/variables">
               The tabular result of a pipeline: columns and rows.{' '}
               <Code>let $rows = from ns::t</Code> captures a frame, a <Code>for</Code>{' '}

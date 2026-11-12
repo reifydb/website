@@ -8,7 +8,6 @@ export { DataModelDictionariesPage } from './dictionaries';
 export { DataModelPoliciesPage } from './policies';
 export { DataModelSubscriptionsPage } from './subscriptions';
 export { DataModelEnumsPage } from './enums';
-export { DataModelTagsPage } from './tags';
 export { DataModelEventsPage } from './events';
 export { DataModelHandlersPage } from './handlers';
 export { DataModelProceduresPage } from './procedures';

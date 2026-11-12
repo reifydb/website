@@ -108,19 +108,19 @@ export function SeriesPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Tags</h2>
           <p className="text-text-secondary mb-4">
-            A series can attach a{' '}
-            <Link to="/docs/concepts/data-model/tags" className="text-primary hover:text-primary-light font-medium transition-colors">tag type</Link>{' '}
-            - a named set of variants, optionally carrying payload fields - to classify
-            where each entry came from or what kind it is, without widening the schema
-            with mostly-empty optional columns. Define the tag type first, then reference it in the{' '}
+            A series can attach an{' '}
+            <Link to="/docs/scripting/schema/enums" className="text-primary hover:text-primary-light font-medium transition-colors">enum</Link>{' '}
+            as its tag to classify where each entry came from or what kind it is,
+            without widening the schema with mostly-empty optional columns. Define the
+            enum first, then reference it in the{' '}
             <Code>with</Code> block:
           </p>
           <ExecutableSnippet title={srTag.title} initialCode={srTag.code} />
           <p className="text-text-secondary mb-4">
             Entries in a tagged series carry a <Code>tag</Code> column alongside the
-            declared ones, and inserts may set it to one of the type's variants, such
-            as <Code>tag: Manual</Code> or{' '}
-            <Code>tag: Sensor {'{'} location: "roof" {'}'}</Code>.
+            declared ones, and inserts set it to a variant name, such as{' '}
+            <Code>tag: 'manual'</Code>. A name the enum does not declare is rejected
+            with <Code>CA_100</Code>.
           </p>
         </section>
 

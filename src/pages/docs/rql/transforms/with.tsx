@@ -131,8 +131,8 @@ export function WithPage() {
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Operator options</h2>
           <p className="text-text-secondary mb-4">
             On pipeline operators, with configures the state the flow engine keeps when
-            the pipeline runs inside a view. <Code>join</Code> accepts three keys:{' '}
-            <Code>snapshot: true</Code> turns the joined-in side into a passive lookup -
+            the pipeline runs inside a view. <Code>join</Code> accepts, among others:{' '}
+            <Code>emit: false</Code> turns the joined-in side into a passive lookup -
             right-side changes update the join's state but emit no revisions to rows
             already joined; <Code>latest: true</Code> keeps only the newest right-side
             row per key instead of every match; and{' '}

@@ -132,8 +132,8 @@ export function DataModelEventsPage() {
           <p className="text-text-secondary mb-4">
             Event types are listed in <Code>system::events</Code> (<Code>id</Code>,{' '}
             <Code>namespace_id</Code>, <Code>name</Code>). Handlers are in{' '}
-            <Code>system::handlers</Code>, where <Code>on_sumtype_id</Code> points at the
-            event type and <Code>on_variant_tag</Code> is the variant's position in its
+            <Code>system::handlers</Code>, where <Code>sumtype_id</Code> points at the
+            event type and <Code>variant_tag</Code> is the variant's position in its
             declaration, starting at 0:
           </p>
           <ExecutableSnippet title={dmEventsCatalog.title} initialCode={dmEventsCatalog.code} />

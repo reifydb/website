@@ -109,7 +109,6 @@ export const navSections: NavSection[] = [
           { id: 'data-model-policies', label: 'Policies', href: '/docs/concepts/data-model/policies' },
           { id: 'data-model-subscriptions', label: 'Subscriptions', href: '/docs/concepts/data-model/subscriptions' },
           { id: 'data-model-enums', label: 'Enums', href: '/docs/concepts/data-model/enums' },
-          { id: 'data-model-tags', label: 'Tags', href: '/docs/concepts/data-model/tags' },
           { id: 'data-model-events', label: 'Events', href: '/docs/concepts/data-model/events' },
           { id: 'data-model-handlers', label: 'Handlers', href: '/docs/concepts/data-model/handlers' },
           { id: 'data-model-procedures', label: 'Procedures', href: '/docs/concepts/data-model/procedures' },
