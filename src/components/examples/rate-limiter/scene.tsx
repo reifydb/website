@@ -164,24 +164,24 @@ export default function RateLimiterScene({ howTo }: SceneProps) {
       scene={
         <div ref={stageRef} className="rate-limiter" role="img" aria-label="One ring buffer of five slots per user, with a verdict per user">
           <div className="rate-limiter__head">
-            <span className="rate-limiter__table">limits::requests</span>
-            <span>
+            <span className="example-board__title">limits::requests</span>
+            <span className="example-board__meta">
               ring of {LIMIT} per user · limit {LIMIT} per {WINDOW_MS / 1000} s
             </span>
           </div>
-          <div className="rate-limiter__cards">
+          <div className="example-boards rate-limiter__cards">
             {USERS.map((user) => {
               const lane = view.lanes[user];
               const blocked = lane.inWindow >= LIMIT;
               const fresh = (lane.head + LIMIT - 1) % LIMIT;
               const next = lane.slots[lane.head];
               return (
-                <div key={user} className={cn('rate-limiter__card', blocked && 'rate-limiter__card--blocked')}>
-                  <div className="rate-limiter__card-head">
-                    <span className="rate-limiter__user">{user}</span>
+                <div key={user} className="example-board">
+                  <div className="example-board__head">
+                    <span className="example-board__title">{user}</span>
                     <span
                       key={lane.blocked ?? 'verdict'}
-                      className={cn('rate-limiter__verdict', blocked && 'rate-limiter__verdict--blocked', lane.blocked !== null && 'rate-limiter__verdict--hit')}
+                      className={cn('example-board__meta rate-limiter__verdict', blocked && 'rate-limiter__verdict--blocked', lane.blocked !== null && 'rate-limiter__verdict--hit')}
                     >
                       {blocked ? 'blocked' : 'ok'} {lane.inWindow}/{LIMIT}
                     </span>
@@ -191,7 +191,7 @@ export default function RateLimiterScene({ howTo }: SceneProps) {
                       <span
                         key={slot && lane.written !== null && index === fresh ? `${index}-${lane.written}` : index}
                         className={cn(
-                          'rate-limiter__slot',
+                          'example-board__cell rate-limiter__slot',
                           slot && 'rate-limiter__slot--filled',
                           slot && slot.age > WINDOW_MS && 'rate-limiter__slot--stale',
                           index === lane.head && 'rate-limiter__slot--head',

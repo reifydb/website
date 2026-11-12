@@ -1,4 +1,4 @@
-export const ATTEMPTS = 1;
+export const ATTEMPTS = 2;
 export const BACKOFF_MS = 2_000;
 export const LEASE_S = 10;
 export const QUEUE = 'hooks::outbox';

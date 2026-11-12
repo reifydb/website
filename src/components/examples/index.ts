@@ -185,7 +185,7 @@ export const EXAMPLES: Example[] = [
     title: 'Webhook outbox',
     headline: "Three tries, then it's dead.",
     subline: 'A queue in the database holds every webhook. Claim one, fail it, and watch it come back.',
-    howTo: 'Click Claim next, then Succeed or Fail. Fail one three times, or let its lease run out.',
+    howTo: 'Click Claim next, then Succeed or Fail. Fail one twice, or let its lease run out.',
     howItWorks: {
       why: 'Webhook receivers go down, and a worker can crash mid-send. A lease in the queue brings the webhook back either way, and because the queue is in the database, the webhook is saved in the same transaction as the order.',
       steps: [

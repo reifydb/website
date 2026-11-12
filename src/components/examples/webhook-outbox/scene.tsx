@@ -3,15 +3,12 @@ import { cn } from '@/lib';
 import { Button } from '@/components/ui/button';
 import { ExampleFrame, ExampleFrameSkeleton } from '../frame';
 import type { SceneProps } from '../index';
-import { isWatched } from '../live';
 import { ATTEMPTS, CLAIM, COUNTERS, ack, backoffAfter, fail, replay } from './webhook-outbox';
-import { ensureSetup, exec, outboxState, produce } from './setup';
+import { ensureSetup, exec, outboxState } from './setup';
 import type { Hook, HookStatus } from './setup';
 
 const TICK_MS = 250;
-const PRODUCE_EVERY_MS = 3_000;
 const RETURN_POLL_MS = 1_000;
-const TOP_UP = 3;
 const DONE_KEPT = 4;
 
 interface Counters {
@@ -38,10 +35,6 @@ function seconds(ms: number): number {
   return Math.max(0, Math.ceil(ms / 1000));
 }
 
-function prefersReducedMotion(): boolean {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
 function waiting(): number {
   return outboxState().hooks.filter((hook) => hook.status === 'ready' || hook.status === 'backoff').length;
 }
@@ -64,11 +57,11 @@ function Card({ hook, now }: { hook: Hook; now: number }) {
   if (hook.status === 'claimed') meta = `try ${hook.attempt} · lease ${seconds(hook.until! - now)}s`;
   if (hook.status === 'returning') meta = 'lease expired, returning...';
   return (
-    <div className={cn('webhook-outbox__card', `webhook-outbox__card--${hook.status}`)}>
+    <div className={cn('example-board__row webhook-outbox__card', `webhook-outbox__card--${hook.status}`)}>
       <span className="webhook-outbox__hook">
         #{hook.id} {hook.event} → {hook.url}
       </span>
-      <span className="webhook-outbox__meta">{meta}</span>
+      <span className="example-board__meta">{meta}</span>
     </div>
   );
 }
@@ -78,8 +71,6 @@ export default function WebhookOutboxScene({ howTo }: SceneProps) {
   const [now, setNow] = useState(() => Date.now());
   const [ran, setRan] = useState<string | null>(null);
   const [failure, setFailure] = useState<Error | null>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-  const visibleRef = useRef(false);
   const chainRef = useRef<Promise<void>>(Promise.resolve());
 
   const publish = useRef(() => {
@@ -151,11 +142,6 @@ export default function WebhookOutboxScene({ howTo }: SceneProps) {
         hook.at = Date.now();
         return rql;
       }),
-    produce: () =>
-      run.current(async () => {
-        if (waiting() >= TOP_UP) return null;
-        return produce();
-      }),
     checkReturned: () =>
       run.current(async () => {
         const hook = claimed();
@@ -177,11 +163,6 @@ export default function WebhookOutboxScene({ howTo }: SceneProps) {
 
   useEffect(() => {
     if (!loaded) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      visibleRef.current = entry.isIntersecting;
-    });
-    observer.observe(stageRef.current!);
-    const reduce = prefersReducedMotion();
     const tick = window.setInterval(() => {
       const at = Date.now();
       let changed = false;
@@ -199,15 +180,9 @@ export default function WebhookOutboxScene({ howTo }: SceneProps) {
       setNow(at);
     }, TICK_MS);
     const poll = window.setInterval(() => actions.current.checkReturned(), RETURN_POLL_MS);
-    const producer = window.setInterval(() => {
-      if (reduce || document.hidden || !(visibleRef.current || isWatched('webhook-outbox'))) return;
-      actions.current.produce();
-    }, PRODUCE_EVERY_MS);
     return () => {
-      observer.disconnect();
       window.clearInterval(tick);
       window.clearInterval(poll);
-      window.clearInterval(producer);
     };
   }, [loaded]);
 
@@ -224,23 +199,23 @@ export default function WebhookOutboxScene({ howTo }: SceneProps) {
       howTo={howTo}
       ran={ran}
       scene={
-        <div ref={stageRef} className="webhook-outbox" role="img" aria-label="A webhook queue with ready, claimed, done and dead columns">
-          <div className="webhook-outbox__columns">
+        <div className="webhook-outbox" role="img" aria-label="A webhook queue with ready, claimed, done and dead columns">
+          <div className="example-boards">
             {COLUMNS.map((column) => {
               const cards = hooks
                 .filter((hook) => column.statuses.includes(hook.status))
                 .sort((a, b) => (column.title === 'ready' ? a.id - b.id : b.at - a.at));
               return (
-                <div key={column.title} className={cn('webhook-outbox__column', `webhook-outbox__column--${column.title}`)}>
-                  <div className="webhook-outbox__head">
-                    <span className="webhook-outbox__title">{column.title}</span>
-                    <span>{column.kind}</span>
+                <div key={column.title} className={cn('example-board', `webhook-outbox__column--${column.title}`)}>
+                  <div className="example-board__head">
+                    <span className="example-board__title">{column.title}</span>
+                    <span className="example-board__meta">{column.kind}</span>
                   </div>
-                  <div className="webhook-outbox__cards">
+                  <div className="example-board__rows webhook-outbox__cards">
                     {cards.length ? (
                       cards.map((hook) => <Card key={hook.id} hook={hook} now={now} />)
                     ) : (
-                      <div className="webhook-outbox__empty">none</div>
+                      <div className="example-board__empty">none</div>
                     )}
                   </div>
                 </div>

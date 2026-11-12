@@ -42,17 +42,17 @@ function pick<T>(items: T[]): T {
 }
 
 function Badge({ id }: { id: number | undefined }) {
-  return <span className="shared-dictionary__badge">{id ?? '?'}</span>;
+  return <span className="example-board__meta">{id ?? '?'}</span>;
 }
 
 function Board({ title, kind, children }: { title: string; kind: string; children: ReactNode }) {
   return (
-    <div className="shared-dictionary__board">
-      <div className="shared-dictionary__board-head">
-        <span className="shared-dictionary__table">{title}</span>
-        <span>{kind}</span>
+    <div className="example-board">
+      <div className="example-board__head">
+        <span className="example-board__title">{title}</span>
+        <span className="example-board__meta">{kind}</span>
       </div>
-      <div className="shared-dictionary__rows">{children}</div>
+      <div className="example-board__rows shared-dictionary__rows">{children}</div>
     </div>
   );
 }
@@ -221,10 +221,10 @@ export default function SharedDictionaryScene({ howTo }: SceneProps) {
       ran={ran}
       scene={
         <div ref={stageRef} className="shared-dictionary" role="img" aria-label="One dictionary of device names shared by a table, a series, a ring buffer and a queue">
-          <div className="shared-dictionary__dict">
-            <div className="shared-dictionary__board-head">
-              <span className="shared-dictionary__table">fleet::names</span>
-              <span>dictionary, utf8 → uint2</span>
+          <div className="example-board shared-dictionary__dict">
+            <div className="example-board__head">
+              <span className="example-board__title">fleet::names</span>
+              <span className="example-board__meta">dictionary, utf8 → uint2</span>
             </div>
             <div className="shared-dictionary__entries">
               {view.names.map((entry) => (
@@ -239,10 +239,10 @@ export default function SharedDictionaryScene({ howTo }: SceneProps) {
             </div>
           </div>
 
-          <div className="shared-dictionary__boards">
+          <div className="example-boards">
             <Board title="fleet::devices" kind="table">
               {view.devices.map((row) => (
-                <div key={String(row.name)} className="shared-dictionary__row">
+                <div key={String(row.name)} className="example-board__row shared-dictionary__row">
                   <Name name={String(row.name)} ids={ids} fresh={view.fresh} />
                   <span>{String(row.status)}</span>
                 </div>
@@ -250,7 +250,7 @@ export default function SharedDictionaryScene({ howTo }: SceneProps) {
             </Board>
             <Board title="fleet::readings" kind="series, key at">
               {view.readings.map((row) => (
-                <div key={String(row.at)} className="shared-dictionary__row">
+                <div key={String(row.at)} className="example-board__row shared-dictionary__row">
                   <Name name={String(row.name)} ids={ids} fresh={view.fresh} />
                   <span>
                     {Number(row.bar).toFixed(2)} bar · {time(row.at)}
@@ -261,13 +261,13 @@ export default function SharedDictionaryScene({ howTo }: SceneProps) {
             <Board title="fleet::alerts" kind="ring, capacity 5">
               {view.alerts.length ? (
                 view.alerts.map((row) => (
-                  <div key={String(row.at)} className="shared-dictionary__row">
+                  <div key={String(row.at)} className="example-board__row shared-dictionary__row">
                     <Name name={String(row.name)} ids={ids} fresh={view.fresh} />
                     <span>{String(row.level)}</span>
                   </div>
                 ))
               ) : (
-                <div className="shared-dictionary__empty">no alerts yet</div>
+                <div className="example-board__empty">no alerts yet</div>
               )}
             </Board>
             <Board title="fleet::commands" kind="queue, claim and ack">
@@ -275,7 +275,7 @@ export default function SharedDictionaryScene({ howTo }: SceneProps) {
                 view.commands.map((command) => (
                   <div
                     key={command.id}
-                    className={cn('shared-dictionary__row', command.status === 'delivered' && 'shared-dictionary__row--done')}
+                    className={cn('example-board__row shared-dictionary__row', command.status === 'delivered' && 'shared-dictionary__row--done')}
                   >
                     <Name name={command.name} ids={ids} fresh={view.fresh} />
                     <span>
@@ -284,7 +284,7 @@ export default function SharedDictionaryScene({ howTo }: SceneProps) {
                   </div>
                 ))
               ) : (
-                <div className="shared-dictionary__empty">queue empty</div>
+                <div className="example-board__empty">queue empty</div>
               )}
             </Board>
           </div>

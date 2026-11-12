@@ -89,6 +89,7 @@ const LINE = '#c9c3dc';
 const PRIMARY = '#7e85f2';
 const RISE = '#2f9e6b';
 const FALL = '#d4506c';
+const MINE = '#eb4fc0';
 
 const WIDE: Layout = {
   width: 384,
@@ -345,9 +346,11 @@ interface BoardProps {
 function BoardView({ layout, id, title, node, rows, format }: BoardProps) {
   return (
     <div className="swap-candle__board" style={place(layout, layout.boxes[id])}>
-      <div className="swap-candle__title">{title}</div>
+      <div className="example-board__head">
+          <span className="example-board__title">{title}</span>
+        </div>
       {rows.map((row) => (
-        <div key={row.key} className="swap-candle__row">
+        <div key={row.key} className="example-board__row">
           <span>{row.left}</span>
           <span>
             {row.right}
@@ -395,7 +398,7 @@ function Wiring({ view, layout }: { view: View; layout: Layout }) {
       <rect {...layout.candleChart} fill="#ffffff" />
       <CandleChart chart={layout.candleChart} candles={view.nodes.candles.snapshot.candles} />
       {view.packets.map((packet) => (
-        <circle key={packet.key} cx={packet.x} cy={packet.y} r={2.2} fill={packet.mine ? FALL : PRIMARY} />
+        <circle key={packet.key} cx={packet.x} cy={packet.y} r={2.2} fill={packet.mine ? MINE : PRIMARY} />
       ))}
     </svg>
   );
@@ -426,16 +429,18 @@ function Boards({ view, layout }: { view: View; layout: Layout }) {
         RDB/USD · slot {view.slot.toLocaleString('en-US')}
       </div>
       <div className="swap-candle__board swap-candle__card" style={place(layout, layout.boxes.normalized)}>
-        <div className="swap-candle__title">Normalize</div>
+        <div className="example-board__head">
+          <span className="example-board__title">Normalize</span>
+        </div>
         <div className="swap-candle__source">{RAW_TABLE}</div>
         {RAW_COLUMNS.map((column) => (
-          <div key={column} className="swap-candle__row">
+          <div key={column} className="example-board__row">
             <span>{column}</span>
             <span>{String(card.raw[column])}</span>
           </div>
         ))}
         <div className="swap-candle__source">→ {NORMALIZED_VIEW}</div>
-        <div className="swap-candle__row swap-candle__result">
+        <div className="example-board__row swap-candle__result">
           <span>
             {Number(normalized.base_volume).toFixed(2)} RDB · {money(normalized.quote_volume)} USD
           </span>
@@ -449,10 +454,14 @@ function Boards({ view, layout }: { view: View; layout: Layout }) {
       <BoardView layout={layout} id="volume" title="market::volume" node={nodes.volume} rows={volume} format={compact} />
       <BoardView layout={layout} id="twap" title="market::twap" node={nodes.twap} rows={twap} format={money} />
       <div className="swap-candle__board swap-candle__candles" style={place(layout, layout.boxes.candles)}>
-        <div className="swap-candle__title">market::candles</div>
+        <div className="example-board__head">
+          <span className="example-board__title">market::candles</span>
+        </div>
       </div>
       <div className="swap-candle__board swap-candle__app" style={place(layout, layout.boxes.app)}>
-        <div className="swap-candle__title">Your frontend</div>
+        <div className="example-board__head">
+          <span className="example-board__title">Your frontend</span>
+        </div>
         <div className="swap-candle__price">
           {last ? money(last.close) : '-'}
           {last && <MarkView key={nodes.app.marks[keyOf('app', last)]?.flow ?? 'none'} mark={nodes.app.marks[keyOf('app', last)]} format={money} />}
