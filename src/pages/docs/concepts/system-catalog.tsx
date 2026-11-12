@@ -37,57 +37,69 @@ const schemaRows: string[][] = [
   ['namespaces', 'id, name, local_name, parent_id', 'rows: system and its children, default, rql, and yours'],
   ['tables', 'id, namespace_id, name, primary_key_id, time_domain, time_column', 'rows: system::source::completeness and yours'],
   ['columns', 'id, object_id, object_kind, name, type, position, auto_increment, dictionary_id', 'rows; type is the type name'],
-  ['column_properties', 'id, column_id, kind, value', 'empty until you create one'],
+  ['column::properties', 'id, column_id, kind, value', 'empty until you create one'],
   ['views', 'id, namespace_id, name, kind, storage_kind, primary_key_id', 'empty until you create one'],
   ['primary_keys', 'id, object_id', 'rows: one engine key, plus yours'],
-  ['primary_key_columns', 'primary_key_id, column_id, position', 'one row per key column'],
+  ['primary_key::columns', 'primary_key_id, column_id, position', 'one row per key column'],
   ['sequences', 'id, namespace_id, name, value', 'rows: the engine sequences'],
   ['ringbuffers', 'id, namespace_id, name, capacity, primary_key_id, time_domain, time_column', 'rows: the two engine ring buffers under system::metric'],
   ['series', 'id, namespace_id, name, tag_id, key_column, key_kind, time_domain, time_column', 'rows: the 10 snapshots series under system::metric'],
   ['dictionaries', 'id, namespace_id, name, value_type, id_type', 'empty until you create one'],
   ['enums', 'id, namespace_id, name', 'empty until you create one'],
-  ['enum_variants', 'id, variant_tag, variant_name, field_count, field_index, field_name, field_type', 'one row per variant field'],
-  ['events, event_variants', 'same shape as enums and enum_variants', 'empty until you create one'],
+  ['enum::variants', 'id, variant_tag, variant_name, field_count, field_index, field_name, field_type', 'one row per variant field'],
+  ['events, event::variants', 'same shape as enums and enum::variants', 'empty until you create one'],
   ['handlers', 'id, namespace_id, name, sumtype_id, variant_tag', 'empty until you create one'],
   ['relationships', 'id, namespace_id, name, source_table_id, source_column_id, target_table_id, target_column_id, junction_table_id, junction_source_column_id, junction_target_column_id, cardinality', 'empty until you create one'],
   ['types', 'id, name', '25 rows'],
-  ['virtual_tables', 'id, namespace_id, name, kind', '45 rows'],
-  ['virtual_table_columns', 'id, vtable_id, name, type, position', '212 rows'],
+  ['virtual_tables', 'id, namespace_id, name, kind', '60 rows'],
+  ['virtual_table::columns', 'id, vtable_id, name, type, position', '288 rows'],
+  ['functions', 'name, namespace, kind, min_args, max_args, description, alias_of', '201 rows'],
+  ['procedures', 'id, namespace_id, name, kind', 'rows: the 7 built-in procedures, plus yours'],
+  ['procedure::rql', 'id, namespace_id, name, return_type, body, trigger_kind, event_sumtype_id, event_variant_index, run_as', 'empty until you create one'],
+  ['procedure::test', 'id, namespace_id, name, return_type, body, run_as', 'empty until you create one'],
+  ['procedure::in_process', 'id, namespace_id, name, handler_name', 'rows: the 7 built-in procedures'],
+  ['procedure::extern_c', 'id, namespace_id, name, handler_name, library_path, entry_symbol', 'empty'],
+  ['procedure::extern_wasm', 'id, namespace_id, name, handler_name, module_id', 'empty'],
+  ['bindings', 'id, namespace_id, procedure_id, name, format, kind', 'empty until you create one'],
+  ['binding::http', 'id, namespace_id, procedure_id, name, method, path, format', 'empty until you create one'],
+  ['binding::grpc, binding::ws', 'id, namespace_id, procedure_id, name, rpc_name, format', 'empty until you create one'],
 ];
 
 const securityRows: string[][] = [
   ['identities', 'id, name, enabled, kind', 'rows: root and system are always there'],
-  ['identity_attributes', 'id, name, value_type', 'empty'],
-  ['identity_attribute_values', 'identity_id, attribute_id, attribute, value', 'empty'],
+  ['identity::attributes', 'id, name, value_type', 'empty'],
+  ['identity::attribute_values', 'identity_id, attribute_id, attribute, value', 'empty'],
   ['roles', 'id, name', 'empty until you create one'],
-  ['granted_roles', 'identity_id, role_id', 'empty until you grant one'],
+  ['identity::roles', 'identity_id, role_id', 'empty until you grant one'],
   ['policies', 'id, name, target_type, target_namespace, target_object, enabled', 'rows: five built-in procedure policies, plus yours'],
-  ['policy_operations', 'policy_id, operation, body_source', 'rows: one per built-in policy, plus yours'],
+  ['policy::operations', 'policy_id, operation, body_source', 'rows: one per built-in policy, plus yours'],
   ['authentication::methods', 'id, name, ttl, promote_guest, properties', 'empty until you declare one'],
-  ['authentication::credentials', 'id, identity_id, method', 'empty until you create one'],
+  ['identity::credentials', 'id, identity_id, method', 'empty until you create one'],
 ];
 
 const flowRows: string[][] = [
-  ['flow::flows', 'id, namespace_id, name, status, reason', 'rows once a view exists'],
+  ['flows', 'id, namespace_id, name, status, reason', 'rows once a view exists'],
   ['flow::operators', 'id, flow_id, kind', 'rows once a view exists'],
   ['flow::edges', 'id, flow_id, source_id, target_id', 'rows once a view exists'],
   ['flow::operator::types', 'id, name', '23 rows'],
   ['flow::operator::libraries', 'operator_name, library_path, abi, can_insert, can_update, can_delete', 'empty'],
   ['flow::operator::library::inputs, ::outputs', 'operator_name, position, name, type, description', 'empty'],
-  ['flow::watermarks', 'not observable', 'empty; not listed by virtual_tables'],
+  ['flow::watermarks', 'flow_id, object_id, lag, outstanding', 'rows once a view exists'],
+  ['flow::units', 'flow_id, unit', 'rows once a view exists'],
   ['windowed_view_groups', 'id, namespace_id, name, flow_id', 'empty until you create one'],
-  ['windowed_view_group_members', 'group_id, view_id', 'empty until you create one'],
-  ['queue::queues', 'id, namespace_id, name, partition_by, ordered_by, deduplicate_by, deduplicate_ttl, time_domain, time_column, depth, in_flight, blocked_keys, oldest_due_at', 'empty until you create one'],
+  ['windowed_view_group::members', 'group_id, view_id', 'empty until you create one'],
+  ['queues', 'id, namespace_id, name, partition_by, ordered_by, deduplicate_by, deduplicate_ttl, time_domain, time_column, depth, in_flight, blocked_keys, oldest_due_at', 'empty until you create one'],
   ['queue::partitions', 'queue_id, partition, depth, in_flight, blocked_keys, oldest_due_at', 'one row per queue partition'],
-  ['subscriptions', 'not observable', 'empty; not listed by virtual_tables'],
+  ['subscriptions', 'id', 'empty; the browser build has no subscription service'],
+  ['subscription::watermarks', 'subscription_id, object_id, lag', 'empty'],
 ];
 
 const runtimeRows: string[][] = [
-  ['versions', 'name, version, description, kind', '12 rows'],
+  ['versions', 'name, version, description, kind', '13 rows'],
   ['configs', 'key, value, default_value, description, requires_restart', '53 rows'],
   ['migrations', 'name, action, body, rollback_body', 'empty until you register one'],
   ['row_shapes', 'fingerprint, field_count', 'one row per distinct row layout'],
-  ['row_shape_fields', 'fingerprint, field_index, name, type, offset, size', 'one row per field per layout'],
+  ['row_shape::fields', 'fingerprint, field_index, name, type, offset, size', 'one row per field per layout'],
   ['metric::request_history', 'ring buffer, capacity 10000', 'empty here'],
   ['metric::statement_stats', 'ring buffer, capacity 5000', 'empty here'],
   ['metric::<domain>::snapshots', 'series', '10 series; empty here'],
@@ -183,7 +195,7 @@ export function SystemCatalogPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">The catalog describes itself</h2>
           <p className="text-text-secondary mb-4">
-            <Code>system::virtual_table_columns</Code> holds the columns of every virtual
+            <Code>system::virtual_table::columns</Code> holds the columns of every virtual
             table, keyed by <Code>vtable_id</Code>. <Code>system::tables</Code> is virtual
             table 3, so its own shape is one query away:
           </p>
@@ -201,7 +213,7 @@ export function SystemCatalogPage() {
             <Link to="/docs/concepts/data-model/views" className="text-primary hover:text-primary-light font-medium transition-colors">view</Link>{' '}
             is more than a row in <Code>system::views</Code>. Creating one also registers a
             flow - the dataflow graph that keeps the view current - in{' '}
-            <Code>system::flow::flows</Code>:
+            <Code>system::flows</Code>:
           </p>
           <ExecutableSnippet title={syscatViewFlow.title} initialCode={syscatViewFlow.code} />
         </section>
@@ -274,13 +286,10 @@ export function SystemCatalogPage() {
         <section>
           <h2 className="text-[24px] font-normal leading-[1.15] tracking-[-0.03em] mb-4">Reference: every table in this build</h2>
           <p className="text-text-secondary mb-4">
-            The groups below cover all 45 virtual tables listed by{' '}
-            <Code>system::virtual_tables</Code> on the playground engine (34 directly in{' '}
-            <Code>system</Code>, the rest under <Code>system::flow</Code>,{' '}
-            <Code>system::queue</Code> and <Code>system::authentication</Code>), the
-            metrics objects, and the few extra names that answer a <Code>from</Code>{' '}
-            without being listed. Columns come from{' '}
-            <Code>system::virtual_table_columns</Code>. The last column records what a
+            The groups below cover all 60 virtual tables listed by{' '}
+            <Code>system::virtual_tables</Code> (29 directly in <Code>system</Code>, the
+            rest in its child namespaces) and the metrics objects. Columns come from{' '}
+            <Code>system::virtual_table::columns</Code>. The last column records what a
             read returned on the playground engine. A name that is not a virtual table
             fails with <Code>CA_023</Code>.
           </p>

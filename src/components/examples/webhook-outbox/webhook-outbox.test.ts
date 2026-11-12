@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { createTestDB, executeExample } from '@/lib/test-utils/wasm-test-db';
 import type { WasmDB } from '@/lib/wasm-db';
-import { CLAIM, COUNTERS, QUEUE, READS, SETUP, ack, backoffAfter, fail, placeOrder, replay } from './webhook-outbox';
+import { ATTEMPTS, CLAIM, COUNTERS, QUEUE, READS, SETUP, ack, backoffAfter, fail, placeOrder, replay } from './webhook-outbox';
 
 type Row = Record<string, unknown>;
 
@@ -11,7 +11,7 @@ function run(db: WasmDB, code: string): Row[] {
   return (result.data ?? []) as Row[];
 }
 
-function wait(ms: number): Promise<void> {
+function waitReal(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -50,7 +50,7 @@ insert ${QUEUE} [{ id: "two", event: "order.paid", url: "shop.io" }]`);
     run(db, placeOrder(1, 'order.paid', 'shop.io'));
     expect(Number(claimAndFail(db).attempt)).toBe(1);
     expect(run(db, CLAIM)).toHaveLength(0);
-    await wait(backoffAfter(1) + 150);
+    db.advanceClock(backoffAfter(1) + 150);
     const [retry] = run(db, CLAIM);
     expect(Number(retry.attempt)).toBe(2);
   });
@@ -71,12 +71,12 @@ insert ${QUEUE} [{ id: "two", event: "order.paid", url: "shop.io" }]`);
     // The scene tells backoff from dead by depth, so depth must count waiting webhooks and drop dead ones exactly.
     const db = await outbox();
     run(db, placeOrder(1, 'order.paid', 'shop.io'));
-    claimAndFail(db);
-    expect(depth(db)).toBe(1);
-    await wait(backoffAfter(1) + 150);
-    claimAndFail(db);
-    await wait(backoffAfter(2) + 150);
-    expect(Number(claimAndFail(db).attempt)).toBe(3);
+    for (let attempt = 1; attempt < ATTEMPTS; attempt++) {
+      claimAndFail(db);
+      expect(depth(db)).toBe(1);
+      db.advanceClock(backoffAfter(attempt) + 150);
+    }
+    expect(Number(claimAndFail(db).attempt)).toBe(ATTEMPTS);
     expect(depth(db)).toBe(0);
     expect(run(db, CLAIM)).toHaveLength(0);
     run(db, replay(1));
@@ -89,8 +89,9 @@ insert ${QUEUE} [{ id: "two", event: "order.paid", url: "shop.io" }]`);
     const db = await outbox();
     run(db, placeOrder(1, 'order.paid', 'shop.io'));
     const [lost] = run(db, `call queue::claim("crashed", "${QUEUE}", 1, duration::seconds(1))`);
-    await wait(6_500);
-    await wait(backoffAfter(1) + 150);
+    db.advanceClock(6_500);
+    await waitReal(5_500);
+    db.advanceClock(backoffAfter(1) + 150);
     const [again] = run(db, CLAIM);
     expect(Number(again.attempt)).toBe(2);
     expect(String(run(db, ack(String(lost.token)))[0].status)).toBe('stale');

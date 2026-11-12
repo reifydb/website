@@ -17,7 +17,8 @@ transaction         | 0.10.2  | module
 auth                | 0.10.2  | module
 rql                 | 0.10.2  | module
 rql-frontend        | 0.10.2  | module
-sub-flow            | 0.10.2  | subsystem`,
+sub-flow            | 0.10.2  | subsystem
+sub-lifecycle       | 0.10.2  | subsystem`,
   };
 
 export const conceptsSystemCatalogCountExample: CodeExample = {
@@ -28,7 +29,7 @@ filter { namespace_id == 1 }
 aggregate { tables: math::count(id) } by {}`,
     expected: `tables
 ------
-34`,
+29`,
   };
 
 export const conceptsSystemCatalogListExample: CodeExample = {
@@ -40,15 +41,15 @@ sort { name: asc }
 take 8
 map { id, name }`,
     expected: `id | name
----+------------------
-6  | column_properties
+---+-------------
+70 | bindings
 5  | columns
 45 | configs
 15 | dictionaries
-47 | enum_variants
 32 | enums
-48 | event_variants
-33 | events`,
+33 | events
+11 | flows
+71 | functions`,
   };
 
 export const conceptsSystemCatalogCreateExample: CodeExample = {
@@ -107,7 +108,7 @@ export const conceptsSystemCatalogTypesExample: CodeExample = {
 export const conceptsSystemCatalogSelfExample: CodeExample = {
     id: 'concepts-system-catalog-self-describing',
     title: 'The Catalog Describes Its Own Tables',
-    code: `from system::virtual_table_columns
+    code: `from system::virtual_table::columns
 filter { vtable_id == 3 }
 sort { position: asc }
 map { name, type, position }`,
@@ -131,7 +132,7 @@ export const conceptsSystemCatalogViewFlowExample: CodeExample = {
   from cpt_syscat::orders
   aggregate { total: math::sum(total) } by { status }
 };
-from system::flow::flows`,
+from system::flows`,
     expected: `id | namespace_id | name         | status | reason
 ---+--------------+--------------+--------+-------
 1  | 16386        | order_totals | Active | ⟪none⟫`,

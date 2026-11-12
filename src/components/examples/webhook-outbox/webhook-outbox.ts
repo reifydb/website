@@ -18,7 +18,7 @@ export const CLAIM = `call queue::claim("worker", "${QUEUE}", 1, duration::secon
 export const COUNTERS = 'from system::queue::partitions map { depth, in_flight, oldest_due_at }';
 
 export const READS = {
-  all: `from ${QUEUE} sort { id }`,
+  all: `from ${QUEUE} sort { id: asc }`,
   paid: `from ${QUEUE} filter { event == "order.paid" } sort { id }`,
   perUrl: `from ${QUEUE} aggregate { webhooks: math::count(id) } by { url }`,
   catalog: 'from system::queues filter { name == "outbox" } map { name, depth, in_flight }',
