@@ -6,19 +6,19 @@ export const conceptsSystemCatalogVersionsExample: CodeExample = {
     code: `from system::versions map { name, version, kind }`,
     expected: `name                | version | kind
 --------------------+---------+----------
-reifydb-webassembly | 0.10.2  | package
-core                | 0.10.2  | module
-engine              | 0.10.2  | module
-catalog             | 0.10.2  | module
-store-multi         | 0.10.2  | module
-store-single        | 0.10.2  | module
-store-operator      | 0.10.2  | module
-transaction         | 0.10.2  | module
-auth                | 0.10.2  | module
-rql                 | 0.10.2  | module
-rql-frontend        | 0.10.2  | module
-sub-flow            | 0.10.2  | subsystem
-sub-lifecycle       | 0.10.2  | subsystem`,
+reifydb-webassembly | 0.10.3  | package
+core                | 0.10.3  | module
+engine              | 0.10.3  | module
+catalog             | 0.10.3  | module
+store-multi         | 0.10.3  | module
+store-single        | 0.10.3  | module
+store-operator      | 0.10.3  | module
+transaction         | 0.10.3  | module
+auth                | 0.10.3  | module
+rql                 | 0.10.3  | module
+rql-frontend        | 0.10.3  | module
+sub-flow            | 0.10.3  | subsystem
+sub-lifecycle       | 0.10.3  | subsystem`,
   };
 
 export const conceptsSystemCatalogCountExample: CodeExample = {
