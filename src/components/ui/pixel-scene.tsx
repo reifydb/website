@@ -1381,7 +1381,7 @@ function usePixelLoop(height: number, draw: Draw, still = false) {
 
     resize();
     window.addEventListener('resize', resize);
-    if (!still && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (!still) {
       const loop = (ms: number) => {
         if (ms - lastPaint > FRAME_INTERVAL) {
           lastPaint = ms;

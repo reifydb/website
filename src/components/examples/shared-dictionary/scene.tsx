@@ -29,10 +29,6 @@ interface View {
   fresh: string | null;
 }
 
-function prefersReducedMotion(): boolean {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
 function time(value: unknown): string {
   return new Date(String(value)).toLocaleTimeString('en-GB');
 }
@@ -182,12 +178,10 @@ export default function SharedDictionaryScene({ howTo }: SceneProps) {
       visibleRef.current = entry.isIntersecting;
     });
     observer.observe(stageRef.current!);
-    const reduce = prefersReducedMotion();
     let tick = 0;
     const timer = window.setInterval(() => {
       if (document.hidden || !(visibleRef.current || isWatched('shared-dictionary'))) return;
       tick += 1;
-      if (reduce) return;
       actions.current.reading();
       if (tick % ALERT_EVERY === 0) actions.current.alert();
       if (tick % COMMAND_EVERY === 0) actions.current.command();

@@ -32,10 +32,6 @@ interface View {
   event: string;
 }
 
-function prefersReducedMotion(): boolean {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
 function emptyLanes(): Record<User, Lane> {
   return Object.fromEntries(
     USERS.map((user) => [user, { slots: Array(LIMIT).fill(null), head: 0, inWindow: 0, written: null, blocked: null }]),
@@ -128,15 +124,12 @@ export default function RateLimiterScene({ howTo }: SceneProps) {
       visibleRef.current = entry.isIntersecting;
     });
     observer.observe(stageRef.current!);
-    const reduce = prefersReducedMotion();
     let tick = 0;
     const timer = window.setInterval(() => {
       if (document.hidden || !(visibleRef.current || isWatched('rate-limiter'))) return;
       tick += 1;
-      if (!reduce) {
-        if (tick % BOB_EVERY === 0) send.current('bob');
-        if (tick % KAREN_EVERY < KAREN_BURST) send.current('karen');
-      }
+      if (tick % BOB_EVERY === 0) send.current('bob');
+      if (tick % KAREN_EVERY < KAREN_BURST) send.current('karen');
       chainRef.current = chainRef.current.then(() => refresh.current()).catch(setFailure);
     }, TICK_MS);
     return () => {

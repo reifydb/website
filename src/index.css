@@ -406,11 +406,6 @@ div::backdrop {
   box-shadow: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .flip-pop {
-    animation: none;
-  }
-}
 
 .docs-boards .dialog:has(> table) {
   border: 0;
@@ -546,13 +541,6 @@ div::backdrop {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .example-live__flash--insert,
-  .example-live__flash--update,
-  .example-live__flash--delete {
-    animation: none;
-  }
-}
 
 .example-boards {
   display: grid;
@@ -777,11 +765,6 @@ div::backdrop {
   color: #d4506c;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .swap-candle__delta {
-    animation: none;
-  }
-}
 
 .swap-candle__lead {
   font-family: var(--font-display);
@@ -931,16 +914,6 @@ div::backdrop {
   overflow-wrap: anywhere;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .rate-limiter__slot--fresh,
-  .rate-limiter__verdict--hit.rate-limiter__verdict--blocked {
-    animation: none;
-  }
-
-  .rate-limiter__fill {
-    transition: none;
-  }
-}
 
 .shared-dictionary {
   display: flex;
@@ -992,12 +965,6 @@ div::backdrop {
   color: var(--color-text-secondary);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .shared-dictionary__entry--fresh,
-  .shared-dictionary__name--fresh {
-    animation: none;
-  }
-}
 
 .webhook-outbox {
   padding: 16px;
@@ -1037,8 +1004,3 @@ div::backdrop {
   opacity: 0.6;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .webhook-outbox__card {
-    animation: none;
-  }
-}

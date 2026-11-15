@@ -487,10 +487,6 @@ function useLayout(): Layout {
   return tall ? TALL : WIDE;
 }
 
-function prefersReducedMotion(): boolean {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
 export default function SwapCandleScene({ howTo }: SceneProps) {
   const layout = useLayout();
   const [view, setView] = useState<View | null>(null);
@@ -502,7 +498,6 @@ export default function SwapCandleScene({ howTo }: SceneProps) {
   const queueRef = useRef<{ swap: Swap; mine: boolean }[]>([]);
   const busyRef = useRef(false);
   const visibleRef = useRef(false);
-  const reduceRef = useRef(prefersReducedMotion());
   const repaintRef = useRef<() => void>(() => {});
 
   const pump = useRef(async () => {
@@ -518,7 +513,7 @@ export default function SwapCandleScene({ howTo }: SceneProps) {
         setRan(insert);
         setLastSwap(swap);
         const { snapshot } = await settle(swap);
-        const start = reduceRef.current ? -Infinity : performance.now() / 1000;
+        const start = performance.now() / 1000;
         flows.push({ start, swap, mine, snapshot, previous });
         repaintRef.current();
       }
@@ -556,7 +551,7 @@ export default function SwapCandleScene({ howTo }: SceneProps) {
     let lastPaint = 0;
     let lastKey = '';
     const paint = (ms: number) => {
-      const now = reduceRef.current ? Infinity : ms / 1000;
+      const now = ms / 1000;
       const flows = flowsRef.current;
       while (flows.length && ms / 1000 - flows[0].start > RETIRE) {
         const retired = flows.shift()!;
@@ -579,12 +574,10 @@ export default function SwapCandleScene({ howTo }: SceneProps) {
     };
     paint(performance.now());
     frameId = requestAnimationFrame(loop);
-    const auto = reduceRef.current
-      ? 0
-      : window.setInterval(() => {
-          if (document.hidden || !(visibleRef.current || isWatched('swap-candle')) || queueRef.current.length > 1) return;
-          enqueue(makeSwap(currentSlot(performance.now())), false);
-        }, AUTO_MS);
+    const auto = window.setInterval(() => {
+      if (document.hidden || !(visibleRef.current || isWatched('swap-candle')) || queueRef.current.length > 1) return;
+      enqueue(makeSwap(currentSlot(performance.now())), false);
+    }, AUTO_MS);
     return () => {
       observer.disconnect();
       cancelAnimationFrame(frameId);
